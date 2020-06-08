@@ -4,19 +4,11 @@ This is a project template for a greenfield Java project. It's named after the J
 
 ## Setting up in Intellij
 
-Prerequisites: JDK 11, update Intellij to the most recent version.
+Prerequisites: JDK 11 (use the exact version), update Intellij to the most recent version.
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first)
-1. Set up the correct JDK version, as follows:
-   1. Click `Configure` > `Structure for New Projects` and then `Project Settings` > `Project` > `Project SDK`
-   1. If JDK 11 is listed in the drop down, select it. If it is not, click `New...` and select the directory where you installed JDK 11
-   1. Click `OK`
-1. Import the project into Intellij as follows:
-   1. Click `Open or Import`.
-   1.**IMPORTANT: Locate the `build.gradle` file** in the project directory, select it, and click `OK`.<br>
-      If asked, choose to `Open as Project` (not `Open as File`)
-   1. If there are any further prompts, accept the defaults.
-1. After the importing is complete, locate the `src/main/java/seedu/duke/Duke.java` file, right-click it, and choose `Run Duke.main()`. If the setup is correct, you should see something like the below:
+1. **Configure Intellij for JDK 11**, as described [here](https://se-education.org/guides/tutorials/intellijJdk.html).
+1. **Import the project _as a Gradle project_**, as described [here](https://se-education.org/guides/tutorials/intellijImportGradleProject.html).
+1. **Verify the set up**: After the importing is complete, locate the `src/main/java/seedu/duke/Duke.java` file, right-click it, and choose `Run Duke.main()`. If the setup is correct, you should see something like the below:
    ```
    > Task :compileJava
    > Task :processResources NO-SOURCE
@@ -37,7 +29,7 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
 ## Build automation using Gradle
 
 * This project uses Gradle for build automation and dependency management. It includes a basic build script as well (i.e. the `build.gradle` file).
-* If you are new to Gradle, refer to the [Gradle Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/gradleTutorial.html).
+* If you are new to Gradle, refer to the [Gradle Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/gradle.html).
 
 ## Testing
 
@@ -48,12 +40,12 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
 ### JUnit tests
 
 * A skeleton JUnit test (`src/test/java/seedu/duke/DukeTest.java`) is provided with this project template. 
-* If you are new to JUnit, refer to the [JUnit Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/junitTutorial.html).
+* If you are new to JUnit, refer to the [JUnit Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/junit.html).
 
 ## Checkstyle
 
 * A sample CheckStyle rule configuration is provided in this project.
-* If you are new to CheckStyle, refer to the [CheckStyle Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/checkstyleTutorial.html).
+* If you are new to Checkstyle, refer to the [Checkstyle Tutorial at se-education.org/guides](https://se-education.org/guides/tutorials/checkstyle.html).
 
 ## CI using GitHub Actions
 
