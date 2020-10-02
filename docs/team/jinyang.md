@@ -1,4 +1,4 @@
-# John Doe - Project Portfolio Page
+# Yu Jinyang - Project Portfolio Page
 
 ## Overview
 
