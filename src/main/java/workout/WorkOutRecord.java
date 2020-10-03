@@ -1,4 +1,4 @@
-package Workout;
+package workout;
 
 public class WorkOutRecord {
 

@@ -1,6 +1,6 @@
-package Workout;
+package workout;
 
-public class StrengthTrainingRecod extends WorkOutRecord{
+public class StrengthTrainingRecod extends WorkOutRecord {
 
     double weight;
     double repetitions;
