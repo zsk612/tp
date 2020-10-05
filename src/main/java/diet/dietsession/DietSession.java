@@ -1,8 +1,8 @@
 package diet.dietsession;
 
 public class DietSession {
-    public boolean endWorkoutSession;
-    public static void workoutSessionStart(){
+    public boolean endDietSession;
+    public static void dietSessionStart(){
         while(true) {
 
         }
