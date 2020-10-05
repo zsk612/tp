@@ -1,4 +1,4 @@
-package diet;
+package diet.dietmanager;
 
 public class ExitException extends Throwable {
 

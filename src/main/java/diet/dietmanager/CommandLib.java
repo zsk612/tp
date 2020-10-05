@@ -1,4 +1,4 @@
-package diet;
+package diet.dietmanager;
 
 import diet.dietmanager.command.NewDietSession;
 import diet.dietmanager.command.Command;
