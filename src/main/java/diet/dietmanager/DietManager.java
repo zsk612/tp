@@ -1,9 +1,7 @@
-package diet;
+package diet.dietmanager;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
-import diet.dietmanager.command.Command;
 
 public class DietManager {
 
