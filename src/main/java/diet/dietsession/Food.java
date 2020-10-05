@@ -1,4 +1,4 @@
-package diet;
+package diet.dietsession;
 
 public class Food {
     protected String name;

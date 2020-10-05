@@ -1,8 +1,6 @@
 package diet.dietmanager;
 
-import diet.dietmanager.command.AddFood;
 import diet.dietmanager.command.Command;
-import diet.dietmanager.command.DeleteFood;
 import diet.dietmanager.command.DietSessionList;
 import diet.dietmanager.command.NewDietSession;
 
