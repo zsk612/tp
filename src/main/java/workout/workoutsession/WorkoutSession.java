@@ -9,7 +9,7 @@ public class WorkoutSession {
     private boolean endWorkoutSession = false;
     private final ArrayList<Exercise> exercise;
 
-    private WorkoutSession() {
+    public WorkoutSession() {
 
         this.exercise = new ArrayList<>();
     }

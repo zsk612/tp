@@ -1,6 +1,6 @@
 package storage;
 
-import workout.workoutSession.WorkoutSession;
+import workout.workoutsession.WorkoutSession;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,10 @@ public class WorkOutManagerStorage {
         pastRecords = new ArrayList<>();
     }
 
-    public static void list(String args[]) {
+    public static void list(String[] args) {
         int index = 0;
-        if(args == null) {
-            for(WorkoutSession ws : pastRecords) {
+        if (args == null) {
+            for (WorkoutSession ws : pastRecords) {
                 System.out.print(index + " ");
                 System.out.println(ws);
             }
