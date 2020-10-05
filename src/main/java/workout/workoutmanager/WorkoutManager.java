@@ -19,7 +19,7 @@ public class WorkoutManager {
     public void start() {
         WorkoutManagerUI.printOpening();
         Scanner sc = new Scanner(System.in);
-        while(true) {
+        while (true) {
             String command = sc.nextLine();
             String[] commParts = WorkoutManagerParser.parse(command);
 
