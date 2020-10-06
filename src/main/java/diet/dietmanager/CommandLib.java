@@ -17,8 +17,8 @@ public class CommandLib {
     public void initDietManagerCL() {
         this.library.put("list", new DietSessionList());
         this.library.put("new", new NewDietSession());
-        this.library.put("add", new AddFood());
-        this.library.put("delete", new DeleteFood());
+//        this.library.put("add", new AddFood());
+//        this.library.put("delete", new DeleteFood());
     }
 
     public Command get(String keyword) {
