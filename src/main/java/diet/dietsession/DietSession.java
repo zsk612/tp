@@ -1,5 +1,7 @@
 package diet.dietsession;
 
+import diet.dietmanager.DietManagerUI;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,10 +9,11 @@ public class DietSession {
     public ArrayList<Food> foodList;
     private DietSessionParser parser = new DietSessionParser();
     public boolean endDietSession = false;
-    Scanner sc = new Scanner(System.in);
+    private final DietManagerUI dietManagerUI;
 
     public DietSession () {
         this.foodList = new ArrayList<>();
+        dietManagerUI = new DietManagerUI();
     }
 
     public void setEndDietSession(Boolean hasEnded) {
@@ -18,13 +21,16 @@ public class DietSession {
     }
 
     public void dietSessionStart() {
-        String input = null;
 
         setEndDietSession(false);
 
+        System.out.println("start recording food: ");
+        String input = dietManagerUI.getInput();
         while (!input.equals("end")) {
-            input = sc.nextLine();
             parser.dietSessionProcessCommand(input, foodList);
+            input = dietManagerUI.getInput();
         }
+        setEndDietSession(true);
+        System.out.println("end diet session");
     }
 }

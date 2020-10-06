@@ -18,7 +18,12 @@ public class DietSessionParser {
             int index = Integer.parseInt(parameters);
             list.remove(index - 1);
             break;
-        case "end":
+        case "show":
+            for(Food item: list) {
+                System.out.println(item.toString());
+            }
+            break;
+        case "exit":
             break;
         default:
             System.out.println("Sorry! You have entered an invalid command!");

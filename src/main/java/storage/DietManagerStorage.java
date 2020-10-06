@@ -12,17 +12,18 @@ public class DietManagerStorage {
         pastRecords = new ArrayList<>();
     }
 
-    public static void list(String args[]) {
-        int index = 0;
-        if(args == null) {
-            for(DietSession ws : pastRecords) {
-                System.out.print(index + " ");
-                System.out.println(ws);
-            }
+    public static void list() {
+        int index = 1;
+        for(DietSession ws : pastRecords) {
+            System.out.print((index++) + " ");
+            System.out.println(ws);
         }
+
     }
 
     public static void add(DietSession newSession) {
+
+        System.out.println("added new diet session");
         pastRecords.add(newSession);
     }
 }
