@@ -1,6 +1,10 @@
 package diet.dietsession;
 
-import diet.dietsession.command.*;
+import diet.dietsession.command.Command;
+import diet.dietsession.command.FoodItemAdd;
+import diet.dietsession.command.FoodItemDelete;
+import diet.dietsession.command.FoodItemShow;
+import diet.dietsession.command.FoodItemWrong;
 
 import java.util.Hashtable;
 
@@ -19,7 +23,7 @@ public class CommandLib {
     }
 
     public Command get(String keyword) {
-        if(library.containsKey(keyword)) {
+        if (library.containsKey(keyword)) {
             return library.get(keyword);
         } else {
             return new FoodItemWrong();

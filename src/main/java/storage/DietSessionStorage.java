@@ -13,8 +13,8 @@ public class DietSessionStorage {
             System.out.println("There is nothing in your list.");
         } else {
             int numOfFood = 1;
-            for(Food item: foodList) {
-                System.out.println(numOfFood + ". " +item.toString());
+            for (Food item: foodList) {
+                System.out.println(numOfFood + ". " + item.toString());
                 numOfFood++;
             }
         }

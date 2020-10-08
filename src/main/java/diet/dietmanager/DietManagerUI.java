@@ -27,10 +27,10 @@ public class DietManagerUI {
      * Extracts out date and time by looking for date strings in YYYY-MM-DD format.
      * @param input date string
      * @return date in MMM dd yyyy if the user inputs date in YYYY-MM-DD format;
-     * else returns original string
+     *     else returns original string
      * @throws DateTimeParseException if the date string input is not a valid date
      */
-    public String extractDate(String input) throws DateTimeParseException, IllegalStateException{
+    public String extractDate(String input) throws DateTimeParseException, IllegalStateException {
 
         try {
             String dateString = input.split("/t")[0].split(" ", 2)[1].trim();
