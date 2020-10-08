@@ -12,6 +12,7 @@ public class DietSessionUI {
         System.out.println("end diet session");
         System.out.println("you have exited DietSession.");
     }
+
     public String getInput() {
         Scanner in = new Scanner(System.in);
         return in.nextLine();

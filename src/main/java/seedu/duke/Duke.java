@@ -10,6 +10,7 @@ public class Duke {
 
     private final DietManagerUI dietManagerUI;
     private final DietManager dietManager;
+
     public Duke() {
         dietManagerUI = new DietManagerUI();
         dietManager = new DietManager();
@@ -21,8 +22,8 @@ public class Duke {
     }
 
     public void run() {
-        System.out.println("Hi, this is the Schwarzenegger, " +
-                "an app for your daily workout and diet recording.");
+        System.out.println("Hi, this is the Schwarzenegger, "
+                + "an app for your daily workout and diet recording.");
 
         execute();
     }
@@ -30,8 +31,7 @@ public class Duke {
     public void execute() {
         String response = dietManagerUI.getInput();
         while (!response.equals("exit")) {
-
-            if(response.equals("diet")) {
+            if (response.equals("diet")) {
                 dietManager.start();
             }
             response = dietManagerUI.getInput();

@@ -1,7 +1,9 @@
 package diet.dietmanager;
 
-import diet.dietmanager.command.*;
+import diet.dietmanager.command.Command;
 import diet.dietmanager.command.DietSessionCreate;
+import diet.dietmanager.command.DietSessionList;
+import diet.dietmanager.command.DietSessionWrong;
 
 import java.util.Hashtable;
 
@@ -16,8 +18,6 @@ public class CommandLib {
     public void initDietManagerCL() {
         this.library.put("list", new DietSessionList());
         this.library.put("meal", new DietSessionCreate());
-//        this.library.put("add", new AddFood());
-//        this.library.put("delete", new DeleteFood());
     }
 
     public Command get(String keyword) {

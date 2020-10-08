@@ -24,8 +24,7 @@ public class DietManager {
     public void start() {
         DietManagerUI.printOpening();
         String input = dietManagerUI.getInput();
-        while(!input.equals("end")) {
-
+        while (!input.equals("end")) {
             try {
                 processCommand(input);
             } catch (ExitException e) {
