@@ -75,6 +75,10 @@ public class Storage {
         taskList = gson.fromJson(reader, taskListType);
     }
 
+    private static void createFile() {
+
+    }
+
     private static void fileNotFoundHandler() throws IOException {
         String fileName = "saves/workout/" + Integer.toString(1);
         File dir = new File("saves/workout/");
