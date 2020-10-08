@@ -30,11 +30,12 @@ public class Constants {
     public static final String MESSAGE_WELCOME = "Welcome to Profile Session of The Schwarzenegger" + LS
             + "How can I help you?";
     public static final String PROFILE_FOLDER = "profile";
+    public static final String PROFILE_SAVE_FORMAT = "%s | %d | %d | %.1f | %.1f";
     public static final String PROFILE_STRING_REPRESENTATION = "Name: %s | Age: %d | Height: %d cm | Weight: %.1f kg"
             + " | Expected Weight: %.1f kg";
     public static final String PROJECT_ROOT = System.getProperty("user.dir");
     public static final Path PATH_TO_PROFILE_FOLDER = Paths.get(PROJECT_ROOT, DATA_FOLDER, PROFILE_FOLDER);
-    public static final Path PATH_TO_PROFILE_FILE = Paths.get(PROJECT_ROOT, DATA_FOLDER, DATA_FILE);
+    public static final Path PATH_TO_PROFILE_FILE = Paths.get(PROJECT_ROOT, DATA_FOLDER, PROFILE_FOLDER, DATA_FILE);
     public static final String QUESTION_AGE = "How old are you?";
     public static final String QUESTION_EXPECTED_WEIGHT = "What's your expected weight in kilograms?";
     public static final String QUESTION_HEIGHT = "What's your height in centimeters?";
@@ -43,8 +44,6 @@ public class Constants {
     public static final String SAD_FACE = ":(  OOPS!!! ";
     public static final String MESSAGE_INVALID_COMMAND_WORD = SAD_FACE + "Sorry, but I don't know what that means.";
     public static final String MESSAGE_INVALID_SAVE_FORMAT = SAD_FACE + "Save format '%s' is invalid.";
-    public static final String PROFILE_SAVE_FORMAT = "%s | %d | %d | %.1f | %.1f";
-    public static final String VERTICAL_BAR_REGREX = " \\| ";
     public static final String MESSAGE_INVALID_AGE = String.format(
             SAD_FACE + "Please input an integer from %d to %d for age.", AGE_LOWER_BOUND, AGE_UPPER_BOUND);
     public static final String MESSAGE_INVALID_HEIGHT = String.format(
@@ -54,6 +53,7 @@ public class Constants {
     public static final String MESSAGE_SAVING_ERROR = SAD_FACE + "An error has occurred while saving data."
             + LS + "%s";
     public static final Scanner SCANNER = new Scanner(System.in);
+    public static final String VERTICAL_BAR_REGREX = " \\| ";
     public static final double WEIGHT_LOWER_BOUND = 2.1;
     public static final double WEIGHT_UPPER_BOUND = 635;
     public static final String MESSAGE_INVALID_WEIGHT = String.format(
