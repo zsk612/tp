@@ -5,7 +5,11 @@ import java.util.Scanner;
 
 public class DietSessionParser {
     public String[] parse(String comm) {
-        return comm.split(" ", 2);
+        if (comm.contains(" ")) {
+            return comm.split(" ", 2);
+        } else {
+            return new String[]{comm, "filler"};
+        }
     }
 
 //    public void dietSessionProcessCommand(String input, ArrayList<Food> list){

@@ -1,7 +1,11 @@
 package diet.dietmanager;
 
 public class DietManagerParser {
-    public static String[] parse(String comm) {
-        return comm.split(" ");
+    public String[] parse(String comm) {
+        if (comm.contains(" ")) {
+            return comm.split(" ", 2);
+        } else {
+            return new String[]{comm, "filler"};
+        }
     }
 }

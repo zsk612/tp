@@ -1,21 +1,39 @@
 package diet.dietsession;
 
 import diet.dietsession.command.Command;
+import storage.DietSessionStorage;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DietSession {
-    public ArrayList<Food> foodList;
+    private final ArrayList<Food> foodList;
+
+    private String dateInput;
+    private String mealInput;
 
     private final DietSessionUI dietSessionUI;
     private final diet.dietsession.CommandLib cl;
+    private final DietSessionStorage storage;
     private final DietSessionParser parser = new DietSessionParser();
     public boolean endDietSession = false;
 
-    public DietSession() {
+    public DietSession(String dateInput, String mealInput) {
         this.cl = new CommandLib();
+        cl.initDietManagerCL();
+        this.dateInput = dateInput;
+        this.mealInput = mealInput;
         this.foodList = new ArrayList<>();
+        storage = new DietSessionStorage();
         dietSessionUI = new DietSessionUI();
+    }
+
+    public String getDateInput() {
+        return dateInput;
+    }
+
+    public String getMealInput() {
+        return mealInput;
     }
 
     public void setEndDietSession(Boolean hasEnded) {
@@ -56,11 +74,7 @@ public class DietSession {
 
     public void processCommand(String input) throws NullPointerException {
         String[] commParts = parser.parse(input);
-        cl.initDietManagerCL();
         Command command = cl.get(commParts[0]);
-
-        System.out.println("keyword: " + commParts[0]);
-        System.out.println("description: " + commParts[1]);
-        command.execute(commParts[1], foodList);
+        command.execute(commParts[1], foodList, storage);
     }
 }

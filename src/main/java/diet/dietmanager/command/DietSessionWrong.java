@@ -1,15 +1,10 @@
 package diet.dietmanager.command;
 
-import diet.dietmanager.DietManagerUI;
-import diet.dietsession.DietSession;
 import storage.DietManagerStorage;
 
-public class DietSessionCreate implements Command {
-
-
+public class DietSessionWrong implements Command {
     @Override
     public void execute(String input, DietManagerStorage storage) {
-
-        storage.add(input);
+        System.out.println("Sorry, I do not get what you are saying.");
     }
 }
