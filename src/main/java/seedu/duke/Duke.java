@@ -1,21 +1,46 @@
 package seedu.duke;
 
-import java.util.Scanner;
+import profile.Profile;
+import profile.exceptions.SchwarzeneggerException;
+import profile.storage.Storage;
+import profile.ui.ProfileUi;
 
 public class Duke {
+    ProfileUi profileUi;
+    Storage storage;
+    Profile profile;
+
+    public Duke() {
+        try {
+            profileUi = new ProfileUi();
+            storage = new Storage();
+            profile = storage.loadData();
+
+            if (!storage.getHasExistingDataFile()) {
+                profile = profileUi.getFirstTimeProfile();
+                storage.saveData(profile);
+            } else {
+                profileUi.showToUser(profile.toString());
+            }
+        } catch (SchwarzeneggerException e) {
+            profileUi.showToUser(e.getMessage());
+        } catch (Exception e) {
+            profileUi.showToUser(e.toString());
+        }
+    }
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
+        new Duke().run();
+    }
 
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+    private void run() {
+        start();
+    }
+
+    private void start() {
+        profileUi.greetUser();
     }
 }
