@@ -1,6 +1,6 @@
 package workout.workoutmanager.command;
 
-import storage.WorkOutManagerStorage;
+import storage.Workout.WorkOutManagerStorage;
 
 public class WorkoutSessionList implements Command {
     @Override

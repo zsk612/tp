@@ -1,6 +1,6 @@
 package workout.workoutmanager;
 
-import storage.WorkOutManagerStorage;
+import storage.Workout.WorkOutManagerStorage;
 import workout.workoutmanager.command.Command;
 
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package storage;
+package storage.Workout;
 
 import workout.workoutsession.WorkoutSession;
 

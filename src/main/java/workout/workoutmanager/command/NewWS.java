@@ -1,6 +1,6 @@
 package workout.workoutmanager.command;
 
-import storage.WorkOutManagerStorage;
+import storage.Workout.WorkOutManagerStorage;
 import workout.workoutsession.WorkoutSession;
 
 public class NewWS implements Command {
