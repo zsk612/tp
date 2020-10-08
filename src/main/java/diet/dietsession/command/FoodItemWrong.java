@@ -5,11 +5,9 @@ import storage.DietSessionStorage;
 
 import java.util.ArrayList;
 
-public class FoodItemAdd implements Command {
-
+public class FoodItemWrong implements Command {
     @Override
     public void execute(String input, ArrayList<Food> foodList, DietSessionStorage storage) {
-
-        storage.add(input, foodList);
+        System.out.println("Sorry, I do not get what you are saying.");
     }
 }

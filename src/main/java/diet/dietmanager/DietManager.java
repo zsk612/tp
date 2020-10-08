@@ -1,24 +1,23 @@
 package diet.dietmanager;
 
 import diet.dietmanager.command.Command;
-import diet.dietmanager.command.DietSessionList;
-import diet.dietmanager.command.DietSessionCreate;
-import diet.dietsession.DietSession;
+
 import storage.DietManagerStorage;
 
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class DietManager {
 
     private final CommandLib cl;
-
+    private final DietManagerParser parser;
     private final DietManagerUI dietManagerUI;
+    private final DietManagerStorage dietManagerStorage;
 
     public DietManager() {
-        DietManagerStorage.init();
+        dietManagerStorage = new DietManagerStorage();
+        dietManagerStorage.init();
         cl = new CommandLib();
         cl.initDietManagerCL();
+        parser = new DietManagerParser();
         dietManagerUI = new DietManagerUI();
     }
 
@@ -27,10 +26,8 @@ public class DietManager {
         String input = dietManagerUI.getInput();
         while(!input.equals("end")) {
 
-            String[] commParts = DietManagerParser.parse(input);
-
             try {
-                processCommand(commParts);
+                processCommand(input);
             } catch (ExitException e) {
                 System.out.println(e.getMessage());
                 break;
@@ -40,8 +37,9 @@ public class DietManager {
         System.out.println("you have exited DietManager.");
     }
 
-    public void processCommand(String[] commands) throws ExitException {
-        Command command = cl.get(commands[0]);
-        command.execute();
+    public void processCommand(String input) throws ExitException {
+        String[] commParts = parser.parse(input.trim());
+        Command command = cl.get(commParts[0]);
+        command.execute(commParts[1], dietManagerStorage);
     }
 }

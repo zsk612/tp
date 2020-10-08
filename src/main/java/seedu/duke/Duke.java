@@ -21,25 +21,21 @@ public class Duke {
     }
 
     public void run() {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
+        System.out.println("Hi, this is the Schwarzenegger, " +
+                "an app for your daily workout and diet recording.");
 
         execute();
     }
 
     public void execute() {
         String response = dietManagerUI.getInput();
-        while (!response.equals("bye")) {
+        while (!response.equals("exit")) {
 
             if(response.equals("diet")) {
                 dietManager.start();
             }
+            response = dietManagerUI.getInput();
         }
-        System.out.println("bye bye");
+        System.out.println("Bye, you have exited the Schwarzenegger.");
     }
 }
