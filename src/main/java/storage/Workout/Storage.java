@@ -20,8 +20,9 @@ import java.util.stream.Collectors;
 public class Storage {
 
     private static final String FILEPATH = "./saves/workout";
-    private static ArrayList<Exercise> taskList = new ArrayList<>();
+    //private static ArrayList<Exercise> taskList = new ArrayList<>();
     private static Gson gson;
+    private static File file = null;
 
     /**
      * Initialise the database with locally stored data.
@@ -40,12 +41,12 @@ public class Storage {
         gson = new GsonBuilder().setPrettyPrinting()
                 .create();
 
-        try {
-            readFileContents();
-        } catch (FileNotFoundException e) {
-            System.out.println("The file is not found");
-            fileNotFoundHandler();
-        }
+        //creates the file
+        String fileName = "saves/workout/" + Integer.toString(1);
+        file = new File(fileName);
+        file.getParentFile().mkdirs();
+        file.createNewFile();
+
         System.out.println("Loading completed.");
     }
 
@@ -54,36 +55,22 @@ public class Storage {
      * If the local file is not found. It creates the relevant file and folder.
      * @throws IOException If director or file cannot be created.
      */
-    public static void writeToStorage() throws IOException {
-        FileWriter writer;
-        try {
-            writer = new FileWriter(FILEPATH);
-        } catch (IOException e) {
-            fileNotFoundHandler();
-            writer = new FileWriter(FILEPATH);
-        }
+    public static void writeToStorage(String filePath, ArrayList<Exercise> taskList) throws IOException {
+        File file = new File(filePath);
+        FileWriter writer = new FileWriter(file.getPath());
         gson.toJson(taskList, writer);
         writer.flush();
         writer.close();
     }
 
-    private static void readFileContents() throws FileNotFoundException {
+    private static void readFileContents(String filePath, ArrayList<Exercise> taskList) throws FileNotFoundException {
+        File file = new File(filePath);
+
         Type taskListType = new TypeToken<ArrayList<Exercise>>(){}.getType();
 
-        JsonReader reader = new JsonReader(new FileReader(FILEPATH));
+        JsonReader reader = new JsonReader(new FileReader(file.getPath()));
 
         taskList = gson.fromJson(reader, taskListType);
     }
 
-    private static void createFile() {
-
-    }
-
-    private static void fileNotFoundHandler() throws IOException {
-        String fileName = "saves/workout/" + Integer.toString(1);
-        File dir = new File("saves/workout/");
-        dir.mkdir();
-        File yourFile = new File(FILEPATH);
-        yourFile.createNewFile();
-    }
 }
