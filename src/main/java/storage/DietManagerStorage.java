@@ -18,7 +18,7 @@ public class DietManagerStorage {
 
     public void list() {
         int index = 1;
-        for(DietSession record : pastRecords) {
+        for (DietSession record : pastRecords) {
             System.out.print((index++) + " "
                     + record.getMealInput() + " on " + record.getDateInput() + "\n");
         }

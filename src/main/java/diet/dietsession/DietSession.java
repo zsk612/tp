@@ -40,25 +40,11 @@ public class DietSession {
         this.endDietSession = hasEnded;
     }
 
-//    public void Start() {
-//
-//        setEndDietSession(false);
-//
-//
-//        String input = dietSessionUI.getInput();
-//        while (!input.equals("end")) {
-//            parser.dietSessionProcessCommand(input, foodList);
-//            input = dietSessionUI.getInput();
-//        }
-//        setEndDietSession(true);
-//
-//    }
-
     public void start() {
         dietSessionUI.printOpening();
         setEndDietSession(false);
         String input = dietSessionUI.getInput();
-        while(!input.equals("end")) {
+        while (!input.equals("end")) {
 
             try {
                 processCommand(input);
