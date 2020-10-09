@@ -6,11 +6,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WorkoutSession {
+
+    private String filePath;
     private boolean endWorkoutSession = false;
     private final ArrayList<Exercise> exercise;
 
     public WorkoutSession() {
+        this.exercise = new ArrayList<>();
+    }
 
+    public WorkoutSession(String filePath) {
+        this.filePath = filePath;
         this.exercise = new ArrayList<>();
     }
 

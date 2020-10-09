@@ -57,6 +57,7 @@ import com.google.gson.stream.JsonWriter;
  *     Shape topShape;
  *   }
  * }</pre>
+ *
  * <p>Without additional type information, the serialized JSON is ambiguous. Is
  * the bottom shape in this drawing a rectangle or a diamond? <pre>   {@code
  *   {
@@ -238,8 +239,8 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
                 @SuppressWarnings("unchecked") // registration requires that subtype extends T
                 TypeAdapter<R> delegate = (TypeAdapter<R>) labelToDelegate.get(label);
                 if (delegate == null) {
-                    throw new JsonParseException("cannot deserialize " +
-                            baseType + " subtype named "
+                    throw new JsonParseException("cannot deserialize "
+                            + baseType + " subtype named "
                             + label + "; did you forget to register a subtype?");
                 }
                 return delegate.fromJsonTree(jsonElement);
@@ -247,7 +248,7 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
 
             @Override public void write(JsonWriter out, R value) throws IOException {
                 Class<?> srcType = value.getClass();
-                String label = subtypeToLabel.get(srcType);
+                final String label = subtypeToLabel.get(srcType);
                 @SuppressWarnings("unchecked") // registration requires that subtype extends T
                 TypeAdapter<R> delegate = (TypeAdapter<R>) subtypeToDelegate.get(srcType);
                 if (delegate == null) {
