@@ -3,11 +3,17 @@ package profile.parser;
 import profile.exceptions.InvalidCommandWordException;
 
 import static profile.Constants.ADD_PROFILE_WORD;
+import static profile.Constants.AGE_LOWER_BOUND;
+import static profile.Constants.AGE_UPPER_BOUND;
 import static profile.Constants.COMMAND_ARGS_INDEX;
 import static profile.Constants.COMMAND_SPLIT_LIMIT;
 import static profile.Constants.COMMAND_TYPE_INDEX;
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.GREEDY_WHITE_SPACE;
+import static profile.Constants.HEIGHT_LOWER_BOUND;
+import static profile.Constants.HEIGHT_UPPER_BOUND;
+import static profile.Constants.WEIGHT_LOWER_BOUND;
+import static profile.Constants.WEIGHT_UPPER_BOUND;
 
 public class ProfileParser {
 
@@ -42,5 +48,38 @@ public class ProfileParser {
                 COMMAND_SPLIT_LIMIT);
 
         return split.length == COMMAND_SPLIT_LIMIT ? split : new String[]{split[COMMAND_TYPE_INDEX], EMPTY_STRING};
+    }
+
+    /**
+     * Verifies if user's input age is in the valid range
+     * (between {@link AGE_LOWER_BOUND} and {@link AGE_UPPER_BOUND} inclusive).
+     *
+     * @param age User's input age.
+     * @return Whether input age is valid.
+     */
+    public static boolean checkValidAge(int age) {
+        return (age >= AGE_LOWER_BOUND && age <= AGE_UPPER_BOUND);
+    }
+
+    /**
+     * Verifies if user's input height is in the valid range
+     * (between {@link HEIGHT_LOWER_BOUND} and {@link HEIGHT_UPPER_BOUND} inclusive).
+     *
+     * @param height User's input height.
+     * @return Whether input height is valid.
+     */
+    public static boolean checkValidHeight(int height) {
+        return (height >= HEIGHT_LOWER_BOUND && height <= HEIGHT_UPPER_BOUND);
+    }
+
+    /**
+     * Verifies if user's input weight is in the valid range
+     * (between {@link WEIGHT_LOWER_BOUND} and {@link WEIGHT_UPPER_BOUND} inclusive).
+     *
+     * @param weight User's input weight.
+     * @return Whether input weight is valid.
+     */
+    public static boolean checkValidWeight(double weight) {
+        return (weight >= WEIGHT_LOWER_BOUND && weight <= WEIGHT_UPPER_BOUND);
     }
 }
