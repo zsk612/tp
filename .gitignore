@@ -18,3 +18,5 @@ saves/
 
 /text-ui-test/ACTUAL.txt
 text-ui-test/EXPECTED-UNIX.TXT
+
+data/
