@@ -30,9 +30,7 @@ public class Storage {
      * If the local file is not found. It creates the relevant file and folder.
      * @throws IOException If director or file cannot be created.
      */
-    public static void initialise() throws IOException {
-        System.out.println("Trying to load user data...");
-
+    public static void initialise(String filePath) throws IOException {
         /*RuntimeTypeAdapterFactory<Task> taskAdapterFactory = RuntimeTypeAdapterFactory
                 .of(Task.class, "type", true)
                 .registerSubtype(ToDo.class, "Todo")
@@ -47,8 +45,6 @@ public class Storage {
         file = new File(fileName);
         file.getParentFile().mkdirs();
         file.createNewFile();
-
-        System.out.println("Loading completed.");
     }
 
     /**
@@ -64,14 +60,14 @@ public class Storage {
         writer.close();
     }
 
-    private static void readFileContents(String filePath, ArrayList<Exercise> taskList) throws FileNotFoundException {
+    public static void readFileContents(String filePath, ArrayList<Exercise> taskList) throws FileNotFoundException {
         File file = new File(filePath);
 
         Type taskListType = new TypeToken<ArrayList<Exercise>>(){}.getType();
 
         JsonReader reader = new JsonReader(new FileReader(file.getPath()));
-
-        taskList = gson.fromJson(reader, taskListType);
+        taskList.clear();
+        taskList.addAll(gson.fromJson(reader, taskListType));
     }
 
 
