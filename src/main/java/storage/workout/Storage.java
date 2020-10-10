@@ -1,4 +1,4 @@
-package storage.Workout;
+package storage.workout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,13 +6,13 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import workout.workoutsession.exercise.Exercise;
 
-
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Type;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.stream.Collectors;
 
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
@@ -23,6 +23,7 @@ public class Storage {
     //private static ArrayList<Exercise> taskList = new ArrayList<>();
     private static Gson gson;
     private static File file = null;
+
 
     /**
      * Initialise the database with locally stored data.
@@ -72,5 +73,6 @@ public class Storage {
 
         taskList = gson.fromJson(reader, taskListType);
     }
+
 
 }

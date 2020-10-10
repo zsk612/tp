@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import workout.workoutmanager.WorkoutManager;
+
 import java.util.Scanner;
 
 public class Duke {
@@ -17,5 +19,11 @@ public class Duke {
 
         Scanner in = new Scanner(System.in);
         System.out.println("Hello " + in.nextLine());
+        wokroutTest();
+    }
+
+    private static void wokroutTest() {
+        WorkoutManager wm = new WorkoutManager();
+        wm.start();
     }
 }
