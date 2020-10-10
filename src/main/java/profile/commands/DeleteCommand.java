@@ -26,7 +26,7 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * Overrides execute method of class Command to execute the delete task command requested by user's input.
+     * Overrides execute method of class Command to execute the delete profile command requested by user's input.
      *
      * @param profile User's Profile object.
      * @param storage Storage to delete data.
