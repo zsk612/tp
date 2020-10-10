@@ -1,20 +1,26 @@
 package profile.parser;
 
+import profile.commands.Command;
+import profile.commands.ExitCommand;
 import profile.exceptions.InvalidCommandWordException;
+import profile.exceptions.RedundantParamException;
 
-import static profile.Constants.ADD_PROFILE_WORD;
-import static profile.Constants.AGE_LOWER_BOUND;
-import static profile.Constants.AGE_UPPER_BOUND;
-import static profile.Constants.COMMAND_ARGS_INDEX;
-import static profile.Constants.COMMAND_SPLIT_LIMIT;
-import static profile.Constants.COMMAND_TYPE_INDEX;
-import static profile.Constants.EMPTY_STRING;
-import static profile.Constants.GREEDY_WHITE_SPACE;
-import static profile.Constants.HEIGHT_LOWER_BOUND;
-import static profile.Constants.HEIGHT_UPPER_BOUND;
-import static profile.Constants.WEIGHT_LOWER_BOUND;
-import static profile.Constants.WEIGHT_UPPER_BOUND;
+import static profile.components.Constants.AGE_LOWER_BOUND;
+import static profile.components.Constants.AGE_UPPER_BOUND;
+import static profile.components.Constants.COMMAND_ARGS_INDEX;
+import static profile.components.Constants.COMMAND_SPLIT_LIMIT;
+import static profile.components.Constants.COMMAND_TYPE_INDEX;
+import static profile.components.Constants.COMMAND_WORD_EXIT;
+import static profile.components.Constants.EMPTY_STRING;
+import static profile.components.Constants.GREEDY_WHITE_SPACE;
+import static profile.components.Constants.HEIGHT_LOWER_BOUND;
+import static profile.components.Constants.HEIGHT_UPPER_BOUND;
+import static profile.components.Constants.WEIGHT_LOWER_BOUND;
+import static profile.components.Constants.WEIGHT_UPPER_BOUND;
 
+/**
+ * A class that deals with making sense of user's command inside Profile Session.
+ */
 public class ProfileParser {
 
     /**
@@ -23,15 +29,16 @@ public class ProfileParser {
      * @param userInputString User's raw input string.
      * @return Associated command.
      * @throws InvalidCommandWordException If command word is invalid.
+     * @throws RedundantParamException If redundant parameters are provided.
      */
-    public String parseCommand(String userInputString) throws InvalidCommandWordException {
+    public Command parseCommand(String userInputString) throws InvalidCommandWordException, RedundantParamException {
         String[] commandTypeAndParams = splitCommandWordAndArgs(userInputString);
         String commandType = commandTypeAndParams[COMMAND_TYPE_INDEX].toLowerCase();
         String commandArgs = commandTypeAndParams[COMMAND_ARGS_INDEX];
 
         switch (commandType) {
-        case ADD_PROFILE_WORD:
-
+        case COMMAND_WORD_EXIT:
+            return new ExitCommand(commandArgs);
         default:
             throw new InvalidCommandWordException();
         }

@@ -1,6 +1,6 @@
 package profile.exceptions;
 
-import static profile.Constants.MESSAGE_SAVING_ERROR;
+import static profile.components.Constants.MESSAGE_SAVING_ERROR;
 
 /**
  * Represents exception while saving data.

@@ -1,7 +1,10 @@
 package profile.exceptions;
 
-import static profile.Constants.MESSAGE_INVALID_SAVE_FORMAT;
+import static profile.components.Constants.MESSAGE_INVALID_SAVE_FORMAT;
 
+/**
+ * Represents exception when there is corruption in data save format.
+ */
 public class InvalidSaveFormatException extends SchwarzeneggerException {
 
     /**

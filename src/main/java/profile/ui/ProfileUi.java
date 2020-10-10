@@ -1,20 +1,19 @@
 package profile.ui;
 
-import profile.Profile;
+import profile.components.Profile;
 import profile.parser.ProfileParser;
 
-import static profile.Constants.MESSAGE_FIRST_TIME;
-import static profile.Constants.MESSAGE_FORMAT;
-import static profile.Constants.MESSAGE_INVALID_AGE;
-import static profile.Constants.MESSAGE_INVALID_HEIGHT;
-import static profile.Constants.MESSAGE_INVALID_WEIGHT;
-import static profile.Constants.MESSAGE_WELCOME;
-import static profile.Constants.QUESTION_AGE;
-import static profile.Constants.QUESTION_EXPECTED_WEIGHT;
-import static profile.Constants.QUESTION_HEIGHT;
-import static profile.Constants.QUESTION_NAME;
-import static profile.Constants.QUESTION_WEIGHT;
-import static profile.Constants.SCANNER;
+import static profile.components.Constants.MESSAGE_FORMAT;
+import static profile.components.Constants.MESSAGE_INVALID_AGE;
+import static profile.components.Constants.MESSAGE_INVALID_HEIGHT;
+import static profile.components.Constants.MESSAGE_INVALID_WEIGHT;
+import static profile.components.Constants.MESSAGE_WELCOME;
+import static profile.components.Constants.QUESTION_AGE;
+import static profile.components.Constants.QUESTION_EXPECTED_WEIGHT;
+import static profile.components.Constants.QUESTION_HEIGHT;
+import static profile.components.Constants.QUESTION_NAME;
+import static profile.components.Constants.QUESTION_WEIGHT;
+import static profile.components.Constants.SCANNER;
 
 /**
  * A class that deals with interactions with user.
@@ -32,9 +31,11 @@ public class ProfileUi {
 
     /**
      * Greets user.
+     *
+     * @param name User's name.
      */
-    public void greetUser() {
-        showToUser(MESSAGE_WELCOME);
+    public void greetUser(String name) {
+        showToUser(String.format(MESSAGE_WELCOME, name));
     }
 
     /**
@@ -56,8 +57,12 @@ public class ProfileUi {
         return inputLine;
     }
 
-    public Profile getFirstTimeProfile() {
-        showToUser(MESSAGE_FIRST_TIME);
+    /**
+     * Prompts for user profile.
+     *
+     * @return Created profile.
+     */
+    public Profile getProfileConfig() {
         return new Profile(getName(), getAge(), getHeight(), getWeight(false), getWeight(true));
     }
 

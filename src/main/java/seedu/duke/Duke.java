@@ -1,46 +1,40 @@
 package seedu.duke;
 
-import profile.Profile;
-import profile.exceptions.SchwarzeneggerException;
-import profile.storage.Storage;
-import profile.ui.ProfileUi;
+import profile.ProfileManager;
 
+import static profile.components.Constants.SCANNER;
+
+/**
+ * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
+ */
 public class Duke {
-    ProfileUi profileUi;
-    Storage storage;
-    Profile profile;
-
-    public Duke() {
-        try {
-            profileUi = new ProfileUi();
-            storage = new Storage();
-            profile = storage.loadData();
-
-            if (!storage.getHasExistingDataFile()) {
-                profile = profileUi.getFirstTimeProfile();
-                storage.saveData(profile);
-            } else {
-                profileUi.showToUser(profile.toString());
-            }
-        } catch (SchwarzeneggerException e) {
-            profileUi.showToUser(e.getMessage());
-        } catch (Exception e) {
-            profileUi.showToUser(e.toString());
-        }
-    }
 
     /**
      * Main entry-point for the java.duke.Duke application.
+     *
+     * @param args Unused in Duke.
      */
     public static void main(String[] args) {
         new Duke().run();
     }
 
+    /**
+     * Runs Schwarzenegger.
+     */
     private void run() {
-        start();
-    }
+        System.out.println("Which session do you want to enter?");
+        String session = SCANNER.nextLine().toLowerCase();
 
-    private void start() {
-        profileUi.greetUser();
+        if (session.equals("profile")) {
+            System.out.println("Entering Profile Session...");
+
+            ProfileManager profileManager = new ProfileManager();
+
+            while (!profileManager.hasExit) {
+                profileManager.run();
+            }
+        }
+
+        System.out.println("back");
     }
 }

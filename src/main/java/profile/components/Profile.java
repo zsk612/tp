@@ -1,4 +1,4 @@
-package profile;
+package profile.components;
 
 /**
  * A class that manages user profile.

@@ -1,6 +1,6 @@
 package profile.exceptions;
 
-import static profile.Constants.MESSAGE_LOADING_ERROR;
+import static profile.components.Constants.MESSAGE_LOADING_ERROR;
 
 /**
  * Represents exception while loading data.

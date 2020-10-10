@@ -1,9 +1,10 @@
 package profile.storage;
 
-import profile.Profile;
+import profile.components.Profile;
 import profile.exceptions.InvalidSaveFormatException;
 import profile.exceptions.LoadingException;
 import profile.exceptions.SavingException;
+import profile.ui.ProfileUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,19 +14,22 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
-import static profile.Constants.PATH_TO_PROFILE_FILE;
-import static profile.Constants.PATH_TO_PROFILE_FOLDER;
-import static profile.Constants.PROFILE_SAVE_FORMAT;
-import static profile.Constants.VERTICAL_BAR_REGREX;
+import static profile.components.Constants.PATH_TO_PROFILE_FILE;
+import static profile.components.Constants.PATH_TO_PROFILE_FOLDER;
+import static profile.components.Constants.PROFILE_SAVE_FORMAT;
+import static profile.components.Constants.VERTICAL_BAR_REGREX;
 
+/**
+ * A class that saves and loads user profile data on local hard disk.
+ */
 public class Storage {
-    private boolean hasExistingDataFile;
+    private boolean hasExistingProfile;
 
     /**
      * Constructs Storage object where data file is assumed to be existed.
      */
     public Storage() {
-        hasExistingDataFile = true;
+        hasExistingProfile = true;
     }
 
     /**
@@ -33,18 +37,18 @@ public class Storage {
      *
      * @return Boolean stating if data file is existed.
      */
-    public boolean getHasExistingDataFile() {
-        return hasExistingDataFile;
+    public boolean getHasExistingProfile() {
+        return hasExistingProfile;
     }
 
     /**
      * Loads user profile from data file.
      *
+     * @param profileUi Ui to show exception message to user if any.
      * @return User profile.
-     * @throws InvalidSaveFormatException If data line in Schwarzenegger has invalid encode format.
      * @throws LoadingException If there are failed or interrupted I/O operations.
      */
-    public Profile loadData() throws InvalidSaveFormatException, LoadingException {
+    public Profile loadData(ProfileUi profileUi) throws LoadingException {
         Profile profile = null;
 
         if (Files.exists(PATH_TO_PROFILE_FOLDER)) {
@@ -59,10 +63,13 @@ public class Storage {
                     String encodedProfile = scanner.nextLine();
                     profile = decodeProfile(encodedProfile);
                 } else {
-                    hasExistingDataFile = false;
+                    hasExistingProfile = false;
                 }
             } catch (FileNotFoundException e) {
                 createDataFile(PATH_TO_PROFILE_FILE);
+            } catch (InvalidSaveFormatException e) {
+                profileUi.showToUser(e.getMessage());
+                hasExistingProfile = false;
             }
         } else {
             createDataFolder(PATH_TO_PROFILE_FOLDER);
@@ -79,7 +86,7 @@ public class Storage {
      * @return Profile object.
      * @throws InvalidSaveFormatException If the saving format is invalid.
      */
-    private Profile decodeProfile(String encodedProfile) throws InvalidSaveFormatException {
+    public Profile decodeProfile(String encodedProfile) throws InvalidSaveFormatException {
         Profile profile = null;
 
         String[] split = encodedProfile.split(VERTICAL_BAR_REGREX);
@@ -92,7 +99,7 @@ public class Storage {
             double expectedWeight = Double.parseDouble(split[4]);
 
             return new Profile(name, age, height, weight, expectedWeight);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             throw new InvalidSaveFormatException(encodedProfile);
         }
     }
@@ -105,7 +112,7 @@ public class Storage {
      */
     private void createDataFile(Path pathToDataFile) throws LoadingException {
         try {
-            hasExistingDataFile = false;
+            hasExistingProfile = false;
             Files.createFile(pathToDataFile);
         } catch (IOException e) {
             throw new LoadingException(e.getMessage());
