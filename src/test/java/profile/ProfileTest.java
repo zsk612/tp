@@ -25,6 +25,9 @@ class ProfileTest {
         assertEquals(EXAMPLE_PROFILE_STRING, testProfile.toString());
     }
 
+    /**
+     * Tests decodeProfile method of class Storage when data from file is invalid.
+     */
     @Test
     void testDecodeProfile_invalidDataInput_throwsInvalidSaveFormatException() {
         Storage storage = new Storage();
