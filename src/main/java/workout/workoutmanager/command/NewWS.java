@@ -1,14 +1,26 @@
 package workout.workoutmanager.command;
 
-import storage.WorkOutManagerStorage;
+import storage.workout.WorkOutManagerStorage;
+import workout.workoutmanager.WorkoutManagerUI;
 import workout.workoutsession.WorkoutSession;
 
 public class NewWS implements Command {
 
     @Override
     public void execute(String[] args) {
-        WorkoutSession ws = new WorkoutSession();
+        /**
+         * When starting a new workout session, a new file is created first.
+         * The file path is passed into workoutSession constructor to instantiate
+         * a new workoutSession instance.
+         */
+        String filePath = WorkOutManagerStorage.add();
+        WorkoutSession ws = new WorkoutSession(filePath);
+
+        WorkoutManagerUI.printStartNewSessionResponse();
+
         ws.workoutSessionStart();
-        WorkOutManagerStorage.add(ws);
+
+        WorkoutManagerUI.printFinishNewSessionResponse();
+
     }
 }
