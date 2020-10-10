@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WorkoutSession {
+    private final String filePath = null;
     private boolean endWorkoutSession = false;
     private final ArrayList<Exercise> exercise;
 
