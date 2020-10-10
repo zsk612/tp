@@ -35,11 +35,21 @@ public class DeleteCommand extends Command {
     @Override
     public CommandResult execute(Profile profile, Storage storage) {
         try {
-            profile = null;
+            profile.isDeleted = true;
             storage.saveData(profile);
             return new CommandResult(MESSAGE_DELETE_PROFILE);
         } catch (SchwarzeneggerException e) {
             return new CommandResult(e.getMessage());
         }
+    }
+
+    /**
+     * Checks if user wants to delete profile by checking given command.
+     *
+     * @param command The command to be checked.
+     * @return Whether the command is an object of type DeleteCommand.
+     */
+    public static boolean isDelete(Command command) {
+        return command instanceof DeleteCommand;
     }
 }

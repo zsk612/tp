@@ -13,6 +13,7 @@ public class Constants {
     public static final int COMMAND_ARGS_INDEX = 1;
     public static final int COMMAND_SPLIT_LIMIT = 2;
     public static final int COMMAND_TYPE_INDEX = 0;
+    public static final String COMMAND_WORD_ADD = "add";
     public static final String COMMAND_WORD_DELETE = "delete";
     public static final String COMMAND_WORD_EXIT = "exit";
     public static final String COMMAND_WORD_VIEW = "view";
@@ -20,6 +21,7 @@ public class Constants {
     public static final String DATA_FOLDER = "data";
     public static final String EMPTY_STRING = "";
     public static final int EXAMPLE_AGE = 30;
+    public static final String EXAMPLE_BMI = "32.0 (Obesity Class 1)";
     public static final double EXAMPLE_EXPECTED_WEIGHT = 100;
     public static final int EXAMPLE_HEIGHT = 188;
     public static final String EXAMPLE_NAME = "Schwarzenegger";
@@ -31,19 +33,27 @@ public class Constants {
     public static final String HORIZONTAL_LINE = LINE_PREFIX
             + "____________________________________________________________";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
+    public static final String MESSAGE_ADD_TITLE = "Please enter your details to add a new profile.";
+    public static final String MESSAGE_CREATE_PROFILE_ACK = "Got it. Here's a confirmation of your profile:"
+            + LS + "%s";
     public static final String MESSAGE_DELETE_PROFILE = "I've deleted your profile.";
     public static final String MESSAGE_EXIT_PROFILE = "Exiting Profile Session...";
     public static final String MESSAGE_FORMAT = HORIZONTAL_LINE + LS + "%s" + System.lineSeparator()
             + HORIZONTAL_LINE + System.lineSeparator();
+    public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. "
+            + "Please delete it using \"delete\" command before adding a new one.";
+    public static final String MESSAGE_PROFILE_NOT_EXIST = "There's no profile to %s. Please add a new one :D";
+    public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s";
     public static final String MESSAGE_WELCOME = "Hi %s! How can I help you with your profile? :D";
     public static final String PROFILE_FOLDER = "profile";
     public static final String PROFILE_SAVE_FORMAT = "%s | %d | %d | %.1f | %.1f";
     public static final String EXAMPLE_PROFILE_DATA = String.format(PROFILE_SAVE_FORMAT, EXAMPLE_NAME, EXAMPLE_AGE,
-            EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT);
-    public static final String PROFILE_STRING_REPRESENTATION = "Name: %s | Age: %d | Height: %d cm | Weight: %.1f kg"
-            + " | Expected Weight: %.1f kg";
+            EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_BMI);
+    public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + LS + "\tAge: %d" + LS
+            + "\tHeight: %d cm" + LS + "\tWeight: %.1f kg" + LS + "\tExpected Weight: %.1f kg" + LS
+            + "\tYour BMI: %s";
     public static final String EXAMPLE_PROFILE_STRING = String.format(PROFILE_STRING_REPRESENTATION, EXAMPLE_NAME,
-            EXAMPLE_AGE, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT);
+            EXAMPLE_AGE, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_BMI);
     public static final String PROJECT_ROOT = System.getProperty("user.dir");
     public static final Path PATH_TO_PROFILE_FOLDER = Paths.get(PROJECT_ROOT, DATA_FOLDER, PROFILE_FOLDER);
     public static final Path PATH_TO_PROFILE_FILE = Paths.get(PROJECT_ROOT, DATA_FOLDER, PROFILE_FOLDER, DATA_FILE);

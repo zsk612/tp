@@ -2,6 +2,7 @@ package profile;
 
 import profile.commands.Command;
 import profile.commands.CommandResult;
+import profile.commands.DeleteCommand;
 import profile.commands.ExitCommand;
 import profile.components.ExceptionHandler;
 import profile.components.Profile;
@@ -72,6 +73,11 @@ public class ProfileManager {
                 command = profileParser.parseCommand(userCommand);
                 CommandResult result = command.execute(profile, storage);
                 profileUi.showToUser(result.toString());
+
+                if (profile.isDeleted && !DeleteCommand.isDelete(command)) {
+                    profile = profileUi.getProfileConfig();
+                    storage.saveData(profile);
+                }
             } catch (SchwarzeneggerException e) {
                 profileUi.showToUser(exceptionHandler.handleCheckedExceptions(e));
             } catch (Exception e) {

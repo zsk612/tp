@@ -3,6 +3,7 @@ package profile.ui;
 import profile.components.Profile;
 import profile.parser.ProfileParser;
 
+import static profile.components.Constants.MESSAGE_CREATE_PROFILE_ACK;
 import static profile.components.Constants.MESSAGE_FORMAT;
 import static profile.components.Constants.MESSAGE_INVALID_AGE;
 import static profile.components.Constants.MESSAGE_INVALID_HEIGHT;
@@ -63,7 +64,9 @@ public class ProfileUi {
      * @return Created profile.
      */
     public Profile getProfileConfig() {
-        return new Profile(getName(), getAge(), getHeight(), getWeight(false), getWeight(true));
+        Profile profile = new Profile(getName(), getAge(), getHeight(), getWeight(false), getWeight(true));
+        showToUser(String.format(MESSAGE_CREATE_PROFILE_ACK, profile.toString()));
+        return profile;
     }
 
     /**

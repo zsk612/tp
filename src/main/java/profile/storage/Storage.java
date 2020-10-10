@@ -144,7 +144,7 @@ public class Storage {
         try {
             FileWriter fw = new FileWriter(PATH_TO_PROFILE_FILE.toString());
 
-            if (profile == null) {
+            if (profile.isDeleted) {
                 fw.write(EMPTY_STRING);
             } else {
                 fw.write(String.format(PROFILE_SAVE_FORMAT, profile.getName(), profile.getAge(), profile.getHeight(),
