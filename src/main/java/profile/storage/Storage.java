@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
+import static profile.components.Constants.EMPTY_STRING;
 import static profile.components.Constants.PATH_TO_PROFILE_FILE;
 import static profile.components.Constants.PATH_TO_PROFILE_FOLDER;
 import static profile.components.Constants.PROFILE_SAVE_FORMAT;
@@ -143,8 +144,12 @@ public class Storage {
         try {
             FileWriter fw = new FileWriter(PATH_TO_PROFILE_FILE.toString());
 
-            fw.write(String.format(PROFILE_SAVE_FORMAT, profile.getName(), profile.getAge(), profile.getHeight(),
-                    profile.getWeight(), profile.getExpectedWeight()));
+            if (profile == null) {
+                fw.write(EMPTY_STRING);
+            } else {
+                fw.write(String.format(PROFILE_SAVE_FORMAT, profile.getName(), profile.getAge(), profile.getHeight(),
+                        profile.getWeight(), profile.getExpectedWeight()));
+            }
 
             fw.close();
         } catch (IOException e) {

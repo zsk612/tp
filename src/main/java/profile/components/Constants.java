@@ -13,6 +13,7 @@ public class Constants {
     public static final int COMMAND_ARGS_INDEX = 1;
     public static final int COMMAND_SPLIT_LIMIT = 2;
     public static final int COMMAND_TYPE_INDEX = 0;
+    public static final String COMMAND_WORD_DELETE = "delete";
     public static final String COMMAND_WORD_EXIT = "exit";
     public static final String COMMAND_WORD_VIEW = "view";
     public static final String DATA_FILE = "profile.txt";
@@ -30,6 +31,7 @@ public class Constants {
     public static final String HORIZONTAL_LINE = LINE_PREFIX
             + "____________________________________________________________";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
+    public static final String MESSAGE_DELETE_PROFILE = "I've deleted your profile.";
     public static final String MESSAGE_EXIT_PROFILE = "Exiting Profile Session...";
     public static final String MESSAGE_FORMAT = HORIZONTAL_LINE + LS + "%s" + System.lineSeparator()
             + HORIZONTAL_LINE + System.lineSeparator();
