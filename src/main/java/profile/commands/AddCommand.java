@@ -39,4 +39,14 @@ public class AddCommand extends Command {
         }
         return new CommandResult(MESSAGE_ADD_TITLE);
     }
+
+    /**
+     * Checks if user wants to add profile by checking given command.
+     *
+     * @param command The command to be checked.
+     * @return Whether the command is an object of type AddCommand.
+     */
+    public static boolean isAddCommand(Command command) {
+        return command instanceof AddCommand;
+    }
 }

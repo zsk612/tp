@@ -1,5 +1,10 @@
 package profile.storage;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 import profile.components.Profile;
 import profile.exceptions.InvalidSaveFormatException;
 import profile.exceptions.LoadingException;
@@ -8,29 +13,30 @@ import profile.ui.ProfileUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Scanner;
 
 import static profile.components.Constants.EMPTY_STRING;
 import static profile.components.Constants.PATH_TO_PROFILE_FILE;
 import static profile.components.Constants.PATH_TO_PROFILE_FOLDER;
-import static profile.components.Constants.PROFILE_SAVE_FORMAT;
-import static profile.components.Constants.VERTICAL_BAR_REGREX;
 
 /**
  * A class that saves and loads user profile data on local hard disk.
  */
 public class Storage {
     private boolean hasExistingProfile;
+    private Gson gson;
 
     /**
      * Constructs Storage object where data file is assumed to be existed.
      */
     public Storage() {
         hasExistingProfile = true;
+        gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
     /**
@@ -53,17 +59,10 @@ public class Storage {
         Profile profile = null;
 
         if (Files.exists(PATH_TO_PROFILE_FOLDER)) {
-            // Create a File in the given file path
-            File file = new File(PATH_TO_PROFILE_FILE.toString());
-
             try {
-                // Create a Scanner using the File as the source
-                Scanner scanner = new Scanner(file);
+                profile = decodeProfile(PATH_TO_PROFILE_FILE.toString());
 
-                if (scanner.hasNext()) {
-                    String encodedProfile = scanner.nextLine();
-                    profile = decodeProfile(encodedProfile);
-                } else {
+                if (profile == null) {
                     hasExistingProfile = false;
                 }
             } catch (FileNotFoundException e) {
@@ -83,25 +82,21 @@ public class Storage {
     /**
      * Decodes user profile save data to a profile object.
      *
-     * @param encodedProfile User profile save data.
+     * @param filePath Path to data file.
      * @return Profile object.
      * @throws InvalidSaveFormatException If the saving format is invalid.
+     * @throws FileNotFoundException If data file is not found.
      */
-    public Profile decodeProfile(String encodedProfile) throws InvalidSaveFormatException {
-        Profile profile = null;
-
-        String[] split = encodedProfile.split(VERTICAL_BAR_REGREX);
-
+    public Profile decodeProfile(String filePath) throws InvalidSaveFormatException, FileNotFoundException {
         try {
-            String name = split[0];
-            int age = Integer.parseInt(split[1]);
-            int height = Integer.parseInt(split[2]);
-            double weight = Double.parseDouble(split[3]);
-            double expectedWeight = Double.parseDouble(split[4]);
+            Type profileType = new TypeToken<Profile>() {
+            }.getType();
+            File file = new File(filePath);
+            JsonReader reader = new JsonReader(new FileReader(file.getPath()));
 
-            return new Profile(name, age, height, weight, expectedWeight);
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            throw new InvalidSaveFormatException(encodedProfile);
+            return gson.fromJson(reader, profileType);
+        } catch (JsonSyntaxException e) {
+            throw new InvalidSaveFormatException();
         }
     }
 
@@ -147,8 +142,8 @@ public class Storage {
             if (profile.isDeleted) {
                 fw.write(EMPTY_STRING);
             } else {
-                fw.write(String.format(PROFILE_SAVE_FORMAT, profile.getName(), profile.getAge(), profile.getHeight(),
-                        profile.getWeight(), profile.getExpectedWeight()));
+                gson.toJson(profile, fw);
+                fw.flush();
             }
 
             fw.close();

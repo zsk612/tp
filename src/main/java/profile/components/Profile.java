@@ -12,8 +12,7 @@ public class Profile {
     protected int height;
     protected double weight;
     protected double expectedWeight;
-    protected double bmi;
-    public boolean isDeleted;
+    public transient boolean isDeleted;
 
     /**
      * Constructs Profile object.
@@ -30,7 +29,6 @@ public class Profile {
         this.height = height;
         this.weight = weight;
         this.expectedWeight = expectedWeight;
-        bmi = weight / Math.pow((double) height / 100, 2);
         isDeleted = false;
     }
 
@@ -41,7 +39,7 @@ public class Profile {
      */
     public String toString() {
         return String.format(PROFILE_STRING_REPRESENTATION, getName(), getAge(), getHeight(), getWeight(),
-                getExpectedWeight(), getBmi());
+                getExpectedWeight(), getBmiClassification());
     }
 
     /**
@@ -94,23 +92,25 @@ public class Profile {
      *
      * @return User's bmi index and classification.
      */
-    public String getBmi() {
+    public String getBmiClassification() {
         String classification;
 
-        if (bmi < 18.5) {
+        double bmiIndex = weight / Math.pow((double) height / 100, 2);
+
+        if (bmiIndex < 18.5) {
             classification = "Underweight";
-        } else if (bmi <= 24.9) {
+        } else if (bmiIndex <= 24.9) {
             classification = "Normal weight";
-        } else if (bmi <= 29.9) {
+        } else if (bmiIndex <= 29.9) {
             classification = "Overweight";
-        } else if (bmi <= 34.9) {
+        } else if (bmiIndex <= 34.9) {
             classification = "Obesity Class 1";
-        } else if (bmi <= 39.9) {
+        } else if (bmiIndex <= 39.9) {
             classification = "Obesity Class 2";
         } else {
             classification = "Extreme Obesity Class 3";
         }
 
-        return String.format("%.1f (%s)", bmi, classification);
+        return String.format("%.1f (%s)", bmiIndex, classification);
     }
 }
