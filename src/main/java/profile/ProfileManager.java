@@ -1,8 +1,8 @@
 package profile;
 
+import profile.commands.AddCommand;
 import profile.commands.Command;
 import profile.commands.CommandResult;
-import profile.commands.DeleteCommand;
 import profile.commands.ExitCommand;
 import profile.components.ExceptionHandler;
 import profile.components.Profile;
@@ -74,7 +74,7 @@ public class ProfileManager {
                 CommandResult result = command.execute(profile, storage);
                 profileUi.showToUser(result.toString());
 
-                if (profile.isDeleted && !DeleteCommand.isDelete(command)) {
+                if (profile.isDeleted && AddCommand.isAddCommand(command)) {
                     profile = profileUi.getProfileConfig();
                     storage.saveData(profile);
                 }

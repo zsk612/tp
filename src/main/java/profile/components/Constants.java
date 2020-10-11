@@ -42,7 +42,8 @@ public class Constants {
             + HORIZONTAL_LINE + System.lineSeparator();
     public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. "
             + "Please delete it using \"delete\" command before adding a new one.";
-    public static final String MESSAGE_PROFILE_NOT_EXIST = "There's no profile to %s. Please add a new one :D";
+    public static final String MESSAGE_PROFILE_NOT_EXIST = "There's no profile to %s. "
+            + "Please add a new one using \"add\" command :D";
     public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s";
     public static final String MESSAGE_WELCOME = "Hi %s! How can I help you with your profile? :D";
     public static final String PROFILE_FOLDER = "profile";
@@ -65,7 +66,7 @@ public class Constants {
     public static final String SAD_FACE = ":(  OOPS!!! ";
     public static final String MESSAGE_INVALID_COMMAND_WORD = SAD_FACE + "Sorry, but I don't know what that means.";
     public static final String MESSAGE_INVALID_SAVE_FORMAT = SAD_FACE + "Save format in "
-            + "data\\profile\\profile.txt '%s' is invalid.";
+            + "data\\profile\\profile.txt is invalid.";
     public static final String MESSAGE_INVALID_AGE = String.format(
             SAD_FACE + "Please input an integer from %d to %d for age.", AGE_LOWER_BOUND, AGE_UPPER_BOUND);
     public static final String MESSAGE_INVALID_HEIGHT = String.format(
