@@ -1,5 +1,8 @@
 package profile.components;
 
+import static profile.components.Constants.PROFILE_STRING_REPRESENTATION;
+import static profile.parser.ProfileParser.checkValidProfile;
+
 /**
  * A class that manages user profile.
  */
@@ -10,7 +13,7 @@ public class Profile {
     protected int height;
     protected double weight;
     protected double expectedWeight;
-    protected double bmi;
+    public transient boolean isDeleted;
 
     /**
      * Constructs Profile object.
@@ -27,7 +30,7 @@ public class Profile {
         this.height = height;
         this.weight = weight;
         this.expectedWeight = expectedWeight;
-        bmi = weight / Math.pow(height / 100, 2);
+        isDeleted = false;
     }
 
     /**
@@ -36,7 +39,9 @@ public class Profile {
      * @return String presentation of Profile object.
      */
     public String toString() {
-        return String.format(Constants.PROFILE_STRING_REPRESENTATION, name, age, height, weight, expectedWeight);
+        assert checkValidProfile(this) : "Profile is invalid";
+        return String.format(PROFILE_STRING_REPRESENTATION, getName(), getAge(), getHeight(), getWeight(),
+                getExpectedWeight(), getBmiClassification());
     }
 
     /**
@@ -82,5 +87,32 @@ public class Profile {
      */
     public double getExpectedWeight() {
         return expectedWeight;
+    }
+
+    /**
+     * Gets user's bmi index and classification.
+     *
+     * @return User's bmi index and classification.
+     */
+    public String getBmiClassification() {
+        String classification;
+
+        double bmiIndex = weight / Math.pow((double) height / 100, 2);
+
+        if (bmiIndex < 18.5) {
+            classification = "Underweight";
+        } else if (bmiIndex <= 24.9) {
+            classification = "Normal weight";
+        } else if (bmiIndex <= 29.9) {
+            classification = "Overweight";
+        } else if (bmiIndex <= 34.9) {
+            classification = "Obesity Class 1";
+        } else if (bmiIndex <= 39.9) {
+            classification = "Obesity Class 2";
+        } else {
+            classification = "Extreme Obesity Class 3";
+        }
+
+        return String.format("%.1f (%s)", bmiIndex, classification);
     }
 }

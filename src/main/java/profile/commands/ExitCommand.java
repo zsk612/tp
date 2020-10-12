@@ -4,9 +4,10 @@ import profile.components.Profile;
 import profile.exceptions.RedundantParamException;
 import profile.storage.Storage;
 
+import java.util.logging.Level;
+
 import static profile.components.Constants.COMMAND_WORD_EXIT;
 import static profile.components.Constants.MESSAGE_EXIT_PROFILE;
-import static profile.components.Constants.MESSAGE_FORMAT;
 
 /**
  * A representation of the command for exiting Profile session.
@@ -34,11 +35,12 @@ public class ExitCommand extends Command {
      */
     @Override
     public CommandResult execute(Profile profile, Storage storage) {
+        logger.log(Level.INFO, "executing ExitCommand");
         return new CommandResult(MESSAGE_EXIT_PROFILE);
     }
 
     /**
-     * Checks if user wants to exit Duke by checking given command.
+     * Checks if user wants to exit Schwarzenegger by checking given command.
      *
      * @param command The command to be checked.
      * @return Whether the command is an object of type ExitCommand.

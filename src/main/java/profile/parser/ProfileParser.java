@@ -1,8 +1,11 @@
 package profile.parser;
 
+import profile.commands.AddCommand;
 import profile.commands.Command;
 import profile.commands.DeleteCommand;
 import profile.commands.ExitCommand;
+import profile.commands.ViewCommand;
+import profile.components.Profile;
 import profile.exceptions.InvalidCommandWordException;
 import profile.exceptions.RedundantParamException;
 
@@ -11,8 +14,10 @@ import static profile.components.Constants.AGE_UPPER_BOUND;
 import static profile.components.Constants.COMMAND_ARGS_INDEX;
 import static profile.components.Constants.COMMAND_SPLIT_LIMIT;
 import static profile.components.Constants.COMMAND_TYPE_INDEX;
+import static profile.components.Constants.COMMAND_WORD_ADD;
 import static profile.components.Constants.COMMAND_WORD_DELETE;
 import static profile.components.Constants.COMMAND_WORD_EXIT;
+import static profile.components.Constants.COMMAND_WORD_VIEW;
 import static profile.components.Constants.EMPTY_STRING;
 import static profile.components.Constants.GREEDY_WHITE_SPACE;
 import static profile.components.Constants.HEIGHT_LOWER_BOUND;
@@ -39,8 +44,12 @@ public class ProfileParser {
         String commandArgs = commandTypeAndParams[COMMAND_ARGS_INDEX];
 
         switch (commandType) {
+        case COMMAND_WORD_ADD:
+            return new AddCommand(commandArgs);
         case COMMAND_WORD_DELETE:
             return new DeleteCommand(commandArgs);
+        case COMMAND_WORD_VIEW:
+            return new ViewCommand(commandArgs);
         case COMMAND_WORD_EXIT:
             return new ExitCommand(commandArgs);
         default:
@@ -59,6 +68,30 @@ public class ProfileParser {
                 COMMAND_SPLIT_LIMIT);
 
         return split.length == COMMAND_SPLIT_LIMIT ? split : new String[]{split[COMMAND_TYPE_INDEX], EMPTY_STRING};
+    }
+
+    /**
+     * Verifies if user's input when creating profile is valid.
+     *
+     * @param profile User Profile object.
+     * @return Whether input profile is valid.
+     */
+    public static boolean checkValidProfile(Profile profile) {
+        return (checkValidName(profile.getName())
+                && checkValidAge(profile.getAge())
+                && checkValidHeight(profile.getHeight())
+                && checkValidWeight(profile.getWeight())
+                && checkValidWeight(profile.getExpectedWeight()));
+    }
+
+    /**
+     * Verifies if user's input name is not empty string.
+     *
+     * @param name User's input name.
+     * @return Whether input name is valid.
+     */
+    public static boolean checkValidName(String name) {
+        return !name.isEmpty();
     }
 
     /**

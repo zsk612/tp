@@ -1,6 +1,6 @@
 package seedu.duke;
 
-import profile.ProfileManager;
+import profile.ProfileSession;
 
 import static profile.components.Constants.SCANNER;
 
@@ -28,10 +28,10 @@ public class Duke {
         if (session.equals("profile")) {
             System.out.println("Entering Profile Session...");
 
-            ProfileManager profileManager = new ProfileManager();
+            ProfileSession profileSession = new ProfileSession();
 
-            while (!profileManager.hasExit) {
-                profileManager.run();
+            while (!profileSession.hasExit) {
+                profileSession.run();
             }
         }
 

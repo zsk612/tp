@@ -6,9 +6,10 @@ import profile.exceptions.InvalidSaveFormatException;
 import profile.exceptions.SchwarzeneggerException;
 import profile.storage.Storage;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static profile.components.Constants.EXAMPLE_PROFILE_DATA;
 import static profile.components.Constants.EXAMPLE_PROFILE_STRING;
 
 class ProfileTest {
@@ -19,9 +20,11 @@ class ProfileTest {
      * @throws SchwarzeneggerException If there are exceptions while decoding data.
      */
     @Test
-    void testDecodeProfile_exampleDataInput_returnsExampleProfileString() throws SchwarzeneggerException {
+    void testDecodeProfile_exampleProfileData_returnsExampleProfileString() throws SchwarzeneggerException,
+            FileNotFoundException {
         Storage storage = new Storage();
-        Profile testProfile = storage.decodeProfile(EXAMPLE_PROFILE_DATA);
+        String inputFilePath = System.getProperty("user.dir") + "/src/test/java/profile/exampleProfileData.txt";
+        Profile testProfile = storage.decodeProfile(inputFilePath);
         assertEquals(EXAMPLE_PROFILE_STRING, testProfile.toString());
     }
 
@@ -31,8 +34,9 @@ class ProfileTest {
     @Test
     void testDecodeProfile_invalidDataInput_throwsInvalidSaveFormatException() {
         Storage storage = new Storage();
+        String inputFilePath = System.getProperty("user.dir") + "/src/test/java/profile/invalidProfileData.txt";
         assertThrows(InvalidSaveFormatException.class, () -> {
-            storage.decodeProfile("Schwarzenegger");
+            storage.decodeProfile(inputFilePath);
         });
     }
 }

@@ -1,5 +1,10 @@
 package profile.storage;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 import profile.components.Profile;
 import profile.exceptions.InvalidSaveFormatException;
 import profile.exceptions.LoadingException;
@@ -8,29 +13,34 @@ import profile.ui.ProfileUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static profile.components.Constants.EMPTY_STRING;
 import static profile.components.Constants.PATH_TO_PROFILE_FILE;
 import static profile.components.Constants.PATH_TO_PROFILE_FOLDER;
-import static profile.components.Constants.PROFILE_SAVE_FORMAT;
-import static profile.components.Constants.VERTICAL_BAR_REGREX;
+import static profile.parser.ProfileParser.checkValidProfile;
 
 /**
  * A class that saves and loads user profile data on local hard disk.
  */
 public class Storage {
     private boolean hasExistingProfile;
+    private Gson gson;
+    private Logger logger = Logger.getLogger("java.profile.storage");
 
     /**
      * Constructs Storage object where data file is assumed to be existed.
      */
     public Storage() {
         hasExistingProfile = true;
+        gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
     /**
@@ -53,19 +63,11 @@ public class Storage {
         Profile profile = null;
 
         if (Files.exists(PATH_TO_PROFILE_FOLDER)) {
-            // Create a File in the given file path
-            File file = new File(PATH_TO_PROFILE_FILE.toString());
-
             try {
-                // Create a Scanner using the File as the source
-                Scanner scanner = new Scanner(file);
-
-                if (scanner.hasNext()) {
-                    String encodedProfile = scanner.nextLine();
-                    profile = decodeProfile(encodedProfile);
-                } else {
-                    hasExistingProfile = false;
-                }
+                logger.log(Level.INFO, "starting to decode profile data");
+                profile = decodeProfile(PATH_TO_PROFILE_FILE.toString());
+                assert profile != null : "profile should not be null";
+                logger.log(Level.INFO, "finishing profile data decoding");
             } catch (FileNotFoundException e) {
                 createDataFile(PATH_TO_PROFILE_FILE);
             } catch (InvalidSaveFormatException e) {
@@ -83,25 +85,29 @@ public class Storage {
     /**
      * Decodes user profile save data to a profile object.
      *
-     * @param encodedProfile User profile save data.
+     * @param filePath Path to data file.
      * @return Profile object.
      * @throws InvalidSaveFormatException If the saving format is invalid.
+     * @throws FileNotFoundException If data file is not found.
      */
-    public Profile decodeProfile(String encodedProfile) throws InvalidSaveFormatException {
-        Profile profile = null;
-
-        String[] split = encodedProfile.split(VERTICAL_BAR_REGREX);
-
+    public Profile decodeProfile(String filePath) throws InvalidSaveFormatException, FileNotFoundException {
         try {
-            String name = split[0];
-            int age = Integer.parseInt(split[1]);
-            int height = Integer.parseInt(split[2]);
-            double weight = Double.parseDouble(split[3]);
-            double expectedWeight = Double.parseDouble(split[4]);
+            logger.log(Level.INFO, "decoding profile data");
+            Type profileType = new TypeToken<Profile>() {
+            }.getType();
+            File file = new File(filePath);
+            JsonReader reader = new JsonReader(new FileReader(file.getPath()));
+            Profile profile = gson.fromJson(reader, profileType);
 
-            return new Profile(name, age, height, weight, expectedWeight);
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            throw new InvalidSaveFormatException(encodedProfile);
+            if (profile == null || !checkValidProfile(profile)) {
+                logger.log(Level.WARNING, "processing invalid profile data");
+                throw new InvalidSaveFormatException();
+            }
+
+            return profile;
+        } catch (JsonSyntaxException e) {
+            logger.log(Level.WARNING, "processing invalid syntax in data file", e);
+            throw new InvalidSaveFormatException();
         }
     }
 
@@ -115,6 +121,7 @@ public class Storage {
         try {
             hasExistingProfile = false;
             Files.createFile(pathToDataFile);
+            logger.log(Level.INFO, "created data/profile/profile.txt");
         } catch (IOException e) {
             throw new LoadingException(e.getMessage());
         }
@@ -129,6 +136,7 @@ public class Storage {
     private void createDataFolder(Path pathToDataFolder) throws LoadingException {
         try {
             Files.createDirectories(pathToDataFolder);
+            logger.log(Level.INFO, "created data/profile");
         } catch (IOException e) {
             throw new LoadingException(e.getMessage());
         }
@@ -142,17 +150,20 @@ public class Storage {
      */
     public void saveData(Profile profile) throws SavingException {
         try {
+            logger.log(Level.INFO, "starting to save profile data");
             FileWriter fw = new FileWriter(PATH_TO_PROFILE_FILE.toString());
 
-            if (profile == null) {
+            if (profile.isDeleted) {
                 fw.write(EMPTY_STRING);
             } else {
-                fw.write(String.format(PROFILE_SAVE_FORMAT, profile.getName(), profile.getAge(), profile.getHeight(),
-                        profile.getWeight(), profile.getExpectedWeight()));
+                gson.toJson(profile, fw);
+                fw.flush();
             }
 
             fw.close();
+            logger.log(Level.INFO, "finishing data saving");
         } catch (IOException e) {
+            logger.log(Level.WARNING, "processing IOException while saving data", e);
             throw new SavingException(e.getMessage());
         }
     }
