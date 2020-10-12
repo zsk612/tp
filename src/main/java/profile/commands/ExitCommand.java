@@ -4,6 +4,8 @@ import profile.components.Profile;
 import profile.exceptions.RedundantParamException;
 import profile.storage.Storage;
 
+import java.util.logging.Level;
+
 import static profile.components.Constants.COMMAND_WORD_EXIT;
 import static profile.components.Constants.MESSAGE_EXIT_PROFILE;
 
@@ -33,6 +35,7 @@ public class ExitCommand extends Command {
      */
     @Override
     public CommandResult execute(Profile profile, Storage storage) {
+        logger.log(Level.INFO, "executing ExitCommand");
         return new CommandResult(MESSAGE_EXIT_PROFILE);
     }
 

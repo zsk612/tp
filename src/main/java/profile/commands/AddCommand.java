@@ -4,6 +4,9 @@ import profile.components.Profile;
 import profile.exceptions.RedundantParamException;
 import profile.storage.Storage;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import static profile.components.Constants.COMMAND_WORD_ADD;
 import static profile.components.Constants.MESSAGE_ADD_TITLE;
 import static profile.components.Constants.MESSAGE_PROFILE_EXIST;
@@ -34,6 +37,7 @@ public class AddCommand extends Command {
      */
     @Override
     public CommandResult execute(Profile profile, Storage storage) {
+        logger.log(Level.INFO, "executing AddCommand");
         if (!profile.isDeleted) {
             return new CommandResult(MESSAGE_PROFILE_EXIST);
         }

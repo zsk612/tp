@@ -4,6 +4,8 @@ import profile.components.Profile;
 import profile.exceptions.RedundantParamException;
 import profile.storage.Storage;
 
+import java.util.logging.Level;
+
 import static profile.components.Constants.COMMAND_WORD_VIEW;
 import static profile.components.Constants.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.components.Constants.MESSAGE_VIEW_PROFILE;
@@ -34,6 +36,7 @@ public class ViewCommand extends Command {
      */
     @Override
     public CommandResult execute(Profile profile, Storage storage) {
+        logger.log(Level.INFO, "executing ViewCommand");
         if (profile.isDeleted) {
             return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_VIEW));
         }

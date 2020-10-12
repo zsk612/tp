@@ -5,6 +5,8 @@ import profile.exceptions.RedundantParamException;
 import profile.exceptions.SchwarzeneggerException;
 import profile.storage.Storage;
 
+import java.util.logging.Level;
+
 import static profile.components.Constants.COMMAND_WORD_DELETE;
 import static profile.components.Constants.MESSAGE_DELETE_PROFILE;
 
@@ -35,21 +37,12 @@ public class DeleteCommand extends Command {
     @Override
     public CommandResult execute(Profile profile, Storage storage) {
         try {
+            logger.log(Level.INFO, "executing DeleteCommand");
             profile.isDeleted = true;
             storage.saveData(profile);
             return new CommandResult(MESSAGE_DELETE_PROFILE);
         } catch (SchwarzeneggerException e) {
             return new CommandResult(e.getMessage());
         }
-    }
-
-    /**
-     * Checks if user wants to delete profile by checking given command.
-     *
-     * @param command The command to be checked.
-     * @return Whether the command is an object of type DeleteCommand.
-     */
-    public static boolean isDelete(Command command) {
-        return command instanceof DeleteCommand;
     }
 }

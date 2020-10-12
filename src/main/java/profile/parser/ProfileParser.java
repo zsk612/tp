@@ -5,6 +5,7 @@ import profile.commands.Command;
 import profile.commands.DeleteCommand;
 import profile.commands.ExitCommand;
 import profile.commands.ViewCommand;
+import profile.components.Profile;
 import profile.exceptions.InvalidCommandWordException;
 import profile.exceptions.RedundantParamException;
 
@@ -67,6 +68,30 @@ public class ProfileParser {
                 COMMAND_SPLIT_LIMIT);
 
         return split.length == COMMAND_SPLIT_LIMIT ? split : new String[]{split[COMMAND_TYPE_INDEX], EMPTY_STRING};
+    }
+
+    /**
+     * Verifies if user's input when creating profile is valid.
+     *
+     * @param profile User Profile object.
+     * @return Whether input profile is valid.
+     */
+    public static boolean checkValidProfile(Profile profile) {
+        return (checkValidName(profile.getName())
+                && checkValidAge(profile.getAge())
+                && checkValidHeight(profile.getHeight())
+                && checkValidWeight(profile.getWeight())
+                && checkValidWeight(profile.getExpectedWeight()));
+    }
+
+    /**
+     * Verifies if user's input name is not empty string.
+     *
+     * @param name User's input name.
+     * @return Whether input name is valid.
+     */
+    public static boolean checkValidName(String name) {
+        return !name.isEmpty();
     }
 
     /**
