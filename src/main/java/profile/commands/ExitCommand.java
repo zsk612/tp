@@ -34,7 +34,7 @@ public class ExitCommand extends Command {
      */
     @Override
     public CommandResult execute(Profile profile, Storage storage) {
-        return new CommandResult(String.format(MESSAGE_FORMAT, MESSAGE_EXIT_PROFILE));
+        return new CommandResult(MESSAGE_EXIT_PROFILE);
     }
 
     /**

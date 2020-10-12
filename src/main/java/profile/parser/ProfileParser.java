@@ -1,6 +1,7 @@
 package profile.parser;
 
 import profile.commands.Command;
+import profile.commands.DeleteCommand;
 import profile.commands.ExitCommand;
 import profile.exceptions.InvalidCommandWordException;
 import profile.exceptions.RedundantParamException;
@@ -10,6 +11,7 @@ import static profile.components.Constants.AGE_UPPER_BOUND;
 import static profile.components.Constants.COMMAND_ARGS_INDEX;
 import static profile.components.Constants.COMMAND_SPLIT_LIMIT;
 import static profile.components.Constants.COMMAND_TYPE_INDEX;
+import static profile.components.Constants.COMMAND_WORD_DELETE;
 import static profile.components.Constants.COMMAND_WORD_EXIT;
 import static profile.components.Constants.EMPTY_STRING;
 import static profile.components.Constants.GREEDY_WHITE_SPACE;
@@ -37,6 +39,8 @@ public class ProfileParser {
         String commandArgs = commandTypeAndParams[COMMAND_ARGS_INDEX];
 
         switch (commandType) {
+        case COMMAND_WORD_DELETE:
+            return new DeleteCommand(commandArgs);
         case COMMAND_WORD_EXIT:
             return new ExitCommand(commandArgs);
         default:
