@@ -48,8 +48,6 @@ public class Constants {
     public static final String MESSAGE_WELCOME = "Hi %s! How can I help you with your profile? :D";
     public static final String PROFILE_FOLDER = "profile";
     public static final String PROFILE_SAVE_FORMAT = "%s | %d | %d | %.1f | %.1f";
-    public static final String EXAMPLE_PROFILE_DATA = String.format(PROFILE_SAVE_FORMAT, EXAMPLE_NAME, EXAMPLE_AGE,
-            EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_BMI);
     public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + LS + "\tAge: %d" + LS
             + "\tHeight: %d cm" + LS + "\tWeight: %.1f kg" + LS + "\tExpected Weight: %.1f kg" + LS
             + "\tYour BMI: %s";
@@ -77,7 +75,6 @@ public class Constants {
             + LS + "%s";
     public static final String MESSAGE_REDUNDANT_PARAM = SAD_FACE + "%s command does not take parameters.";
     public static final Scanner SCANNER = new Scanner(System.in);
-    public static final String VERTICAL_BAR_REGREX = " \\| ";
     public static final double WEIGHT_LOWER_BOUND = 2.1;
     public static final double WEIGHT_UPPER_BOUND = 635;
     public static final String MESSAGE_INVALID_WEIGHT = String.format(
