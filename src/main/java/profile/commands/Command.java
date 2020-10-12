@@ -20,4 +20,3 @@ public abstract class Command {
      */
     public abstract CommandResult execute(Profile profile, Storage storage);
 }
-
