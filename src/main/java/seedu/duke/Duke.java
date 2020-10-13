@@ -30,7 +30,6 @@ public class Duke {
 
     public void execute() {
         String response = dietManagerUI.getInput();
-
         while (!response.equals("exit")) {
             if (response.equals("diet")) {
                 dietManager.start();
