@@ -1,6 +1,6 @@
 package profile.ui;
 
-import profile.components.Profile;
+import profile.Profile;
 import profile.parser.ProfileParser;
 
 import static profile.components.Constants.MESSAGE_CREATE_PROFILE_ACK;

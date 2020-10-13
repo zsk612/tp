@@ -1,11 +1,10 @@
 package profile.commands;
 
-import profile.components.Profile;
+import profile.Profile;
 import profile.exceptions.RedundantParamException;
 import profile.storage.Storage;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static profile.components.Constants.COMMAND_WORD_ADD;
 import static profile.components.Constants.MESSAGE_ADD_TITLE;

@@ -1,6 +1,6 @@
 package profile.commands;
 
-import profile.components.Profile;
+import profile.Profile;
 import profile.storage.Storage;
 
 import java.util.logging.Logger;
@@ -9,7 +9,7 @@ import java.util.logging.Logger;
  * A base class for command.
  */
 public abstract class Command {
-    protected Logger logger = Logger.getLogger("java.profile.commands");
+    protected static Logger logger = Logger.getLogger("java.profile.commands");
 
     /**
      * Executes a specific command requested by user's input.
