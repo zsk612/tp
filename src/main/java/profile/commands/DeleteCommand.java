@@ -1,6 +1,6 @@
 package profile.commands;
 
-import profile.components.Profile;
+import profile.Profile;
 import profile.exceptions.RedundantParamException;
 import profile.exceptions.SchwarzeneggerException;
 import profile.storage.Storage;

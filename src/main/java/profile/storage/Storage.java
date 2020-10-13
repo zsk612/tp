@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import profile.components.Profile;
+import profile.Profile;
 import profile.exceptions.InvalidSaveFormatException;
 import profile.exceptions.LoadingException;
 import profile.exceptions.SavingException;
@@ -33,7 +33,7 @@ import static profile.parser.ProfileParser.checkValidProfile;
 public class Storage {
     private boolean hasExistingProfile;
     private Gson gson;
-    private Logger logger = Logger.getLogger("java.profile.storage");
+    private static Logger logger = Logger.getLogger("java.profile.storage");
 
     /**
      * Constructs Storage object where data file is assumed to be existed.

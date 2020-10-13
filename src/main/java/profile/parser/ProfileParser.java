@@ -5,7 +5,7 @@ import profile.commands.Command;
 import profile.commands.DeleteCommand;
 import profile.commands.ExitCommand;
 import profile.commands.ViewCommand;
-import profile.components.Profile;
+import profile.Profile;
 import profile.exceptions.InvalidCommandWordException;
 import profile.exceptions.RedundantParamException;
 

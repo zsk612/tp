@@ -5,7 +5,6 @@ import profile.commands.Command;
 import profile.commands.CommandResult;
 import profile.commands.ExitCommand;
 import profile.components.ExceptionHandler;
-import profile.components.Profile;
 import profile.exceptions.SchwarzeneggerException;
 import profile.parser.ProfileParser;
 import profile.storage.Storage;
@@ -24,7 +23,7 @@ public class ProfileSession {
     private ProfileParser profileParser;
     private Profile profile;
     private ExceptionHandler exceptionHandler;
-    private Logger logger = Logger.getLogger("java.profile");
+    private static Logger logger = Logger.getLogger("java.profile");
 
     /**
      * Constructs ProfileManager object.
