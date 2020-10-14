@@ -1,8 +1,7 @@
 package diet.dietmanager;
 
 import diet.dietmanager.command.Command;
-
-import storage.DietManagerStorage;
+import storage.diet.Storage;
 
 
 public class DietManager {
@@ -10,11 +9,10 @@ public class DietManager {
     private final CommandLib cl;
     private final DietManagerParser parser;
     private final DietManagerUI dietManagerUI;
-    private final DietManagerStorage dietManagerStorage;
+    private final Storage storage;
 
     public DietManager() {
-        dietManagerStorage = new DietManagerStorage();
-        dietManagerStorage.init();
+        storage = new Storage();
         cl = new CommandLib();
         cl.initDietManagerCL();
         parser = new DietManagerParser();
@@ -33,12 +31,12 @@ public class DietManager {
             }
             input = dietManagerUI.getInput();
         }
-        System.out.println("you have exited DietManager.");
+        System.out.println("you have exited Diet Manager.");
     }
 
     public void processCommand(String input) throws ExitException {
         String[] commParts = parser.parse(input.trim());
         Command command = cl.get(commParts[0]);
-        command.execute(commParts[1], dietManagerStorage);
+        command.execute(commParts[1], storage);
     }
 }

@@ -4,7 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import workout.workoutsession.exercise.Exercise;
+import diet.dietsession.DietSession;
+import diet.dietsession.Food;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,8 +20,7 @@ import java.util.ArrayList;
  */
 public class Storage {
 
-    private static final String FILEPATH = "./saves/workout";
-    //private static ArrayList<Exercise> taskList = new ArrayList<>();
+    private static final String FILEPATH = "saves/diet";
     private static Gson gson;
     private static File file = null;
 
@@ -30,13 +30,13 @@ public class Storage {
      * If the local file is not found. It creates the relevant file and folder.
      * @throws IOException If director or file cannot be created.
      */
-    public static void initialise(String filePath) throws IOException {
+    public static void init(String filePath) throws IOException {
 
         gson = new GsonBuilder().setPrettyPrinting()
                 .create();
 
         //creates the file
-        String fileName = "saves/workout/" + Integer.toString(1);
+        String fileName = "saves/diet/" + filePath;
         file = new File(fileName);
         file.getParentFile().mkdirs();
         file.createNewFile();
@@ -47,7 +47,7 @@ public class Storage {
      * If the local file is not found. It creates the relevant file and folder.
      * @throws IOException If director or file cannot be created.
      */
-    public static void writeToStorage(String filePath, ArrayList<Exercise> taskList) throws IOException {
+    public static void writeToStorage(String filePath, ArrayList<Food> taskList) throws IOException {
         File file = new File(filePath);
         FileWriter writer = new FileWriter(file.getPath());
         gson.toJson(taskList, writer);
@@ -55,10 +55,23 @@ public class Storage {
         writer.close();
     }
 
-    public static void readFileContents(String filePath, ArrayList<Exercise> taskList) throws FileNotFoundException {
+    /**
+     * Write the content in dietSession to a local file.
+     * If the local file is not found. It creates the relevant file and folder.
+     * @throws IOException If director or file cannot be created.
+     */
+    public static void writeToStorageDietSession(String filePath, DietSession dietSession) throws IOException {
+        File file = new File(FILEPATH + filePath + ".json");
+        FileWriter writer = new FileWriter(file.getPath());
+        gson.toJson(dietSession, writer);
+        writer.flush();
+        writer.close();
+    }
+
+    public static void readFileContents(String filePath, ArrayList<Food> taskList) throws FileNotFoundException {
         File file = new File(filePath);
 
-        Type taskListType = new TypeToken<ArrayList<Exercise>>(){}.getType();
+        Type taskListType = new TypeToken<ArrayList<Food>>(){}.getType();
 
         JsonReader reader = new JsonReader(new FileReader(file.getPath()));
         taskList.clear();
