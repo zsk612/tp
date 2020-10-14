@@ -1,7 +1,7 @@
 package diet.dietmanager.command;
 
-import storage.DietManagerStorage;
+import storage.diet.Storage;
 
 public interface Command {
-    public void execute(String input, DietManagerStorage storage);
+    public void execute(String input, Storage storage);
 }

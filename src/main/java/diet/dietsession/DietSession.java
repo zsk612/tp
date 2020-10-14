@@ -1,30 +1,33 @@
 package diet.dietsession;
 
 import diet.dietsession.command.Command;
-import storage.DietSessionStorage;
+import storage.diet.Storage;
 
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class DietSession {
     private final ArrayList<Food> foodList;
 
     private String dateInput;
-    private String mealInput;
+    private String typeInput;
+    private LocalDate date;
 
     private final DietSessionUI dietSessionUI;
     private final diet.dietsession.CommandLib cl;
-    private final DietSessionStorage storage;
+    private final Storage storage;
     private final DietSessionParser parser = new DietSessionParser();
     public boolean endDietSession = false;
 
-    public DietSession(String dateInput, String mealInput) {
+    public DietSession(String typeInput, String dateInput) {
         this.cl = new CommandLib();
         cl.initDietManagerCL();
         this.dateInput = dateInput;
-        this.mealInput = mealInput;
+        this.date = parser.parseDate(dateInput);
+        this.typeInput = typeInput;
         this.foodList = new ArrayList<>();
-        storage = new DietSessionStorage();
+        storage = new Storage();
         dietSessionUI = new DietSessionUI();
     }
 
@@ -32,15 +35,19 @@ public class DietSession {
         return dateInput;
     }
 
-    public String getMealInput() {
-        return mealInput;
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public String getTypeInput() {
+        return typeInput;
     }
 
     public void setEndDietSession(Boolean hasEnded) {
         this.endDietSession = hasEnded;
     }
 
-    public void start() {
+    public void start() throws IOException {
         dietSessionUI.printOpening();
         setEndDietSession(false);
         String input = dietSessionUI.getInput();
@@ -55,6 +62,8 @@ public class DietSession {
             input = dietSessionUI.getInput();
         }
         setEndDietSession(true);
+        storage.writeToStorageDietSession(typeInput + " " + date.toString(), this);
+
         dietSessionUI.printExit();
     }
 
