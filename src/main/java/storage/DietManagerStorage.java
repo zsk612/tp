@@ -18,10 +18,10 @@ public class DietManagerStorage {
 
     public void list() {
         int index = 1;
-        for (DietSession record : pastRecords) {
+        /*for (DietSession record : pastRecords) {
             System.out.print((index++) + " "
                     + record.getMealInput() + " on " + record.getDateInput() + "\n");
-        }
+        }*/
 
     }
 
@@ -34,7 +34,7 @@ public class DietManagerStorage {
             System.out.println("meal: " + mealInput);
             DietSession ds = new DietSession(dateInput, mealInput);
             System.out.println("You have created a new session.");
-            ds.start();
+            //ds.start();
             pastRecords.add(ds);
         } catch (DateTimeParseException | IllegalStateException e) {
             System.out.println("Sorry I do not understand this input.");

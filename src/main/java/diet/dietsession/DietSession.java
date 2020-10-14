@@ -62,6 +62,7 @@ public class DietSession {
             input = dietSessionUI.getInput();
         }
         setEndDietSession(true);
+        storage.init(typeInput + " " + date.toString());
         storage.writeToStorageDietSession(typeInput + " " + date.toString(), this);
 
         dietSessionUI.printExit();

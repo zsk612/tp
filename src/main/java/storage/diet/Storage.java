@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class Storage {
 
-    private static final String FILEPATH = "./saves/diet";
+    private static final String FILEPATH = "saves/diet";
     private static Gson gson;
     private static File file = null;
 
@@ -36,7 +36,7 @@ public class Storage {
                 .create();
 
         //creates the file
-        String fileName = "saves/diet/" + Integer.toString(1);
+        String fileName = "saves/diet/" + filePath;
         file = new File(fileName);
         file.getParentFile().mkdirs();
         file.createNewFile();

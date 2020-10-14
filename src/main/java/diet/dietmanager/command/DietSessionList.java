@@ -5,7 +5,7 @@ import storage.diet.Storage;
 import java.io.File;
 
 public class DietSessionList implements Command {
-    static final String FILEPATH = "./saves/diet";
+    static final String FILEPATH = "saves/diet";
     @Override
     public void execute(String input, Storage storage) {
         File folder = new File(FILEPATH);
