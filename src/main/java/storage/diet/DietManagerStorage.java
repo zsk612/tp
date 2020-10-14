@@ -1,4 +1,4 @@
-package storage.workout;
+package storage.diet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import seedu.duke.Constant;
 import diet.dietmanager.DietManagerUI;
+import storage.workout.PastWorkoutSessionRecord;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,7 +53,7 @@ public class DietManagerStorage {
 
     public static String add() {
         String newFilePath = Constant.WORKOUTSESSIONFOLDER + recordCount + ".json";
-        int code = createfile(newFilePath);
+        int code = createFile(newFilePath);
         PastWorkoutSessionRecord newRecord = new PastWorkoutSessionRecord(newFilePath);
         pastFiles.add(newRecord);
         recordCount = pastFiles.size();
@@ -78,17 +79,17 @@ public class DietManagerStorage {
 
     private static void readPastRecords() {
         File file = new File(Constant.WORKOUTSESSIONHISTORY);
-        WorkoutManagerUI.printStartLoading();
+        DietManagerUI.printStartLoading();
         Type taskListType = new TypeToken<ArrayList<PastWorkoutSessionRecord>>(){}.getType();
         try {
             JsonReader reader = new JsonReader(new FileReader(file.getPath()));
             pastFiles = gson.fromJson(reader, taskListType);
         } catch (FileNotFoundException e) {
-            createfile(Constant.WORKOUTSESSIONHISTORY);
+            createFile(Constant.WORKOUTSESSIONHISTORY);
             pastFiles = new ArrayList<>();
         }
         recordCount = pastFiles.size();
-        WorkoutManagerUI.printFinishLoading();
+        DietManagerUI.printFinishLoading();
     }
 
     private static void writePastRecords() {
@@ -104,7 +105,7 @@ public class DietManagerStorage {
         }
     }
 
-    private static int createfile(String path) {
+    private static int createFile(String path) {
         File file = new File(path);
         file.getParentFile().mkdirs();
         try {
