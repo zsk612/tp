@@ -41,6 +41,5 @@ public class DietSessionStorage {
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
             System.out.println("Sorry, the index is not found.");
         }
-
     }
 }
