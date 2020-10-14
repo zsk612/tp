@@ -1,6 +1,8 @@
 package seedu.duke;
 
 import profile.ProfileSession;
+import diet.dietmanager.DietManager;
+import diet.dietmanager.DietManagerUI;
 
 import static profile.components.Constants.SCANNER;
 
@@ -14,8 +16,29 @@ public class Duke {
      *
      * @param args Unused in Duke.
      */
+
+    private final DietManagerUI dietManagerUI;
+    private final DietManager dietManager;
+
+    public Duke() {
+        dietManagerUI = new DietManagerUI();
+        dietManager = new DietManager();
+
+    }
+
     public static void main(String[] args) {
         new Duke().run();
+    }
+
+    public void execute() {
+        String response = dietManagerUI.getInput();
+        while (!response.equals("exit")) {
+            if (response.equals("diet")) {
+                dietManager.start();
+            }
+            response = dietManagerUI.getInput();
+        }
+        System.out.println("Bye, you have exited the Schwarzenegger.");
     }
 
     /**
