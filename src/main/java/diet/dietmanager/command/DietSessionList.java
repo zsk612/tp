@@ -3,9 +3,10 @@ package diet.dietmanager.command;
 import storage.diet.Storage;
 
 import java.io.File;
+import java.util.logging.Level;
 
 public class DietSessionList implements Command {
-    static final String FILEPATH = "saves/diet";
+    static final String FILEPATH = "saves/diet/";
     @Override
     public void execute(String input, Storage storage) {
         File folder = new File(FILEPATH);
@@ -13,10 +14,11 @@ public class DietSessionList implements Command {
 
         try {
             for (int i = 0; i < listOfFiles.length; i++) {
-                System.out.println("File " + listOfFiles[i].getName());
+                System.out.println((i+1) + ". " + listOfFiles[i].getName());
             }
         } catch (NullPointerException e) {
-            System.out.println("Sorry, there is nothing in DietManager.");
+            System.out.println("Sorry, there is nothing in Diet Manager.");
+            logger.log(Level.INFO, "No instances of diet sessions saved");
         }
     }
 }

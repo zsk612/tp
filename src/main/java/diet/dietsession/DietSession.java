@@ -6,6 +6,8 @@ import storage.diet.Storage;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DietSession {
     private final ArrayList<Food> foodList;
@@ -19,6 +21,8 @@ public class DietSession {
     private final Storage storage;
     private final DietSessionParser parser = new DietSessionParser();
     public boolean endDietSession = false;
+
+    private static Logger logger = Logger.getLogger("java.diet.dietsession");
 
     public DietSession(String typeInput, String dateInput) {
         this.cl = new CommandLib();
@@ -48,6 +52,7 @@ public class DietSession {
     }
 
     public void start() throws IOException {
+        logger.log(Level.INFO, "starting profile session");
         dietSessionUI.printOpening();
         setEndDietSession(false);
         String input = dietSessionUI.getInput();
@@ -62,9 +67,14 @@ public class DietSession {
             input = dietSessionUI.getInput();
         }
         setEndDietSession(true);
-
-        storage.init(typeInput + " " + date.toString());
-        storage.writeToStorageDietSession(typeInput + " " + date.toString(), this);
+        logger.log(Level.INFO, "saving profile session to file");
+        try {
+            storage.init(typeInput + " " + date.toString());
+            storage.writeToStorageDietSession(typeInput + " " + date.toString(), this);
+        } catch (IOException e) {
+            logger.log(Level.WARNING, "save profile session failed");
+            System.out.println("Failed to save your diet session!");
+        }
         dietSessionUI.printExit();
     }
 
