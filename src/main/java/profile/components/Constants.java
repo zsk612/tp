@@ -47,7 +47,6 @@ public class Constants {
     public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s";
     public static final String MESSAGE_WELCOME = "Hi %s! How can I help you with your profile? :D";
     public static final String PROFILE_FOLDER = "profile";
-    public static final String PROFILE_SAVE_FORMAT = "%s | %d | %d | %.1f | %.1f";
     public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + LS + "\tAge: %d" + LS
             + "\tHeight: %d cm" + LS + "\tWeight: %.1f kg" + LS + "\tExpected Weight: %.1f kg" + LS
             + "\tYour BMI: %s";
