@@ -10,6 +10,7 @@ public class FoodItemDelete implements Command {
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
         try {
+            assert !input.isEmpty();
             int index = Integer.parseInt(input);
             Food temp = foodList.get(index - 1);
             System.out.println("Oh no! You have deleted " + temp.toString());

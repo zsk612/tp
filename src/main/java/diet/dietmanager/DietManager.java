@@ -36,7 +36,9 @@ public class DietManager {
 
     public void processCommand(String input) throws ExitException {
         String[] commParts = parser.parse(input.trim());
+        assert !commParts[0].isEmpty();
         Command command = cl.get(commParts[0]);
+        assert !commParts[1].isEmpty();
         command.execute(commParts[1], storage);
     }
 }

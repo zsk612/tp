@@ -20,6 +20,7 @@ public class DietManagerUI {
 
     public String getInput() {
         Scanner in = new Scanner(System.in);
+        assert !in.nextLine().isEmpty();
         return in.nextLine();
     }
 

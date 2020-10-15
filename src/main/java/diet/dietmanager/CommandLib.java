@@ -1,14 +1,6 @@
 package diet.dietmanager;
 
-<<<<<<< HEAD
-import diet.dietmanager.command.Command;
-import diet.dietmanager.command.DietSessionCreate;
-import diet.dietmanager.command.DietSessionList;
-import diet.dietmanager.command.DietSessionLoad;
-import diet.dietmanager.command.DietSessionWrong;
-=======
 import diet.dietmanager.command.*;
->>>>>>> 62fd2c83c5d18eef0a090f6d0c813ed0a9d47d2b
 
 import java.util.Hashtable;
 

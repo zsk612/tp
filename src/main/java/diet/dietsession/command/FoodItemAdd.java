@@ -13,6 +13,7 @@ public class FoodItemAdd implements Command {
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
         DietSessionParser parser = new DietSessionParser();
         try {
+            assert !input.isEmpty();
             Food temp = new Food(parser.processFoodName(input), parser.processFoodCalories(input));
             foodList.add(temp);
             System.out.println("Yay! You have added " + temp.toString());
