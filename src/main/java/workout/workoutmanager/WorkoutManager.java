@@ -20,6 +20,7 @@ public class WorkoutManager {
         WorkoutManagerUI.printOpening();
         Scanner sc = new Scanner(System.in);
         while (true) {
+
             String command = sc.nextLine();
             WorkoutManagerUI.printSeperationLine();
             String[] commParts = WorkoutManagerParser.parse(command);
@@ -33,7 +34,7 @@ public class WorkoutManager {
         }
     }
 
-    public void processCommand(String[] commands) throws ExitException {
+    private void processCommand(String[] commands) throws ExitException {
         try {
             Command command = cl.get(commands[0]);
             command.execute(Arrays.copyOfRange(commands, 1, commands.length));
