@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class DietSession {
     private final ArrayList<Food> foodList;
 
-    private String dateInput;
-    private String typeInput;
-    private LocalDate date;
+    private final String dateInput;
+    private final String typeInput;
+    private final LocalDate date;
 
     private final DietSessionUI dietSessionUI;
     private final diet.dietsession.CommandLib cl;
@@ -62,9 +62,9 @@ public class DietSession {
             input = dietSessionUI.getInput();
         }
         setEndDietSession(true);
+
         storage.init(typeInput + " " + date.toString());
         storage.writeToStorageDietSession(typeInput + " " + date.toString(), this);
-
         dietSessionUI.printExit();
     }
 

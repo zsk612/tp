@@ -14,14 +14,14 @@ public class DietSessionCreate implements Command {
     public void execute(String input, Storage storage) {
         DietManagerUI ui = new DietManagerUI();
 
-
         try {
             DietSession ds = new DietSession(ui.extractMeal(input), ui.extractDate(input));
             ds.start();
         } catch (IOException e) {
             System.out.println("It seems like we ran into some problems saving your session...");
+//        } catch (NullPointerException e) {
+//            System.out.println("It seems like you have not recorded anything.");
+//        }
         }
-
-        WorkoutManagerUI.printFinishNewSessionResponse();
     }
 }

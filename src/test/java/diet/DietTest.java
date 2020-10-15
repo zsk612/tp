@@ -12,15 +12,16 @@ import java.time.format.DateTimeParseException;
 import diet.dietmanager.command.DietSessionWrong;
 import diet.dietsession.Food;
 import diet.dietsession.command.Command;
+import diet.dietsession.command.FoodItemAdd;
+import diet.dietsession.command.FoodItemDelete;
 import diet.dietsession.command.FoodItemWrong;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import storage.diet.Storage;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import storage.DietSessionStorage;
 
 
 public class DietTest {
@@ -74,34 +75,25 @@ public class DietTest {
         assertEquals(output, "biscuit with calories: 400.0");
     }
 
-    static final ArrayList<Food> foodList = new ArrayList<>();
-    static final DietSessionStorage storage = new DietSessionStorage();
-    @BeforeAll
-    static void init() {
-        storage.add("/d biscuit /c 400", foodList);
-        storage.add("/d orange /c 100", foodList);
-        storage.add("/d noodle /c 300", foodList);
-    }
+    ArrayList<Food> foodList = new ArrayList<>();
+    Storage storage = new Storage();
 
     @Test
-    void testSize() {
-        assertEquals(3, foodList.size());
+    void testAdd_correctInput_returnsMoreFood() {
+        Command command = new FoodItemAdd();
+        FoodItemAdd.execute("melon /c 500", foodList, storage);
+        assertEquals(4, foodList.size());
     }
 
     @Test
     void testDelete_correctInput_returnsFewerFood() {
-        storage.delete("1", foodList);
+        Command command = new FoodItemDelete();
+        FoodItemDelete.execute("1", foodList, storage);
         assertEquals(2, foodList.size());
     }
 
-    @Test
-    void testAdd_correctInput_returnsMoreFood() {
-        storage.add("melon /c 500", foodList);
-        assertEquals(4, foodList.size());
-    }
-
     private final PrintStream standardOut = System.out;
-    private static  final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    private static final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @BeforeAll
     public static void setUp() {

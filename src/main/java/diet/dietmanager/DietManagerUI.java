@@ -40,10 +40,11 @@ public class DietManagerUI {
             return LocalDate.parse(match).format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
 
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("I do not understand your date input! I've replaced it with today's date.");
+            System.out.println("I do not understand your date input!");
         }
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        System.out.println("I've replaced it with today's date.");
         return dtf.format(now);
     }
 
@@ -53,18 +54,19 @@ public class DietManagerUI {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Please specify your diet session tag, i.e. breakfast, lunch, dinner");
         }
+        System.out.println("Session is tagged as unspecified.");
         return "unspecified";
     }
 
-    public static void printLine() {
+    public void printLine() {
         System.out.println("-----------------------------------------");
     }
 
-    public static void printStartLoading() {
+    public void printStartLoading() {
         System.out.println("Loading past diet sessions...");
     }
 
-    public static void printFinishLoading() {
+    public void printFinishLoading() {
         System.out.println("Loading completed!");
     }
 }

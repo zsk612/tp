@@ -13,12 +13,12 @@ public class DietSessionParser {
         }
     }
 
-    public String processFoodName(String food) {
+    public String processFoodName(String food) throws IndexOutOfBoundsException {
         String[] temp = food.trim().split("/c", 2);
         return temp[0];
     }
 
-    public double processFoodCalories(String food){
+    public double processFoodCalories(String food) throws NumberFormatException {
         String[] temp = food.trim().split("/c", 2);
         return Double.parseDouble(temp[1]);
     }
@@ -29,11 +29,11 @@ public class DietSessionParser {
      * @param dateInput Date input string
      * @return LocalDate object
      */
-    public static LocalDate parseDate(String dateInput) {
+    public LocalDate parseDate(String dateInput) {
 
         // formatters for dates with time
         DateTimeFormatter formatterA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter formatterB = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter formatterB = DateTimeFormatter.ofPattern("MM-dd-yyyy");
         DateTimeFormatter formatterC = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
         LocalDate date = null;

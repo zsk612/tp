@@ -11,8 +11,12 @@ public class DietSessionList implements Command {
         File folder = new File(FILEPATH);
         File[] listOfFiles = folder.listFiles();
 
-        for (int i = 0; i < listOfFiles.length; i++) {
-            System.out.println("File " + listOfFiles[i].getName());
+        try {
+            for (int i = 0; i < listOfFiles.length; i++) {
+                System.out.println("File " + listOfFiles[i].getName());
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Sorry, there is nothing in DietManager.");
         }
     }
 }

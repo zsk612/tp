@@ -12,7 +12,14 @@ public class FoodItemAdd implements Command {
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
         DietSessionParser parser = new DietSessionParser();
-        Food temp = new Food(parser.processFoodName(input), parser.processFoodCalories(input));
-        foodList.add(temp);
+        try {
+            Food temp = new Food(parser.processFoodName(input), parser.processFoodCalories(input));
+            foodList.add(temp);
+            System.out.println("Yay! You have added " + temp.toString());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Please specify food info.");
+        } catch (NumberFormatException e) {
+            System.out.println("Please write valid calories number.");
+        }
     }
 }
