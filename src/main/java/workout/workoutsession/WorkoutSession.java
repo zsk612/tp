@@ -11,11 +11,7 @@ import java.util.Scanner;
 public class WorkoutSession {
     private String filePath = null;
     private boolean endWorkoutSession = false;
-    private final ArrayList<Exercise> exercise;
-
-    public WorkoutSession() {
-        this.exercise = new ArrayList<>();
-    }
+    public ArrayList<Exercise> exercise;
 
     public WorkoutSession(String filePath) {
         this.filePath = filePath;
@@ -44,11 +40,13 @@ public class WorkoutSession {
                 workoutSessionProcessCommand();
             } catch (IOException e) {
                 WorkoutSessionUI.printError();
+            } catch (NullPointerException e) {
+                e.printStackTrace();
             }
         }
     }
 
-    private void workoutSessionProcessCommand() throws IOException {
+    private void workoutSessionProcessCommand() throws IOException, NullPointerException {
 
         Scanner in = new Scanner(System.in);
         String[] input = WorkoutSessionParser.workoutSessionParser(in.nextLine().trim());
@@ -56,13 +54,18 @@ public class WorkoutSession {
         switch (input[0].toLowerCase()) {
 
         case "add":
-            exercise.add(WorkoutSessionParser.addParser(input));
-            Storage.writeToStorage(filePath, exercise);
+            try {
+                exercise.add(WorkoutSessionParser.addParser(input));
+                Storage.writeToStorage(filePath, exercise);
+            } catch (NumberFormatException e) {
+                WorkoutSessionUI.addFormatError();
+            }
             break;
         case "list":
             Storage.readFileContents(filePath, exercise);
             printList();
             Storage.writeToStorage(filePath, exercise);
+
             break;
         case "delete":
             exercise.remove(WorkoutSessionParser.deleteParser(input));
@@ -73,12 +76,14 @@ public class WorkoutSession {
             Storage.writeToStorage(filePath, exercise);
             break;
         default:
-
+            WorkoutSessionUI.inputNotRecognisedError();
         }
     }
 
     private void printList() {
-
+        if (exercise.size() <= 0) {
+            WorkoutSessionUI.emptyListError();
+        }
         for (int i = 0; i < exercise.size(); i++) {
             System.out.println((i + 1) + ": " + exercise.get(i).toString());
         }

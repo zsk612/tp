@@ -8,9 +8,9 @@ public class Exercise {
 
     public Exercise(String moveName, int repetitions, int weight) {
 
-        moveName = this.moveName;
-        repetitions = this.repetitions;
-        weight = this.weight;
+        this.moveName = moveName;
+        this.repetitions = repetitions;
+        this.weight = weight;
     }
 
     @Override
