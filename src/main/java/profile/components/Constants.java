@@ -18,7 +18,7 @@ public class Constants {
     public static final String COMMAND_WORD_EXIT = "exit";
     public static final String COMMAND_WORD_VIEW = "view";
     public static final String DATA_FILE = "profile.txt";
-    public static final String DATA_FOLDER = "data";
+    public static final String DATA_FOLDER = "saves";
     public static final String EMPTY_STRING = "";
     public static final int EXAMPLE_AGE = 30;
     public static final String EXAMPLE_BMI = "32.0 (Obesity Class 1)";
