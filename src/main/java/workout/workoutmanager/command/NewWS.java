@@ -4,7 +4,7 @@ import storage.workout.WorkOutManagerStorage;
 import workout.workoutmanager.WorkoutManagerUI;
 import workout.workoutsession.WorkoutSession;
 
-public class NewWS implements Command {
+public class NewWS extends Command {
 
     @Override
     public void execute(String[] args) {
@@ -15,11 +15,13 @@ public class NewWS implements Command {
          */
         String filePath = WorkOutManagerStorage.add();
         WorkoutSession ws = new WorkoutSession(filePath);
+        logger.info("new workout session created");
 
         WorkoutManagerUI.printStartNewSessionResponse();
 
         ws.workoutSessionStart();
 
+        logger.info("ended workout session");
         WorkoutManagerUI.printFinishNewSessionResponse();
 
     }

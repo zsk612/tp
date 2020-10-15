@@ -46,3 +46,11 @@ run {
     standardInput = System.in
     enableAssertions = true
 }
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'seedu.duke.Duke'
+        )
+    }
+}
