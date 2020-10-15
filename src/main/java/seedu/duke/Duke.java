@@ -3,6 +3,7 @@ package seedu.duke;
 import diet.dietmanager.DietManager;
 import diet.dietmanager.DietManagerUI;
 import profile.ProfileSession;
+import workout.workoutmanager.WorkoutManager;
 
 /**
  * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
@@ -47,6 +48,12 @@ public class Duke {
                 while (!profileSession.hasExit) {
                     profileSession.run();
                 }
+            }
+
+            if (response.equals("workout")) {
+                System.out.println("Entering Workout Session...");
+                WorkoutManager workoutManager = new WorkoutManager();
+                workoutManager.start();
             }
             response = dietManagerUI.getInput();
         }

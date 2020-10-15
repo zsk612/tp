@@ -17,7 +17,7 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
     @Override
     public String toString() {
         return "Session created on " + creationTime.toLocalDate()
-                + ", last edited on " + lastEditTime.toLocalDate();
+                + ", last editted on " + lastEditTime.toLocalDate();
     }
 
     @Override

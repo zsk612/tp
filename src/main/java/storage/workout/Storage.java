@@ -31,6 +31,11 @@ public class Storage {
      * @throws IOException If director or file cannot be created.
      */
     public static void initialise(String filePath) throws IOException {
+        /*RuntimeTypeAdapterFactory<Task> taskAdapterFactory = RuntimeTypeAdapterFactory
+                .of(Task.class, "type", true)
+                .registerSubtype(ToDo.class, "Todo")
+                .registerSubtype(Deadline.class, "Deadline")
+                .registerSubtype(Event.class, "Event");*/
 
         gson = new GsonBuilder().setPrettyPrinting()
                 .create();
