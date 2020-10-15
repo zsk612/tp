@@ -17,8 +17,8 @@ public class DietSessionLoad implements Command {
 
         try {
             DietSession ds = null;
-            assert listOfFiles != null;
-            ds = storage.readDietSession(listOfFiles[Integer.parseInt(input) - 1].getName(), ds);
+            assert listOfFiles != null : "List of files should not be null";
+            ds = storage.readDietSession(listOfFiles[Integer.parseInt(input) - 1].getName());
             ds.start();
         } catch (NullPointerException e) {
             System.out.println("Sorry, there is no file at that index.");

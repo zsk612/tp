@@ -47,21 +47,6 @@ public class Storage {
     }
 
     /**
-     * Write the content in TaskList to a local file.
-     *
-     * @throws IOException If director or file cannot be created.
-     */
-    public void writeToStorage(String filePath, ArrayList<Food> taskList) throws IOException {
-        logger.log(Level.INFO, "saving file to location");
-        File file = new File(filePath);
-        FileWriter writer = new FileWriter(file.getPath());
-        gson.toJson(taskList, writer);
-        logger.log(Level.INFO, "file saving complete");
-        writer.flush();
-        writer.close();
-    }
-
-    /**
      * Write the content in dietSession to a local file.
      * If the local file is not found. It creates the relevant file and folder.
      * @throws IOException If director or file cannot be created.
@@ -86,11 +71,11 @@ public class Storage {
         taskList.addAll(gson.fromJson(reader, taskListType));
     }
 
-    public DietSession readDietSession(String filePath, DietSession dietSession) throws FileNotFoundException {
-        File file = new File(FILEPATH + filePath);
-
+    public DietSession readDietSession(String filePath) throws FileNotFoundException {
+        File file = new File(System.getProperty("user.dir") + "/"
+                 + FILEPATH + filePath);
+        DietSession dietSession;
         Type dietSessionType = new TypeToken<DietSession>(){}.getType();
-
         JsonReader reader = new JsonReader(new FileReader(file.getPath()));
         dietSession = gson.fromJson(reader, dietSessionType);
         return dietSession;
