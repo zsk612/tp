@@ -81,14 +81,22 @@ public class DietTest {
     @Test
     void testAdd_correctInput_returnsMoreFood() {
         Command command = new FoodItemAdd();
+<<<<<<< HEAD
         FoodItemAdd.execute("melon /c 500", foodList, storage);
+=======
+        command.execute("melon /c 500", foodList, storage);
+>>>>>>> 62fd2c83c5d18eef0a090f6d0c813ed0a9d47d2b
         assertEquals(4, foodList.size());
     }
 
     @Test
     void testDelete_correctInput_returnsFewerFood() {
         Command command = new FoodItemDelete();
+<<<<<<< HEAD
         FoodItemDelete.execute("1", foodList, storage);
+=======
+        command.execute("1", foodList, storage);
+>>>>>>> 62fd2c83c5d18eef0a090f6d0c813ed0a9d47d2b
         assertEquals(2, foodList.size());
     }
 
@@ -100,7 +108,11 @@ public class DietTest {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
+<<<<<<< HEAD
     @Test
+=======
+    /*@Test
+>>>>>>> 62fd2c83c5d18eef0a090f6d0c813ed0a9d47d2b
     void testAdd_noCalories_returnsWarning() {
         storage.add("melon", foodList);
         String warning = "Please specify your food info.";
@@ -126,7 +138,11 @@ public class DietTest {
         storage.delete("a", foodList);
         String warning = "Sorry, the index is not found.";
         assertEquals(warning, outputStreamCaptor.toString().trim());
+<<<<<<< HEAD
     }
+=======
+    }*/
+>>>>>>> 62fd2c83c5d18eef0a090f6d0c813ed0a9d47d2b
 
     @Test
     void processCommandForDietSession_WrongCommand_returnsWarning() {

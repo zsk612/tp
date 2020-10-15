@@ -17,6 +17,7 @@ public class DietSessionLoad implements Command {
 
         try {
             DietSession ds = null;
+<<<<<<< HEAD
             assert listOfFiles != null;
             ds = storage.readDietSession(listOfFiles[Integer.parseInt(input) - 1].getName(), ds);
             ds.start();
@@ -27,3 +28,20 @@ public class DietSessionLoad implements Command {
         }
     }
 }
+=======
+            assert listOfFiles != null : "List of files should not be null";
+            ds = storage.readDietSession(listOfFiles[Integer.parseInt(input) - 1].getName());
+            ds.start();
+        } catch (NullPointerException e) {
+            System.out.println("Sorry, there is no file at that index.");
+            logger.log(Level.INFO, "No file found at array index");
+        } catch (FileNotFoundException e) {
+            System.out.println("Sorry, there is no file at that index.");
+            logger.log(Level.INFO, "No file found at array index");
+        } catch (IOException e) {
+            logger.log(Level.INFO, "failed to execute diet session");
+            e.printStackTrace();
+        }
+    }
+}
+>>>>>>> 62fd2c83c5d18eef0a090f6d0c813ed0a9d47d2b
