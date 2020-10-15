@@ -21,13 +21,14 @@ public class Storage {
 
     private static final String FILEPATH = "./saves/workout";
     //private static ArrayList<Exercise> taskList = new ArrayList<>();
-    private static Gson gson;
+    private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static File file = null;
 
 
     /**
      * Initialise the database with locally stored data.
      * If the local file is not found. It creates the relevant file and folder.
+     *
      * @throws IOException If director or file cannot be created.
      */
     public static void initialise(String filePath) throws IOException {
@@ -50,6 +51,7 @@ public class Storage {
     /**
      * Write the content in TaskList to a local file.
      * If the local file is not found. It creates the relevant file and folder.
+     *
      * @throws IOException If director or file cannot be created.
      */
     public static void writeToStorage(String filePath, ArrayList<Exercise> taskList) throws IOException {
@@ -63,11 +65,15 @@ public class Storage {
     public static void readFileContents(String filePath, ArrayList<Exercise> taskList) throws FileNotFoundException {
         File file = new File(filePath);
 
-        Type taskListType = new TypeToken<ArrayList<Exercise>>(){}.getType();
-
+        Type taskListType = new TypeToken<ArrayList<Exercise>>() {
+        }.getType();
         JsonReader reader = new JsonReader(new FileReader(file.getPath()));
         taskList.clear();
-        taskList.addAll(gson.fromJson(reader, taskListType));
+        try {
+            taskList.addAll(gson.fromJson(reader, taskListType));
+        } catch (NullPointerException e) {
+            System.out.printf("");
+        }
     }
 
 
