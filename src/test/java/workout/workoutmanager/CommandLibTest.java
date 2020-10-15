@@ -2,14 +2,9 @@ package workout.workoutmanager;
 
 import org.junit.jupiter.api.Test;
 import workout.workoutmanager.command.ByeWS;
-import workout.workoutmanager.command.Command;
 import workout.workoutmanager.command.DeleteWS;
 import workout.workoutmanager.command.ListWS;
 import workout.workoutmanager.command.NewWS;
-
-import java.time.format.DateTimeParseException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CommandLibTest {
 
@@ -18,6 +13,9 @@ class CommandLibTest {
         CommandLib cl = new CommandLib();
         cl.initWorkoutManagerCL();
         assertTrue(cl.get("asdf") == null);
+    }
+
+    private void assertTrue(boolean asdf) {
     }
 
     @Test
@@ -42,7 +40,7 @@ class CommandLibTest {
     }
 
     @Test
-    void get_bye_throwExitException() {
+    void get_bye_returnByeCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutManagerCL();
         assertTrue(cl.get("bye") instanceof ByeWS);
