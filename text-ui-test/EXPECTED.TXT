@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 Hi, this is the Schwarzenegger, an app for your daily workout and diet recording.
 Bye, you have exited the Schwarzenegger.
+=======
+Which session do you want to enter?
+back
+>>>>>>> b59ba0db7cde4b96765c094470485da808828304
