@@ -21,8 +21,4 @@ public class Duke {
         System.out.println("Hello " + in.nextLine());
     }
 
-    private static void wokroutTest() {
-        WorkoutManager wm = new WorkoutManager();
-        wm.start();
-    }
 }
