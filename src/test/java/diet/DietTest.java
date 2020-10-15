@@ -139,7 +139,7 @@ public class DietTest {
     @Test
     void processCommandForDietSession_WrongCommand_returnsWarning() {
         Command command = new FoodItemWrong();
-        command.execute("hahaha", foodList, storage);
+        command.execute("hahaha", foodList, null);
         String warning = "Sorry, I do not get what you are saying.";
         assertEquals(warning, outputStreamCaptor.toString().trim());
 
