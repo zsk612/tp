@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -87,13 +88,13 @@ public class Storage {
     }
 
         public DietSession readDietSession (String filePath) throws FileNotFoundException {
+            Gson gson = new Gson();
             File file = new File(System.getProperty("user.dir") + "/"
                     + FILEPATH + filePath);
             DietSession dietSession;
-            Type dietSessionType = new TypeToken<DietSession>() {
-            }.getType();
-            JsonReader reader = new JsonReader(new FileReader(file.getPath()));
-            dietSession = gson.fromJson(reader, dietSessionType);
+
+            Reader reader = new FileReader(file.getPath());
+            dietSession = gson.fromJson(reader, DietSession.class);
             return dietSession;
         }
     }

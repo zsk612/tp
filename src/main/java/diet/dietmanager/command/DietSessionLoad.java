@@ -30,6 +30,9 @@ public class DietSessionLoad implements Command {
         } catch (IOException e) {
             logger.log(Level.INFO, "failed to execute diet session");
             e.printStackTrace();
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Sorry, there is no file at that index.");
+            logger.log(Level.INFO, "wrong index for loading");
         }
     }
 }

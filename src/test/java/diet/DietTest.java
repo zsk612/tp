@@ -81,22 +81,14 @@ public class DietTest {
     @Test
     void testAdd_correctInput_returnsMoreFood() {
         Command command = new FoodItemAdd();
-<<<<<<< HEAD
-        FoodItemAdd.execute("melon /c 500", foodList, storage);
-=======
         command.execute("melon /c 500", foodList, storage);
->>>>>>> 62fd2c83c5d18eef0a090f6d0c813ed0a9d47d2b
         assertEquals(4, foodList.size());
     }
 
     @Test
     void testDelete_correctInput_returnsFewerFood() {
         Command command = new FoodItemDelete();
-<<<<<<< HEAD
-        FoodItemDelete.execute("1", foodList, storage);
-=======
         command.execute("1", foodList, storage);
->>>>>>> 62fd2c83c5d18eef0a090f6d0c813ed0a9d47d2b
         assertEquals(2, foodList.size());
     }
 
@@ -108,41 +100,37 @@ public class DietTest {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
-<<<<<<< HEAD
     @Test
-=======
-    /*@Test
->>>>>>> 62fd2c83c5d18eef0a090f6d0c813ed0a9d47d2b
     void testAdd_noCalories_returnsWarning() {
-        storage.add("melon", foodList);
+        Command command = new FoodItemAdd();
+        command.execute("melon", foodList, storage);
         String warning = "Please specify your food info.";
         assertEquals(warning, outputStreamCaptor.toString().trim());
     }
 
     @Test
     void testAdd_wrongFormatForCalories_returnsWarning() {
-        storage.add("melon /c no calories", foodList);
+        Command command = new FoodItemAdd();
+        command.execute("melon /c no calories", foodList, storage);
         String warning = "Please specify your food info.";
         assertEquals(warning, outputStreamCaptor.toString().trim());
     }
 
     @Test
     void testDelete_IndexTooLarge_returnsWarning() {
-        storage.delete(Integer.toString((foodList.size() + 4)), foodList);
+        Command command = new FoodItemDelete();
+        command.execute(Integer.toString((foodList.size() + 4)), foodList, storage);
         String warning = "Sorry, the index is not found.";
         assertEquals(warning, outputStreamCaptor.toString().trim());
     }
 
     @Test
     void testDelete_WrongFormatForIndex_returnsWarning() {
-        storage.delete("a", foodList);
+        Command command = new FoodItemDelete();
+        command.execute("a", foodList, storage);
         String warning = "Sorry, the index is not found.";
         assertEquals(warning, outputStreamCaptor.toString().trim());
-<<<<<<< HEAD
     }
-=======
-    }*/
->>>>>>> 62fd2c83c5d18eef0a090f6d0c813ed0a9d47d2b
 
     @Test
     void processCommandForDietSession_WrongCommand_returnsWarning() {
