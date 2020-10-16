@@ -4,6 +4,7 @@ import diet.dietsession.Food;
 import storage.diet.Storage;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class FoodItemDelete implements Command {
 
@@ -15,6 +16,7 @@ public class FoodItemDelete implements Command {
             Food temp = foodList.get(index - 1);
             System.out.println("Oh no! You have deleted " + temp.toString());
             foodList.remove(temp);
+            logger.log(Level.INFO, "Removed food from arraylist");
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
             System.out.println("Sorry! It seems like you've entered an invalid number or input!");
         }

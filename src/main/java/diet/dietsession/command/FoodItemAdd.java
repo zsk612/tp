@@ -6,6 +6,7 @@ import storage.diet.Storage;
 
 
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 public class FoodItemAdd implements Command {
 
@@ -17,10 +18,11 @@ public class FoodItemAdd implements Command {
             Food temp = new Food(parser.processFoodName(input), parser.processFoodCalories(input));
             foodList.add(temp);
             System.out.println("Yay! You have added " + temp.toString());
+            logger.log(Level.INFO, "Added food to arraylist");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Please specify food info.");
         } catch (NumberFormatException e) {
-            System.out.println("Please write valid calories number.");
+            System.out.println("Please input a number for calories.");
         }
     }
 }

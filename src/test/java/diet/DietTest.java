@@ -27,20 +27,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DietTest {
 
-    @Test
-    void extractDate_dateCorrectFormat_returnsDateString() {
-        String input = "/d 2020-11-11 /t lunch";
-        DietManagerUI ui = new DietManagerUI();
-        String dateString = ui.extractDate(input);
-        assertEquals(dateString, "11-11-2020");
-    }
-
-    @Test
-    void extract_dateWrongFormat_expectsException() {
-        String input = "/d 2020-22-22 /t lunch";
-        DietManagerUI ui = new DietManagerUI();
-        assertThrows(DateTimeParseException.class, () -> ui.extractDate(input));
-    }
 
     @Test
     void extract_dateNoDate_returnsCurrentDate() {

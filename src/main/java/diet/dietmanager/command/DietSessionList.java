@@ -17,9 +17,9 @@ public class DietSessionList implements Command {
         try {
             assert listOfFiles.length != 0;
             for (int i = 0; i < listOfFiles.length; i++) {
-
                 System.out.println((i + 1) + ". " + listOfFiles[i].getName());
             }
+            logger.log(Level.INFO, "Listed all available diet sessions");
         } catch (NullPointerException e) {
             System.out.println("Sorry, there is nothing in Diet Manager.");
             logger.log(Level.INFO, "No instances of diet sessions saved");
