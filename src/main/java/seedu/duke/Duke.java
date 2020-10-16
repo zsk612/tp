@@ -1,10 +1,9 @@
 package seedu.duke;
 
-import profile.ProfileSession;
 import diet.dietmanager.DietManager;
 import diet.dietmanager.DietManagerUI;
-
-import static profile.components.Constants.SCANNER;
+import profile.ProfileSession;
+import workout.workoutmanager.WorkoutManager;
 
 /**
  * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
@@ -30,34 +29,34 @@ public class Duke {
         new Duke().run();
     }
 
-    public void execute() {
+    /**
+     * Runs Schwarzenegger.
+     */
+    private void run() {
+        System.out.println("Greetings from Schwarzenegger!");
         String response = dietManagerUI.getInput();
         while (!response.equals("exit")) {
             if (response.equals("diet")) {
                 dietManager.start();
             }
+
+            if (response.equals("profile")) {
+                System.out.println("Entering Profile Session...");
+
+                ProfileSession profileSession = new ProfileSession();
+
+                while (!profileSession.hasExit) {
+                    profileSession.run();
+                }
+            }
+
+            if (response.equals("workout")) {
+                System.out.println("Entering Workout Session...");
+                WorkoutManager workoutManager = new WorkoutManager();
+                workoutManager.start();
+            }
             response = dietManagerUI.getInput();
         }
         System.out.println("Bye, you have exited the Schwarzenegger.");
-    }
-
-    /**
-     * Runs Schwarzenegger.
-     */
-    private void run() {
-        System.out.println("Which session do you want to enter?");
-        String session = SCANNER.nextLine().toLowerCase();
-
-        if (session.equals("profile")) {
-            System.out.println("Entering Profile Session...");
-
-            ProfileSession profileSession = new ProfileSession();
-
-            while (!profileSession.hasExit) {
-                profileSession.run();
-            }
-        }
-
-        System.out.println("back");
     }
 }

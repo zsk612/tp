@@ -1,2 +1,2 @@
-Which session do you want to enter?
-back
+Greetings from Schwarzenegger!
+Bye, you have exited the Schwarzenegger.
