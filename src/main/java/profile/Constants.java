@@ -44,8 +44,8 @@ public class Constants {
     public static final String MESSAGE_WELCOME = "Hi %s! How can I help you with your profile? :D";
     public static final String PROFILE_FOLDER = "profile";
     public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + CommonUi.LS + "\tAge: %d" + CommonUi.LS
-            + "\tHeight: %d cm" + CommonUi.LS + "\tWeight: %.1f kg" + CommonUi.LS + "\tExpected Weight: %.1f kg" + CommonUi.LS
-            + "\tYour BMI: %s";
+            + "\tHeight: %d cm" + CommonUi.LS + "\tWeight: %.1f kg" + CommonUi.LS + "\tExpected Weight: %.1f kg"
+            + CommonUi.LS + "\tYour BMI: %s";
     public static final String EXAMPLE_PROFILE_STRING = String.format(PROFILE_STRING_REPRESENTATION, EXAMPLE_NAME,
             EXAMPLE_AGE, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_BMI);
     public static final String PROJECT_ROOT = System.getProperty("user.dir");
