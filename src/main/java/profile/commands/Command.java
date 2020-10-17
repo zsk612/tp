@@ -9,7 +9,16 @@ import java.util.logging.Logger;
  * A base class for command.
  */
 public abstract class Command {
-    protected static Logger logger = Logger.getLogger("java.profile.commands");
+    protected Logger logger;
+
+    /**
+     * Constructs abstract class Command.
+     *
+     * @param logger Logger to record of information during program execution.
+     */
+    public Command(Logger logger) {
+        this.logger = logger;
+    }
 
     /**
      * Executes a specific command requested by user's input.
