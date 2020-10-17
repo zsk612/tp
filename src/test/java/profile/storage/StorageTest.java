@@ -3,14 +3,15 @@ package profile.storage;
 import logger.SchwarzeneggerLogger;
 import org.junit.jupiter.api.Test;
 import profile.Profile;
-import profile.exceptions.InvalidSaveFormatException;
-import profile.exceptions.SchwarzeneggerException;
+import exceptions.profile.InvalidSaveFormatException;
+import exceptions.SchwarzeneggerException;
+import storage.profile.Storage;
 
 import java.io.FileNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static profile.components.Constants.EXAMPLE_PROFILE_STRING;
+import static profile.Constants.EXAMPLE_PROFILE_STRING;
 
 class StorageTest {
 

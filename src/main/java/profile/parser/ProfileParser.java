@@ -1,31 +1,31 @@
 package profile.parser;
 
 import profile.Profile;
-import profile.commands.AddCommand;
-import profile.commands.Command;
-import profile.commands.DeleteCommand;
-import profile.commands.ExitCommand;
-import profile.commands.ViewCommand;
-import profile.exceptions.InvalidCommandWordException;
-import profile.exceptions.RedundantParamException;
+import commands.profile.AddCommand;
+import commands.profile.Command;
+import commands.profile.DeleteCommand;
+import commands.profile.ExitCommand;
+import commands.profile.ViewCommand;
+import exceptions.profile.InvalidCommandWordException;
+import exceptions.profile.RedundantParamException;
 
 import java.util.logging.Logger;
 
-import static profile.components.Constants.AGE_LOWER_BOUND;
-import static profile.components.Constants.AGE_UPPER_BOUND;
-import static profile.components.Constants.COMMAND_ARGS_INDEX;
-import static profile.components.Constants.COMMAND_SPLIT_LIMIT;
-import static profile.components.Constants.COMMAND_TYPE_INDEX;
-import static profile.components.Constants.COMMAND_WORD_ADD;
-import static profile.components.Constants.COMMAND_WORD_DELETE;
-import static profile.components.Constants.COMMAND_WORD_EXIT;
-import static profile.components.Constants.COMMAND_WORD_VIEW;
-import static profile.components.Constants.EMPTY_STRING;
-import static profile.components.Constants.GREEDY_WHITE_SPACE;
-import static profile.components.Constants.HEIGHT_LOWER_BOUND;
-import static profile.components.Constants.HEIGHT_UPPER_BOUND;
-import static profile.components.Constants.WEIGHT_LOWER_BOUND;
-import static profile.components.Constants.WEIGHT_UPPER_BOUND;
+import static profile.Constants.AGE_LOWER_BOUND;
+import static profile.Constants.AGE_UPPER_BOUND;
+import static profile.Constants.COMMAND_ARGS_INDEX;
+import static profile.Constants.COMMAND_SPLIT_LIMIT;
+import static profile.Constants.COMMAND_TYPE_INDEX;
+import static profile.Constants.COMMAND_WORD_ADD;
+import static profile.Constants.COMMAND_WORD_DELETE;
+import static profile.Constants.COMMAND_WORD_EXIT;
+import static profile.Constants.COMMAND_WORD_VIEW;
+import static profile.Constants.EMPTY_STRING;
+import static profile.Constants.GREEDY_WHITE_SPACE;
+import static profile.Constants.HEIGHT_LOWER_BOUND;
+import static profile.Constants.HEIGHT_UPPER_BOUND;
+import static profile.Constants.WEIGHT_LOWER_BOUND;
+import static profile.Constants.WEIGHT_UPPER_BOUND;
 
 /**
  * A class that deals with making sense of user's command inside Profile Session.

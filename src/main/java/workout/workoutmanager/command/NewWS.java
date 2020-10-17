@@ -1,7 +1,7 @@
 package workout.workoutmanager.command;
 
 import storage.workout.WorkOutManagerStorage;
-import workout.workoutmanager.WorkoutManagerUI;
+import ui.workout.workoutmanager.WorkoutManagerUi;
 import workout.workoutsession.WorkoutSession;
 
 public class NewWS extends Command {
@@ -17,12 +17,12 @@ public class NewWS extends Command {
         WorkoutSession ws = new WorkoutSession(filePath);
         logger.info("new workout session created");
 
-        WorkoutManagerUI.printStartNewSessionResponse();
+        WorkoutManagerUi.printStartNewSessionResponse();
 
         ws.workoutSessionStart();
 
         logger.info("ended workout session");
-        WorkoutManagerUI.printFinishNewSessionResponse();
+        WorkoutManagerUi.printFinishNewSessionResponse();
 
     }
 }

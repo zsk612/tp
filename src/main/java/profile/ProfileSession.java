@@ -1,15 +1,15 @@
 package profile;
 
 import logger.SchwarzeneggerLogger;
-import profile.commands.AddCommand;
-import profile.commands.Command;
-import profile.commands.CommandResult;
-import profile.commands.ExitCommand;
-import profile.components.ExceptionHandler;
-import profile.exceptions.SchwarzeneggerException;
+import commands.profile.AddCommand;
+import commands.profile.Command;
+import commands.profile.CommandResult;
+import commands.profile.ExitCommand;
+import exceptions.ExceptionHandler;
+import exceptions.SchwarzeneggerException;
 import profile.parser.ProfileParser;
-import profile.storage.Storage;
-import profile.ui.ProfileUi;
+import storage.profile.Storage;
+import ui.profile.ProfileUi;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

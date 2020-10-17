@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import seedu.duke.Constant;
-import workout.workoutmanager.WorkoutManagerUI;
+import ui.workout.workoutmanager.WorkoutManagerUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -78,7 +78,7 @@ public class WorkOutManagerStorage {
 
     private static void readPastRecords() {
         File file = new File(Constant.WORKOUTSESSIONHISTORY);
-        WorkoutManagerUI.printStartLoading();
+        WorkoutManagerUi.printStartLoading();
         Type taskListType = new TypeToken<ArrayList<PastWorkoutSessionRecord>>(){}.getType();
         try {
             JsonReader reader = new JsonReader(new FileReader(file.getPath()));
@@ -88,7 +88,7 @@ public class WorkOutManagerStorage {
             pastFiles = new ArrayList<>();
         }
         recordCount = pastFiles.size();
-        WorkoutManagerUI.printFinishLoading();
+        WorkoutManagerUi.printFinishLoading();
     }
 
     private static void writePastRecords() {
