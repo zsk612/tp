@@ -19,6 +19,7 @@ public class ExitCommand extends Command {
      * Constructs ExitCommand object inheriting abstract class Command.
      *
      * @param commandArgs Command arguments from user's input.
+     * @param logger Logger to record of information during program execution.
      * @throws RedundantParamException If parameters are provided to Exit Command.
      */
     public ExitCommand(String commandArgs, Logger logger) throws RedundantParamException {
