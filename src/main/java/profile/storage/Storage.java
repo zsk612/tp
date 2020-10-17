@@ -33,12 +33,15 @@ import static profile.parser.ProfileParser.checkValidProfile;
 public class Storage {
     private boolean hasExistingProfile;
     private Gson gson;
-    private static Logger logger = Logger.getLogger("java.profile.storage");
+    private Logger logger;
 
     /**
      * Constructs Storage object where data file is assumed to be existed.
+     *
+     * @param logger Logger to record of information during program execution.
      */
-    public Storage() {
+    public Storage(Logger logger) {
+        this.logger = logger;
         hasExistingProfile = true;
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
