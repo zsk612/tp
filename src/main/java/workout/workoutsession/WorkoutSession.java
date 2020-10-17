@@ -2,7 +2,7 @@ package workout.workoutsession;
 
 import storage.workout.Storage;
 import workout.workoutsession.exercise.Exercise;
-import workout.workoutsession.workoutsessionui.WorkoutSessionUI;
+import ui.workout.workoutsession.WorkoutSessionUi;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class WorkoutSession {
             try {
                 workoutSessionProcessCommand();
             } catch (IOException e) {
-                WorkoutSessionUI.printError();
+                WorkoutSessionUi.printError();
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
@@ -58,7 +58,7 @@ public class WorkoutSession {
                 exercise.add(WorkoutSessionParser.addParser(input));
                 Storage.writeToStorage(filePath, exercise);
             } catch (NumberFormatException e) {
-                WorkoutSessionUI.addFormatError();
+                WorkoutSessionUi.addFormatError();
             }
             break;
         case "list":
@@ -76,13 +76,13 @@ public class WorkoutSession {
             Storage.writeToStorage(filePath, exercise);
             break;
         default:
-            WorkoutSessionUI.inputNotRecognisedError();
+            WorkoutSessionUi.inputNotRecognisedError();
         }
     }
 
     private void printList() {
         if (exercise.size() <= 0) {
-            WorkoutSessionUI.emptyListError();
+            WorkoutSessionUi.emptyListError();
         }
         for (int i = 0; i < exercise.size(); i++) {
             System.out.println((i + 1) + ": " + exercise.get(i).toString());

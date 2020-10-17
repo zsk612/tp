@@ -1,7 +1,7 @@
 package workout.workoutmanager.command;
 
 import storage.workout.WorkOutManagerStorage;
-import workout.workoutmanager.WorkoutManagerUI;
+import ui.workout.workoutmanager.WorkoutManagerUi;
 
 public class DeleteWS extends Command {
 
@@ -20,6 +20,6 @@ public class DeleteWS extends Command {
         }
         WorkOutManagerStorage.delete(index);
         logger.info("deleted successfully");
-        WorkoutManagerUI.printDeleteResponse();
+        WorkoutManagerUi.printDeleteResponse();
     }
 }

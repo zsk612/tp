@@ -1,7 +1,7 @@
 package seedu.duke;
 
 import diet.dietmanager.DietManager;
-import diet.dietmanager.DietManagerUI;
+import ui.diet.dietmanager.DietManagerUi;
 import logger.SchwarzeneggerLogger;
 import profile.ProfileSession;
 import workout.workoutmanager.WorkoutManager;
@@ -10,12 +10,12 @@ import workout.workoutmanager.WorkoutManager;
  * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
  */
 public class Duke {
-    private final DietManagerUI dietManagerUI;
+    private final DietManagerUi dietManagerUI;
     private final DietManager dietManager;
     private SchwarzeneggerLogger schwarzeneggerLogger;
 
     public Duke() {
-        dietManagerUI = new DietManagerUI();
+        dietManagerUI = new DietManagerUi();
         dietManager = new DietManager();
         schwarzeneggerLogger = new SchwarzeneggerLogger();
     }

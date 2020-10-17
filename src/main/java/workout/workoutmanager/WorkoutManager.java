@@ -1,6 +1,7 @@
 package workout.workoutmanager;
 
 import storage.workout.WorkOutManagerStorage;
+import ui.workout.workoutmanager.WorkoutManagerUi;
 import workout.workoutmanager.command.Command;
 
 import java.util.Arrays;
@@ -23,13 +24,13 @@ public class WorkoutManager {
 
     public void start() {
         logger.log(Level.INFO, "entered workout manager");
-        WorkoutManagerUI.printOpening();
+        WorkoutManagerUi.printOpening();
         Scanner sc = new Scanner(System.in);
         while (true) {
 
             String command = sc.nextLine();
             logger.log(Level.FINE, "received input" + command);
-            WorkoutManagerUI.printSeperationLine();
+            WorkoutManagerUi.printSeperationLine();
             String[] commParts = WorkoutManagerParser.parse(command);
 
             try {
@@ -38,7 +39,7 @@ public class WorkoutManager {
                 logger.log(Level.INFO, "exiting workout manager");
                 break;
             }
-            WorkoutManagerUI.printSeperationLine();
+            WorkoutManagerUi.printSeperationLine();
         }
     }
 
@@ -48,7 +49,7 @@ public class WorkoutManager {
             command.execute(Arrays.copyOfRange(commands, 1, commands.length));
         } catch (NullPointerException e) {
             logger.log(Level.WARNING, "command not recognised");
-            WorkoutManagerUI.commandNotFoundResponse();
+            WorkoutManagerUi.commandNotFoundResponse();
         }
     }
 }
