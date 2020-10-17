@@ -5,6 +5,7 @@ import profile.exceptions.RedundantParamException;
 import profile.storage.Storage;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static profile.components.Constants.COMMAND_WORD_EXIT;
 import static profile.components.Constants.MESSAGE_EXIT_PROFILE;
@@ -18,9 +19,11 @@ public class ExitCommand extends Command {
      * Constructs ExitCommand object inheriting abstract class Command.
      *
      * @param commandArgs Command arguments from user's input.
+     * @param logger Logger to record of information during program execution.
      * @throws RedundantParamException If parameters are provided to Exit Command.
      */
-    public ExitCommand(String commandArgs) throws RedundantParamException {
+    public ExitCommand(String commandArgs, Logger logger) throws RedundantParamException {
+        super(logger);
         if (!commandArgs.isEmpty()) {
             throw new RedundantParamException(COMMAND_WORD_EXIT);
         }
