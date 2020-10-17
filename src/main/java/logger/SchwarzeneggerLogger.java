@@ -8,10 +8,16 @@ import java.util.logging.SimpleFormatter;
 
 import static seedu.duke.Constant.LOG_FILE_PATH;
 
+/**
+ * A class to handle file logging.
+ */
 public class SchwarzeneggerLogger {
     private Logger logger;
     private FileHandler fh;
 
+    /**
+     * Constructs SchwarzeneggerLogger object.
+     */
     public SchwarzeneggerLogger() {
         try {
             File file = new File(LOG_FILE_PATH);
@@ -32,6 +38,11 @@ public class SchwarzeneggerLogger {
         }
     }
 
+    /**
+     * Gets logger.
+     *
+     * @return logger.
+     */
     public Logger getLogger() {
         return logger;
     }
