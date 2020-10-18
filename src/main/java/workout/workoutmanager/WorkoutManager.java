@@ -1,6 +1,7 @@
 package workout.workoutmanager;
 
 import commands.CommandLib;
+import commands.workout.workoutmanager.command.ExecutionResult;
 import logger.SchwarzeneggerLogger;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
@@ -50,12 +51,10 @@ public class WorkoutManager {
     }
 
     private void processCommand(String[] commands) throws ExitException {
-        try {
-            Command command = cl.get(commands[0]);
-            command.execute(Arrays.copyOfRange(commands, 1, commands.length));
-        } catch (NullPointerException e) {
-            logger.log(Level.WARNING, "command not recognised");
-            WorkoutManagerUi.commandNotFoundResponse();
+        Command command = cl.get(commands[0]);
+        ExecutionResult result = command.execute(Arrays.copyOfRange(commands, 1, commands.length));
+        if (result == ExecutionResult.OK) {
+            command.printResponse();
         }
     }
 }

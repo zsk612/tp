@@ -10,9 +10,13 @@ import commands.diet.dietsession.command.FoodItemDelete;
 import commands.diet.dietsession.command.FoodItemShow;
 import commands.diet.dietsession.command.FoodItemWrong;
 import commands.workout.workoutmanager.command.ByeWS;
+import commands.workout.workoutmanager.command.ClearWS;
 import commands.workout.workoutmanager.command.DeleteWS;
+import commands.workout.workoutmanager.command.EditWS;
+import commands.workout.workoutmanager.command.HelpWS;
 import commands.workout.workoutmanager.command.ListWS;
 import commands.workout.workoutmanager.command.NewWS;
+import commands.workout.workoutmanager.command.WrongWS;
 
 import java.util.Hashtable;
 
@@ -28,7 +32,11 @@ public class CommandLib {
         this.library.put("list", new ListWS());
         this.library.put("new", new NewWS());
         this.library.put("delete", new DeleteWS());
-        this.library.put("bye", new ByeWS());
+        this.library.put("end", new ByeWS());
+        this.library.put("edit", new EditWS());
+        this.library.put("clear", new ClearWS());
+        this.library.put("help", new HelpWS());
+        this.library.put("wrong", new WrongWS());
     }
 
     public void initDietManagerCL() {

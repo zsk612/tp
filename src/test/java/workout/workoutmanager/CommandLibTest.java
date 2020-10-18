@@ -1,11 +1,14 @@
 package workout.workoutmanager;
 
 import commands.CommandLib;
+import commands.workout.workoutmanager.command.WrongWS;
 import org.junit.jupiter.api.Test;
 import commands.workout.workoutmanager.command.ByeWS;
 import commands.workout.workoutmanager.command.DeleteWS;
 import commands.workout.workoutmanager.command.ListWS;
 import commands.workout.workoutmanager.command.NewWS;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CommandLibTest {
 
@@ -13,10 +16,7 @@ class CommandLibTest {
     void get_WorkoutManagerUnrecognisedCommand_returnNull() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutManagerCL();
-        assertTrue(cl.get("asdf") == null);
-    }
-
-    private void assertTrue(boolean asdf) {
+        assertTrue(cl.get("asdf") instanceof WrongWS);
     }
 
     @Test
@@ -44,6 +44,6 @@ class CommandLibTest {
     void get_bye_returnByeCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutManagerCL();
-        assertTrue(cl.get("bye") instanceof ByeWS);
+        assertTrue(cl.get("end") instanceof ByeWS);
     }
 }
