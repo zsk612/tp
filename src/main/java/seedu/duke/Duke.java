@@ -53,7 +53,7 @@ public class Duke {
 
             if (response.equals("workout")) {
                 System.out.println("Entering Workout Session...");
-                WorkoutManager workoutManager = new WorkoutManager();
+                WorkoutManager workoutManager = new WorkoutManager(schwarzeneggerLogger);
                 workoutManager.start();
             }
             response = dietManagerUI.getInput();

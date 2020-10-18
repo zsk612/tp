@@ -1,5 +1,6 @@
-package workout.workoutmanager.command;
+package commands.workout.workoutmanager.command;
 
+import commands.Command;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 import workout.workoutsession.WorkoutSession;

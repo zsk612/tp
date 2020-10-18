@@ -1,12 +1,13 @@
 package commands.diet.dietmanager.command;
 
 import storage.diet.Storage;
+import commands.Command;
 
 import java.io.File;
 
 import java.util.logging.Level;
 
-public class DietSessionList implements Command {
+public class DietSessionList extends Command {
     static final String FILEPATH = "saves/diet/";
 
     @Override

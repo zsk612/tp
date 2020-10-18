@@ -1,5 +1,10 @@
 {
-  "foodList": [],
+  "foodList": [
+    {
+      "name": "sss ",
+      "calories": 10.0
+    }
+  ],
   "dateInput": "10-15-2020",
   "typeInput": "unspecified",
   "date": {
