@@ -1,32 +1,38 @@
 package workout.workoutsession;
 
+import commands.Command;
+import commands.CommandLib;
 import storage.workout.Storage;
 import workout.workoutsession.exercise.Exercise;
 import ui.workout.workoutsession.WorkoutSessionUi;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class WorkoutSession {
     private String filePath = null;
-    private boolean endWorkoutSession = false;
-    public ArrayList<Exercise> exercise;
+    private boolean endWorkoutSession[];
+    public ArrayList<Exercise> exerciseList;
+
+    private transient CommandLib cl;
+    private final WorkoutSessionParser parser = new WorkoutSessionParser();
+    private final Storage storage;
+
+    private static Logger logger = Logger.getLogger("java.diet.workoutsession");
 
     public WorkoutSession(String filePath) {
         this.filePath = filePath;
-        this.exercise = new ArrayList<>();
+        this.exerciseList = new ArrayList<>();
+        this.storage = new Storage();
+        this.endWorkoutSession = new boolean[1];
     }
 
     private void setEndWorkoutSessionF() {
 
-        this.endWorkoutSession = false;
-    }
-
-    private void setEndWorkoutSessionT() {
-
-        this.endWorkoutSession = true;
+        this.endWorkoutSession[0] = false;
     }
 
     /**
@@ -35,63 +41,28 @@ public class WorkoutSession {
     public void workoutSessionStart() {
 
         setEndWorkoutSessionF();
+        logger.log(Level.INFO, "starting workout session");
+        this.cl = new CommandLib();
+        cl.initWorkoutSessionCL();
+        Scanner in = new Scanner(System.in);
         try {
-            Storage.readFileContents(filePath, exercise);
+            storage.readFileContents(filePath, exerciseList);
         } catch (FileNotFoundException e) {
             WorkoutSessionUi.printError();
         }
-        while (!endWorkoutSession) {
+        while (!endWorkoutSession[0]) {
             try {
-                workoutSessionProcessCommand();
-            } catch (IOException e) {
-                WorkoutSessionUi.printError();
+                workoutSessionProcessCommand(in.nextLine().trim());
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void workoutSessionProcessCommand() throws IOException, NullPointerException {
-
-        Scanner in = new Scanner(System.in);
-        String[] input = WorkoutSessionParser.workoutSessionParser(in.nextLine().trim());
-
-        switch (input[0].toLowerCase()) {
-
-        case "add":
-            try {
-                exercise.add(WorkoutSessionParser.addParser(input));
-                Storage.writeToStorage(filePath, exercise);
-            } catch (NumberFormatException e) {
-                WorkoutSessionUi.addFormatError();
-            }
-            break;
-        case "list":
-            Storage.readFileContents(filePath, exercise);
-            printList();
-            Storage.writeToStorage(filePath, exercise);
-
-            break;
-        case "delete":
-            exercise.remove(WorkoutSessionParser.deleteParser(input));
-            Storage.writeToStorage(filePath, exercise);
-            break;
-        case "bye":
-            setEndWorkoutSessionT();
-            Storage.writeToStorage(filePath, exercise);
-            break;
-        default:
-            WorkoutSessionUi.inputNotRecognisedError();
-        }
-    }
-
-    private void printList() {
-        if (exercise.size() <= 0) {
-            WorkoutSessionUi.emptyListError();
-        }
-        for (int i = 0; i < exercise.size(); i++) {
-            System.out.println((i + 1) + ": " + exercise.get(i).toString());
-        }
+    private void workoutSessionProcessCommand(String input) throws NullPointerException {
+        String[] commParts = WorkoutSessionParser.workoutSessionParser(input.trim());
+        Command command = cl.get(commParts[0]);
+        command.execute(commParts, exerciseList, filePath, storage, endWorkoutSession);
     }
 
 }
