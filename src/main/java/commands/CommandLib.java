@@ -17,6 +17,11 @@ import commands.workout.workoutmanager.HelpWS;
 import commands.workout.workoutmanager.ListWS;
 import commands.workout.workoutmanager.NewWS;
 import commands.workout.workoutmanager.WrongWS;
+import commands.workout.workoutsession.WorkoutSessionAdd;
+import commands.workout.workoutsession.WorkoutSessionEnd;
+import commands.workout.workoutsession.WorkoutSessionDelete;
+import commands.workout.workoutsession.WorkoutSessionList;
+import commands.workout.workoutsession.WorkoutSessionWrong;
 
 import java.util.Hashtable;
 
@@ -37,6 +42,14 @@ public class CommandLib {
         this.library.put("clear", new ClearWS());
         this.library.put("help", new HelpWS());
         this.library.put("wrong", new WrongWS());
+    }
+
+    public void initWorkoutSessionCL() {
+        this.library.put("add", new WorkoutSessionAdd());
+        this.library.put("delete", new WorkoutSessionDelete());
+        this.library.put("list", new WorkoutSessionList());
+        this.library.put("end", new WorkoutSessionEnd());
+        this.library.put("wrong", new WorkoutSessionWrong());
     }
 
     public void initDietManagerCL() {
@@ -61,4 +74,6 @@ public class CommandLib {
             return library.get("wrong");
         }
     }
+
+
 }
