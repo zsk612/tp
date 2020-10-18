@@ -16,4 +16,9 @@ public class CommonUi {
     public void showToUser(String result) {
         System.out.println(String.format(MESSAGE_FORMAT_GENERAL, result));
     }
+
+    public static void printHelpFormater(String commandName, String commandFormat, String description) {
+        System.out.format("%-8s - %s\n", commandName, commandFormat);
+        System.out.format("%-8s %s\n", "", description);
+    }
 }

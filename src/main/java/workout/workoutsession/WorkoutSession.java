@@ -4,6 +4,7 @@ import storage.workout.Storage;
 import workout.workoutsession.exercise.Exercise;
 import ui.workout.workoutsession.WorkoutSessionUi;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -34,7 +35,11 @@ public class WorkoutSession {
     public void workoutSessionStart() {
 
         setEndWorkoutSessionF();
-        exercise.clear();
+        try {
+            Storage.readFileContents(filePath, exercise);
+        } catch (FileNotFoundException e) {
+            WorkoutSessionUi.printError();
+        }
         while (!endWorkoutSession) {
             try {
                 workoutSessionProcessCommand();

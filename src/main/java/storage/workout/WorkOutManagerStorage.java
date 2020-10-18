@@ -50,10 +50,10 @@ public class WorkOutManagerStorage {
         }
     }
 
-    public static String add() {
+    public static String add(ArrayList<String> tags) {
         String newFilePath = Constant.WORKOUTSESSIONFOLDER + recordCount + ".json";
         int code = createfile(newFilePath);
-        PastWorkoutSessionRecord newRecord = new PastWorkoutSessionRecord(newFilePath);
+        PastWorkoutSessionRecord newRecord = new PastWorkoutSessionRecord(newFilePath, tags);
         pastFiles.add(newRecord);
         recordCount = pastFiles.size();
         writePastRecords();
@@ -70,10 +70,30 @@ public class WorkOutManagerStorage {
             System.out.println("The index is out of bound!");
             return;
         }
+        File myFile = new File(deletedRecord.getFilePath());
+        myFile.delete();
         recordCount = pastFiles.size();
         // todo: actually delete the file in the folder based on
         // the information in the deletedRecord
         writePastRecords();
+    }
+
+    public static String edit(int index) {
+        PastWorkoutSessionRecord editedRecord;
+        editedRecord = pastFiles.get(index - 1);
+        PastWorkoutSessionRecord newRecord = editedRecord.edit();
+        pastFiles.set(index - 1, newRecord);
+        recordCount = pastFiles.size();
+        // todo: actually delete the file in the folder based on
+        // the information in the deletedRecord
+        writePastRecords();
+        return newRecord.getFilePath();
+    }
+
+    public static void clear() {
+        while (pastFiles.size() != 0) {
+            delete(1);
+        }
     }
 
     private static void readPastRecords() {
