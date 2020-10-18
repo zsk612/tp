@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class WorkoutSession {
     private String filePath = null;
-    private boolean endWorkoutSession[];
+    private boolean[] endWorkoutSession;
     public ArrayList<Exercise> exerciseList;
 
     private transient CommandLib cl;

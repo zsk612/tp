@@ -26,7 +26,8 @@ public abstract class Command {
         return;
     }
 
-    public void execute(String[] input, ArrayList<Exercise> exercise, String filePath, storage.workout.Storage storage, boolean[] endWorkoutSession) {
+    public void execute(String[] input, ArrayList<Exercise> exercise,
+                        String filePath, storage.workout.Storage storage, boolean[] endWorkoutSession) {
         return;
     }
 

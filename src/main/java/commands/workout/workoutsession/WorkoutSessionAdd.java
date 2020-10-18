@@ -12,7 +12,8 @@ import java.util.ArrayList;
 public class WorkoutSessionAdd extends Command {
 
     @Override
-    public void execute(String[] input, ArrayList<Exercise> exercise, String filePath, Storage storage, boolean[] endWorkoutSession) {
+    public void execute(String[] input, ArrayList<Exercise> exercise,
+                        String filePath, Storage storage, boolean[] endWorkoutSession) {
         try {
             exercise.add(WorkoutSessionParser.addParser(input));
             storage.writeToStorage(filePath, exercise);

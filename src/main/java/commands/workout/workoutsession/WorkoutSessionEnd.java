@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class WorkoutSessionEnd extends Command {
-    public void execute(String[] input, ArrayList<Exercise> exerciseList, String filePath, Storage storage, boolean[] endWorkoutSession) {
+    public void execute(String[] input, ArrayList<Exercise> exerciseList,
+                        String filePath, Storage storage, boolean[] endWorkoutSession) {
         setEndWorkoutSessionT(endWorkoutSession);
         try {
             storage.writeToStorage(filePath, exerciseList);
