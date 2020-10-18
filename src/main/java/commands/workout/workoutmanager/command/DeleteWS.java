@@ -1,12 +1,13 @@
-package workout.workoutmanager.command;
+package commands.workout.workoutmanager.command;
 
+import commands.Command;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 
 public class DeleteWS extends Command {
 
     @Override
-    public void execute(String[] args) {
+    public ExecutionResult execute(String[] args) {
         logger.info("entering delete command");
         int index = -1;
         try {
@@ -14,12 +15,19 @@ public class DeleteWS extends Command {
         } catch (NumberFormatException e) {
             logger.warning("Number format exception caught");
             System.out.println("Input is not a number");
-        } catch (NullPointerException e) {
-            logger.warning("Null pointer exception caught");
+            return ExecutionResult.FAILED;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            logger.warning("ArrayIndexOutOfBoundsException caught");
             System.out.println("Insufficient arguments are given.");
+            return ExecutionResult.FAILED;
         }
         WorkOutManagerStorage.delete(index);
         logger.info("deleted successfully");
+        return ExecutionResult.OK;
+    }
+
+    @Override
+    public void printResponse() {
         WorkoutManagerUi.printDeleteResponse();
     }
 }

@@ -26,6 +26,10 @@ public class WorkoutManagerUi {
         System.out.println("You have deleted that record!");
     }
 
+    public static void printClearResponse() {
+        System.out.println("You have cleared all records!");
+    }
+
     public static void printStartNewSessionResponse() {
         System.out.println("You have started a new workout session!");
     }

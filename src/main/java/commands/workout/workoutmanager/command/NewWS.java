@@ -1,19 +1,26 @@
-package workout.workoutmanager.command;
+package commands.workout.workoutmanager.command;
 
+import commands.Command;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 import workout.workoutsession.WorkoutSession;
 
+import java.util.ArrayList;
+
+import static commands.workout.workoutmanager.command.ExecutionResult.OK;
+import static workout.workoutmanager.WorkoutManagerParser.parseTags;
+
 public class NewWS extends Command {
 
     @Override
-    public void execute(String[] args) {
+    public ExecutionResult execute(String[] args) {
         /**
          * When starting a new workout session, a new file is created first.
          * The file path is passed into workoutSession constructor to instantiate
          * a new workoutSession instance.
          */
-        String filePath = WorkOutManagerStorage.add();
+        ArrayList<String> tags = parseTags(args);
+        String filePath = WorkOutManagerStorage.add(tags);
         WorkoutSession ws = new WorkoutSession(filePath);
         logger.info("new workout session created");
 
@@ -22,7 +29,11 @@ public class NewWS extends Command {
         ws.workoutSessionStart();
 
         logger.info("ended workout session");
-        WorkoutManagerUi.printFinishNewSessionResponse();
+        return OK;
+    }
 
+    @Override
+    public void printResponse() {
+        WorkoutManagerUi.printFinishNewSessionResponse();
     }
 }

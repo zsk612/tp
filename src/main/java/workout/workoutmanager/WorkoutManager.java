@@ -1,8 +1,11 @@
 package workout.workoutmanager;
 
+import commands.CommandLib;
+import commands.workout.workoutmanager.command.ExecutionResult;
+import logger.SchwarzeneggerLogger;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
-import workout.workoutmanager.command.Command;
+import commands.Command;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -11,14 +14,18 @@ import java.util.logging.Logger;
 
 public class WorkoutManager {
 
-    private static final Logger logger = Logger.getLogger("java.workout.workoutmanager");
+    private Logger logger;
     private final CommandLib cl;
 
     public WorkoutManager() {
         WorkOutManagerStorage.init();
-        logger.log(Level.INFO, "initialisd workout manager");
         cl = new CommandLib();
         cl.initWorkoutManagerCL();
+    }
+
+    public WorkoutManager(SchwarzeneggerLogger schwarzeneggerLogger) {
+        this();
+        this.logger = schwarzeneggerLogger.getLogger();
         logger.log(Level.INFO, "initialisd workout manager command library");
     }
 
@@ -44,12 +51,10 @@ public class WorkoutManager {
     }
 
     private void processCommand(String[] commands) throws ExitException {
-        try {
-            Command command = cl.get(commands[0]);
-            command.execute(Arrays.copyOfRange(commands, 1, commands.length));
-        } catch (NullPointerException e) {
-            logger.log(Level.WARNING, "command not recognised");
-            WorkoutManagerUi.commandNotFoundResponse();
+        Command command = cl.get(commands[0]);
+        ExecutionResult result = command.execute(Arrays.copyOfRange(commands, 1, commands.length));
+        if (result == ExecutionResult.OK) {
+            command.printResponse();
         }
     }
 }

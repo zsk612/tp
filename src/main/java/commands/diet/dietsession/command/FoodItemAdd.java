@@ -3,11 +3,12 @@ package commands.diet.dietsession.command;
 import diet.dietsession.Food;
 import diet.dietsession.DietSessionParser;
 import storage.diet.Storage;
+import commands.Command;
 
 
 import java.util.ArrayList;
 
-public class FoodItemAdd implements Command {
+public class FoodItemAdd extends Command {
 
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {

@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import diet.dietsession.Food;
-import commands.diet.dietsession.command.Command;
+import commands.Command;
 import commands.diet.dietsession.command.FoodItemAdd;
 import commands.diet.dietsession.command.FoodItemDelete;
 import org.junit.jupiter.api.BeforeAll;

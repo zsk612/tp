@@ -1,7 +1,7 @@
 package diet.dietsession;
 
-import commands.diet.dietsession.CommandLib;
-import commands.diet.dietsession.command.Command;
+import commands.CommandLib;
+import commands.Command;
 import storage.diet.Storage;
 import ui.diet.dietsession.DietSessionUi;
 
