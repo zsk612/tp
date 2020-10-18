@@ -1,9 +1,9 @@
-package commands.workout.workoutmanager.command;
+package commands.workout.workoutmanager;
 
 import commands.Command;
 import storage.workout.WorkOutManagerStorage;
 
-import static commands.workout.workoutmanager.command.ExecutionResult.OK;
+import static commands.workout.workoutmanager.ExecutionResult.OK;
 
 public class ListWS extends Command {
     @Override

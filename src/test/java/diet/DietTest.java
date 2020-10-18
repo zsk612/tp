@@ -11,8 +11,8 @@ import java.time.format.DateTimeParseException;
 
 import diet.dietsession.Food;
 import commands.Command;
-import commands.diet.dietsession.command.FoodItemAdd;
-import commands.diet.dietsession.command.FoodItemDelete;
+import commands.diet.dietsession.FoodItemAdd;
+import commands.diet.dietsession.FoodItemDelete;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import storage.diet.Storage;

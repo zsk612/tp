@@ -1,11 +1,11 @@
-package commands.workout.workoutmanager.command;
+package commands.workout.workoutmanager;
 
 import commands.Command;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 
 import java.util.logging.Level;
 
-import static commands.workout.workoutmanager.command.ExecutionResult.MISSING;
+import static commands.workout.workoutmanager.ExecutionResult.MISSING;
 
 public class WrongWS extends Command {
     @Override

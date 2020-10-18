@@ -1,4 +1,4 @@
-package commands.workout.workoutmanager.command;
+package commands.workout.workoutmanager;
 
 import commands.Command;
 import storage.workout.WorkOutManagerStorage;
@@ -7,7 +7,7 @@ import workout.workoutsession.WorkoutSession;
 
 import java.util.ArrayList;
 
-import static commands.workout.workoutmanager.command.ExecutionResult.OK;
+import static commands.workout.workoutmanager.ExecutionResult.OK;
 import static workout.workoutmanager.WorkoutManagerParser.parseTags;
 
 public class NewWS extends Command {

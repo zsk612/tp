@@ -1,13 +1,13 @@
 package commands;
 
-import commands.workout.workoutmanager.command.ExecutionResult;
+import commands.workout.workoutmanager.ExecutionResult;
 import diet.dietsession.Food;
 import storage.diet.Storage;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import static commands.workout.workoutmanager.command.ExecutionResult.SKIPPED;
+import static commands.workout.workoutmanager.ExecutionResult.SKIPPED;
 
 public abstract class Command {
 

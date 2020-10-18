@@ -1,22 +1,22 @@
 package commands;
 
-import commands.diet.dietmanager.command.DietSessionCreate;
-import commands.diet.dietmanager.command.DietSessionDelete;
-import commands.diet.dietmanager.command.DietSessionList;
-import commands.diet.dietmanager.command.DietSessionLoad;
-import commands.diet.dietmanager.command.DietSessionWrong;
-import commands.diet.dietsession.command.FoodItemAdd;
-import commands.diet.dietsession.command.FoodItemDelete;
-import commands.diet.dietsession.command.FoodItemShow;
-import commands.diet.dietsession.command.FoodItemWrong;
-import commands.workout.workoutmanager.command.ByeWS;
-import commands.workout.workoutmanager.command.ClearWS;
-import commands.workout.workoutmanager.command.DeleteWS;
-import commands.workout.workoutmanager.command.EditWS;
-import commands.workout.workoutmanager.command.HelpWS;
-import commands.workout.workoutmanager.command.ListWS;
-import commands.workout.workoutmanager.command.NewWS;
-import commands.workout.workoutmanager.command.WrongWS;
+import commands.diet.dietmanager.DietSessionCreate;
+import commands.diet.dietmanager.DietSessionDelete;
+import commands.diet.dietmanager.DietSessionList;
+import commands.diet.dietmanager.DietSessionLoad;
+import commands.diet.dietmanager.DietSessionWrong;
+import commands.diet.dietsession.FoodItemAdd;
+import commands.diet.dietsession.FoodItemDelete;
+import commands.diet.dietsession.FoodItemShow;
+import commands.diet.dietsession.FoodItemWrong;
+import commands.workout.workoutmanager.ByeWS;
+import commands.workout.workoutmanager.ClearWS;
+import commands.workout.workoutmanager.DeleteWS;
+import commands.workout.workoutmanager.EditWS;
+import commands.workout.workoutmanager.HelpWS;
+import commands.workout.workoutmanager.ListWS;
+import commands.workout.workoutmanager.NewWS;
+import commands.workout.workoutmanager.WrongWS;
 
 import java.util.Hashtable;
 

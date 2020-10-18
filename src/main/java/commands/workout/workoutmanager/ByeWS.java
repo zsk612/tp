@@ -1,4 +1,4 @@
-package commands.workout.workoutmanager.command;
+package commands.workout.workoutmanager;
 
 import commands.Command;
 import workout.workoutmanager.ExitException;

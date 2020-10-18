@@ -1,4 +1,4 @@
-package commands.diet.dietmanager.command;
+package commands.diet.dietmanager;
 
 import storage.diet.Storage;
 import commands.Command;
