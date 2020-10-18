@@ -1,7 +1,7 @@
 package diet.dietmanager;
 
-import commands.diet.dietmanager.CommandLib;
-import commands.diet.dietmanager.command.Command;
+import commands.CommandLib;
+import commands.Command;
 import storage.diet.Storage;
 import ui.diet.dietmanager.DietManagerUi;
 

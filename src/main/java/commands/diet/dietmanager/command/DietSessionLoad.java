@@ -2,13 +2,14 @@ package commands.diet.dietmanager.command;
 
 import diet.dietsession.DietSession;
 import storage.diet.Storage;
+import commands.Command;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 
-public class DietSessionLoad implements Command {
+public class DietSessionLoad extends Command {
     static final String FILEPATH = "saves/diet/";
 
     @Override

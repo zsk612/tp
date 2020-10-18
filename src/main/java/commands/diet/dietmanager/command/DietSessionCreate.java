@@ -2,12 +2,12 @@ package commands.diet.dietmanager.command;
 
 import ui.diet.dietmanager.DietManagerUi;
 import diet.dietsession.DietSession;
+import commands.Command;
 import storage.diet.Storage;
 
 import java.io.IOException;
 
-public class DietSessionCreate implements Command {
-
+public class DietSessionCreate extends Command {
 
     @Override
     public void execute(String input, Storage storage) {

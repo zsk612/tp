@@ -1,10 +1,11 @@
 package workout.workoutmanager;
 
+import commands.CommandLib;
 import org.junit.jupiter.api.Test;
-import workout.workoutmanager.command.ByeWS;
-import workout.workoutmanager.command.DeleteWS;
-import workout.workoutmanager.command.ListWS;
-import workout.workoutmanager.command.NewWS;
+import commands.workout.workoutmanager.command.ByeWS;
+import commands.workout.workoutmanager.command.DeleteWS;
+import commands.workout.workoutmanager.command.ListWS;
+import commands.workout.workoutmanager.command.NewWS;
 
 class CommandLibTest {
 

@@ -1,10 +1,11 @@
 package commands.diet.dietmanager.command;
 
 import storage.diet.Storage;
+import commands.Command;
 
 import java.io.File;
 
-public class DietSessionDelete implements Command {
+public class DietSessionDelete extends Command {
     static final String FILEPATH = "saves/diet/";
 
     @Override
