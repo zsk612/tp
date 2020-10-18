@@ -1,4 +1,4 @@
-package commands.diet.dietmanager.command;
+package commands.diet.dietmanager;
 
 import ui.diet.dietmanager.DietManagerUi;
 import diet.dietsession.DietSession;

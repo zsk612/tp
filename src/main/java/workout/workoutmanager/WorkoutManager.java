@@ -1,7 +1,7 @@
 package workout.workoutmanager;
 
 import commands.CommandLib;
-import commands.workout.workoutmanager.command.ExecutionResult;
+import commands.workout.workoutmanager.ExecutionResult;
 import logger.SchwarzeneggerLogger;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;

@@ -1,7 +1,5 @@
 package exceptions;
 
-import exceptions.SchwarzeneggerException;
-
 /**
  * A class that deals with handling exceptions.
  */

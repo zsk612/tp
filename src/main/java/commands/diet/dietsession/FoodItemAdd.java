@@ -1,4 +1,4 @@
-package commands.diet.dietsession.command;
+package commands.diet.dietsession;
 
 import diet.dietsession.Food;
 import diet.dietsession.DietSessionParser;
