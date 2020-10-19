@@ -4,9 +4,10 @@ import storage.diet.Storage;
 import commands.Command;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
-public class DietSessionDelete extends Command {
+public class DietSessionClear extends Command {
     static final String FILEPATH = "saves/diet/";
 
     @Override
@@ -14,12 +15,8 @@ public class DietSessionDelete extends Command {
         File folder = new File(FILEPATH);
         File[] listOfFiles = folder.listFiles();
         try {
-            assert !input.isEmpty();
-            int index = Integer.parseInt(input);
-            assert listOfFiles != null;
-            String fileName = listOfFiles[Integer.parseInt(input) - 1].getName();
-            System.out.println("Oh no! You have deleted " + fileName);
-            listOfFiles[Integer.parseInt(input) - 1].delete();
+            System.out.println("Oh no! You have cleared all the diet sessions!");
+            Arrays.fill(listOfFiles, null);
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
             System.out.println("Sorry! It seems like you've entered an invalid number or input!");
         }

@@ -11,12 +11,11 @@ import workout.workoutmanager.WorkoutManager;
  */
 public class Duke {
     private final DietManagerUi dietManagerUI;
-    private final DietManager dietManager;
     private SchwarzeneggerLogger schwarzeneggerLogger;
 
     public Duke() {
         dietManagerUI = new DietManagerUi();
-        dietManager = new DietManager();
+
         schwarzeneggerLogger = new SchwarzeneggerLogger();
     }
 
@@ -38,6 +37,7 @@ public class Duke {
         String response = dietManagerUI.getInput();
         while (!response.equals("exit")) {
             if (response.equals("diet")) {
+                DietManager dietManager = new DietManager(schwarzeneggerLogger);
                 dietManager.start();
             }
 

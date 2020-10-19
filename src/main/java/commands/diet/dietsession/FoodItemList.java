@@ -5,11 +5,12 @@ import storage.diet.Storage;
 import commands.Command;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
-public class FoodItemShow extends Command {
+public class FoodItemList extends Command {
 
     @Override
-    public void execute(String input, ArrayList<Food> foodList, Storage storage) {
+    public void execute(String input, ArrayList<Food> foodList, Storage storage, Logger logger) {
         try {
             System.out.println("Here is your food list: ");
             for (int i = 0; i < foodList.size(); i++) {

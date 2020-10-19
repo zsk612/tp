@@ -2,6 +2,7 @@ package diet.dietsession;
 
 import commands.CommandLib;
 import commands.Command;
+import logger.SchwarzeneggerLogger;
 import storage.diet.Storage;
 import ui.diet.dietsession.DietSessionUi;
 
@@ -23,18 +24,18 @@ public class DietSession {
     private final Storage storage;
     private final DietSessionParser parser = new DietSessionParser();
     public boolean endDietSession = false;
+    private final Logger logger;
 
-    private static Logger logger = Logger.getLogger("java.diet.dietsession");
-
-    public DietSession(String typeInput, String dateInput) {
+    public DietSession(String typeInput, String dateInput, Logger logger) {
         this.cl = new CommandLib();
         cl.initDietSessionCL();
         this.dateInput = dateInput;
         this.date = parser.parseDate(dateInput);
         this.typeInput = typeInput;
         this.foodList = new ArrayList<>();
-        storage = new Storage();
+        storage = new Storage(logger);
         dietSessionUI = new DietSessionUi();
+        this.logger = logger;
     }
 
     public String getDateInput() {
@@ -86,6 +87,6 @@ public class DietSession {
     public void processCommand(String input) throws NullPointerException {
         String[] commParts = parser.parse(input);
         Command command = cl.get(commParts[0]);
-        command.execute(commParts[1], foodList, storage);
+        command.execute(commParts[1], foodList, storage, logger);
     }
 }

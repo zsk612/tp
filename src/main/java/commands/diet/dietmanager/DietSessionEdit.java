@@ -8,12 +8,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class DietSessionLoad extends Command {
+public class DietSessionEdit extends Command {
     static final String FILEPATH = "saves/diet/";
 
     @Override
-    public void execute(String input, Storage storage) {
+    public void execute(String input, Storage storage, Logger logger) {
         File folder = new File(FILEPATH);
         File[] listOfFiles = folder.listFiles();
 

@@ -6,12 +6,13 @@ import commands.Command;
 import java.io.File;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DietSessionList extends Command {
     static final String FILEPATH = "saves/diet/";
 
     @Override
-    public void execute(String input, Storage storage) {
+    public void execute(String input, Storage storage, Logger logger) {
         File folder = new File(FILEPATH);
         File[] listOfFiles = folder.listFiles();
 

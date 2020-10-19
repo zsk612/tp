@@ -18,11 +18,11 @@ public abstract class Command {
         return SKIPPED;
     }
 
-    public void execute(String input, Storage storage) {
+    public void execute(String input, Storage storage, Logger logger) {
         return;
     }
 
-    public void execute(String input, ArrayList<Food> foodList, Storage storage) {
+    public void execute(String input, ArrayList<Food> foodList, Storage storage, Logger logger) {
         return;
     }
 

@@ -26,8 +26,12 @@ public class Storage {
     private static final String FILEPATH = "saves/diet/";
     private static Gson gson;
     private static File file = null;
-    private static Logger logger = Logger.getLogger("java.storage.diet");
+    private Logger logger;
 
+    public Storage(Logger logger) {
+        this.logger = logger;
+        gson = new GsonBuilder().setPrettyPrinting().create();
+    }
 
     /**
      * Initialise the database with locally stored data.

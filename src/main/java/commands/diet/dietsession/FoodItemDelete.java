@@ -5,11 +5,12 @@ import storage.diet.Storage;
 import commands.Command;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class FoodItemDelete extends Command {
 
     @Override
-    public void execute(String input, ArrayList<Food> foodList, Storage storage) {
+    public void execute(String input, ArrayList<Food> foodList, Storage storage, Logger logger) {
         try {
             assert !input.isEmpty();
             int index = Integer.parseInt(input);

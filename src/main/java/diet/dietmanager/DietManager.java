@@ -2,8 +2,11 @@ package diet.dietmanager;
 
 import commands.CommandLib;
 import commands.Command;
+import logger.SchwarzeneggerLogger;
 import storage.diet.Storage;
 import ui.diet.dietmanager.DietManagerUi;
+
+import java.util.logging.Logger;
 
 
 public class DietManager {
@@ -12,9 +15,11 @@ public class DietManager {
     private final DietManagerParser parser;
     private final DietManagerUi dietManagerUI;
     private final Storage storage;
+    private final Logger logger;
 
-    public DietManager() {
-        storage = new Storage();
+    public DietManager(SchwarzeneggerLogger schwarzeneggerLogger) {
+        logger = schwarzeneggerLogger.getLogger();
+        storage = new Storage(logger);
         cl = new CommandLib();
         cl.initDietManagerCL();
         parser = new DietManagerParser();
@@ -41,6 +46,6 @@ public class DietManager {
         assert !commParts[0].isEmpty();
         Command command = cl.get(commParts[0]);
         assert !commParts[1].isEmpty();
-        command.execute(commParts[1], storage);
+        command.execute(commParts[1], storage, logger);
     }
 }
