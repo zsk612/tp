@@ -16,7 +16,8 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
@@ -26,8 +27,6 @@ public class Storage {
     private static final String FILEPATH = "saves/diet/";
     private static Gson gson;
     private static File file = null;
-    private static Logger logger = Logger.getLogger("java.storage.diet");
-
 
     /**
      * Initialise the database with locally stored data.

@@ -1,8 +1,11 @@
 package commands.workout.workoutmanager;
 
 import commands.Command;
-import workout.workoutmanager.ExitException;
+import commands.ExecutionResult;
 import ui.workout.workoutmanager.WorkoutManagerUi;
+import workout.workoutmanager.ExitException;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 public class ByeWS extends Command {
 

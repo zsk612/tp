@@ -1,29 +1,27 @@
 package commands.profile;
 
-import profile.Profile;
 import exceptions.profile.RedundantParamException;
+import profile.Profile;
 import storage.profile.Storage;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
+import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.COMMAND_WORD_EXIT;
 import static profile.Constants.MESSAGE_EXIT_PROFILE;
 
 /**
  * A representation of the command for exiting Profile session.
  */
-public class ExitCommand extends Command {
+public class EndProfile extends Command {
 
     /**
      * Constructs ExitCommand object inheriting abstract class Command.
      *
      * @param commandArgs Command arguments from user's input.
-     * @param logger Logger to record of information during program execution.
      * @throws RedundantParamException If parameters are provided to Exit Command.
      */
-    public ExitCommand(String commandArgs, Logger logger) throws RedundantParamException {
-        super(logger);
+    public EndProfile(String commandArgs) throws RedundantParamException {
         if (!commandArgs.isEmpty()) {
             throw new RedundantParamException(COMMAND_WORD_EXIT);
         }
@@ -49,6 +47,6 @@ public class ExitCommand extends Command {
      * @return Whether the command is an object of type ExitCommand.
      */
     public static boolean isExit(Command command) {
-        return command instanceof ExitCommand;
+        return command instanceof EndProfile;
     }
 }
