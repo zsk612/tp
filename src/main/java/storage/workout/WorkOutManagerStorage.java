@@ -15,6 +15,11 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import static ui.workout.workoutmanager.WorkoutManagerUi.printTabeleHeader;
+import static workout.workoutmanager.WorkoutManagerParser.parseSearchConditions;
 
 public class WorkOutManagerStorage {
 
@@ -43,8 +48,9 @@ public class WorkOutManagerStorage {
     public static void list(String[] args) {
         int index = 1;
         System.out.println("the length of list is " + pastFiles.size());
+        printTabeleHeader();
         for (PastWorkoutSessionRecord wsr : pastFiles) {
-            System.out.print(index + ". ");
+            System.out.printf("%-8s", index);
             System.out.println(wsr);
             index += 1;
         }
@@ -73,8 +79,6 @@ public class WorkOutManagerStorage {
         File myFile = new File(deletedRecord.getFilePath());
         myFile.delete();
         recordCount = pastFiles.size();
-        // todo: actually delete the file in the folder based on
-        // the information in the deletedRecord
         writePastRecords();
     }
 
@@ -84,10 +88,24 @@ public class WorkOutManagerStorage {
         PastWorkoutSessionRecord newRecord = editedRecord.edit();
         pastFiles.set(index - 1, newRecord);
         recordCount = pastFiles.size();
-        // todo: actually delete the file in the folder based on
-        // the information in the deletedRecord
         writePastRecords();
         return newRecord.getFilePath();
+    }
+
+    public static void search(String[] args) {
+        ArrayList<Predicate<PastWorkoutSessionRecord>> conditions = parseSearchConditions(args);
+
+        List<PastWorkoutSessionRecord> result = pastFiles.stream()
+                .filter(conditions.stream().reduce(x -> true, Predicate::and))
+                .collect(Collectors.toList());
+
+        System.out.println(result.size() + " records found.");
+        printTabeleHeader();
+        for (PastWorkoutSessionRecord wsr : result) {
+            int index = pastFiles.indexOf(wsr) + 1;
+            System.out.printf("%-8s", index);
+            System.out.println(wsr);
+        }
     }
 
     public static void clear() {
@@ -113,7 +131,7 @@ public class WorkOutManagerStorage {
 
     private static void writePastRecords() {
         File file = new File(Constant.WORKOUTSESSIONHISTORY);
-        FileWriter writer = null;
+        FileWriter writer;
         try {
             writer = new FileWriter(file.getPath());
             gson.toJson(pastFiles, writer);
