@@ -26,9 +26,10 @@ public class DietManagerUi {
 
     /**
      * Extracts out date and time by looking for date strings in YYYY-MM-DD format.
+     *
      * @param input date string
      * @return date in MMM dd yyyy if the user inputs date in YYYY-MM-DD format;
-     *     else returns original string
+     *      else returns original string
      * @throws DateTimeParseException if the date string input is not a valid date
      */
     public String extractDate(String input) throws DateTimeParseException, IllegalStateException {
@@ -42,6 +43,8 @@ public class DietManagerUi {
 
         } catch (IndexOutOfBoundsException e) {
             System.out.println("I do not understand your date input!");
+        } catch (NullPointerException e) {
+            System.out.println("It looks like there is no date input");
         }
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-dd-yyyy");
@@ -54,6 +57,8 @@ public class DietManagerUi {
             return input.split("/t")[1].trim();
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Please specify your diet session tag, i.e. breakfast, lunch, dinner");
+        } catch (NullPointerException e) {
+            System.out.println("It looks like there's no input after /t");
         }
         System.out.println("Session is tagged as unspecified.");
         return "unspecified";

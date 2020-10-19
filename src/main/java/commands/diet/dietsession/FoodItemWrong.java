@@ -1,8 +1,8 @@
 package commands.diet.dietsession;
 
+import commands.Command;
 import diet.dietsession.Food;
 import storage.diet.Storage;
-import commands.Command;
 
 import java.util.ArrayList;
 

@@ -1,12 +1,14 @@
 package commands.diet.dietmanager;
 
-import ui.diet.dietmanager.DietManagerUi;
-import diet.dietsession.DietSession;
 import commands.Command;
+import diet.dietsession.DietSession;
 import storage.diet.Storage;
+import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.IOException;
 import java.util.logging.Level;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 public class DietSessionCreate extends Command {
 
