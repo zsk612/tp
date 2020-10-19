@@ -1,33 +1,27 @@
 package workout.workoutmanager;
 
+import commands.Command;
 import commands.CommandLib;
-import commands.workout.workoutmanager.ExecutionResult;
-import logger.SchwarzeneggerLogger;
+import commands.ExecutionResult;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
-import commands.Command;
 
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 
 public class WorkoutManager {
 
-    private Logger logger;
     private final CommandLib cl;
 
     public WorkoutManager() {
         WorkOutManagerStorage.init();
         cl = new CommandLib();
         cl.initWorkoutManagerCL();
-    }
-
-    public WorkoutManager(SchwarzeneggerLogger schwarzeneggerLogger) {
-        this();
-        this.logger = schwarzeneggerLogger.getLogger();
-        logger.log(Level.INFO, "initialisd workout manager command library");
+        logger.log(Level.INFO, "initialised workout manager command library");
     }
 
     public void start() {

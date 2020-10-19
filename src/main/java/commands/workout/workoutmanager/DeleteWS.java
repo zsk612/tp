@@ -1,8 +1,11 @@
 package commands.workout.workoutmanager;
 
 import commands.Command;
+import commands.ExecutionResult;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 public class DeleteWS extends Command {
 

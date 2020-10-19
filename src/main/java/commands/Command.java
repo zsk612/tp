@@ -1,18 +1,14 @@
 package commands;
 
-import commands.workout.workoutmanager.ExecutionResult;
 import diet.dietsession.Food;
 import storage.diet.Storage;
 import workout.workoutsession.exercise.Exercise;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
-import static commands.workout.workoutmanager.ExecutionResult.SKIPPED;
+import static commands.ExecutionResult.SKIPPED;
 
 public abstract class Command {
-
-    protected static final Logger logger = Logger.getLogger("java.workout.command");
 
     public ExecutionResult execute(String[] args) {
         return SKIPPED;

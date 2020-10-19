@@ -3,14 +3,15 @@ package workout.workoutsession;
 import commands.Command;
 import commands.CommandLib;
 import storage.workout.Storage;
-import workout.workoutsession.exercise.Exercise;
 import ui.workout.workoutsession.WorkoutSessionUi;
+import workout.workoutsession.exercise.Exercise;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 public class WorkoutSession {
     private String filePath = null;
@@ -20,8 +21,6 @@ public class WorkoutSession {
     private transient CommandLib cl;
     private final WorkoutSessionParser parser = new WorkoutSessionParser();
     private final Storage storage;
-
-    private static Logger logger = Logger.getLogger("java.diet.workoutsession");
 
     public WorkoutSession(String filePath) {
         this.filePath = filePath;

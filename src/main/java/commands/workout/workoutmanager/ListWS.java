@@ -1,9 +1,11 @@
 package commands.workout.workoutmanager;
 
 import commands.Command;
+import commands.ExecutionResult;
 import storage.workout.WorkOutManagerStorage;
 
-import static commands.workout.workoutmanager.ExecutionResult.OK;
+import static commands.ExecutionResult.OK;
+import static logger.SchwarzeneggerLogger.logger;
 
 public class ListWS extends Command {
     @Override
