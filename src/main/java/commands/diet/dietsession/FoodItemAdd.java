@@ -4,6 +4,7 @@ import diet.dietsession.Food;
 import diet.dietsession.DietSessionParser;
 import storage.diet.Storage;
 import commands.Command;
+import static logger.SchwarzeneggerLogger.logger;
 
 
 import java.util.ArrayList;
