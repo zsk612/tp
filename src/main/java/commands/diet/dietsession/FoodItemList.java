@@ -6,7 +6,7 @@ import commands.Command;
 
 import java.util.ArrayList;
 
-public class FoodItemShow extends Command {
+public class FoodItemList extends Command {
 
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
