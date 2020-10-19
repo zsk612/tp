@@ -16,6 +16,7 @@ import commands.workout.workoutmanager.EditWS;
 import commands.workout.workoutmanager.HelpWS;
 import commands.workout.workoutmanager.ListWS;
 import commands.workout.workoutmanager.NewWS;
+import commands.workout.workoutmanager.SearchWS;
 import commands.workout.workoutmanager.WrongWS;
 import commands.workout.workoutsession.WorkoutSessionAdd;
 import commands.workout.workoutsession.WorkoutSessionEnd;
@@ -42,6 +43,7 @@ public class CommandLib {
         library.put("clear", new ClearWS());
         library.put("help", new HelpWS());
         library.put("wrong", new WrongWS());
+        library.put("search", new SearchWS());
     }
 
     public void initWorkoutSessionCL() {
@@ -74,4 +76,6 @@ public class CommandLib {
             return library.get("wrong");
         }
     }
+
+
 }
