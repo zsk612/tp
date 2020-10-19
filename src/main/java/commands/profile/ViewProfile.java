@@ -1,12 +1,12 @@
 package commands.profile;
 
-import profile.Profile;
 import exceptions.profile.RedundantParamException;
+import profile.Profile;
 import storage.profile.Storage;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
+import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.COMMAND_WORD_VIEW;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.Constants.MESSAGE_VIEW_PROFILE;
@@ -14,17 +14,15 @@ import static profile.Constants.MESSAGE_VIEW_PROFILE;
 /**
  * A representation of the command for viewing profile.
  */
-public class ViewCommand extends Command {
+public class ViewProfile extends Command {
 
     /**
      * Constructs ViewCommand object inheriting abstract class Command.
      *
      * @param commandArgs Command arguments from user's input.
-     * @param logger Logger to record of information during program execution.
      * @throws RedundantParamException If parameters are provided to View Command.
      */
-    public ViewCommand(String commandArgs, Logger logger) throws RedundantParamException {
-        super(logger);
+    public ViewProfile(String commandArgs) throws RedundantParamException {
         if (!commandArgs.isEmpty()) {
             throw new RedundantParamException(COMMAND_WORD_VIEW);
         }

@@ -20,10 +20,8 @@ import java.util.ArrayList;
 public class Storage {
 
     private static final String FILEPATH = "./saves/workout";
-    //private static ArrayList<Exercise> taskList = new ArrayList<>();
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static File file = null;
-
 
     /**
      * Initialise the database with locally stored data.
@@ -54,7 +52,7 @@ public class Storage {
      *
      * @throws IOException If director or file cannot be created.
      */
-    public static void writeToStorage(String filePath, ArrayList<Exercise> taskList) throws IOException {
+    public void writeToStorage(String filePath, ArrayList<Exercise> taskList) throws IOException {
         File file = new File(filePath);
         FileWriter writer = new FileWriter(file.getPath());
         gson.toJson(taskList, writer);
@@ -62,7 +60,7 @@ public class Storage {
         writer.close();
     }
 
-    public static void readFileContents(String filePath, ArrayList<Exercise> taskList) throws FileNotFoundException {
+    public void readFileContents(String filePath, ArrayList<Exercise> taskList) throws FileNotFoundException {
         File file = new File(filePath);
 
         Type taskListType = new TypeToken<ArrayList<Exercise>>() {

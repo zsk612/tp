@@ -1,6 +1,7 @@
 package commands.workout.workoutmanager;
 
 import commands.Command;
+import commands.ExecutionResult;
 
 import static ui.CommonUi.printHelpFormater;
 

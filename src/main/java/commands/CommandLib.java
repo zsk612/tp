@@ -17,6 +17,11 @@ import commands.workout.workoutmanager.HelpWS;
 import commands.workout.workoutmanager.ListWS;
 import commands.workout.workoutmanager.NewWS;
 import commands.workout.workoutmanager.WrongWS;
+import commands.workout.workoutsession.WorkoutSessionAdd;
+import commands.workout.workoutsession.WorkoutSessionEnd;
+import commands.workout.workoutsession.WorkoutSessionDelete;
+import commands.workout.workoutsession.WorkoutSessionList;
+import commands.workout.workoutsession.WorkoutSessionWrong;
 
 import java.util.Hashtable;
 
@@ -29,29 +34,37 @@ public class CommandLib {
     }
 
     public void initWorkoutManagerCL() {
-        this.library.put("list", new ListWS());
-        this.library.put("new", new NewWS());
-        this.library.put("delete", new DeleteWS());
-        this.library.put("end", new ByeWS());
-        this.library.put("edit", new EditWS());
-        this.library.put("clear", new ClearWS());
-        this.library.put("help", new HelpWS());
-        this.library.put("wrong", new WrongWS());
+        library.put("list", new ListWS());
+        library.put("new", new NewWS());
+        library.put("delete", new DeleteWS());
+        library.put("end", new ByeWS());
+        library.put("edit", new EditWS());
+        library.put("clear", new ClearWS());
+        library.put("help", new HelpWS());
+        library.put("wrong", new WrongWS());
+    }
+
+    public void initWorkoutSessionCL() {
+        library.put("add", new WorkoutSessionAdd());
+        library.put("delete", new WorkoutSessionDelete());
+        library.put("list", new WorkoutSessionList());
+        library.put("end", new WorkoutSessionEnd());
+        library.put("wrong", new WorkoutSessionWrong());
     }
 
     public void initDietManagerCL() {
-        this.library.put("list", new DietSessionList());
-        this.library.put("meal", new DietSessionCreate());
-        this.library.put("load", new DietSessionLoad());
-        this.library.put("delete", new DietSessionDelete());
-        this.library.put("wrong", new DietSessionWrong());
+        library.put("list", new DietSessionList());
+        library.put("meal", new DietSessionCreate());
+        library.put("load", new DietSessionLoad());
+        library.put("delete", new DietSessionDelete());
+        library.put("wrong", new DietSessionWrong());
     }
 
     public void initDietSessionCL() {
-        this.library.put("add", new FoodItemAdd());
-        this.library.put("delete", new FoodItemDelete());
-        this.library.put("show", new FoodItemShow());
-        this.library.put("wrong", new FoodItemWrong());
+        library.put("add", new FoodItemAdd());
+        library.put("delete", new FoodItemDelete());
+        library.put("show", new FoodItemShow());
+        library.put("wrong", new FoodItemWrong());
     }
 
     public Command get(String keyword) {

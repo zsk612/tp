@@ -1,9 +1,12 @@
 package commands.workout.workoutmanager;
 
 import commands.Command;
+import commands.ExecutionResult;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 import workout.workoutsession.WorkoutSession;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 public class EditWS extends Command {
 
