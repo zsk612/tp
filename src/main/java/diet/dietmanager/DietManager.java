@@ -24,6 +24,7 @@ public class DietManager {
     public void start() {
         DietManagerUi.printOpening();
         String input = dietManagerUI.getInput();
+        assert input != null : "Null input before input loop";
         while (!input.equals("end")) {
             try {
                 processCommand(input);

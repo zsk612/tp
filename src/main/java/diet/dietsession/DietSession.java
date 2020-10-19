@@ -54,11 +54,22 @@ public class DietSession {
 
     public void start() throws IOException {
         logger.log(Level.INFO, "starting diet session");
+
+        // command library is initialised again on start as it is transient variable
         this.cl = new CommandLib();
         cl.initDietSessionCL();
         dietSessionUI.printOpening();
         setEndDietSession(false);
         String input = dietSessionUI.getInput();
+        dietSessionInputLoop(input);
+        setEndDietSession(true);
+
+        logger.log(Level.INFO, "saving profile session to file");
+        saveToFile();
+        dietSessionUI.printExit();
+    }
+
+    private void dietSessionInputLoop(String input) {
         while (!input.equals("end")) {
 
             try {
@@ -69,9 +80,9 @@ public class DietSession {
             }
             input = dietSessionUI.getInput();
         }
-        setEndDietSession(true);
+    }
 
-        logger.log(Level.INFO, "saving profile session to file");
+    public void saveToFile() {
         try {
             storage.init(typeInput + " " + date.toString());
             storage.writeToStorageDietSession(typeInput + " " + date.toString(), this);
@@ -79,7 +90,6 @@ public class DietSession {
             logger.log(Level.WARNING, "save profile session failed");
             System.out.println("Failed to save your diet session!");
         }
-        dietSessionUI.printExit();
     }
 
     public void processCommand(String input) throws NullPointerException {
