@@ -1,27 +1,17 @@
 @startuml
-!include style.puml
+actor user
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+user -> Ticket : Attend Event Request
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+activate Ticket
+Ticket -> Member : Create Member Request
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
+activate Member
+Member -> Member : Create Member
+Ticket <-- Member : Create Member Response
+deactivate Member
 
-class ArrayList {
-Object[] elementData
-size()
-}
-
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
-
+Ticket -> Ticket : Create Ticket
+user <-- Ticket : Attend Event Response
+deactivate Ticket
 @enduml

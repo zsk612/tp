@@ -415,3 +415,20 @@ Clear|`clear`
 Back to main menu|`end`
 
 ## 5. Notes
+
+[1] Here shows all 12 valid formats.
+    
+    `yyyyMMdd HH:mm`
+    `yyyy-MM-dd HH:mm`
+    `yyyy MM dd HH:mm`
+    `yyyy/MM/dd HH:mm`
+    
+    `yyyyMMdd HHmm`
+    `yyyy-MM-dd HHmm`
+    `yyyy MM dd HHmm`
+    `yyyy/MM/dd HHmm`
+    
+    `yyyyMMdd`
+    `yyyy-MM-dd`
+    `yyyy MM dd`
+    `yyyy/MM/dd`
