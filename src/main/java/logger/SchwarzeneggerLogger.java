@@ -12,13 +12,13 @@ import static seedu.duke.Constant.LOG_FILE_PATH;
  * A class to handle file logging.
  */
 public class SchwarzeneggerLogger {
-    private Logger logger;
-    private FileHandler fh;
+    public static Logger logger;
+    private static FileHandler fh;
 
     /**
-     * Constructs SchwarzeneggerLogger object.
+     * Initialises SchwarzeneggerLogger object.
      */
-    public SchwarzeneggerLogger() {
+    public static void initSchwarzeneggerLogger() {
         try {
             File file = new File(LOG_FILE_PATH);
             file.getParentFile().mkdirs();
@@ -36,14 +36,5 @@ public class SchwarzeneggerLogger {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Gets logger.
-     *
-     * @return logger.
-     */
-    public Logger getLogger() {
-        return logger;
     }
 }

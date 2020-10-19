@@ -13,7 +13,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
@@ -23,7 +22,6 @@ public class Storage {
     private static final String FILEPATH = "./saves/workout";
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static File file = null;
-    private static Logger logger = Logger.getLogger("java.storage.workout");
 
     /**
      * Initialise the database with locally stored data.

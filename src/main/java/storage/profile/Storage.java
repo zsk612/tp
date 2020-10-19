@@ -5,10 +5,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import profile.Profile;
 import exceptions.profile.InvalidSaveFormatException;
 import exceptions.profile.LoadingException;
 import exceptions.profile.SavingException;
+import profile.Profile;
 import ui.profile.ProfileUi;
 
 import java.io.File;
@@ -20,8 +20,8 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
+import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.PATH_TO_PROFILE_FILE;
 import static profile.Constants.PATH_TO_PROFILE_FOLDER;
@@ -33,15 +33,11 @@ import static profile.parser.ProfileParser.checkValidProfile;
 public class Storage {
     private boolean hasExistingProfile;
     private Gson gson;
-    private Logger logger;
 
     /**
      * Constructs Storage object where data file is assumed to be existed.
-     *
-     * @param logger Logger to record of information during program execution.
      */
-    public Storage(Logger logger) {
-        this.logger = logger;
+    public Storage() {
         hasExistingProfile = true;
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
