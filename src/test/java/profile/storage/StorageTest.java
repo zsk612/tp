@@ -1,10 +1,10 @@
 package profile.storage;
 
+import exceptions.SchwarzeneggerException;
+import exceptions.profile.InvalidSaveFormatException;
 import logger.SchwarzeneggerLogger;
 import org.junit.jupiter.api.Test;
 import profile.Profile;
-import exceptions.profile.InvalidSaveFormatException;
-import exceptions.SchwarzeneggerException;
 import storage.profile.Storage;
 
 import java.io.FileNotFoundException;
@@ -23,8 +23,8 @@ class StorageTest {
     @Test
     void testDecodeProfile_exampleProfileData_returnsExampleProfileString() throws SchwarzeneggerException,
             FileNotFoundException {
-        SchwarzeneggerLogger schwarzeneggerLoggerTest = new SchwarzeneggerLogger();
-        Storage storage = new Storage(schwarzeneggerLoggerTest.getLogger());
+        SchwarzeneggerLogger.initSchwarzeneggerLogger();
+        Storage storage = new Storage();
         String inputFilePath = System.getProperty("user.dir") + "/src/test/java/profile/storage/exampleProfileData.txt";
         Profile testProfile = storage.decodeProfile(inputFilePath);
         assertEquals(EXAMPLE_PROFILE_STRING, testProfile.toString());
@@ -35,8 +35,8 @@ class StorageTest {
      */
     @Test
     void testDecodeProfile_invalidDataInput_throwsInvalidSaveFormatException() {
-        SchwarzeneggerLogger schwarzeneggerLoggerTest = new SchwarzeneggerLogger();
-        Storage storage = new Storage(schwarzeneggerLoggerTest.getLogger());
+        SchwarzeneggerLogger.initSchwarzeneggerLogger();
+        Storage storage = new Storage();
         String inputFilePath = System.getProperty("user.dir") + "/src/test/java/profile/storage/invalidProfileData.txt";
         assertThrows(InvalidSaveFormatException.class, () -> {
             storage.decodeProfile(inputFilePath);

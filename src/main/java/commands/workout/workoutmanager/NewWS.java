@@ -1,13 +1,15 @@
 package commands.workout.workoutmanager;
 
 import commands.Command;
+import commands.ExecutionResult;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 import workout.workoutsession.WorkoutSession;
 
 import java.util.ArrayList;
 
-import static commands.workout.workoutmanager.ExecutionResult.OK;
+import static commands.ExecutionResult.OK;
+import static logger.SchwarzeneggerLogger.logger;
 import static workout.workoutmanager.WorkoutManagerParser.parseTags;
 
 public class NewWS extends Command {

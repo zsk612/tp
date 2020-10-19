@@ -1,10 +1,9 @@
 package profile;
 
-import logger.SchwarzeneggerLogger;
-import commands.profile.AddCommand;
+import commands.profile.AddProfile;
 import commands.profile.Command;
 import commands.profile.CommandResult;
-import commands.profile.ExitCommand;
+import commands.profile.EndProfile;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import profile.parser.ProfileParser;
@@ -12,7 +11,8 @@ import storage.profile.Storage;
 import ui.profile.ProfileUi;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 /**
  * A class that is responsible for interacting with user when he/she enters Profile Session.
@@ -24,21 +24,17 @@ public class ProfileSession {
     private ProfileParser profileParser;
     private Profile profile;
     private ExceptionHandler exceptionHandler;
-    private Logger logger;
 
     /**
      * Constructs ProfileManager object.
-     *
-     * @param schwarzeneggerLogger Logger to record of information during program execution.
      */
-    public ProfileSession(SchwarzeneggerLogger schwarzeneggerLogger) {
+    public ProfileSession() {
         try {
-            logger = schwarzeneggerLogger.getLogger();
             logger.log(Level.INFO, "initialising ProfileSession object");
             hasExit = false;
             profileUi = new ProfileUi();
-            storage = new Storage(logger);
-            profileParser = new ProfileParser(logger);
+            storage = new Storage();
+            profileParser = new ProfileParser();
             exceptionHandler = new ExceptionHandler();
             profile = storage.loadData(profileUi);
 
@@ -87,7 +83,7 @@ public class ProfileSession {
                 CommandResult result = command.execute(profile, storage);
                 profileUi.showToUser(result.toString());
 
-                if (profile.isDeleted && AddCommand.isAddCommand(command)) {
+                if (profile.isDeleted && AddProfile.isAddCommand(command)) {
                     profile = profileUi.getProfileConfig();
                     storage.saveData(profile);
                 }
@@ -98,7 +94,7 @@ public class ProfileSession {
                 logger.log(Level.WARNING, "processing uncaught exception", e);
                 profileUi.showToUser(exceptionHandler.handleUncheckedExceptions(e));
             }
-        } while (!ExitCommand.isExit(command));
+        } while (!EndProfile.isExit(command));
 
         logger.log(Level.INFO, "exiting profile session loop");
     }

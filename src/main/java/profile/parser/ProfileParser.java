@@ -1,15 +1,13 @@
 package profile.parser;
 
-import profile.Profile;
-import commands.profile.AddCommand;
+import commands.profile.AddProfile;
 import commands.profile.Command;
-import commands.profile.DeleteCommand;
-import commands.profile.ExitCommand;
-import commands.profile.ViewCommand;
+import commands.profile.DeleteProfile;
+import commands.profile.EndProfile;
+import commands.profile.ViewProfile;
 import exceptions.profile.InvalidCommandWordException;
 import exceptions.profile.RedundantParamException;
-
-import java.util.logging.Logger;
+import profile.Profile;
 
 import static profile.Constants.AGE_LOWER_BOUND;
 import static profile.Constants.AGE_UPPER_BOUND;
@@ -31,16 +29,6 @@ import static profile.Constants.WEIGHT_UPPER_BOUND;
  * A class that deals with making sense of user's command inside Profile Session.
  */
 public class ProfileParser {
-    private Logger logger;
-
-    /**
-     * Constructs ProfileParser object.
-     *
-     * @param logger Logger to record of information during program execution.
-     */
-    public ProfileParser(Logger logger) {
-        this.logger = logger;
-    }
 
     /**
      * Parses and returns the Command associated with the user input.
@@ -57,13 +45,13 @@ public class ProfileParser {
 
         switch (commandType) {
         case COMMAND_WORD_ADD:
-            return new AddCommand(commandArgs, logger);
+            return new AddProfile(commandArgs);
         case COMMAND_WORD_DELETE:
-            return new DeleteCommand(commandArgs, logger);
+            return new DeleteProfile(commandArgs);
         case COMMAND_WORD_VIEW:
-            return new ViewCommand(commandArgs, logger);
+            return new ViewProfile(commandArgs);
         case COMMAND_WORD_EXIT:
-            return new ExitCommand(commandArgs, logger);
+            return new EndProfile(commandArgs);
         default:
             throw new InvalidCommandWordException();
         }
