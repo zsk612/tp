@@ -38,22 +38,22 @@ public class CommandLib {
     }
 
     public void initWorkoutManagerCL() {
-        this.library.put("list", new ListWS());
-        this.library.put("new", new NewWS());
-        this.library.put("delete", new DeleteWS());
-        this.library.put("end", new ByeWS());
-        this.library.put("edit", new EditWS());
-        this.library.put("clear", new ClearWS());
-        this.library.put("help", new HelpWS());
-        this.library.put("wrong", new WrongWS());
+        library.put("list", new ListWS());
+        library.put("new", new NewWS());
+        library.put("delete", new DeleteWS());
+        library.put("end", new ByeWS());
+        library.put("edit", new EditWS());
+        library.put("clear", new ClearWS());
+        library.put("help", new HelpWS());
+        library.put("wrong", new WrongWS());
     }
 
     public void initWorkoutSessionCL() {
-        this.library.put("add", new WorkoutSessionAdd());
-        this.library.put("delete", new WorkoutSessionDelete());
-        this.library.put("list", new WorkoutSessionList());
-        this.library.put("end", new WorkoutSessionEnd());
-        this.library.put("wrong", new WorkoutSessionWrong());
+        library.put("add", new WorkoutSessionAdd());
+        library.put("delete", new WorkoutSessionDelete());
+        library.put("list", new WorkoutSessionList());
+        library.put("end", new WorkoutSessionEnd());
+        library.put("wrong", new WorkoutSessionWrong());
     }
 
     public void initDietManagerCL() {
@@ -82,6 +82,4 @@ public class CommandLib {
             return library.get("wrong");
         }
     }
-
-
 }

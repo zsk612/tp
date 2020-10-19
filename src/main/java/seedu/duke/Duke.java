@@ -1,9 +1,9 @@
 package seedu.duke;
 
 import diet.dietmanager.DietManager;
-import ui.diet.dietmanager.DietManagerUi;
 import logger.SchwarzeneggerLogger;
 import profile.ProfileSession;
+import ui.diet.dietmanager.DietManagerUi;
 import workout.workoutmanager.WorkoutManager;
 
 /**
@@ -44,7 +44,7 @@ public class Duke {
             if (response.equals("profile")) {
                 System.out.println("Entering Profile Session...");
 
-                ProfileSession profileSession = new ProfileSession(schwarzeneggerLogger);
+                ProfileSession profileSession = new ProfileSession();
 
                 while (!profileSession.hasExit) {
                     profileSession.run();
@@ -53,7 +53,7 @@ public class Duke {
 
             if (response.equals("workout")) {
                 System.out.println("Entering Workout Session...");
-                WorkoutManager workoutManager = new WorkoutManager(schwarzeneggerLogger);
+                WorkoutManager workoutManager = new WorkoutManager();
                 workoutManager.start();
             }
             response = dietManagerUI.getInput();

@@ -1,7 +1,6 @@
 package commands.diet.dietmanager;
 
 import commands.Command;
-import commands.workout.workoutmanager.ExecutionResult;
 import storage.diet.Storage;
 
 import java.util.logging.Logger;

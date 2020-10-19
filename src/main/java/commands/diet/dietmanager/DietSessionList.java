@@ -1,12 +1,13 @@
 package commands.diet.dietmanager;
 
-import storage.diet.Storage;
 import commands.Command;
+import storage.diet.Storage;
 
 import java.io.File;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 public class DietSessionList extends Command {
     static final String FILEPATH = "saves/diet/";

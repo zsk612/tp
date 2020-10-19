@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static logger.SchwarzeneggerLogger.logger;
+
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
  */

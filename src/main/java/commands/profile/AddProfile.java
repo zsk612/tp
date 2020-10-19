@@ -1,12 +1,12 @@
 package commands.profile;
 
-import profile.Profile;
 import exceptions.profile.RedundantParamException;
+import profile.Profile;
 import storage.profile.Storage;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
+import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.COMMAND_WORD_ADD;
 import static profile.Constants.MESSAGE_ADD_TITLE;
 import static profile.Constants.MESSAGE_PROFILE_EXIST;
@@ -14,17 +14,15 @@ import static profile.Constants.MESSAGE_PROFILE_EXIST;
 /**
  * A representation of the command for adding profile.
  */
-public class AddCommand extends Command {
+public class AddProfile extends Command {
 
     /**
      * Constructs AddCommand object inheriting abstract class Command.
      *
      * @param commandArgs Command arguments from user's input.
-     * @param logger Logger to record of information during program execution.
      * @throws RedundantParamException If parameters are provided to Add Command.
      */
-    public AddCommand(String commandArgs, Logger logger) throws RedundantParamException {
-        super(logger);
+    public AddProfile(String commandArgs) throws RedundantParamException {
         if (!commandArgs.isEmpty()) {
             throw new RedundantParamException(COMMAND_WORD_ADD);
         }
@@ -53,6 +51,6 @@ public class AddCommand extends Command {
      * @return Whether the command is an object of type AddCommand.
      */
     public static boolean isAddCommand(Command command) {
-        return command instanceof AddCommand;
+        return command instanceof AddProfile;
     }
 }

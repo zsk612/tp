@@ -1,4 +1,4 @@
-package commands.workout.workoutmanager;
+package commands;
 
 public enum ExecutionResult {
     OK,

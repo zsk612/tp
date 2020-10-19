@@ -1,8 +1,8 @@
 package diet.dietsession;
 
-import commands.CommandLib;
 import commands.Command;
-import logger.SchwarzeneggerLogger;
+
+import commands.CommandLib;
 import storage.diet.Storage;
 import ui.diet.dietsession.DietSessionUi;
 
@@ -11,6 +11,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 public class DietSession {
     private final ArrayList<Food> foodList;
@@ -25,6 +27,7 @@ public class DietSession {
     private final DietSessionParser parser = new DietSessionParser();
     public boolean endDietSession = false;
     private final Logger logger;
+
 
     public DietSession(String typeInput, String dateInput, Logger logger) {
         this.cl = new CommandLib();
