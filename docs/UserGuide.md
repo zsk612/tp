@@ -81,24 +81,98 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 #### 3.2.6. Ending Profile Menu: end
 ### 3.3. Diet Menu
 ### 3.3.1. List out all commands: help
+You can list out all the commands in the diet menu with a brief summary of how to use them with this command.
+
+__Format:__ `help` 
 ### 3.3.2. Start recording diet data: meal
+This command creates a new meal session.
+You will be directed immediately into the meal session.
+
+The date and tag can be added on creation with "/d" for date and "/t" for meal type.
+
+__Format:__ `meal /d [date] /t [type]`
+ 
+Example: `meal /d 2020-08-05 /t lunch`
+
+Situation | Example |  Outcome
+----------|--------|------------------
+Create a meal session | `meal`| a meal session of type unspecified with today's date will be created
+Create a meal session with date and type| `meal /d 2020-05-04 breakfast`| A meal session with date 2020-05-04 and type breakfast will be created
 #### 3.3.2.1. Showing help message: help
+You can list out all the commands in the diet session with a brief summary of how to use them with this command.
+
+__Format:__ `help` 
+
+Example: `help`
 #### 3.3.2.2. Adding food items for the current meal: add
+This command adds a food item into the current meal session
+
+__Format:__ `add [food name] /c [amount of calories]` 
+
+Example: `add chicken nuggets /c 120`
 #### 3.3.2.3. Listing data for the current meal: list
+Lists all the added dishes for the current meal, with a numbered sequence according to sequence entered.
+
+__Format:__ `list` 
+
+Example: `list`
 #### 3.3.2.4. Deleting data from the current meal: delete
+Deletes the dish according to the ID in the current meal session list.
+
+__Format:__ `delete [dish ID]`
+
+Example: `delete 3` 
 #### 3.3.2.5. Clearing data from the current meal: clear
+Clears all the dishes in the current meal list.
+
+__Format:__ `clear` 
+
+Example: `clear`
 #### 3.3.2.6. Stopping the recording of person’s meal data: end
+Ends the current meal session and saves the data.
+
+__Format:__ `end` 
+
+Example: `end`
 ### 3.3.3. Edit a past diet session: list
+Obtains a list of information about past diet sessions together with their numbered index.
+
+__Format:__ `list`
+
+Example: `list`
 ### 3.3.4. Edit a past diet session: edit
+Edits a previous meal session based on a numbered index that can be found in the list.
+
+__Format:__ `edit [index number]`
+
+Example: `edit 3` 
 ### 3.3.5. Delete a past diet session: delete
+Deletes a previous meal session based on a numbered index that can be found in the list.
+
+__Format:__ `delete [index number]`
+
+Example: `delete 3` 
 ### 3.3.6. Clear all past diet sessions: clear
+Deletes all previous diet sessions.
+
+__Format:__ `clear`
+
+Example: `clear`
 ### 3.3.7. Exit the diet manager: end
+Ends the current meal session and saves the data.
+
+__Format:__ `end` 
+Exits the diet manager and returns back to the main menu.
+
+__Format:__ `end`
+
+Example: `end`
 ### 3.4. Workout Menu
 ### 3.4.1. Start a new workout session: new
-You can creates a new workout session with this command.
+You can create a new workout session with this command.
 You will directly go into the new created session to insert moves.
  
-You can attach tags at the time of creating it for eaiser reference later. You can adds tags with “/t”. 
+You can attach tags at the time of creating it for easier reference later. You can add tags with “/t”. 
 
 __Format:__ `new /t <tag1> <tag2>`  
 Tags are optional and more than one tag can be attached to a session.
@@ -151,7 +225,7 @@ you can search for sessions created on a specific day or sessions that contains 
 
 __Format:__ `Search /d <DATE> /t <tag1> <tag2>`
 
-You can searches records containing (a list of) tags with `/t` followed by the tags. If multiple
+You can search records containing (a list of) tags with `/t` followed by the tags. If multiple
 tags are written, only sessions that contains all the tags will be selected.
 
 You can searches records created on a specific day with `/d` followed by a date.
@@ -207,6 +281,29 @@ Example |  Outcome
 **Command**: <br> `clear`| TODO:
 
 ## 4. Command summary
+
+**Meal Menu**
+
+**Action** |  **Format**
+--------|----------------------
+Help|`help`
+Start meal session |`meal /d [date] /t [type]`<br><br>E.g. `meal /d 2020-05-04 /t breakfast`
+List|`list`
+Edit|`edit [meal session ID]`<br><br>E.g. `edit 1`
+Delete|`delete [meal session ID]`<br><br>E.g. `delete 1`
+Clear|`clear`
+Back to main menu|`end`
+
+**Meal Session**
+
+**Action** |  **Format**
+--------|----------------------
+Help|`help`
+add |`add [dish] /c [calorie count]`<br><br>E.g. `add spinach /c 90`
+List|`list`
+Delete|`delete [dish ID]`<br><br>E.g. `delete 1`
+Clear|`clear`
+Back to meal menu|`end`
 
 **Workout Menu**
 
