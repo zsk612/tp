@@ -7,6 +7,7 @@ import storage.diet.Storage;
 
 import java.io.IOException;
 import java.util.logging.Level;
+import static logger.SchwarzeneggerLogger.logger;
 
 public class DietSessionCreate extends Command {
 

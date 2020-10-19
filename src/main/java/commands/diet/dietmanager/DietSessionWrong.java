@@ -4,6 +4,8 @@ import storage.diet.Storage;
 import commands.Command;
 
 import java.util.logging.Level;
+import static logger.SchwarzeneggerLogger.logger;
+
 public class DietSessionWrong extends Command {
     @Override
     public void execute(String input, Storage storage) {

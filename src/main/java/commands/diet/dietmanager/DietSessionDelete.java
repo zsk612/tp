@@ -5,6 +5,7 @@ import commands.Command;
 
 import java.io.File;
 import java.util.logging.Level;
+import static logger.SchwarzeneggerLogger.logger;
 
 public class DietSessionDelete extends Command {
     static final String FILEPATH = "saves/diet/";
