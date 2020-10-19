@@ -89,14 +89,19 @@ public class Storage {
         taskList.addAll(gson.fromJson(reader, taskListType));
     }
 
-    public DietSession readDietSession(String filePath) throws FileNotFoundException {
+    public DietSession readDietSession(String filePath) {
         Gson gson = new Gson();
-        File file = new File(System.getProperty("user.dir") + "/"
-                + FILEPATH + filePath);
         DietSession dietSession;
+        dietSession = null;
+        try {
+            File file = new File(System.getProperty("user.dir") + "/"
+                    + FILEPATH + filePath);
 
-        Reader reader = new FileReader(file.getPath());
-        dietSession = gson.fromJson(reader, DietSession.class);
+            Reader reader = new FileReader(file.getPath());
+            dietSession = gson.fromJson(reader, DietSession.class);
+        } catch (FileNotFoundException e) {
+            System.out.println("There seems to be no file");
+        }
         return dietSession;
     }
 }
