@@ -27,7 +27,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
       * [3.3.2.4. Deleting data from the current meal: delete](#3324-deleting-data-from-the-current-meal-delete)
       * [3.3.2.5. Clearing data from the current meal: clear](#3325-clearing-data-from-the-current-meal-clear)
       * [3.3.2.6. Stopping the recording of person’s meal data: end](#3326-stopping-the-recording-of-persons-meal-data-end)
-    - [3.3.3. Edit a past diet session: list](#333-edit-a-past-diet-session-list)
+    - [3.3.3. List all past diet session: list](#333-edit-a-past-diet-session-list)
     - [3.3.4. Edit a past diet session: edit](#334-edit-a-past-diet-session-edit)
     - [3.3.5. Delete a past diet session: delete](#335-delete-a-past-diet-session-delete)
     - [3.3.6. Clear all past diet sessions: clear](#336-clear-all-past-diet-sessions-clear)
@@ -66,20 +66,84 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 1. Key in java -jar duke.jar
 
 ## 3. Features 
+This section includes 4 sub sections which will guide you through the features available in Main Menu, Profile Menu, Workout Menu and Diet Menu.
 ### 3.1. Main Menu
+You can get access to Profile Menu, Workout Menu and Diet Menu from Main Menu.
+The available commands in Main Menu are listed below:
+
 #### 3.1.1. Viewing help: help
+The program will show a message explaining which commands are available for you to switch to the menu that you want (i.e. Profile Menu, Workout Menu and Diet Menu).
+
+__Format:__ `help`  
+
+Example: `help`
 #### 3.1.2. Entering Profile Menu: profile
+The program will direct you to the Profile Menu.
+
+__Format:__ `profile`  
+
+Example: `profile`
 #### 3.1.3. Entering Diet Menu: diet
+The program will direct you to the Diet Menu.
+
+__Format:__ `diet`  
+
+Example: `diet`
 #### 3.1.4. Entering Workout Menu: workout
+The program will direct you to the Workout Menu.
+
+__Format:__ `workout`  
+
+Example: `workout`
 #### 3.1.5. Exiting the program: end
+Terminates The Schwarzenegger.
+
+__Format:__ `end`  
+
+Example: `end`
 ### 3.2. Profile Menu
+Profile Menu manages your profile including your name, age and physique data. 
+
 #### 3.2.1. Viewing help: help
+The program will show a message explaining which commands are available Profile Menu.
+
+__Format:__ `help`  
+
+Example: `help`
 #### 3.2.2. Adding a profile: add
+You can add your profile for the most customized experience in The Schwarzenegger. Your height should in centimeters and your input weight should be in kilograms.
+
+__Format:__ `add /n [name] /a [age] /h [height] /w [weight] /e [expected weight]`  
+
+Example: `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
+
+This command adds a profile with the name Schwarzenegger, age 30, height 188 cm, weight 113 kg and expected weight 100 kg.
 #### 3.2.3. Viewing a profile: view
+You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI and give you suggestions on your expected weight to be fitter.
+
+__Format:__ `view`  
+
+Example: `view`
 #### 3.2.4. Deleting a profile: delete
+You can delete your profile from the program.
+
+__Format:__ `delete`  
+
+Example: `delete`
 #### 3.2.5. Editing a profile: edit
+You can edit the profile after adding to the program.
+
+__Format:__ `edit /n [name or ]edit /h [height] or edit /w [weight] or edit /a [age] or edit /e [expection]`  
+
+Example: `edit /h 180`
 #### 3.2.6. Ending Profile Menu: end
+You use this command to switch back to the Main Menu.
+
+__Format:__ `end`  
+
+Example: `end`
 ### 3.3. Diet Menu
+
 ### 3.3.1. List out all commands: help
 You can list out all the commands in the diet menu with a brief summary of how to use them with this command.
 
@@ -162,17 +226,20 @@ Example: `clear`
 Ends the current meal session and saves the data.
 
 __Format:__ `end` 
-Exits the diet manager and returns back to the main menu.
+Exits the diet manager and returns you back to the main menu.
 
 __Format:__ `end`
 
 Example: `end`
 ### 3.4. Workout Menu
+Shows a list of commands and their way of use.
+
+__Format:__ `help`  
+
+Example: `help`
 ### 3.4.1. Start a new workout session: new
-You can create a new workout session with this command.
-You will directly go into the new created session to insert moves.
- 
-You can attach tags at the time of creating it for easier reference later. You can add tags with “/t”. 
+Creates a new workout session and go into the session. 
+Adds tags with “/t”. Tags are optional and more than one tag can be attached to a session.
 
 __Format:__ `new /t <tag1> <tag2>`  
 Tags are optional and more than one tag can be attached to a session.
@@ -184,10 +251,39 @@ Situation | Example |  Outcome
 Create a workout session with tags "leg" and "chest" | `new /t legs chest`|sthst
 Repeated tags are attached| `new /t legs legs`| Only one will be added
 #### 3.4.1.1. Adding data for current workout session: add
+Adds moves with number of moves per set and weights of equipment (if the move does not require weights, input 0 for weight).
+
+__Format:__ `add [name of move] /n [number of moves per set] /w [weight]`  
+
+Example: `add squat /n 15 /w 40`
+
 #### 3.4.1.2. Listing data for the current workout session: list
+Lists all the added moves for the current workout session, with a numbered sequence according to sequence entered.
+
+__Format:__ `list`  
+
+Example: `list`
+
 #### 3.4.1.3. Showing the commands available for workout session: help
+Shows a list of commands and their way of use.
+
+__Format:__ `help`  
+
+Example: `help`
 #### 3.4.1.4. Deleting data from the current workout session: delete
+Deletes the move according to move ID in the current workout session list.
+
+
+__Format:__ `delete [move ID]`  
+
+Example: `delete 1`
 #### 3.4.1.5. Stopping the recording data for the current workout session: end
+Ends the current workout session and saves the relevant data.
+
+
+__Format:__ `end`  
+
+Example: `end`
 ### 3.4.2. Listing all past workout sessions: list
 You can see all your past workout sessions. They will be summarised and 
 printed in a table with their index, creation date and tags.
@@ -269,7 +365,7 @@ Example |  Outcome
 
 ### 3.4.8. Returning to main menu: end
 
-You can return to the main.
+You can return to the main menu.
 
 __Format:__ `end`
 
