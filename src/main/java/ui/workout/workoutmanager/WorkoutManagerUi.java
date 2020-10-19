@@ -19,7 +19,7 @@ public class WorkoutManagerUi {
     }
 
     public static void printSeperationLine() {
-        System.out.println("-----------------------------------------");
+        System.out.println("---------------------------------");
     }
 
     public static void printDeleteResponse() {
@@ -36,6 +36,10 @@ public class WorkoutManagerUi {
 
     public static void printFinishNewSessionResponse() {
         System.out.println("Congratulations! You have finished today's workout!");
+    }
+
+    public static void printTabeleHeader() {
+        System.out.printf("%-7s %-15s %s%n", "Index", "Created on", "Tags");
     }
 
     public static void commandNotFoundResponse() {
