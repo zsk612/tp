@@ -7,7 +7,7 @@ import commands.Command;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
-public class FoodItemShow extends Command {
+public class FoodItemList extends Command {
 
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
