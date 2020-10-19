@@ -12,6 +12,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class WorkoutManager {
 
     private Logger logger;
@@ -32,10 +33,9 @@ public class WorkoutManager {
     public void start() {
         logger.log(Level.INFO, "entered workout manager");
         WorkoutManagerUi.printOpening();
-        Scanner sc = new Scanner(System.in);
         while (true) {
 
-            String command = sc.nextLine();
+            String command = getCommand();
             logger.log(Level.FINE, "received input" + command);
             WorkoutManagerUi.printSeperationLine();
             String[] commParts = WorkoutManagerParser.parse(command);
@@ -56,5 +56,19 @@ public class WorkoutManager {
         if (result == ExecutionResult.OK) {
             command.printResponse();
         }
+    }
+
+    private static String getCommand() {
+        System.out.print(">>>>> ");
+        Scanner sc = new Scanner(System.in);
+        String inputLine = sc.nextLine();
+
+        // Silently consume all blank lines
+        while (inputLine.trim().isEmpty()) {
+            System.out.print(">>>>> ");
+            inputLine = sc.nextLine();
+        }
+
+        return inputLine;
     }
 }

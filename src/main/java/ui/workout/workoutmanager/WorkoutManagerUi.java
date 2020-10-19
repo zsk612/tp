@@ -19,7 +19,7 @@ public class WorkoutManagerUi {
     }
 
     public static void printSeperationLine() {
-        System.out.println("-----------------------------------------");
+        System.out.println("---------------------------------");
     }
 
     public static void printDeleteResponse() {
