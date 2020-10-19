@@ -1,5 +1,6 @@
 package storage.workout;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -25,14 +26,21 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
         this.tags = tags;
     }
 
+    public boolean containsAll(ArrayList<String> tgs) {
+        return tags.containsAll(tgs);
+    }
+
+    public boolean isCreatedOn(LocalDate date) {
+        return date.equals(creationTime.toLocalDate());
+    }
+
     public String getFilePath() {
         return filePath;
     }
 
     @Override
     public String toString() {
-        return "Session created on " + creationTime.toLocalDate()
-                + ", last editted on " + lastEditTime.toLocalDate();
+        return String.format("%-15s %s", creationTime.toLocalDate(), tags.toString());
     }
 
     @Override
@@ -41,6 +49,16 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
             return -1;
         }
         return 1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof PastWorkoutSessionRecord)) {
+            return false;
+        }
+        return creationTime.equals(((PastWorkoutSessionRecord) o).creationTime)
+                && lastEditTime.equals(((PastWorkoutSessionRecord) o).lastEditTime)
+                && tags.equals(((PastWorkoutSessionRecord) o).tags);
     }
 
     public PastWorkoutSessionRecord edit() {

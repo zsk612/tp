@@ -38,6 +38,10 @@ public class WorkoutManagerUi {
         System.out.println("Congratulations! You have finished today's workout!");
     }
 
+    public static void printTabeleHeader() {
+        System.out.printf("%-7s %-15s %s%n", "Index", "Created on", "Tags");
+    }
+
     public static void commandNotFoundResponse() {
         System.out.println("The command not recognised!");
     }
