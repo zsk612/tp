@@ -1,13 +1,14 @@
 package commands.profile;
 
+import commands.Command;
+import commands.CommandResult;
 import exceptions.profile.RedundantParamException;
 import profile.Profile;
-import storage.profile.Storage;
 
 import java.util.logging.Level;
 
 import static logger.SchwarzeneggerLogger.logger;
-import static profile.Constants.COMMAND_WORD_EXIT;
+import static profile.Constants.COMMAND_WORD_END;
 import static profile.Constants.MESSAGE_EXIT_PROFILE;
 
 /**
@@ -16,14 +17,14 @@ import static profile.Constants.MESSAGE_EXIT_PROFILE;
 public class EndProfile extends Command {
 
     /**
-     * Constructs ExitCommand object inheriting abstract class Command.
+     * Constructs EndProfile object inheriting abstract class Command.
      *
      * @param commandArgs Command arguments from user's input.
      * @throws RedundantParamException If parameters are provided to Exit Command.
      */
     public EndProfile(String commandArgs) throws RedundantParamException {
         if (!commandArgs.isEmpty()) {
-            throw new RedundantParamException(COMMAND_WORD_EXIT);
+            throw new RedundantParamException(COMMAND_WORD_END);
         }
     }
 
@@ -31,12 +32,15 @@ public class EndProfile extends Command {
      * Overrides execute method of class Command to execute exit command requested by user's input.
      *
      * @param profile User's Profile object.
-     * @param storage Storage to save data when required.
      * @return Result of command execution.
      */
     @Override
-    public CommandResult execute(Profile profile, Storage storage) {
+    public Profile execute(Profile profile) {
         logger.log(Level.INFO, "executing ExitCommand");
+        return profile;
+    }
+
+    public CommandResult getExecutionResult(Profile profile) {
         return new CommandResult(MESSAGE_EXIT_PROFILE);
     }
 
@@ -44,9 +48,9 @@ public class EndProfile extends Command {
      * Checks if user wants to exit Schwarzenegger by checking given command.
      *
      * @param command The command to be checked.
-     * @return Whether the command is an object of type ExitCommand.
+     * @return Whether the command is an object of type EndProfile.
      */
-    public static boolean isExit(Command command) {
+    public static boolean isEnd(Command command) {
         return command instanceof EndProfile;
     }
 }

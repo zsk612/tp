@@ -1,0 +1,32 @@
+@startuml
+actor user
+activate WorkoutManager
+user -> WorkoutManager
+WorkoutManager -> WorkoutManagerParser : parse()
+activate WorkoutManagerParser
+WorkoutManagerParser -> WorkoutManager : parsed input
+deactivate WorkoutManagerParser
+
+WorkoutManager -> CommandLib : get()
+activate CommandLib
+CommandLib -> WorkoutManager : Command
+deactivate CommandLib
+
+WorkoutManager -> Command : execute()
+activate Command
+
+activate WorkoutManagerStorage
+Command -> WorkoutManagerStorage : search()
+WorkoutManagerStorage -> WorkoutManagerParser : parse()
+activate WorkoutManagerParser
+WorkoutManagerParser -> WorkoutManagerStorage : list of predicates
+deactivate WorkoutManagerParser
+WorkoutManagerStorage -> WorkoutManagerStorage: filter and print
+
+WorkoutManagerStorage -> Command
+Command -> WorkoutManager : ExecutionResult
+deactivate Command
+
+WorkoutManager ->  user : output
+
+@enduml
