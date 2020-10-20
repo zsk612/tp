@@ -1,11 +1,10 @@
-package profile.storage;
+package storage.profile;
 
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
 import logger.SchwarzeneggerLogger;
 import org.junit.jupiter.api.Test;
 import profile.Profile;
-import storage.profile.Storage;
 
 import java.io.FileNotFoundException;
 
