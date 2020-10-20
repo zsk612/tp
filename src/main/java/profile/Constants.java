@@ -10,6 +10,8 @@ import static ui.CommonUi.LS;
  * Constants used in profile package.
  */
 public class Constants {
+    public static final String ADD_PROFILE_FORMAT = "add /n [YOUR_NAME] /a [YOUR_AGE] /h [YOUR_HEIGHT] "
+            + "/w [YOUR_WEIGHT] /e [YOUR_EXPECTED_WEIGHT]";
     public static final int AGE_LOWER_BOUND = 1;
     public static final int AGE_UPPER_BOUND = 123;
     public static final int COMMAND_ARGS_INDEX = 1;
@@ -23,6 +25,8 @@ public class Constants {
     public static final String COMMAND_WORD_VIEW = "view";
     public static final String DATA_FILE = "profile.txt";
     public static final String DATA_FOLDER = "saves";
+    public static final String EDIT_PROFILE_FORMAT = "edit </n [YOUR_NAME]> </a [YOUR_AGE]> </h [YOUR_HEIGHT]> "
+            + "</w [YOUR_WEIGHT]> </e [YOUR_EXPECTED_WEIGHT]>";
     public static final String EMPTY_STRING = "";
     public static final int EXAMPLE_AGE = 30;
     public static final String EXAMPLE_BMI = "32.0 (Obesity Class 1)";
@@ -33,11 +37,12 @@ public class Constants {
     public static final String GREEDY_WHITE_SPACE = "\\s+";
     public static final int HEIGHT_LOWER_BOUND = 63;
     public static final int HEIGHT_UPPER_BOUND = 231;
+    public static final String HELP_FORMAT = "%-8s - %s" + LS + "%-8s %s" + LS;
     public static final String MESSAGE_CREATE_PROFILE_ACK = "Got it. Here's a confirmation of your profile:"
             + LS + "%s";
+    public static final String MESSAGE_DELETE_PROFILE = "I've deleted your profile.";
     public static final String MESSAGE_EDIT_PROFILE_ACK = "Yay. Your profile is edited successfully. "
             + "Here's your new profile" + LS + "%s";
-    public static final String MESSAGE_DELETE_PROFILE = "I've deleted your profile.";
     public static final String MESSAGE_EXIT_PROFILE = "Returning to Main Menu...";
     public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. "
             + "Please delete it using \"delete\" command before adding a new one.";
@@ -72,9 +77,4 @@ public class Constants {
     public static final double WEIGHT_UPPER_BOUND = 635;
     public static final String MESSAGE_INVALID_WEIGHT = String.format(
             SAD_FACE + "Please input a number from %.1f to %.1f for weight.", WEIGHT_LOWER_BOUND, WEIGHT_UPPER_BOUND);
-    public static final String ADD_PROFILE_FORMAT = "add /n [YOUR_NAME] /a [YOUR_AGE] /h [YOUR_HEIGHT] "
-            + "/w [YOUR_WEIGHT] /e [YOUR_EXPECTED_WEIGHT]";
-    public static final String EDIT_PROFILE_FORMAT = "edit </n [YOUR_NAME]> </a [YOUR_AGE]> </h [YOUR_HEIGHT]> "
-            + "</w [YOUR_WEIGHT]> </e [YOUR_EXPECTED_WEIGHT]>";
-    public static final String HELP_FORMAT = "%-8s - %s" + LS + "%-8s %s" + LS;
 }

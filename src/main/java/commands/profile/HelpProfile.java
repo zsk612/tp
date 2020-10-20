@@ -12,7 +12,7 @@ import static profile.Constants.COMMAND_WORD_EDIT;
 import static profile.Constants.COMMAND_WORD_HELP;
 import static profile.Constants.COMMAND_WORD_VIEW;
 import static profile.Constants.EDIT_PROFILE_FORMAT;
-import static ui.CommonUi.helpFormater;
+import static ui.CommonUi.helpFormatter;
 
 public class HelpProfile extends Command {
 
@@ -32,11 +32,11 @@ public class HelpProfile extends Command {
     public CommandResult getExecutionResult(Profile profile) {
         StringBuilder helpMessage = new StringBuilder();
 
-        helpMessage.append(helpFormater(COMMAND_WORD_ADD, ADD_PROFILE_FORMAT, "Add your new profile"));
-        helpMessage.append(helpFormater(COMMAND_WORD_VIEW, COMMAND_WORD_VIEW, "View your profile"));
-        helpMessage.append(helpFormater(COMMAND_WORD_EDIT, EDIT_PROFILE_FORMAT, "Edit your existing profile. "
+        helpMessage.append(helpFormatter(COMMAND_WORD_ADD, ADD_PROFILE_FORMAT, "Add your new profile"));
+        helpMessage.append(helpFormatter(COMMAND_WORD_VIEW, COMMAND_WORD_VIEW, "View your profile"));
+        helpMessage.append(helpFormatter(COMMAND_WORD_EDIT, EDIT_PROFILE_FORMAT, "Edit your existing profile. "
                 + "You may edit only 1 field or all fields"));
-        helpMessage.append(helpFormater(COMMAND_WORD_DELETE, COMMAND_WORD_DELETE, "Delete your existing profile"));
+        helpMessage.append(helpFormatter(COMMAND_WORD_DELETE, COMMAND_WORD_DELETE, "Delete your existing profile"));
         return new CommandResult(helpMessage.toString());
     }
 }

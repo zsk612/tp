@@ -25,7 +25,7 @@ public class CommonUi {
         System.out.format("%-8s %s\n", "", description);
     }
 
-    public static String helpFormater(String commandName, String commandFormat, String description) {
+    public static String helpFormatter(String commandName, String commandFormat, String description) {
         return String.format(HELP_FORMAT, commandName, commandFormat, EMPTY_STRING, description);
     }
 }
