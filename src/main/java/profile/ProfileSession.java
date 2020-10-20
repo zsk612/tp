@@ -2,7 +2,6 @@ package profile;
 
 import commands.Command;
 import commands.CommandResult;
-import commands.profile.AddProfile;
 import commands.profile.EndProfile;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
@@ -12,7 +11,7 @@ import ui.profile.ProfileUi;
 import java.util.logging.Level;
 
 import static logger.SchwarzeneggerLogger.logger;
-import static profile.Constants.SCANNER;
+import static ui.CommonUi.LS;
 
 /**
  * A class that is responsible for interacting with user when he/she enters Profile Session.
@@ -35,10 +34,6 @@ public class ProfileSession {
             profileParser = new ProfileParser();
             exceptionHandler = new ExceptionHandler();
             profile = storage.loadData(profileUi);
-
-            if (profile == null) {
-                profile = initProfile();
-            }
         } catch (SchwarzeneggerException e) {
             logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
             profileUi.showToUser(e.getMessage());
@@ -61,34 +56,14 @@ public class ProfileSession {
      */
     private void start() {
         logger.log(Level.INFO, "starting profile session");
-        profileUi.greetUser(profile.getName());
-    }
 
-    private Profile initProfile() {
-        Profile profile = null;
-
-        while (profile == null) {
-            try {
-                while (profile == null) {
-                    logger.log(Level.INFO, "no existing profile in database");
-                    System.out.print(">>>> ");
-                    String input = SCANNER.nextLine();
-                    Command command = new AddProfile(input);
-                    profile = command.execute(profile);
-                    CommandResult result = command.getExecutionResult(profile);
-                    storage.saveData(profile);
-                    profileUi.showToUser(result.toString());
-                }
-            } catch (SchwarzeneggerException e) {
-                logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
-                profileUi.showToUser(e.getMessage());
-            } catch (Exception e) {
-                logger.log(Level.WARNING, "processing uncaught exception", e);
-                profileUi.showToUser(e.toString());
-            }
+        if (profile == null) {
+            profileUi.showToUser("Hi! It seems like you're new to The Schwarzenegger." + LS
+                    + "Please add your profile using \"add\" command before proceeding." + LS
+                    + "For more information on command syntax, please type \"help\" :D");
+        } else {
+            profileUi.greetUser(profile.getName());
         }
-
-        return profile;
     }
 
     /**

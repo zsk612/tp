@@ -9,6 +9,7 @@ import exceptions.profile.InvalidSaveFormatException;
 import exceptions.profile.LoadingException;
 import exceptions.profile.SavingException;
 import profile.Profile;
+import profile.Utils;
 import ui.profile.ProfileUi;
 
 import java.io.File;
@@ -25,7 +26,6 @@ import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.PATH_TO_PROFILE_FILE;
 import static profile.Constants.PATH_TO_PROFILE_FOLDER;
-import static profile.ProfileParser.checkValidProfile;
 
 /**
  * A class that saves and loads user profile data on local hard disk.
@@ -98,7 +98,7 @@ public class Storage {
             JsonReader reader = new JsonReader(new FileReader(file.getPath()));
             Profile profile = gson.fromJson(reader, profileType);
 
-            if (profile == null || !checkValidProfile(profile)) {
+            if (profile == null || !Utils.checkValidProfile(profile)) {
                 logger.log(Level.WARNING, "processing invalid profile data");
                 throw new InvalidSaveFormatException();
             }

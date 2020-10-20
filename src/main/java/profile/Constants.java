@@ -1,10 +1,10 @@
 package profile;
 
-import ui.CommonUi;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
+
+import static ui.CommonUi.LS;
 
 /**
  * Constants used in profile package.
@@ -19,6 +19,7 @@ public class Constants {
     public static final String COMMAND_WORD_DELETE = "delete";
     public static final String COMMAND_WORD_EDIT = "edit";
     public static final String COMMAND_WORD_END = "end";
+    public static final String COMMAND_WORD_HELP = "help";
     public static final String COMMAND_WORD_VIEW = "view";
     public static final String DATA_FILE = "profile.txt";
     public static final String DATA_FOLDER = "saves";
@@ -33,21 +34,21 @@ public class Constants {
     public static final int HEIGHT_LOWER_BOUND = 63;
     public static final int HEIGHT_UPPER_BOUND = 231;
     public static final String MESSAGE_CREATE_PROFILE_ACK = "Got it. Here's a confirmation of your profile:"
-            + CommonUi.LS + "%s";
+            + LS + "%s";
     public static final String MESSAGE_EDIT_PROFILE_ACK = "Yay. Your profile is edited successfully. "
-            + "Here's your new profile" + CommonUi.LS + "%s";
+            + "Here's your new profile" + LS + "%s";
     public static final String MESSAGE_DELETE_PROFILE = "I've deleted your profile.";
-    public static final String MESSAGE_EXIT_PROFILE = "Exiting Profile Session...";
+    public static final String MESSAGE_EXIT_PROFILE = "Returning to Main Menu...";
     public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. "
             + "Please delete it using \"delete\" command before adding a new one.";
     public static final String MESSAGE_PROFILE_NOT_EXIST = "There's no profile to %s. "
             + "Please add a new one using \"add\" command :D";
-    public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + CommonUi.LS + "%s";
+    public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s";
     public static final String MESSAGE_WELCOME = "Hi %s! How can I help you with your profile? :D";
     public static final String PROFILE_FOLDER = "profile";
-    public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + CommonUi.LS + "\tAge: %d" + CommonUi.LS
-            + "\tHeight: %d cm" + CommonUi.LS + "\tWeight: %.1f kg" + CommonUi.LS + "\tExpected Weight: %.1f kg"
-            + CommonUi.LS + "\tYour BMI: %s";
+    public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + LS + "\tAge: %d" + LS
+            + "\tHeight: %d cm" + LS + "\tWeight: %.1f kg" + LS + "\tExpected Weight: %.1f kg"
+            + LS + "\tYour BMI: %s";
     public static final String EXAMPLE_PROFILE_STRING = String.format(PROFILE_STRING_REPRESENTATION, EXAMPLE_NAME,
             EXAMPLE_AGE, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_BMI);
     public static final String PROJECT_ROOT = System.getProperty("user.dir");
@@ -62,13 +63,18 @@ public class Constants {
     public static final String MESSAGE_INVALID_HEIGHT = String.format(
             SAD_FACE + "Please input an integer from %d to %d for height.", HEIGHT_LOWER_BOUND, HEIGHT_UPPER_BOUND);
     public static final String MESSAGE_LOADING_ERROR = SAD_FACE + "An error has occurred while loading data."
-            + CommonUi.LS + "%s";
+            + LS + "%s";
     public static final String MESSAGE_SAVING_ERROR = SAD_FACE + "An error has occurred while saving data."
-            + CommonUi.LS + "%s";
+            + LS + "%s";
     public static final String MESSAGE_REDUNDANT_PARAM = SAD_FACE + "%s command does not take parameters.";
     public static final Scanner SCANNER = new Scanner(System.in);
     public static final double WEIGHT_LOWER_BOUND = 2.1;
     public static final double WEIGHT_UPPER_BOUND = 635;
     public static final String MESSAGE_INVALID_WEIGHT = String.format(
             SAD_FACE + "Please input a number from %.1f to %.1f for weight.", WEIGHT_LOWER_BOUND, WEIGHT_UPPER_BOUND);
+    public static final String ADD_PROFILE_FORMAT = "add /n [YOUR_NAME] /a [YOUR_AGE] /h [YOUR_HEIGHT] "
+            + "/w [YOUR_WEIGHT] /e [YOUR_EXPECTED_WEIGHT]";
+    public static final String EDIT_PROFILE_FORMAT = "edit </n [YOUR_NAME]> </a [YOUR_AGE]> </h [YOUR_HEIGHT]> "
+            + "</w [YOUR_WEIGHT]> </e [YOUR_EXPECTED_WEIGHT]>";
+    public static final String HELP_FORMAT = "%-8s - %s" + LS + "%-8s %s" + LS;
 }

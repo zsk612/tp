@@ -1,7 +1,6 @@
 package profile;
 
 import static profile.Constants.PROFILE_STRING_REPRESENTATION;
-import static profile.ProfileParser.checkValidProfile;
 
 /**
  * A class that manages user profile.
@@ -37,7 +36,7 @@ public class Profile {
      * @return String presentation of Profile object.
      */
     public String toString() {
-        assert checkValidProfile(this) : "Profile is invalid";
+        assert Utils.checkValidProfile(this) : "Profile is invalid";
         return String.format(PROFILE_STRING_REPRESENTATION, getName(), getAge(), getHeight(), getWeight(),
                 getExpectedWeight(), getBmiClassification());
     }

@@ -26,13 +26,13 @@ public class ProfileUi extends CommonUi {
      * @return Full line entered by the user.
      */
     public String getCommand() {
-        System.out.print(">>>>> ");
+        System.out.print("Profile Menu >>>>> ");
 
         String inputLine = SCANNER.nextLine();
 
         // Silently consume all blank lines
         while (inputLine.trim().isEmpty()) {
-            System.out.print(">>>>> ");
+            System.out.print("Profile Menu >>>>> ");
             inputLine = SCANNER.nextLine();
         }
 
