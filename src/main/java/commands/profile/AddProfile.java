@@ -1,56 +1,89 @@
 package commands.profile;
 
-import exceptions.profile.RedundantParamException;
+import commands.Command;
+import commands.CommandResult;
+import commands.ExecutionResult;
+import exceptions.profile.InvalidAgeException;
+import exceptions.profile.InvalidCommandFormatException;
+import exceptions.profile.InvalidHeightException;
+import exceptions.profile.InvalidWeightException;
 import profile.Profile;
-import storage.profile.Storage;
 
+import java.util.HashMap;
 import java.util.logging.Level;
 
+import static commands.ExecutionResult.FAILED;
+import static commands.ExecutionResult.OK;
+import static commands.ExecutionResult.SKIPPED;
 import static logger.SchwarzeneggerLogger.logger;
-import static profile.Constants.COMMAND_WORD_ADD;
-import static profile.Constants.MESSAGE_ADD_TITLE;
+import static profile.Constants.MESSAGE_CREATE_PROFILE_ACK;
 import static profile.Constants.MESSAGE_PROFILE_EXIST;
+import static profile.ProfileParser.extractAge;
+import static profile.ProfileParser.extractCommandTagAndInfo;
+import static profile.ProfileParser.extractExpectedWeight;
+import static profile.ProfileParser.extractHeight;
+import static profile.ProfileParser.extractName;
+import static profile.ProfileParser.extractWeight;
 
 /**
  * A representation of the command for adding profile.
  */
 public class AddProfile extends Command {
+    private String commandArgs;
+    private ExecutionResult executionResult;
 
     /**
-     * Constructs AddCommand object inheriting abstract class Command.
+     * Constructs AddProfile object inheriting abstract class Command.
      *
      * @param commandArgs Command arguments from user's input.
-     * @throws RedundantParamException If parameters are provided to Add Command.
      */
-    public AddProfile(String commandArgs) throws RedundantParamException {
-        if (!commandArgs.isEmpty()) {
-            throw new RedundantParamException(COMMAND_WORD_ADD);
-        }
+    public AddProfile(String commandArgs) {
+        this.commandArgs = commandArgs;
+        executionResult = SKIPPED;
     }
 
     /**
      * Overrides execute method of class Command to execute the view profile command requested by user's input.
      *
      * @param profile User's Profile object.
-     * @param storage Storage to save data when required.
      * @return Result of command execution.
      */
     @Override
-    public CommandResult execute(Profile profile, Storage storage) {
+    public Profile execute(Profile profile) throws InvalidCommandFormatException, InvalidAgeException,
+            InvalidHeightException, InvalidWeightException {
+
         logger.log(Level.INFO, "executing AddCommand");
-        if (!profile.isDeleted) {
-            return new CommandResult(MESSAGE_PROFILE_EXIST);
+
+        if (profile != null) {
+            executionResult = FAILED;
+            return profile;
         }
-        return new CommandResult(MESSAGE_ADD_TITLE);
+
+        HashMap<String, String> parsedParams = extractCommandTagAndInfo(commandArgs);
+        profile = new Profile(
+                extractName(parsedParams),
+                extractAge(parsedParams),
+                extractHeight(parsedParams),
+                extractWeight(parsedParams),
+                extractExpectedWeight(parsedParams)
+        );
+
+        executionResult = OK;
+
+        return profile;
     }
 
-    /**
-     * Checks if user wants to add profile by checking given command.
-     *
-     * @param command The command to be checked.
-     * @return Whether the command is an object of type AddCommand.
-     */
-    public static boolean isAddCommand(Command command) {
-        return command instanceof AddProfile;
+    public CommandResult getExecutionResult(Profile profile) {
+        CommandResult result = null;
+
+        if (executionResult == OK) {
+            result = new CommandResult(String.format(MESSAGE_CREATE_PROFILE_ACK, profile.toString()));
+        } else if (executionResult == FAILED) {
+            result = new CommandResult(MESSAGE_PROFILE_EXIST);
+        }
+
+        assert (result != null) : "errors in setting execution flag";
+
+        return result;
     }
 }

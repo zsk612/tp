@@ -25,7 +25,7 @@ import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.PATH_TO_PROFILE_FILE;
 import static profile.Constants.PATH_TO_PROFILE_FOLDER;
-import static profile.parser.ProfileParser.checkValidProfile;
+import static profile.ProfileParser.checkValidProfile;
 
 /**
  * A class that saves and loads user profile data on local hard disk.
@@ -152,7 +152,7 @@ public class Storage {
             logger.log(Level.INFO, "starting to save profile data");
             FileWriter fw = new FileWriter(PATH_TO_PROFILE_FILE.toString());
 
-            if (profile.isDeleted) {
+            if (profile == null) {
                 fw.write(EMPTY_STRING);
             } else {
                 gson.toJson(profile, fw);
