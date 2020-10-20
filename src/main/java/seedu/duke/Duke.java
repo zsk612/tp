@@ -44,10 +44,7 @@ public class Duke {
                 System.out.println("Entering Profile Session...");
 
                 ProfileSession profileSession = new ProfileSession();
-
-                while (!profileSession.hasExit) {
-                    profileSession.run();
-                }
+                profileSession.run();
             }
 
             if (response.equals("workout")) {
