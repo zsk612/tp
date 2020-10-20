@@ -2,52 +2,52 @@
 By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 
 ## Table of content
-* [1. Introduction](#1-introduction)
-* [2. Quick Start](#2-quick-start)
-* [3. Features](#3-features)
-  + [3.1. Main Menu](#31-main-menu)
-    - [3.1.1. Viewing help: help](#311-viewing-help-help)
-    - [3.1.2. Entering Profile Menu: profile](#312-entering-profile-menu-profile)
-    - [3.1.3. Entering Diet Menu: diet](#313-entering-diet-menu-diet)
-    - [3.1.4. Entering Workout Menu: workout](#314-entering-workout-menu-workout)
-    - [3.1.5. Exiting the program: end](#315-exiting-the-program-end)
-  + [3.2. Profile Menu](#32-profile-menu)
-    - [3.2.1. Viewing help: help](#321-viewing-help-help)
-    - [3.2.2. Adding a profile: add](#322-adding-a-profile-add)
-    - [3.2.3. Viewing a profile: view](#323-viewing-a-profile-view)
-    - [3.2.4. Deleting a profile: delete](#324-deleting-a-profile-delete)
-    - [3.2.5. Editing a profile: edit](#325-editing-a-profile-edit)
-    - [3.2.6. Ending Profile Menu: end](#326-ending-profile-menu-end)
-  + [3.3. Diet Menu](#33-diet-menu)
-    - [3.3.1. List out all commands: help](#331-list-out-all-commands-help)
-    - [3.3.2. Start recording diet data: meal](#332-start-recording-diet-data-meal)
-      * [3.3.2.1. Showing help message: help](#3321-showing-help-message-help)
-      * [3.3.2.2. Adding food items for the current meal: add](#3322-adding-food-items-for-the-current-meal-add)
-      * [3.3.2.3. Listing data for the current meal: list](#3323-listing-data-for-the-current-meal-list)
-      * [3.3.2.4. Deleting data from the current meal: delete](#3324-deleting-data-from-the-current-meal-delete)
-      * [3.3.2.5. Clearing data from the current meal: clear](#3325-clearing-data-from-the-current-meal-clear)
-      * [3.3.2.6. Stopping the recording of person’s meal data: end](#3326-stopping-the-recording-of-persons-meal-data-end)
-    - [3.3.3. List all past diet session: list](#333-edit-a-past-diet-session-list)
-    - [3.3.4. Edit a past diet session: edit](#334-edit-a-past-diet-session-edit)
-    - [3.3.5. Delete a past diet session: delete](#335-delete-a-past-diet-session-delete)
-    - [3.3.6. Clear all past diet sessions: clear](#336-clear-all-past-diet-sessions-clear)
-    - [3.3.7. Exit the diet manager: end](#337-exit-the-diet-manager-end)
-  + [3.4. Workout Menu](#34-workout-menu)
-    - [3.4.1. Start a new workout session: new](#341-start-a-new-workout-session-new)
-      * [3.4.1.1. Adding data for current workout session: add](#3411-adding-data-for-current-workout-session-add)
-      * [3.4.1.2. Listing data for the current workout session: list](#3412-listing-data-for-the-current-workout-session-list)
-      * [3.4.1.3. Showing the commands available for workout session: help](#3413-showing-the-commands-available-for-workout-session-help)
-      * [3.4.1.4. Deleting data from the current workout session: delete](#3414-deleting-data-from-the-current-workout-session-delete)
-      * [3.4.1.5. Stopping the recording data for the current workout session: end](#3415-stopping-the-recording-data-for-the-current-workout-session-end)
-    - [3.4.2. Listing all past workout sessions: list](#342-listing-all-past-workout-sessions-list)
-    - [3.4.3. Edit a workout session: edit](#343-edit-a-workout-session-edit)
-    - [3.4.4. Delete a workout session: delete](#344-delete-a-workout-session-delete)
-    - [3.4.5. Search a list of workout session: search](#345-search-a-list-of-workout-session-search)
-    - [3.4.6. Showing the commands available for workout menu: help](#346-showing-the-commands-available-for-workout-menu-help)
-    - [3.4.7. Clearing all workout sessions: clear](#347-clearing-all-workout-sessions-clear)
-    - [3.4.8. Returning to main menu: end](#348-returning-to-main-menu-end)
-* [4. Command summary](#4-command-summary)
-* [5. Notes](#5-notes)
+1. [**Introduction**](#1-introduction)
+1. [**Quick Start**](#2-quick-start)
+1. [**Features**](#3-features)<br>
+3.1. [Main Menu](#31-main-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.1. [Viewing help: `help`](#311-viewing-help-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.2. [Entering Profile Menu: `profile`](#312-entering-profile-menu-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.3. [Entering Diet Menu: `diet`](#313-entering-diet-menu-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.4. [Entering Workout Menu: `workout`](#314-entering-workout-menu-workout)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.5.  [Exiting The Schwarzenegger: `end`](#315-exiting-the-schwarzenegger-end)<br>
+3.2. [Profile Menu](#32-profile-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.1. [Viewing help: `help`](#321-viewing-help-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.2. [Adding a profile: `add`](#322-adding-a-profile-add)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.3. [Viewing a profile: `view`](#323-viewing-a-profile-view)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.4. [Deleting a profile: `delete`](#324-deleting-a-profile-delete)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.5. [Editing a profile: `edit`](#325-editing-a-profile-edit)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.6. [Returning to Main Menu: `end`](#326-ending-profile-menu-end)<br>
+3.3. [Diet Menu](#33-diet-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.1. [Listing out all commands: `help`](#331-listing-out-all-commands-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.2. [Starting to record diet data: `meal`](#332-starting-to-record-diet-data-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.1. [Showing help message: `help`](#3321-showing-help-message-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.2. [Adding food items for the current meal: `add`](#3322-adding-food-items-for-the-current-meal-add)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.3. [Listing data for the current meal: `list`](#3323-listing-data-for-the-current-meal-list)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.4. [Deleting data from the current meal: `delete`](#3324-deleting-data-from-the-current-meal-delete)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.5. [Clearing data from the current meal: `clear`](#3325-clearing-data-from-the-current-meal-clear)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.6. [Stopping the recording of person’s meal data: `end`](#3326-stopping-the-recording-of-persons-meal-data-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.3. [Listing all past diet sessions: `list`](#333-listing-all-past-diet-sessions-list)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.4. [Editing a past diet session: `edit`](#334-editing-a-past-diet-session-edit)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.5. [Deleting a past diet session: `delete`](#335-deleting-a-past-diet-session-delete)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.6. [Clearing all past diet sessions: `clear`](#336-clearing-all-past-diet-sessions-clear)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.7. [Returning to Main Menu: `end`](#337-returning-to-main-menu-end)<br>
+3.4. [Workout Menu](#34-workout-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.1. [Starting a new workout session: `new`](#341-starting-a-new-workout-session-new)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.1.1. [Adding data for current workout session: `add`](#3411-adding-data-for-current-workout-session-add)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.1.2. [Listing data for the current workout session: `list`](#3412-listing-data-for-the-current-workout-session-list)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.1.3. [Showing the commands available for workout session: `help`](#3413-showing-the-commands-available-for-workout-session-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.1.4. [Deleting data from the current workout session: `delete`](#3414-deleting-data-from-the-current-workout-session-delete)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.1.5. [Stopping the recording data for the current workout session: `end`](#3415-stopping-the-recording-data-for-the-current-workout-session-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.2. [Listing all past workout sessions: `list`](#342-listing-all-past-workout-sessions-list)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.3. [Editing a workout session: `edit`](#343-editing-a-workout-session-edit)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.4. [Deleting a workout session: `delete`](#344-deleting-a-workout-session-delete)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.5. [Searching a list of workout session: `search`](#345-searching-a-list-of-workout-session-search)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.6. [Showing the commands available for workout menu: `help`](#346-showing-the-commands-available-for-workout-menu-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.7. [Clearing all workout sessions: `clear`](#347-clearing-all-workout-sessions-clear)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.8. [Returning to Main Menu: `end`](#348-returning-to-main-menu-end)
+1. [Command summary](#4-command-summary)
+1. [Notes](#5-notes)
 
 ## 1. Introduction
 
@@ -71,31 +71,31 @@ This section includes 4 sub sections which will guide you through the features a
 You can get access to Profile Menu, Workout Menu and Diet Menu from Main Menu.
 The available commands in Main Menu are listed below:
 
-#### 3.1.1. Viewing help: help
+#### 3.1.1. Viewing help: `help`
 The program will show a message explaining which commands are available for you to switch to the menu that you want (i.e. Profile Menu, Workout Menu and Diet Menu).
 
 __Format:__ `help`  
 
 Example: `help`
-#### 3.1.2. Entering Profile Menu: profile
+#### 3.1.2. Entering Profile Menu: `profile`
 The program will direct you to the Profile Menu.
 
 __Format:__ `profile`  
 
 Example: `profile`
-#### 3.1.3. Entering Diet Menu: diet
+#### 3.1.3. Entering Diet Menu: `diet`
 The program will direct you to the Diet Menu.
 
 __Format:__ `diet`  
 
 Example: `diet`
-#### 3.1.4. Entering Workout Menu: workout
+#### 3.1.4. Entering Workout Menu: `workout`
 The program will direct you to the Workout Menu.
 
 __Format:__ `workout`  
 
 Example: `workout`
-#### 3.1.5. Exiting the program: end
+#### 3.1.5. Exiting The Schwarzenegger: `end`
 Terminates The Schwarzenegger.
 
 __Format:__ `end`  
@@ -104,13 +104,13 @@ Example: `end`
 ### 3.2. Profile Menu
 Profile Menu manages your profile including your name, age and physique data. 
 
-#### 3.2.1. Viewing help: help
+#### 3.2.1. Viewing help: `help`
 The program will show a message explaining which commands are available Profile Menu.
 
 __Format:__ `help`  
 
 Example: `help`
-#### 3.2.2. Adding a profile: add
+#### 3.2.2. Adding a profile: `add`
 You can add your profile for the most customized experience in The Schwarzenegger. Your height should in centimeters and your input weight should be in kilograms.
 
 __Format:__ `add /n [name] /a [age] /h [height] /w [weight] /e [expected weight]`  
@@ -118,25 +118,27 @@ __Format:__ `add /n [name] /a [age] /h [height] /w [weight] /e [expected weight]
 Example: `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
 
 This command adds a profile with the name Schwarzenegger, age 30, height 188 cm, weight 113 kg and expected weight 100 kg.
-#### 3.2.3. Viewing a profile: view
+#### 3.2.3. Viewing a profile: `view`
 You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI and give you suggestions on your expected weight to be fitter.
 
 __Format:__ `view`  
 
 Example: `view`
-#### 3.2.4. Deleting a profile: delete
+#### 3.2.4. Deleting a profile: `delete`
 You can delete your profile from the program.
 
 __Format:__ `delete`  
 
 Example: `delete`
-#### 3.2.5. Editing a profile: edit
+#### 3.2.5. Editing a profile: `edit`
 You can edit the profile after adding to the program.
 
 __Format:__ `edit /n [name or ]edit /h [height] or edit /w [weight] or edit /a [age] or edit /e [expection]`  
 
 Example: `edit /h 180`
-#### 3.2.6. Ending Profile Menu: end
+
+This command edits your current height in the system to 180 centimeters.
+#### 3.2.6. Returning to Main Menu: `end`
 You use this command to switch back to the Main Menu.
 
 __Format:__ `end`  
@@ -144,11 +146,11 @@ __Format:__ `end`
 Example: `end`
 ### 3.3. Diet Menu
 
-### 3.3.1. List out all commands: help
+### 3.3.1. Listing out all commands: `help`
 You can list out all the commands in the diet menu with a brief summary of how to use them with this command.
 
 __Format:__ `help` 
-### 3.3.2. Start recording diet data: meal
+### 3.3.2. Starting to record diet data: `meal`
 This command creates a new meal session.
 You will be directed immediately into the meal session.
 
@@ -162,67 +164,67 @@ Situation | Example |  Outcome
 ----------|--------|------------------
 Create a meal session | `meal`| a meal session of type unspecified with today's date will be created
 Create a meal session with date and type| `meal /d 2020-05-04 breakfast`| A meal session with date 2020-05-04 and type breakfast will be created
-#### 3.3.2.1. Showing help message: help
+#### 3.3.2.1. Showing help message: `help`
 You can list out all the commands in the diet session with a brief summary of how to use them with this command.
 
 __Format:__ `help` 
 
 Example: `help`
-#### 3.3.2.2. Adding food items for the current meal: add
+#### 3.3.2.2. Adding food items for the current meal: `add`
 This command adds a food item into the current meal session
 
 __Format:__ `add [food name] /c [amount of calories]` 
 
 Example: `add chicken nuggets /c 120`
-#### 3.3.2.3. Listing data for the current meal: list
+#### 3.3.2.3. Listing data for the current meal: `list`
 Lists all the added dishes for the current meal, with a numbered sequence according to sequence entered.
 
 __Format:__ `list` 
 
 Example: `list`
-#### 3.3.2.4. Deleting data from the current meal: delete
+#### 3.3.2.4. Deleting data from the current meal: `delete`
 Deletes the dish according to the ID in the current meal session list.
 
 __Format:__ `delete [dish ID]`
 
 Example: `delete 3` 
-#### 3.3.2.5. Clearing data from the current meal: clear
+#### 3.3.2.5. Clearing data from the current meal: `clear`
 Clears all the dishes in the current meal list.
 
 __Format:__ `clear` 
 
 Example: `clear`
-#### 3.3.2.6. Stopping the recording of person’s meal data: end
+#### 3.3.2.6. Stopping the recording of person’s meal data: `end`
 Ends the current meal session and saves the data.
 
 __Format:__ `end` 
 
 Example: `end`
-### 3.3.3. Edit a past diet session: list
+### 3.3.3. Listing all past diet sessions: `list`
 Obtains a list of information about past diet sessions together with their numbered index.
 
 __Format:__ `list`
 
 Example: `list`
-### 3.3.4. Edit a past diet session: edit
+### 3.3.4. Editing a past diet session: `edit`
 Edits a previous meal session based on a numbered index that can be found in the list.
 
 __Format:__ `edit [index number]`
 
 Example: `edit 3` 
-### 3.3.5. Delete a past diet session: delete
+### 3.3.5. Deleting a past diet session: `delete`
 Deletes a previous meal session based on a numbered index that can be found in the list.
 
 __Format:__ `delete [index number]`
 
 Example: `delete 3` 
-### 3.3.6. Clear all past diet sessions: clear
+### 3.3.6. Clearing all past diet sessions: `clear`
 Deletes all previous diet sessions.
 
 __Format:__ `clear`
 
 Example: `clear`
-### 3.3.7. Exit the diet manager: end
+### 3.3.7. Returning to Main Menu: `end`
 Ends the current meal session and saves the data.
 
 __Format:__ `end` 
@@ -237,7 +239,7 @@ Shows a list of commands and their way of use.
 __Format:__ `help`  
 
 Example: `help`
-### 3.4.1. Start a new workout session: new
+### 3.4.1. Starting a new workout session: `new`
 Creates a new workout session and go into the session. 
 Adds tags with “/t”. Tags are optional and more than one tag can be attached to a session.
 
@@ -250,41 +252,41 @@ Situation | Example |  Outcome
 ----------|--------|------------------
 Create a workout session with tags "leg" and "chest" | `new /t legs chest`|sthst
 Repeated tags are attached| `new /t legs legs`| Only one will be added
-#### 3.4.1.1. Adding data for current workout session: add
+#### 3.4.1.1. Adding data for current workout session: `add`
 Adds moves with number of moves per set and weights of equipment (if the move does not require weights, input 0 for weight).
 
 __Format:__ `add [name of move] /n [number of moves per set] /w [weight]`  
 
 Example: `add squat /n 15 /w 40`
 
-#### 3.4.1.2. Listing data for the current workout session: list
+#### 3.4.1.2. Listing data for the current workout session: `list`
 Lists all the added moves for the current workout session, with a numbered sequence according to sequence entered.
 
 __Format:__ `list`  
 
 Example: `list`
 
-#### 3.4.1.3. Showing the commands available for workout session: help
+#### 3.4.1.3. Showing the commands available for workout session: `help`
 Shows a list of commands and their way of use.
 
 __Format:__ `help`  
 
 Example: `help`
-#### 3.4.1.4. Deleting data from the current workout session: delete
+#### 3.4.1.4. Deleting data from the current workout session: `delete`
 Deletes the move according to move ID in the current workout session list.
 
 
 __Format:__ `delete [move ID]`  
 
 Example: `delete 1`
-#### 3.4.1.5. Stopping the recording data for the current workout session: end
+#### 3.4.1.5. Stopping the recording data for the current workout session: `end`
 Ends the current workout session and saves the relevant data.
 
 
 __Format:__ `end`  
 
 Example: `end`
-### 3.4.2. Listing all past workout sessions: list
+### 3.4.2. Listing all past workout sessions: `list`
 You can see all your past workout sessions. They will be summarised and 
 printed in a table with their index, creation date and tags.
 
@@ -294,7 +296,7 @@ Example |  Outcome
 --------|------------------
 **Command**: <br> `list` <br><br>| TODO:actual code UI output
 
-### 3.4.3. Edit a workout session: edit
+### 3.4.3. Editing a workout session: `edit`
 You can edits a past workout session in the record list. You will go into 
 the specific workout session after typing this.
 
@@ -305,7 +307,7 @@ The index can be found by listing the results
 Example |  Outcome
 --------|------------------
 **Command**: <br> `edit 1` <br><br> **Description:** <br> Edit the record at index 1.| TODO:actual code UI output
-### 3.4.4. Delete a workout session: delete
+### 3.4.4. Deleting a workout session: `delete`
 You can delete a past workout session in the record list.
 
 __Format:__ `delete <INDEX>` 
@@ -315,7 +317,7 @@ The index can be found by listing the results
 Example |  Outcome
 --------|------------------
 **Command**: <br> `delete 1` <br><br> **Description:** <br> Delete the record at index 1.| TODO:actual code UI output
-### 3.4.5. Search a list of workout session: search
+### 3.4.5. Searching a list of workout session: `search`
 You can searches for a list of workout sessions that matches certain conditions.For exmaple, 
 you can search for sessions created on a specific day or sessions that contains certain tags.
 
@@ -341,7 +343,7 @@ Search all sessions created on Oct 17 2020 | `search /d 20201018`|TODO:sthst
 Search all sessions with "arm" tag| `search /t arm`|sth
 Search all sessions with "arm" tag on Oct 17 2020| `search /t arm /d 20201018`|sth
 
-### 3.4.6. Showing the commands available for workout menu: help
+### 3.4.6. Showing the commands available for workout menu: `help`
 You can see a complete list of available commands under workout manager and how to use them.
 
 __Format:__ `help`
@@ -349,7 +351,7 @@ __Format:__ `help`
 Example |  Outcome
 --------|------------------
 **Command**: <br> `help` <br><br> **Description:** <br> show help manual| TODO:actual code UI output
-### 3.4.7. Clearing all workout sessions: clear
+### 3.4.7. Clearing all workout sessions: `clear`
 You can erase all workout sessions.
 
 __Format:__ `clear`
@@ -363,7 +365,7 @@ Example |  Outcome
 --------|------------------
 **Command**: <br> `clear`| TODO:
 
-### 3.4.8. Returning to main menu: end
+### 3.4.8. Returning to main menu: `end`
 
 You can return to the main menu.
 
