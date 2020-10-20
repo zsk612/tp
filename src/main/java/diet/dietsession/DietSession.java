@@ -65,7 +65,7 @@ public class DietSession {
         setEndDietSession(true);
 
         logger.log(Level.INFO, "saving profile session to file");
-        saveToFile();
+        //saveToFile();
         dietSessionUI.printExit();
     }
 
@@ -82,7 +82,7 @@ public class DietSession {
         }
     }
 
-    public void saveToFile() {
+    private void saveToFile() {
         try {
             storage.init(typeInput + " " + date.toString());
             storage.writeToStorageDietSession(typeInput + " " + date.toString(), this);
@@ -92,7 +92,7 @@ public class DietSession {
         }
     }
 
-    public void processCommand(String input) throws NullPointerException {
+    private void processCommand(String input) throws NullPointerException {
         String[] commParts = parser.parse(input);
         Command command = cl.get(commParts[0]);
         command.execute(commParts[1], foodList, storage);
