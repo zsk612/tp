@@ -40,6 +40,13 @@ public class EndProfile extends Command {
         return profile;
     }
 
+    /**
+     * Overrides getExecutionResult method of class Command to get execution result after executing end command.
+     *
+     * @param profile User's profile.
+     * @return Execution result.
+     */
+    @Override
     public CommandResult getExecutionResult(Profile profile) {
         return new CommandResult(MESSAGE_EXIT_PROFILE);
     }

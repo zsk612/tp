@@ -76,6 +76,13 @@ public class EditProfile extends Command {
         return profile;
     }
 
+    /**
+     * Overrides getExecutionResult method of class Command to get execution result after executing edit command.
+     *
+     * @param profile User's profile.
+     * @return Execution result.
+     */
+    @Override
     public CommandResult getExecutionResult(Profile profile) {
         CommandResult result = null;
 

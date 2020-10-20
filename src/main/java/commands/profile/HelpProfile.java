@@ -28,6 +28,12 @@ public class HelpProfile extends Command {
         }
     }
 
+    /**
+     * Overrides getExecutionResult method of class Command to get execution result after executing help command.
+     *
+     * @param profile User's profile.
+     * @return Execution result.
+     */
     @Override
     public CommandResult getExecutionResult(Profile profile) {
         StringBuilder helpMessage = new StringBuilder();
