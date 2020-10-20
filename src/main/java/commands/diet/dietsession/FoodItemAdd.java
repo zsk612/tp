@@ -1,20 +1,22 @@
 package commands.diet.dietsession;
 
-import diet.dietsession.Food;
-import diet.dietsession.DietSessionParser;
-import storage.diet.Storage;
 import commands.Command;
-import static logger.SchwarzeneggerLogger.logger;
-
+import diet.dietsession.DietSessionParser;
+import diet.dietsession.Food;
+import logger.SchwarzeneggerLogger;
+import storage.diet.Storage;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 public class FoodItemAdd extends Command {
 
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
         DietSessionParser parser = new DietSessionParser();
+        SchwarzeneggerLogger.initSchwarzeneggerLogger();
         try {
             assert !input.isEmpty();
             Food temp = new Food(parser.processFoodName(input), parser.processFoodCalories(input));

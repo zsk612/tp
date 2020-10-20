@@ -1,7 +1,7 @@
 package profile;
 
 import static profile.Constants.PROFILE_STRING_REPRESENTATION;
-import static profile.parser.ProfileParser.checkValidProfile;
+import static profile.ProfileParser.checkValidProfile;
 
 /**
  * A class that manages user profile.
@@ -13,7 +13,6 @@ public class Profile {
     protected int height;
     protected double weight;
     protected double expectedWeight;
-    public transient boolean isDeleted;
 
     /**
      * Constructs Profile object.
@@ -30,7 +29,6 @@ public class Profile {
         this.height = height;
         this.weight = weight;
         this.expectedWeight = expectedWeight;
-        isDeleted = false;
     }
 
     /**

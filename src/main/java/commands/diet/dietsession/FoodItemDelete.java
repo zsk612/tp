@@ -1,12 +1,13 @@
 package commands.diet.dietsession;
 
+import commands.Command;
 import diet.dietsession.Food;
 import storage.diet.Storage;
-import commands.Command;
-import static logger.SchwarzeneggerLogger.logger;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 public class FoodItemDelete extends Command {
 

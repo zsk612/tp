@@ -1,0 +1,34 @@
+@startuml
+actor user
+activate WorkoutManager
+user -> WorkoutManager
+WorkoutManager -> WorkoutManagerParser : parse()
+activate WorkoutManagerParser
+WorkoutManagerParser -> WorkoutManager : parsed input
+deactivate WorkoutManagerParser
+
+WorkoutManager -> CommandLib : get()
+activate CommandLib
+CommandLib -> WorkoutManager : Command
+deactivate CommandLib
+
+WorkoutManager -> Command : execute()
+activate Command
+
+Command -> WorkoutManagerStorage : add()
+activate WorkoutManagerStorage
+WorkoutManagerStorage --> Command : filePath
+deactivate WorkoutManagerStorage
+
+Command -> Command : new WorkoutSession
+Command -> workoutSession : start()
+activate workoutSession
+workoutSession -> Command
+deactivate workoutSession
+
+Command -> WorkoutManager : ExecutionResult
+deactivate Command
+
+WorkoutManager ->  user : output
+
+@enduml

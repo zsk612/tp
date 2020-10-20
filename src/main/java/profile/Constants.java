@@ -17,7 +17,7 @@ public class Constants {
     public static final int COMMAND_TYPE_INDEX = 0;
     public static final String COMMAND_WORD_ADD = "add";
     public static final String COMMAND_WORD_DELETE = "delete";
-    public static final String COMMAND_WORD_EXIT = "exit";
+    public static final String COMMAND_WORD_END = "end";
     public static final String COMMAND_WORD_VIEW = "view";
     public static final String DATA_FILE = "profile.txt";
     public static final String DATA_FOLDER = "saves";

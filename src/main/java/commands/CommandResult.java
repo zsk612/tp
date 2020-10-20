@@ -1,4 +1,4 @@
-package commands.profile;
+package commands;
 
 /**
  * A class representing result shown to user after executing the requested command.

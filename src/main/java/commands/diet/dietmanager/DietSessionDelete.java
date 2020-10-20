@@ -1,10 +1,12 @@
 package commands.diet.dietmanager;
 
-import storage.diet.Storage;
 import commands.Command;
+import storage.diet.Storage;
 
 import java.io.File;
 import java.util.logging.Level;
+import static logger.SchwarzeneggerLogger.logger;
+
 import static logger.SchwarzeneggerLogger.logger;
 
 public class DietSessionDelete extends Command {
