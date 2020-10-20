@@ -2,10 +2,10 @@
 By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 
 ## Table of content
-1. [**Introduction**](#1-introduction)
-1. [**Quick Start**](#2-quick-start)
-1. [**Features**](#3-features)<br>
-3.1. [Main Menu](#31-main-menu)<br>
+1. [**Introduction**](#introduction)
+1. [**Quick Start**](#quick-start)
+1. [**Features**](#features)<br>
+3.1. [Main Menu](#main-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.1.1. [Viewing help: `help`](#311-viewing-help-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.1.2. [Entering Profile Menu: `profile`](#312-entering-profile-menu-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.1.3. [Entering Diet Menu: `diet`](#313-entering-diet-menu-diet)<br>
@@ -46,8 +46,8 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.6. [Showing the commands available for workout menu: `help`](#346-showing-the-commands-available-for-workout-menu-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.7. [Clearing all workout sessions: `clear`](#347-clearing-all-workout-sessions-clear)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.8. [Returning to Main Menu: `end`](#348-returning-to-main-menu-end)
-1. [Command summary](#4-command-summary)
-1. [Notes](#5-notes)
+1. [**Command summary**](#command-summary)
+1. [**Notes**](#notes)
 
 ## 1. Introduction
 
