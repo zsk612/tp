@@ -36,7 +36,7 @@ public class DeleteProfile extends Command {
      */
     @Override
     public Profile execute(Profile profile) {
-        logger.log(Level.INFO, "executing DeleteCommand");
+        logger.log(Level.INFO, "executing Delete Command");
         return null;
     }
 

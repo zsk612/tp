@@ -53,7 +53,7 @@ public class EditProfile extends Command {
     public Profile execute(Profile profile) throws InvalidCommandFormatException, InvalidAgeException,
             InvalidHeightException, InvalidWeightException {
 
-        logger.log(Level.INFO, "executing EditCommand");
+        logger.log(Level.INFO, "executing Edit Command");
 
         if (profile == null) {
             executionResult = FAILED;

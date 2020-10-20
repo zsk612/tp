@@ -53,7 +53,7 @@ public class AddProfile extends Command {
     public Profile execute(Profile profile) throws InvalidCommandFormatException, InvalidAgeException,
             InvalidHeightException, InvalidWeightException {
 
-        logger.log(Level.INFO, "executing AddCommand");
+        logger.log(Level.INFO, "executing Add Command");
 
         if (profile != null) {
             executionResult = FAILED;

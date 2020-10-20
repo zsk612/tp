@@ -37,7 +37,7 @@ public class ViewProfile extends Command {
      */
     @Override
     public Profile execute(Profile profile) {
-        logger.log(Level.INFO, "executing ViewCommand");
+        logger.log(Level.INFO, "executing View Command");
         return profile;
     }
 

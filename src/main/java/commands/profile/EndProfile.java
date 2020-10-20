@@ -36,7 +36,7 @@ public class EndProfile extends Command {
      */
     @Override
     public Profile execute(Profile profile) {
-        logger.log(Level.INFO, "executing ExitCommand");
+        logger.log(Level.INFO, "executing Exit Command");
         return profile;
     }
 

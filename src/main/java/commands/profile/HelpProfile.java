@@ -5,6 +5,9 @@ import commands.CommandResult;
 import exceptions.profile.RedundantParamException;
 import profile.Profile;
 
+import java.util.logging.Level;
+
+import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.ADD_PROFILE_FORMAT;
 import static profile.Constants.COMMAND_WORD_ADD;
 import static profile.Constants.COMMAND_WORD_DELETE;
@@ -26,6 +29,18 @@ public class HelpProfile extends Command {
         if (!commandArgs.isEmpty()) {
             throw new RedundantParamException(COMMAND_WORD_HELP);
         }
+    }
+
+    /**
+     * Overrides execute method of class Command to execute help command requested by user's input.
+     *
+     * @param profile User's Profile object.
+     * @return Result of command execution.
+     */
+    @Override
+    public Profile execute(Profile profile) {
+        logger.log(Level.INFO, "executing Help Command");
+        return profile;
     }
 
     /**
