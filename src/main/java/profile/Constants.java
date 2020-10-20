@@ -17,6 +17,7 @@ public class Constants {
     public static final int COMMAND_TYPE_INDEX = 0;
     public static final String COMMAND_WORD_ADD = "add";
     public static final String COMMAND_WORD_DELETE = "delete";
+    public static final String COMMAND_WORD_EDIT = "edit";
     public static final String COMMAND_WORD_END = "end";
     public static final String COMMAND_WORD_VIEW = "view";
     public static final String DATA_FILE = "profile.txt";
@@ -31,9 +32,10 @@ public class Constants {
     public static final String GREEDY_WHITE_SPACE = "\\s+";
     public static final int HEIGHT_LOWER_BOUND = 63;
     public static final int HEIGHT_UPPER_BOUND = 231;
-    public static final String MESSAGE_ADD_TITLE = "Please enter your details to add a new profile.";
     public static final String MESSAGE_CREATE_PROFILE_ACK = "Got it. Here's a confirmation of your profile:"
             + CommonUi.LS + "%s";
+    public static final String MESSAGE_EDIT_PROFILE_ACK = "Yay. Your profile is edited successfully. "
+            + "Here's your new profile" + CommonUi.LS + "%s";
     public static final String MESSAGE_DELETE_PROFILE = "I've deleted your profile.";
     public static final String MESSAGE_EXIT_PROFILE = "Exiting Profile Session...";
     public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. "
@@ -51,15 +53,10 @@ public class Constants {
     public static final String PROJECT_ROOT = System.getProperty("user.dir");
     public static final Path PATH_TO_PROFILE_FOLDER = Paths.get(PROJECT_ROOT, DATA_FOLDER, PROFILE_FOLDER);
     public static final Path PATH_TO_PROFILE_FILE = Paths.get(PROJECT_ROOT, DATA_FOLDER, PROFILE_FOLDER, DATA_FILE);
-    public static final String QUESTION_AGE = "How old are you?";
-    public static final String QUESTION_EXPECTED_WEIGHT = "What's your expected weight in kilograms?";
-    public static final String QUESTION_HEIGHT = "What's your height in centimeters?";
-    public static final String QUESTION_NAME = "It seems like you're new to the Schwarzenegger. How should I call you?";
-    public static final String QUESTION_WEIGHT = "What's your weight in kilograms?";
     public static final String SAD_FACE = ":(  OOPS!!! ";
     public static final String MESSAGE_INVALID_COMMAND_WORD = SAD_FACE + "Sorry, but I don't know what that means.";
     public static final String MESSAGE_INVALID_SAVE_FORMAT = SAD_FACE + "Save format in "
-            + "data\\profile\\profile.txt is invalid.";
+            + "saves\\profile\\profile.txt is invalid.";
     public static final String MESSAGE_INVALID_AGE = String.format(
             SAD_FACE + "Please input an integer from %d to %d for age.", AGE_LOWER_BOUND, AGE_UPPER_BOUND);
     public static final String MESSAGE_INVALID_HEIGHT = String.format(

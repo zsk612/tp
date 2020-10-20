@@ -3,6 +3,7 @@ package profile;
 import commands.Command;
 import commands.profile.AddProfile;
 import commands.profile.DeleteProfile;
+import commands.profile.EditProfile;
 import commands.profile.EndProfile;
 import commands.profile.ViewProfile;
 import exceptions.profile.InvalidAgeException;
@@ -21,6 +22,7 @@ import static profile.Constants.COMMAND_SPLIT_LIMIT;
 import static profile.Constants.COMMAND_TYPE_INDEX;
 import static profile.Constants.COMMAND_WORD_ADD;
 import static profile.Constants.COMMAND_WORD_DELETE;
+import static profile.Constants.COMMAND_WORD_EDIT;
 import static profile.Constants.COMMAND_WORD_END;
 import static profile.Constants.COMMAND_WORD_VIEW;
 import static profile.Constants.EMPTY_STRING;
@@ -55,6 +57,8 @@ public class ProfileParser {
             return new DeleteProfile(commandArgs);
         case COMMAND_WORD_VIEW:
             return new ViewProfile(commandArgs);
+        case COMMAND_WORD_EDIT:
+            return new EditProfile(commandArgs);
         case COMMAND_WORD_END:
             return new EndProfile(commandArgs);
         default:
@@ -75,10 +79,10 @@ public class ProfileParser {
         return split.length == COMMAND_SPLIT_LIMIT ? split : new String[]{split[COMMAND_TYPE_INDEX], EMPTY_STRING};
     }
 
-    public static HashMap<String, String> extractCommandTagAndInfo(String commandArgs)
+    public static HashMap<String, String> extractCommandTagAndInfo(String command, String commandArgs)
             throws InvalidCommandFormatException {
         if (!commandArgs.contains("/")) {
-            throw new InvalidCommandFormatException(COMMAND_WORD_ADD);
+            throw new InvalidCommandFormatException(command);
         }
 
         HashMap<String, String> parsedParams = new HashMap<>();
