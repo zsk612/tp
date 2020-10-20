@@ -24,7 +24,7 @@ class StorageTest {
             FileNotFoundException {
         SchwarzeneggerLogger.initSchwarzeneggerLogger();
         Storage storage = new Storage();
-        String inputFilePath = System.getProperty("user.dir") + "/src/test/java/profile/storage/exampleProfileData.txt";
+        String inputFilePath = System.getProperty("user.dir") + "/src/test/java/storage/profile/exampleProfileData.txt";
         Profile testProfile = storage.decodeProfile(inputFilePath);
         assertEquals(EXAMPLE_PROFILE_STRING, testProfile.toString());
     }
@@ -36,7 +36,7 @@ class StorageTest {
     void testDecodeProfile_invalidDataInput_throwsInvalidSaveFormatException() {
         SchwarzeneggerLogger.initSchwarzeneggerLogger();
         Storage storage = new Storage();
-        String inputFilePath = System.getProperty("user.dir") + "/src/test/java/profile/storage/invalidProfileData.txt";
+        String inputFilePath = System.getProperty("user.dir") + "/src/test/java/storage/profile/invalidProfileData.txt";
         assertThrows(InvalidSaveFormatException.class, () -> {
             storage.decodeProfile(inputFilePath);
         });
