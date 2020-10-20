@@ -77,6 +77,14 @@ public class ProfileParser {
         return split.length == COMMAND_SPLIT_LIMIT ? split : new String[]{split[COMMAND_TYPE_INDEX], EMPTY_STRING};
     }
 
+    /**
+     * Extracts command tags from user input to get option indicator and parsed option.
+     *
+     * @param command Command being executed.
+     * @param commandArgs User's input arguments.
+     * @return HashMap containing option indicator and parsed option pairs.
+     * @throws InvalidCommandFormatException If the input command has invalid format.
+     */
     public static HashMap<String, String> extractCommandTagAndInfo(String command, String commandArgs)
             throws InvalidCommandFormatException {
         if (!commandArgs.contains("/")) {
@@ -104,14 +112,27 @@ public class ProfileParser {
 
             return parsedParams;
         } catch (StringIndexOutOfBoundsException e) {
-            throw new InvalidCommandFormatException(COMMAND_WORD_ADD.toLowerCase());
+            throw new InvalidCommandFormatException(command);
         }
     }
 
+    /**
+     * Extracts name from parsed HashMap.
+     *
+     * @param parsedParams HashMap containing option indicator and parsed option pairs.
+     * @return User's name.
+     */
     public static String extractName(HashMap<String, String> parsedParams) {
         return parsedParams.get("/n");
     }
 
+    /**
+     * Extracts age from parsed HashMap.
+     *
+     * @param parsedParams HashMap containing option indicator and parsed option pairs.
+     * @return User's age.
+     * @throws InvalidAgeException If input age is invalid.
+     */
     public static int extractAge(HashMap<String, String> parsedParams) throws InvalidAgeException {
         try {
             int age = Integer.parseInt(parsedParams.get("/a"));
@@ -125,6 +146,13 @@ public class ProfileParser {
         }
     }
 
+    /**
+     * Extracts height from parsed HashMap.
+     *
+     * @param parsedParams HashMap containing option indicator and parsed option pairs.
+     * @return User's height.
+     * @throws InvalidHeightException If input height is invalid.
+     */
     public static int extractHeight(HashMap<String, String> parsedParams) throws InvalidHeightException {
         try {
             int height = Integer.parseInt(parsedParams.get("/h"));
@@ -138,6 +166,13 @@ public class ProfileParser {
         }
     }
 
+    /**
+     * Extracts weight from parsed HashMap.
+     *
+     * @param parsedParams HashMap containing option indicator and parsed option pairs.
+     * @return User's weight.
+     * @throws InvalidWeightException If input weight is invalid.
+     */
     public static double extractWeight(HashMap<String, String> parsedParams) throws InvalidWeightException {
         try {
             double weight = Double.parseDouble(parsedParams.get("/w"));
@@ -151,6 +186,13 @@ public class ProfileParser {
         }
     }
 
+    /**
+     * Extracts expected weight from parsed HashMap.
+     *
+     * @param parsedParams HashMap containing option indicator and parsed option pairs.
+     * @return User's expected weight.
+     * @throws InvalidWeightException If input expected weight is invalid.
+     */
     public static double extractExpectedWeight(HashMap<String, String> parsedParams) throws InvalidWeightException {
         try {
             double expectedWeight = Double.parseDouble(parsedParams.get("/e"));
