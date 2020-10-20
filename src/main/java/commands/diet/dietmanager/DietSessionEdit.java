@@ -11,7 +11,7 @@ import java.util.logging.Level;
 
 import static logger.SchwarzeneggerLogger.logger;
 
-public class DietSessionLoad extends Command {
+public class DietSessionEdit extends Command {
     static final String FILEPATH = "saves/diet/";
 
     @Override

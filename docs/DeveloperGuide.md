@@ -1318,10 +1318,9 @@ kitchenLogs.log(Level.WARNING, description_of_warning_here, e.toString());
 
 __Target user profile__:
 
-* Prefers desktop application over other types.  
-* Can type fast.  
-* Prefers typing over mouse input.  
+* Can type fast.    
 * Comfortable with using command line interface.  
+* Gyms regularly
 
 __Value proposition__: Manage food inventory quickly compared to a typical mouse or graphic user interface driven application which saves time and makes it more convenient.  
 
@@ -1331,7 +1330,13 @@ __Value proposition__: Manage food inventory quickly compared to a typical mouse
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|v1.0|housewife|add my groceries to the inventory|track my ingredients.|
+|v1.0|New user|View user guide easily|I can learn more about the product before I use it|
+|v1.0|New user|Create a user profile|I can store my profile in the database|
+|v1.0|New user|Create a new workout session|I can start a recorded workout session|
+|v1.0|User|Create a new workout session|I can start a recorded workout session|
+|v1.0|User|Edit user profile|I can change my data if something changes|
+|v1.0|User|Add actions into a session|I can personalise each workout session|
+|v1.0|User|Delete session record|I can correct accidental errors|
 
 [&#8593; Return to Top](#developer-guide)
 

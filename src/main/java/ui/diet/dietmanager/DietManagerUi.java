@@ -20,8 +20,9 @@ public class DietManagerUi {
 
     public String getInput() {
         Scanner in = new Scanner(System.in);
-        assert !in.nextLine().isEmpty();
-        return in.nextLine();
+        String check = in.nextLine();
+        assert check != null : "input has to at least be \\n";
+        return check;
     }
 
     /**
