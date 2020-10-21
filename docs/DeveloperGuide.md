@@ -341,6 +341,19 @@ User can delete a profile created in the past.
 When the user attempts to view profile, the ProfileSession, Ui, ProfileParser, 
 Command and CommandResult class will be called upon. The following sequence of steps will then occur:
 
+<<<<<<< HEAD
+#### 4.4. Workout-related Features
+##### Implementation
+
+![SearchRecipeCommand](images/searchrecipe_update.png)
+
+The following steps explained sequence diagram for `searchrecipe` command:  
+1. The user enters `searchrecipe Chicken`.  
+2. `KitchenHelper` calls `Parser#parseUserCommand()`.  
+3. `SearchRecipeCommand` object is created with the keyword passed in.  
+4. `KitchenHelper` calls it own method `executeCommand()` to execute the method in `SearchRecipeCommand#execute()`.  
+5. On `SearchRecipeCommand#execute()`, display the list of recipe's name that matches the keyword.
+=======
 1. User executes `delete`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
     2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
@@ -356,6 +369,7 @@ Command and CommandResult class will be called upon. The following sequence of s
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
 The following sequence diagram shows how the new command works
+>>>>>>> e9b52d33141e2d9ef7fb592b05ef579adbc1be03
 
 ##### Design considerations:
 
