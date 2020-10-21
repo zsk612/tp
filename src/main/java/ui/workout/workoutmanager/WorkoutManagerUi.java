@@ -43,4 +43,6 @@ public class WorkoutManagerUi extends CommonUi {
     public static void commandNotFoundResponse() {
         System.out.println("The command not recognised!");
     }
+
+
 }
