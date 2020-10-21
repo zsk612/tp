@@ -727,15 +727,15 @@ and returns the recipe’s name and the index of recipe in the recipe’s list.
 
 [&#8593; Return to Top](#developer-guide)
 
-### 4.3. Chore-related Features
-#### 4.3.1. Addition of chore
-The feature for addition of `chore`s allows the user to add `chore`s to a list to keep track of their completion. The deadline of the `chore` can be a String or Date object.  The status completion of a `chore` is always undone when it is created. 
+### 4.3. Diet-related Features
+#### 4.3.1. Listing out all commands
+The command to list out all help commands is a hard-typed list of commands that indicates to the user all the commands available and how to use them.
 
 ##### Implementation  
-When the user attempts to add a `chore` `buy groceries` with deadline `13/04/2020 09:45`, the `Kitchen Helper`, `Parser` and `AddChoreCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `addchore buy groceries /by 13/04/2020 09:45`.
+When the user types `help` the following sequence occurs. 
+1. The user keys in `help`.
     
-    1. A `UI` object will be created and calls `UI#getUserCommand()`. 
+    1. A `Ui` component will call `UI#getUserCommand()`. 
     1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `addchore`.   
     
 2. Parsing of user input and creation of command object
