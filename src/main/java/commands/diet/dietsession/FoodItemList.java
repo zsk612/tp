@@ -11,6 +11,12 @@ import java.util.logging.Level;
 
 public class FoodItemList extends Command {
 
+    /**
+     * Overrides execute for list command to liat food items.
+     * @param input user input for command
+     * @param foodList arraylist that stored all the food items
+     * @param storage storage for diet session
+     */
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
         try {
@@ -21,6 +27,7 @@ public class FoodItemList extends Command {
             logger.log(Level.INFO, "Listed all foods in Diet Session");
         } catch (NullPointerException e) {
             System.out.println("Sorry, there is nothing in your food list.");
+            logger.log(Level.WARNING, "No item in food list for deletion");
         }
     }
 
