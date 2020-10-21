@@ -42,12 +42,12 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Exit the meal manager](#437-exit-the-meal-manager)<br>
 4.4. [Workout-related Features](#44-workout-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creation of new workout session](#441-creation-of-new-workout-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Add an exercise](#4411-add-an-exercise)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Delete an exercise](#4412-Delete-an-exercise)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an exercise](#4411-Adding-an-exercise)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an exercise](#4412-Deleting-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing all exercises in this session](#4413-listing-all-exercises-in-this-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing users to view help commands](#4414-Allowing-users-to-view-help-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Search for related exercises](#4415-Search-for-related-exercises)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [End the workout session](#4416-End-the-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for related exercises](#4415-Searching-for-related-exercises)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the workout session](#4416-Ending-the-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing past workout sessions](#442-listing-past-workout-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing of workout session](#443-editing-of-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deletion of workout session](#444-deletion-of-workout-session)<br>
@@ -680,7 +680,7 @@ Parsing of the user’s input command:
 |**Cons** | The constant prompting could subject the application to a negative experience in the difficulty to use the commands.|
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.1.1. Add an exercise
+#### 4.4.1.1. Adding an exercise
 
 Users can add a new exercise. The failure to do so will trigger an exception where the user will be notified of 
 the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
@@ -710,7 +710,7 @@ The sequence diagram below summarizes how creating new workout session works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.1.2. Delete an exercise
+#### 4.4.1.2. Deleting an exercise
 
 Users can delete an exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
 the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
@@ -748,11 +748,11 @@ The sequence diagram below summarizes how creating new workout session works:
 
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.1.5. Search for related exercises
+#### 4.4.1.5. Searching for related exercises
 
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.1.6. End the workout session
+#### 4.4.1.6. Ending the workout session
 
 
 [&#8593; Return to Top](#developer-guide)
