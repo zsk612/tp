@@ -1,15 +1,12 @@
 package workout.workoutsession;
 
 import commands.CommandLib;
-import commands.workout.workoutmanager.ByeWS;
-import commands.workout.workoutmanager.DeleteWS;
-import commands.workout.workoutmanager.ListWS;
-import commands.workout.workoutmanager.NewWS;
-import commands.workout.workoutmanager.WrongWS;
 import commands.workout.workoutsession.WorkoutSessionAdd;
 import commands.workout.workoutsession.WorkoutSessionDelete;
 import commands.workout.workoutsession.WorkoutSessionEnd;
+import commands.workout.workoutsession.WorkoutSessionHelp;
 import commands.workout.workoutsession.WorkoutSessionList;
+import commands.workout.workoutsession.WorkoutSessionSearch;
 import commands.workout.workoutsession.WorkoutSessionWrong;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CommandLibTest {
 
-    /*@Test
-    void get_WorkoutManagerUnrecognisedCommand_returnNull() {
+    @Test
+    void get_WorkoutSessionUnrecognisedCommand_returnNull() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
         assertTrue(cl.get("asdf") instanceof WorkoutSessionWrong);
@@ -39,16 +36,30 @@ class CommandLibTest {
     }
 
     @Test
-    void get_new_returnNewCommand() {
+    void get_add_returnAddCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
         assertTrue(cl.get("add") instanceof WorkoutSessionAdd);
     }
 
     @Test
-    void get_bye_returnByeCommand() {
+    void get_End_returnEndCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
         assertTrue(cl.get("end") instanceof WorkoutSessionEnd);
-    }*/
+    }
+
+    @Test
+    void get_Search_returnSearchCommand() {
+        CommandLib cl = new CommandLib();
+        cl.initWorkoutSessionCL();
+        assertTrue(cl.get("search") instanceof WorkoutSessionSearch);
+    }
+
+    @Test
+    void get_help_returnHelpCommand() {
+        CommandLib cl = new CommandLib();
+        cl.initWorkoutSessionCL();
+        assertTrue(cl.get("help") instanceof WorkoutSessionHelp);
+    }
 }

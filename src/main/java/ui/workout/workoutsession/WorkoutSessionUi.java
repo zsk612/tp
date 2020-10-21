@@ -52,7 +52,7 @@ public class WorkoutSessionUi extends CommonUi {
     }
 
     public static void inputPrompt() {
-        System.out.print("Workout Session >>>>> ");
+        System.out.print("Workout Menu > Workout Session >>>>> ");
     }
 
     public static void searchInputError() {

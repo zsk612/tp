@@ -10,10 +10,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class WorkoutSessionDelete extends Command {
-    public void execute(String[] input, ArrayList<Exercise> exerciseList,
-                        String filePath, Storage storage, boolean[] endWorkoutSession) {
+    public void execute(String[] inputs, ArrayList<Exercise> exerciseList,
+                        String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
         try {
-            int removeIndex = WorkoutSessionParser.deleteParser(input);
+            int removeIndex = WorkoutSessionParser.deleteParser(inputs);
             if (removeIndex != 0) {
                 exerciseList.remove(removeIndex - 1);
                 storage.writeToStorage(filePath, exerciseList);
