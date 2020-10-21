@@ -1,7 +1,7 @@
 package workout.workoutmanager;
 
 import org.junit.jupiter.api.Test;
-import storage.workout.PastWorkoutSessionRecord;
+import models.PastWorkoutSessionRecord;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package workout.workoutmanager;
 
-import storage.workout.PastWorkoutSessionRecord;
+import models.PastWorkoutSessionRecord;
 import workout.DateParser;
 
 import java.time.LocalDate;
