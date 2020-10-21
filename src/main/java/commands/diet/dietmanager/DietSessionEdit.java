@@ -30,6 +30,7 @@ public class DietSessionEdit extends Command {
             assert listOfFiles != null : "List of files should not be null";
             ds = storage.readDietSession(listOfFiles[Integer.parseInt(input) - 1].getName());
             ds.start();
+            saveToFile(storage, ds);
             logger.log(Level.INFO, "Diet session in edit mode");
         } catch (NullPointerException | FileNotFoundException
                 | IndexOutOfBoundsException | NumberFormatException e) {
@@ -38,6 +39,22 @@ public class DietSessionEdit extends Command {
         } catch (IOException e) {
             logger.log(Level.WARNING, "failed to execute diet session");
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * constructs method to save changes to storage file.
+     * @param storage storage for diet manager
+     * @param ds dietSession that is being changed
+     */
+    private void saveToFile(Storage storage, DietSession ds) {
+        try {
+            storage.init(ds.getTypeInput() + " " + ds.getDate().toString());
+            storage.writeToStorageDietSession(ds.getTypeInput() + " " + ds.getDate().toString(), ds);
+            logger.log(Level.INFO, "Diet session successfully saved");
+        } catch (IOException e) {
+            logger.log(Level.WARNING, "save profile session failed");
+            System.out.println("Failed to save your diet session!");
         }
     }
 }
