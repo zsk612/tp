@@ -1,0 +1,45 @@
+@startuml
+
+class PastRecord {
+String filePath
+CreateOn Date
+LastEdit Date
+}
+
+class WorkoutManagerStorge {
+ArrayList<PastRecord> pastRecord
+readFile()
+writeToFile()
+}
+
+class WorkoutManager {
+Object[] elementData
+size()
+}
+
+WorkoutManagerStorge --> PastRecord
+
+WorkoutCommand --> WorkoutManagerStorge
+WorkoutManager --> WorkoutCommand
+
+class WorkoutSession {
+Object[] elementData
+size()
+}
+class Command {
+Object[] elementData
+size()
+}
+class Storage {
+Object[] elementData
+size()
+}
+class exerciseList {
+Object[] elementData
+size()
+}
+Storage --> exerciseList
+Command --> Storage
+WorkoutSession --> Command
+WorkoutSession-->exerciseList
+@enduml

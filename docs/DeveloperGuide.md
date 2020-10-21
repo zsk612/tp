@@ -148,9 +148,14 @@ The `Ui` component,
 
 ### 3.4. Model Component
 
-![Model Component](images/model.png)
+![Model Component](pictures/zesong/model.png)
 
-todo
+The Model component contains `Profile`, `DietManager`,
+`PastRecord` and `WorkoutSession` classes.
+* Profile: Stores the user profile data.
+* DietManager: Stores all past diet records.
+* PastRecord: Stores meta information of each WorkoutSession files.
+* WorkoutSession: Stores the exercise data done in each workout session.
 
 [&#8593; Return to Top](#developer-guide)
 

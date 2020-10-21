@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import models.PastWorkoutSessionRecord;
 import seedu.duke.Constant;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 
