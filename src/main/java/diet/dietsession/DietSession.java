@@ -69,7 +69,6 @@ public class DietSession {
         String input = dietSessionUI.getInput();
         dietSessionInputLoop(input);
         setEndDietSession(true);
-        logger.log(Level.INFO, "saving profile session to file");
         dietSessionUI.printExit();
     }
 
