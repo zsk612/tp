@@ -27,11 +27,19 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.3. [Editing of Profile](#423-eiting-of-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deletion of Profile](#424-deletion-of-profile)<br>
 4.3. [Diet-related Features](#43-diet-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [Addition of recipe](#421-addition-of-recipe)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [List all/ specific recipe(s)](#422-list-all-specific-recipes)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [Cooking of recipe](#423-cooking-of-recipe)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Delete a specific recipe](#424-delete-a-specific-recipe)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Search for recipe based on keyword(s)](#425-search-for-recipe-based-on-keywords)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#431-list-out-all-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording meal data](#432-start-recording-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#4321-showing-help-message)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current meal](#4322-adding-food-items-for-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current meal](#4323-listing-data-for-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current meal](#4324-deleting-data-from-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current meal](#4325-clearing-data-from-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of meal data](#4326-stopping-the-recording-of-meal-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past meal sessions](#433-list-all-past-meal-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past meal session](#434-edit-a-past-meal-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past meal session](#435-delete-a-past-meal-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past meal sessions](#436-clear-all-past-meal-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Exit the meal manager](#437-exit-the-meal-manager)<br>
 4.4. [Workout-related Features](#44-workout-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creation of new workout session](#441-creation-of-new-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing past workout sessions](#442-listing-past-workout-sessions)<br>
@@ -365,167 +373,92 @@ The command to list out all help commands is a hard-typed list of commands that 
 When the user types `help` the following sequence occurs. 
 1. The user keys in `help`.
     
-    1. A `Ui` component will call `UI#getUserCommand()`. 
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `addchore`.   
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
     
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string into a suitable format for the addition of `chore` object in `Parser#prepareAddChore()`.
-    1. A `AddChoreCommand` object will be created with parameters `buy groceries` as String description and `13/04/2020 09:45` as Date deadline.
+2. Creation of command object from input
+    1. This will create a DietSessionHelp() instantiation of which the method execute() is called.
     
 3. Executing Command
-    1. The newly created object will call `AddChoreCommand#execute()` which starts the process of adding a chore, thus calling `AddChoreCommand#addChore()`.
-    1. A `Chore` object will be created with the description and deadline that was parsed in step 2. Since the String deadline value is null, the deadline of the `Chore` will be a `Date` object.
-    1. The `Chore` will be added to the `choreList`.
-    1. Then, `Storage#saveChoreData()` will be called to save the current `choreList` into an output file.
-    1. Lastly, a String called `feedbackToUser` containing the outcome of the command will be returned to `KitchenHelper`. 
-
-4. The outcome of the command will then be printed onto the console using `Ui#showResultToUser(result)`.
-
-The following sequence diagram shows how the `AddChoreCommand` works    
-    ![AddChoreCommand](images/AddChoreCommand.png)
-
-##### Design considerations:
-
-- Alternative 1(current implementation): The `Chore` with different deadline types is created by constructor overloading. 
-
-|     |     |
-|-----|-----|
-|**Pros** | It is neater and more OOP. It indicates that both `Chores` with different deadline types have the same object function, but just take in different parameters. |
-|**Cons** | The need to maintain both a String deadline and Date deadline variable within the `Chore` object even though one of them is not used.|
-
-- Alternative 2: Creation of `Chore` object by setting up variables using if-else loop.
-
-|     |     |
-|-----|-----|
-|**Pros** | More basic implementation.|  
-|**Cons** | Less OOP and does not make it obvious that deadline is an essential attribute of a `Chore` object that has two type signatures to choose from. 
-
+    1. The newly created object will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.2. List all chores
-The feature to list `chore`s allows the user to view the `chore`s currently in the `choreList` and their completion statuses. 
+#### 4.3.2. Start recording meal data
+The feature allows users to start recording meal data. 
 
 ##### Implementation  
-When the user attempts to list `chore`s, the `Kitchen Helper`, `Parser` and `ListChoreCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `listchore`.  
-    1. A `UI` object will be created and calls `UI#getUserCommand()`. 
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `listchore`.   
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string in `Parser#prepareListChore()` to ensure the parameters are empty, or an exception will be thrown.
-    1. The `ListChoreCommand` object will be created. 
+When the user types `meal /d [date] /t [type]` the following sequence occurs. 
+1. The user keys in `meal /d 2020-05-04 /t breakfast`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a DietSessionCreate() of which the method execute() is called.
+    
 3. Executing Command
-    1. The newly created object will call `ListChoreCommand#execute()` which starts the process of displaying all the chores, thus calling `ListChoreCommand#listChore()`.
-    1. The `choreList` will be looped through, displaying each `Chore` in String format and its corresponding position in the list.
-    1. Lastly, a String called `feedbackToUser` containing the displayed list of chores will be returned to `KitchenHelper`. 
-4. The displayed list of chores will then be printed onto the console using `Ui#showResultToUser(result)`.
-
-##### Design considerations:
-
-- Alternative 1(current implementation): Using for-loop to loop through the `Chore` ArrayList.
-
-|     |     |
-|-----|-----|
-|**Pros** | It is easier to retrieve the position of each `Chore` in the list, just by looking at the iterator value.
-|**Cons** | More basic implementation.|
-
-- Alternative 2: Using ListIterator to loop through the `Chore` ArrayList.
-
-|     |     |
-|-----|-----|
-|**Pros** | Makes use of the Java Collection framework.|  
-|**Cons** | Requires another counter or variable to keep track of `Chore` position in the list.|
+    1. The newly created object will then create an instantiation of a DietSession.
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.3. Delete a specific chore
+#### 4.3.2.1. Showing help message
 The feature for deletion of `chore`s allows the user to remove the `chore` specified by the index in the list. 
 
 ##### Implementation  
-When the user attempts to delete a `chore` by its index, the `Kitchen Helper`, `Parser` and `DeleteChoreCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `deletechore 1`.
-    1. A `UI` object will be created and calls `UI#getUserCommand()`. 
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `deletechore`.   
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string for the deletion of `chore` object in `Parser#prepareDeleteChore()` which ensures the parameter is a single number, or an exception will be thrown. 
-    1. If an exception is caught, an InvalidCommand will be created. Otherwise, a `DeleteChoreCommand` object will be created with parameters `1` as the index to delete.
+The command to list out all help commands is a hard-typed list of commands that indicates to the user all the commands available and how to use them.
+
+##### Implementation  
+When the user types `help` the following sequence occurs. 
+1. The user keys in `help`.
+    
+    1. A `DietSessionUi` instantiation calls `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemHelp() instantiation of which the method execute() is called.
+    
 3. Executing Command
-    1. The newly created object will call `DeleteChoreCommand#execute()` which starts the process of deleting a chore, thus calling `DeleteChoreCommand#deleteChore()`.
-    1. The index is checked to be an index within the `choreList`, then the `Chore` specified by the index in the `choreList` is removed.
-    1. Then, `Storage#saveChoreData()` will be called to save the current `choreList` into an output file.
-    1. Lastly, a String called `feedbackToUser` containing the outcome of the command will be returned to `KitchenHelper`. 
-4. The outcome of the command will then be printed onto the console using `Ui#showResultToUser(result)`.
+    1. The newly created object will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
+    
+[&#8593; Return to Top](#developer-guide)
 
-##### Design considerations:
+#### 4.3.2.2. Adding food items for the current meal
 
-- Alternative 1(current implementation): Delete `Chore` by specifying index of `Chore` in `choreList`.
+The feature allows users to add food items into the current meal session. 
 
-|     |     |
-|-----|-----|
-|**Pros** | Quick and easy deletion by using choreList.get() to retrieve Chore to delete. |
-|**Cons** | Lesser alternatives for the user and user would have to identify the index first by executing `listchore` to get index of `Chore` in `choreList`. |
-
-- Alternative 2: Delete `Chore` by specifying `Chore` description or keywords in `Chore` description.
-
-|     |     |
-|-----|-----|
-|**Pros** | More alternatives for user. |  
-|**Cons** |  1. Extra overhead required to search through entire `choreList` to identify `Chore` with similar description. <br> 2. Possible accidental deletion of wrong `Chore` with identical descriptions or keywords. <br> 3. More troublesome for the user to type out exact description of `Chore`. |
+##### Implementation  
+When the user types `add [food] /c [calories]` the following sequence occurs. 
+1. The user keys in `add bologna /c 123`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemAdd() instantiation of which the method execute() is called.
+    1. The food component and calories component are passed into the constructor of a Food instantiation.
+    
+3. Executing Command
+    1. The newly created food object will then be added to an ArrayList<Food>.
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.4. Search for chore based on keyword(s)
+#### 4.3.2.3. Listing data for the current meal
 
-The search for chore feature allows the user to find chores using a keyword in the chore’s list.  
-For example, `searchchore groceries` will find all chores that contain `groceries`.  
-
-##### Implementation  
-
-![SearchChoreCommand](images/searchchore_update.png)
-
-The following steps explained sequence diagram for `searchchore` command:  
-1. The user enters `searchchore groceries`.  
-2. `KitchenHelper` calls `Parser#parseUserCommand()`.  
-3. `SearchChoreCommand` object is created with the keyword passed in.  
-4. `KitchenHelper` calls it own method `executeCommand()` to execute the method in `SearchChoreCommand#execute()`.  
-5. On `SearchChoreCommand#execute()`, display the list of chore that matches the keyword.
-
-##### Design considerations:
-
-- Alternative 1 (current choice): Find if the keyword is part of the substring of the chore, 
-`[x] buy groceries (by: Tuesday 12pm)`.   
- 
-|     |     |
-|-----|-----|
-|**Pros** | 1. Easily to find by any attributes such as description and date.|  
-|**Cons** | 1. Searching `buy groceries [x]` will fail to show any matching result.|
-
-- Alternative 2: Take in all the predicates given by the user and find using the predicates as a keyword  
-
-|     |     |
-|-----|-----|
-|**Pros** | 1. More accurate searching of the chore is available for the user..|  
-|**Cons** | 1. Requires users to enter more precise predicate keywords which could be more inconvenient.|
-
-[&#8593; Return to Top](#developer-guide)
-
-#### 4.3.5. Mark chore as done
-The feature for marking of `chore` as done allows the user to change the completion status of the `chore` specified by the index in the list to done. 
+The feature allows users to add food items into the current meal session. 
 
 ##### Implementation  
-When the user attempts to mark a `chore` as done, the `Kitchen Helper`, `Parser` and `DoneCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `done 1`.
-    1. A `UI` object will be created and calls `UI#getUserCommand()`. 
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `done`.       
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string for the checking of `chore` object in `Parser#prepareDoneChore()` which ensures the parameter is a single number, or an exception will be thrown. 
-    1. If an exception is caught, an InvalidCommand will be created. Otherwise, a `DoneCommand` object will be created with parameters `1` as the index to check.   
+When the user types `add [food] /c [calories]` the following sequence occurs. 
+1. The user keys in `add bologna /c 123`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemAdd() instantiation of which the method execute() is called.
+    1. The food component and calories component are passed into the constructor of a Food instantiation.
+    
 3. Executing Command
-    1. The newly created object will call `DoneCommand#execute()` which starts the process of marking a chore as done, thus calling `DoneChoreCommand#markChoreDone()`.
-    1. The index is checked to be an index within the `choreList` and completion status of the `Chore` specified by the index is checked to be undone. Otherwise, an exception will be thrown.
-    1. The Chore is then marked as done.
-    1. Then, `Storage#saveChoreData()` will be called to save the current `choreList` into an output file.
-    1. Lastly, a String called `feedbackToUser` containing the outcome of the command will be returned to `KitchenHelper`. 
-4. The outcome of the command will then be printed onto the console using `Ui#showResultToUser(result)`.
+    1. The newly created food object will then be added to an ArrayList<Food>.
 
 
 ##### Design considerations:
