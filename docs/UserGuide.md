@@ -10,7 +10,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.1.2. [Entering Profile Menu: `profile`](#312-entering-profile-menu-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.1.3. [Entering Diet Menu: `diet`](#313-entering-diet-menu-diet)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.1.4. [Entering Workout Menu: `workout`](#314-entering-workout-menu-workout)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.1.5.  [Exiting The Schwarzenegger: `end`](#315-exiting-the-schwarzenegger-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.5.  [Ending The Schwarzenegger: `end`](#315-ending-the-schwarzenegger-end)<br>
 3.2. [Profile Menu](#32-profile-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.1. [Viewing help: `help`](#321-viewing-help-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.2. [Adding a profile: `add`](#322-adding-a-profile-add)<br>
@@ -95,7 +95,7 @@ The program will direct you to the Workout Menu.
 __Format:__ `workout`  
 
 Example: `workout`
-#### 3.1.5. Exiting The Schwarzenegger: `end`
+#### 3.1.5. Ending The Schwarzenegger: `end`
 Terminates The Schwarzenegger.
 
 __Format:__ `end`  
@@ -380,7 +380,28 @@ Example |  Outcome
 
 ## 4. Command summary
 
-**Meal Menu**
+**Main Menu**
+
+**Action** |  **Format**
+--------|----------------------
+Help|`help`
+Profile Menu |`profile`
+Diet Menu|`diet`
+Workout Menu|`workout`
+End|`end`
+
+**Profile Menu**
+
+**Action** |  **Format**
+--------|----------------------
+Help|`help`
+Add |`add /n [name] /a [age] /h [height] /w [weight] /e [expected weight]`<br><br>E.g. `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
+View|`view`
+Edit|`edit </n [name]> </a [age]> </h [height]> </w [weight]> </e [expected weight]>`<br><br>E.g. `edit /w 110`
+Delete|`delete`
+Return to Main Menu|`end`
+
+**Diet Menu**
 
 **Action** |  **Format**
 --------|----------------------
@@ -390,18 +411,18 @@ List|`list`
 Edit|`edit [meal session ID]`<br><br>E.g. `edit 1`
 Delete|`delete [meal session ID]`<br><br>E.g. `delete 1`
 Clear|`clear`
-Back to main menu|`end`
+Return to Main Menu|`end`
 
-**Meal Session**
+**Diet Session**
 
 **Action** |  **Format**
 --------|----------------------
 Help|`help`
-add |`add [dish] /c [calorie count]`<br><br>E.g. `add spinach /c 90`
+Add |`add [dish] /c [calorie count]`<br><br>E.g. `add spinach /c 90`
 List|`list`
 Delete|`delete [dish ID]`<br><br>E.g. `delete 1`
 Clear|`clear`
-Back to meal menu|`end`
+Return to Main Menu|`end`
 
 **Workout Menu**
 
@@ -414,7 +435,7 @@ Delete|`delete <session ID>`<br><br>E.g. `delete 1`
 Search|`search /d <date> /t <tag1> <tag2>`<br><br>E.g. `search /t leg chest /d 20201018`
 Help|`help`
 Clear|`clear`
-Back to main menu|`end`
+Return to Main Menu|`end`
 
 ## 5. Notes
 
