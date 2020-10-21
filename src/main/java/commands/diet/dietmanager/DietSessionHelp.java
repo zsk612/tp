@@ -3,9 +3,19 @@ package commands.diet.dietmanager;
 import commands.Command;
 import storage.diet.Storage;
 
+import java.util.logging.Level;
+
+import static logger.SchwarzeneggerLogger.logger;
 import static ui.CommonUi.printHelpFormater;
 
 public class DietSessionHelp extends Command {
+
+    /**
+     * Overrides execute for help command to display help information.
+     * @param input user input for command
+     * @param storage storage for diet manager
+     */
+    @Override
     public void execute(String input, Storage storage) {
         printHelpFormater("List", "list",
                 "Show all past diet session");
@@ -19,5 +29,6 @@ public class DietSessionHelp extends Command {
                 "Clear all past diet sessions");
         printHelpFormater("End", "end",
                 "Go back to main menu");
+        logger.log(Level.INFO, "Displayed help in dietManager");
     }
 }

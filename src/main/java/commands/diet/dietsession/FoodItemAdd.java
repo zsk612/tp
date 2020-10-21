@@ -13,6 +13,12 @@ import static logger.SchwarzeneggerLogger.logger;
 
 public class FoodItemAdd extends Command {
 
+    /**
+     * Overrides execute for add command to add food items.
+     * @param input user input for command
+     * @param foodList arraylist that stored all the food items
+     * @param storage storage for diet session
+     */
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
         DietSessionParser parser = new DietSessionParser();
@@ -25,8 +31,10 @@ public class FoodItemAdd extends Command {
             logger.log(Level.INFO, "Added food to arraylist");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Please specify food info.");
+            logger.log(Level.WARNING, "Did not put food name or calories");
         } catch (NumberFormatException e) {
             System.out.println("Please input a number for calories.");
+            logger.log(Level.WARNING, "Put calories in a wrong format");
         }
     }
 }

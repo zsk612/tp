@@ -25,6 +25,9 @@ public class DietSession {
     private final DietSessionParser parser = new DietSessionParser();
     public boolean endDietSession = false;
 
+    /**
+     * Constructs DietSession and initialize command library for dietSession.
+     */
     public DietSession(String typeInput, String dateInput) {
         this.cl = new CommandLib();
         cl.initDietSessionCL();
@@ -52,10 +55,13 @@ public class DietSession {
         this.endDietSession = hasEnded;
     }
 
+    /**
+     * Starts dietSession and initializes command library for dietSession.
+     * @throws IOException handles input/output exception
+     */
     public void start() throws IOException {
-        logger.log(Level.INFO, "starting diet session");
 
-        // command library is initialised again on start as it is transient variable
+        logger.log(Level.INFO, "starting diet session");
         this.cl = new CommandLib();
         cl.initDietSessionCL();
         dietSessionUI.printOpening();
@@ -63,12 +69,14 @@ public class DietSession {
         String input = dietSessionUI.getInput();
         dietSessionInputLoop(input);
         setEndDietSession(true);
-
         logger.log(Level.INFO, "saving profile session to file");
-        //saveToFile();
         dietSessionUI.printExit();
     }
 
+    /**
+     * Starts reading user input for dietSession commands.
+     * @param input user input for command
+     */
     private void dietSessionInputLoop(String input) {
         while (!input.equals("end")) {
 
@@ -82,6 +90,9 @@ public class DietSession {
         }
     }
 
+    /**
+     * Saves changes in dietSession to local files.
+     */
     private void saveToFile() {
         try {
             storage.init(typeInput + " " + date.toString());
@@ -92,6 +103,11 @@ public class DietSession {
         }
     }
 
+    /**
+     * Processes user input for dietSession commands.
+     * @param input user input for command
+     * @throws NullPointerException handles null pointer exception
+     */
     private void processCommand(String input) throws NullPointerException {
         String[] commParts = parser.parse(input);
         Command command = cl.get(commParts[0]);
