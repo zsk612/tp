@@ -28,4 +28,5 @@ public class CommonUi {
     public static String helpFormatter(String commandName, String commandFormat, String description) {
         return String.format(HELP_FORMAT, commandName, commandFormat, EMPTY_STRING, description);
     }
+
 }

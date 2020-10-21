@@ -25,7 +25,9 @@ import commands.workout.workoutmanager.WrongWS;
 import commands.workout.workoutsession.WorkoutSessionAdd;
 import commands.workout.workoutsession.WorkoutSessionEnd;
 import commands.workout.workoutsession.WorkoutSessionDelete;
+import commands.workout.workoutsession.WorkoutSessionHelp;
 import commands.workout.workoutsession.WorkoutSessionList;
+import commands.workout.workoutsession.WorkoutSessionSearch;
 import commands.workout.workoutsession.WorkoutSessionWrong;
 
 import java.util.Hashtable;
@@ -55,6 +57,8 @@ public class CommandLib {
         library.put("delete", new WorkoutSessionDelete());
         library.put("list", new WorkoutSessionList());
         library.put("end", new WorkoutSessionEnd());
+        library.put("help", new WorkoutSessionHelp());
+        library.put("search", new WorkoutSessionSearch());
         library.put("wrong", new WorkoutSessionWrong());
     }
 
