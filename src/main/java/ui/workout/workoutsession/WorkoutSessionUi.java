@@ -51,10 +51,6 @@ public class WorkoutSessionUi extends CommonUi {
         System.out.println("Please enter something.");
     }
 
-    public static void inputPrompt() {
-        System.out.print("Workout Menu > Workout Session >>>>> ");
-    }
-
     public static void searchInputError() {
         printer.showToUser("Wrong format, please enter in the format: search [name of move]");
     }

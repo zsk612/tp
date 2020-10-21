@@ -3,13 +3,11 @@ package workout.workoutsession;
 import commands.Command;
 import commands.CommandLib;
 import storage.workout.Storage;
+import ui.CommonUi;
 import ui.workout.workoutsession.WorkoutSessionUi;
-import workout.workoutsession.exercise.Exercise;
 import workout.workoutsession.exercise.ExerciseList;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.logging.Level;
 
 import static logger.SchwarzeneggerLogger.logger;
@@ -22,12 +20,14 @@ public class WorkoutSession {
 
     private transient CommandLib cl;
     private final Storage storage;
+    private CommonUi ui;
 
     public WorkoutSession(String filePath) {
         this.filePath = filePath;
         this.exerciseList = new ExerciseList();
         this.storage = new Storage();
         this.endWorkoutSession = new boolean[1];
+        this.ui = new CommonUi();
     }
 
     private void setEndWorkoutSessionF() {
@@ -44,7 +44,6 @@ public class WorkoutSession {
         logger.log(Level.INFO, "starting workout session");
         this.cl = new CommandLib();
         cl.initWorkoutSessionCL();
-        Scanner in = new Scanner(System.in);
 
         try {
             storage.readFileContents(filePath, exerciseList);
@@ -54,8 +53,7 @@ public class WorkoutSession {
 
         while (!endWorkoutSession[0]) {
             try {
-                WorkoutSessionUi.inputPrompt();
-                workoutSessionProcessCommand(in.nextLine().trim());
+                workoutSessionProcessCommand(ui.getCommand("Workout Menu > Workout Session"));
             } catch (NullPointerException e) {
                 WorkoutSessionUi.emptyInputError();
             }
