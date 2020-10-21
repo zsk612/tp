@@ -36,10 +36,17 @@ public class DeleteProfile extends Command {
      */
     @Override
     public Profile execute(Profile profile) {
-        logger.log(Level.INFO, "executing DeleteCommand");
+        logger.log(Level.INFO, "executing Delete Command");
         return null;
     }
 
+    /**
+     * Overrides getExecutionResult method of class Command to get execution result after executing delete command.
+     *
+     * @param profile User's profile.
+     * @return Execution result.
+     */
+    @Override
     public CommandResult getExecutionResult(Profile profile) {
         return new CommandResult(MESSAGE_DELETE_PROFILE);
     }

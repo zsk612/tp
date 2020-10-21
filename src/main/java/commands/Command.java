@@ -17,7 +17,7 @@ public abstract class Command {
     }
 
     public Profile execute(Profile profile) throws SchwarzeneggerException {
-        return null;
+        return profile;
     }
 
     public void execute(String input, Storage storage) {

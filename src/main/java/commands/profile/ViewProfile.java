@@ -37,10 +37,17 @@ public class ViewProfile extends Command {
      */
     @Override
     public Profile execute(Profile profile) {
-        logger.log(Level.INFO, "executing ViewCommand");
+        logger.log(Level.INFO, "executing View Command");
         return profile;
     }
 
+    /**
+     * Overrides getExecutionResult method of class Command to get execution result after executing view command.
+     *
+     * @param profile User's profile.
+     * @return Execution result.
+     */
+    @Override
     public CommandResult getExecutionResult(Profile profile) {
         if (profile == null) {
             return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_VIEW));

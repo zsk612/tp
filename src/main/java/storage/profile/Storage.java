@@ -9,6 +9,7 @@ import exceptions.profile.InvalidSaveFormatException;
 import exceptions.profile.LoadingException;
 import exceptions.profile.SavingException;
 import profile.Profile;
+import profile.Utils;
 import ui.profile.ProfileUi;
 
 import java.io.File;
@@ -25,30 +26,18 @@ import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.PATH_TO_PROFILE_FILE;
 import static profile.Constants.PATH_TO_PROFILE_FOLDER;
-import static profile.ProfileParser.checkValidProfile;
 
 /**
  * A class that saves and loads user profile data on local hard disk.
  */
 public class Storage {
-    private boolean hasExistingProfile;
     private Gson gson;
 
     /**
-     * Constructs Storage object where data file is assumed to be existed.
+     * Constructs Storage object.
      */
     public Storage() {
-        hasExistingProfile = true;
         gson = new GsonBuilder().setPrettyPrinting().create();
-    }
-
-    /**
-     * Returns boolean stating if data file is existed.
-     *
-     * @return Boolean stating if data file is existed.
-     */
-    public boolean getHasExistingProfile() {
-        return hasExistingProfile;
     }
 
     /**
@@ -71,7 +60,6 @@ public class Storage {
                 createDataFile(PATH_TO_PROFILE_FILE);
             } catch (InvalidSaveFormatException e) {
                 profileUi.showToUser(e.getMessage());
-                hasExistingProfile = false;
             }
         } else {
             createDataFolder(PATH_TO_PROFILE_FOLDER);
@@ -98,7 +86,7 @@ public class Storage {
             JsonReader reader = new JsonReader(new FileReader(file.getPath()));
             Profile profile = gson.fromJson(reader, profileType);
 
-            if (profile == null || !checkValidProfile(profile)) {
+            if (profile == null || !Utils.checkValidProfile(profile)) {
                 logger.log(Level.WARNING, "processing invalid profile data");
                 throw new InvalidSaveFormatException();
             }
@@ -118,7 +106,6 @@ public class Storage {
      */
     private void createDataFile(Path pathToDataFile) throws LoadingException {
         try {
-            hasExistingProfile = false;
             Files.createFile(pathToDataFile);
             logger.log(Level.INFO, "created data/profile/profile.txt");
         } catch (IOException e) {

@@ -1,7 +1,7 @@
 package profile;
 
 import static profile.Constants.PROFILE_STRING_REPRESENTATION;
-import static profile.ProfileParser.checkValidProfile;
+import static profile.Utils.checkValidProfile;
 
 /**
  * A class that manages user profile.
@@ -100,7 +100,7 @@ public class Profile {
         if (bmiIndex < 18.5) {
             classification = "Underweight";
         } else if (bmiIndex <= 24.9) {
-            classification = "Normal weight";
+            classification = "Normal Weight";
         } else if (bmiIndex <= 29.9) {
             classification = "Overweight";
         } else if (bmiIndex <= 34.9) {
