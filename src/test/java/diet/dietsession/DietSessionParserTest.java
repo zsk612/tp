@@ -20,6 +20,7 @@ public class DietSessionParserTest {
         assertEquals(expected, result);
     }
 
+    /*
     @Test
     void processFoodCalories_ValidInput_Success() {
         String input = "Food /c 123";
@@ -37,4 +38,6 @@ public class DietSessionParserTest {
         LocalDate actual = parser.parseDate(input);
         assertEquals(expected, actual);
     }
+
+     */
 }

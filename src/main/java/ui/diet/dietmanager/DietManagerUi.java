@@ -1,5 +1,7 @@
 package ui.diet.dietmanager;
 
+import ui.CommonUi;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -8,7 +10,9 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DietManagerUi {
+public class DietManagerUi extends CommonUi {
+
+    private static CommonUi printer = new CommonUi();
 
     public static void printOpening() {
         System.out.println("You're now in diet manager!");
@@ -63,6 +67,24 @@ public class DietManagerUi {
         }
         System.out.println("Session is tagged as unspecified.");
         return "unspecified";
+    }
+
+    public static void printHelp() {
+        StringBuilder helpMessage = new StringBuilder();
+
+        helpMessage.append(helpFormatter("List", "list",
+                "Show all past diet session"));
+        helpMessage.append(helpFormatter("Meal", "meal /d date /t tag",
+                "Create a new diet session"));
+        helpMessage.append(helpFormatter("Delete", "delete x",
+                "Delete the diet session indexed at x"));
+        helpMessage.append(helpFormatter("Edit", "edit x",
+                "Edit the diet session indexed at x"));
+        helpMessage.append(helpFormatter("Clear", "clear",
+                "Clear all past diet sessions"));
+        helpMessage.append(helpFormatter("End", "end",
+                "Go back to main menu"));
+        printer.showToUser(helpMessage.toString().trim());
     }
 
     public void printLine() {

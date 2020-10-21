@@ -3,12 +3,13 @@ package commands.diet.dietsession;
 import commands.Command;
 import diet.dietsession.Food;
 import storage.diet.Storage;
+import ui.diet.dietsession.DietSessionUi;
+import ui.workout.workoutsession.WorkoutSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 
 import static logger.SchwarzeneggerLogger.logger;
-import static ui.CommonUi.printHelpFormater;
 
 public class FoodItemHelp extends Command {
 
@@ -20,16 +21,8 @@ public class FoodItemHelp extends Command {
      */
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
-        printHelpFormatter("List", "list",
-                "Show all food items");
-        printHelpFormatter("Add", "add food name /c calories",
-                "Add a new food item");
-        printHelpFormatter("Delete", "delete x",
-                "Delete the food item indexed at x");
-        printHelpFormatter("Clear", "clear",
-                "Clear all food items");
-        printHelpFormatter("End", "end",
-                "Go back to diet manager menu");
+
+        DietSessionUi.printHelp();
         logger.log(Level.INFO, "Displayed help in dietSession");
     }
 }
