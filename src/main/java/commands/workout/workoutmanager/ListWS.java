@@ -1,6 +1,7 @@
 package commands.workout.workoutmanager;
 
 import commands.Command;
+import commands.CommandResult;
 import commands.ExecutionResult;
 import storage.workout.WorkOutManagerStorage;
 
@@ -9,9 +10,9 @@ import static logger.SchwarzeneggerLogger.logger;
 
 public class ListWS extends Command {
     @Override
-    public ExecutionResult execute(String[] args) {
-        WorkOutManagerStorage.list(args);
+    public CommandResult execute(String[] args) {
+        String formatedInfo = WorkOutManagerStorage.list(args);
         logger.info("listed successfully");
-        return OK;
+        return new CommandResult(formatedInfo, OK);
     }
 }

@@ -73,7 +73,7 @@ This describes the software architecture and software design requirements for Th
 
 ### 2.1. Prerequisites
 1. JDK `11`.
-2. IntelliJ IDE.
+2. IntelliJ IDEA IDE.
 
 ### 2.2. Setting up the project in your computer
 1. Fork this repository, and clone the fork to your computer.
@@ -93,22 +93,22 @@ This describes the software architecture and software design requirements for Th
 This section provides a high level overview of our application, The Schwarzenegger.
 ### 3.1. Architecture
 
-![Architecture](images/KitchenHelperMain.png)
+![Architecture]
 The image above explains the design of the application, The Schwarzenegger. 
 
-The main driver of the application is `Main: Kitchen Helper`. It is responsible for mainly two phases:
+The main driver of the application is `Main: Duke`. It is responsible for mainly two phases:
 - At application launch
     - This class will initialise the components in the correct sequence and is in charge of connecting them with each other.
 - At shut down
     - This class will invoke cleanup method for the components when necessary.
     
-In addition to that, the architecture of Kitchen Helper is broken down into seven classes, mainly the following: 
+In addition to that, the architecture of The Schwarzenegger is broken down into several packages, mainly the following: 
 - `Ui`: This class mainly handles the UI of the application.
 - `Parser`: This class mainly handles the parsing and handling of user commands.
 - `Command`: This class handles the type of command.
-- `Ingredient`: This class manages the data of data type ingredient in memory.
-- `Chore`: This class manages the data of data type chore in memory.
-- `Recipe`: This class manages the data of data type recipe in memory.
+- `Profile`: This class manages the data of the user.
+- `Diet`: This class manages the meal recording sessions.
+- `Workout`: This class manages the data workout recording sessions.
 - `Storage`: This class reads data from and writes data back into a text file for future uses.
 
 [&#8593; Return to Top](#developer-guide)
@@ -118,12 +118,12 @@ In addition to that, the architecture of Kitchen Helper is broken down into seve
 
 API: `Ui.java`
  
-The `Ui` component is a singleton class where all interaction will be made through this component
+The `Ui` package is a combination class where all interaction will be made through this component
  
 The `Ui` component,
 
-* Executes user commands using the command component
-* Listens for changes and outputs messages from the Command component
+* Takes in user input
+* Prints out response messages
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -131,10 +131,8 @@ The `Ui` component,
 
 ![Logic Component](images/logic_update.png)
 
-1. `Kitchen Helper` uses `Parser` class to parse the user command.
-2. This results in a command object return back which is executed by `Kitchen Helper`.
-3. The command execution can affect the object (e.g. adding an ingredient).
-4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui` to display the message.
+1. `The Schwarzenegger` uses `Parser` classes to parse the user command.
+2. This splits the user input into interpretable portions by other functions.
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -153,23 +151,28 @@ The Model component contains `Ingredient`, `Recipe` and `Chore` classes, which s
 
 ![Storage Class Diagram](images/Storage.png)
 
-A Storage object is created by the KitchenHelper class to handle the loading and saving of ingredients, recipes, chores and expenditure data.
+Profiles, Diet sessions and workout sessions are stored in separate folders. 
 
-The Storage() method acts as a constructor with filepaths to local save files for ingredients, recipes, chores and expenditure data.
+The Storage package contains subpackages for profile, diet manager and workout manager.
 
-The getIngredientData(), getRecipeData(), getChoreData() and loadExpenditureData() methods are used to read saved data from local files into the current session of KitchenHelper. loadingIngredients() and loadingRecipeItems() methods are called in getIngredientData() and getRecipeData() respectively to sort out which Ingredient object class each object belongs to.
+The readDietSession() method in storage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past meal session.
+readPastRecords() and readFileContents() methods in storage.workout package are used for loading saved workout managers and workout sessions respectively. It is called when the user accesses the workout manager.
+loadData() from storage.profile is used to load user profile data and is called when the program starts up. 
 
-The saveIngredientData(), saveRecipeData(), saveChoreData() and saveExpenditureData() methods write the current state of KitchenHelper into the local save files by calling them in various command classes such as AddChoreCommand and DeleteIngredientCommand.
+The writeToStorageDietSession() method in storage.diet package saves the meal session and is called when the user exits it.
+writePastRecords() and writeToStorage() methods in storage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
+saveData() method in storage.profile is called when the user creates the user profile or edits it.
 
 [&#8593; Return to Top](#developer-guide)
 
 ### 3.6. Common Classes 
-Classes used by multiple components are in the `seedu.duke` package.
+Classes used by multiple components are in the `seedu.duke` and the `ui` package, specifically Constant.java and CommonUi.java.
 
 [&#8593; Return to Top](#developer-guide)
 
 ## 4. Implementation
-This section describes some details on how the features are implemented. 
+This section describes some details on how the features are being implemented. All profile / diet / workout-related features.
+
 
 All profile/ diet/ workout-related features can be broken down into 4 distinct functionality, addition, viewing/ listing, deletion and editing.
 For diet and workout-realted features, there is an additional functionality of searching.

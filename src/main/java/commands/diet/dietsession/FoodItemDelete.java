@@ -17,7 +17,7 @@ public class FoodItemDelete extends Command {
             assert !input.isEmpty();
             int index = Integer.parseInt(input);
             Food temp = foodList.get(index - 1);
-            System.out.println("Oh no! You have deleted " + temp.toString());
+            System.out.println("You have deleted " + temp.toString() + " from your list!");
             foodList.remove(temp);
             logger.log(Level.INFO, "Removed food from arraylist");
         } catch (IndexOutOfBoundsException | NumberFormatException e) {

@@ -1,22 +1,33 @@
 package seedu.duke;
 
-import diet.dietmanager.DietManager;
+import commands.Command;
+import commands.CommandLib;
+import commands.CommandResult;
+import exceptions.ExceptionHandler;
+import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
-import profile.ProfileSession;
+import ui.CommonUi;
 import ui.diet.dietmanager.DietManagerUi;
-import workout.workoutmanager.WorkoutManager;
+
+import java.util.logging.Level;
+
+import static logger.SchwarzeneggerLogger.logger;
+
 
 /**
  * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
  */
 public class Duke {
-    private final DietManagerUi dietManagerUI;
-    private final DietManager dietManager;
+    private CommandLib cl;
+    private CommonUi ui;
+    private ExceptionHandler exceptionHandler;
 
     public Duke() {
-        dietManagerUI = new DietManagerUi();
-        dietManager = new DietManager();
         SchwarzeneggerLogger.initSchwarzeneggerLogger();
+        cl = new CommandLib();
+        cl.initMainMenu();
+        ui = new CommonUi();
+        exceptionHandler = new ExceptionHandler();
     }
 
     /**
@@ -34,25 +45,17 @@ public class Duke {
      */
     private void run() {
         System.out.println("Greetings from Schwarzenegger!");
-        String response = dietManagerUI.getInput();
-        while (!response.equals("exit")) {
-            if (response.equals("diet")) {
-                dietManager.start();
+        String response = ui.getCommand("Main menu").trim();
+        String[] dummy = {};
+        while (!response.equals("end")) {
+            Command cm = cl.get(response);
+            try {
+                CommandResult rs = cm.execute(dummy);
+            } catch (SchwarzeneggerException e) {
+                logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
+                ui.showToUser(exceptionHandler.handleCheckedExceptions(e));
             }
-
-            if (response.equals("profile")) {
-                System.out.println("Entering Profile Session...");
-
-                ProfileSession profileSession = new ProfileSession();
-                profileSession.run();
-            }
-
-            if (response.equals("workout")) {
-                System.out.println("Entering Workout Session...");
-                WorkoutManager workoutManager = new WorkoutManager();
-                workoutManager.start();
-            }
-            response = dietManagerUI.getInput();
+            response = ui.getCommand("Main menu").trim();
         }
         System.out.println("Bye, you have exited the Schwarzenegger.");
     }

@@ -7,10 +7,10 @@ import workout.workoutsession.exercise.Exercise;
 
 import java.util.ArrayList;
 
-public class WorkoutSessionWrong extends Command {
+public class WorkoutSessionHelp extends Command {
     @Override
     public void execute(String[] inputs, ArrayList<Exercise> exerciseList,
                         String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
-        WorkoutSessionUi.inputNotRecognisedError();
+        WorkoutSessionUi.printHelp();
     }
 }

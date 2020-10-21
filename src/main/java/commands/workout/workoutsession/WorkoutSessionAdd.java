@@ -12,11 +12,11 @@ import java.util.ArrayList;
 public class WorkoutSessionAdd extends Command {
 
     @Override
-    public void execute(String[] input, ArrayList<Exercise> exercise,
-                        String filePath, Storage storage, boolean[] endWorkoutSession) {
+    public void execute(String[] inputs, ArrayList<Exercise> exerciseList,
+                        String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
         try {
-            exercise.add(WorkoutSessionParser.addParser(input));
-            storage.writeToStorage(filePath, exercise);
+            exerciseList.add(WorkoutSessionParser.addParser(inputs));
+            storage.writeToStorage(filePath, exerciseList);
         } catch (NumberFormatException e) {
             WorkoutSessionUi.addFormatError();
         } catch (IOException e) {
