@@ -29,12 +29,12 @@ By: `CS2113T-F11-1` Since: `2020`
 4.3. [Diet-related Features](#43-diet-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#431-list-out-all-commands)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording meal data](#432-start-recording-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#4321-showing-help-message)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current meal](#4322-adding-food-items-for-the-current-meal)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current meal](#4323-listing-data-for-the-current-meal)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current meal](#4324-deleting-data-from-the-current-meal)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current meal](#4325-clearing-data-from-the-current-meal)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of meal data](#4326-stopping-the-recording-of-meal-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#4321-showing-help-message)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current meal](#4322-adding-food-items-for-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current meal](#4323-listing-data-for-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current meal](#4324-deleting-data-from-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current meal](#4325-clearing-data-from-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of meal data](#4326-stopping-the-recording-of-meal-data)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past meal sessions](#433-list-all-past-meal-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past meal session](#434-edit-a-past-meal-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past meal session](#435-delete-a-past-meal-session)<br>
@@ -42,6 +42,12 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Exit the meal manager](#437-exit-the-meal-manager)<br>
 4.4. [Workout-related Features](#44-workout-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creation of new workout session](#441-creation-of-new-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Add an exercise](#4411-add-an-exercise)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Delete an exercise](#4412-Delete-an-exercise)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing all exercises in this session](#4413-listing-all-exercises-in-this-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing users to view help commands](#4414-Allowing-users-to-view-help-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Search for related exercises](#4415-Search-for-related-exercises)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [End the workout session](#4416-End-the-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing past workout sessions](#442-listing-past-workout-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing of workout session](#443-editing-of-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deletion of workout session](#444-deletion-of-workout-session)<br>
@@ -339,22 +345,10 @@ into command tag and information pairs.
 #### 4.2.4. Deletion of Profile
 User can delete a profile created in the past.
 
+##### Implementation
 When the user attempts to view profile, the ProfileSession, Ui, ProfileParser, 
 Command and CommandResult class will be called upon. The following sequence of steps will then occur:
 
-<<<<<<< HEAD
-#### 4.4. Workout-related Features
-##### Implementation
-
-![SearchRecipeCommand](images/searchrecipe_update.png)
-
-The following steps explained sequence diagram for `searchrecipe` command:  
-1. The user enters `searchrecipe Chicken`.  
-2. `KitchenHelper` calls `Parser#parseUserCommand()`.  
-3. `SearchRecipeCommand` object is created with the keyword passed in.  
-4. `KitchenHelper` calls it own method `executeCommand()` to execute the method in `SearchRecipeCommand#execute()`.  
-5. On `SearchRecipeCommand#execute()`, display the list of recipe's name that matches the keyword.
-=======
 1. User executes `delete`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
     2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
@@ -369,8 +363,6 @@ The following steps explained sequence diagram for `searchrecipe` command:
     1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
-The following sequence diagram shows how the new command works
->>>>>>> e9b52d33141e2d9ef7fb592b05ef579adbc1be03
 
 ##### Design considerations:
 
