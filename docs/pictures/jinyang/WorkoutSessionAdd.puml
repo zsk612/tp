@@ -1,0 +1,35 @@
+@startuml
+actor user
+user -> WorkoutManager : input
+activate WorkoutManager
+
+WorkoutManager -> CommandLib : get()
+activate CommandLib
+CommandLib -> WorkoutManager : Command
+deactivate CommandLib
+
+WorkoutManager -> EditCommand : execute()
+activate EditCommand
+
+EditCommand -> WorkoutManagerStorage : edit()
+activate WorkoutManagerStorage
+WorkoutManagerStorage --> EditCommand : filePath
+deactivate WorkoutManagerStorage
+
+EditCommand -> workoutSession : new WorkoutSession(filePath)
+activate workoutSession
+workoutSession -> workoutSessionStorage: init()
+activate workoutSessionStorage
+workoutSessionStorage -> workoutSession: loaded with exercise data
+deactivate workoutSessionStorage
+
+EditCommand -> workoutSession : start()
+workoutSession -> EditCommand
+deactivate workoutSession
+
+EditCommand -> WorkoutManager : ExecutionResult
+deactivate EditCommand
+
+WorkoutManager ->  user : output
+
+@enduml

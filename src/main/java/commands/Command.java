@@ -5,6 +5,7 @@ import exceptions.SchwarzeneggerException;
 import profile.Profile;
 import storage.diet.Storage;
 import workout.workoutsession.exercise.Exercise;
+import workout.workoutsession.exercise.ExerciseList;
 
 import java.util.ArrayList;
 
@@ -28,7 +29,7 @@ public abstract class Command {
         return;
     }
 
-    public void execute(String[] inputs, ArrayList<Exercise> exerciseList,
+    public void execute(String[] inputs, ExerciseList exerciseList,
                         String filePath, storage.workout.Storage storage, boolean[] hasEndedWorkoutSessions) {
         return;
     }
