@@ -17,17 +17,17 @@ public class DietSessionHelp extends Command {
      */
     @Override
     public void execute(String input, Storage storage) {
-        printHelpFormater("List", "list",
+        printHelpFormatter("List", "list",
                 "Show all past diet session");
-        printHelpFormater("Meal", "meal /d date /t tag",
+        printHelpFormatter("Meal", "meal /d date /t tag",
                 "Create a new diet session");
-        printHelpFormater("Delete", "delete x",
+        printHelpFormatter("Delete", "delete x",
                 "Delete the diet session indexed at x");
-        printHelpFormater("Edit", "edit x",
+        printHelpFormatter("Edit", "edit x",
                 "Edit the diet session indexed at x");
-        printHelpFormater("Clear", "clear",
+        printHelpFormatter("Clear", "clear",
                 "Clear all past diet sessions");
-        printHelpFormater("End", "end",
+        printHelpFormatter("End", "end",
                 "Go back to main menu");
         logger.log(Level.INFO, "Displayed help in dietManager");
     }

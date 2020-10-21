@@ -12,8 +12,8 @@ import static commands.ExecutionResult.SKIPPED;
 
 public abstract class Command {
 
-    public ExecutionResult execute(String[] args) {
-        return SKIPPED;
+    public CommandResult execute(String[] args) throws SchwarzeneggerException {
+        return new CommandResult();
     }
 
     public Profile execute(Profile profile) throws SchwarzeneggerException {
@@ -28,16 +28,12 @@ public abstract class Command {
         return;
     }
 
-    public void execute(String[] input, ArrayList<Exercise> exercise,
-                        String filePath, storage.workout.Storage storage, boolean[] endWorkoutSession) {
+    public void execute(String[] inputs, ArrayList<Exercise> exerciseList,
+                        String filePath, storage.workout.Storage storage, boolean[] hasEndedWorkoutSessions) {
         return;
     }
 
     public CommandResult getExecutionResult(Profile profile) {
         return null;
-    }
-
-    public void printResponse() {
-        return;
     }
 }

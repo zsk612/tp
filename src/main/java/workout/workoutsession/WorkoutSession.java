@@ -52,10 +52,10 @@ public class WorkoutSession {
 
         while (!endWorkoutSession[0]) {
             try {
-                System.out.print("Workout Session >>>>> ");
+                WorkoutSessionUi.inputPrompt();
                 workoutSessionProcessCommand(in.nextLine().trim());
             } catch (NullPointerException e) {
-                System.out.println("Please enter something.");
+                WorkoutSessionUi.emptyInputError();
             }
         }
     }

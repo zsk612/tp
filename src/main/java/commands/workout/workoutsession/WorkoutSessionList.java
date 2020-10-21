@@ -11,11 +11,11 @@ import java.util.ArrayList;
 public class WorkoutSessionList extends Command {
 
     @Override
-    public void execute(String[] input, ArrayList<Exercise> exercise,
-                        String filePath, Storage storage, boolean[] endWorkoutSession) {
-        printList(exercise);
+    public void execute(String[] inputs, ArrayList<Exercise> exerciseList,
+                        String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+        printList(exerciseList);
         try {
-            storage.writeToStorage(filePath, exercise);
+            storage.writeToStorage(filePath, exerciseList);
         } catch (IOException e) {
             WorkoutSessionUi.printError();
         }
