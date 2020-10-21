@@ -972,7 +972,7 @@ Parsing of the user’s input command:
 |**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
 |**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
 
-- Alternative 2: Multiple prompts for user’s input of a recipe name and ingredient(s)
+- Alternative 2: Multiple prompts for user’s input to create tags
 
 |     |     |
 |-----|-----|

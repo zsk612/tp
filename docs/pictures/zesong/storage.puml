@@ -1,0 +1,11 @@
+
+@startuml
+
+Package " "<<Rectangle>>{
+    Class PastRecord
+    Class WorkoutSession
+    Class DietManager
+    Class Profile
+}
+
+@enduml
