@@ -684,7 +684,7 @@ The following shows the full sequence diagram for this command:
 The search for recipe feature allows the user to find recipes using a keyword in the recipe’s list.  
 For example, `searchrecipe Chicken` will find all recipes that contain `Chicken`.  
 
-
+#### 4.4. Workout-related Features
 ##### Implementation
 
 ![SearchRecipeCommand](images/searchrecipe_update.png)
