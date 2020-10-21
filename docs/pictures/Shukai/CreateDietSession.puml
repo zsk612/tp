@@ -1,0 +1,28 @@
+@startuml
+actor user
+activate DietManager
+user -> DietManager
+DietManager -> DietManagerParser : parse()
+activate DietManagerParser
+DietManagerParser --> DietManager : parsed input
+deactivate DietManagerParser
+
+DietManager -> CommandLib : get()
+activate CommandLib
+CommandLib --> DietManager : Command
+deactivate CommandLib
+
+DietManager -> DietSessionCreate : execute()
+activate DietSessionCreate
+
+DietSessionCreate -> DietStorage : writeToStorageDietSession()
+activate DietStorage
+DietStorage --> DietSessionCreate
+deactivate DietStorage
+
+DietSessionCreate --> DietManager
+deactivate DietSessionCreate
+
+DietManager -->  user : output
+
+@enduml

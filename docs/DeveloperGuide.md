@@ -221,13 +221,12 @@ actions is called to return a command object AddProfile.
 1. User executes `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
     2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
-    1. `ProfileParser.parseCommand` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
 1. Creation of Command object.
     1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `AddProfile`.
 1. Executing Command
     1. `ProfileSession` calls `AddProfile.execute()` with the rest of parsed input.
-    1. `AddProfile` calls `ProfileParser.extractCommandTagAndInfo()` to parse the arguments to identify the tags.
-    1. `AddProfile` creates and returns a new `Profile` Object with the parsed information.  
+    1. `AddProfile` creates a new `Profile` object with the parsed information.
+    1. `AddProfile` calls `ProfileStorage.saveData()` to save the Profile object.
 1. Prompting result to user.
     1. `ProfileSession` calls `AddProfile.getCommandResult()` to get the `CommandResult` object.
     1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
@@ -252,6 +251,10 @@ into command tag and information pairs.
 |-----|-----|
 |**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
 |**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
+
+The sequence diagram below summarizes how creating new workout session works:
+
+![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.2.2. Viewing Profile
@@ -344,22 +347,10 @@ into command tag and information pairs.
 #### 4.2.4. Deletion of Profile
 User can delete a profile created in the past.
 
+##### Implementation
 When the user attempts to view profile, the ProfileSession, Ui, ProfileParser, 
 Command and CommandResult class will be called upon. The following sequence of steps will then occur:
 
-<<<<<<< HEAD
-#### 4.4. Workout-related Features
-##### Implementation
-
-![SearchRecipeCommand](images/searchrecipe_update.png)
-
-The following steps explained sequence diagram for `searchrecipe` command:  
-1. The user enters `searchrecipe Chicken`.  
-2. `KitchenHelper` calls `Parser#parseUserCommand()`.  
-3. `SearchRecipeCommand` object is created with the keyword passed in.  
-4. `KitchenHelper` calls it own method `executeCommand()` to execute the method in `SearchRecipeCommand#execute()`.  
-5. On `SearchRecipeCommand#execute()`, display the list of recipe's name that matches the keyword.
-=======
 1. User executes `delete`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
     2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
@@ -374,8 +365,6 @@ The following steps explained sequence diagram for `searchrecipe` command:
     1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
-The following sequence diagram shows how the new command works
->>>>>>> e9b52d33141e2d9ef7fb592b05ef579adbc1be03
 
 ##### Design considerations:
 
