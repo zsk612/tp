@@ -258,7 +258,7 @@ into command tag and information pairs.
 |**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
 |**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
 
-The sequence diagram below summarizes how creating new workout session works:
+The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
@@ -426,6 +426,10 @@ When the user types `meal /d [date] /t [type]` the following sequence occurs.
 3. Executing Command
     1. The newly created object will then create an instantiation of a DietSession.
 
+The sequence diagram below summarizes how creating new diet session works:
+
+![Load Data Sequence Diagram](pictures/Shukai/CreateDietSession.png)
+
 [&#8593; Return to Top](#developer-guide)
 
 #### 4.3.2.1. Showing help message: `help`
@@ -566,6 +570,9 @@ When the user types `edit [diet session ID]` the following sequence occurs.
     1. This will call readDietSession() from storage.diet.Storage and it reads the file stored at saves/diet.
     1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
 
+The sequence diagram below summarizes how editing Diet session works:
+
+![Load Data Sequence Diagram](pictures/Zeon/DietSessionEdit.png)
 #### 4.3.5. Edit a past diet session: `delete`
 
 The feature allows users to delete previously created diet sessions.
