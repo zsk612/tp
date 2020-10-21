@@ -21,6 +21,10 @@ By: `CS2113T-F11-1` Since: `2020`
 3.6. [Common Classes](#36-common-classes)<br>
 4. [**Implementation**](#4-implementation)<br>
 4.1. [Main Menu-related Features](#41-main-menu-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu of Profile](#411-help-command-for-main-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.2. [Redirection to Profile Menu](#412-redirection-to-profile-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.3. [Redirection to Diet Menu](#413-redirection-to-diet-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.4. [Redirection to Workout Menu](#414-redirection-to-workout-menu)<br>
 4.2. [Profile-related Features](#42-profile-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.1. [Creation of Profile](#421-creation-of-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.2. [Viewing Profile](#422-viewing-profile)<br>
@@ -191,24 +195,24 @@ For diet and workout-realted features, there is an additional functionality of s
 
 ### 4.1. Main Menu-related Features
 
-####4.1.1. Help Command for Main Page
+#### 4.1.1. Help Command for Main Menu
 
 The help command allows users to view all the available commands in the main page.
 The command for help is `help`.
 
-####4.1.2. Redirection to profile manager
+#### 4.1.2. Redirection to Profile Menu
 
-The redirection to profile page allows the user to enter profile manager to create, edit, list and delete user profile.
+The redirection to profile page allows the user to enter Profile Menu to create, edit, view and delete user profile.
 The command for this redirection is `profile`.
 
-####4.1.3. Redirection to diet manager
+#### 4.1.3. Redirection to Diet Menu
 
-The redirection to profile page allows the user to enter diet manager to create, edit, list and delete diet sessions.
+The redirection to profile page allows the user to enter Diet Menu to create, edit, list and delete diet sessions.
 The command for this redirection is `diet`.
 
-####4.1.4. Redirection to workout manager
+#### 4.1.4. Redirection to Workout Menu
 
-The redirection to profile page allows the user to enter workout manager to create, edit, list and delete workout sessions.
+The redirection to profile page allows the user to enter Workout Menu to create, edit, list and delete workout sessions.
 The command for this redirection is `workout`.
 
 ### 4.2. Profile-related Features
