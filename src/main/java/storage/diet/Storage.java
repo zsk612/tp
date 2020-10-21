@@ -35,7 +35,6 @@ public class Storage {
         gson = new GsonBuilder().setPrettyPrinting()
                 .create();
 
-        //creates the file
         String fileName = "saves/diet/" + filePath + ".json";
         file = new File(fileName);
         if (file.exists()) {
@@ -80,6 +79,7 @@ public class Storage {
             System.out.println("There seems to be no file");
         } catch (IOException e) {
             e.printStackTrace();
+            logger.log(Level.WARNING, "");
         }
         return dietSession;
     }

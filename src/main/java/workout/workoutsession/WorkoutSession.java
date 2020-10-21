@@ -5,6 +5,7 @@ import commands.CommandLib;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import workout.workoutsession.exercise.Exercise;
+import workout.workoutsession.exercise.ExerciseList;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -16,14 +17,15 @@ import static logger.SchwarzeneggerLogger.logger;
 public class WorkoutSession {
     private String filePath = null;
     private boolean[] endWorkoutSession;
-    public ArrayList<Exercise> exerciseList;
+    public ExerciseList exerciseList;
+
 
     private transient CommandLib cl;
     private final Storage storage;
 
     public WorkoutSession(String filePath) {
         this.filePath = filePath;
-        this.exerciseList = new ArrayList<>();
+        this.exerciseList = new ExerciseList();
         this.storage = new Storage();
         this.endWorkoutSession = new boolean[1];
     }

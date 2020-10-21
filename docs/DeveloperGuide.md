@@ -181,6 +181,26 @@ For diet and workout-realted features, there is an additional functionality of s
 
 ### 4.1. Main Menu-related Features
 
+####4.1.1. Help Command for Main Page
+
+The help command allows users to view all the available commands in the main page.
+The command for help is `help`.
+
+####4.1.2. Redirection to profile manager
+
+The redirection to profile page allows the user to enter profile manager to create, edit, list and delete user profile.
+The command for this redirection is `profile`.
+
+####4.1.3. Redirection to diet manager
+
+The redirection to profile page allows the user to enter diet manager to create, edit, list and delete diet sessions.
+The command for this redirection is `diet`.
+
+####4.1.4. Redirection to workout manager
+
+The redirection to profile page allows the user to enter workout manager to create, edit, list and delete workout sessions.
+The command for this redirection is `workout`.
+
 ### 4.2. Profile-related Features
 #### 4.2.1. Creation of Profile
 
@@ -323,6 +343,19 @@ User can delete a profile created in the past.
 When the user attempts to view profile, the ProfileSession, Ui, ProfileParser, 
 Command and CommandResult class will be called upon. The following sequence of steps will then occur:
 
+<<<<<<< HEAD
+#### 4.4. Workout-related Features
+##### Implementation
+
+![SearchRecipeCommand](images/searchrecipe_update.png)
+
+The following steps explained sequence diagram for `searchrecipe` command:  
+1. The user enters `searchrecipe Chicken`.  
+2. `KitchenHelper` calls `Parser#parseUserCommand()`.  
+3. `SearchRecipeCommand` object is created with the keyword passed in.  
+4. `KitchenHelper` calls it own method `executeCommand()` to execute the method in `SearchRecipeCommand#execute()`.  
+5. On `SearchRecipeCommand#execute()`, display the list of recipe's name that matches the keyword.
+=======
 1. User executes `delete`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
     2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
@@ -338,6 +371,7 @@ Command and CommandResult class will be called upon. The following sequence of s
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
 The following sequence diagram shows how the new command works
+>>>>>>> e9b52d33141e2d9ef7fb592b05ef579adbc1be03
 
 ##### Design considerations:
 
@@ -926,6 +960,21 @@ Aspect: Storage of Expenditure data in its own output file.
 |**Cons** | Whenever save Expenditure data, the whole data file overwritten and need to loop through entire choreList to save Chore data with the new Expenditure data.|
 
 [&#8593; Return to Top](#developer-guide)
+### 4.6. Storage
+Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called /saves.
+#### 4.6.1. Storage for profile
+
+#### 4.6.2. Storage for diet
+Storage for diet saves diet sessions created as individual files sorted based on the time created in the /saves/diet directory. Each diet session file is created as follows:
+- Each file is created as a json file and named as `[date] [tag].json`.
+- A corresponding file is updated in the local file when the user edits a diet session by calling DietSessionEdit.execute().
+- A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
+
+##### Implementation
+Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
+
+#### 4.6.3. Storage for workout
+
 
 ### 4.7. Logging
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 

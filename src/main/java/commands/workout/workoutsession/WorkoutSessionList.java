@@ -4,6 +4,7 @@ import commands.Command;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import workout.workoutsession.exercise.Exercise;
+import workout.workoutsession.exercise.ExerciseList;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,9 +12,9 @@ import java.util.ArrayList;
 public class WorkoutSessionList extends Command {
 
     @Override
-    public void execute(String[] inputs, ArrayList<Exercise> exerciseList,
+    public void execute(String[] inputs, ExerciseList exerciseList,
                         String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
-        printList(exerciseList);
+        printList(exerciseList.exerciseList);
         try {
             storage.writeToStorage(filePath, exerciseList);
         } catch (IOException e) {
