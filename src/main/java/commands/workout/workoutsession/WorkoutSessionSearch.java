@@ -23,7 +23,7 @@ public class WorkoutSessionSearch extends Command {
                     searchResult.append(exercise.get(i).toString() + "\n\t ");
                 }
             }
-            if(searchResult.length()!=0) {
+            if (searchResult.length() != 0) {
                 printer.showToUser(searchResult.toString().trim());
             } else {
                 WorkoutSessionUi.searchResultsEmpty();

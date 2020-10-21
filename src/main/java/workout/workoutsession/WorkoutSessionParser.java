@@ -31,7 +31,8 @@ public class WorkoutSessionParser {
                 returnString[tracker] += (s + " ");
             }
         }
-        exercise = new Exercise(returnString[1].trim(), Integer.parseInt(returnString[2]), Integer.parseInt(returnString[3]));
+        exercise = new Exercise(returnString[1].trim(), Integer.parseInt(returnString[2]),
+                Integer.parseInt(returnString[3]));
 
         return exercise;
     }

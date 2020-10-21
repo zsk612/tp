@@ -16,12 +16,12 @@ public class Exercise {
     @Override
     public String toString() {
 
-        return  moveName
+        return moveName
                 + ", Repetitions:" + repetitions
                 + ", Weight=" + weight;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return moveName;
     }
 }

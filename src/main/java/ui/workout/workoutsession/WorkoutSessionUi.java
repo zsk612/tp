@@ -58,6 +58,7 @@ public class WorkoutSessionUi extends CommonUi {
     public static void searchInputError() {
         printer.showToUser("Wrong format, please enter in the format: search [name of move]");
     }
+
     public static void searchResultsEmpty() {
         printer.showToUser("No matching result has been found.");
     }
