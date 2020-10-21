@@ -386,7 +386,7 @@ load the profile from hard disk when user enter Profile Menu.
 |**Cons** | Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.|
 
 ### 4.3. Diet-related Features
-#### 4.3.1. Listing out all commands
+#### 4.3.1. Listing out all commands: `help`
 The command to list out all help commands is a hard-typed list of commands that indicates to the user all the commands available and how to use them.
 
 ##### Implementation  
@@ -403,7 +403,7 @@ When the user types `help` the following sequence occurs.
     1. The newly created object will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.2. Start recording meal data
+#### 4.3.2. Start recording meal data: `meal`
 The feature allows users to start recording meal data. 
 
 ##### Implementation  
@@ -421,10 +421,7 @@ When the user types `meal /d [date] /t [type]` the following sequence occurs.
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.2.1. Showing help message
-The feature for deletion of `chore`s allows the user to remove the `chore` specified by the index in the list. 
-
-##### Implementation  
+#### 4.3.2.1. Showing help message: `help`
 The command to list out all help commands is a hard-typed list of commands that indicates to the user all the commands available and how to use them.
 
 ##### Implementation  
@@ -442,7 +439,7 @@ When the user types `help` the following sequence occurs.
     
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.2.2. Adding food items for the current meal
+#### 4.3.2.2. Adding food items for the current meal: `add`
 
 The feature allows users to add food items into the current meal session. 
 
@@ -462,60 +459,153 @@ When the user types `add [food] /c [calories]` the following sequence occurs.
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.2.3. Listing data for the current meal
+#### 4.3.2.3. Listing data for the current meal: `list`
 
-The feature allows users to add food items into the current meal session. 
+The feature allows users to view all food items in the current meal session. 
 
 ##### Implementation  
-When the user types `add [food] /c [calories]` the following sequence occurs. 
-1. The user keys in `add bologna /c 123`.
+When the user types `list` the following sequence occurs. 
+1. The user keys in `list`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
     1. Input will be parsed in `processCommand()`.   
     
 2. Creation of command object from input
-    1. This will create a FoodItemAdd() instantiation of which the method execute() is called.
-    1. The food component and calories component are passed into the constructor of a Food instantiation.
+    1. This will create a FoodItemList() instantiation of which the method execute() is called.
     
 3. Executing Command
-    1. The newly created food object will then be added to an ArrayList<Food>.
+    1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
 
+#### 4.3.2.4. Deleting data from the current meal: `delete`
 
-##### Design considerations:
+The feature allows users to remove food items into the current meal session. 
 
-- Similar to DeleteChoreCommand.
+##### Implementation  
+When the user types `delete [Food ID]` the following sequence occurs. 
+1. The user keys in `delete 1`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemDelete() instantiation of which the method execute() is called.
+    
+3. Executing Command
+    1. The Food ID according to the index based on the ArrayList<Food> is deleted.
 
-#### 4.3.6. Notification for chores warning
-The notification for chores warning runs every time the program starts. It checks the `choreList` for `Chores` that are already overdue or have deadlines approaching in 3 days.
-For example, `take cake out of oven` is overdue since `11/04/2020 15:30`. Deadlines of `Chores` specified in String will not trigger notification warnings.
+#### 4.3.2.5. Clearing all data from the current meal `clear`
 
-##### Implementation   
-1. The user starts `KitchenHelper` and `KitchenHelper#run` is called.  
-2. `KitchenHelper` calls `showNotification()`.  
-3. `ChoreNotification` object is created and `ChoreNotification#getNotifications(choreList)` is called.   
-4. The results from `ChoreNotification#hasDateAsDeadline`, `ChoreNotification#isOverdue` and `ChoreNotification#isApproachingDeadline` will be combined.
-    1. `ChoreNotification#hasDateAsDeadline` checks for `Chores` that have Date object type deadline.
-    1. `ChoreNotification#isOverdue` checks for `Chores` that have exceeded their deadline.
-    1. `ChoreNotification#isApproachingDeadline` checks for `Chores` that have deadlines upcoming in the next 3 days.
-5. `ChoreNotification#getNotifications(choreList)` returns the String result containing the notifications to `KitchenHelper` and displays.
+The feature allows users to remove food items into the current meal session. 
 
-##### Design considerations:
+##### Implementation  
+When the user types `clear` the following sequence occurs. 
+1. The user keys in `clear`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemClear() instantiation of which the method execute() is called.
+    
+3. Executing Command
+    1. The ArrayList Clear method is called and removes all Food entries from the ArrayList.
 
-Aspects: How `showNotification` executes:  
+#### 4.3.2.6. Stopping the recording of meal data: `end`
 
-- Alternative 1 (current choice): Create a function that creates a ChoreNotification class object that gathers the notifications to print. 
+The feature allows users to end the current meal session and return back to the meal manager.
 
-|     |     |
-|-----|-----|
-|**Pros** | More OOP as there is a specific class handling the sole function of notification display. |  
-|**Cons** | Developer has to go into `ChoreNotification` class to find out how to notifications are gathered. |
+##### Implementation  
+When the user types `end` the following sequence occurs. 
+1. The user keys in `end`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Exiting of inputLoop()
+    The inputLoop() exits when userInput.equals("end").
 
-- Alternative 2: Create the methods to gather notifications in `KitchenHelper.java`
+#### 4.3.3. List all past diet sessions: `list`
 
-|     |     |
-|-----|-----|
-|**Pros** | More basic implementation. |  
-|**Cons** | Less OOP and the `KitchenHelper` main class will be overpopulated with methods that do not concern the overall running of the application.|
+The feature allows users to view all past created diet sessions.
+
+##### Implementation  
+When the user types `list` the following sequence occurs. 
+1. The user keys in `list`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemList() instantiation of which the method execute() is called.
+    
+3. Executing Command
+    1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
+
+#### 4.3.4. Edit a past diet session: `edit`
+
+The feature allows users to edit previously created diet sessions.
+
+##### Implementation  
+When the user types `edit [diet session ID]` the following sequence occurs. 
+1. The user keys in `edit 1`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. A DietSessionEdit() command class instantiation is created and the execute() method is called.
+    
+3. Executing Command
+    1. This will call readDietSession() from storage.diet.Storage and it reads the file stored at saves/diet.
+    1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
+
+#### 4.3.5. Edit a past diet session: `delete`
+
+The feature allows users to delete previously created diet sessions.
+
+##### Implementation  
+When the user types `delete [diet session ID]` the following sequence occurs. 
+1. The user keys in `delete 1`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. A DietSessionDelete() command class instantiation is created and the execute() method is called.
+    
+3. Executing Command
+    1. This will delete the diet session at index 1 based on the `list` command.
+
+#### 4.3.6. Edit a past diet session: `clear`
+
+The feature allows users to clear all previously created diet sessions.
+
+##### Implementation  
+When the user types `clear` the following sequence occurs. 
+1. The user keys in `clear`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. A DietSessionClear() command class instantiation is created and the execute() method is called.
+    
+3. Executing Command
+    1. This will iterate through every file in saves/diet/ and delete it.
+
+#### 4.3.7. Edit a past diet session: `end`
+
+The function returns user back to the main menu of The Schwarzenegger.
+
+##### Implementation  
+When the user types `end` the following sequence occurs. 
+1. The user keys in `end`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Exiting of inputLoop()
+    The inputLoop() exits when userInput.equals("end").
 
 
 [&#8593; Return to Top](#developer-guide)
