@@ -39,13 +39,13 @@ By: `CS2113T-F11-1` Since: `2020`
       - [4.4.3. Editing of workout session](#443-editing-of-workout-session)
       - [4.4.4. Deletion of workout session](#444-deletion-of-workout-session)
       - [4.4.5. Search based on conditions](#445-search-based-on-conditions)
-    + [4.5. Recommendations-related Features](#46-recommendations-related-features) 
+    + [4.5. Storage](#45-storage)
+      - [4.5.1. Storage for Profile](#441-select-files-to-load-from-and-save-to)
+      - [4.5.2. Storage for Diet](#442-save-current-state)
+      - [4.5.3. Storage for Workout](#443-insert-name-here)
+    + [4.6. Recommendations-related Features](#46-recommendations-related-features) 
       - [4.5.1. Display expenditure](#451-display-expenditure)
       - [4.5.2. Expenditure functionality](#452-expenditure-functionality)
-    + [4.6. Storage](#46-storage)
-      - [4.6.1. Storage for Profile](#461-save-user-profile)
-      - [4.6.2. Storage for Diet](#462-save-diet-session)
-      - [4.6.3. Storage for Workout](#463-save-workout-session)
     + [4.7. Logging](#47-loggingToBeDeleted)
   * [Appendices](#appendices)
     + [Appendix A: Product Scope](#appendix-a-product-scope)
@@ -171,28 +171,6 @@ Classes used by multiple components are in the `seedu.duke` package.
 
 ## 4. Implementation
 This section describes some details on how the features are being implemented. All recipe/ ingredient/ chore-related features can be broken down into 4 distinct functionality, addition, listing, deletion and searching.
-
-### 4.1. Main-page Features
-
-####4.1.1. Help Command for Main Page
-
-The help command allows users to view all the available commands in the main page.
-The command for help is `help`.
-
-####4.1.2. Redirection to profile manager
-
-The redirection to profile page allows the user to enter profile manager to create, edit, list and delete user profile.
-The command for this redirection is `profile`.
-
-####4.1.3. Redirection to diet manager
-
-The redirection to profile page allows the user to enter diet manager to create, edit, list and delete diet sessions.
-The command for this redirection is `diet`.
-
-####4.1.4. Redirection to workout manager
-
-The redirection to profile page allows the user to enter workout manager to create, edit, list and delete workout sessions.
-The command for this redirection is `workout`.
 
 ### 4.1.Profile-related Features
 #### 4.1.1. Addition of ingredient
@@ -1178,7 +1156,7 @@ WorkoutManagerParse class will be called upon. The following sequence of steps w
     1. `WorkOutManagerStorage` filters the pastRecord arraylist and print out the ones
     which satisfy the predication.
     6. `WorkoutManager` returns a `ExecutionResult`.
-1. Based on `ExecutionResult`, correct response will be printed to user.
+1. Based on `ExecutionResult`, correct response will be be printed to user.
 
 The sequence diagram below summarizes how searching record works:
 ![Load Data Sequence Diagram](pictures/zesong/SearchWS.png)
@@ -1307,28 +1285,7 @@ Aspect: Storage of Expenditure data in its own output file.
 
 [&#8593; Return to Top](#developer-guide)
 
-### 4.6. Storage
-Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called /saves.
-
-
-#### 4.6.1. Storage for Profile
-
-
-#### 4.6.2. Storage for Diet
-Storage for diet saves diet sessions created as individual files sorted based on the time created in the /saves/diet directory. Each diet session file is created as follows:
-
-- Each file is created as a json file and named as [date] [tag].json.
-- A file is created in the local file right after the user creates a new diet session by calling DietSessionCreate.execute().
-- A corresponding file is updated in the local file when the user edits a diet session by calling DietSessionEdit.execute().
-- A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
-
-##### Implementation
-Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
-
-####4.6.3. Storage for Workout
-
-
-### 4.7. Logging
+### 4.6. Logging
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
 
 The `java.util.logging` package in Java is used for logging. The logging mechanism can be managed from the `KitchenHelper` class through the `kitchenLogs` logger object.
