@@ -58,6 +58,7 @@ public class HelpProfile extends Command {
         helpMessage.append(helpFormatter(COMMAND_WORD_EDIT, EDIT_PROFILE_FORMAT, "Edit your existing profile. "
                 + "You may edit only 1 field or all fields"));
         helpMessage.append(helpFormatter(COMMAND_WORD_DELETE, COMMAND_WORD_DELETE, "Delete your existing profile"));
-        return new CommandResult(helpMessage.toString());
+
+        return new CommandResult(helpMessage.toString().trim());
     }
 }

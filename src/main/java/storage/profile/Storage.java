@@ -10,7 +10,6 @@ import exceptions.profile.LoadingException;
 import exceptions.profile.SavingException;
 import profile.Profile;
 import profile.Utils;
-import ui.profile.ProfileUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,11 +42,10 @@ public class Storage {
     /**
      * Loads user profile from data file.
      *
-     * @param profileUi Ui to show exception message to user if any.
      * @return User profile.
      * @throws LoadingException If there are failed or interrupted I/O operations.
      */
-    public Profile loadData(ProfileUi profileUi) throws LoadingException {
+    public Profile loadData() throws LoadingException, InvalidSaveFormatException {
         Profile profile = null;
 
         if (Files.exists(PATH_TO_PROFILE_FOLDER)) {
@@ -58,8 +56,6 @@ public class Storage {
                 logger.log(Level.INFO, "finishing profile data decoding");
             } catch (FileNotFoundException e) {
                 createDataFile(PATH_TO_PROFILE_FILE);
-            } catch (InvalidSaveFormatException e) {
-                profileUi.showToUser(e.getMessage());
             }
         } else {
             createDataFolder(PATH_TO_PROFILE_FOLDER);

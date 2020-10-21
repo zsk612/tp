@@ -33,7 +33,7 @@ public class ProfileSession {
             storage = new Storage();
             profileParser = new ProfileParser();
             exceptionHandler = new ExceptionHandler();
-            profile = storage.loadData(profileUi);
+            profile = storage.loadData();
         } catch (SchwarzeneggerException e) {
             logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
             profileUi.showToUser(e.getMessage());
