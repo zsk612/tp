@@ -34,8 +34,9 @@ public class Duke {
      */
     private void run() {
         System.out.println("Greetings from Schwarzenegger!");
-        String response = dietManagerUI.getInput();
-        while (!response.equals("exit")) {
+        System.out.print("Main menu >>>>> ");
+        String response = dietManagerUI.getInput().trim();
+        while (!response.equals("end")) {
             if (response.equals("diet")) {
                 dietManager.start();
             }
@@ -44,10 +45,7 @@ public class Duke {
                 System.out.println("Entering Profile Session...");
 
                 ProfileSession profileSession = new ProfileSession();
-
-                while (!profileSession.hasExit) {
-                    profileSession.run();
-                }
+                profileSession.run();
             }
 
             if (response.equals("workout")) {
@@ -55,7 +53,8 @@ public class Duke {
                 WorkoutManager workoutManager = new WorkoutManager();
                 workoutManager.start();
             }
-            response = dietManagerUI.getInput();
+            System.out.print("Main menu >>>>> ");
+            response = dietManagerUI.getInput().trim();
         }
         System.out.println("Bye, you have exited the Schwarzenegger.");
     }

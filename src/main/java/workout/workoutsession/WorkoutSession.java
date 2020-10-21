@@ -19,7 +19,6 @@ public class WorkoutSession {
     public ArrayList<Exercise> exerciseList;
 
     private transient CommandLib cl;
-    private final WorkoutSessionParser parser = new WorkoutSessionParser();
     private final Storage storage;
 
     public WorkoutSession(String filePath) {
@@ -44,16 +43,19 @@ public class WorkoutSession {
         this.cl = new CommandLib();
         cl.initWorkoutSessionCL();
         Scanner in = new Scanner(System.in);
+
         try {
             storage.readFileContents(filePath, exerciseList);
         } catch (FileNotFoundException e) {
             WorkoutSessionUi.printError();
         }
+
         while (!endWorkoutSession[0]) {
             try {
+                System.out.print("Workout Session >>>>> ");
                 workoutSessionProcessCommand(in.nextLine().trim());
             } catch (NullPointerException e) {
-                e.printStackTrace();
+                System.out.println("Please enter something.");
             }
         }
     }

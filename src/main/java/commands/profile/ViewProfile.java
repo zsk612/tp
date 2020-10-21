@@ -1,8 +1,9 @@
 package commands.profile;
 
+import commands.Command;
+import commands.CommandResult;
 import exceptions.profile.RedundantParamException;
 import profile.Profile;
-import storage.profile.Storage;
 
 import java.util.logging.Level;
 
@@ -32,13 +33,23 @@ public class ViewProfile extends Command {
      * Overrides execute method of class Command to execute the view profile command requested by user's input.
      *
      * @param profile User's Profile object.
-     * @param storage Storage to save data when required.
      * @return Result of command execution.
      */
     @Override
-    public CommandResult execute(Profile profile, Storage storage) {
-        logger.log(Level.INFO, "executing ViewCommand");
-        if (profile.isDeleted) {
+    public Profile execute(Profile profile) {
+        logger.log(Level.INFO, "executing View Command");
+        return profile;
+    }
+
+    /**
+     * Overrides getExecutionResult method of class Command to get execution result after executing view command.
+     *
+     * @param profile User's profile.
+     * @return Execution result.
+     */
+    @Override
+    public CommandResult getExecutionResult(Profile profile) {
+        if (profile == null) {
             return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_VIEW));
         }
         return new CommandResult(String.format(MESSAGE_VIEW_PROFILE, profile.toString()));

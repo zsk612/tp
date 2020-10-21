@@ -25,7 +25,7 @@ public class SchwarzeneggerLogger {
             file.createNewFile();
 
             SimpleFormatter formatter = new SimpleFormatter();
-            fh = new FileHandler(LOG_FILE_PATH, true);
+            fh = new FileHandler(LOG_FILE_PATH);
             fh.setFormatter(formatter);
 
             logger = Logger.getLogger("SchwarzeneggerLogger");

@@ -1,9 +1,9 @@
 package commands.profile;
 
-import exceptions.SchwarzeneggerException;
+import commands.Command;
+import commands.CommandResult;
 import exceptions.profile.RedundantParamException;
 import profile.Profile;
-import storage.profile.Storage;
 
 import java.util.logging.Level;
 
@@ -32,18 +32,22 @@ public class DeleteProfile extends Command {
      * Overrides execute method of class Command to execute the delete profile command requested by user's input.
      *
      * @param profile User's Profile object.
-     * @param storage Storage to delete data.
      * @return Result of command execution.
      */
     @Override
-    public CommandResult execute(Profile profile, Storage storage) {
-        try {
-            logger.log(Level.INFO, "executing DeleteCommand");
-            profile.isDeleted = true;
-            storage.saveData(profile);
-            return new CommandResult(MESSAGE_DELETE_PROFILE);
-        } catch (SchwarzeneggerException e) {
-            return new CommandResult(e.getMessage());
-        }
+    public Profile execute(Profile profile) {
+        logger.log(Level.INFO, "executing Delete Command");
+        return null;
+    }
+
+    /**
+     * Overrides getExecutionResult method of class Command to get execution result after executing delete command.
+     *
+     * @param profile User's profile.
+     * @return Execution result.
+     */
+    @Override
+    public CommandResult getExecutionResult(Profile profile) {
+        return new CommandResult(MESSAGE_DELETE_PROFILE);
     }
 }

@@ -37,11 +37,13 @@ public class DietManager {
         System.out.println("you have exited Diet Manager.");
     }
 
-    public void processCommand(String input) throws ExitException {
+    private void processCommand(String input) throws ExitException {
         String[] commParts = parser.parse(input.trim());
-        assert !commParts[0].isEmpty();
-        Command command = cl.get(commParts[0]);
-        assert !commParts[1].isEmpty();
-        command.execute(commParts[1], storage);
+        try {
+            Command command = cl.get(commParts[0]);
+            command.execute(commParts[1], storage);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Looks like you've typed an improper command!");
+        }
     }
 }

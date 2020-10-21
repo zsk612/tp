@@ -1,5 +1,8 @@
 package ui;
 
+import static profile.Constants.EMPTY_STRING;
+import static profile.Constants.HELP_FORMAT;
+
 public class CommonUi {
     protected static final String LINE_PREFIX = "\t ";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
@@ -21,4 +24,9 @@ public class CommonUi {
         System.out.format("%-8s - %s\n", commandName, commandFormat);
         System.out.format("%-8s %s\n", "", description);
     }
+
+    public static String helpFormatter(String commandName, String commandFormat, String description) {
+        return String.format(HELP_FORMAT, commandName, commandFormat, EMPTY_STRING, description);
+    }
+
 }
