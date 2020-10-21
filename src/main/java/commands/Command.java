@@ -12,8 +12,8 @@ import static commands.ExecutionResult.SKIPPED;
 
 public abstract class Command {
 
-    public ExecutionResult execute(String[] args) {
-        return SKIPPED;
+    public CommandResult execute(String[] args) throws SchwarzeneggerException {
+        return new CommandResult();
     }
 
     public Profile execute(Profile profile) throws SchwarzeneggerException {
@@ -35,9 +35,5 @@ public abstract class Command {
 
     public CommandResult getExecutionResult(Profile profile) {
         return null;
-    }
-
-    public void printResponse() {
-        return;
     }
 }

@@ -1,48 +1,50 @@
 package commands.workout.workoutmanager;
 
 import commands.Command;
+import commands.CommandResult;
 import commands.ExecutionResult;
+import exceptions.SchwarzeneggerException;
+import exceptions.WorkoutManager.InsufficientArgumentException;
+import exceptions.WorkoutManager.NotANumberException;
+import exceptions.WorkoutManager.OutOfArrayException;
 import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 import workout.workoutsession.WorkoutSession;
 
+import javax.xml.transform.OutputKeys;
+
 import static logger.SchwarzeneggerLogger.logger;
+import static ui.workout.workoutmanager.WorkoutManagerUi.EDIT_SUCCESS;
 
 public class EditWS extends Command {
 
     @Override
-    public ExecutionResult execute(String[] args) {
+    public CommandResult execute(String[] args) throws SchwarzeneggerException {
         logger.info("entering edit command");
         int index = -1;
         try {
             index = Integer.parseInt(args[0]);
         } catch (NumberFormatException e) {
             logger.warning("Number format exception caught");
-            System.out.println("Input is not a number");
-            return ExecutionResult.FAILED;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            logger.warning("ArrayIndexOutOfBoundsException caught");
-            System.out.println("Insufficient arguments are given.");
-            return ExecutionResult.FAILED;
+            throw new NotANumberException();
+        } catch (IndexOutOfBoundsException e) {
+            logger.warning("Insufficient arguments given!");
+            throw new InsufficientArgumentException();
         }
+
         String filePath;
         try {
             filePath = WorkOutManagerStorage.edit(index);
         } catch (IndexOutOfBoundsException e) {
             logger.warning("Index Out Of Bounds Exception caught");
-            System.out.println("Could not found that record. Give an index within the range.");
-            return ExecutionResult.FAILED;
+            throw new OutOfArrayException();
         }
         WorkoutSession ws = new WorkoutSession(filePath);
         logger.info("editing workout session created");
         ws.workoutSessionStart();
 
         logger.info("edit successfully");
-        return ExecutionResult.OK;
+        return new CommandResult(EDIT_SUCCESS, ExecutionResult.OK);
     }
 
-    @Override
-    public void printResponse() {
-        WorkoutManagerUi.printFinishNewSessionResponse();
-    }
 }

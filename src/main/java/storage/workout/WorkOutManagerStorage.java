@@ -45,20 +45,22 @@ public class WorkOutManagerStorage {
         readPastRecords();
     }
 
-    public static void list(String[] args) {
+    public static String list(String[] args) {
         int index = 1;
         System.out.println("the length of list is " + pastFiles.size());
         printTabeleHeader();
+
         for (PastWorkoutSessionRecord wsr : pastFiles) {
             System.out.printf("%-8s", index);
             System.out.println(wsr);
             index += 1;
         }
+        return "list TODO";
     }
 
     public static String add(ArrayList<String> tags) {
         String newFilePath = Constant.WORKOUTSESSIONFOLDER + recordCount + ".json";
-        int code = createfile(newFilePath);
+        createfile(newFilePath);
         PastWorkoutSessionRecord newRecord = new PastWorkoutSessionRecord(newFilePath, tags);
         pastFiles.add(newRecord);
         recordCount = pastFiles.size();
@@ -69,13 +71,8 @@ public class WorkOutManagerStorage {
 
     public static void delete(int index) {
         PastWorkoutSessionRecord deletedRecord;
-        try {
-            deletedRecord = pastFiles.get(index - 1);
-            pastFiles.remove(index - 1);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("The index is out of bound!");
-            return;
-        }
+        deletedRecord = pastFiles.get(index - 1);
+        pastFiles.remove(index - 1);
         File myFile = new File(deletedRecord.getFilePath());
         myFile.delete();
         recordCount = pastFiles.size();
@@ -92,7 +89,7 @@ public class WorkOutManagerStorage {
         return newRecord.getFilePath();
     }
 
-    public static void search(String[] args) {
+    public static String search(String[] args) {
         ArrayList<Predicate<PastWorkoutSessionRecord>> conditions = parseSearchConditions(args);
 
         List<PastWorkoutSessionRecord> result = pastFiles.stream()
@@ -106,6 +103,7 @@ public class WorkOutManagerStorage {
             System.out.printf("%-8s", index);
             System.out.println(wsr);
         }
+        return "searchTODO";
     }
 
     public static void clear() {

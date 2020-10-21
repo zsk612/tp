@@ -1,6 +1,8 @@
 package ui.workout.workoutmanager;
 
-public class WorkoutManagerUi {
+import ui.CommonUi;
+
+public class WorkoutManagerUi extends CommonUi {
 
     public static void printOpening() {
         System.out.println("Let's manage your workout sessions!");
@@ -18,24 +20,20 @@ public class WorkoutManagerUi {
         System.out.println("Loading completed!");
     }
 
-    public static void printSeperationLine() {
-        System.out.println("---------------------------------");
-    }
+    public static String CLEAR_SUCCESS = "You have cleared all records!";
+    public static String CLEAR_ABORTED = "You have aborted the action!";
+    public static String DELETE_SUCCESS = "You have deleted that record!";
+    public static String EDIT_SUCCESS = "Congratulations! You have finished today's workout!";
+    public static String NEW_SUCCESS = "Congratulations! You have finished today's workout!";
+    public static String COMMAND_NOT_FOUND = "The command not recognised!";
 
-    public static void printDeleteResponse() {
-        System.out.println("You have deleted that record!");
-    }
+    public static String MESSAGE_NOT_A_NUMBER = "Index must be a number. Your input is not a number!";
+    public static String MESSAGE_INSUFFICIENT_ARGUMENT = "Insufficient arguments are given!";
+    public static String MESSAGE_OUT_OF_ARRAY = "The record specified is not found. Please check the index!";
 
-    public static void printClearResponse() {
-        System.out.println("You have cleared all records!");
-    }
 
     public static void printStartNewSessionResponse() {
         System.out.println("You have started a new workout session!");
-    }
-
-    public static void printFinishNewSessionResponse() {
-        System.out.println("Congratulations! You have finished today's workout!");
     }
 
     public static void printTabeleHeader() {

@@ -6,19 +6,19 @@ import storage.diet.Storage;
 
 import java.util.ArrayList;
 
-import static ui.CommonUi.printHelpFormater;
+import static ui.CommonUi.printHelpFormatter;
 
 public class FoodItemHelp extends Command {
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
-        printHelpFormater("List", "list",
+        printHelpFormatter("List", "list",
                 "Show all food items");
-        printHelpFormater("Add", "add food name /c calories",
+        printHelpFormatter("Add", "add food name /c calories",
                 "Add a new food item");
-        printHelpFormater("Delete", "delete x",
+        printHelpFormatter("Delete", "delete x",
                 "Delete the food item indexed at x");
-        printHelpFormater("Clear", "clear",
+        printHelpFormatter("Clear", "clear",
                 "Clear all food items");
-        printHelpFormater("End", "end",
+        printHelpFormatter("End", "end",
                 "Go back to diet manager menu");
     }
 }
