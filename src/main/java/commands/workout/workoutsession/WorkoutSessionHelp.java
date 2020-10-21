@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class WorkoutSessionHelp extends Command {
     @Override
-    public void execute(String[] input, ArrayList<Exercise> exercise,
-                        String filePath, Storage storage, boolean[] endWorkoutSession) {
+    public void execute(String[] inputs, ArrayList<Exercise> exerciseList,
+                        String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
         WorkoutSessionUi.printHelp();
     }
 }
