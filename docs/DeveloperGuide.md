@@ -222,13 +222,12 @@ actions is called to return a command object AddProfile.
 1. User executes `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
     2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
-    1. `ProfileParser.parseCommand` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
 1. Creation of Command object.
     1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `AddProfile`.
 1. Executing Command
     1. `ProfileSession` calls `AddProfile.execute()` with the rest of parsed input.
-    1. `AddProfile` calls `ProfileParser.extractCommandTagAndInfo()` to parse the arguments to identify the tags.
-    1. `AddProfile` creates and returns a new `Profile` Object with the parsed information.  
+    1. `AddProfile` creates a new `Profile` object with the parsed information.
+    1. `AddProfile` calls `ProfileStorage.saveData()` to save the Profile object.
 1. Prompting result to user.
     1. `ProfileSession` calls `AddProfile.getCommandResult()` to get the `CommandResult` object.
     1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
@@ -253,6 +252,10 @@ into command tag and information pairs.
 |-----|-----|
 |**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
 |**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
+
+The sequence diagram below summarizes how creating new workout session works:
+
+![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.2.2. Viewing Profile
