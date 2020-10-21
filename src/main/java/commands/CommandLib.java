@@ -13,6 +13,11 @@ import commands.diet.dietsession.FoodItemDelete;
 import commands.diet.dietsession.FoodItemList;
 import commands.diet.dietsession.FoodItemHelp;
 import commands.diet.dietsession.FoodItemWrong;
+import commands.main.Help;
+import commands.main.ToDiet;
+import commands.main.ToProfile;
+import commands.main.ToWorkout;
+import commands.main.Wrong;
 import commands.workout.workoutmanager.ByeWS;
 import commands.workout.workoutmanager.ClearWS;
 import commands.workout.workoutmanager.DeleteWS;
@@ -70,6 +75,14 @@ public class CommandLib {
         library.put("edit", new DietSessionEdit());
         library.put("delete", new DietSessionDelete());
         library.put("wrong", new DietSessionWrong());
+    }
+
+    public void initMainMenu() {
+        library.put("wrong", new Wrong());
+        library.put("help", new Help());
+        library.put("diet", new ToDiet());
+        library.put("profile", new ToProfile());
+        library.put("workout", new ToWorkout());
     }
 
     public void initDietSessionCL() {

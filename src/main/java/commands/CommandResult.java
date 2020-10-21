@@ -5,6 +5,15 @@ package commands;
  */
 public class CommandResult {
     private String feedbackMessage;
+    private ExecutionResult status;
+
+    public ExecutionResult getStatus() {
+        return status;
+    }
+
+    public String getFeedbackMessage() {
+        return feedbackMessage;
+    }
 
     /**
      * Constructs CommandResult object.
@@ -13,6 +22,17 @@ public class CommandResult {
      */
     public CommandResult(String feedbackMessage) {
         this.feedbackMessage = feedbackMessage;
+        this.status = ExecutionResult.OK;
+    }
+
+    public CommandResult(String feedbackMessage, ExecutionResult status) {
+        this.feedbackMessage = feedbackMessage;
+        this.status = status;
+    }
+
+    public CommandResult() {
+        this.feedbackMessage = null;
+        this.status = ExecutionResult.OK;
     }
 
     /**
