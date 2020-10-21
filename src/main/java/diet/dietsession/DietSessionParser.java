@@ -3,6 +3,9 @@ package diet.dietsession;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.logging.Level;
+
+import static logger.SchwarzeneggerLogger.logger;
 
 public class DietSessionParser {
     public String[] parse(String comm) {
@@ -13,13 +16,28 @@ public class DietSessionParser {
         }
     }
 
+    /**
+     * Processes the name of the food item.
+     *
+     * @param food string for food content
+     * @return food name
+     * @throws IndexOutOfBoundsException handles exception for not inputting food name or calories
+     */
     public String processFoodName(String food) throws IndexOutOfBoundsException {
         String[] temp = food.trim().split("/c", 2);
         return temp[0];
     }
 
+    /**
+     * Processes the calories of the food item.
+     *
+     * @param food string for food content
+     * @return food calories
+     * @throws NumberFormatException handles exception for wrong calories input
+     */
     public double processFoodCalories(String food) throws NumberFormatException {
         String[] temp = food.trim().split("/c", 2);
+        logger.log(Level.INFO, "Processed food calories successfully");
         return Double.parseDouble(temp[1]);
     }
 
@@ -31,7 +49,6 @@ public class DietSessionParser {
      */
     public LocalDate parseDate(String dateInput) {
 
-        // formatters for dates with time
         DateTimeFormatter formatterA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatterB = DateTimeFormatter.ofPattern("MM-dd-yyyy");
         DateTimeFormatter formatterC = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -39,32 +56,39 @@ public class DietSessionParser {
         LocalDate date = null;
         try {
             date = LocalDate.parse(dateInput, formatterA);
+            logger.log(Level.INFO, "Parsed date and time successfully");
+
         } catch (DateTimeParseException e) {
-            // puts the date and time through all available formatters
+            System.out.println("Invalid input for date and time.");
+            logger.log(Level.WARNING, "Unable to parse date and time");
         }
         try {
             if (date == null) {
                 date = LocalDate.parse(dateInput, formatterB);
+                logger.log(Level.INFO, "Parsed date and time successfully");
             }
         } catch (DateTimeParseException e) {
-            // puts the date and time through all available formatters
+            System.out.println("Invalid input for date and time.");
+            logger.log(Level.WARNING, "Unable to parse date and time");
         }
         try {
             if (date == null) {
                 date = LocalDate.parse(dateInput, formatterC);
+                logger.log(Level.INFO, "Parsed date and time successfully");
             }
         } catch (DateTimeParseException e) {
-            // puts the date and time through all available formatters
+            System.out.println("Invalid input for date and time.");
+            logger.log(Level.WARNING, "Unable to parse date and time");
         }
         try {
             if (date == null) {
-                // this uses default formatter of yyyy-MM-dd
                 date = LocalDate.parse(dateInput);
+                logger.log(Level.INFO, "Parsed date and time successfully");
             }
         } catch (DateTimeParseException e) {
-            // puts the date and time through all available formatters
+            System.out.println("Invalid input for date and time.");
+            logger.log(Level.WARNING, "Unable to parse date and time");
         }
-        // returns null if all the available formatters could not be used
         return date;
     }
 }

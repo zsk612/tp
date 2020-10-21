@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import workout.workoutsession.exercise.Exercise;
+import workout.workoutsession.exercise.ExerciseList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -52,23 +53,23 @@ public class Storage {
      *
      * @throws IOException If director or file cannot be created.
      */
-    public void writeToStorage(String filePath, ArrayList<Exercise> taskList) throws IOException {
+    public void writeToStorage(String filePath, ExerciseList exerciseList) throws IOException {
         File file = new File(filePath);
         FileWriter writer = new FileWriter(file.getPath());
-        gson.toJson(taskList, writer);
+        gson.toJson(exerciseList.exerciseList, writer);
         writer.flush();
         writer.close();
     }
 
-    public void readFileContents(String filePath, ArrayList<Exercise> taskList) throws FileNotFoundException {
+    public void readFileContents(String filePath, ExerciseList exerciseList) throws FileNotFoundException {
         File file = new File(filePath);
 
         Type taskListType = new TypeToken<ArrayList<Exercise>>() {
         }.getType();
         JsonReader reader = new JsonReader(new FileReader(file.getPath()));
-        taskList.clear();
+        exerciseList.exerciseList.clear();
         try {
-            taskList.addAll(gson.fromJson(reader, taskListType));
+            exerciseList.exerciseList.addAll(gson.fromJson(reader, taskListType));
         } catch (NullPointerException e) {
             System.out.printf("");
         }

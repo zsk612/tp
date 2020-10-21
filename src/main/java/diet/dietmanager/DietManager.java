@@ -13,6 +13,9 @@ public class DietManager {
     private final DietManagerUi dietManagerUI;
     private final Storage storage;
 
+    /**
+     * Constructs DietManager and initialize command library for dietManager.
+     */
     public DietManager() {
         storage = new Storage();
         cl = new CommandLib();
@@ -21,6 +24,9 @@ public class DietManager {
         dietManagerUI = new DietManagerUi();
     }
 
+    /**
+     * Starts diet manager to read user input.
+     */
     public void start() {
         DietManagerUi.printOpening();
         String input = dietManagerUI.getInput();
@@ -37,6 +43,11 @@ public class DietManager {
         System.out.println("you have exited Diet Manager.");
     }
 
+    /**
+     * Processes the user input to interpret correct command words.
+     * @param input user input for command
+     * @throws ExitException handles exit exception
+     */
     private void processCommand(String input) throws ExitException {
         String[] commParts = parser.parse(input.trim());
         try {
