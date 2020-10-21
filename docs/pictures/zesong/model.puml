@@ -1,0 +1,15 @@
+@startuml
+
+rectangle "Past workout records" {
+rectangle "PastRecord"
+}
+rectangle "DietRecords" {
+rectangle "DietManager"
+}
+rectangle "workout session" {
+rectangle "WorkoutSession"
+}
+rectangle "Profile" {
+rectangle "profile"
+}
+@enduml
