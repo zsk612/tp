@@ -1,33 +1,31 @@
 package commands.workout.workoutmanager;
 
 import commands.Command;
+import commands.CommandResult;
 import commands.ExecutionResult;
+import exceptions.SchwarzeneggerException;
 import storage.workout.WorkOutManagerStorage;
-import ui.workout.workoutmanager.WorkoutManagerUi;
 
 import java.util.Scanner;
+
+import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
+import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_SUCCESS;
 
 public class ClearWS extends Command {
 
     @Override
-    public ExecutionResult execute(String[] arg) {
+    public CommandResult execute(String[] arg) throws SchwarzeneggerException {
         if (!checkConfirmation()) {
-            System.out.println("The action aborted");
-            return ExecutionResult.ABORTED;
+            return new CommandResult(CLEAR_ABORTED, ExecutionResult.ABORTED);
         }
         WorkOutManagerStorage.clear();
-        return ExecutionResult.OK;
-    }
-
-    @Override
-    public void printResponse() {
-        WorkoutManagerUi.printClearResponse();
+        return new CommandResult(CLEAR_SUCCESS, ExecutionResult.OK);
     }
 
     private static boolean checkConfirmation() {
         Scanner in = new Scanner(System.in);
-        System.out.println("Are you sure you want to clear all records? This action is irrevocable.");
-        System.out.println("Key in YES to confirm.");
+        System.out.println("\tAre you sure you want to clear all records? This action is irrevocable.");
+        System.out.println("\tKey in YES to confirm.");
         String input = in.next();
         return  input.equals("YES");
     }
