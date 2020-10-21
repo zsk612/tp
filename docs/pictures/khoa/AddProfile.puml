@@ -1,0 +1,28 @@
+@startuml
+actor user
+activate ProfileSession
+user -> ProfileUi : add
+activate ProfileUi
+ProfileUi --> ProfileSession : command
+
+ProfileSession -> ProfileParser : parseCommand(command)
+activate ProfileParser
+ProfileParser --> ProfileSession : AddProfile
+deactivate ProfileParser
+
+ProfileSession -> Command : execute()
+activate Command
+
+Command -> ProfileStorage : saveData(profile)
+activate ProfileStorage
+ProfileStorage --> Command
+deactivate ProfileStorage
+
+Command --> ProfileSession : Command Result
+deactivate Command
+
+ProfileSession -> ProfileUi : showToUser(Command Result)
+
+ProfileUi --> user: print(Command Result)
+deactivate ProfileUi
+@enduml
