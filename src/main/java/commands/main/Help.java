@@ -17,11 +17,11 @@ public class Help extends Command {
         helpMessage.append(helpFormatter("profile", "profile",
                 "Go to Profile Manager to update your profile"));
         helpMessage.append(helpFormatter("workout", "workout",
-                "Go to Workout Manager to manager your workout records" +
-                        " and create new workout records"));
+                "Go to Workout Manager to manager your workout records"
+                        + " and create new workout records"));
         helpMessage.append(helpFormatter("diet", "diet",
-                "Go to Workout Manager to manager your past diet records" +
-                        " and create new diet records"));
+                "Go to Workout Manager to manager your past diet records"
+                        + " and create new diet records"));
         helpMessage.append(helpFormatter("end", "end",
                 "Exit the program"));
         showUser(helpMessage.toString().trim());

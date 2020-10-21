@@ -37,11 +37,12 @@ public class CommonUi {
 
     /**
      * Formatter to get a input from user.
+     *
      * @param menuName current menu name
      * @return user input in a string
      */
     public String getCommand(String menuName) {
-        System.out.print(menuName+ " >>>>> ");
+        System.out.print(menuName + " >>>>> ");
         Scanner sc = new Scanner(System.in);
         String inputLine = sc.nextLine();
 

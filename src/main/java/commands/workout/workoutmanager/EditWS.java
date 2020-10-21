@@ -4,14 +4,11 @@ import commands.Command;
 import commands.CommandResult;
 import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
-import exceptions.WorkoutManager.InsufficientArgumentException;
-import exceptions.WorkoutManager.NotANumberException;
-import exceptions.WorkoutManager.OutOfArrayException;
+import exceptions.workoutmanager.InsufficientArgumentException;
+import exceptions.workoutmanager.NotANumberException;
+import exceptions.workoutmanager.OutOfArrayException;
 import storage.workout.WorkOutManagerStorage;
-import ui.workout.workoutmanager.WorkoutManagerUi;
 import workout.workoutsession.WorkoutSession;
-
-import javax.xml.transform.OutputKeys;
 
 import static logger.SchwarzeneggerLogger.logger;
 import static ui.workout.workoutmanager.WorkoutManagerUi.EDIT_SUCCESS;

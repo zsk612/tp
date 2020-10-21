@@ -4,9 +4,9 @@ import commands.Command;
 import commands.CommandResult;
 import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
-import exceptions.WorkoutManager.InsufficientArgumentException;
-import exceptions.WorkoutManager.NotANumberException;
-import exceptions.WorkoutManager.OutOfArrayException;
+import exceptions.workoutmanager.InsufficientArgumentException;
+import exceptions.workoutmanager.NotANumberException;
+import exceptions.workoutmanager.OutOfArrayException;
 import storage.workout.WorkOutManagerStorage;
 
 import static logger.SchwarzeneggerLogger.logger;
@@ -27,7 +27,7 @@ public class DeleteWS extends Command {
             logger.warning("Insufficient arguments given!");
             throw new InsufficientArgumentException();
         }
-        try{
+        try {
             WorkOutManagerStorage.delete(index);
         } catch (IndexOutOfBoundsException e) {
             logger.warning("Index Out Of Bounds Exception caught");
