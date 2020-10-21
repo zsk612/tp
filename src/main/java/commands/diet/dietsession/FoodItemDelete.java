@@ -11,6 +11,12 @@ import static logger.SchwarzeneggerLogger.logger;
 
 public class FoodItemDelete extends Command {
 
+    /**
+     * Overrides execute for delete command to delete food items.
+     * @param input user input for command
+     * @param foodList arraylist that stored all the food items
+     * @param storage storage for diet session
+     */
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
         try {
@@ -22,6 +28,7 @@ public class FoodItemDelete extends Command {
             logger.log(Level.INFO, "Removed food from arraylist");
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
             System.out.println("Sorry! It seems like you've entered an invalid number or input!");
+            logger.log(Level.WARNING, "Did not input correct index");
         }
     }
 }

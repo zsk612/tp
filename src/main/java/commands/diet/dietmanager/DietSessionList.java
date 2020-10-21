@@ -12,6 +12,11 @@ import static logger.SchwarzeneggerLogger.logger;
 public class DietSessionList extends Command {
     static final String FILEPATH = "saves/diet/";
 
+    /**
+     * Overrides execute for list command to list diet sessions.
+     * @param input user input for command
+     * @param storage storage for diet manager
+     */
     @Override
     public void execute(String input, Storage storage) {
         File folder = new File(FILEPATH);
@@ -28,7 +33,7 @@ public class DietSessionList extends Command {
             logger.log(Level.INFO, "Listed all available diet sessions");
         } catch (NullPointerException e) {
             System.out.println("Sorry! It seems like you have no meal sessions saved!.");
-            logger.log(Level.INFO, "No instances of diet sessions saved");
+            logger.log(Level.WARNING, "No instances of diet sessions saved");
         }
     }
 }

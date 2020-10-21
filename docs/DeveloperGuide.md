@@ -187,6 +187,26 @@ For diet and workout-realted features, there is an additional functionality of s
 
 ### 4.1. Main Menu-related Features
 
+####4.1.1. Help Command for Main Page
+
+The help command allows users to view all the available commands in the main page.
+The command for help is `help`.
+
+####4.1.2. Redirection to profile manager
+
+The redirection to profile page allows the user to enter profile manager to create, edit, list and delete user profile.
+The command for this redirection is `profile`.
+
+####4.1.3. Redirection to diet manager
+
+The redirection to profile page allows the user to enter diet manager to create, edit, list and delete diet sessions.
+The command for this redirection is `diet`.
+
+####4.1.4. Redirection to workout manager
+
+The redirection to profile page allows the user to enter workout manager to create, edit, list and delete workout sessions.
+The command for this redirection is `workout`.
+
 ### 4.2. Profile-related Features
 #### 4.2.1. Creation of Profile
 
@@ -857,6 +877,21 @@ Aspect: Storage of Expenditure data in its own output file.
 |**Cons** | Whenever save Expenditure data, the whole data file overwritten and need to loop through entire choreList to save Chore data with the new Expenditure data.|
 
 [&#8593; Return to Top](#developer-guide)
+### 4.6. Storage
+Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called /saves.
+#### 4.6.1. Storage for profile
+
+#### 4.6.2. Storage for diet
+Storage for diet saves diet sessions created as individual files sorted based on the time created in the /saves/diet directory. Each diet session file is created as follows:
+- Each file is created as a json file and named as `[date] [tag].json`.
+- A corresponding file is updated in the local file when the user edits a diet session by calling DietSessionEdit.execute().
+- A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
+
+##### Implementation
+Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
+
+#### 4.6.3. Storage for workout
+
 
 ### 4.7. Logging
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
