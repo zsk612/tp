@@ -1,7 +1,13 @@
 package diet.dietmanager;
 
 import commands.CommandLib;
-import commands.diet.dietmanager.*;
+import commands.diet.dietmanager.DietSessionClear;
+import commands.diet.dietmanager.DietSessionCreate;
+import commands.diet.dietmanager.DietSessionDelete;
+import commands.diet.dietmanager.DietSessionEdit;
+import commands.diet.dietmanager.DietSessionHelp;
+import commands.diet.dietmanager.DietSessionList;
+import commands.diet.dietmanager.DietSessionWrong;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
