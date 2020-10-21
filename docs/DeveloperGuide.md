@@ -61,10 +61,6 @@ By: `CS2113T-F11-1` Since: `2020`
     + [Appendix D: Non-Functional Requirements](#appendix-d-non-functional-requirements)
     + [Appendix E: Glossary](#appendix-e-glossary)
     + [Appendix F: Instructions for Manual Testing](#appendix-f-instructions-for-manual-testing)
-      - [F.1. Launch and Shutdown](#f1-launch-and-shutdown)
-      - [F.2. Add an ingredient](#f2-add-an-ingredient)
-      - [F.3. List ingredient](#f3-list-ingredient)
-      - [F.4. Delete an ingredient](#f4-delete-an-ingredient)
     + [Appendix G: Supported Formats of Date Input](#appendix-g-supported-formats-of-date-input)
 
 ## 1. Introduction
@@ -148,10 +144,7 @@ The `Ui` component,
 
 ![Model Component](images/model.png)
 
-The Model component contains `Ingredient`, `Recipe` and `Chore` classes, which store the user's input in Kitchen Helper.
-* Ingredient: Stores the ingredient data.
-* Recipe: Stores the recipe data.
-* Chore: Stores the chore data.
+todo
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -669,7 +662,7 @@ Parsing of the user’s input command:
 |**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
 |**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
 
-- Alternative 2: Multiple prompts for user’s input of a recipe name and ingredient(s)
+- Alternative 2: Multiple prompts for user’s input of a workout data
 
 |     |     |
 |-----|-----|
@@ -882,103 +875,6 @@ in the meta info file.
 [&#8593; Return to Top](#developer-guide)
 
 ### 4.5. Recommendations
-#### 4.5.1. Display Expenditure
-The feature for displayexpenditure allows the user to keep track of their total expenditure and the amount they used in their cooking each week.
-
-##### Implementation  
-When the user attempts to display `expenditure`, the `Kitchen Helper`, `Parser` and `DisplayExpenditureCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `displayexpenditure`.
-    1. A `UI` object will be created and calls `UI#getUserCommand()`. 
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `displayexpenditure`.   
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string in `Parser#prepareDisplayExpenditure()` to ensure the parameters are empty, or an exception will be thrown.
-    1. The `DisplayExpenditureCommand` object will be created. 
-3. Executing Command
-    1. The newly created object will call `DisplayExpenditureCommand#execute()` which will format the expenditure information into how it will be displayed.
-    1. Lastly, a String called `feedbackToUser` containing the information to display will be returned to `KitchenHelper`. 
-4. The expenditure information will then be printed onto the console using `Ui#showResultToUser(result)`.
-
-##### Design considerations:
-
-- Alternative 1(current implementation): Create a class to handle display of expenditure.
-
-|     |     |
-|-----|-----|
-|**Pros** | More OOP. `displayexpenditure` is a supported user command so it should have its own class for its specific function just like other commands. |
-|**Cons** | Very abstract method and a lot of effort in order to print the value of two variables.|
-
-- Alternative 2: Have a method to display expenditure in `Parser` class.
-
-|     |     |
-|-----|-----|
-|**Pros** | Simpler and more basic implementation.|  
-|**Cons** | Less OOP and will ruin the code style because its execution would be different from other commands. | 
-
-    
-#### 4.5.2. Expenditure functionality
-The Expenditure function mainly keeps track of two variables, `totalExpenditure` and `amountUsedInCooking`. Total expenditure is the amount spent on purchase of ingredients for the week. Amount used in cooking indicates the price of all the ingredients used for cooking or consumption in the week. The latter variable reflects the extent to which the user makes use of his purchase and hence the amount of expenditure he benefited from.
-
-##### Implementation  
-The values of the variables in Expenditure change in the the following situations:
-
-+ The user executes `addingredient`.  
-    1. During the execution of `Parser#prepareAddIngredient`, `Expenditure#addToExpenditure` retrieves the price and quantity values of the ingredient being added. 
-    1. `totalExpenditure` value increases by the value calculated by `Expenditure#addToExpenditure`. 
-    1. `Storage#saveExpenditureData` saves the updated value.  
-+ The user executes `cookrecipe`.
-    1. During the execution of `CookRecipeCommand#checkIfIngredientExpired`, `Expenditure#addAmountForCooking` retrieves the quantity used in cooking for each ingredient in the recipe. 
-    2. `amountUsedInCooking` value increases by the value calculated by `Expenditure#addAmountForCooking`.
-    1. `Storage#saveExpenditureData` saves the updated value.  
-+ The user executes `deleteingredient`.
-    1. During the execution of `DeleteIngredientCommand#updateNewQuantity` and `DeleteIngredientCommand#deleteIngredient`, `Expenditure#editExpenditure` retrieves the quantity of the ingredient to delete.
-    1. `Expenditure#editExpenditure` first executes `Expenditure#removeFromExpenditure`, which prompts the user whether the user would like to deduct the cost of the ingredient being deleted from the total expenditure, in the case the user is deleting the ingredient due to wrong addition and would not like to count its cost in total expenditure.
-    1. If the user responds with `yes`, the `totalExpenditure` value is decreased by the amount calculated by `Expenditure#changePrice`.
-    1. If the user responds with `no`, `Expenditure#editExpenditure` will then execute `Expenditure#addToAmountUsed`, which prompts the user whether the user would like to add the cost of the ingredient being deleted to the amount used in cooking, in the case the user manually deletes ingredients that have been cooked or consumed.
-    1. If the user responds with `yes`, the `amountUsedInCooking` value increases by the amount calculated by `Expenditure#changePrice`.
-    1. If the user responds with `no`, the `totalExpenditure` value and `amountUseInCooking` value remain unchanged.
-    1. `Storage#saveExpenditureData` saves the updated value.
-
-
-##### Design considerations:
-
-Aspect: Singleton pattern for Expenditure class.
-
-- Alternative 1(current implementation): Making Expenditure a Singleton.
-
-|     |     |
-|-----|-----|
-|**Pros** | The Expenditure values are accumulated, so the exact same variables have to be used every time. Using only one instance of the Expenditure object allows that. |
-|**Cons** | 1. Increases dependencies as it has a global state. It can be overused and be hard to track. <br> 2. Makes testing harder. |
-
-- Alternative 2: Making Expenditure variables and methods static.
-
-|     |     |
-|-----|-----|
-|**Pros** | Static variables can also update expenditure using the exact same variables.|  
-|**Cons** | Take up memory as they cannot be created and destroyed during program execution. |
-
-- Alternative 3: Loading expenditure values from expenditure output text file to a local variable every time.
-
-|     |     |
-|-----|-----|
-|**Pros** | Also allows the retrieval of most updated value.|  
-|**Cons** | A lot of storing and loading to and from text files, which increases overhead. |
-
-Aspect: Storage of Expenditure data in its own output file.
-
-- Alternative 1(current implementation): Storage in its own Expenditure output file.
-
-|     |     |
-|-----|-----|
-|**Pros** | Neater to have a specific output file solely for Expenditure data. |
-|**Cons** | Create an entire storage function and output file for three variables. |
-
-- Alternative 2: Storage together with Chore data. 
-
-|     |     |
-|-----|-----|
-|**Pros** | Does not require additional storage implementation and save space not creating another file. |
-|**Cons** | Whenever save Expenditure data, the whole data file overwritten and need to loop through entire choreList to save Chore data with the new Expenditure data.|
 
 [&#8593; Return to Top](#developer-guide)
 ### 4.6. Storage
@@ -1034,8 +930,6 @@ __Target user profile__:
 * Comfortable with using command line interface.  
 * Gyms regularly
 
-__Value proposition__: Manage food inventory quickly compared to a typical mouse or graphic user interface driven application which saves time and makes it more convenient.  
-
 [&#8593; Return to Top](#developer-guide)
 
 ### Appendix B: User Stories
@@ -1054,29 +948,6 @@ __Value proposition__: Manage food inventory quickly compared to a typical mouse
 
 ### Appendix C: Value proposition - Use cases
 
-(For all use cases below, the __System__ is `Kitchen Helper` and the __Actor__ is the `user`, unless otherwise stated)
-```
-Use case: UC01 - Add an ingredient
-MSS:
-1. User purchases an ingredient.
-2. User wants to add to System for tracking purposes.
-3. System adds the ingredient.
-Use case ends.
-
-Extensions:
-2a. System detects invalid format in the entered data.
-  2a1. System throws invalid input format and shows a valid format example.
-  Use case resumes at step 2.
-2b. System detects zero quantity in the entered data.
-  2b1. Systems alerts you to enter a quantity more than zero.
-  Use case resumes at step 2.
-2c. System detects a expired expiry date in the entered data.
-  2c1. System alerts you that Expired ingredient detected in input. Please enter a non-expired expiry
-       date.
-  Use case resumes at step 2.
-```
-<br>
-
 [&#8593; Return to Top](#developer-guide)
 
 ### Appendix D: Non-Functional Requirements
@@ -1091,9 +962,6 @@ Extensions:
 
 ### Appendix E: Glossary
 
-* Category - The group of the ingredient belongs to
-* Price - Unit cost of a single quantity
-* Expiry - The expiry date of the ingredient
 * *Mainstream OS* - Windows, Linux, Unix, OS-X  
  
 [&#8593; Return to Top](#developer-guide)
