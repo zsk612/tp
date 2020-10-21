@@ -20,4 +20,8 @@ public class Exercise {
                 + ", Repetitions:" + repetitions
                 + ", Weight=" + weight;
     }
+
+    public String getDescription(){
+        return moveName;
+    }
 }

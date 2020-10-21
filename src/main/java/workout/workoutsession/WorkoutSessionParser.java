@@ -1,5 +1,6 @@
 package workout.workoutsession;
 
+import ui.workout.workoutsession.WorkoutSessionUi;
 import workout.workoutsession.exercise.Exercise;
 
 public class WorkoutSessionParser {
@@ -27,17 +28,30 @@ public class WorkoutSessionParser {
             } else if (tracker == 2 || tracker == 3) {
                 returnString[tracker] = s;
             } else {
-                returnString[tracker] += s;
+                returnString[tracker] += (s + " ");
             }
         }
-        exercise = new Exercise(returnString[1], Integer.parseInt(returnString[2]), Integer.parseInt(returnString[3]));
+        exercise = new Exercise(returnString[1].trim(), Integer.parseInt(returnString[2]), Integer.parseInt(returnString[3]));
 
         return exercise;
     }
 
 
     public static int deleteParser(String[] input) {
+        int returnInt = 0;
+        try {
+            returnInt = Integer.parseInt(input[1]);
+        } catch (NumberFormatException e) {
+            WorkoutSessionUi.deleteFormatError();
+        }
+        return returnInt;
+    }
 
-        return Integer.parseInt(input[1]);
+    public static String searchParser(String[] input) {
+        String returnString = new String();
+        for (int i = 1; i < input.length; i++) {
+            returnString += input[i];
+        }
+        return returnString.trim();
     }
 }

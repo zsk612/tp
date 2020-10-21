@@ -24,6 +24,14 @@ public class WorkoutSessionUi extends CommonUi {
         printer.showToUser("List is empty. Please enter something.");
     }
 
+    public static void deleteFormatError() {
+        printer.showToUser("Wrong format, please enter in the format: delete [move ID]");
+    }
+
+    public static void deleteIndexError() {
+        printer.showToUser("Index does not exist. Please refer to the list.");
+    }
+
     public static void printHelp() {
         StringBuilder helpMessage = new StringBuilder();
         helpMessage.append(helpFormatter("Add", "add [name of move] /n [number of repetitions] /w [weight]",
@@ -37,5 +45,20 @@ public class WorkoutSessionUi extends CommonUi {
         helpMessage.append(helpFormatter("End", "end",
                 "Go back to the workout menu."));
         printer.showToUser(helpMessage.toString().trim());
+    }
+
+    public static void emptyInputError() {
+        System.out.println("Please enter something.");
+    }
+
+    public static void inputPrompt() {
+        System.out.print("Workout Session >>>>> ");
+    }
+
+    public static void searchInputError() {
+        printer.showToUser("Wrong format, please enter in the format: search [name of move]");
+    }
+    public static void searchResultsEmpty() {
+        printer.showToUser("No matching result has been found.");
     }
 }

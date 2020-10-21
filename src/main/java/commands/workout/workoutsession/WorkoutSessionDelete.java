@@ -12,11 +12,16 @@ import java.util.ArrayList;
 public class WorkoutSessionDelete extends Command {
     public void execute(String[] input, ArrayList<Exercise> exerciseList,
                         String filePath, Storage storage, boolean[] endWorkoutSession) {
-        exerciseList.remove(WorkoutSessionParser.deleteParser(input));
         try {
-            storage.writeToStorage(filePath, exerciseList);
+            int removeIndex = WorkoutSessionParser.deleteParser(input);
+            if (removeIndex != 0) {
+                exerciseList.remove(removeIndex - 1);
+                storage.writeToStorage(filePath, exerciseList);
+            }
         } catch (IOException e) {
             WorkoutSessionUi.printError();
+        } catch (IndexOutOfBoundsException e) {
+            WorkoutSessionUi.deleteIndexError();
         }
     }
 }
