@@ -89,6 +89,6 @@ public class DietSessionParser {
             System.out.println("Invalid input for date and time.");
             logger.log(Level.WARNING, "Unable to parse date and time");
         }
-        return null;
+        return date;
     }
 }
