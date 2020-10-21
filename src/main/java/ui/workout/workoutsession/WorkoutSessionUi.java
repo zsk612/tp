@@ -3,7 +3,7 @@ package ui.workout.workoutsession;
 import ui.CommonUi;
 
 
-public class WorkoutSessionUi extends CommonUi{
+public class WorkoutSessionUi extends CommonUi {
     private static CommonUi printer = new CommonUi();
 
     public static void printError() {
