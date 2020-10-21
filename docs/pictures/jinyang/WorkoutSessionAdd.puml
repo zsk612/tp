@@ -1,35 +1,21 @@
 @startuml
 actor user
-user -> WorkoutManager : input
-activate WorkoutManager
+user -> WorkoutSession : add
+activate WorkoutSession
 
-WorkoutManager -> CommandLib : get()
+WorkoutSession -> CommandLib : get()
 activate CommandLib
-CommandLib -> WorkoutManager : Command
+CommandLib -> WorkoutSession : Command
 deactivate CommandLib
 
-WorkoutManager -> EditCommand : execute()
-activate EditCommand
+WorkoutSession -> WorkoutSessionAdd : execute()
+activate WorkoutSessionAdd
 
-EditCommand -> WorkoutManagerStorage : edit()
-activate WorkoutManagerStorage
-WorkoutManagerStorage --> EditCommand : filePath
-deactivate WorkoutManagerStorage
+WorkoutSessionAdd -> WorkoutSession.Storage : writeToFile()
+activate WorkoutSession.Storage
+WorkoutSession.Storage --> WorkoutSessionAdd
+deactivate WorkoutSession.Storage
 
-EditCommand -> workoutSession : new WorkoutSession(filePath)
-activate workoutSession
-workoutSession -> workoutSessionStorage: init()
-activate workoutSessionStorage
-workoutSessionStorage -> workoutSession: loaded with exercise data
-deactivate workoutSessionStorage
-
-EditCommand -> workoutSession : start()
-workoutSession -> EditCommand
-deactivate workoutSession
-
-EditCommand -> WorkoutManager : ExecutionResult
-deactivate EditCommand
-
-WorkoutManager ->  user : output
-
+WorkoutSessionAdd --> WorkoutSession
+deactivate WorkoutSessionAdd
 @enduml
