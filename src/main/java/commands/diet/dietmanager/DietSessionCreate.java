@@ -7,10 +7,13 @@ import ui.diet.dietmanager.DietManagerUi;
 import storage.diet.Storage;
 
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import static logger.SchwarzeneggerLogger.logger;
 
 public class DietSessionCreate extends Command {
+
+    private final DietManagerUi ui = new DietManagerUi();
 
     /**
      * Overrides execute for create command to create new diet sessions.
@@ -19,7 +22,6 @@ public class DietSessionCreate extends Command {
      */
     @Override
     public void execute(String input, Storage storage) {
-        DietManagerUi ui = new DietManagerUi();
 
         try {
             DietSession ds = new DietSession(ui.extractMeal(input), ui.extractDate(input));
@@ -40,8 +42,8 @@ public class DietSessionCreate extends Command {
      */
     private void saveToFile(Storage storage, DietSession ds) {
         try {
-            storage.init(ds.getTypeInput() + " " + ds.getDate().toString());
-            storage.writeToStorageDietSession(ds.getTypeInput() + " " + ds.getDate().toString(), ds);
+            storage.init( ds.getDate().toString() + " " + ds.getTypeInput());
+            storage.writeToStorageDietSession(ds.getDate().toString() + " " + ds.getTypeInput(), ds);
             logger.log(Level.INFO, "Diet session successfully saved");
         } catch (IOException e) {
             logger.log(Level.WARNING, "save profile session failed");

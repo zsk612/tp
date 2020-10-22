@@ -22,13 +22,6 @@ public class DietManagerUi extends CommonUi {
         System.out.println("Exiting diet manager!!");
     }
 
-    public String getInput() {
-        Scanner in = new Scanner(System.in);
-        String check = in.nextLine();
-        assert check != null : "input has to at least be \\n";
-        return check;
-    }
-
     /**
      * Extracts out date and time by looking for date strings in YYYY-MM-DD format.
      *

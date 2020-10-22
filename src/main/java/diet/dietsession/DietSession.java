@@ -66,7 +66,7 @@ public class DietSession {
         cl.initDietSessionCL();
         dietSessionUI.printOpening();
         setEndDietSession(false);
-        String input = dietSessionUI.getInput();
+        String input = dietSessionUI.getCommand("Diet Menu > Diet Session");
         dietSessionInputLoop(input);
         setEndDietSession(true);
         dietSessionUI.printExit();
@@ -85,22 +85,22 @@ public class DietSession {
                 System.out.println(e.getMessage());
                 break;
             }
-            input = dietSessionUI.getInput();
+            input = dietSessionUI.getCommand("Diet Menu > Diet Session");
         }
     }
 
-    /**
-     * Saves changes in dietSession to local files.
-     */
-    private void saveToFile() {
-        try {
-            storage.init(typeInput + " " + date.toString());
-            storage.writeToStorageDietSession(typeInput + " " + date.toString(), this);
-        } catch (IOException e) {
-            logger.log(Level.WARNING, "save profile session failed");
-            System.out.println("Failed to save your diet session!");
-        }
-    }
+//    /**
+//     * Saves changes in dietSession to local files.
+//     */
+//    private void saveToFile() {
+//        try {
+//            storage.init(date.toString() + " " + typeInput);
+//            storage.writeToStorageDietSession(date.toString() + " " + typeInput, this);
+//        } catch (IOException e) {
+//            logger.log(Level.WARNING, "save profile session failed");
+//            System.out.println("Failed to save your diet session!");
+//        }
+//    }
 
     /**
      * Processes user input for dietSession commands.
