@@ -29,7 +29,7 @@ public class DietManager {
      */
     public void start() {
         DietManagerUi.printOpening();
-        String input = dietManagerUI.getInput();
+        String input = dietManagerUI.getCommand("Diet Menu");
         assert input != null : "Null input before input loop";
         while (!input.equals("end")) {
             try {
@@ -38,7 +38,7 @@ public class DietManager {
                 System.out.println(e.getMessage());
                 break;
             }
-            input = dietManagerUI.getInput();
+            input = dietManagerUI.getCommand("Diet Menu");
         }
         System.out.println("you have exited Diet Manager.");
     }

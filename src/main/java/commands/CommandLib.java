@@ -6,6 +6,7 @@ import commands.diet.dietmanager.DietSessionDelete;
 import commands.diet.dietmanager.DietSessionHelp;
 import commands.diet.dietmanager.DietSessionList;
 import commands.diet.dietmanager.DietSessionEdit;
+import commands.diet.dietmanager.DietSessionSearch;
 import commands.diet.dietmanager.DietSessionWrong;
 import commands.diet.dietsession.FoodItemAdd;
 import commands.diet.dietsession.FoodItemClear;
@@ -72,6 +73,7 @@ public class CommandLib {
         library.put("meal", new DietSessionCreate());
         library.put("help", new DietSessionHelp());
         library.put("clear", new DietSessionClear());
+        library.put("search", new DietSessionSearch());
         library.put("edit", new DietSessionEdit());
         library.put("delete", new DietSessionDelete());
         library.put("wrong", new DietSessionWrong());
@@ -90,6 +92,7 @@ public class CommandLib {
         library.put("delete", new FoodItemDelete());
         library.put("help", new FoodItemHelp());
         library.put("clear", new FoodItemClear());
+        library.put("search", new FoodItemClear());
         library.put("list", new FoodItemList());
         library.put("wrong", new FoodItemWrong());
     }

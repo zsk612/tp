@@ -57,6 +57,7 @@ public class DietSession {
 
     /**
      * Starts dietSession and initializes command library for dietSession.
+     *
      * @throws IOException handles input/output exception
      */
     public void start() throws IOException {
@@ -66,7 +67,7 @@ public class DietSession {
         cl.initDietSessionCL();
         dietSessionUI.printOpening();
         setEndDietSession(false);
-        String input = dietSessionUI.getInput();
+        String input = dietSessionUI.getCommand("Diet Menu > Diet Session");
         dietSessionInputLoop(input);
         setEndDietSession(true);
         dietSessionUI.printExit();
@@ -74,6 +75,7 @@ public class DietSession {
 
     /**
      * Starts reading user input for dietSession commands.
+     *
      * @param input user input for command
      */
     private void dietSessionInputLoop(String input) {
@@ -85,25 +87,13 @@ public class DietSession {
                 System.out.println(e.getMessage());
                 break;
             }
-            input = dietSessionUI.getInput();
-        }
-    }
-
-    /**
-     * Saves changes in dietSession to local files.
-     */
-    private void saveToFile() {
-        try {
-            storage.init(typeInput + " " + date.toString());
-            storage.writeToStorageDietSession(typeInput + " " + date.toString(), this);
-        } catch (IOException e) {
-            logger.log(Level.WARNING, "save profile session failed");
-            System.out.println("Failed to save your diet session!");
+            input = dietSessionUI.getCommand("Diet Menu > Diet Session");
         }
     }
 
     /**
      * Processes user input for dietSession commands.
+     *
      * @param input user input for command
      * @throws NullPointerException handles null pointer exception
      */

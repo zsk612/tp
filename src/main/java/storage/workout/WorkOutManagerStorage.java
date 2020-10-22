@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static ui.workout.workoutmanager.WorkoutManagerUi.printTabeleHeader;
+import static ui.workout.workoutmanager.WorkoutManagerUi.printTableHeader;
 import static workout.workoutmanager.WorkoutManagerParser.parseSearchConditions;
 
 public class WorkOutManagerStorage {
@@ -49,7 +49,7 @@ public class WorkOutManagerStorage {
     public static String list(String[] args) {
         int index = 1;
         System.out.println("the length of list is " + pastFiles.size());
-        printTabeleHeader();
+        printTableHeader();
 
         for (PastWorkoutSessionRecord wsr : pastFiles) {
             System.out.printf("%-8s", index);
@@ -98,7 +98,7 @@ public class WorkOutManagerStorage {
                 .collect(Collectors.toList());
 
         System.out.println(result.size() + " records found.");
-        printTabeleHeader();
+        printTableHeader();
         for (PastWorkoutSessionRecord wsr : result) {
             int index = pastFiles.indexOf(wsr) + 1;
             System.out.printf("%-8s", index);
