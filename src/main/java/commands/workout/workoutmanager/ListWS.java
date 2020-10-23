@@ -12,8 +12,8 @@ import static logger.SchwarzeneggerLogger.logger;
 public class ListWS extends Command {
     @Override
     public CommandResult execute(String[] args) {
-        String formatedInfo = PastRecordList.getInstance().list(args);
+        String formattedInfo = PastRecordList.getInstance().list(args);
         logger.info("listed successfully");
-        return new CommandResult(formatedInfo, OK);
+        return new CommandResult(formattedInfo, OK);
     }
 }

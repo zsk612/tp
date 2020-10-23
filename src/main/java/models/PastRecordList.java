@@ -83,7 +83,7 @@ public class PastRecordList {
         return  newFilePath;
     }
 
-    public static String list(String[] args) {
+    public String list(String[] args) {
         int index = 1;
         System.out.println("the length of list is " + pastFiles.size());
         for (PastWorkoutSessionRecord wsr : pastFiles) {
