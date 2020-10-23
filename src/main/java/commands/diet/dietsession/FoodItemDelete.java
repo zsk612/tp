@@ -13,8 +13,10 @@ import static logger.SchwarzeneggerLogger.logger;
 public class FoodItemDelete extends Command {
 
     DietSessionUi ui = new DietSessionUi();
+
     /**
      * Overrides execute for delete command to delete food items.
+     *
      * @param input user input for command
      * @param foodList arraylist that stored all the food items
      * @param storage storage for diet session

@@ -10,6 +10,7 @@ import workout.workoutmanager.WorkoutManager;
 public class ToWorkout extends Command {
 
     CommonUi ui = new CommonUi();
+
     @Override
     public CommandResult execute(String[] args) {
         ui.showToUser("Entering Workout Session...");

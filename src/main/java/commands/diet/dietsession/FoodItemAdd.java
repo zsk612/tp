@@ -16,8 +16,10 @@ import static logger.SchwarzeneggerLogger.logger;
 public class FoodItemAdd extends Command {
 
     DietSessionUi ui = new DietSessionUi();
+
     /**
      * Overrides execute for add command to add food items.
+     *
      * @param input user input for command
      * @param foodList arraylist that stored all the food items
      * @param storage storage for diet session

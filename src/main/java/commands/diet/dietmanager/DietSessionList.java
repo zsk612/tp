@@ -16,6 +16,7 @@ public class DietSessionList extends Command {
 
     /**
      * Overrides execute for list command to list diet sessions.
+     *
      * @param input user input for command
      * @param storage storage for diet manager
      */
@@ -30,7 +31,7 @@ public class DietSessionList extends Command {
                 ui.showToUser("It seems like you do not have any meal sessions stored!");
             }
             for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++) {
-                System.out.println( "\t" + (i + 1) + ". "
+                System.out.println("\t" + (i + 1) + ". "
                         + listOfFiles[i].getName().replaceFirst("[.][^.]+$", ""));
             }
             logger.log(Level.INFO, "Listed all available diet sessions");

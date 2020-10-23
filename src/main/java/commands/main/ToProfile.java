@@ -9,6 +9,7 @@ import ui.CommonUi;
 public class ToProfile extends Command {
 
     CommonUi ui = new CommonUi();
+
     @Override
     public CommandResult execute(String[] args) {
         ui.showToUser("Entering Profile Session...");
