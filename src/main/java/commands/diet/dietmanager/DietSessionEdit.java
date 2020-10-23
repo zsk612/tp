@@ -3,7 +3,7 @@ package commands.diet.dietmanager;
 import commands.Command;
 import diet.dietsession.DietSession;
 import logger.SchwarzeneggerLogger;
-import storage.diet.Storage;
+import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
@@ -25,7 +25,7 @@ public class DietSessionEdit extends Command {
      * @param storage storage for diet manager
      */
     @Override
-    public void execute(String input, Storage storage) {
+    public void execute(String input, DietStorage storage) {
         File folder = new File(FILEPATH);
         File[] listOfFiles = folder.listFiles();
 
@@ -53,7 +53,7 @@ public class DietSessionEdit extends Command {
      * @param storage storage for diet manager
      * @param ds dietSession that is being changed
      */
-    private void saveToFile(Storage storage, DietSession ds) {
+    private void saveToFile(DietStorage storage, DietSession ds) {
         try {
             storage.init(ds.getTypeInput() + " " + ds.getDate().toString());
             storage.writeToStorageDietSession(ds.getTypeInput() + " " + ds.getDate().toString(), ds);

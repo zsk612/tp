@@ -2,7 +2,7 @@ package commands.diet.dietmanager;
 
 import commands.Command;
 import logger.SchwarzeneggerLogger;
-import storage.diet.Storage;
+import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
 import java.util.logging.Level;
@@ -18,7 +18,7 @@ public class DietSessionHelp extends Command {
      * @param storage storage for diet manager
      */
     @Override
-    public void execute(String input, Storage storage) {
+    public void execute(String input, DietStorage storage) {
 
         DietManagerUi.printHelp();
         logger.log(Level.INFO, "Displayed help in dietManager");

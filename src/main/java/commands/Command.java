@@ -3,13 +3,10 @@ package commands;
 import diet.dietsession.Food;
 import exceptions.SchwarzeneggerException;
 import profile.Profile;
-import storage.diet.Storage;
-import workout.workoutsession.exercise.Exercise;
+import storage.diet.DietStorage;
 import workout.workoutsession.exercise.ExerciseList;
 
 import java.util.ArrayList;
-
-import static commands.ExecutionResult.SKIPPED;
 
 public abstract class Command {
 
@@ -21,11 +18,11 @@ public abstract class Command {
         return profile;
     }
 
-    public void execute(String input, Storage storage) {
+    public void execute(String input, DietStorage storage) {
         return;
     }
 
-    public void execute(String input, ArrayList<Food> foodList, Storage storage) {
+    public void execute(String input, ArrayList<Food> foodList, DietStorage storage) {
         return;
     }
 

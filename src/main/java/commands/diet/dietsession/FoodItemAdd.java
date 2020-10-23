@@ -4,7 +4,7 @@ import commands.Command;
 import diet.dietsession.DietSessionParser;
 import diet.dietsession.Food;
 import logger.SchwarzeneggerLogger;
-import storage.diet.Storage;
+import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class FoodItemAdd extends Command {
      * @param storage storage for diet session
      */
     @Override
-    public void execute(String input, ArrayList<Food> foodList, Storage storage) {
+    public void execute(String input, ArrayList<Food> foodList, DietStorage storage) {
         DietSessionParser parser = new DietSessionParser();
 
         try {

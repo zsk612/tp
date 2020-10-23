@@ -7,7 +7,7 @@ import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
 import profile.Profile;
-import storage.profile.Storage;
+import storage.profile.ProfileStorage;
 import ui.CommonUi;
 
 import java.util.logging.Level;
@@ -58,7 +58,7 @@ public class Duke {
         Profile profile = null;
 
         try {
-            profile = new Storage().loadData();
+            profile = new ProfileStorage().loadData();
         } catch (SchwarzeneggerException e) {
             logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
             ui.showToUser(e.getMessage());

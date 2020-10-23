@@ -3,7 +3,7 @@ package commands.diet.dietsession;
 import commands.Command;
 import diet.dietsession.Food;
 import logger.SchwarzeneggerLogger;
-import storage.diet.Storage;
+import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class FoodItemSearch extends Command {
      * @param storage storage for diet session
      */
     @Override
-    public void execute(String input, ArrayList<Food> foodList, Storage storage) {
+    public void execute(String input, ArrayList<Food> foodList, DietStorage storage) {
         try {
             ui.showToUser("Here are the search results: ");
             int numberOfResults = 0;

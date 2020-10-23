@@ -6,7 +6,7 @@ import commands.profile.EndProfile;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
-import storage.profile.Storage;
+import storage.profile.ProfileStorage;
 import ui.CommonUi;
 
 import java.util.logging.Level;
@@ -21,7 +21,7 @@ import static profile.Constants.MESSAGE_WELCOME_NEW_USER;
 public class ProfileSession {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private CommonUi ui;
-    private Storage storage;
+    private ProfileStorage storage;
     private ProfileParser profileParser;
     private Profile profile;
     private ExceptionHandler exceptionHandler;
@@ -33,7 +33,7 @@ public class ProfileSession {
         try {
             logger.log(Level.INFO, "initialising ProfileSession object");
             ui = new CommonUi();
-            storage = new Storage();
+            storage = new ProfileStorage();
             profileParser = new ProfileParser();
             exceptionHandler = new ExceptionHandler();
             profile = storage.loadData();

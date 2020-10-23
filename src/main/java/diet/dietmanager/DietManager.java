@@ -2,7 +2,7 @@ package diet.dietmanager;
 
 import commands.CommandLib;
 import commands.Command;
-import storage.diet.Storage;
+import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
 
@@ -11,13 +11,13 @@ public class DietManager {
     private final CommandLib cl;
     private final DietManagerParser parser;
     private final DietManagerUi dietManagerUI;
-    private final Storage storage;
+    private final DietStorage storage;
 
     /**
      * Constructs DietManager and initialize command library for dietManager.
      */
     public DietManager() {
-        storage = new Storage();
+        storage = new DietStorage();
         cl = new CommandLib();
         cl.initDietManagerCL();
         parser = new DietManagerParser();
