@@ -3,6 +3,8 @@ package commands.diet.dietsession;
 import commands.Command;
 import diet.dietsession.Food;
 import storage.diet.Storage;
+import ui.diet.dietmanager.DietManagerUi;
+import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -10,6 +12,8 @@ import java.util.logging.Level;
 import static logger.SchwarzeneggerLogger.logger;
 
 public class FoodItemClear extends Command {
+
+    DietSessionUi ui = new DietSessionUi();
 
     /**
      * Overrides execute for clear command to clear all food items.
@@ -19,10 +23,19 @@ public class FoodItemClear extends Command {
      */
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
-        foodList.clear();
-        System.out.println("Oops you have cleared all the food items.");
-        logger.log(Level.INFO, "Cleared all food in arraylist");
+        if (checkConfirmation()) {
+            foodList.clear();
+            ui.showToUser("Oops you have cleared all the food items.");
+            logger.log(Level.INFO, "Cleared all food in arraylist");
+        } else {
+            System.out.println("You have aborted clear operation.");
+        }
     }
 
-
+    private boolean checkConfirmation() {
+        ui.showToUser("Are you sure you want to clear all records? This action is irrevocable."
+                + "\tKey in YES to confirm.");
+        String input = ui.getCommand("Diet Menu");
+        return  input.equals("YES");
+    }
 }

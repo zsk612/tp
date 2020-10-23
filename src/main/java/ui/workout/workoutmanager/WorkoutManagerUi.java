@@ -36,7 +36,7 @@ public class WorkoutManagerUi extends CommonUi {
         System.out.println("You have started a new workout session!");
     }
 
-    public static void printTabeleHeader() {
+    public static void printTableHeader() {
         System.out.printf("%-7s %-15s %s%n", "Index", "Created on", "Tags");
     }
 

@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-import static ui.workout.workoutmanager.WorkoutManagerUi.printTabeleHeader;
 import static workout.workoutmanager.WorkoutManagerParser.parseSearchConditions;
 
 public class PastRecordList {
@@ -60,7 +58,6 @@ public class PastRecordList {
                 .collect(Collectors.toList());
 
         System.out.println(result.size() + " records found.");
-        printTabeleHeader();
         for (PastWorkoutSessionRecord wsr : result) {
             int index = pastFiles.indexOf(wsr) + 1;
             System.out.printf("%-8s", index);
@@ -89,8 +86,6 @@ public class PastRecordList {
     public static String list(String[] args) {
         int index = 1;
         System.out.println("the length of list is " + pastFiles.size());
-        printTabeleHeader();
-
         for (PastWorkoutSessionRecord wsr : pastFiles) {
             System.out.printf("%-8s", index);
             System.out.println(wsr);
