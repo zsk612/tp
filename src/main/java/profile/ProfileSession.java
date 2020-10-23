@@ -7,19 +7,20 @@ import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
 import storage.profile.Storage;
-import ui.profile.ProfileUi;
+import ui.CommonUi;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static ui.CommonUi.LS;
+import static profile.Constants.MESSAGE_WELCOME_EXISTING_USER;
+import static profile.Constants.MESSAGE_WELCOME_NEW_USER;
 
 /**
  * A class that is responsible for interacting with user when he/she enters Profile Session.
  */
 public class ProfileSession {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-    private ProfileUi profileUi;
+    private CommonUi ui;
     private Storage storage;
     private ProfileParser profileParser;
     private Profile profile;
@@ -31,17 +32,17 @@ public class ProfileSession {
     public ProfileSession() {
         try {
             logger.log(Level.INFO, "initialising ProfileSession object");
-            profileUi = new ProfileUi();
+            ui = new CommonUi();
             storage = new Storage();
             profileParser = new ProfileParser();
             exceptionHandler = new ExceptionHandler();
             profile = storage.loadData();
         } catch (SchwarzeneggerException e) {
             logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
-            profileUi.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage());
         } catch (Exception e) {
             logger.log(Level.WARNING, "processing uncaught exception", e);
-            profileUi.showToUser(e.toString());
+            ui.showToUser(e.toString());
         }
     }
 
@@ -60,11 +61,9 @@ public class ProfileSession {
         logger.log(Level.INFO, "starting profile session");
 
         if (profile == null) {
-            profileUi.showToUser("Hi! It seems like you're new to The Schwarzenegger." + LS
-                    + "Please add your profile using \"add\" command before proceeding." + LS
-                    + "For more information on command syntax, please type \"help\" :D");
+            ui.showToUser(MESSAGE_WELCOME_NEW_USER);
         } else {
-            profileUi.greetUser(profile.getName());
+            ui.showToUser(String.format(MESSAGE_WELCOME_EXISTING_USER, profile.getName()));
         }
     }
 
@@ -77,19 +76,19 @@ public class ProfileSession {
         logger.log(Level.INFO, "executing profile session loop");
         do {
             try {
-                String userCommand = profileUi.getCommand();
+                String userCommand = ui.getCommand("Profile Menu");
                 command = profileParser.parseCommand(userCommand);
                 profile = command.execute(profile);
                 CommandResult result = command.getExecutionResult(profile);
                 storage.saveData(profile);
-                profileUi.showToUser(result.toString());
+                ui.showToUser(result.toString());
 
             } catch (SchwarzeneggerException e) {
                 logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
-                profileUi.showToUser(exceptionHandler.handleCheckedExceptions(e));
+                ui.showToUser(exceptionHandler.handleCheckedExceptions(e));
             } catch (Exception e) {
                 logger.log(Level.WARNING, "processing uncaught exception", e);
-                profileUi.showToUser(exceptionHandler.handleUncheckedExceptions(e));
+                ui.showToUser(exceptionHandler.handleUncheckedExceptions(e));
             }
         } while (!EndProfile.isEnd(command));
 

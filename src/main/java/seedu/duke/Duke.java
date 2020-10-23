@@ -6,10 +6,15 @@ import commands.CommandResult;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
+import profile.Profile;
+import storage.profile.Storage;
 import ui.CommonUi;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static profile.Constants.MESSAGE_WELCOME_EXISTING_USER;
+import static profile.Constants.MESSAGE_WELCOME_NEW_USER;
 
 /**
  * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
@@ -29,11 +34,10 @@ public class Duke {
     }
 
     /**
-     * Main entry-point for the java.duke.Duke application.
+     * Main entry-point for the java.seedu.duke.Duke application.
      *
-     * @param args Unused in Duke.
+     * @param args Unused in Schwarzenegger.
      */
-
     public static void main(String[] args) {
         new Duke().run();
     }
@@ -42,8 +46,39 @@ public class Duke {
      * Runs Schwarzenegger.
      */
     private void run() {
-        System.out.println("Greetings from Schwarzenegger!");
-        String response = ui.getCommand("Main menu").trim();
+        start();
+        runCommandLoopTillEnd();
+        end();
+    }
+
+    /**
+     * Starts up Duke with greeting message.
+     */
+    private void start() {
+        Profile profile = null;
+
+        try {
+            profile = new Storage().loadData();
+        } catch (SchwarzeneggerException e) {
+            logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
+            ui.showToUser(e.getMessage());
+        } catch (Exception e) {
+            logger.log(Level.WARNING, "processing uncaught exception", e);
+            ui.showToUser(e.toString());
+        }
+
+        if (profile == null) {
+            ui.showToUser(MESSAGE_WELCOME_NEW_USER);
+        } else {
+            ui.showToUser(String.format(MESSAGE_WELCOME_EXISTING_USER, profile.getName()));
+        }
+    }
+
+    /**
+     * Gets user's command and executes repeatedly until user requests to end Schwarzenegger.
+     */
+    private void runCommandLoopTillEnd() {
+        String response = ui.getCommand("Main Menu").trim();
         String[] dummy = {};
         while (!response.equals("end")) {
             Command cm = cl.get(response);
@@ -52,9 +87,19 @@ public class Duke {
             } catch (SchwarzeneggerException e) {
                 logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
                 ui.showToUser(exceptionHandler.handleCheckedExceptions(e));
+            } catch (Exception e) {
+                logger.log(Level.WARNING, "processing uncaught exception", e);
+                ui.showToUser(e.toString());
             }
-            response = ui.getCommand("Main menu").trim();
+            response = ui.getCommand("Main Menu").trim();
         }
-        System.out.println("Bye, you have exited the Schwarzenegger.");
+    }
+
+    /**
+     * Ends Schwarzenegger.
+     */
+    private void end() {
+        ui.showToUser("Bye, you have exited the Schwarzenegger.");
+        System.exit(0);
     }
 }
