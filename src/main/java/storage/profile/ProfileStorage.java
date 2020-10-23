@@ -30,14 +30,14 @@ import static profile.Constants.PATH_TO_PROFILE_FOLDER;
 /**
  * A class that saves and loads user profile data on local hard disk.
  */
-public class Storage {
+public class ProfileStorage {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private Gson gson;
 
     /**
      * Constructs Storage object.
      */
-    public Storage() {
+    public ProfileStorage() {
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
 

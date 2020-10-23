@@ -3,6 +3,7 @@ package ui;
 import java.util.Scanner;
 
 import static profile.Constants.EMPTY_STRING;
+import static profile.Constants.GREEDY_WHITE_SPACE;
 import static profile.Constants.HELP_FORMAT;
 
 public class CommonUi {
@@ -26,11 +27,6 @@ public class CommonUi {
         System.out.println(String.format(MESSAGE_FORMAT_GENERAL, result));
     }
 
-    public static void printHelpFormatter(String commandName, String commandFormat, String description) {
-        System.out.format("%-8s - %s\n", commandName, commandFormat);
-        System.out.format("%-8s %s\n", "", description);
-    }
-
     public static String helpFormatter(String commandName, String commandFormat, String description) {
         return String.format(HELP_FORMAT, commandName, commandFormat, EMPTY_STRING, description);
     }
@@ -51,7 +47,8 @@ public class CommonUi {
             System.out.print(menuName + " >>>>> ");
             inputLine = sc.nextLine();
         }
-        return inputLine;
+        
+        return inputLine.trim().replaceAll(GREEDY_WHITE_SPACE, " ");
     }
 
 }

@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
  */
-public class Storage {
+public class DietStorage {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private static final String FILEPATH = "saves/diet/";
     private static Gson gson;

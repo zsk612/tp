@@ -5,7 +5,6 @@ import commands.CommandResult;
 import commands.ExecutionResult;
 
 import static ui.CommonUi.helpFormatter;
-import static ui.CommonUi.printHelpFormatter;
 import static ui.CommonUi.showUser;
 
 public class Help extends Command {

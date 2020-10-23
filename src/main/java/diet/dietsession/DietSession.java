@@ -3,7 +3,7 @@ package diet.dietsession;
 import commands.Command;
 import commands.CommandLib;
 import logger.SchwarzeneggerLogger;
-import storage.diet.Storage;
+import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class DietSession {
 
     private final DietSessionUi dietSessionUI;
     private transient CommandLib cl;
-    private final Storage storage;
+    private final DietStorage storage;
     private final DietSessionParser parser = new DietSessionParser();
     public boolean endDietSession = false;
 
@@ -36,7 +36,7 @@ public class DietSession {
         this.date = parser.parseDate(dateInput);
         this.typeInput = typeInput;
         this.foodList = new ArrayList<>();
-        storage = new Storage();
+        storage = new DietStorage();
         dietSessionUI = new DietSessionUi();
     }
 

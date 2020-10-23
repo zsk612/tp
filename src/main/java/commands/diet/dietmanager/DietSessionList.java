@@ -2,7 +2,7 @@ package commands.diet.dietmanager;
 
 import commands.Command;
 import logger.SchwarzeneggerLogger;
-import storage.diet.Storage;
+import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
@@ -22,7 +22,7 @@ public class DietSessionList extends Command {
      * @param storage storage for diet manager
      */
     @Override
-    public void execute(String input, Storage storage) {
+    public void execute(String input, DietStorage storage) {
         File folder = new File(FILEPATH);
         File[] listOfFiles = folder.listFiles();
         assert folder.exists();

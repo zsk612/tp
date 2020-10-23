@@ -3,7 +3,7 @@ package commands.diet.dietsession;
 import commands.Command;
 import diet.dietsession.Food;
 import logger.SchwarzeneggerLogger;
-import storage.diet.Storage;
+import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class FoodItemHelp extends Command {
      * @param storage storage for diet session
      */
     @Override
-    public void execute(String input, ArrayList<Food> foodList, Storage storage) {
+    public void execute(String input, ArrayList<Food> foodList, DietStorage storage) {
 
         DietSessionUi.printHelp();
         logger.log(Level.INFO, "Displayed help in dietSession");

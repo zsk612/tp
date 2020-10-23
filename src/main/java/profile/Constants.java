@@ -49,7 +49,11 @@ public class Constants {
     public static final String MESSAGE_PROFILE_NOT_EXIST = "There's no profile to %s. "
             + "Please add a new one using \"add\" command :D";
     public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s";
-    public static final String MESSAGE_WELCOME = "Hi %s! How can I help you with your profile? :D";
+    public static final String MESSAGE_WELCOME_EXISTING_USER = "Welcome back to Schwarzenegger, %s!" + LS
+            + "How can I help you today?";
+    public static final String MESSAGE_WELCOME_NEW_USER = "Welcome new user to Schwarzenegger! :D" + LS
+            + "Please add your profile using \"add\" command under Profile Menu." + LS
+            + "For more information on command syntax, please type \"help\"";
     public static final String PROFILE_FOLDER = "profile";
     public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + LS + "\tAge: %d" + LS
             + "\tHeight: %d cm" + LS + "\tWeight: %.1f kg" + LS + "\tExpected Weight: %.1f kg"

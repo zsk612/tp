@@ -1,12 +1,5 @@
 package diet.dietsession;
 
-import logger.SchwarzeneggerLogger;
-import org.junit.jupiter.api.Test;
-import storage.diet.Storage;
-import ui.diet.dietmanager.DietManagerUi;
-
-import java.io.FileNotFoundException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DietSessionTest {

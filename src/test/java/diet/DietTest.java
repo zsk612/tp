@@ -15,7 +15,7 @@ import commands.diet.dietsession.FoodItemAdd;
 import commands.diet.dietsession.FoodItemDelete;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import storage.diet.Storage;
+import storage.diet.DietStorage;
 
 import java.util.ArrayList;
 
@@ -75,7 +75,7 @@ public class DietTest {
     }
 
     ArrayList<Food> foodList = new ArrayList<>();
-    Storage storage = new Storage();
+    DietStorage storage = new DietStorage();
 
     @Test
     void testAdd_correctInput_returnsMoreFood() {
