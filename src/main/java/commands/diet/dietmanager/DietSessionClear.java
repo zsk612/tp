@@ -28,20 +28,20 @@ public class DietSessionClear extends Command {
                 for (int index = 0; index < Objects.requireNonNull(listOfFiles).length; index++) {
                     listOfFiles[index].delete();
                 }
+                ui.showToUser("You have cleared all diet sessions!");
+                logger.log(Level.INFO, "Cleared all diet sessions");
             } else {
-                System.out.println("You have aborted clear operation.");
+                ui.showToUser("You have aborted clear operation.");
             }
         } catch (NullPointerException e) {
             e.printStackTrace();
             logger.log(Level.INFO, "No sessions in dietManager for deletion");
         }
-        System.out.println("You have cleared all diet sessions!");
-        logger.log(Level.INFO, "Cleared all diet sessions");
     }
 
     private boolean checkConfirmation() {
-        System.out.println("\tAre you sure you want to clear all records? This action is irrevocable.");
-        System.out.println("\tKey in YES to confirm.");
+        ui.showToUser("Are you sure you want to clear all records? This action is irrevocable.\n"
+                + "\tKey in YES to confirm.");
         String input = ui.getCommand("Diet Menu");
         return  input.equals("YES");
     }

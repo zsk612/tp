@@ -3,6 +3,7 @@ package commands.diet.dietsession;
 import commands.Command;
 import diet.dietsession.Food;
 import storage.diet.Storage;
+import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -11,6 +12,7 @@ import static logger.SchwarzeneggerLogger.logger;
 
 public class FoodItemWrong extends Command {
 
+    DietSessionUi ui = new DietSessionUi();
     /**
      * Overrides execute for wrong command.
      * @param input user input for command
@@ -19,7 +21,7 @@ public class FoodItemWrong extends Command {
      */
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
-        System.out.println("Sorry! It seems like you've entered an invalid command!");
+        ui.showToUser("Sorry! It seems like you've entered an invalid command!");
         logger.log(Level.INFO, "Wrong input for dietSession");
     }
 }

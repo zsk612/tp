@@ -2,6 +2,7 @@ package commands.diet.dietmanager;
 
 import commands.Command;
 import storage.diet.Storage;
+import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
 import java.util.Objects;
@@ -11,6 +12,7 @@ import static logger.SchwarzeneggerLogger.logger;
 
 public class DietSessionList extends Command {
     static final String FILEPATH = "saves/diet/";
+    DietManagerUi ui = new DietManagerUi();
 
     /**
      * Overrides execute for list command to list diet sessions.
@@ -23,17 +25,17 @@ public class DietSessionList extends Command {
         File[] listOfFiles = folder.listFiles();
         assert folder.exists();
         try {
-            System.out.println("Here are all the saved meal sessions!");
+            ui.showToUser("Here are all the saved meal sessions!");
             if (Objects.requireNonNull(listOfFiles).length == 0) {
-                System.out.println("It seems like you do not have any meal sessions stored!");
+                ui.showToUser("It seems like you do not have any meal sessions stored!");
             }
             for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++) {
-                System.out.println((i + 1) + ". "
+                System.out.println( "\t" + (i + 1) + ". "
                         + listOfFiles[i].getName().replaceFirst("[.][^.]+$", ""));
             }
             logger.log(Level.INFO, "Listed all available diet sessions");
         } catch (NullPointerException e) {
-            System.out.println("Sorry! It seems like you have no meal sessions saved!.");
+            ui.showToUser("Sorry! It seems like you have no meal sessions saved!.");
             logger.log(Level.WARNING, "No instances of diet sessions saved");
         }
     }
