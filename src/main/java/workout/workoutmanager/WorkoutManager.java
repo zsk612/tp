@@ -22,7 +22,6 @@ public class WorkoutManager {
     private final WorkoutManagerUi ui;
 
     public WorkoutManager() {
-        WorkOutManagerStorage.init();
         cl = new CommandLib();
         cl.initWorkoutManagerCL();
         logger.log(Level.INFO, "initialised workout manager command library");

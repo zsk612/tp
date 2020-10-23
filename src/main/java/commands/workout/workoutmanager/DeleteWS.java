@@ -7,6 +7,7 @@ import exceptions.SchwarzeneggerException;
 import exceptions.workoutmanager.InsufficientArgumentException;
 import exceptions.workoutmanager.NotANumberException;
 import exceptions.workoutmanager.OutOfArrayException;
+import models.PastRecordList;
 import storage.workout.WorkOutManagerStorage;
 
 import static logger.SchwarzeneggerLogger.logger;
@@ -28,7 +29,7 @@ public class DeleteWS extends Command {
             throw new InsufficientArgumentException();
         }
         try {
-            WorkOutManagerStorage.delete(index);
+            PastRecordList.getInstance().delete(index);
         } catch (IndexOutOfBoundsException e) {
             logger.warning("Index Out Of Bounds Exception caught");
             throw new OutOfArrayException();
