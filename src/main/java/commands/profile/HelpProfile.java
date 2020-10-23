@@ -4,7 +4,7 @@ import commands.Command;
 import commands.CommandResult;
 import exceptions.profile.RedundantParamException;
 import logger.SchwarzeneggerLogger;
-import profile.Profile;
+import storage.profile.ProfileStorage;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,25 +36,14 @@ public class HelpProfile extends Command {
     /**
      * Overrides execute method of class Command to execute help command requested by user's input.
      *
-     * @param profile User's Profile object.
+     * @param storage Profile Storage to load and save data.
      * @return Result of command execution.
      */
     @Override
-    public Profile execute(Profile profile) {
+    public CommandResult execute(ProfileStorage storage) {
         logger.log(Level.INFO, "executing Help Command");
-        return profile;
-    }
 
-    /**
-     * Overrides getExecutionResult method of class Command to get execution result after executing help command.
-     *
-     * @param profile User's profile.
-     * @return Execution result.
-     */
-    @Override
-    public CommandResult getExecutionResult(Profile profile) {
         StringBuilder helpMessage = new StringBuilder();
-
         helpMessage.append(helpFormatter(COMMAND_WORD_ADD, ADD_PROFILE_FORMAT, "Add your new profile"));
         helpMessage.append(helpFormatter(COMMAND_WORD_VIEW, COMMAND_WORD_VIEW, "View your profile"));
         helpMessage.append(helpFormatter(COMMAND_WORD_EDIT, EDIT_PROFILE_FORMAT, "Edit your existing profile. "

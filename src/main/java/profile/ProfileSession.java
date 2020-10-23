@@ -78,11 +78,8 @@ public class ProfileSession {
             try {
                 String userCommand = ui.getCommand("Profile Menu");
                 command = profileParser.parseCommand(userCommand);
-                profile = command.execute(profile);
-                CommandResult result = command.getExecutionResult(profile);
-                storage.saveData(profile);
+                CommandResult result = command.execute(storage);
                 ui.showToUser(result.toString());
-
             } catch (SchwarzeneggerException e) {
                 logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
                 ui.showToUser(exceptionHandler.handleCheckedExceptions(e));

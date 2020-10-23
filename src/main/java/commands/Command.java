@@ -4,6 +4,7 @@ import diet.dietsession.Food;
 import exceptions.SchwarzeneggerException;
 import profile.Profile;
 import storage.diet.DietStorage;
+import storage.profile.ProfileStorage;
 import workout.workoutsession.exercise.ExerciseList;
 
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ public abstract class Command {
         return new CommandResult();
     }
 
-    public Profile execute(Profile profile) throws SchwarzeneggerException {
-        return profile;
+    public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
+        return new CommandResult();
     }
 
     public void execute(String input, DietStorage storage) {

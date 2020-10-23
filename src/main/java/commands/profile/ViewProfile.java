@@ -2,13 +2,16 @@ package commands.profile;
 
 import commands.Command;
 import commands.CommandResult;
+import exceptions.SchwarzeneggerException;
 import exceptions.profile.RedundantParamException;
 import logger.SchwarzeneggerLogger;
 import profile.Profile;
+import storage.profile.ProfileStorage;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static commands.ExecutionResult.FAILED;
 import static profile.Constants.COMMAND_WORD_VIEW;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.Constants.MESSAGE_VIEW_PROFILE;
@@ -34,26 +37,18 @@ public class ViewProfile extends Command {
     /**
      * Overrides execute method of class Command to execute the view profile command requested by user's input.
      *
-     * @param profile User's Profile object.
+     * @param storage Profile Storage to load and save data.
      * @return Result of command execution.
      */
     @Override
-    public Profile execute(Profile profile) {
+    public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing View Command");
-        return profile;
-    }
 
-    /**
-     * Overrides getExecutionResult method of class Command to get execution result after executing view command.
-     *
-     * @param profile User's profile.
-     * @return Execution result.
-     */
-    @Override
-    public CommandResult getExecutionResult(Profile profile) {
+        Profile profile = storage.loadData();
         if (profile == null) {
-            return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_VIEW));
+            return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_VIEW), FAILED);
+        } else {
+            return new CommandResult(String.format(MESSAGE_VIEW_PROFILE, profile.toString()));
         }
-        return new CommandResult(String.format(MESSAGE_VIEW_PROFILE, profile.toString()));
     }
 }

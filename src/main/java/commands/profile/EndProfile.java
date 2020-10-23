@@ -4,7 +4,7 @@ import commands.Command;
 import commands.CommandResult;
 import exceptions.profile.RedundantParamException;
 import logger.SchwarzeneggerLogger;
-import profile.Profile;
+import storage.profile.ProfileStorage;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,25 +31,14 @@ public class EndProfile extends Command {
     }
 
     /**
-     * Overrides execute method of class Command to execute exit command requested by user's input.
+     * Overrides execute method of class Command to execute end command requested by user's input.
      *
-     * @param profile User's Profile object.
+     * @param storage Profile Storage to load and save data.
      * @return Result of command execution.
      */
     @Override
-    public Profile execute(Profile profile) {
-        logger.log(Level.INFO, "executing Exit Command");
-        return profile;
-    }
-
-    /**
-     * Overrides getExecutionResult method of class Command to get execution result after executing end command.
-     *
-     * @param profile User's profile.
-     * @return Execution result.
-     */
-    @Override
-    public CommandResult getExecutionResult(Profile profile) {
+    public CommandResult execute(ProfileStorage storage) {
+        logger.log(Level.INFO, "executing End Command");
         return new CommandResult(MESSAGE_EXIT_PROFILE);
     }
 

@@ -2,14 +2,20 @@ package commands.profile;
 
 import commands.Command;
 import commands.CommandResult;
+import commands.ExecutionResult;
+import exceptions.SchwarzeneggerException;
 import exceptions.profile.RedundantParamException;
 import logger.SchwarzeneggerLogger;
 import profile.Profile;
+import storage.profile.ProfileStorage;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static commands.ExecutionResult.FAILED;
+import static commands.ExecutionResult.OK;
 import static profile.Constants.COMMAND_WORD_DELETE;
+import static profile.Constants.MESSAGE_DELETE_NOTHING;
 import static profile.Constants.MESSAGE_DELETE_PROFILE;
 
 /**
@@ -33,23 +39,26 @@ public class DeleteProfile extends Command {
     /**
      * Overrides execute method of class Command to execute the delete profile command requested by user's input.
      *
-     * @param profile User's Profile object.
+     * @param storage Profile Storage to load and save data.
      * @return Result of command execution.
      */
     @Override
-    public Profile execute(Profile profile) {
+    public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing Delete Command");
-        return null;
-    }
 
-    /**
-     * Overrides getExecutionResult method of class Command to get execution result after executing delete command.
-     *
-     * @param profile User's profile.
-     * @return Execution result.
-     */
-    @Override
-    public CommandResult getExecutionResult(Profile profile) {
-        return new CommandResult(MESSAGE_DELETE_PROFILE);
+        ExecutionResult executionResult;
+        Profile profile = storage.loadData();
+        if (profile == null) {
+            executionResult = FAILED;
+        } else {
+            storage.saveData(null);
+            executionResult = OK;
+        }
+
+        if (executionResult == FAILED) {
+            return new CommandResult(MESSAGE_DELETE_NOTHING, FAILED);
+        } else {
+            return new CommandResult(MESSAGE_DELETE_PROFILE);
+        }
     }
 }

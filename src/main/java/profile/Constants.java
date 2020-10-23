@@ -76,9 +76,9 @@ public class Constants {
     public static final String MESSAGE_SAVING_ERROR = SAD_FACE + "An error has occurred while saving data."
             + LS + "%s";
     public static final String MESSAGE_REDUNDANT_PARAM = SAD_FACE + "%s command does not take parameters.";
-    public static final Scanner SCANNER = new Scanner(System.in);
     public static final double WEIGHT_LOWER_BOUND = 2.1;
     public static final double WEIGHT_UPPER_BOUND = 635;
     public static final String MESSAGE_INVALID_WEIGHT = String.format(
             SAD_FACE + "Please input a number from %.1f to %.1f for weight.", WEIGHT_LOWER_BOUND, WEIGHT_UPPER_BOUND);
+    public static final String MESSAGE_DELETE_NOTHING = SAD_FACE + "You haven't added any profile yet!";
 }
