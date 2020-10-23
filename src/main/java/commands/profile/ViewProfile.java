@@ -3,11 +3,12 @@ package commands.profile;
 import commands.Command;
 import commands.CommandResult;
 import exceptions.profile.RedundantParamException;
+import logger.SchwarzeneggerLogger;
 import profile.Profile;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.COMMAND_WORD_VIEW;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.Constants.MESSAGE_VIEW_PROFILE;
@@ -16,6 +17,7 @@ import static profile.Constants.MESSAGE_VIEW_PROFILE;
  * A representation of the command for viewing profile.
  */
 public class ViewProfile extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
      * Constructs ViewCommand object inheriting abstract class Command.

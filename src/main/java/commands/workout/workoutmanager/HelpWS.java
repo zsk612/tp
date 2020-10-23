@@ -4,11 +4,7 @@ import commands.Command;
 import commands.CommandResult;
 import commands.ExecutionResult;
 
-import javax.xml.transform.OutputKeys;
-
 import static ui.CommonUi.helpFormatter;
-import static ui.CommonUi.printHelpFormatter;
-import static ui.CommonUi.showUser;
 
 public class HelpWS extends Command {
 

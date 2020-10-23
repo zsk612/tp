@@ -2,14 +2,14 @@ package commands.workout.workoutmanager;
 
 import commands.Command;
 import commands.CommandResult;
-import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
-import ui.workout.workoutmanager.WorkoutManagerUi;
+import logger.SchwarzeneggerLogger;
 import workout.workoutmanager.ExitException;
 
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 public class ByeWS extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {

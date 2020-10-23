@@ -7,15 +7,16 @@ import exceptions.profile.InvalidAgeException;
 import exceptions.profile.InvalidCommandFormatException;
 import exceptions.profile.InvalidHeightException;
 import exceptions.profile.InvalidWeightException;
+import logger.SchwarzeneggerLogger;
 import profile.Profile;
 
 import java.util.HashMap;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
 import static commands.ExecutionResult.SKIPPED;
-import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.COMMAND_WORD_EDIT;
 import static profile.Constants.MESSAGE_EDIT_PROFILE_ACK;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
@@ -30,6 +31,7 @@ import static profile.ProfileParser.extractWeight;
  * A representation of the command for editing profile.
  */
 public class EditProfile extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private String commandArgs;
     private ExecutionResult executionResult;
 

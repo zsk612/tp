@@ -12,20 +12,20 @@ import static seedu.duke.Constant.LOG_FILE_PATH;
  * A class to handle file logging.
  */
 public class SchwarzeneggerLogger {
-    public static Logger logger;
-    private static FileHandler fh;
+    private static SchwarzeneggerLogger singleInstance = null;
+    private Logger logger;
 
     /**
-     * Initialises SchwarzeneggerLogger object.
+     * Constructs SchwarzeneggerLogger object.
      */
-    public static void initSchwarzeneggerLogger() {
+    private SchwarzeneggerLogger() {
         try {
             File file = new File(LOG_FILE_PATH);
             file.getParentFile().mkdirs();
             file.createNewFile();
 
             SimpleFormatter formatter = new SimpleFormatter();
-            fh = new FileHandler(LOG_FILE_PATH);
+            FileHandler fh = new FileHandler(LOG_FILE_PATH);
             fh.setFormatter(formatter);
 
             logger = Logger.getLogger("SchwarzeneggerLogger");
@@ -36,5 +36,17 @@ public class SchwarzeneggerLogger {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Gets logger attribute of SchwarzeneggerLogger.
+     *
+     * @return Logger.
+     */
+    public static Logger getInstanceLogger() {
+        if (singleInstance == null) {
+            singleInstance = new SchwarzeneggerLogger();
+        }
+        return singleInstance.logger;
     }
 }

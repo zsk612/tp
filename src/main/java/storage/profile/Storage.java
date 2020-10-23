@@ -8,9 +8,9 @@ import com.google.gson.stream.JsonReader;
 import exceptions.profile.InvalidSaveFormatException;
 import exceptions.profile.LoadingException;
 import exceptions.profile.SavingException;
+import logger.SchwarzeneggerLogger;
 import profile.Profile;
 import profile.Utils;
-import ui.profile.ProfileUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,8 +21,8 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.PATH_TO_PROFILE_FILE;
 import static profile.Constants.PATH_TO_PROFILE_FOLDER;
@@ -31,6 +31,7 @@ import static profile.Constants.PATH_TO_PROFILE_FOLDER;
  * A class that saves and loads user profile data on local hard disk.
  */
 public class Storage {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private Gson gson;
 
     /**
@@ -43,11 +44,10 @@ public class Storage {
     /**
      * Loads user profile from data file.
      *
-     * @param profileUi Ui to show exception message to user if any.
      * @return User profile.
      * @throws LoadingException If there are failed or interrupted I/O operations.
      */
-    public Profile loadData(ProfileUi profileUi) throws LoadingException {
+    public Profile loadData() throws LoadingException, InvalidSaveFormatException {
         Profile profile = null;
 
         if (Files.exists(PATH_TO_PROFILE_FOLDER)) {
@@ -58,8 +58,6 @@ public class Storage {
                 logger.log(Level.INFO, "finishing profile data decoding");
             } catch (FileNotFoundException e) {
                 createDataFile(PATH_TO_PROFILE_FILE);
-            } catch (InvalidSaveFormatException e) {
-                profileUi.showToUser(e.getMessage());
             }
         } else {
             createDataFolder(PATH_TO_PROFILE_FOLDER);

@@ -3,11 +3,12 @@ package commands.profile;
 import commands.Command;
 import commands.CommandResult;
 import exceptions.profile.RedundantParamException;
+import logger.SchwarzeneggerLogger;
 import profile.Profile;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.COMMAND_WORD_END;
 import static profile.Constants.MESSAGE_EXIT_PROFILE;
 
@@ -15,6 +16,7 @@ import static profile.Constants.MESSAGE_EXIT_PROFILE;
  * A representation of the command for exiting Profile session.
  */
 public class EndProfile extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
      * Constructs EndProfile object inheriting abstract class Command.

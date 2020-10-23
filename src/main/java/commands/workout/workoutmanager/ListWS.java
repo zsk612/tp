@@ -2,14 +2,16 @@ package commands.workout.workoutmanager;
 
 import commands.Command;
 import commands.CommandResult;
-import commands.ExecutionResult;
+import logger.SchwarzeneggerLogger;
 import models.PastRecordList;
-import storage.workout.WorkOutManagerStorage;
+
+import java.util.logging.Logger;
 
 import static commands.ExecutionResult.OK;
-import static logger.SchwarzeneggerLogger.logger;
 
 public class ListWS extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
+
     @Override
     public CommandResult execute(String[] args) {
         String formattedInfo = PastRecordList.getInstance().list(args);

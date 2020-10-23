@@ -2,6 +2,7 @@ package workout.workoutsession;
 
 import commands.Command;
 import commands.CommandLib;
+import logger.SchwarzeneggerLogger;
 import storage.workout.Storage;
 import ui.CommonUi;
 import ui.workout.workoutsession.WorkoutSessionUi;
@@ -9,10 +10,10 @@ import workout.workoutsession.exercise.ExerciseList;
 
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 public class WorkoutSession {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private String filePath = null;
     private boolean[] endWorkoutSession;
     public ExerciseList exerciseList;

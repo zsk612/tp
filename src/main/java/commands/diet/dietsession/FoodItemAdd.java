@@ -1,7 +1,6 @@
 package commands.diet.dietsession;
 
 import commands.Command;
-import diet.dietsession.DietSession;
 import diet.dietsession.DietSessionParser;
 import diet.dietsession.Food;
 import logger.SchwarzeneggerLogger;
@@ -10,11 +9,10 @@ import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 public class FoodItemAdd extends Command {
-
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     DietSessionUi ui = new DietSessionUi();
 
     /**
@@ -27,7 +25,7 @@ public class FoodItemAdd extends Command {
     @Override
     public void execute(String input, ArrayList<Food> foodList, Storage storage) {
         DietSessionParser parser = new DietSessionParser();
-        SchwarzeneggerLogger.initSchwarzeneggerLogger();
+
         try {
             assert !input.isEmpty();
             Food temp = new Food(parser.processFoodName(input), parser.processFoodCalories(input));

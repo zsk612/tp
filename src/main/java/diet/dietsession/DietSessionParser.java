@@ -1,13 +1,16 @@
 package diet.dietsession;
 
+import logger.SchwarzeneggerLogger;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 public class DietSessionParser {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
+
     public String[] parse(String comm) {
         if (comm.contains(" ")) {
             return comm.split(" ", 2);

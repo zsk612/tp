@@ -5,7 +5,6 @@ import commands.CommandResult;
 import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
 import models.PastRecordList;
-import storage.workout.WorkOutManagerStorage;
 
 import java.util.Scanner;
 
@@ -28,6 +27,6 @@ public class ClearWS extends Command {
         System.out.println("\tAre you sure you want to clear all records? This action is irrevocable.");
         System.out.println("\tKey in YES to confirm.");
         String input = in.next();
-        return  input.equals("YES");
+        return input.equals("YES");
     }
 }

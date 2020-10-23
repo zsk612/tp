@@ -1,16 +1,17 @@
 package commands.diet.dietmanager;
 
 import commands.Command;
+import logger.SchwarzeneggerLogger;
 import storage.diet.Storage;
 import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
 import java.util.Objects;
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 public class DietSessionSearch extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     static final String FILEPATH = "saves/diet/";
     DietManagerUi ui = new DietManagerUi();
 

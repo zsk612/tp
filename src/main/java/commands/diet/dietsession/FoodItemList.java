@@ -2,17 +2,16 @@ package commands.diet.dietsession;
 
 import commands.Command;
 import diet.dietsession.Food;
+import logger.SchwarzeneggerLogger;
 import storage.diet.Storage;
-import commands.Command;
 import ui.diet.dietsession.DietSessionUi;
-
-import static logger.SchwarzeneggerLogger.logger;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FoodItemList extends Command {
-
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     DietSessionUi ui = new DietSessionUi();
 
     /**
