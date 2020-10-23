@@ -3,21 +3,18 @@ package workout.workoutmanager;
 import commands.Command;
 import commands.CommandLib;
 import commands.CommandResult;
-import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
-import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 
 import java.util.Arrays;
-import java.util.Scanner;
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 
 public class WorkoutManager {
 
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private final CommandLib cl;
     private final WorkoutManagerUi ui;
 

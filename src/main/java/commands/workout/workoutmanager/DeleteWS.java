@@ -7,13 +7,15 @@ import exceptions.SchwarzeneggerException;
 import exceptions.workoutmanager.InsufficientArgumentException;
 import exceptions.workoutmanager.NotANumberException;
 import exceptions.workoutmanager.OutOfArrayException;
+import logger.SchwarzeneggerLogger;
 import models.PastRecordList;
-import storage.workout.WorkOutManagerStorage;
 
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
+
 import static ui.workout.workoutmanager.WorkoutManagerUi.DELETE_SUCCESS;
 
 public class DeleteWS extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {

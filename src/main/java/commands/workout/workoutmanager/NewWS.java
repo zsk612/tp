@@ -2,21 +2,21 @@ package commands.workout.workoutmanager;
 
 import commands.Command;
 import commands.CommandResult;
-import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
+import logger.SchwarzeneggerLogger;
 import models.PastRecordList;
-import storage.workout.WorkOutManagerStorage;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 import workout.workoutsession.WorkoutSession;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import static commands.ExecutionResult.OK;
-import static logger.SchwarzeneggerLogger.logger;
 import static ui.workout.workoutmanager.WorkoutManagerUi.NEW_SUCCESS;
 import static workout.workoutmanager.WorkoutManagerParser.parseTags;
 
 public class NewWS extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {

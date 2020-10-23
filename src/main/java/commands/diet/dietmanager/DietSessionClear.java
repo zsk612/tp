@@ -1,21 +1,23 @@
 package commands.diet.dietmanager;
 
 import commands.Command;
+import logger.SchwarzeneggerLogger;
 import storage.diet.Storage;
 import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
 import java.util.Objects;
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 public class DietSessionClear extends Command {
     private static final String FILEPATH = "saves/diet/";
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private final DietManagerUi ui = new DietManagerUi();
 
     /**
      * Overrides execute for clear command to clear all diet sessions.
+     *
      * @param input user input for command
      * @param storage storage for diet manager
      */
@@ -43,6 +45,6 @@ public class DietSessionClear extends Command {
         ui.showToUser("Are you sure you want to clear all records? This action is irrevocable.\n"
                 + "\tKey in YES to confirm.");
         String input = ui.getCommand("Diet Menu");
-        return  input.equals("YES");
+        return input.equals("YES");
     }
 }

@@ -5,18 +5,20 @@ import commands.CommandResult;
 import commands.profile.EndProfile;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
+import logger.SchwarzeneggerLogger;
 import storage.profile.Storage;
 import ui.profile.ProfileUi;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import static logger.SchwarzeneggerLogger.logger;
 import static ui.CommonUi.LS;
 
 /**
  * A class that is responsible for interacting with user when he/she enters Profile Session.
  */
 public class ProfileSession {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private ProfileUi profileUi;
     private Storage storage;
     private ProfileParser profileParser;

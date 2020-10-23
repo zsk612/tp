@@ -3,11 +3,12 @@ package commands.profile;
 import commands.Command;
 import commands.CommandResult;
 import exceptions.profile.RedundantParamException;
+import logger.SchwarzeneggerLogger;
 import profile.Profile;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.COMMAND_WORD_DELETE;
 import static profile.Constants.MESSAGE_DELETE_PROFILE;
 
@@ -15,6 +16,7 @@ import static profile.Constants.MESSAGE_DELETE_PROFILE;
  * A representation of the command for deleting user profile.
  */
 public class DeleteProfile extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
      * Constructs DeleteCommand object inheriting abstract class Command.

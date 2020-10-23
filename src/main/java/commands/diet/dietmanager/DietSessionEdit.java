@@ -2,6 +2,7 @@ package commands.diet.dietmanager;
 
 import commands.Command;
 import diet.dietsession.DietSession;
+import logger.SchwarzeneggerLogger;
 import storage.diet.Storage;
 import ui.diet.dietmanager.DietManagerUi;
 
@@ -9,16 +10,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 public class DietSessionEdit extends Command {
 
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     static final String FILEPATH = "saves/diet/";
     DietManagerUi ui = new DietManagerUi();
 
     /**
      * Overrides execute for edit command to edit diet sessions.
+     *
      * @param input user input for command
      * @param storage storage for diet manager
      */
@@ -47,6 +49,7 @@ public class DietSessionEdit extends Command {
 
     /**
      * constructs method to save changes to storage file.
+     *
      * @param storage storage for diet manager
      * @param ds dietSession that is being changed
      */

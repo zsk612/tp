@@ -2,21 +2,21 @@ package commands.diet.dietsession;
 
 import commands.Command;
 import diet.dietsession.Food;
+import logger.SchwarzeneggerLogger;
 import storage.diet.Storage;
-import ui.diet.dietmanager.DietManagerUi;
 import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 public class FoodItemClear extends Command {
-
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     DietSessionUi ui = new DietSessionUi();
 
     /**
      * Overrides execute for clear command to clear all food items.
+     *
      * @param input user input for command
      * @param foodList arraylist that stored all the food items
      * @param storage storage for diet session
@@ -36,6 +36,6 @@ public class FoodItemClear extends Command {
         ui.showToUser("Are you sure you want to clear all records? This action is irrevocable."
                 + "\tKey in YES to confirm.");
         String input = ui.getCommand("Diet Menu");
-        return  input.equals("YES");
+        return input.equals("YES");
     }
 }

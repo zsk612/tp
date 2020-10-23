@@ -7,14 +7,16 @@ import exceptions.SchwarzeneggerException;
 import exceptions.workoutmanager.InsufficientArgumentException;
 import exceptions.workoutmanager.NotANumberException;
 import exceptions.workoutmanager.OutOfArrayException;
+import logger.SchwarzeneggerLogger;
 import models.PastRecordList;
-import storage.workout.WorkOutManagerStorage;
 import workout.workoutsession.WorkoutSession;
 
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
+
 import static ui.workout.workoutmanager.WorkoutManagerUi.EDIT_SUCCESS;
 
 public class EditWS extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {

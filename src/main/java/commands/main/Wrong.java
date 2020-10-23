@@ -3,14 +3,14 @@ package commands.main;
 import commands.Command;
 import commands.CommandResult;
 import commands.ExecutionResult;
+import logger.SchwarzeneggerLogger;
 import ui.CommonUi;
 
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 public class Wrong extends Command {
-
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     CommonUi ui = new CommonUi();
 
     @Override

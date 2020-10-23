@@ -2,6 +2,7 @@ package diet.dietsession;
 
 import commands.Command;
 import commands.CommandLib;
+import logger.SchwarzeneggerLogger;
 import storage.diet.Storage;
 import ui.diet.dietsession.DietSessionUi;
 
@@ -9,10 +10,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 public class DietSession {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private final ArrayList<Food> foodList;
 
     private final String dateInput;

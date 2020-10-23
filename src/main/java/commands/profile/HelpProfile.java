@@ -3,11 +3,12 @@ package commands.profile;
 import commands.Command;
 import commands.CommandResult;
 import exceptions.profile.RedundantParamException;
+import logger.SchwarzeneggerLogger;
 import profile.Profile;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import static logger.SchwarzeneggerLogger.logger;
 import static profile.Constants.ADD_PROFILE_FORMAT;
 import static profile.Constants.COMMAND_WORD_ADD;
 import static profile.Constants.COMMAND_WORD_DELETE;
@@ -18,6 +19,7 @@ import static profile.Constants.EDIT_PROFILE_FORMAT;
 import static ui.CommonUi.helpFormatter;
 
 public class HelpProfile extends Command {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
      * Constructs HelpProfile object inheriting abstract class Command.

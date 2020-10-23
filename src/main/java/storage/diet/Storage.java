@@ -3,6 +3,7 @@ package storage.diet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import diet.dietsession.DietSession;
+import logger.SchwarzeneggerLogger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,14 +12,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
+import java.util.logging.Logger;
 
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
  */
 public class Storage {
-
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private static final String FILEPATH = "saves/diet/";
     private static Gson gson;
     private static File file = null;

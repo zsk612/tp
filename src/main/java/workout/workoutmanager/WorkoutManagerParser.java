@@ -39,7 +39,7 @@ public class WorkoutManagerParser {
         ArrayList<Predicate<PastWorkoutSessionRecord>> test = new ArrayList<>();
         int lookingFor = NOTHING;
 
-        for (String s: arr) {
+        for (String s : arr) {
             if (s.equals("/t")) {
                 lookingFor = TAG;
             } else if (s.equals("/d")) {

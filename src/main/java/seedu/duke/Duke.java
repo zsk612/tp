@@ -7,12 +7,9 @@ import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
 import ui.CommonUi;
-import ui.diet.dietmanager.DietManagerUi;
 
 import java.util.logging.Level;
-
-import static logger.SchwarzeneggerLogger.logger;
-
+import java.util.logging.Logger;
 
 /**
  * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
@@ -21,13 +18,14 @@ public class Duke {
     private CommandLib cl;
     private CommonUi ui;
     private ExceptionHandler exceptionHandler;
+    private Logger logger;
 
     public Duke() {
-        SchwarzeneggerLogger.initSchwarzeneggerLogger();
         cl = new CommandLib();
         cl.initMainMenu();
         ui = new CommonUi();
         exceptionHandler = new ExceptionHandler();
+        logger = SchwarzeneggerLogger.getInstanceLogger();
     }
 
     /**
