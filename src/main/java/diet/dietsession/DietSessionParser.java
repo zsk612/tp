@@ -25,7 +25,7 @@ public class DietSessionParser {
      */
     public String processFoodName(String food) throws IndexOutOfBoundsException {
         String[] temp = food.trim().split("/c", 2);
-        return temp[0];
+        return temp[0].trim();
     }
 
     /**

@@ -3,6 +3,7 @@ package commands.diet.dietmanager;
 import commands.Command;
 import diet.dietsession.DietSession;
 import storage.diet.Storage;
+import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +13,9 @@ import java.util.logging.Level;
 import static logger.SchwarzeneggerLogger.logger;
 
 public class DietSessionEdit extends Command {
+
     static final String FILEPATH = "saves/diet/";
+    DietManagerUi ui = new DietManagerUi();
 
     /**
      * Overrides execute for edit command to edit diet sessions.
@@ -34,7 +37,7 @@ public class DietSessionEdit extends Command {
             logger.log(Level.INFO, "Diet session in edit mode");
         } catch (NullPointerException | FileNotFoundException
                 | IndexOutOfBoundsException | NumberFormatException e) {
-            System.out.println("Sorry, there is no file at that index.");
+            ui.showToUser("Sorry, there is no file at that index.");
             logger.log(Level.WARNING, "No file found at array index");
         } catch (IOException e) {
             logger.log(Level.WARNING, "failed to execute diet session");
@@ -54,7 +57,7 @@ public class DietSessionEdit extends Command {
             logger.log(Level.INFO, "Diet session successfully saved");
         } catch (IOException e) {
             logger.log(Level.WARNING, "save profile session failed");
-            System.out.println("Failed to save your diet session!");
+            ui.showToUser("Failed to save your diet session!");
         }
     }
 }

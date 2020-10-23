@@ -32,7 +32,7 @@ public class DietSessionCreate extends Command {
             ds.start();
             saveToFile(storage, ds);
         } catch (IOException e) {
-            System.out.println("It seems like we ran into some problems saving your session...");
+            ui.showToUser("It seems like we ran into some problems saving your session...");
             logger.log(Level.WARNING, "Diet session failed to save");
         }
     }

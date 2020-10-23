@@ -15,7 +15,7 @@ public class DietSessionParserTest {
     void processFoodName_ValidInput_Success() {
         String input = "Food /c 123";
         DietSessionParser parser = new DietSessionParser();
-        String expected = "Food ";
+        String expected = "Food";
         String result = parser.processFoodName(input);
         assertEquals(expected, result);
     }

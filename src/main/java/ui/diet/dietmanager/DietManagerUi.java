@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,11 +14,11 @@ public class DietManagerUi extends CommonUi {
     private static CommonUi printer = new CommonUi();
 
     public static void printOpening() {
-        System.out.println("You're now in diet manager!");
+        showUser("You're now in diet manager!");
     }
 
     public static void printBye() {
-        System.out.println("Exiting diet manager!!");
+        showUser("Exiting diet manager!!");
     }
 
     /**
@@ -27,7 +26,7 @@ public class DietManagerUi extends CommonUi {
      *
      * @param input date string
      * @return date in MMM dd yyyy if the user inputs date in YYYY-MM-DD format;
-     *      else returns original string
+     *         else returns original string
      * @throws DateTimeParseException if the date string input is not a valid date
      */
     public String extractDate(String input) throws DateTimeParseException, IllegalStateException {
@@ -40,13 +39,13 @@ public class DietManagerUi extends CommonUi {
             return LocalDate.parse(match).format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
 
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("I do not understand your date input!");
+            showToUser("I do not understand your date input!");
         } catch (NullPointerException e) {
-            System.out.println("It looks like there is no date input");
+            showToUser("It looks like there is no date input");
         }
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-        System.out.println("I've replaced it with today's date.");
+        showToUser("I've replaced it with today's date.");
         return dtf.format(now);
     }
 
@@ -54,11 +53,11 @@ public class DietManagerUi extends CommonUi {
         try {
             return input.split("/t")[1].trim();
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Please specify your diet session tag, i.e. breakfast, lunch, dinner");
+            showToUser("Please specify your diet session tag, i.e. breakfast, lunch, dinner");
         } catch (NullPointerException e) {
             System.out.println("It looks like there's no input after /t");
         }
-        System.out.println("Session is tagged as unspecified.");
+        showToUser("Session is tagged as unspecified.");
         return "unspecified";
     }
 
@@ -78,17 +77,5 @@ public class DietManagerUi extends CommonUi {
         helpMessage.append(helpFormatter("End", "end",
                 "Go back to main menu"));
         printer.showToUser(helpMessage.toString().trim());
-    }
-
-    public void printLine() {
-        System.out.println("-----------------------------------------");
-    }
-
-    public void printStartLoading() {
-        System.out.println("Loading past diet sessions...");
-    }
-
-    public void printFinishLoading() {
-        System.out.println("Loading completed!");
     }
 }
