@@ -4,19 +4,19 @@ import commands.Command;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import workout.workoutsession.WorkoutSessionParser;
-import workout.workoutsession.exercise.Exercise;
+import workout.workoutsession.exercise.ExerciseList;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class WorkoutSessionAdd extends Command {
 
     @Override
-    public void execute(String[] input, ArrayList<Exercise> exercise,
-                        String filePath, Storage storage, boolean[] endWorkoutSession) {
+    public void execute(String[] inputs, ExerciseList exerciseList,
+                        String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
         try {
-            exercise.add(WorkoutSessionParser.addParser(input));
-            storage.writeToStorage(filePath, exercise);
+            exerciseList.exerciseList.add(WorkoutSessionParser.addParser(inputs));
+            storage.writeToStorage(filePath, exerciseList);
         } catch (NumberFormatException e) {
             WorkoutSessionUi.addFormatError();
         } catch (IOException e) {

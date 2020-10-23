@@ -6,6 +6,7 @@ import commands.diet.dietmanager.DietSessionDelete;
 import commands.diet.dietmanager.DietSessionHelp;
 import commands.diet.dietmanager.DietSessionList;
 import commands.diet.dietmanager.DietSessionEdit;
+import commands.diet.dietmanager.DietSessionSearch;
 import commands.diet.dietmanager.DietSessionWrong;
 import commands.diet.dietsession.FoodItemAdd;
 import commands.diet.dietsession.FoodItemClear;
@@ -13,6 +14,11 @@ import commands.diet.dietsession.FoodItemDelete;
 import commands.diet.dietsession.FoodItemList;
 import commands.diet.dietsession.FoodItemHelp;
 import commands.diet.dietsession.FoodItemWrong;
+import commands.main.Help;
+import commands.main.ToDiet;
+import commands.main.ToProfile;
+import commands.main.ToWorkout;
+import commands.main.Wrong;
 import commands.workout.workoutmanager.ByeWS;
 import commands.workout.workoutmanager.ClearWS;
 import commands.workout.workoutmanager.DeleteWS;
@@ -25,7 +31,9 @@ import commands.workout.workoutmanager.WrongWS;
 import commands.workout.workoutsession.WorkoutSessionAdd;
 import commands.workout.workoutsession.WorkoutSessionEnd;
 import commands.workout.workoutsession.WorkoutSessionDelete;
+import commands.workout.workoutsession.WorkoutSessionHelp;
 import commands.workout.workoutsession.WorkoutSessionList;
+import commands.workout.workoutsession.WorkoutSessionSearch;
 import commands.workout.workoutsession.WorkoutSessionWrong;
 
 import java.util.Hashtable;
@@ -55,6 +63,8 @@ public class CommandLib {
         library.put("delete", new WorkoutSessionDelete());
         library.put("list", new WorkoutSessionList());
         library.put("end", new WorkoutSessionEnd());
+        library.put("help", new WorkoutSessionHelp());
+        library.put("search", new WorkoutSessionSearch());
         library.put("wrong", new WorkoutSessionWrong());
     }
 
@@ -63,9 +73,18 @@ public class CommandLib {
         library.put("meal", new DietSessionCreate());
         library.put("help", new DietSessionHelp());
         library.put("clear", new DietSessionClear());
+        library.put("search", new DietSessionSearch());
         library.put("edit", new DietSessionEdit());
         library.put("delete", new DietSessionDelete());
         library.put("wrong", new DietSessionWrong());
+    }
+
+    public void initMainMenu() {
+        library.put("wrong", new Wrong());
+        library.put("help", new Help());
+        library.put("diet", new ToDiet());
+        library.put("profile", new ToProfile());
+        library.put("workout", new ToWorkout());
     }
 
     public void initDietSessionCL() {
@@ -73,6 +92,7 @@ public class CommandLib {
         library.put("delete", new FoodItemDelete());
         library.put("help", new FoodItemHelp());
         library.put("clear", new FoodItemClear());
+        library.put("search", new FoodItemClear());
         library.put("list", new FoodItemList());
         library.put("wrong", new FoodItemWrong());
     }

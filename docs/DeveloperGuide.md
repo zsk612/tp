@@ -4,60 +4,73 @@ By: `CS2113T-F11-1` Since: `2020`
 ![Supported Java versions](https://img.shields.io/badge/Java-11-blue.svg) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Windows|MacOS|Linux-yellow.svg) 
 ![Java CI](https://github.com/AY2021S1-CS2113T-F11-1/tp/workflows/Java%20CI/badge.svg)
 
-- [Developer Guide](#developer-guide)
-  * [1. Introduction](#1-introduction)
-    + [1.1. Background](#11--background)
-    + [1.2. Purpose](#12-purpose)
-    + [1.3. Scope](#13-scope)
-  * [2. Setting up](#2-setting-up)
-    + [2.1. Prerequisites](#21-prerequisites)
-    + [2.2. Setting up the project in your computer](#22-setting-up-the-project-in-your-computer)
-  * [3. Design](#3-design)
-    + [3.1. Architecture](#31-architecture)
-    + [3.2. Ui Component](#32-ui-component)
-    + [3.3. Logic Component](#33-logic-component)
-    + [3.4. Model Component](#34-model-component)
-    + [3.5. Storage Component](#35-storage-component)
-    + [3.6. Common Classes](#36-common-classes)
-  * [4. Implementation](#4-implementation)
-    + [4.1. Main menu-related Features](#41-main-menu-related-features)
-    + [4.2. Profile-related Features](#42-profile-related-features)
-      - [4.1.1. Addition of ingredient](#411-addition-of-ingredient)
-      - [4.1.2. List all/ specific ingredient(s)](#412-list-all-specific-ingredients)
-      - [4.1.3. Delete specific ingredients(s)](#413-delete-specific-ingredientss)
-      - [4.1.4. Search for ingredients based on keyword(s)](#414-search-for-ingredients-based-on-keywords)
-      - [4.1.5. Notification for ingredients warning](#415-notification-for-ingredients-warning)
-    + [4.3. Diet-related Features](#43-diet-related-features)
-      - [4.2.1. Addition of recipe](#421-addition-of-recipe)
-      - [4.2.2. List all/ specific recipe(s)](#422-list-all-specific-recipes)
-      - [4.2.3. Cooking of recipe](#423-cooking-of-recipe)
-      - [4.2.4. Delete a specific recipe](#424-delete-a-specific-recipe)
-      - [4.2.5. Search for recipe based on keyword(s)](#425-search-for-recipe-based-on-keywords)
-    + [4.4. Workout-related Features](#44-workout-related-features)
-      - [4.4.1. Creation of new workout session](#441-creation-of-new-workout-session)
-      - [4.4.2. Listing past workout sessions](#442-listing-past-workout-sessions)
-      - [4.4.3. Editing of workout session](#443-editing-of-workout-session)
-      - [4.4.4. Deletion of workout session](#444-deletion-of-workout-session)
-      - [4.4.5. Search based on conditions](#445-search-based-on-conditions)
-    + [4.5. Storage](#45-storage)
-      - [4.5.1. Storage for Profile](#441-select-files-to-load-from-and-save-to)
-      - [4.5.2. Storage for Diet](#442-save-current-state)
-      - [4.5.3. Storage for Workout](#443-insert-name-here)
-    + [4.6. Recommendations-related Features](#46-recommendations-related-features) 
-      - [4.5.1. Display expenditure](#451-display-expenditure)
-      - [4.5.2. Expenditure functionality](#452-expenditure-functionality)
-    + [4.7. Logging](#47-loggingToBeDeleted)
-  * [Appendices](#appendices)
+## Table of content
+1. [**Introduction**](#1-introduction)<br>
+1.1. [Background](#11--background)<br>
+1.2. [Purpose](#12-purpose)<br>
+1.3. [Scope](#13-scope)<br>
+2. [**Setting up**](#2-setting-up)<br>
+2.1. [Prerequisites](#21-prerequisites)<br>
+2.2. [Setting up the project in your computer](#22-setting-up-the-project-in-your-computer)<br>
+3. [**Design**](#3-design)<br>
+3.1. [Architecture](#31-architecture)<br>
+3.2. [Ui Component](#32-ui-component)<br>
+3.3. [Logic Component](#33-logic-component)<br>
+3.4. [Model Component](#34-model-component)<br>
+3.5. [Storage Component](#35-storage-component)<br>
+3.6. [Common Classes](#36-common-classes)<br>
+4. [**Implementation**](#4-implementation)<br>
+4.1. [Main Menu-related Features](#41-main-menu-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu of Profile](#411-help-command-for-main-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.2. [Redirection to Profile Menu](#412-redirection-to-profile-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.3. [Redirection to Diet Menu](#413-redirection-to-diet-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.4. [Redirection to Workout Menu](#414-redirection-to-workout-menu)<br>
+4.2. [Profile-related Features](#42-profile-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. [Creation of Profile](#421-creation-of-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. [Viewing Profile](#422-viewing-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.3. [Editing of Profile](#423-eiting-of-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deletion of Profile](#424-deletion-of-profile)<br>
+4.3. [Diet-related Features](#43-diet-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#431-list-out-all-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording meal data](#432-start-recording-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#4321-showing-help-message)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current meal](#4322-adding-food-items-for-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current meal](#4323-listing-data-for-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current meal](#4324-deleting-data-from-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current meal](#4325-clearing-data-from-the-current-meal)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of meal data](#4326-stopping-the-recording-of-meal-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past meal sessions](#433-list-all-past-meal-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past meal session](#434-edit-a-past-meal-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past meal session](#435-delete-a-past-meal-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past meal sessions](#436-clear-all-past-meal-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Exit the meal manager](#437-exit-the-meal-manager)<br>
+4.4. [Workout-related Features](#44-workout-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creation of new workout session](#441-creation-of-new-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an exercise](#4411-Adding-an-exercise)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an exercise](#4412-Deleting-an-exercise)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing all exercises in this session](#4413-listing-all-exercises-in-this-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing users to view help commands](#4414-Allowing-users-to-view-help-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for related exercises](#4415-Searching-for-related-exercises)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the workout session](#4416-Ending-the-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing past workout sessions](#442-listing-past-workout-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing of workout session](#443-editing-of-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deletion of workout session](#444-deletion-of-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.5. [Search based on conditions](#445-search-based-on-conditions)<br>
+4.5. [Recommendations-related Features](#46-recommendations-related-features)<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;4.5.1. [Display expenditure](#451-display-expenditure)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Expenditure functionality](#452-expenditure-functionality)<br>
+4.6. [Storage](#45-storage)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.6.1. [Storage for Profile](#441-select-files-to-load-from-and-save-to)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.6.2. [Storage for Diet](#442-save-current-state)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.6.3. [Storage for Workout](#443-insert-name-here)<br>
+4.7. [Logging](#47-loggingToBeDeleted)<br>
+  * [**Appendices**](#appendices)
     + [Appendix A: Product Scope](#appendix-a-product-scope)
     + [Appendix B: User Stories](#appendix-b-user-stories)
     + [Appendix C: Value proposition - Use cases](#appendix-c-value-proposition---use-cases)
     + [Appendix D: Non-Functional Requirements](#appendix-d-non-functional-requirements)
     + [Appendix E: Glossary](#appendix-e-glossary)
     + [Appendix F: Instructions for Manual Testing](#appendix-f-instructions-for-manual-testing)
-      - [F.1. Launch and Shutdown](#f1-launch-and-shutdown)
-      - [F.2. Add an ingredient](#f2-add-an-ingredient)
-      - [F.3. List ingredient](#f3-list-ingredient)
-      - [F.4. Delete an ingredient](#f4-delete-an-ingredient)
     + [Appendix G: Supported Formats of Date Input](#appendix-g-supported-formats-of-date-input)
 
 ## 1. Introduction
@@ -74,7 +87,7 @@ This describes the software architecture and software design requirements for Th
 
 ### 2.1. Prerequisites
 1. JDK `11`.
-2. IntelliJ IDE.
+2. IntelliJ IDEA IDE.
 
 ### 2.2. Setting up the project in your computer
 1. Fork this repository, and clone the fork to your computer.
@@ -94,22 +107,22 @@ This describes the software architecture and software design requirements for Th
 This section provides a high level overview of our application, The Schwarzenegger.
 ### 3.1. Architecture
 
-![Architecture](images/KitchenHelperMain.png)
+![Architecture]
 The image above explains the design of the application, The Schwarzenegger. 
 
-The main driver of the application is `Main: Kitchen Helper`. It is responsible for mainly two phases:
+The main driver of the application is `Main: Duke`. It is responsible for mainly two phases:
 - At application launch
     - This class will initialise the components in the correct sequence and is in charge of connecting them with each other.
 - At shut down
     - This class will invoke cleanup method for the components when necessary.
     
-In addition to that, the architecture of Kitchen Helper is broken down into seven classes, mainly the following: 
+In addition to that, the architecture of The Schwarzenegger is broken down into several packages, mainly the following: 
 - `Ui`: This class mainly handles the UI of the application.
 - `Parser`: This class mainly handles the parsing and handling of user commands.
 - `Command`: This class handles the type of command.
-- `Ingredient`: This class manages the data of data type ingredient in memory.
-- `Chore`: This class manages the data of data type chore in memory.
-- `Recipe`: This class manages the data of data type recipe in memory.
+- `Profile`: This class manages the data of the user.
+- `Diet`: This class manages the meal recording sessions.
+- `Workout`: This class manages the data workout recording sessions.
 - `Storage`: This class reads data from and writes data back into a text file for future uses.
 
 [&#8593; Return to Top](#developer-guide)
@@ -119,12 +132,12 @@ In addition to that, the architecture of Kitchen Helper is broken down into seve
 
 API: `Ui.java`
  
-The `Ui` component is a singleton class where all interaction will be made through this component
+The `Ui` package is a combination class where all interaction will be made through this component
  
 The `Ui` component,
 
-* Executes user commands using the command component
-* Listens for changes and outputs messages from the Command component
+* Takes in user input
+* Prints out response messages
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -132,21 +145,21 @@ The `Ui` component,
 
 ![Logic Component](images/logic_update.png)
 
-1. `Kitchen Helper` uses `Parser` class to parse the user command.
-2. This results in a command object return back which is executed by `Kitchen Helper`.
-3. The command execution can affect the object (e.g. adding an ingredient).
-4. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to `Ui` to display the message.
+1. `The Schwarzenegger` uses `Parser` classes to parse the user command.
+2. This splits the user input into interpretable portions by other functions.
 
 [&#8593; Return to Top](#developer-guide)
 
 ### 3.4. Model Component
 
-![Model Component](images/model.png)
+![Model Component](pictures/zesong/model.png)
 
-The Model component contains `Ingredient`, `Recipe` and `Chore` classes, which store the user's input in Kitchen Helper.
-* Ingredient: Stores the ingredient data.
-* Recipe: Stores the recipe data.
-* Chore: Stores the chore data.
+The Model component contains `Profile`, `DietManager`,
+`PastRecord` and `WorkoutSession` classes.
+* Profile: Stores the user profile data.
+* DietManager: Stores all past diet records.
+* PastRecord: Stores meta information of each WorkoutSession files.
+* WorkoutSession: Stores the exercise data done in each workout session.
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -154,775 +167,463 @@ The Model component contains `Ingredient`, `Recipe` and `Chore` classes, which s
 
 ![Storage Class Diagram](images/Storage.png)
 
-A Storage object is created by the KitchenHelper class to handle the loading and saving of ingredients, recipes, chores and expenditure data.
+Profiles, Diet sessions and workout sessions are stored in separate folders. 
 
-The Storage() method acts as a constructor with filepaths to local save files for ingredients, recipes, chores and expenditure data.
+The Storage package contains subpackages for profile, diet manager and workout manager.
 
-The getIngredientData(), getRecipeData(), getChoreData() and loadExpenditureData() methods are used to read saved data from local files into the current session of KitchenHelper. loadingIngredients() and loadingRecipeItems() methods are called in getIngredientData() and getRecipeData() respectively to sort out which Ingredient object class each object belongs to.
+The readDietSession() method in storage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past meal session.
+readPastRecords() and readFileContents() methods in storage.workout package are used for loading saved workout managers and workout sessions respectively. It is called when the user accesses the workout manager.
+loadData() from storage.profile is used to load user profile data and is called when the program starts up. 
 
-The saveIngredientData(), saveRecipeData(), saveChoreData() and saveExpenditureData() methods write the current state of KitchenHelper into the local save files by calling them in various command classes such as AddChoreCommand and DeleteIngredientCommand.
+The writeToStorageDietSession() method in storage.diet package saves the meal session and is called when the user exits it.
+writePastRecords() and writeToStorage() methods in storage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
+saveData() method in storage.profile is called when the user creates the user profile or edits it.
 
 [&#8593; Return to Top](#developer-guide)
 
 ### 3.6. Common Classes 
-Classes used by multiple components are in the `seedu.duke` package.
+Classes used by multiple components are in the `seedu.duke` and the `ui` package, specifically Constant.java and CommonUi.java.
 
 [&#8593; Return to Top](#developer-guide)
 
 ## 4. Implementation
-This section describes some details on how the features are being implemented. All recipe/ ingredient/ chore-related features can be broken down into 4 distinct functionality, addition, listing, deletion and searching.
+This section describes some details on how the features are being implemented. All profile / diet / workout-related features.
 
-### 4.1.Profile-related Features
-#### 4.1.1. Addition of ingredient
 
-The addition of the ingredient feature allows the user to keep track of the ingredients in the ingredient’s list.   
-For example, `addingredient /n beef /c meat /q 2 /p 20 /e 18/02/2020` will add the ingredient `beef` 
-which have the following attributes:  category `meat`, quantity `2`, price `$20` and expiry `18/02/2020`  
+All profile/ diet/ workout-related features can be broken down into 4 distinct functionality, addition, viewing/ listing, deletion and editing.
+For diet and workout-realted features, there is an additional functionality of searching.
 
-##### Implementation
+### 4.1. Main Menu-related Features
 
-![addIngredientCommand](images/addIngredient_update.png) 
+#### 4.1.1. Help Command for Main Menu
 
-The following steps explained “Sequence diagram for an example `addingredient` command”:  
-1. The user enters `addingredient /n beef /c meat /q 2 /p 20 /e 18/02/2020`.  
-2. `KitchenHelper` calls `Parser#parseUserCommand()`.  
-3. `Parser#parseUserCommand()` will call its own method `Parser#prepareAddIngredient()`.  
-4. `Parser#prepareAddIngredient()` will first validate the attributes and create an object `AddIngredientCommand` with the attributes if successful.  
-5. `KitchenHelper` calls it own method `executeCommand()` to execute the method in `AddIngredientCommand#execute()`.  
-6. On `AddIngredientCommand#execute()`, ingredient is added and return of the message.  
+The help command allows users to view all the available commands in the main page.
+The command for help is `help`.
 
-[&#8593; Return to Top](#developer-guide)
+#### 4.1.2. Redirection to Profile Menu
 
-#### 4.1.2. List all/ specific ingredient(s)
-The list feature allows showing details of Ingredients added by the user.  All ingredients added will be shown in a sorted order, by expiry, and shown by categories. The function will require a valid string , which belongs to `all/dairy/drink/fruit/meat/miscellaneous/staple/vegetable`, 
-to be added as a parameter. Failure to do so will trigger an exception where the user will be notified of an invalid command and the syntax of the listing of the ingredients will be displayed. 
+The redirection to profile page allows the user to enter Profile Menu to create, edit, view and delete user profile.
+The command for this redirection is `profile`.
 
-##### Implementation
-When the user attempts to list the details of a particular category of ingredients, the `listIngredientCommand`, ‘Parser’ and `Ingredient` class will be accessed and the following sequence of actions are called to list details of  a particular category Ingredient list: <br>
-The following image below shows the sequence of steps for step 1 and 2:
-![ListIngredient Sequence Diagram](images/listIngredientSequenceDiagramPart1.png)
-1. User executes `listingredient all` 
-    2. A `Ui` object will be created and calls `Ui#getUserCommand()`
-    3. Input will be parsed in `Command#parseUserCommand()` and identified with the keyword `listingredient`.
-    ![List Ingredient Step 1](images/listIngredient1.png)
-2. Parsing of user input and creation of command object
-    2.This will automatically trigger the parsing of the user’s input string into a suitable format for the listing of a particular category of  `ingredient` object in `Command#prepareListIngredient()`.
-    3. A `ListIngredientCommand` object will be created.
-    ![List Ingredient Step 2](images/ListIngredientCommand.png)   
-3. Executing Command
-    The following image below shows the sequence for the next steps:
-    
-    ![ListIngredient Sequence Diagram](images/listIngredientSequenceDiagramPart2.png)
-    2. The newly created object will call `#ListIngredientCommand#execute` which starts the process of listing a particular category’s ingredient details, thus calling `ListIngredientCommand#listIngredients()`.
-    3. The existing ingredientList arraylist and the category of the chosen ingredient category  will be passed through to the `ListIngredientCommand#listIngredients()`.
-    4. The function will find if the category name is valid, thus, creates `CommandResult` result storing the details of the ingredient belonging to the particular category.
-    ![List Ingredient Step 3](images/ListIngredientCommand2.png)
-4. The details will then be printed onto the console using `Ui#showResultToUser(result)`.
-    
-The following shows the full sequence diagram for this command:
+#### 4.1.3. Redirection to Diet Menu
 
-![List Ingredient Sequence Diagram](images/listIngredientSequenceDiagram.png)
-##### Design Considerations
-Aspect: Finding the category name and print out ingredient belonging to the category
+The redirection to profile page allows the user to enter Diet Menu to create, edit, list and delete diet sessions.
+The command for this redirection is `diet`.
 
-Alternative 1: Looping through the whole ingredientList arraylist to find out all possible category name, then, do sorting and return result
+#### 4.1.4. Redirection to Workout Menu
 
-|     |     |
-|-----|-----|
-|**Pros** | The program will be able to detect all category name inside the ingredientList arraylist. |
-|**Cons** | This method will be slow when facing a huge amount of data in the arraylist as the program may have to go through every single item in the arraylist. |
+The redirection to profile page allows the user to enter Workout Menu to create, edit, list and delete workout sessions.
+The command for this redirection is `workout`.
 
-Alternative 2 (current choice): Creating a fixed array which includes the order and all possible category names.
+### 4.2. Profile-related Features
+#### 4.2.1. Creation of Profile
 
-|     |     |
-|-----|-----|
-|**Pros** | Users would be able to get the details of the particular recipe accurately and fast. |
-|**Cons** | Program will not be able to handle any ingredient which isn’t belonging to the category names in the fixed array.  |
-
-[&#8593; Return to Top](#developer-guide)
-
-#### 4.1.3. Delete specific ingredients(s)
-The deletion feature for ingredients allows the user to delete ingredients either by the name or index of the ingredients. In addition to that, it allows users to reduce the quantity of a specific ingredient. 
+User can create a new profile. 
+The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command format. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+If the creation is successful, a confirmation message on the newly created profile will be displayed to the user. 
 
 ##### Implementation
-When the user attempts to reduce the quantity of ingredient at index 1 of the ingredients inventory by 4,  the `Kitchen Helper`, `Parser` and `DeleteIngredientCommand` class will be called upon. The following sequence of steps will then occur: 
 
-The following image below shows the sequence of steps for step 1 and 2:
-![DeleteIngredient Sequence Diagram](images/deleteIngredientSequenceDiagramPart1.png)
+When the user attempts to create a new profile, the ProfileSession, Ui, ProfileParser, 
+Command and CommandResult class will be accessed, and the following sequence of 
+actions is called to return a command object AddProfile.
 
-1. The user keyed in `deleteingredient /i 1 /q 4`.
-   
-    1. A `UI` object will be created and it will call `UI#getUserCommand()` method to take in the input that the user has keyed in.
-    1. A `String` object will be returned and saved into the `userCommandInput` variable in `Kitchen Helper`.
-    1. The variable `userCommandInput` is being parsed into the `Parser` class as an argument for this method `Parser#parseUserCommand`.
-    
-    ![DeleteIngredient State 1](images/deleteIngredientState1.png) 
-    
-2. The command inserted by the user is being parsed into the `Parser` and a new `Command` object is being created. 
-    
-    1. The variable `userCommandInput` will be identified as `deleteingredient` in the `Parser#parseUserCommand()`.The `Parser#prepareDeleteIngredient()` is being called to prepare the `userCommandInput` string to create a `DeleteIngredientCommand` object.
-    1. The `DeleteIngredientCommand` object is created with the ingredientIndex and quantity set to 4. 
-    
-    ![DeleteIngredient State 2](images/deleteIngredientState2.png)
-    
-3. After creating `DeleteIngredientCommand` object, this Command will now be executed. 
-    
-    The following image below shows the sequence for the next steps:
-    
-    ![DeleteIngredient Sequence Diagram](images/deleteIngredientSequenceDiagramPart2.png)
-    
-    1. The `DeleteIngredientCommand#execute()` will be called which in turned called `DeleteIngredientCommand#deleteIngredientByIndex()`. 
-    1. Since the `quantity` of this ingredient is not null, the `DeleteIngredientCommand#deleteQuantity()` will be called to reduce the quantity of this ingredient.  
-    1. When `DeleteIngredientCommand#deleteQuantity()` has returned, the program will get the quantity of the current ingredient after deduction. If the quantity is zero or null, the `DeleteIngredientCommand#deleteIngredient()` will be called to remove `ingredient` from the `ingredientsList` which contains all the ingredients. 
-    1. Then, `Storage#saveIngredientData()` will be called to save the current `ingredientsList` into an output file.
-    1. Lastly, a String called `feedbackToUser`will be returned to the user to inform the user of the outcome of the command. 
-    
-    The following image shows the state diagram for the command execution:
+1. User executes `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
+    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
+    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
+1. Creation of Command object.
+    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `AddProfile`.
+1. Executing Command
+    1. `ProfileSession` calls `AddProfile.execute()` with the rest of parsed input.
+    1. `AddProfile` creates a new `Profile` object with the parsed information.
+    1. `AddProfile` calls `ProfileStorage.saveData()` to save the Profile object.
+1. Prompting result to user.
+    1. `ProfileSession` calls `AddProfile.getCommandResult()` to get the `CommandResult` object.
+    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
 
-    ![DeleteIngredient State 3](images/deleteIngredientState3.png)
-    
-4.  The details will then be printed onto the console using `Ui#showResultToUser(result)`.
-
-The following shows the full sequence diagram for this command:
-
-![Delete Ingredient Sequence Diagram](images/deleteIngredientSequenceDiagram.png)
-
-Other than deleting or reducing the quantity of an ingredient, `DeleteIngredientCommand` has an additional feature that is linked to [Display Expenditure](#451-display-expenditure) which will increase the cooking expenditure if the ingredients are used for cooking. 
-
-##### Design Considerations
-+ Aspect 1: How to differentiate `deleteingredientByQuantity` and `deleteIngredient` <br>
-    + Alternative 1 (Current Choice): The `quantity` of ingredient in `DeleteIngredientCommand` constructor is set to the `quantity` that was inputted by the user. In the case where the user would like to delete an ingredient, the `quantity` variable will be set to `null`.
-
-        |     |     |
-        |-----|-----|
-        |**Pros**|Only a `quantity` variable needs to be set. This increases more convenience and no overload of constructors.|
-        |**Cons**|It is dependent on the variable to check if the ingredient is to be deleted. | 
-
-    + Alternative 2: Create 1 more constructor just for deduction of quantity for ingredients. <br>
-
-        |     |     |
-        |-----|-----|
-        |**Pros**|This gives us more flexibility on what object can be created with different variables.|
-        |**Cons**|There may be an overload of constructors.|
-        
-    In the end, for `aspect 1`. we have chosen `alternative 1` because there will not be an overload of constructors.
-
-+ Aspect 2: Calling of function for deletion of `ingredient` when `ingredient` has the quantity of zero.
-    + Alternative 1 (Current Choice) : Two non-nested `if-else` blocks to cater for `deleteQuantity` and `deleteIngredient`.
-        
-        |     |     |
-        |-----|-----|
-        |**Pros**|SLAP is not violated. |
-        |**Cons**|Longer lengths of codes. | 
-    + Alternative 2: One nested `if-else` block to cater for `deleteQuantity`and `deleteIngredient`
-
-        |     |     |
-        |-----|-----|
-        |**Pros**|Concise block of `if-else`.|
-        |**Cons**|The `if-else` block will be nested with another `if-else` block. This will violate the SLAP in code quality and the program will have to check for multiple conditions instead of one.|
-        
-    In the end, for `aspect 2`, we have chosen `alternative 1` because there will be more concise blocks of `if-else` which helps to contribute to the non-violation of SLAP for the method.
-+ Aspect 3: Deletion by index instead of name for ingredients 
-    + Alternative 1 (Current Choice): Deletion by index only
-
-        |     |     |
-        |-----|-----|
-        |**Pros**|Only a very specific ingredient can be deleted. Only need to get the ingredient from the list of ingredients by index. It is a more specific way to get the ingredient to delete. |
-        |**Cons**|Users will not be able to delete the ingredient by name.| 
-
-    + Alternative 2: Deletion by both index and name 
-
-        |     |     |
-        |-----|-----|
-        |**Pros**|Users will be able to delete by ingredients' name and index. |
-        |**Cons**|There may be confusion when it comes to the deletion by name for the users as the algorithm that was supposed to be implemented for deletion by name will delete the first instance of ingredient that is found. In the case, whereby the list of ingredients have two `apples` but different expiry date and the user just want to delete the second `apple` that has a later expiry date. It will not be able to do so through deletion of name as the first instance of `apple` is the one that has an earlier expiry date. | 
-
-    In the end, for `aspect 3`, we have chosen `alternative 1` which is to delete by index for ingredients only so that the users can have a more convenient time in deleting the specific ingredient that they want to delete. However, deletion by name for ingredients may be implemented and enhanced in the future implementations once we have finalised our idea for its implementation. 
-
-[&#8593; Return to Top](#developer-guide)
-
-#### 4.1.4. Search for ingredients based on keyword(s)
-
-The search for ingredients feature allows the user to find ingredients using a keyword in the ingredient’s list.  
-For example, `searchingredient beef` will find all the ingredients that contain `beef`.  
-
-##### Implementation  
-
-![SearchIngredientCommand](images/searchIngredient_update.png) 
-
-The following steps explained sequence diagram for `searchingredient` command:  
-1. The user enters `searchingredient beef`.  
-2. `KitchenHelper` calls `Parser#parseUserCommand()`.  
-3. `SearchIngredientCommand` object is created with the keyword passed in.  
-4. `KitchenHelper` calls it own method `executeCommand()` to execute the method in `SearchIngredientCommand#execute()`.  
-5. On `SearchIngredientCommand#execute()`, display the list of ingredients that matches the keyword. 
+All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
 
 ##### Design considerations:
+Parsing of the user’s input command:
 
-Aspects: How `searchingredient` executes:  
-
-- Alternative 1 (current choice): Find if the keyword is part of the substring of the ingredient, 
-`[Meat] Beef Qty:3 $20.00 Exp:18/03/2020.`  
-
-|     |     |
-|-----|-----|
-|**Pros** | 1. Easily to find by any attributes such as category, ingredient’s name,  quantity, price and expiry date.|  
-|**Cons** | 1. Searching `beef [meat]` will fail to show any matching result.|
-
-- Alternative 2: Take in all the predicates given by the user and find using the predicates as a keyword
+- Alternative 1 (current choice): User’s command is split into size 2 array first
+containing command type and command arguments. Then arguments are split
+into command tag and information pairs.  
 
 |     |     |
 |-----|-----|
-|**Pros** | 1. More accurate searching of the ingredient is available for the user.|  
-|**Cons** | 1. Requires users to enter more precise predicate keywords which could be more inconvenient.|
+|**Pros** | Command tags do not have to follow a fixed order.|
+|**Cons** | It takes multiple steps in parsing the command.|
 
+- Alternative 2: User’s command is divided by space
+                 
+|     |     |
+|-----|-----|
+|**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
+|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
+
+The sequence diagram below summarizes how creating a new profile works:
+
+![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
 [&#8593; Return to Top](#developer-guide)
-
-#### 4.1.5. Notification for ingredients warning
-
-The notification for ingredients warning runs everytime the program starts. Checks the ingredient list for ingredient that is expiring in 3 days, expired or low quantity (< 5).
-For example, `beef` ingredient's expired date is 02/02/2020 and have quantity of 3. The program will list down the ingredient in the categories when the application start.
-
-##### Implementation  
-
-
-![NotificationIngredientCommand](images/notificationIngredient.png) 
-
-
-The following steps explained sequence diagram for `showNotification` method:  
-1. The user starts `KitchenHelper`.  
-2. `KitchenHelper` calls `showNotification()`.  
-3. `KitchenHelper#IngredientNotification` object is created when the method `IngredientNotification#getNotifications(ingredientList)` is called.  
-4. Result from `IngredientNotification#checkForExpiringIngr(ingredientList)`,`IngredientNotification#checkForLowQuantityIngr`, `IngredientNotification#checkForExpiredIngr` will be combined.
-    1. `IngredientNotification#checkForExpiringIngr(ingredientList)` checks for ingredients that is going to expire in 3 days.
-    1. `IngredientNotification#checkForLowQuantityIngr` checks for ingredients that has quantity of 5 or lower.
-    1. `IngredientNotification#checkForExpiredIngr` checks for ingredients that is expired.
-5. `IngredientNotification#getNotifications(ingredientList)` returns result to `KitchenHelper#ingredientNotification` and displays.
-
-##### Design considerations:
-
-Aspects: How `showNotification` executes:  
-
-- Alternative 1 (current choice): Create a function to compile results from the three different methods, 
-
-|     |     |
-|-----|-----|
-|**Pros** | 1. Decreases the need to indicate three lines of code to call out the three different methods.|  
-|**Cons** | 1. Developer have to go into `IngredientNotification#getNotifications(ingredientList)` to find out what function |
-
-- Alternative 2: Create three different methods in `KitchenHelper.java`
-
-|     |     |
-|-----|-----|
-|**Pros** | 1. Clear indication what the method is doing|  
-|**Cons** | 1. Not very 'OOP' like|
-
-
-[&#8593; Return to Top](#developer-guide)
-### 4.2. Diet-related Features
-#### 4.2.1. Addition of recipe
-Users can add a new recipe to the application where there must be at least one or more `ingredient`s. The failure to do so will trigger an exception where the user will be notified of an invalid command and the syntax of the addition of recipe will be displayed. 
-
-> It is important that the name of the new recipe has not appeared in the list of recipes in the application.
-
-##### Implementation 
-When the user attempts to create a new recipe, the `AddRecipeCommand`, `Parser` and `Recipe` class will be accessed and the following sequence of actions are called to create a `recipe` object:
-
-1. User executes `addrecipe /n Chicken Salad /i Chicken Breast:2:meat, Lettuce:4:vegetable` 
-    1. A `Ui` object will be created and calls `Ui#getUserCommand()`
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `addrecipe`.
-    
-    ![Add Recipe Step 1](images/AddRecipe1.png)
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string into a suitable format for the addition of `recipe` object in `Parser#prepareAddRecipe()`.
-    1. A `AddRecipeCommand` object will be created and calls `AddRecipeCommand#setAttributesOfCmd()` to set the contents of the command into reader friendly formats.
-    
-    ![Add Recipe Step 2](images/AddRecipe2.png)
-3. Executing Command
-    1. The newly created object will call `AddRecipeCommand#execute()` which starts the process of adding a recipe, thus calling `Recipe#AddRecipe()`.
-    1. A `Recipe` object will be created with its name that was parsed in step 2.
-    1. An additional step is included where a check for an existing recipe with the same name is conducted with `AddRecipeCommand#checkIfRecipeExist()`. A `KitchenHelperException` exception will be triggered when there is an existing recipe.
-    
-    ![Add Recipe Step 3](images/AddRecipe3.png)
-4. `Ingredient`s parsed in step 2 will be added to the newly created recipe according to their category through the calling of `Recipe#addIngredientsToRecipe()`.
-	
-	![Add Recipe Step 4](images/AddRecipe4.png)
-
-All description and warnings to the user utilises the `UI` class, which controls the printing of the text on the console. 
-
-The following sequence diagram shows how the `addrecipe` command works
-
-![AddRecipeCommand](images/addRecipeSequenceDiagram.png) 
-
-##### Design Considerations
-Aspect: Parsing of the user’s input command
-
-Alternative 1 (current choice): The key parameters that are required are divided by the delimiter of ‘/’ followed by a specific letter. `(i.e. /i)`
-
-|     |     |
-|-----|-----|
-|**Pros** | User would be able to have strings that may contain spaces (i.e. /n Chicken Salad /i Breast meat:2:meat) |
-|**Cons** | The order of delimiters needs to be standardized, users will not be able to re-order the delimiters. |
-
-Alternative 2: Multiple prompts for user’s input of a recipe name and ingredient(s)
-
-|     |     |
-|-----|-----|
-|**Pros** | Users would not have to make sure that their command is syntactically right |
-|**Cons** | The constant prompting could subject the application to a negative experience in the difficulty to use the commands. |
-
-Alternative 3: User’s command are divided by space
-
-|     |     |
-|-----|-----|
-|**Pros** | The parsing can be easily done by calling Java built-in function `.split()` |
-|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive. |
-
-[&#8593; Return to Top](#developer-guide)
-
-#### 4.2.2. List all/ specific recipe(s) 
-The list feature allows showing details of a particular recipe created by the user.  All ingredients added into the recipe will be shown in a sorted order and shown by categories. The function will require valid string of a integer or `all` to be added as a parameter. Failure to do so will trigger an exception where the user will be notified of an invalid command and the syntax of the listing of the recipe will be displayed. 
+#### 4.2.2. Viewing Profile
+The feature to view profile allows the user to view added profile
+with calculated BMI based on height and weight.
 
 ##### Implementation
-When the user attempts to list the details of a particular recipe, the `listRecipeCommand`, ‘Parser’ and `Recipe` class will be accessed and the following sequence of actions are called to list details of  a particular `recipe` object:
-The following image below shows the sequence of steps for step 1 and 2:
-![ListRecipe Sequence Diagram](images/listRecipeSequenceDiagramPart1.png)
-1. User executes `listrecipe 1`  
-    2. A `Ui` object will be created and calls `Ui#getUserCommand()`
-    3. Input will be parsed in `Command#parseUserCommand()` and identified with the keyword `listrecipe`.
-    ![List Recipe Step 1](images/listRecipe1.png)
-2. Parsing of user input and creation of command object
-    2.This will automatically trigger the parsing of the user’s input string into a suitable format for the listing of `recipe` object in `Command#prepareListRecipe()`.
-    3. A `ListRecipeCommand` object will be created.
-    ![List Recipe Step 2](images/ListRecipeCommand.png)   
-3. Executing Command
-    The following image below shows the sequence for the next steps:
-    
-    ![Recipe Sequence Diagram](images/listRecipeSequenceDiagramPart2.png)
-    2. The newly created object will call `ListRecipeCommand#execute` which starts the process of listing a particular recipe’s details, thus, calling `ListRecipeCommand#listRecipe()`.
-    3. The existing recipeList arraylist and the item number of the chosen recipe will be passed through to the `ListRecipeCommand#listRecipe()`.
-    4. The function will find if the item number is valid and contains details of the recipe, thus, creates a CommandResult storing the details of the particular recipe.
-    ![List Recipe Step 3](images/ListRecipeCommand2.png)
-4. The details will then be printed onto the console using `Ui#showResultToUser(result)`.
-The following shows the full sequence diagram for this command:
+When the user attempts to view profile, the ProfileSession, Ui, ProfileParser, 
+Command and CommandResult class will be called upon. The following sequence of steps will then occur:
 
-![List Recipe Sequence Diagram](images/listRecipeSequenceDiagram.png)    
+1. User executes `view`
+    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
+    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
+    1. `ProfileParser.parseCommand()` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
+1. Creation of Command object.
+    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `ViewProfile`.
+1. Executing Command
+    1. `ProfileSession` calls `ViewProfile.execute()` with the rest of parsed input.
+    1. `ViewProfile` returns the same `Profile` object.  
+1. Prompting result to user.
+    1. `ProfileSession` calls `ViewProfile.getCommandResult()` to get the `CommandResult` object.
+    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
+##### Design considerations:
+Aspects: Status of stored data
 
-##### Design Considerations
-Aspect: Finding the recipe requested by the user.
-
-Alternative 1: Looping through the whole recipeList arraylist to find the recipe requested by the user.
+- Alternative 1 (current choice): call public methods of Storage class to 
+load the profile from hard disk every time the user wants to view profile.
 
 |     |     |
 |-----|-----|
-|**Pros** | The program will be able to locate the recipe accurately. |
-|**Cons** | This method will be slow when facing a huge amount of data in the arraylist as the program may have to go through every single item in the arraylist. |
+|**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|  
+|**Cons** | Execution time is slow down due to loading the data.|
 
-Alternative 2 (current choice): Using arrayList.get(item) to get the recipe requested by the user.
+- Alternative 2: call public methods of Storage class to 
+load the profile from hard disk when user enter Profile Menu.
 
 |     |     |
 |-----|-----|
-|**Pros** | Users would be able to get the details of the particular recipe accurately and fast. |
-|**Cons** | Without proper checks done before running the command, it will result in error if the number indicated by the user exceeds the arraylist / does not exist in the arraylist.  |
+|**Pros** | Execution time is fast.|  
+|**Cons** | Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.|
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.2.3. Cooking of recipe
-The feature allows the user to cook a recipe if there are sufficient ingredients. The user will also indicate how many pax this recipe would be cooked for.
-
-##### Implementation 
-When the user attempts to cook `Chicken Salad` recipe from `Kitchen Helper`, the `Kitchen Helper`, `Parser` and `cookRecipeCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `cookrecipe /n Chicken Salad /p 1`.
-    
-    1. A `UI` object will be created and it will call `UI#getUserCommand()` method to take in the input that the user has keyed in. 
-    1. A `String` object will be returned and saved into the `userCommandInput` variable in `Kitchen Helper`. 
-    1. The variable `userCommandInput` is being parsed into the `Parser` class as an argument for this method `Parser#parseUserCommand()`.
-   
-    ![Cook Recipe State 1](images/cookRecipeState1.png)
-    
-2. The command inserted by the user is being parsed into the `Parser` and a new `Command` object is being created. 
-    
-    1. The variable `userCommandInput` will be identified as `cookrecipe` in the `Parser#parseUserCommand()`.The `Parser#prepareCookRecipe()` is being called to prepare the `userCommandInput` string to create a `CookRecipeCommand` object.
-    
-    ![Cook Recipe State 2](images/cookRecipeState2.png)
-    
-3. The command is now being executed.
-
-    1. The `CookRecipeCommand#execute()` will be called.
-    1. The `CookRecipeCommand#cookRecipe()` is called and it checks whether the recipe inputted by the user exists by calling the `CookRecipeCommand#checkIfRecipeExists()` method.
-    1. If recipe exists, the `CookRecipeCommand#checkIfRecipeExists()` method will return the index of the recipe, else it will return a number that is bigger than the size of `recipelist`. In this case, the recipe `Chicken Salad` exists, so it will return the index of the recipe 
-    1. Next, it is to check if there are sufficient non-expiring ingredients to be deducted from the ingredients' inventory to cater for the number of pax for the specific recipe by calling `CookRecipeCommand#checkForSufficientIngredients()` and `CookRecipeCommand#checkNotExpiredIngredientQty()` which their results are saved into `sufficientIngr` and `suffButLessExpiredIngr` boolean values respectively. 
-        ![Cook Recipe Sequence Diagram Part 2](images/cookRecipeCommandSequenceDiagramPart2.png)
-    1. With respect to the point 4 above, the following cases may happen and has been summarised at the image above:
-       1. Case 1: If both `sufficientIngr` and `suffButLessExpiredIngr` return true
-            1. `CookRecipeCommand#deductIngredients()` will be called to deduct the ingredients in the ingredients' inventory.
-            1. Then, `Storage#saveIngredientData()` will be called to save the current `ingredientsList` into an output file.
-       2. Case 2:  If `sufficientIngr` returns true but `suffButLessExpiredIngr` returns false or both `sufficientIngr` and `suffButLessExpiredIngr` return false and the size of `expiredIngrNames` is not zero
-            1. `CookRecipeCommand#craftExpiredList()` will be called to craft the list of expired ingredients which will be returned to tell the users the ingredients that are expired. 
-    
-    The following image shows the state diagram for the command execution:
-        ![Cook Recipe State 3](images/cookRecipeState3.png)
-        
-4. The details will then be printed onto the console using `Ui#showResultToUser(result)`.
-
-The following shows the full sequence diagram for this command:
-
-![Cook Recipe Sequence Diagram](images/cookRecipeCommandSequenceDiagram.png)
-
-Other than reducing the quantity of ingredients if the recipe can be cooked successfully, `CookRecipeCommand` has an additional feature that is linked to [Display Expenditure](#451-display-expenditure) which will add the total cost of cooking this recipe into the total expenditure. 
-
-##### Design considerations
-Aspect: Preparing the deduction of ingredients when cooking a recipe
-
-Alternative  1 (current choice): Checks for existence of recipe, existence of ingredients for the specified recipe and sufficiency of ingredients
-
-|   |   |
-|---|---|
-|**Pros**| Minimizes erroneous deduction of insufficient and nonexistent ingredients |
-|**Cons**|Additional computation and overhead |
-
-Alternative 2: Deductions are to be made to existing and available ingredients and users are notified when there are insufficient ingredients
-
-|   |   |
-|---|---|
-|**Pros**| Lesser overhead as there is lesser checks to be done
-|**Cons**| Hidden bugs and exceptions have to be well-covered to ensure that the deduction would be of the right value
-
-Aspect: Searching for the corresponding ingredients of a recipe/ Searching through list of recipes to check for existence of recipe
-Alternative 1 (current choice): Linear search, iterate through the arraylist of ingredients/ recipes and checking
-
-|   |   |
-|---|---|
-|**Pros**| Lesser use of complex data structure will save memory |
-|**Cons**| Not optimal as search will be O(n), larger amount of data may take a longer time |
-
-Alternative 2: building an index on the first letter of the recipe name
-
-|   |   |
-|---|---|
-|**Pros**| More efficient search as pool of search space would be significantly smaller
-|**Cons**| Needs to be constantly maintained which incurs overhead.
-
-[&#8593; Return to Top](#developer-guide)
-
-#### 4.2.4. Delete a specific recipe
-The deletion feature for specific recipes allows the user to delete recipes either by the name or index of the recipe. 
+#### 4.2.3. Editing of Profile
+User can anytime go back to edit a profile created in the past such as
+editing physique data.
 
 ##### Implementation
-When the user attempts to delete the `Chicken Rice` recipe from Kitchen Helper, the `Kitchen Helper`, `Parser` and `DeleteRecipeCommand` class will be called upon. The following sequence of steps will then occur: 
-1. The user keyed in `deleterecipe /n Chicken Rice`.
-    
-    1. A `UI` object will be created and it will call `UI#getUserCommand()` method to take in the input that the user has keyed in. 
-    1. A `String` object will be returned and saved into the `userCommandInput` variable in `Kitchen Helper`. 
-    1. The variable `userCommandInput` is being parsed into the `Parser` class as an argument for this method `Parser#parseUserCommand()`.
-    
-    ![Delete Recipe State 1](images/deleteRecipeState1.png)
-    
-2. The command inserted by the user is being parsed into the `Parser` and a new `Command` object is being created. 
-    
-    1. The variable `userCommandInput` will be identified as `deleterecipe` in the `Parser#parseUserCommand()`.The `Parser#prepareDeleteRecipe()` is being called to prepare the `userCommandInput` string to create a `DeleteRecipeCommand` object.
-    
-    ![Delete Recipe State 1](images/deleteRecipeState2.png)
-    
-3. The command is now being executed.
-    
-    1. The `DeleteRecipeCommand#execute()` will be called.
-    1. As this is a deletion by recipe name, the `recipeIndex` variable is set as null. As the variable is null, `DeleteRecipeCommand#deleteRecipeByName()` will be called.
-    1. Next, the `DeleteRecipeCommand#getRecipeIndex()` to get the index based on the recipe name that the user has inputted. With the given index, `DeleteRecipeCommand#deleteRecipe()` will be called to delete the recipe. 
-    1. Lastly, a String called `feedbackToUser` will be returned to the user to inform the user of the outcome of the command. 
-    
-    The following image shows the state diagram for the command execution:
+When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, 
+Command and CommandResult class will be called upon. The following sequence of steps will then occur:
 
-    ![Delete Recipe State 1](images/deleteRecipeState3.png)
-    
-4. The details will then be printed onto the console using `Ui#showResultToUser(result)`.
+1. User executes `edit /w 60`
+    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
+    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
+    1. `ProfileParser.parseCommand()` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
+1. Creation of command object.
+    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `EditProfile`.
+1. Executing Command
+    1. `ProfileSession` calls `EditProfile.execute()` with the rest of parsed input.
+    1. `EditProfile` calls `ProfileParser.extractCommandTagAndInfo()` to parse the arguments to identify the tags.
+    1. `EditProfile` creates and returns a new `Profile` Object with the parsed information.  
+1. Prompting result to user.
+    1. `ProfileSession` calls `EditProfile.getCommandResult()` to get the `CommandResult` object.
+    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
 
-The following shows the full sequence diagram for this command:
+All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
+The following sequence diagram shows how the new command works
 
-![Delete Recipe Sequence Diagram](images/deleteRecipeSequenceDiagram.png)
+##### Design considerations:
+Parsing of the user’s input command:
 
-##### Design Considerations
-+ Aspect 1: How is the `DeleteRecipeCommand` initialise. <br>
-    + Alternative 1 (Current Choice): Usage of 2 constructors <br>
-        
-        |     |     |
-        |-----|-----|
-        |**Pros** | This gives us more flexibility on what object can be created with different variables since there are two methods of recipe deletion. |  
-        |**Cons** | There is an overload of constructors.|
-        
-    + Alternative 2: Usage of 1 constructor <br>
-    
-        |     |     |
-        |-----|-----|
-        |**Pros** |The Parser can call for one main default constructor. |
-        |**Cons** | The single constructor will need to deal with 2 different methods of deletion, causing the constructor to have more than one purpose.|
-    
-    In the end, for `aspect 1`, we have chosen `alternative 1` as there are two different types of deletion, it would be simpler and increase cohesion as it is more easier to express these constructors' functionality at a higher level.
+- Alternative 1 (current choice): User’s command is split into size 2 array first
+containing command type and command arguments. Then arguments are split
+into command tag and information pairs.  
 
-+ Aspect 2: Deletion by both index and name for recipes
-    + Alternative 1: Deletion by index only
-    
-        |     |     |
-        |-----|-----|
-        |**Pros**|A very specific recipe can be deleted.|
-        |**Cons**|Users will not be able to delete the recipe by name.| 
-    
-    + Alternative 2 (Current Choice): Deletion by both index and name 
-    
-        |     |     |
-        |-----|-----|
-        |**Pros**|Users will be able to delete by recipe's name and index. As the recipe names are specific, it will be easier to get the recipe from list of recipe by getting the index from the recipe name given or the index given by the user.|
-        |**Cons**|There may be more overhead as there is a need to find the index of the recipe if the user has given the recipe name for deletion. | 
-    
-    In the end, for `aspect 2`, we have chosen `alternative 2` which is to delete by index and name for recipes as the recipe names are unique when they are added, hence the users will be able to delete that specific recipe.
-    
+|     |     |
+|-----|-----|
+|**Pros** | Command tags do not have to follow a fixed order.|
+|**Cons** | It takes multiple steps in parsing the command.|
+
+- Alternative 2: User’s command is divided by space
+                 
+|     |     |
+|-----|-----|
+|**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
+|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
+
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.2.5. Search for recipe based on keyword(s)
-
-The search for recipe feature allows the user to find recipes using a keyword in the recipe’s list.  
-For example, `searchrecipe Chicken` will find all recipes that contain `Chicken`.  
-
+#### 4.2.4. Deletion of Profile
+User can delete a profile created in the past.
 
 ##### Implementation
+When the user attempts to view profile, the ProfileSession, Ui, ProfileParser, 
+Command and CommandResult class will be called upon. The following sequence of steps will then occur:
 
-![SearchRecipeCommand](images/searchrecipe_update.png)
+1. User executes `delete`
+    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
+    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
+    1. `ProfileParser.parseCommand()` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
+1. Creation of Command object.
+    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `DeleteProfile`.
+1. Executing Command
+    1. `ProfileSession` calls `ViewProfile.execute()` with the rest of parsed input.
+    1. `DeleteProfile` returns the null.  
+1. Prompting result to user.
+    1. `ProfileSession` calls `DeleteProfile.getCommandResult()` to get the `CommandResult` object.
+    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
 
-The following steps explained sequence diagram for `searchrecipe` command:  
-1. The user enters `searchrecipe Chicken`.  
-2. `KitchenHelper` calls `Parser#parseUserCommand()`.  
-3. `SearchRecipeCommand` object is created with the keyword passed in.  
-4. `KitchenHelper` calls it own method `executeCommand()` to execute the method in `SearchRecipeCommand#execute()`.  
-5. On `SearchRecipeCommand#execute()`, display the list of recipe's name that matches the keyword.
+All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
 
 ##### Design considerations:
 
-Aspects: How `searchrecipe` executes:  
+Aspects: Status of stored data
 
-- Alternative 1 (current choice): Find if the keyword is part of the substring of the recipe’s name 
-and returns the recipe’s name and the index of recipe in the recipe’s list.  
-
-|     |     |
-|-----|-----|
-|**Pros** | 1. Easy to find similar recipe by their name.|  
-|**Cons** | 1. Only shows the different recipe that contains the keyword.|
-
-- Alternative 2: Find the keyword within the recipe’s ingredient.  
+- Alternative 1 (current choice): call public methods of Storage class to 
+load the profile from hard disk every time the user wants to view profile.
 
 |     |     |
 |-----|-----|
-|**Pros** | 1. More accurate searching of the recipe that uses the ingredients.|  
-|**Cons** | 1. Could be more memory intensive to find if the list is huge.|
+|**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|  
+|**Cons** | Execution time is slow down due to loading the data.|
 
-[&#8593; Return to Top](#developer-guide)
+- Alternative 2: call public methods of Storage class to 
+load the profile from hard disk when user enter Profile Menu.
 
-### 4.3. Chore-related Features
-#### 4.3.1. Addition of chore
-The feature for addition of `chore`s allows the user to add `chore`s to a list to keep track of their completion. The deadline of the `chore` can be a String or Date object.  The status completion of a `chore` is always undone when it is created. 
+|     |     |
+|-----|-----|
+|**Pros** | Execution time is fast.|  
+|**Cons** | Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.|
+
+### 4.3. Diet-related Features
+#### 4.3.1. Listing out all commands: `help`
+The command to list out all help commands is a hard-typed list of commands that indicates to the user all the commands available and how to use them.
 
 ##### Implementation  
-When the user attempts to add a `chore` `buy groceries` with deadline `13/04/2020 09:45`, the `Kitchen Helper`, `Parser` and `AddChoreCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `addchore buy groceries /by 13/04/2020 09:45`.
+When the user types `help` the following sequence occurs. 
+1. The user keys in `help`.
     
-    1. A `UI` object will be created and calls `UI#getUserCommand()`. 
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `addchore`.   
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
     
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string into a suitable format for the addition of `chore` object in `Parser#prepareAddChore()`.
-    1. A `AddChoreCommand` object will be created with parameters `buy groceries` as String description and `13/04/2020 09:45` as Date deadline.
+2. Creation of command object from input
+    1. This will create a DietSessionHelp() instantiation of which the method execute() is called.
     
 3. Executing Command
-    1. The newly created object will call `AddChoreCommand#execute()` which starts the process of adding a chore, thus calling `AddChoreCommand#addChore()`.
-    1. A `Chore` object will be created with the description and deadline that was parsed in step 2. Since the String deadline value is null, the deadline of the `Chore` will be a `Date` object.
-    1. The `Chore` will be added to the `choreList`.
-    1. Then, `Storage#saveChoreData()` will be called to save the current `choreList` into an output file.
-    1. Lastly, a String called `feedbackToUser` containing the outcome of the command will be returned to `KitchenHelper`. 
-
-4. The outcome of the command will then be printed onto the console using `Ui#showResultToUser(result)`.
-
-The following sequence diagram shows how the `AddChoreCommand` works    
-    ![AddChoreCommand](images/AddChoreCommand.png)
-
-##### Design considerations:
-
-- Alternative 1(current implementation): The `Chore` with different deadline types is created by constructor overloading. 
-
-|     |     |
-|-----|-----|
-|**Pros** | It is neater and more OOP. It indicates that both `Chores` with different deadline types have the same object function, but just take in different parameters. |
-|**Cons** | The need to maintain both a String deadline and Date deadline variable within the `Chore` object even though one of them is not used.|
-
-- Alternative 2: Creation of `Chore` object by setting up variables using if-else loop.
-
-|     |     |
-|-----|-----|
-|**Pros** | More basic implementation.|  
-|**Cons** | Less OOP and does not make it obvious that deadline is an essential attribute of a `Chore` object that has two type signatures to choose from. 
-
+    1. The newly created object will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.2. List all chores
-The feature to list `chore`s allows the user to view the `chore`s currently in the `choreList` and their completion statuses. 
+#### 4.3.2. Start recording meal data: `meal`
+The feature allows users to start recording meal data. 
 
 ##### Implementation  
-When the user attempts to list `chore`s, the `Kitchen Helper`, `Parser` and `ListChoreCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `listchore`.  
-    1. A `UI` object will be created and calls `UI#getUserCommand()`. 
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `listchore`.   
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string in `Parser#prepareListChore()` to ensure the parameters are empty, or an exception will be thrown.
-    1. The `ListChoreCommand` object will be created. 
+When the user types `meal /d [date] /t [type]` the following sequence occurs. 
+1. The user keys in `meal /d 2020-05-04 /t breakfast`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a DietSessionCreate() of which the method execute() is called.
+    
 3. Executing Command
-    1. The newly created object will call `ListChoreCommand#execute()` which starts the process of displaying all the chores, thus calling `ListChoreCommand#listChore()`.
-    1. The `choreList` will be looped through, displaying each `Chore` in String format and its corresponding position in the list.
-    1. Lastly, a String called `feedbackToUser` containing the displayed list of chores will be returned to `KitchenHelper`. 
-4. The displayed list of chores will then be printed onto the console using `Ui#showResultToUser(result)`.
+    1. The newly created object will then create an instantiation of a DietSession.
 
-##### Design considerations:
+The sequence diagram below summarizes how creating new diet session works:
 
-- Alternative 1(current implementation): Using for-loop to loop through the `Chore` ArrayList.
-
-|     |     |
-|-----|-----|
-|**Pros** | It is easier to retrieve the position of each `Chore` in the list, just by looking at the iterator value.
-|**Cons** | More basic implementation.|
-
-- Alternative 2: Using ListIterator to loop through the `Chore` ArrayList.
-
-|     |     |
-|-----|-----|
-|**Pros** | Makes use of the Java Collection framework.|  
-|**Cons** | Requires another counter or variable to keep track of `Chore` position in the list.|
+![Load Data Sequence Diagram](pictures/Shukai/CreateDietSession.png)
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.3. Delete a specific chore
-The feature for deletion of `chore`s allows the user to remove the `chore` specified by the index in the list. 
+#### 4.3.2.1. Showing help message: `help`
+The command to list out all help commands is a hard-typed list of commands that indicates to the user all the commands available and how to use them.
 
 ##### Implementation  
-When the user attempts to delete a `chore` by its index, the `Kitchen Helper`, `Parser` and `DeleteChoreCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `deletechore 1`.
-    1. A `UI` object will be created and calls `UI#getUserCommand()`. 
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `deletechore`.   
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string for the deletion of `chore` object in `Parser#prepareDeleteChore()` which ensures the parameter is a single number, or an exception will be thrown. 
-    1. If an exception is caught, an InvalidCommand will be created. Otherwise, a `DeleteChoreCommand` object will be created with parameters `1` as the index to delete.
+When the user types `help` the following sequence occurs. 
+1. The user keys in `help`.
+    
+    1. A `DietSessionUi` instantiation calls `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemHelp() instantiation of which the method execute() is called.
+    
 3. Executing Command
-    1. The newly created object will call `DeleteChoreCommand#execute()` which starts the process of deleting a chore, thus calling `DeleteChoreCommand#deleteChore()`.
-    1. The index is checked to be an index within the `choreList`, then the `Chore` specified by the index in the `choreList` is removed.
-    1. Then, `Storage#saveChoreData()` will be called to save the current `choreList` into an output file.
-    1. Lastly, a String called `feedbackToUser` containing the outcome of the command will be returned to `KitchenHelper`. 
-4. The outcome of the command will then be printed onto the console using `Ui#showResultToUser(result)`.
-
-##### Design considerations:
-
-- Alternative 1(current implementation): Delete `Chore` by specifying index of `Chore` in `choreList`.
-
-|     |     |
-|-----|-----|
-|**Pros** | Quick and easy deletion by using choreList.get() to retrieve Chore to delete. |
-|**Cons** | Lesser alternatives for the user and user would have to identify the index first by executing `listchore` to get index of `Chore` in `choreList`. |
-
-- Alternative 2: Delete `Chore` by specifying `Chore` description or keywords in `Chore` description.
-
-|     |     |
-|-----|-----|
-|**Pros** | More alternatives for user. |  
-|**Cons** |  1. Extra overhead required to search through entire `choreList` to identify `Chore` with similar description. <br> 2. Possible accidental deletion of wrong `Chore` with identical descriptions or keywords. <br> 3. More troublesome for the user to type out exact description of `Chore`. |
-
+    1. The newly created object will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
+    
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.4. Search for chore based on keyword(s)
+#### 4.3.2.2. Adding food items for the current meal: `add`
 
-The search for chore feature allows the user to find chores using a keyword in the chore’s list.  
-For example, `searchchore groceries` will find all chores that contain `groceries`.  
-
-##### Implementation  
-
-![SearchChoreCommand](images/searchchore_update.png)
-
-The following steps explained sequence diagram for `searchchore` command:  
-1. The user enters `searchchore groceries`.  
-2. `KitchenHelper` calls `Parser#parseUserCommand()`.  
-3. `SearchChoreCommand` object is created with the keyword passed in.  
-4. `KitchenHelper` calls it own method `executeCommand()` to execute the method in `SearchChoreCommand#execute()`.  
-5. On `SearchChoreCommand#execute()`, display the list of chore that matches the keyword.
-
-##### Design considerations:
-
-- Alternative 1 (current choice): Find if the keyword is part of the substring of the chore, 
-`[x] buy groceries (by: Tuesday 12pm)`.   
- 
-|     |     |
-|-----|-----|
-|**Pros** | 1. Easily to find by any attributes such as description and date.|  
-|**Cons** | 1. Searching `buy groceries [x]` will fail to show any matching result.|
-
-- Alternative 2: Take in all the predicates given by the user and find using the predicates as a keyword  
-
-|     |     |
-|-----|-----|
-|**Pros** | 1. More accurate searching of the chore is available for the user..|  
-|**Cons** | 1. Requires users to enter more precise predicate keywords which could be more inconvenient.|
-
-[&#8593; Return to Top](#developer-guide)
-
-#### 4.3.5. Mark chore as done
-The feature for marking of `chore` as done allows the user to change the completion status of the `chore` specified by the index in the list to done. 
+The feature allows users to add food items into the current meal session. 
 
 ##### Implementation  
-When the user attempts to mark a `chore` as done, the `Kitchen Helper`, `Parser` and `DoneCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `done 1`.
-    1. A `UI` object will be created and calls `UI#getUserCommand()`. 
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `done`.       
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string for the checking of `chore` object in `Parser#prepareDoneChore()` which ensures the parameter is a single number, or an exception will be thrown. 
-    1. If an exception is caught, an InvalidCommand will be created. Otherwise, a `DoneCommand` object will be created with parameters `1` as the index to check.   
+When the user types `add [food] /c [calories]` the following sequence occurs. 
+1. The user keys in `add bologna /c 123`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemAdd() instantiation of which the method execute() is called.
+    1. The food component and calories component are passed into the constructor of a Food instantiation.
+    
 3. Executing Command
-    1. The newly created object will call `DoneCommand#execute()` which starts the process of marking a chore as done, thus calling `DoneChoreCommand#markChoreDone()`.
-    1. The index is checked to be an index within the `choreList` and completion status of the `Chore` specified by the index is checked to be undone. Otherwise, an exception will be thrown.
-    1. The Chore is then marked as done.
-    1. Then, `Storage#saveChoreData()` will be called to save the current `choreList` into an output file.
-    1. Lastly, a String called `feedbackToUser` containing the outcome of the command will be returned to `KitchenHelper`. 
-4. The outcome of the command will then be printed onto the console using `Ui#showResultToUser(result)`.
+    1. The newly created food object will then be added to an ArrayList<Food>.
 
+[&#8593; Return to Top](#developer-guide)
 
-##### Design considerations:
+#### 4.3.2.3. Listing data for the current meal: `list`
 
-- Similar to DeleteChoreCommand.
+The feature allows users to view all food items in the current meal session. 
 
-#### 4.3.6. Notification for chores warning
-The notification for chores warning runs every time the program starts. It checks the `choreList` for `Chores` that are already overdue or have deadlines approaching in 3 days.
-For example, `take cake out of oven` is overdue since `11/04/2020 15:30`. Deadlines of `Chores` specified in String will not trigger notification warnings.
+##### Implementation  
+When the user types `list` the following sequence occurs. 
+1. The user keys in `list`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemList() instantiation of which the method execute() is called.
+    
+3. Executing Command
+    1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
 
-##### Implementation   
-1. The user starts `KitchenHelper` and `KitchenHelper#run` is called.  
-2. `KitchenHelper` calls `showNotification()`.  
-3. `ChoreNotification` object is created and `ChoreNotification#getNotifications(choreList)` is called.   
-4. The results from `ChoreNotification#hasDateAsDeadline`, `ChoreNotification#isOverdue` and `ChoreNotification#isApproachingDeadline` will be combined.
-    1. `ChoreNotification#hasDateAsDeadline` checks for `Chores` that have Date object type deadline.
-    1. `ChoreNotification#isOverdue` checks for `Chores` that have exceeded their deadline.
-    1. `ChoreNotification#isApproachingDeadline` checks for `Chores` that have deadlines upcoming in the next 3 days.
-5. `ChoreNotification#getNotifications(choreList)` returns the String result containing the notifications to `KitchenHelper` and displays.
+#### 4.3.2.4. Deleting data from the current meal: `delete`
 
-##### Design considerations:
+The feature allows users to remove food items into the current meal session. 
 
-Aspects: How `showNotification` executes:  
+##### Implementation  
+When the user types `delete [Food ID]` the following sequence occurs. 
+1. The user keys in `delete 1`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemDelete() instantiation of which the method execute() is called.
+    
+3. Executing Command
+    1. The Food ID according to the index based on the ArrayList<Food> is deleted.
 
-- Alternative 1 (current choice): Create a function that creates a ChoreNotification class object that gathers the notifications to print. 
+#### 4.3.2.5. Clearing all data from the current meal `clear`
 
-|     |     |
-|-----|-----|
-|**Pros** | More OOP as there is a specific class handling the sole function of notification display. |  
-|**Cons** | Developer has to go into `ChoreNotification` class to find out how to notifications are gathered. |
+The feature allows users to remove food items into the current meal session. 
 
-- Alternative 2: Create the methods to gather notifications in `KitchenHelper.java`
+##### Implementation  
+When the user types `clear` the following sequence occurs. 
+1. The user keys in `clear`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemClear() instantiation of which the method execute() is called.
+    
+3. Executing Command
+    1. The ArrayList Clear method is called and removes all Food entries from the ArrayList.
 
-|     |     |
-|-----|-----|
-|**Pros** | More basic implementation. |  
-|**Cons** | Less OOP and the `KitchenHelper` main class will be overpopulated with methods that do not concern the overall running of the application.|
+#### 4.3.2.6. Stopping the recording of meal data: `end`
+
+The feature allows users to end the current meal session and return back to the meal manager.
+
+##### Implementation  
+When the user types `end` the following sequence occurs. 
+1. The user keys in `end`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Exiting of inputLoop()
+    The inputLoop() exits when userInput.equals("end").
+
+#### 4.3.3. List all past diet sessions: `list`
+
+The feature allows users to view all past created diet sessions.
+
+##### Implementation  
+When the user types `list` the following sequence occurs. 
+1. The user keys in `list`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. This will create a FoodItemList() instantiation of which the method execute() is called.
+    
+3. Executing Command
+    1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
+
+#### 4.3.4. Edit a past diet session: `edit`
+
+The feature allows users to edit previously created diet sessions.
+
+##### Implementation  
+When the user types `edit [diet session ID]` the following sequence occurs. 
+1. The user keys in `edit 1`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. A DietSessionEdit() command class instantiation is created and the execute() method is called.
+    
+3. Executing Command
+    1. This will call readDietSession() from storage.diet.Storage and it reads the file stored at saves/diet.
+    1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
+
+The sequence diagram below summarizes how editing Diet session works:
+
+![Load Data Sequence Diagram](pictures/Zeon/DietSessionEdit.png)
+#### 4.3.5. Edit a past diet session: `delete`
+
+The feature allows users to delete previously created diet sessions.
+
+##### Implementation  
+When the user types `delete [diet session ID]` the following sequence occurs. 
+1. The user keys in `delete 1`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. A DietSessionDelete() command class instantiation is created and the execute() method is called.
+    
+3. Executing Command
+    1. This will delete the diet session at index 1 based on the `list` command.
+
+#### 4.3.6. Edit a past diet session: `clear`
+
+The feature allows users to clear all previously created diet sessions.
+
+##### Implementation  
+When the user types `clear` the following sequence occurs. 
+1. The user keys in `clear`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of command object from input
+    1. A DietSessionClear() command class instantiation is created and the execute() method is called.
+    
+3. Executing Command
+    1. This will iterate through every file in saves/diet/ and delete it.
+
+#### 4.3.7. Edit a past diet session: `end`
+
+The function returns user back to the main menu of The Schwarzenegger.
+
+##### Implementation  
+When the user types `end` the following sequence occurs. 
+1. The user keys in `end`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Exiting of inputLoop()
+    The inputLoop() exits when userInput.equals("end").
 
 
 [&#8593; Return to Top](#developer-guide)
@@ -931,9 +632,12 @@ Aspects: How `showNotification` executes:
 ### 4.4. Workout-related Features
 #### 4.4.1. Creation of new workout session
 
-Users can create a new workout session The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command or IO related errors. The action will be aborted. If the creation is successful, the user will go into the new workout session to edit the exercises in that session.
+Users can create a new workout session. The failure to do so will trigger an exception where the user will be notified 
+of the reason, e.g. invalid command or IO related errors. The action will be aborted. If the creation is successful, 
+the user will go into the new workout session to edit the exercises in that session.
 
-The user can specify tags for the session. Creation time, last edit time and saving file name will be auto generated by the application and saved. 
+The user can specify tags for the session. Creation time, last edit time and saving file name will be auto generated 
+by the application and saved. 
 
 ##### Implementation
 
@@ -972,12 +676,88 @@ Parsing of the user’s input command:
 |**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
 |**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
 
-- Alternative 2: Multiple prompts for user’s input of a recipe name and ingredient(s)
+- Alternative 2: Multiple prompts for user’s input of a workout data
 
 |     |     |
 |-----|-----|
 |**Pros** | Users would not have to make sure that their command is syntactically right.|  
 |**Cons** | The constant prompting could subject the application to a negative experience in the difficulty to use the commands.|
+
+[&#8593; Return to Top](#developer-guide)
+#### 4.4.1.1. Adding an exercise
+
+Users can add a new exercise. The failure to do so will trigger an exception where the user will be notified of 
+the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
+a new exercise will be added to the exerciselist.
+
+##### Implementation
+
+When the user attempts to create a new workout session, the Ui, WorkoutManagerParser 
+and CommandLib class will be accessed and the following sequence of 
+actions are called to return a command object NewWs.
+
+1. User executes `add benchpress /n 6 /w 120`
+     1. `WorkoutSession` calls `Ui.getUserCommand()` to receive user input.
+     2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
+1. Creation of command object.
+     1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `WorkoutSessionAdd`.
+1. Executing Command
+    1. `WorkoutManager` calls `WorkoutSessionAdd.execute()` with the rest of parsed input.
+    2. `WorkoutSessionAdd` parse the arguments to identify the repetitions and weight for the exercise.
+    3. `WorkoutSessionAdd` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
+1. Based on `ExecutionResult`, correct response will be be printed to user.
+
+All description, warnings and response will be handled by `ui` to ensure consistence across the app.
+The following sequence diagram shows how the add command works
+
+The sequence diagram below summarizes how creating new workout session works:
+![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
+
+[&#8593; Return to Top](#developer-guide)
+#### 4.4.1.2. Deleting an exercise
+
+Users can delete an exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
+the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
+a new exercise will be added to the exerciselist.
+
+##### Implementation
+
+When the user attempts to create a new workout session, the Ui, WorkoutManagerParser 
+and CommandLib class will be accessed and the following sequence of 
+actions are called to return a command object NewWs.
+
+1. User executes `add benchpress /n 6 /w 120`
+     1. `WorkoutSession` calls `Ui.getUserCommand()` to receive user input.
+     2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
+1. Creation of command object.
+     1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `WorkoutSessionAdd`.
+1. Executing Command
+    1. `WorkoutManager` calls `WorkoutSessionAdd.execute()` with the rest of parsed input.
+    2. `WorkoutSessionAdd` parse the arguments to identify the repetitions and weight for the exercise.
+    3. `WorkoutSessionAdd` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
+1. Based on `ExecutionResult`, correct response will be be printed to user.
+
+All description, warnings and response will be handled by `ui` to ensure consistence across the app.
+The following sequence diagram shows how the add command works
+
+The sequence diagram below summarizes how creating new workout session works:
+![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
+
+[&#8593; Return to Top](#developer-guide)
+#### 4.4.1.3. Listing all exercises in this session
+
+
+[&#8593; Return to Top](#developer-guide)
+#### 4.4.1.4. Allowing users to view help commands
+
+
+[&#8593; Return to Top](#developer-guide)
+#### 4.4.1.5. Searching for related exercises
+
+
+[&#8593; Return to Top](#developer-guide)
+#### 4.4.1.6. Ending the workout session
+
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.2. Listing past workout sessions
@@ -1185,115 +965,32 @@ in the meta info file.
 [&#8593; Return to Top](#developer-guide)
 
 ### 4.5. Recommendations
-#### 4.5.1. Display Expenditure
-The feature for displayexpenditure allows the user to keep track of their total expenditure and the amount they used in their cooking each week.
-
-##### Implementation  
-When the user attempts to display `expenditure`, the `Kitchen Helper`, `Parser` and `DisplayExpenditureCommand` class will be called upon. The following sequence of steps will then occur:
-1. The user keyed in `displayexpenditure`.
-    1. A `UI` object will be created and calls `UI#getUserCommand()`. 
-    1. Input will be parsed in `Parser#parseUserCommand()` and identified with the keyword `displayexpenditure`.   
-2. Parsing of user input and creation of command object
-    1. This will automatically trigger the parsing of the user’s input string in `Parser#prepareDisplayExpenditure()` to ensure the parameters are empty, or an exception will be thrown.
-    1. The `DisplayExpenditureCommand` object will be created. 
-3. Executing Command
-    1. The newly created object will call `DisplayExpenditureCommand#execute()` which will format the expenditure information into how it will be displayed.
-    1. Lastly, a String called `feedbackToUser` containing the information to display will be returned to `KitchenHelper`. 
-4. The expenditure information will then be printed onto the console using `Ui#showResultToUser(result)`.
-
-##### Design considerations:
-
-- Alternative 1(current implementation): Create a class to handle display of expenditure.
-
-|     |     |
-|-----|-----|
-|**Pros** | More OOP. `displayexpenditure` is a supported user command so it should have its own class for its specific function just like other commands. |
-|**Cons** | Very abstract method and a lot of effort in order to print the value of two variables.|
-
-- Alternative 2: Have a method to display expenditure in `Parser` class.
-
-|     |     |
-|-----|-----|
-|**Pros** | Simpler and more basic implementation.|  
-|**Cons** | Less OOP and will ruin the code style because its execution would be different from other commands. | 
-
-    
-#### 4.5.2. Expenditure functionality
-The Expenditure function mainly keeps track of two variables, `totalExpenditure` and `amountUsedInCooking`. Total expenditure is the amount spent on purchase of ingredients for the week. Amount used in cooking indicates the price of all the ingredients used for cooking or consumption in the week. The latter variable reflects the extent to which the user makes use of his purchase and hence the amount of expenditure he benefited from.
-
-##### Implementation  
-The values of the variables in Expenditure change in the the following situations:
-
-+ The user executes `addingredient`.  
-    1. During the execution of `Parser#prepareAddIngredient`, `Expenditure#addToExpenditure` retrieves the price and quantity values of the ingredient being added. 
-    1. `totalExpenditure` value increases by the value calculated by `Expenditure#addToExpenditure`. 
-    1. `Storage#saveExpenditureData` saves the updated value.  
-+ The user executes `cookrecipe`.
-    1. During the execution of `CookRecipeCommand#checkIfIngredientExpired`, `Expenditure#addAmountForCooking` retrieves the quantity used in cooking for each ingredient in the recipe. 
-    2. `amountUsedInCooking` value increases by the value calculated by `Expenditure#addAmountForCooking`.
-    1. `Storage#saveExpenditureData` saves the updated value.  
-+ The user executes `deleteingredient`.
-    1. During the execution of `DeleteIngredientCommand#updateNewQuantity` and `DeleteIngredientCommand#deleteIngredient`, `Expenditure#editExpenditure` retrieves the quantity of the ingredient to delete.
-    1. `Expenditure#editExpenditure` first executes `Expenditure#removeFromExpenditure`, which prompts the user whether the user would like to deduct the cost of the ingredient being deleted from the total expenditure, in the case the user is deleting the ingredient due to wrong addition and would not like to count its cost in total expenditure.
-    1. If the user responds with `yes`, the `totalExpenditure` value is decreased by the amount calculated by `Expenditure#changePrice`.
-    1. If the user responds with `no`, `Expenditure#editExpenditure` will then execute `Expenditure#addToAmountUsed`, which prompts the user whether the user would like to add the cost of the ingredient being deleted to the amount used in cooking, in the case the user manually deletes ingredients that have been cooked or consumed.
-    1. If the user responds with `yes`, the `amountUsedInCooking` value increases by the amount calculated by `Expenditure#changePrice`.
-    1. If the user responds with `no`, the `totalExpenditure` value and `amountUseInCooking` value remain unchanged.
-    1. `Storage#saveExpenditureData` saves the updated value.
-
-
-##### Design considerations:
-
-Aspect: Singleton pattern for Expenditure class.
-
-- Alternative 1(current implementation): Making Expenditure a Singleton.
-
-|     |     |
-|-----|-----|
-|**Pros** | The Expenditure values are accumulated, so the exact same variables have to be used every time. Using only one instance of the Expenditure object allows that. |
-|**Cons** | 1. Increases dependencies as it has a global state. It can be overused and be hard to track. <br> 2. Makes testing harder. |
-
-- Alternative 2: Making Expenditure variables and methods static.
-
-|     |     |
-|-----|-----|
-|**Pros** | Static variables can also update expenditure using the exact same variables.|  
-|**Cons** | Take up memory as they cannot be created and destroyed during program execution. |
-
-- Alternative 3: Loading expenditure values from expenditure output text file to a local variable every time.
-
-|     |     |
-|-----|-----|
-|**Pros** | Also allows the retrieval of most updated value.|  
-|**Cons** | A lot of storing and loading to and from text files, which increases overhead. |
-
-Aspect: Storage of Expenditure data in its own output file.
-
-- Alternative 1(current implementation): Storage in its own Expenditure output file.
-
-|     |     |
-|-----|-----|
-|**Pros** | Neater to have a specific output file solely for Expenditure data. |
-|**Cons** | Create an entire storage function and output file for three variables. |
-
-- Alternative 2: Storage together with Chore data. 
-
-|     |     |
-|-----|-----|
-|**Pros** | Does not require additional storage implementation and save space not creating another file. |
-|**Cons** | Whenever save Expenditure data, the whole data file overwritten and need to loop through entire choreList to save Chore data with the new Expenditure data.|
 
 [&#8593; Return to Top](#developer-guide)
+### 4.6. Storage
+Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called /saves.
+#### 4.6.1. Storage for profile
 
-### 4.6. Logging
+#### 4.6.2. Storage for diet
+Storage for diet saves diet sessions created as individual files sorted based on the time created in the /saves/diet directory. Each diet session file is created as follows:
+- Each file is created as a json file and named as `[date] [tag].json`.
+- A corresponding file is updated in the local file when the user edits a diet session by calling DietSessionEdit.execute().
+- A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
+
+##### Implementation
+Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
+
+#### 4.6.3. Storage for workout
+
+
+### 4.7. Logging
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
 
-The `java.util.logging` package in Java is used for logging. The logging mechanism can be managed from the `KitchenHelper` class through the `kitchenLogs` logger object.
+The `java.util.logging` package in Java is used for logging. The logging mechanism can be managed from the `SchwarzeneggerLogger` class through the `logger` attribute.
 
-All control of the logger for the application can be viewed/ altered in the `setUpLogger()` method. The current settings for the logger are as follow:
+All control of the logger for the application can be viewed/ altered in the `initSchwarzeneggerLogger()` method. The current settings for the logger are as follow:
 
-- All logs of `Level.SEVERE` level will be shown on the console when an input/ program flow has caused a possible disruption to the execution of the program. (See the levels of logging below)
-- All information above ‘Level.FINE’ level is logged into a log file, `KitchenLogs.log`.
+- All information is logged into a log file, `SchwarzeneggerLogs.log`.
 - Logging is made to be displayed in the `SimpleFormatter` style where the date, class and error description are logged.
 
 Logging Levels:
@@ -1306,9 +1003,10 @@ Logging Levels:
 Additional logging can be done by adding the calling of the global logger and invoking the function `log()`. This will ensure that all loggings will be made to the same file across the various classes. 
 
 An example is shown below:
+
 ```
-public static final Logger kitchenLogs = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-kitchenLogs.log(Level.WARNING, description_of_warning_here, e.toString());
+public static final Logger logger = SchwarzenggerLogger.logger;
+logger.log(Level.WARNING, description_of_warning_here, e.toString());
 ```
 
 [&#8593; Return to Top](#developer-guide)
@@ -1321,8 +1019,6 @@ __Target user profile__:
 * Can type fast.    
 * Comfortable with using command line interface.  
 * Gyms regularly
-
-__Value proposition__: Manage food inventory quickly compared to a typical mouse or graphic user interface driven application which saves time and makes it more convenient.  
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -1342,29 +1038,6 @@ __Value proposition__: Manage food inventory quickly compared to a typical mouse
 
 ### Appendix C: Value proposition - Use cases
 
-(For all use cases below, the __System__ is `Kitchen Helper` and the __Actor__ is the `user`, unless otherwise stated)
-```
-Use case: UC01 - Add an ingredient
-MSS:
-1. User purchases an ingredient.
-2. User wants to add to System for tracking purposes.
-3. System adds the ingredient.
-Use case ends.
-
-Extensions:
-2a. System detects invalid format in the entered data.
-  2a1. System throws invalid input format and shows a valid format example.
-  Use case resumes at step 2.
-2b. System detects zero quantity in the entered data.
-  2b1. Systems alerts you to enter a quantity more than zero.
-  Use case resumes at step 2.
-2c. System detects a expired expiry date in the entered data.
-  2c1. System alerts you that Expired ingredient detected in input. Please enter a non-expired expiry
-       date.
-  Use case resumes at step 2.
-```
-<br>
-
 [&#8593; Return to Top](#developer-guide)
 
 ### Appendix D: Non-Functional Requirements
@@ -1379,9 +1052,6 @@ Extensions:
 
 ### Appendix E: Glossary
 
-* Category - The group of the ingredient belongs to
-* Price - Unit cost of a single quantity
-* Expiry - The expiry date of the ingredient
 * *Mainstream OS* - Windows, Linux, Unix, OS-X  
  
 [&#8593; Return to Top](#developer-guide)

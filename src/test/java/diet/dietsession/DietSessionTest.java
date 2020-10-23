@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DietSessionTest {
     static final String FILEPATH = "/saves/diet/";
 
-    /*@Test
+    /* @Test
     void testSaveDietSession_noInput_returnsDietSession() throws FileNotFoundException {
         SchwarzeneggerLogger.initSchwarzeneggerLogger();
         DietManagerUi dietManagerUi = new DietManagerUi();
@@ -21,5 +21,7 @@ public class DietSessionTest {
         ds.saveToFile();
         assertEquals(ds, storage.readDietSession(dietManagerUi.extractMeal(null) + " "
                 + dietManagerUi.extractDate(null) + ".json"));
-    }*/
+    }
+
+     */
 }

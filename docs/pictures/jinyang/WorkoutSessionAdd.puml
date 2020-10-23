@@ -1,0 +1,21 @@
+@startuml
+actor user
+user -> WorkoutSession : add
+activate WorkoutSession
+
+WorkoutSession -> CommandLib : get()
+activate CommandLib
+CommandLib -> WorkoutSession : Command
+deactivate CommandLib
+
+WorkoutSession -> WorkoutSessionAdd : execute()
+activate WorkoutSessionAdd
+
+WorkoutSessionAdd -> WorkoutSession.Storage : writeToFile()
+activate WorkoutSession.Storage
+WorkoutSession.Storage --> WorkoutSessionAdd
+deactivate WorkoutSession.Storage
+
+WorkoutSessionAdd --> WorkoutSession
+deactivate WorkoutSessionAdd
+@enduml

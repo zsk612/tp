@@ -1,28 +1,24 @@
 package ui.diet.dietmanager;
 
+import ui.CommonUi;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DietManagerUi {
+public class DietManagerUi extends CommonUi {
+
+    private static CommonUi printer = new CommonUi();
 
     public static void printOpening() {
-        System.out.println("You're now in diet manager!");
+        showUser("You're now in diet manager!");
     }
 
     public static void printBye() {
-        System.out.println("Exiting diet manager!!");
-    }
-
-    public String getInput() {
-        Scanner in = new Scanner(System.in);
-        String check = in.nextLine();
-        assert check != null : "input has to at least be \\n";
-        return check;
+        showUser("Exiting diet manager!!");
     }
 
     /**
@@ -30,7 +26,7 @@ public class DietManagerUi {
      *
      * @param input date string
      * @return date in MMM dd yyyy if the user inputs date in YYYY-MM-DD format;
-     *      else returns original string
+     *         else returns original string
      * @throws DateTimeParseException if the date string input is not a valid date
      */
     public String extractDate(String input) throws DateTimeParseException, IllegalStateException {
@@ -43,13 +39,13 @@ public class DietManagerUi {
             return LocalDate.parse(match).format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
 
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("I do not understand your date input!");
+            showToUser("I do not understand your date input!");
         } catch (NullPointerException e) {
-            System.out.println("It looks like there is no date input");
+            showToUser("It looks like there is no date input");
         }
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-        System.out.println("I've replaced it with today's date.");
+        showToUser("I've replaced it with today's date.");
         return dtf.format(now);
     }
 
@@ -57,23 +53,29 @@ public class DietManagerUi {
         try {
             return input.split("/t")[1].trim();
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Please specify your diet session tag, i.e. breakfast, lunch, dinner");
+            showToUser("Please specify your diet session tag, i.e. breakfast, lunch, dinner");
         } catch (NullPointerException e) {
             System.out.println("It looks like there's no input after /t");
         }
-        System.out.println("Session is tagged as unspecified.");
+        showToUser("Session is tagged as unspecified.");
         return "unspecified";
     }
 
-    public void printLine() {
-        System.out.println("-----------------------------------------");
-    }
+    public static void printHelp() {
+        StringBuilder helpMessage = new StringBuilder();
 
-    public void printStartLoading() {
-        System.out.println("Loading past diet sessions...");
-    }
-
-    public void printFinishLoading() {
-        System.out.println("Loading completed!");
+        helpMessage.append(helpFormatter("List", "list",
+                "Show all past diet session"));
+        helpMessage.append(helpFormatter("Meal", "meal /d date /t tag",
+                "Create a new diet session"));
+        helpMessage.append(helpFormatter("Delete", "delete x",
+                "Delete the diet session indexed at x"));
+        helpMessage.append(helpFormatter("Edit", "edit x",
+                "Edit the diet session indexed at x"));
+        helpMessage.append(helpFormatter("Clear", "clear",
+                "Clear all past diet sessions"));
+        helpMessage.append(helpFormatter("End", "end",
+                "Go back to main menu"));
+        printer.showToUser(helpMessage.toString().trim());
     }
 }
