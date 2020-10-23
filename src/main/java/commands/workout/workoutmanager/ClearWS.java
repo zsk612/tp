@@ -4,6 +4,7 @@ import commands.Command;
 import commands.CommandResult;
 import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
+import models.PastRecordList;
 import storage.workout.WorkOutManagerStorage;
 
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public class ClearWS extends Command {
         if (!checkConfirmation()) {
             return new CommandResult(CLEAR_ABORTED, ExecutionResult.ABORTED);
         }
-        WorkOutManagerStorage.clear();
+        PastRecordList.getInstance().clear();
         return new CommandResult(CLEAR_SUCCESS, ExecutionResult.OK);
     }
 

@@ -7,6 +7,7 @@ import exceptions.SchwarzeneggerException;
 import exceptions.workoutmanager.InsufficientArgumentException;
 import exceptions.workoutmanager.NotANumberException;
 import exceptions.workoutmanager.OutOfArrayException;
+import models.PastRecordList;
 import storage.workout.WorkOutManagerStorage;
 import workout.workoutsession.WorkoutSession;
 
@@ -31,7 +32,7 @@ public class EditWS extends Command {
 
         String filePath;
         try {
-            filePath = WorkOutManagerStorage.edit(index);
+            filePath = PastRecordList.getInstance().edit(index);
         } catch (IndexOutOfBoundsException e) {
             logger.warning("Index Out Of Bounds Exception caught");
             throw new OutOfArrayException();
