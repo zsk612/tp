@@ -3,6 +3,7 @@ package commands.profile;
 import commands.Command;
 import commands.CommandResult;
 import exceptions.SchwarzeneggerException;
+import exceptions.profile.InvalidSaveFormatException;
 import exceptions.profile.RedundantParamException;
 import logger.SchwarzeneggerLogger;
 import profile.Profile;
@@ -44,11 +45,12 @@ public class ViewProfile extends Command {
     public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing View Command");
 
-        Profile profile = storage.loadData();
-        if (profile == null) {
-            return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_VIEW), FAILED);
-        } else {
+        Profile profile;
+        try {
+            profile = storage.loadData();
             return new CommandResult(String.format(MESSAGE_VIEW_PROFILE, profile.toString()));
+        } catch (InvalidSaveFormatException e) {
+            return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_VIEW), FAILED);
         }
     }
 }

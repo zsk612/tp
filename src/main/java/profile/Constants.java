@@ -2,7 +2,6 @@ package profile;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Scanner;
 
 import static ui.CommonUi.LS;
 
@@ -40,11 +39,11 @@ public class Constants {
     public static final String HELP_FORMAT = "%-8s - %s" + LS + "%-8s %s" + LS;
     public static final String MESSAGE_CREATE_PROFILE_ACK = "Got it. Here's a confirmation of your profile:"
             + LS + "%s";
-    public static final String MESSAGE_DELETE_PROFILE = "I've deleted your profile.";
+    public static final String MESSAGE_DELETE_PROFILE = "Alright! I've deleted your profile.";
     public static final String MESSAGE_EDIT_PROFILE_ACK = "Yay. Your profile is edited successfully. "
-            + "Here's your new profile" + LS + "%s";
+            + "Here's your new profile:" + LS + "%s";
     public static final String MESSAGE_EXIT_PROFILE = "Returning to Main Menu...";
-    public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. "
+    public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. " + LS
             + "Please delete it using \"delete\" command before adding a new one.";
     public static final String MESSAGE_PROFILE_NOT_EXIST = "There's no profile to %s. "
             + "Please add a new one using \"add\" command :D";
@@ -53,7 +52,7 @@ public class Constants {
             + "How can I help you today?";
     public static final String MESSAGE_WELCOME_NEW_USER = "Welcome new user to Schwarzenegger! :D" + LS
             + "Please add your profile using \"add\" command under Profile Menu." + LS
-            + "For more information on command syntax, please type \"help\"";
+            + "For more information on command syntax, please type \"help\".";
     public static final String PROFILE_FOLDER = "profile";
     public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + LS + "\tAge: %d" + LS
             + "\tHeight: %d cm" + LS + "\tWeight: %.1f kg" + LS + "\tExpected Weight: %.1f kg"

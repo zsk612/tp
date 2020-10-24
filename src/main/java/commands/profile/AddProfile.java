@@ -2,8 +2,8 @@ package commands.profile;
 
 import commands.Command;
 import commands.CommandResult;
-import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
+import exceptions.profile.InvalidSaveFormatException;
 import logger.SchwarzeneggerLogger;
 import profile.Profile;
 import storage.profile.ProfileStorage;
@@ -50,11 +50,11 @@ public class AddProfile extends Command {
     public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing Add Command");
 
-        ExecutionResult executionResult;
-        Profile profile = storage.loadData();
-        if (profile != null) {
-            executionResult = FAILED;
-        } else {
+        Profile profile;
+        try {
+            profile = storage.loadData();
+            return new CommandResult(MESSAGE_PROFILE_EXIST, FAILED);
+        } catch (InvalidSaveFormatException e) {
             HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_ADD, commandArgs);
             profile = new Profile(
                     extractName(parsedParams),
@@ -64,13 +64,7 @@ public class AddProfile extends Command {
                     extractExpectedWeight(parsedParams)
             );
             storage.saveData(profile);
-            executionResult = OK;
-        }
-
-        if (executionResult == FAILED) {
-            return new CommandResult(MESSAGE_PROFILE_EXIST, FAILED);
-        } else {
-            return new CommandResult(String.format(MESSAGE_CREATE_PROFILE_ACK, profile.toString()));
+            return new CommandResult(String.format(MESSAGE_CREATE_PROFILE_ACK, profile.toString()), OK);
         }
     }
 }

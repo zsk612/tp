@@ -2,8 +2,8 @@ package commands.profile;
 
 import commands.Command;
 import commands.CommandResult;
-import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
+import exceptions.profile.InvalidSaveFormatException;
 import logger.SchwarzeneggerLogger;
 import profile.Profile;
 import storage.profile.ProfileStorage;
@@ -50,13 +50,11 @@ public class EditProfile extends Command {
     public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing Edit Command");
 
-        ExecutionResult executionResult;
-        Profile profile = storage.loadData();
-        if (profile == null) {
-            executionResult = FAILED;
-        } else {
-            HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_EDIT, commandArgs);
+        Profile profile;
+        try {
+            profile = storage.loadData();
 
+            HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_EDIT, commandArgs);
             String name = parsedParams.containsKey("/n") ? extractName(parsedParams) : profile.getName();
             int age = parsedParams.containsKey("/a") ? extractAge(parsedParams) : profile.getAge();
             int height = parsedParams.containsKey("/h") ? extractHeight(parsedParams) : profile.getHeight();
@@ -66,13 +64,10 @@ public class EditProfile extends Command {
 
             profile = new Profile(name, age, height, weight, expectedWeight);
             storage.saveData(profile);
-            executionResult = OK;
-        }
 
-        if (executionResult == FAILED) {
+            return new CommandResult(String.format(MESSAGE_EDIT_PROFILE_ACK, profile.toString()), OK);
+        } catch (InvalidSaveFormatException e) {
             return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_EDIT), FAILED);
-        } else {
-            return new CommandResult(String.format(MESSAGE_EDIT_PROFILE_ACK, profile.toString()));
         }
     }
 }

@@ -12,9 +12,6 @@ import ui.CommonUi;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static profile.Constants.MESSAGE_WELCOME_EXISTING_USER;
-import static profile.Constants.MESSAGE_WELCOME_NEW_USER;
-
 /**
  * A class that is responsible for interacting with user when he/she enters Profile Session.
  */
@@ -23,27 +20,17 @@ public class ProfileSession {
     private CommonUi ui;
     private ProfileStorage storage;
     private ProfileParser profileParser;
-    private Profile profile;
     private ExceptionHandler exceptionHandler;
 
     /**
      * Constructs ProfileManager object.
      */
     public ProfileSession() {
-        try {
-            logger.log(Level.INFO, "initialising ProfileSession object");
-            ui = new CommonUi();
-            storage = new ProfileStorage();
-            profileParser = new ProfileParser();
-            exceptionHandler = new ExceptionHandler();
-            profile = storage.loadData();
-        } catch (SchwarzeneggerException e) {
-            logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
-            ui.showToUser(e.getMessage());
-        } catch (Exception e) {
-            logger.log(Level.WARNING, "processing uncaught exception", e);
-            ui.showToUser(e.toString());
-        }
+        logger.log(Level.INFO, "initialising ProfileSession object");
+        ui = new CommonUi();
+        storage = new ProfileStorage();
+        profileParser = new ProfileParser();
+        exceptionHandler = new ExceptionHandler();
     }
 
     /**
@@ -59,12 +46,6 @@ public class ProfileSession {
      */
     private void start() {
         logger.log(Level.INFO, "starting profile session");
-
-        if (profile == null) {
-            ui.showToUser(MESSAGE_WELCOME_NEW_USER);
-        } else {
-            ui.showToUser(String.format(MESSAGE_WELCOME_EXISTING_USER, profile.getName()));
-        }
     }
 
     /**

@@ -2,8 +2,8 @@ package commands.profile;
 
 import commands.Command;
 import commands.CommandResult;
-import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
+import exceptions.profile.InvalidSaveFormatException;
 import exceptions.profile.RedundantParamException;
 import logger.SchwarzeneggerLogger;
 import profile.Profile;
@@ -46,19 +46,13 @@ public class DeleteProfile extends Command {
     public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing Delete Command");
 
-        ExecutionResult executionResult;
-        Profile profile = storage.loadData();
-        if (profile == null) {
-            executionResult = FAILED;
-        } else {
+        Profile profile;
+        try {
+            profile = storage.loadData();
             storage.saveData(null);
-            executionResult = OK;
-        }
-
-        if (executionResult == FAILED) {
+            return new CommandResult(MESSAGE_DELETE_PROFILE, OK);
+        } catch (InvalidSaveFormatException e) {
             return new CommandResult(MESSAGE_DELETE_NOTHING, FAILED);
-        } else {
-            return new CommandResult(MESSAGE_DELETE_PROFILE);
         }
     }
 }
