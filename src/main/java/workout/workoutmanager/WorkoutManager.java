@@ -49,7 +49,7 @@ public class WorkoutManager {
     }
 
     private void processCommand(String[] commands) throws SchwarzeneggerException {
-        Command command = cl.get(commands[0]);
+        Command command = cl.getCommand(commands[0]);
         CommandResult result = command.execute(Arrays.copyOfRange(commands, 1, commands.length));
         ui.showToUser(result.getFeedbackMessage());
     }

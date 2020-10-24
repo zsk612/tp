@@ -100,7 +100,7 @@ public class DietSession {
      */
     private void processCommand(String input) throws NullPointerException {
         String[] commParts = parser.parse(input);
-        Command command = cl.get(commParts[0]);
+        Command command = cl.getCommand(commParts[0]);
         command.execute(commParts[1].trim(), foodList, storage);
     }
 }

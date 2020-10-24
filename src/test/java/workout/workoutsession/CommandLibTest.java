@@ -18,48 +18,48 @@ class CommandLibTest {
     void get_WorkoutSessionUnrecognisedCommand_returnNull() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
-        assertTrue(cl.get("asdf") instanceof WorkoutSessionWrong);
+        assertTrue(cl.getCommand("asdf") instanceof WorkoutSessionWrong);
     }
 
     @Test
     void get_list_returnListCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
-        assertTrue(cl.get("list") instanceof WorkoutSessionList);
+        assertTrue(cl.getCommand("list") instanceof WorkoutSessionList);
     }
 
     @Test
     void get_delete_returnDeleteCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
-        assertTrue(cl.get("delete") instanceof WorkoutSessionDelete);
+        assertTrue(cl.getCommand("delete") instanceof WorkoutSessionDelete);
     }
 
     @Test
     void get_add_returnAddCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
-        assertTrue(cl.get("add") instanceof WorkoutSessionAdd);
+        assertTrue(cl.getCommand("add") instanceof WorkoutSessionAdd);
     }
 
     @Test
     void get_End_returnEndCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
-        assertTrue(cl.get("end") instanceof WorkoutSessionEnd);
+        assertTrue(cl.getCommand("end") instanceof WorkoutSessionEnd);
     }
 
     @Test
     void get_Search_returnSearchCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
-        assertTrue(cl.get("search") instanceof WorkoutSessionSearch);
+        assertTrue(cl.getCommand("search") instanceof WorkoutSessionSearch);
     }
 
     @Test
     void get_help_returnHelpCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
-        assertTrue(cl.get("help") instanceof WorkoutSessionHelp);
+        assertTrue(cl.getCommand("help") instanceof WorkoutSessionHelp);
     }
 }

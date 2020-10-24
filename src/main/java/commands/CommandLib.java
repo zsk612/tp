@@ -60,6 +60,14 @@ public class CommandLib {
         library = new Hashtable<>();
     }
 
+    public void initMainMenu() {
+        library.put("wrong", new Wrong());
+        library.put(COMMAND_WORD_HELP, new Help());
+        library.put("diet", new ToDiet());
+        library.put("profile", new ToProfile());
+        library.put("workout", new ToWorkout());
+    }
+
     public void initProfileSessionCL() {
         library.put(COMMAND_WORD_HELP, new ProfileHelp());
         library.put(COMMAND_WORD_ADD, new ProfileAdd());
@@ -103,14 +111,6 @@ public class CommandLib {
         library.put("wrong", new DietSessionWrong());
     }
 
-    public void initMainMenu() {
-        library.put("wrong", new Wrong());
-        library.put(COMMAND_WORD_HELP, new Help());
-        library.put("diet", new ToDiet());
-        library.put("profile", new ToProfile());
-        library.put("workout", new ToWorkout());
-    }
-
     public void initDietSessionCL() {
         library.put(COMMAND_WORD_ADD, new FoodItemAdd());
         library.put(COMMAND_WORD_DELETE, new FoodItemDelete());
@@ -121,7 +121,7 @@ public class CommandLib {
         library.put("wrong", new FoodItemWrong());
     }
 
-    public Command get(String keyword) {
+    public Command getCommand(String keyword) {
         if (library.containsKey(keyword)) {
             return library.get(keyword);
         } else {

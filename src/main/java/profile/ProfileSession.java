@@ -83,7 +83,7 @@ public class ProfileSession {
     }
 
     private void processCommand(String[] commParts) throws SchwarzeneggerException {
-        Command command = cl.get(commParts[COMMAND_TYPE_INDEX]);
+        Command command = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
         CommandResult result = command.execute(commParts[COMMAND_ARGS_INDEX], storage);
         ui.showToUser(result.getFeedbackMessage());
     }

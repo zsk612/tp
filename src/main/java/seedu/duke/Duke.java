@@ -81,7 +81,7 @@ public class Duke {
         String response = ui.getCommand("Main Menu").trim();
         String[] dummy = {};
         while (!response.equals("end")) {
-            Command cm = cl.get(response);
+            Command cm = cl.getCommand(response);
             try {
                 CommandResult rs = cm.execute(dummy);
             } catch (SchwarzeneggerException e) {
