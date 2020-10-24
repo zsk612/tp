@@ -1,9 +1,15 @@
 package exceptions;
 
+import logger.SchwarzeneggerLogger;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * A class that deals with handling exceptions.
  */
 public class ExceptionHandler {
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
      * Handles checked exceptions.
@@ -12,6 +18,7 @@ public class ExceptionHandler {
      * @return Error message.
      */
     public static String handleCheckedExceptions(SchwarzeneggerException e) {
+        logger.log(Level.WARNING, "handling Schwarzenegger Exception: " + e.toString());
         return e.getMessage();
     }
 
@@ -22,6 +29,7 @@ public class ExceptionHandler {
      * @return Error message.
      */
     public static String handleUncheckedExceptions(Exception e) {
+        logger.log(Level.WARNING, "handling unchecked exception: " + e.toString());
         return e.toString();
     }
 }

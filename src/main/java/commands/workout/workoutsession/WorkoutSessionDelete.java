@@ -16,6 +16,8 @@ public class WorkoutSessionDelete extends Command {
             if (removeIndex != 0) {
                 exerciseList.exerciseList.remove(removeIndex - 1);
                 storage.writeToStorage(filePath, exerciseList);
+            } else {
+                WorkoutSessionUi.deleteIndexError();
             }
         } catch (IOException e) {
             WorkoutSessionUi.printError();

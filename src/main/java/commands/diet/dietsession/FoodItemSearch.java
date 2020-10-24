@@ -22,15 +22,19 @@ public class FoodItemSearch extends Command {
     @Override
     public void execute(String input, ArrayList<Food> foodList, DietStorage storage) {
         try {
-            ui.showToUser("Here are the search results: ");
             int numberOfResults = 0;
+            StringBuilder searchResult = new StringBuilder();
+            searchResult.append("Here are the search results: \n\t");
             for (Food food : foodList) {
                 if (food.toString().contains(input.trim())) {
-                    System.out.println("\t" + (++numberOfResults) + ". " + food.toString());
+                    //System.out.println("\t" + (++numberOfResults) + ". " + food.toString());
+                    searchResult.append(" " + (++numberOfResults) + ". " + food.toString() + "\n\t");
                 }
             }
             if (numberOfResults == 0) {
                 ui.showToUser("Sorry, there is nothing found in your food list.");
+            } else {
+                ui.showToUser(searchResult.toString().trim());
             }
             logger.log(Level.INFO, "Listed all searched foods in Diet Session");
         } catch (NullPointerException e) {

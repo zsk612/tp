@@ -10,7 +10,7 @@ public class CommonUi {
     protected static final String LINE_PREFIX = "\t ";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
     protected static final String HORIZONTAL_LINE = LINE_PREFIX
-            + "____________________________________________________________";
+            + "______________________________________________________________________________";
     protected static final String MESSAGE_FORMAT_GENERAL = HORIZONTAL_LINE + LS + "%s" + System.lineSeparator()
             + HORIZONTAL_LINE + System.lineSeparator();
 
@@ -47,7 +47,7 @@ public class CommonUi {
             System.out.print(menuName + " >>>>> ");
             inputLine = sc.nextLine();
         }
-        
+
         return inputLine.trim().replaceAll(GREEDY_WHITE_SPACE, " ");
     }
 

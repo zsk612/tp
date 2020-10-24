@@ -44,54 +44,5 @@ public class DietSessionParser {
         return Double.parseDouble(temp[1]);
     }
 
-    /**
-     * Converts the date and time into a LocalDate object.
-     *
-     * @param dateInput Date input string
-     * @return LocalDate object
-     */
-    public LocalDate parseDate(String dateInput) {
 
-        DateTimeFormatter formatterA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter formatterB = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-        DateTimeFormatter formatterC = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-
-        LocalDate date = null;
-        try {
-            date = LocalDate.parse(dateInput, formatterA);
-            logger.log(Level.INFO, "Parsed date and time successfully");
-
-        } catch (DateTimeParseException e) {
-            System.out.println("Invalid input for date and time.");
-            logger.log(Level.WARNING, "Unable to parse date and time");
-        }
-        try {
-            if (date == null) {
-                date = LocalDate.parse(dateInput, formatterB);
-                logger.log(Level.INFO, "Parsed date and time successfully");
-            }
-        } catch (DateTimeParseException e) {
-            System.out.println("Invalid input for date and time.");
-            logger.log(Level.WARNING, "Unable to parse date and time");
-        }
-        try {
-            if (date == null) {
-                date = LocalDate.parse(dateInput, formatterC);
-                logger.log(Level.INFO, "Parsed date and time successfully");
-            }
-        } catch (DateTimeParseException e) {
-            System.out.println("Invalid input for date and time.");
-            logger.log(Level.WARNING, "Unable to parse date and time");
-        }
-        try {
-            if (date == null) {
-                date = LocalDate.parse(dateInput);
-                logger.log(Level.INFO, "Parsed date and time successfully");
-            }
-        } catch (DateTimeParseException e) {
-            System.out.println("Invalid input for date and time.");
-            logger.log(Level.WARNING, "Unable to parse date and time");
-        }
-        return date;
-    }
 }

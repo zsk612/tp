@@ -1,5 +1,7 @@
 package ui.diet.dietmanager;
 
+import diet.DateParser;
+import exceptions.InvalidDateFormatException;
 import ui.CommonUi;
 
 import java.time.LocalDate;
@@ -29,14 +31,15 @@ public class DietManagerUi extends CommonUi {
      *         else returns original string
      * @throws DateTimeParseException if the date string input is not a valid date
      */
-    public String extractDate(String input) throws DateTimeParseException, IllegalStateException {
+    public String extractDate(String input) throws DateTimeParseException, IllegalStateException,
+            InvalidDateFormatException {
         try {
             String dateString = input.split("/t")[0].split(" ", 2)[1].trim();
-            Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
-            Matcher matcher = pattern.matcher(dateString);
-            boolean isValidDate = matcher.find();
-            String match = matcher.group();
-            return LocalDate.parse(match).format(DateTimeFormatter.ofPattern("MM-dd-yyyy"));
+            //Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
+            //Matcher matcher = pattern.matcher(dateString);
+            //String match = matcher.group();
+            return DateParser.parseDate(dateString).format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            //return LocalDate.parse(match).format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
         } catch (IndexOutOfBoundsException e) {
             showToUser("I do not understand your date input!");
@@ -44,12 +47,12 @@ public class DietManagerUi extends CommonUi {
             showToUser("It looks like there is no date input");
         }
         LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         showToUser("I've replaced it with today's date.");
         return dtf.format(now);
     }
 
-    public String extractMeal(String input) {
+    public String extractMeal(String input) throws IndexOutOfBoundsException, NullPointerException {
         try {
             return input.split("/t")[1].trim();
         } catch (IndexOutOfBoundsException e) {

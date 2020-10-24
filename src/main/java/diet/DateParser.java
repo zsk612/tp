@@ -1,4 +1,6 @@
-package workout;
+package diet;
+
+import exceptions.InvalidDateFormatException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -29,13 +31,14 @@ public class DateParser {
             DateTimeFormatter.ofPattern("ddMMyyyy")
     );
 
+
     /**
      * Parses a given string following one of the accepted format into date-time format.
      *
      * @param targetString String input to be parsed.
      * @return Parsed result in the form of LocalDateTime or null if no value parsing is found.
      */
-    public static LocalDateTime parseDate(String targetString) {
+    public static LocalDateTime parseDate(String targetString) throws InvalidDateFormatException {
         for (DateTimeFormatter dtf : dtFormaters) {
             try {
                 return LocalDateTime.parse(targetString, dtf);
@@ -52,6 +55,6 @@ public class DateParser {
             }
         }
 
-        return null;
+        throw new InvalidDateFormatException();
     }
 }

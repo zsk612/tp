@@ -1,6 +1,4 @@
-package exceptions.profile;
-
-import exceptions.SchwarzeneggerException;
+package exceptions;
 
 import static profile.Constants.MESSAGE_INVALID_COMMAND_WORD;
 

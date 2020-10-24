@@ -25,7 +25,7 @@ public class WorkoutSessionUi extends CommonUi {
     }
 
     public static void deleteFormatError() {
-        printer.showToUser("Wrong format, please enter in the format: delete [move ID]");
+        printer.showToUser("Wrong format, please enter in the format:\n\t delete [move ID]");
     }
 
     public static void deleteIndexError() {
@@ -48,11 +48,11 @@ public class WorkoutSessionUi extends CommonUi {
     }
 
     public static void emptyInputError() {
-        System.out.println("Please enter something.");
+        printer.showToUser("Please enter something.");
     }
 
     public static void searchInputError() {
-        printer.showToUser("Wrong format, please enter in the format: search [name of move]");
+        printer.showToUser("Wrong format, please enter in the format:\n\t search [name of move]");
     }
 
     public static void searchResultsEmpty() {

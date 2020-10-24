@@ -24,28 +24,6 @@ public class Storage {
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static File file = null;
 
-    /**
-     * Initialise the database with locally stored data.
-     * If the local file is not found. It creates the relevant file and folder.
-     *
-     * @throws IOException If director or file cannot be created.
-     */
-    public static void initialise(String filePath) throws IOException {
-        /*RuntimeTypeAdapterFactory<Task> taskAdapterFactory = RuntimeTypeAdapterFactory
-                .of(Task.class, "type", true)
-                .registerSubtype(ToDo.class, "Todo")
-                .registerSubtype(Deadline.class, "Deadline")
-                .registerSubtype(Event.class, "Event");*/
-
-        gson = new GsonBuilder().setPrettyPrinting()
-                .create();
-
-        //creates the file
-        String fileName = "saves/workout/" + Integer.toString(1);
-        file = new File(fileName);
-        file.getParentFile().mkdirs();
-        file.createNewFile();
-    }
 
     /**
      * Write the content in TaskList to a local file.

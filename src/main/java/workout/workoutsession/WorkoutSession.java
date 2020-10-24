@@ -2,6 +2,8 @@ package workout.workoutsession;
 
 import commands.Command;
 import commands.CommandLib;
+import exceptions.ExceptionHandler;
+import exceptions.InvalidCommandWordException;
 import logger.SchwarzeneggerLogger;
 import storage.workout.Storage;
 import ui.CommonUi;
@@ -17,18 +19,21 @@ public class WorkoutSession {
     private String filePath = null;
     private boolean[] endWorkoutSession;
     public ExerciseList exerciseList;
-
+    private boolean isNew;
+    private int index;
 
     private transient CommandLib cl;
     private final Storage storage;
     private CommonUi ui;
 
-    public WorkoutSession(String filePath) {
+    public WorkoutSession(String filePath, boolean isNew, int index) {
         this.filePath = filePath;
         this.exerciseList = new ExerciseList();
         this.storage = new Storage();
         this.endWorkoutSession = new boolean[1];
         this.ui = new CommonUi();
+        this.isNew = isNew;
+        this.index = index;
     }
 
     private void setEndWorkoutSessionF() {
@@ -54,14 +59,20 @@ public class WorkoutSession {
 
         while (!endWorkoutSession[0]) {
             try {
-                workoutSessionProcessCommand(ui.getCommand("Workout Menu > Workout Session"));
+                if (isNew) {
+                    workoutSessionProcessCommand(ui.getCommand("Workout Menu > New Workout Session"));
+                } else {
+                    workoutSessionProcessCommand(ui.getCommand("Workout Menu > Workout Session " + index));
+                }
             } catch (NullPointerException e) {
                 WorkoutSessionUi.emptyInputError();
+            } catch (InvalidCommandWordException e) {
+                ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             }
         }
     }
 
-    private void workoutSessionProcessCommand(String input) throws NullPointerException {
+    private void workoutSessionProcessCommand(String input) throws NullPointerException, InvalidCommandWordException {
         String[] commParts = WorkoutSessionParser.workoutSessionParser(input.trim());
         Command command = cl.getCommand(commParts[0]);
         command.execute(commParts, exerciseList, filePath, storage, endWorkoutSession);

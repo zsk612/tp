@@ -2,6 +2,8 @@ package commands.diet.dietmanager;
 
 import commands.Command;
 import diet.dietsession.DietSession;
+import exceptions.ExceptionHandler;
+import exceptions.SchwarzeneggerException;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
@@ -22,14 +24,17 @@ public class DietSessionCreate extends Command {
     public void execute(String input, DietStorage storage) {
 
         try {
-            DietSession ds = new DietSession(ui.extractMeal(input), ui.extractDate(input));
+            String typeInput = ui.extractMeal(input);
+            String dateInput = ui.extractDate(input);
+            DietSession ds = new DietSession(typeInput, dateInput, true, -1);
             assert ds != null;
             logger.log(Level.INFO, "Diet session successfully created");
-            ds.start();
+            ds.start(true, -1);
             saveToFile(storage, ds);
         } catch (IOException e) {
             ui.showToUser("It seems like we ran into some problems saving your session...");
-            logger.log(Level.WARNING, "Diet session failed to save");
+        } catch (SchwarzeneggerException e) {
+            ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
         }
     }
 

@@ -2,14 +2,12 @@ package commands.workout.workoutsession;
 
 import commands.Command;
 import storage.workout.Storage;
-import ui.CommonUi;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import workout.workoutsession.WorkoutSessionParser;
 import workout.workoutsession.exercise.ExerciseList;
 
 
 public class WorkoutSessionSearch extends Command {
-    private static CommonUi printer = new CommonUi();
 
     @Override
     public void execute(String[] inputs, ExerciseList exerciseList,
@@ -27,7 +25,7 @@ public class WorkoutSessionSearch extends Command {
             }
 
             if (searchResult.length() != 0) {
-                printer.showToUser(searchResult.toString().trim());
+                ui.showToUser(searchResult.toString().trim());
             } else {
                 WorkoutSessionUi.searchResultsEmpty();
             }
