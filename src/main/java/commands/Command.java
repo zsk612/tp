@@ -2,7 +2,6 @@ package commands;
 
 import diet.dietsession.Food;
 import exceptions.SchwarzeneggerException;
-import profile.Profile;
 import storage.diet.DietStorage;
 import storage.profile.ProfileStorage;
 import workout.workoutsession.exercise.ExerciseList;
@@ -15,7 +14,7 @@ public abstract class Command {
         return new CommandResult();
     }
 
-    public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
+    public CommandResult execute(String input, ProfileStorage storage) throws SchwarzeneggerException {
         return new CommandResult();
     }
 
@@ -30,9 +29,5 @@ public abstract class Command {
     public void execute(String[] inputs, ExerciseList exerciseList,
                         String filePath, storage.workout.Storage storage, boolean[] hasEndedWorkoutSessions) {
         return;
-    }
-
-    public CommandResult getExecutionResult(Profile profile) {
-        return null;
     }
 }

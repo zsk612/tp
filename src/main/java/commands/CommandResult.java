@@ -7,14 +7,6 @@ public class CommandResult {
     private String feedbackMessage;
     private ExecutionResult status;
 
-    public ExecutionResult getStatus() {
-        return status;
-    }
-
-    public String getFeedbackMessage() {
-        return feedbackMessage;
-    }
-
     /**
      * Constructs CommandResult object.
      *
@@ -35,14 +27,11 @@ public class CommandResult {
         this.status = ExecutionResult.OK;
     }
 
-    /**
-     * Overrides toString method of class Object to get string representation of CommandResult object.
-     *
-     * @return String representation of CommandResult object.
-     */
-    @Override
-    public String toString() {
+    public ExecutionResult getStatus() {
+        return status;
+    }
+
+    public String getFeedbackMessage() {
         return feedbackMessage;
     }
 }
-

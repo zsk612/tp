@@ -21,20 +21,8 @@ import static profile.Constants.MESSAGE_DELETE_PROFILE;
 /**
  * A representation of the command for deleting user profile.
  */
-public class DeleteProfile extends Command {
+public class ProfileDelete extends Command {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-
-    /**
-     * Constructs DeleteCommand object inheriting abstract class Command.
-     *
-     * @param commandArgs Command arguments from user's input.
-     * @throws RedundantParamException If parameters are provided to Delete Command.
-     */
-    public DeleteProfile(String commandArgs) throws RedundantParamException {
-        if (!commandArgs.isEmpty()) {
-            throw new RedundantParamException(COMMAND_WORD_DELETE);
-        }
-    }
 
     /**
      * Overrides execute method of class Command to execute the delete profile command requested by user's input.
@@ -43,8 +31,12 @@ public class DeleteProfile extends Command {
      * @return Result of command execution.
      */
     @Override
-    public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
+    public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing Delete Command");
+
+        if (!commandArgs.isEmpty()) {
+            throw new RedundantParamException(COMMAND_WORD_DELETE);
+        }
 
         Profile profile;
         try {

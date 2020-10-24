@@ -1,8 +1,9 @@
 package profile;
 
 import commands.Command;
+import commands.CommandLib;
 import commands.CommandResult;
-import commands.profile.EndProfile;
+import exceptions.EndException;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
@@ -11,6 +12,9 @@ import ui.CommonUi;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static profile.Constants.COMMAND_ARGS_INDEX;
+import static profile.Constants.COMMAND_TYPE_INDEX;
 
 /**
  * A class that is responsible for interacting with user when he/she enters Profile Session.
@@ -21,9 +25,10 @@ public class ProfileSession {
     private ProfileStorage storage;
     private ProfileParser profileParser;
     private ExceptionHandler exceptionHandler;
+    private CommandLib cl;
 
     /**
-     * Constructs ProfileManager object.
+     * Constructs ProfileSession object.
      */
     public ProfileSession() {
         logger.log(Level.INFO, "initialising ProfileSession object");
@@ -31,6 +36,8 @@ public class ProfileSession {
         storage = new ProfileStorage();
         profileParser = new ProfileParser();
         exceptionHandler = new ExceptionHandler();
+        cl = new CommandLib();
+        cl.initProfileSessionCL();
     }
 
     /**
@@ -52,15 +59,18 @@ public class ProfileSession {
      * Gets user's command and executes repeatedly until user requests to exit Profile Session.
      */
     private void runCommandLoopTillEnd() {
-        Command command = null;
-
         logger.log(Level.INFO, "executing profile session loop");
-        do {
+
+        while (true) {
+            String userCommand = ui.getCommand("Profile Menu");
+            String[] commParts = profileParser.parseCommand(userCommand);
+
             try {
-                String userCommand = ui.getCommand("Profile Menu");
-                command = profileParser.parseCommand(userCommand);
-                CommandResult result = command.execute(storage);
-                ui.showToUser(result.toString());
+                processCommand(commParts);
+            } catch (EndException e) {
+                logger.log(Level.WARNING, "processing ExitException", e);
+                ui.showToUser(exceptionHandler.handleCheckedExceptions(e));
+                break;
             } catch (SchwarzeneggerException e) {
                 logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
                 ui.showToUser(exceptionHandler.handleCheckedExceptions(e));
@@ -68,8 +78,13 @@ public class ProfileSession {
                 logger.log(Level.WARNING, "processing uncaught exception", e);
                 ui.showToUser(exceptionHandler.handleUncheckedExceptions(e));
             }
-        } while (!EndProfile.isEnd(command));
-
+        }
         logger.log(Level.INFO, "exiting profile session loop");
+    }
+
+    private void processCommand(String[] commParts) throws SchwarzeneggerException {
+        Command command = cl.get(commParts[COMMAND_TYPE_INDEX]);
+        CommandResult result = command.execute(commParts[COMMAND_ARGS_INDEX], storage);
+        ui.showToUser(result.getFeedbackMessage());
     }
 }

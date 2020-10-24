@@ -2,6 +2,7 @@ package commands.profile;
 
 import commands.Command;
 import commands.CommandResult;
+import exceptions.SchwarzeneggerException;
 import exceptions.profile.RedundantParamException;
 import logger.SchwarzeneggerLogger;
 import storage.profile.ProfileStorage;
@@ -18,20 +19,8 @@ import static profile.Constants.COMMAND_WORD_VIEW;
 import static profile.Constants.EDIT_PROFILE_FORMAT;
 import static ui.CommonUi.helpFormatter;
 
-public class HelpProfile extends Command {
+public class ProfileHelp extends Command {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-
-    /**
-     * Constructs HelpProfile object inheriting abstract class Command.
-     *
-     * @param commandArgs Command arguments from user's input.
-     * @throws RedundantParamException If parameters are provided to Help Command.
-     */
-    public HelpProfile(String commandArgs) throws RedundantParamException {
-        if (!commandArgs.isEmpty()) {
-            throw new RedundantParamException(COMMAND_WORD_HELP);
-        }
-    }
 
     /**
      * Overrides execute method of class Command to execute help command requested by user's input.
@@ -40,8 +29,12 @@ public class HelpProfile extends Command {
      * @return Result of command execution.
      */
     @Override
-    public CommandResult execute(ProfileStorage storage) {
+    public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing Help Command");
+
+        if (!commandArgs.isEmpty()) {
+            throw new RedundantParamException(COMMAND_WORD_HELP);
+        }
 
         StringBuilder helpMessage = new StringBuilder();
         helpMessage.append(helpFormatter(COMMAND_WORD_ADD, ADD_PROFILE_FORMAT, "Add your new profile"));

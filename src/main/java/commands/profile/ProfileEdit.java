@@ -27,19 +27,9 @@ import static profile.ProfileParser.extractWeight;
 /**
  * A representation of the command for editing profile.
  */
-public class EditProfile extends Command {
+public class ProfileEdit extends Command {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-    private String commandArgs;
-
-    /**
-     * Constructs EditProfile object inheriting abstract class Command.
-     *
-     * @param commandArgs Command arguments from user's input.
-     */
-    public EditProfile(String commandArgs) {
-        this.commandArgs = commandArgs;
-    }
-
+    
     /**
      * Overrides execute method of class Command to execute the edit profile command requested by user's input.
      *
@@ -47,7 +37,7 @@ public class EditProfile extends Command {
      * @return Result of command execution.
      */
     @Override
-    public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
+    public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing Edit Command");
 
         Profile profile;

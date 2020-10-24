@@ -27,18 +27,8 @@ import static profile.ProfileParser.extractWeight;
 /**
  * A representation of the command for adding profile.
  */
-public class AddProfile extends Command {
+public class ProfileAdd extends Command {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-    private String commandArgs;
-
-    /**
-     * Constructs AddProfile object inheriting abstract class Command.
-     *
-     * @param commandArgs Command arguments from user's input.
-     */
-    public AddProfile(String commandArgs) {
-        this.commandArgs = commandArgs;
-    }
 
     /**
      * Overrides execute method of class Command to execute the add profile command requested by user's input.
@@ -47,7 +37,7 @@ public class AddProfile extends Command {
      * @return Result of command execution.
      */
     @Override
-    public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
+    public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing Add Command");
 
         Profile profile;

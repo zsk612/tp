@@ -20,20 +20,8 @@ import static profile.Constants.MESSAGE_VIEW_PROFILE;
 /**
  * A representation of the command for viewing profile.
  */
-public class ViewProfile extends Command {
+public class ProfileView extends Command {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-
-    /**
-     * Constructs ViewCommand object inheriting abstract class Command.
-     *
-     * @param commandArgs Command arguments from user's input.
-     * @throws RedundantParamException If parameters are provided to View Command.
-     */
-    public ViewProfile(String commandArgs) throws RedundantParamException {
-        if (!commandArgs.isEmpty()) {
-            throw new RedundantParamException(COMMAND_WORD_VIEW);
-        }
-    }
 
     /**
      * Overrides execute method of class Command to execute the view profile command requested by user's input.
@@ -42,8 +30,12 @@ public class ViewProfile extends Command {
      * @return Result of command execution.
      */
     @Override
-    public CommandResult execute(ProfileStorage storage) throws SchwarzeneggerException {
+    public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         logger.log(Level.INFO, "executing View Command");
+
+        if (!commandArgs.isEmpty()) {
+            throw new RedundantParamException(COMMAND_WORD_VIEW);
+        }
 
         Profile profile;
         try {

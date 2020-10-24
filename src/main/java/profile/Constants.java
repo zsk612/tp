@@ -42,7 +42,7 @@ public class Constants {
     public static final String MESSAGE_DELETE_PROFILE = "Alright! I've deleted your profile.";
     public static final String MESSAGE_EDIT_PROFILE_ACK = "Yay. Your profile is edited successfully. "
             + "Here's your new profile:" + LS + "%s";
-    public static final String MESSAGE_EXIT_PROFILE = "Returning to Main Menu...";
+    public static final String MESSAGE_END = "Returning to Main Menu...";
     public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. " + LS
             + "Please delete it using \"delete\" command before adding a new one.";
     public static final String MESSAGE_PROFILE_NOT_EXIST = "There's no profile to %s. "
