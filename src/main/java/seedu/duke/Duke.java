@@ -22,14 +22,12 @@ import static profile.Constants.MESSAGE_WELCOME_NEW_USER;
 public class Duke {
     private CommandLib cl;
     private CommonUi ui;
-    private ExceptionHandler exceptionHandler;
     private Logger logger;
 
-    public Duke() {
+    private Duke() {
         cl = new CommandLib();
         cl.initMainMenu();
         ui = new CommonUi();
-        exceptionHandler = new ExceptionHandler();
         logger = SchwarzeneggerLogger.getInstanceLogger();
     }
 
@@ -61,10 +59,10 @@ public class Duke {
             profile = new ProfileStorage().loadData();
         } catch (SchwarzeneggerException e) {
             logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
-            ui.showToUser(e.getMessage());
+            ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
         } catch (Exception e) {
             logger.log(Level.WARNING, "processing uncaught exception", e);
-            ui.showToUser(e.toString());
+            ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
         }
 
         if (profile == null) {
@@ -86,10 +84,10 @@ public class Duke {
                 CommandResult rs = cm.execute(dummy);
             } catch (SchwarzeneggerException e) {
                 logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
-                ui.showToUser(exceptionHandler.handleCheckedExceptions(e));
+                ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             } catch (Exception e) {
                 logger.log(Level.WARNING, "processing uncaught exception", e);
-                ui.showToUser(e.toString());
+                ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
             }
             response = ui.getCommand("Main Menu").trim();
         }

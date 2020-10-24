@@ -11,7 +11,7 @@ public class ExceptionHandler {
      * @param e Checked exceptions in The Schwarzenegger.
      * @return Error message.
      */
-    public String handleCheckedExceptions(SchwarzeneggerException e) {
+    public static String handleCheckedExceptions(SchwarzeneggerException e) {
         return e.getMessage();
     }
 
@@ -21,7 +21,7 @@ public class ExceptionHandler {
      * @param e Unchecked exception in Duke.
      * @return Error message.
      */
-    public String handleUncheckedExceptions(Exception e) {
+    public static String handleUncheckedExceptions(Exception e) {
         return e.toString();
     }
 }

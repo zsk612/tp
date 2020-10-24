@@ -24,7 +24,6 @@ public class ProfileSession {
     private CommonUi ui;
     private ProfileStorage storage;
     private ProfileParser profileParser;
-    private ExceptionHandler exceptionHandler;
     private CommandLib cl;
 
     /**
@@ -35,7 +34,6 @@ public class ProfileSession {
         ui = new CommonUi();
         storage = new ProfileStorage();
         profileParser = new ProfileParser();
-        exceptionHandler = new ExceptionHandler();
         cl = new CommandLib();
         cl.initProfileSessionCL();
     }
@@ -67,16 +65,16 @@ public class ProfileSession {
 
             try {
                 processCommand(commParts);
-            } catch (EndException e) {
-                logger.log(Level.WARNING, "processing ExitException", e);
-                ui.showToUser(exceptionHandler.handleCheckedExceptions(e));
-                break;
             } catch (SchwarzeneggerException e) {
                 logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
-                ui.showToUser(exceptionHandler.handleCheckedExceptions(e));
+                ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
+                
+                if (e instanceof EndException) {
+                    break;
+                }
             } catch (Exception e) {
                 logger.log(Level.WARNING, "processing uncaught exception", e);
-                ui.showToUser(exceptionHandler.handleUncheckedExceptions(e));
+                ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
             }
         }
         logger.log(Level.INFO, "exiting profile session loop");
