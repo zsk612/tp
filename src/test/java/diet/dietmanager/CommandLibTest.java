@@ -17,48 +17,48 @@ public class CommandLibTest {
     void get_DietManagerUnrecognisedCommand_returnNull() {
         CommandLib cl = new CommandLib();
         cl.initDietManagerCL();
-        assertTrue(cl.get("asdf") instanceof DietSessionWrong);
+        assertTrue(cl.getCommand("asdf") instanceof DietSessionWrong);
     }
 
     @Test
     void get_list_returnListCommand() {
         CommandLib cl = new CommandLib();
         cl.initDietManagerCL();
-        assertTrue(cl.get("list") instanceof DietSessionList);
+        assertTrue(cl.getCommand("list") instanceof DietSessionList);
     }
 
     @Test
     void get_delete_returnDeleteCommand() {
         CommandLib cl = new CommandLib();
         cl.initDietManagerCL();
-        assertTrue(cl.get("delete") instanceof DietSessionDelete);
+        assertTrue(cl.getCommand("delete") instanceof DietSessionDelete);
     }
 
     @Test
     void get_new_returnNewCommand() {
         CommandLib cl = new CommandLib();
         cl.initDietManagerCL();
-        assertTrue(cl.get("meal") instanceof DietSessionCreate);
+        assertTrue(cl.getCommand("meal") instanceof DietSessionCreate);
     }
 
     @Test
     void get_clear_returnClearCommand() {
         CommandLib cl = new CommandLib();
         cl.initDietManagerCL();
-        assertTrue(cl.get("clear") instanceof DietSessionClear);
+        assertTrue(cl.getCommand("clear") instanceof DietSessionClear);
     }
 
     @Test
     void get_edit_returnEditCommand() {
         CommandLib cl = new CommandLib();
         cl.initDietManagerCL();
-        assertTrue(cl.get("edit") instanceof DietSessionEdit);
+        assertTrue(cl.getCommand("edit") instanceof DietSessionEdit);
     }
 
     @Test
     void get_help_returnHelpCommand() {
         CommandLib cl = new CommandLib();
         cl.initDietManagerCL();
-        assertTrue(cl.get("help") instanceof DietSessionHelp);
+        assertTrue(cl.getCommand("help") instanceof DietSessionHelp);
     }
 }

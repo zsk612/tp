@@ -1,8 +1,9 @@
 package profile;
 
 import commands.Command;
+import commands.CommandLib;
 import commands.CommandResult;
-import commands.profile.EndProfile;
+import exceptions.EndException;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
@@ -12,8 +13,8 @@ import ui.CommonUi;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static profile.Constants.MESSAGE_WELCOME_EXISTING_USER;
-import static profile.Constants.MESSAGE_WELCOME_NEW_USER;
+import static profile.Constants.COMMAND_ARGS_INDEX;
+import static profile.Constants.COMMAND_TYPE_INDEX;
 
 /**
  * A class that is responsible for interacting with user when he/she enters Profile Session.
@@ -23,27 +24,20 @@ public class ProfileSession {
     private CommonUi ui;
     private ProfileStorage storage;
     private ProfileParser profileParser;
-    private Profile profile;
     private ExceptionHandler exceptionHandler;
+    private CommandLib cl;
 
     /**
-     * Constructs ProfileManager object.
+     * Constructs ProfileSession object.
      */
     public ProfileSession() {
-        try {
-            logger.log(Level.INFO, "initialising ProfileSession object");
-            ui = new CommonUi();
-            storage = new ProfileStorage();
-            profileParser = new ProfileParser();
-            exceptionHandler = new ExceptionHandler();
-            profile = storage.loadData();
-        } catch (SchwarzeneggerException e) {
-            logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
-            ui.showToUser(e.getMessage());
-        } catch (Exception e) {
-            logger.log(Level.WARNING, "processing uncaught exception", e);
-            ui.showToUser(e.toString());
-        }
+        logger.log(Level.INFO, "initialising ProfileSession object");
+        ui = new CommonUi();
+        storage = new ProfileStorage();
+        profileParser = new ProfileParser();
+        exceptionHandler = new ExceptionHandler();
+        cl = new CommandLib();
+        cl.initProfileSessionCL();
     }
 
     /**
@@ -59,30 +53,24 @@ public class ProfileSession {
      */
     private void start() {
         logger.log(Level.INFO, "starting profile session");
-
-        if (profile == null) {
-            ui.showToUser(MESSAGE_WELCOME_NEW_USER);
-        } else {
-            ui.showToUser(String.format(MESSAGE_WELCOME_EXISTING_USER, profile.getName()));
-        }
     }
 
     /**
      * Gets user's command and executes repeatedly until user requests to exit Profile Session.
      */
     private void runCommandLoopTillEnd() {
-        Command command = null;
-
         logger.log(Level.INFO, "executing profile session loop");
-        do {
-            try {
-                String userCommand = ui.getCommand("Profile Menu");
-                command = profileParser.parseCommand(userCommand);
-                profile = command.execute(profile);
-                CommandResult result = command.getExecutionResult(profile);
-                storage.saveData(profile);
-                ui.showToUser(result.toString());
 
+        while (true) {
+            String userCommand = ui.getCommand("Profile Menu");
+            String[] commParts = profileParser.parseCommand(userCommand);
+
+            try {
+                processCommand(commParts);
+            } catch (EndException e) {
+                logger.log(Level.WARNING, "processing ExitException", e);
+                ui.showToUser(exceptionHandler.handleCheckedExceptions(e));
+                break;
             } catch (SchwarzeneggerException e) {
                 logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
                 ui.showToUser(exceptionHandler.handleCheckedExceptions(e));
@@ -90,8 +78,13 @@ public class ProfileSession {
                 logger.log(Level.WARNING, "processing uncaught exception", e);
                 ui.showToUser(exceptionHandler.handleUncheckedExceptions(e));
             }
-        } while (!EndProfile.isEnd(command));
-
+        }
         logger.log(Level.INFO, "exiting profile session loop");
+    }
+
+    private void processCommand(String[] commParts) throws SchwarzeneggerException {
+        Command command = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
+        CommandResult result = command.execute(commParts[COMMAND_ARGS_INDEX], storage);
+        ui.showToUser(result.getFeedbackMessage());
     }
 }

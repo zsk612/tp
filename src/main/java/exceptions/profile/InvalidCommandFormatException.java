@@ -13,7 +13,7 @@ public class InvalidCommandFormatException extends SchwarzeneggerException {
      * @param command Command with invalid format.
      */
     public InvalidCommandFormatException(String command) {
-        super(String.format("%s command format is invalid. Please type \"help\" to see the correct format",
+        super(String.format("%s command format is invalid. Please type \"help\" to see the correct format.",
                 command.toUpperCase()));
     }
 }

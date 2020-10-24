@@ -1,30 +1,15 @@
 package profile;
 
-import commands.Command;
-import commands.profile.AddProfile;
-import commands.profile.DeleteProfile;
-import commands.profile.EditProfile;
-import commands.profile.EndProfile;
-import commands.profile.HelpProfile;
-import commands.profile.ViewProfile;
 import exceptions.profile.InvalidAgeException;
 import exceptions.profile.InvalidCommandFormatException;
-import exceptions.profile.InvalidCommandWordException;
 import exceptions.profile.InvalidHeightException;
 import exceptions.profile.InvalidWeightException;
-import exceptions.profile.RedundantParamException;
 
 import java.util.HashMap;
 
 import static profile.Constants.COMMAND_ARGS_INDEX;
 import static profile.Constants.COMMAND_SPLIT_LIMIT;
 import static profile.Constants.COMMAND_TYPE_INDEX;
-import static profile.Constants.COMMAND_WORD_ADD;
-import static profile.Constants.COMMAND_WORD_DELETE;
-import static profile.Constants.COMMAND_WORD_EDIT;
-import static profile.Constants.COMMAND_WORD_END;
-import static profile.Constants.COMMAND_WORD_HELP;
-import static profile.Constants.COMMAND_WORD_VIEW;
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.GREEDY_WHITE_SPACE;
 
@@ -37,44 +22,14 @@ public class ProfileParser {
      * Parses and returns the Command associated with the user input.
      *
      * @param userInputString User's raw input string.
-     * @return Associated command.
-     * @throws InvalidCommandWordException If command word is invalid.
-     * @throws RedundantParamException If redundant parameters are provided.
+     * @return Size 2 array; first element is the command type and second element is the arguments string..
      */
-    public Command parseCommand(String userInputString) throws InvalidCommandWordException, RedundantParamException {
-        String[] commandTypeAndParams = splitCommandWordAndArgs(userInputString);
-        String commandType = commandTypeAndParams[COMMAND_TYPE_INDEX].toLowerCase();
-        String commandArgs = commandTypeAndParams[COMMAND_ARGS_INDEX];
+    public String[] parseCommand(String userInputString) {
+        String[] split = userInputString.trim().split(GREEDY_WHITE_SPACE, COMMAND_SPLIT_LIMIT);
+        String commandType = split[COMMAND_TYPE_INDEX].toLowerCase();
+        String commandArgs = (split.length == COMMAND_SPLIT_LIMIT ? split[COMMAND_ARGS_INDEX] : EMPTY_STRING);
 
-        switch (commandType) {
-        case COMMAND_WORD_HELP:
-            return new HelpProfile(commandArgs);
-        case COMMAND_WORD_ADD:
-            return new AddProfile(commandArgs);
-        case COMMAND_WORD_DELETE:
-            return new DeleteProfile(commandArgs);
-        case COMMAND_WORD_VIEW:
-            return new ViewProfile(commandArgs);
-        case COMMAND_WORD_EDIT:
-            return new EditProfile(commandArgs);
-        case COMMAND_WORD_END:
-            return new EndProfile(commandArgs);
-        default:
-            throw new InvalidCommandWordException();
-        }
-    }
-
-    /**
-     * Splits raw user's input into command word and command arguments string.
-     *
-     * @param rawUserInput User's raw input.
-     * @return Size 2 array; first element is the command type and second element is the arguments string.
-     */
-    public static String[] splitCommandWordAndArgs(String rawUserInput) {
-        String[] split = rawUserInput.trim().split(GREEDY_WHITE_SPACE,
-                COMMAND_SPLIT_LIMIT);
-
-        return split.length == COMMAND_SPLIT_LIMIT ? split : new String[]{split[COMMAND_TYPE_INDEX], EMPTY_STRING};
+        return new String[]{commandType, commandArgs};
     }
 
     /**

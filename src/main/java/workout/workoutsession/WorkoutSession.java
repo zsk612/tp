@@ -63,7 +63,7 @@ public class WorkoutSession {
 
     private void workoutSessionProcessCommand(String input) throws NullPointerException {
         String[] commParts = WorkoutSessionParser.workoutSessionParser(input.trim());
-        Command command = cl.get(commParts[0]);
+        Command command = cl.getCommand(commParts[0]);
         command.execute(commParts, exerciseList, filePath, storage, endWorkoutSession);
     }
 

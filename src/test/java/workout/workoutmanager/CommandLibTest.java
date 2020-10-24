@@ -16,34 +16,34 @@ class CommandLibTest {
     void get_WorkoutManagerUnrecognisedCommand_returnNull() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutManagerCL();
-        assertTrue(cl.get("asdf") instanceof WrongWS);
+        assertTrue(cl.getCommand("asdf") instanceof WrongWS);
     }
 
     @Test
     void get_list_returnListCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutManagerCL();
-        assertTrue(cl.get("list") instanceof ListWS);
+        assertTrue(cl.getCommand("list") instanceof ListWS);
     }
 
     @Test
     void get_delete_returnDeleteCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutManagerCL();
-        assertTrue(cl.get("delete") instanceof DeleteWS);
+        assertTrue(cl.getCommand("delete") instanceof DeleteWS);
     }
 
     @Test
     void get_new_returnNewCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutManagerCL();
-        assertTrue(cl.get("new") instanceof NewWS);
+        assertTrue(cl.getCommand("new") instanceof NewWS);
     }
 
     @Test
     void get_bye_returnByeCommand() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutManagerCL();
-        assertTrue(cl.get("end") instanceof ByeWS);
+        assertTrue(cl.getCommand("end") instanceof ByeWS);
     }
 }
