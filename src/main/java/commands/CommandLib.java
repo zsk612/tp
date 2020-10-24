@@ -46,6 +46,9 @@ public class CommandLib {
         library = new Hashtable<>();
     }
 
+    /**
+     * Initialize the commandLib with workout manager's commands.
+     */
     public void initWorkoutManagerCL() {
         library.put("list", new ListWS());
         library.put("new", new NewWS());
@@ -58,6 +61,9 @@ public class CommandLib {
         library.put("search", new SearchWS());
     }
 
+    /**
+     * Initialize the commandLib with workout session's commands.
+     */
     public void initWorkoutSessionCL() {
         library.put("add", new WorkoutSessionAdd());
         library.put("delete", new WorkoutSessionDelete());
@@ -68,6 +74,9 @@ public class CommandLib {
         library.put("wrong", new WorkoutSessionWrong());
     }
 
+    /**
+     * Initialize the commandLib with diet manager's commands.
+     */
     public void initDietManagerCL() {
         library.put("list", new DietSessionList());
         library.put("meal", new DietSessionCreate());
@@ -79,6 +88,9 @@ public class CommandLib {
         library.put("wrong", new DietSessionWrong());
     }
 
+    /**
+     * Initialize the commandLib with main menu's commands.
+     */
     public void initMainMenu() {
         library.put("wrong", new Wrong());
         library.put("help", new Help());
@@ -87,6 +99,9 @@ public class CommandLib {
         library.put("workout", new ToWorkout());
     }
 
+    /**
+     * Initialize the commandLib with diet session's commands.
+     */
     public void initDietSessionCL() {
         library.put("add", new FoodItemAdd());
         library.put("delete", new FoodItemDelete());

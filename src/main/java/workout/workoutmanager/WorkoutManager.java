@@ -21,17 +21,20 @@ public class WorkoutManager {
     public WorkoutManager() {
         cl = new CommandLib();
         cl.initWorkoutManagerCL();
-        logger.log(Level.INFO, "initialised workout manager command library");
+        logger.log(Level.INFO, "Initialised workout manager command library");
         ui = new WorkoutManagerUi();
     }
 
+    /**
+     * Start a workout manager. Goes into a REPL until 'end' command is given.
+     */
     public void start() {
-        logger.log(Level.INFO, "entered workout manager");
+        logger.log(Level.INFO, "Entered workout manager");
         WorkoutManagerUi.printOpening();
         while (true) {
 
             String command = ui.getCommand("Workout Manager");
-            logger.log(Level.FINE, "received input" + command);
+            logger.log(Level.INFO, "received input" + command);
 
             String[] commParts = WorkoutManagerParser.parse(command);
             try {
@@ -47,9 +50,10 @@ public class WorkoutManager {
         Command command = cl.get(commands[0]);
         try {
             CommandResult result = command.execute(Arrays.copyOfRange(commands, 1, commands.length));
+            logger.log(Level.INFO, command + " is executed with " + result.getStatus() + " status");
             ui.showToUser(result.getFeedbackMessage());
         } catch (SchwarzeneggerException e) {
-            logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
+            logger.log(Level.WARNING, "Processing SchwarzeneggerException", e);
             ui.showToUser(e.getMessage());
         }
     }

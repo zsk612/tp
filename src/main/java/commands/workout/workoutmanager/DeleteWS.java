@@ -15,11 +15,18 @@ import java.util.logging.Logger;
 import static ui.workout.workoutmanager.WorkoutManagerUi.DELETE_SUCCESS;
 
 public class DeleteWS extends Command {
-    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
+    /**
+     * Delete a record at a specific index.
+     * @param args index of the record to be removed
+     * @return Status OK and feedback message if file is deleted
+     * @throws SchwarzeneggerException Throw NotANumberException if input is not a number
+     *         Throw InsufficientArgumentException if input is not sufficient
+     *         Throw OutOfArrayException if index is out of bound
+     */
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {
-        logger.info("entering delete command");
+        super.execute(args);
         int index = -1;
         try {
             index = Integer.parseInt(args[0]);
