@@ -7,20 +7,24 @@ import exceptions.SchwarzeneggerException;
 import exceptions.workoutmanager.InsufficientArgumentException;
 import exceptions.workoutmanager.NotANumberException;
 import exceptions.workoutmanager.OutOfArrayException;
-import logger.SchwarzeneggerLogger;
 import models.PastRecordList;
 import workout.workoutsession.WorkoutSession;
-
-import java.util.logging.Logger;
 
 import static ui.workout.workoutmanager.WorkoutManagerUi.EDIT_SUCCESS;
 
 public class EditWS extends Command {
-    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
+    /**
+     * Edit a record at a given location.
+     * @param args index of the record to be editted
+     * @return Status OK and feedback message if file is edit
+     * @throws SchwarzeneggerException Throw NotANumberException if input is not a number
+     *         Throw InsufficientArgumentException if input is not sufficient
+     *         Throw OutOfArrayException if index is out of bound
+     */
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {
-        logger.info("entering edit command");
+        super.execute(args);
         int index = -1;
         try {
             index = Integer.parseInt(args[0]);
@@ -43,7 +47,7 @@ public class EditWS extends Command {
         logger.info("editing workout session created");
         ws.workoutSessionStart();
 
-        logger.info("edit successfully");
+        logger.info("edited successfully");
         return new CommandResult(EDIT_SUCCESS, ExecutionResult.OK);
     }
 

@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
-import static profile.Constants.COMMAND_WORD_DELETE;
+import static seedu.duke.Constant.COMMAND_WORD_DELETE;
 import static profile.Constants.MESSAGE_DELETE_NOTHING;
 import static profile.Constants.MESSAGE_DELETE_PROFILE;
 

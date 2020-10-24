@@ -16,12 +16,6 @@ public class Constants {
     public static final int COMMAND_ARGS_INDEX = 1;
     public static final int COMMAND_SPLIT_LIMIT = 2;
     public static final int COMMAND_TYPE_INDEX = 0;
-    public static final String COMMAND_WORD_ADD = "add";
-    public static final String COMMAND_WORD_DELETE = "delete";
-    public static final String COMMAND_WORD_EDIT = "edit";
-    public static final String COMMAND_WORD_END = "end";
-    public static final String COMMAND_WORD_HELP = "help";
-    public static final String COMMAND_WORD_VIEW = "view";
     public static final String DATA_FILE = "profile.txt";
     public static final String DATA_FOLDER = "saves";
     public static final String EDIT_PROFILE_FORMAT = "edit </n [YOUR_NAME]> </a [YOUR_AGE]> </h [YOUR_HEIGHT]> "

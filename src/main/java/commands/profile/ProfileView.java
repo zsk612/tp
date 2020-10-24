@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static commands.ExecutionResult.FAILED;
-import static profile.Constants.COMMAND_WORD_VIEW;
+import static seedu.duke.Constant.COMMAND_WORD_VIEW;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.Constants.MESSAGE_VIEW_PROFILE;
 

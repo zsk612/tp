@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
-import static profile.Constants.COMMAND_WORD_EDIT;
+import static seedu.duke.Constant.COMMAND_WORD_EDIT;
 import static profile.Constants.MESSAGE_EDIT_PROFILE_ACK;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.ProfileParser.extractAge;
