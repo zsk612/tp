@@ -84,7 +84,7 @@ public class PastRecordList {
 
     /**
      * Searches based on conditions and returns a string representation of all the records
-     * that satisfies the condition
+     * that satisfies the condition.
      *
      * @param args String of user input.
      * @return String representation of all the records that satisfies the condition.
