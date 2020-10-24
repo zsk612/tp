@@ -5,6 +5,7 @@ import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
 import profile.Profile;
 import storage.diet.DietStorage;
+import storage.profile.ProfileStorage;
 import ui.CommonUi;
 import workout.workoutsession.exercise.ExerciseList;
 
@@ -30,8 +31,8 @@ public abstract class Command {
         return new CommandResult();
     }
 
-    public Profile execute(Profile profile) throws SchwarzeneggerException {
-        return profile;
+    public CommandResult execute(String input, ProfileStorage storage) throws SchwarzeneggerException {
+        return new CommandResult();
     }
 
     public void execute(String input, DietStorage storage) {
@@ -45,9 +46,5 @@ public abstract class Command {
     public void execute(String[] inputs, ExerciseList exerciseList,
                         String filePath, storage.workout.Storage storage, boolean[] hasEndedWorkoutSessions) {
         return;
-    }
-
-    public CommandResult getExecutionResult(Profile profile) {
-        return null;
     }
 }

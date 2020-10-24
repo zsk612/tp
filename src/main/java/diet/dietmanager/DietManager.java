@@ -51,7 +51,7 @@ public class DietManager {
     private void processCommand(String input) throws ExitException {
         String[] commParts = parser.parse(input.trim());
         try {
-            Command command = cl.get(commParts[0]);
+            Command command = cl.getCommand(commParts[0]);
             command.execute(commParts[1].trim(), storage);
         } catch (ArrayIndexOutOfBoundsException e) {
             dietManagerUI.showToUser("Looks like you've typed an improper command!");

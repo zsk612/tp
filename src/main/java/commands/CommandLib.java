@@ -3,22 +3,29 @@ package commands;
 import commands.diet.dietmanager.DietSessionClear;
 import commands.diet.dietmanager.DietSessionCreate;
 import commands.diet.dietmanager.DietSessionDelete;
+import commands.diet.dietmanager.DietSessionEdit;
 import commands.diet.dietmanager.DietSessionHelp;
 import commands.diet.dietmanager.DietSessionList;
-import commands.diet.dietmanager.DietSessionEdit;
 import commands.diet.dietmanager.DietSessionSearch;
 import commands.diet.dietmanager.DietSessionWrong;
 import commands.diet.dietsession.FoodItemAdd;
 import commands.diet.dietsession.FoodItemClear;
 import commands.diet.dietsession.FoodItemDelete;
-import commands.diet.dietsession.FoodItemList;
 import commands.diet.dietsession.FoodItemHelp;
+import commands.diet.dietsession.FoodItemList;
 import commands.diet.dietsession.FoodItemWrong;
 import commands.main.Help;
 import commands.main.ToDiet;
 import commands.main.ToProfile;
 import commands.main.ToWorkout;
 import commands.main.Wrong;
+import commands.profile.ProfileAdd;
+import commands.profile.ProfileDelete;
+import commands.profile.ProfileEdit;
+import commands.profile.ProfileEnd;
+import commands.profile.ProfileHelp;
+import commands.profile.ProfileView;
+import commands.profile.ProfileWrong;
 import commands.workout.workoutmanager.ByeWS;
 import commands.workout.workoutmanager.ClearWS;
 import commands.workout.workoutmanager.DeleteWS;
@@ -29,14 +36,30 @@ import commands.workout.workoutmanager.NewWS;
 import commands.workout.workoutmanager.SearchWS;
 import commands.workout.workoutmanager.WrongWS;
 import commands.workout.workoutsession.WorkoutSessionAdd;
-import commands.workout.workoutsession.WorkoutSessionEnd;
 import commands.workout.workoutsession.WorkoutSessionDelete;
+import commands.workout.workoutsession.WorkoutSessionEnd;
 import commands.workout.workoutsession.WorkoutSessionHelp;
 import commands.workout.workoutsession.WorkoutSessionList;
 import commands.workout.workoutsession.WorkoutSessionSearch;
 import commands.workout.workoutsession.WorkoutSessionWrong;
 
 import java.util.Hashtable;
+
+import static seedu.duke.Constant.COMMAND_WORD_ADD;
+import static seedu.duke.Constant.COMMAND_WORD_CLEAR;
+import static seedu.duke.Constant.COMMAND_WORD_DELETE;
+import static seedu.duke.Constant.COMMAND_WORD_DIET;
+import static seedu.duke.Constant.COMMAND_WORD_EDIT;
+import static seedu.duke.Constant.COMMAND_WORD_END;
+import static seedu.duke.Constant.COMMAND_WORD_HELP;
+import static seedu.duke.Constant.COMMAND_WORD_LIST;
+import static seedu.duke.Constant.COMMAND_WORD_MEAL;
+import static seedu.duke.Constant.COMMAND_WORD_NEW;
+import static seedu.duke.Constant.COMMAND_WORD_PROFILE;
+import static seedu.duke.Constant.COMMAND_WORD_SEARCH;
+import static seedu.duke.Constant.COMMAND_WORD_VIEW;
+import static seedu.duke.Constant.COMMAND_WORD_WORKOUT;
+import static seedu.duke.Constant.COMMAND_WORD_WRONG;
 
 public class CommandLib {
 
@@ -49,76 +72,81 @@ public class CommandLib {
     /**
      * Initialize the commandLib with workout manager's commands.
      */
+    public void initMainMenu() {
+        library.put(COMMAND_WORD_WRONG, new Wrong());
+        library.put(COMMAND_WORD_HELP, new Help());
+        library.put(COMMAND_WORD_DIET, new ToDiet());
+        library.put(COMMAND_WORD_PROFILE, new ToProfile());
+        library.put(COMMAND_WORD_WORKOUT, new ToWorkout());
+    }
+
+    public void initProfileSessionCL() {
+        library.put(COMMAND_WORD_HELP, new ProfileHelp());
+        library.put(COMMAND_WORD_ADD, new ProfileAdd());
+        library.put(COMMAND_WORD_DELETE, new ProfileDelete());
+        library.put(COMMAND_WORD_VIEW, new ProfileView());
+        library.put(COMMAND_WORD_EDIT, new ProfileEdit());
+        library.put(COMMAND_WORD_END, new ProfileEnd());
+        library.put(COMMAND_WORD_WRONG, new ProfileWrong());
+    }
+
     public void initWorkoutManagerCL() {
-        library.put("list", new ListWS());
-        library.put("new", new NewWS());
-        library.put("delete", new DeleteWS());
-        library.put("end", new ByeWS());
-        library.put("edit", new EditWS());
-        library.put("clear", new ClearWS());
-        library.put("help", new HelpWS());
-        library.put("wrong", new WrongWS());
-        library.put("search", new SearchWS());
+        library.put(COMMAND_WORD_LIST, new ListWS());
+        library.put(COMMAND_WORD_NEW, new NewWS());
+        library.put(COMMAND_WORD_DELETE, new DeleteWS());
+        library.put(COMMAND_WORD_END, new ByeWS());
+        library.put(COMMAND_WORD_EDIT, new EditWS());
+        library.put(COMMAND_WORD_CLEAR, new ClearWS());
+        library.put(COMMAND_WORD_HELP, new HelpWS());
+        library.put(COMMAND_WORD_WRONG, new WrongWS());
+        library.put(COMMAND_WORD_SEARCH, new SearchWS());
     }
 
     /**
      * Initialize the commandLib with workout session's commands.
      */
     public void initWorkoutSessionCL() {
-        library.put("add", new WorkoutSessionAdd());
-        library.put("delete", new WorkoutSessionDelete());
-        library.put("list", new WorkoutSessionList());
-        library.put("end", new WorkoutSessionEnd());
-        library.put("help", new WorkoutSessionHelp());
-        library.put("search", new WorkoutSessionSearch());
-        library.put("wrong", new WorkoutSessionWrong());
+        library.put(COMMAND_WORD_ADD, new WorkoutSessionAdd());
+        library.put(COMMAND_WORD_DELETE, new WorkoutSessionDelete());
+        library.put(COMMAND_WORD_LIST, new WorkoutSessionList());
+        library.put(COMMAND_WORD_END, new WorkoutSessionEnd());
+        library.put(COMMAND_WORD_HELP, new WorkoutSessionHelp());
+        library.put(COMMAND_WORD_SEARCH, new WorkoutSessionSearch());
+        library.put(COMMAND_WORD_WRONG, new WorkoutSessionWrong());
     }
 
     /**
      * Initialize the commandLib with diet manager's commands.
      */
     public void initDietManagerCL() {
-        library.put("list", new DietSessionList());
-        library.put("meal", new DietSessionCreate());
-        library.put("help", new DietSessionHelp());
-        library.put("clear", new DietSessionClear());
-        library.put("search", new DietSessionSearch());
-        library.put("edit", new DietSessionEdit());
-        library.put("delete", new DietSessionDelete());
-        library.put("wrong", new DietSessionWrong());
-    }
-
-    /**
-     * Initialize the commandLib with main menu's commands.
-     */
-    public void initMainMenu() {
-        library.put("wrong", new Wrong());
-        library.put("help", new Help());
-        library.put("diet", new ToDiet());
-        library.put("profile", new ToProfile());
-        library.put("workout", new ToWorkout());
+        library.put(COMMAND_WORD_LIST, new DietSessionList());
+        library.put(COMMAND_WORD_MEAL, new DietSessionCreate());
+        library.put(COMMAND_WORD_HELP, new DietSessionHelp());
+        library.put(COMMAND_WORD_CLEAR, new DietSessionClear());
+        library.put(COMMAND_WORD_SEARCH, new DietSessionSearch());
+        library.put(COMMAND_WORD_EDIT, new DietSessionEdit());
+        library.put(COMMAND_WORD_DELETE, new DietSessionDelete());
+        library.put(COMMAND_WORD_WRONG, new DietSessionWrong());
     }
 
     /**
      * Initialize the commandLib with diet session's commands.
      */
     public void initDietSessionCL() {
-        library.put("add", new FoodItemAdd());
-        library.put("delete", new FoodItemDelete());
-        library.put("help", new FoodItemHelp());
-        library.put("clear", new FoodItemClear());
-        library.put("search", new FoodItemClear());
-        library.put("list", new FoodItemList());
-        library.put("wrong", new FoodItemWrong());
+        library.put(COMMAND_WORD_ADD, new FoodItemAdd());
+        library.put(COMMAND_WORD_DELETE, new FoodItemDelete());
+        library.put(COMMAND_WORD_HELP, new FoodItemHelp());
+        library.put(COMMAND_WORD_CLEAR, new FoodItemClear());
+        library.put(COMMAND_WORD_SEARCH, new FoodItemClear());
+        library.put(COMMAND_WORD_LIST, new FoodItemList());
+        library.put(COMMAND_WORD_WRONG, new FoodItemWrong());
     }
 
-    public Command get(String keyword) {
+    public Command getCommand(String keyword) {
         if (library.containsKey(keyword)) {
             return library.get(keyword);
         } else {
-            return library.get("wrong");
+            return library.get(COMMAND_WORD_WRONG);
         }
     }
-
-
 }
