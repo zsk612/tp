@@ -4,17 +4,14 @@ import commands.Command;
 import commands.CommandResult;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
-import logger.SchwarzeneggerLogger;
 import profile.Profile;
 import storage.profile.ProfileStorage;
 
 import java.util.HashMap;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
-import static seedu.duke.Constant.COMMAND_WORD_EDIT;
 import static profile.Constants.MESSAGE_EDIT_PROFILE_ACK;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.ProfileParser.extractAge;
@@ -23,18 +20,20 @@ import static profile.ProfileParser.extractExpectedWeight;
 import static profile.ProfileParser.extractHeight;
 import static profile.ProfileParser.extractName;
 import static profile.ProfileParser.extractWeight;
+import static seedu.duke.Constant.COMMAND_WORD_EDIT;
 
 /**
  * A representation of the command for editing profile.
  */
 public class ProfileEdit extends Command {
-    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-    
+
     /**
      * Overrides execute method of class Command to execute the edit profile command requested by user's input.
      *
+     * @param commandArgs User's input arguments.
      * @param storage Profile Storage to load and save data.
      * @return Result of command execution.
+     * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {

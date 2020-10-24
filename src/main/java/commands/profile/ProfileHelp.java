@@ -4,29 +4,31 @@ import commands.Command;
 import commands.CommandResult;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.RedundantParamException;
-import logger.SchwarzeneggerLogger;
 import storage.profile.ProfileStorage;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import static profile.Constants.ADD_PROFILE_FORMAT;
+import static profile.Constants.EDIT_PROFILE_FORMAT;
 import static seedu.duke.Constant.COMMAND_WORD_ADD;
 import static seedu.duke.Constant.COMMAND_WORD_DELETE;
 import static seedu.duke.Constant.COMMAND_WORD_EDIT;
 import static seedu.duke.Constant.COMMAND_WORD_HELP;
 import static seedu.duke.Constant.COMMAND_WORD_VIEW;
-import static profile.Constants.EDIT_PROFILE_FORMAT;
 import static ui.CommonUi.helpFormatter;
 
+/**
+ * A representation of the command for showing help message in Profile session.
+ */
 public class ProfileHelp extends Command {
-    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
      * Overrides execute method of class Command to execute help command requested by user's input.
      *
+     * @param commandArgs User's input arguments.
      * @param storage Profile Storage to load and save data.
      * @return Result of command execution.
+     * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {

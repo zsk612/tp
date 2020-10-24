@@ -15,10 +15,11 @@ import static ui.workout.workoutmanager.WorkoutManagerUi.COMMAND_NOT_FOUND;
 public class WrongWS extends Command {
 
     /**
-     * Constructor of WrongWS.
-     * @param args null
-     * @return Status MISSING and COMMAND_NOT_FOUND feedback
-     * @throws SchwarzeneggerException null
+     * Notifies user invalid input command.
+     *
+     * @param args User's input arguments.
+     * @return Status MISSING and COMMAND_NOT_FOUND feedback.
+     * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {

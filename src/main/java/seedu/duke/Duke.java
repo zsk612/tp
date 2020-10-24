@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 import static profile.Constants.MESSAGE_WELCOME_EXISTING_USER;
 import static profile.Constants.MESSAGE_WELCOME_NEW_USER;
+import static seedu.duke.Constant.COMMAND_WORD_END;
 
 /**
  * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
@@ -78,8 +79,10 @@ public class Duke {
     private void runCommandLoopTillEnd() {
         String response = ui.getCommand("Main Menu").trim();
         String[] dummy = {};
-        while (!response.equals("end")) {
+
+        while (!response.equals(COMMAND_WORD_END)) {
             Command cm = cl.getCommand(response);
+
             try {
                 CommandResult rs = cm.execute(dummy);
             } catch (SchwarzeneggerException e) {

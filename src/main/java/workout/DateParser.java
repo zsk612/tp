@@ -24,10 +24,10 @@ public class DateParser {
             DateTimeFormatter.ofPattern("yyyy MM dd"));
 
     /**
-     * Parse a given string following one of the accepted format into date-time format.
+     * Parses a given string following one of the accepted format into date-time format.
      *
-     * @param targetString String input to be parsed
-     * @return Parsed result in the form of LocalDateTime or null if no value parsing is found
+     * @param targetString String input to be parsed.
+     * @return Parsed result in the form of LocalDateTime or null if no value parsing is found.
      */
     public static LocalDateTime parseDate(String targetString) {
         for (DateTimeFormatter dtf : dtFormaters) {

@@ -16,25 +16,19 @@ import java.util.stream.Collectors;
 import static ui.CommonUi.LS;
 import static workout.workoutmanager.WorkoutManagerParser.parseSearchConditions;
 
+/**
+ * A singleton class representing list of past records.
+ */
 public class PastRecordList {
-    private static PastRecordList SingPastFile = null;
+    private static PastRecordList singlePastFile = null;
     private Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     private static List<PastWorkoutSessionRecord> pastFiles;
     WorkOutManagerStorage storage;
 
-
     /**
-     * Singleton structure.
-     * @return
+     * Constructs PastRecordList object.
      */
-    public static PastRecordList getInstance() {
-        if (SingPastFile == null) {
-            SingPastFile = new PastRecordList();
-        }
-        return SingPastFile;
-    }
-
     private PastRecordList() {
         storage = new WorkOutManagerStorage();
         storage.init();
@@ -49,8 +43,21 @@ public class PastRecordList {
     }
 
     /**
-     * Clear all the local storage file and past records.
-     * @throws SchwIoException if error occured writing to file
+     * Gets instance of PastRecordList.
+     *
+     * @return Instance of PastRecordList.
+     */
+    public static PastRecordList getInstance() {
+        if (singlePastFile == null) {
+            singlePastFile = new PastRecordList();
+        }
+        return singlePastFile;
+    }
+
+    /**
+     * Clears all the local storage file and past records.
+     *
+     * @throws SchwIoException If error occurred writing to file.
      */
     public void clear() throws SchwIoException {
         while (pastFiles.size() != 0) {
@@ -60,9 +67,10 @@ public class PastRecordList {
     }
 
     /**
-     * Delete a file and its past record at a given index.
-     * @param index index of the file to be cleard
-     * @throws SchwIoException if error occured writing to file
+     * Deletes a file and its past record at a given index.
+     *
+     * @param index Index of the file to be cleared.
+     * @throws SchwIoException If error occurred while writing to file.
      */
     public void delete(int index) throws SchwIoException {
         PastWorkoutSessionRecord deletedRecord;
@@ -75,10 +83,11 @@ public class PastRecordList {
     }
 
     /**
-     * Search based on conditions and return a string representation of all the records.
+     * Searches based on conditions and returns a string representation of all the records
      * that satisfies the condition
-     * @param args String of user input
-     * @returna string representation of all the records that satisfies the condition
+     *
+     * @param args String of user input.
+     * @return String representation of all the records that satisfies the condition.
      */
     public String search(String[] args) {
         ArrayList<Predicate<PastWorkoutSessionRecord>> conditions = parseSearchConditions(args);
@@ -88,7 +97,7 @@ public class PastRecordList {
                 .collect(Collectors.toList());
 
         int index = 1;
-        String info =  pastFiles.size() + "  records are found:" + LS;
+        String info = pastFiles.size() + "  records are found:" + LS;
         for (PastWorkoutSessionRecord wsr : result) {
             String row = String.format("%-8s", index) + wsr.toString() + LS;
             info += row;
@@ -100,9 +109,10 @@ public class PastRecordList {
     }
 
     /**
-     * Edit a file and its past record at a given index.
-     * @param index index of the file to be edited
-     * @throws SchwIoException if error occurred reading or writing to file
+     * Edits a file and its past record at a given index.
+     *
+     * @param index Index of the file to be edited
+     * @throws SchwIoException If error occurred while reading or writing to file.
      */
     public String edit(int index) throws SchwIoException {
         PastWorkoutSessionRecord editedRecord;
@@ -115,9 +125,10 @@ public class PastRecordList {
     }
 
     /**
-     * add a new file and record.
-     * @param tags tags on the new record
-     * @throws SchwIoException if error occurred reading or writing to file
+     * Adds a new file and records.
+     *
+     * @param tags Tags on the new record.
+     * @throws SchwIoException If error occurred while reading or writing to file.
      */
     public String add(ArrayList<String> tags) throws SchwarzeneggerException {
         String newFilePath = storage.createfile();
@@ -125,13 +136,14 @@ public class PastRecordList {
         pastFiles.add(newRecord);
         storage.writePastRecords(pastFiles);
         logger.log(Level.INFO, "Add completed.");
-        return  newFilePath;
+        return newFilePath;
     }
 
     /**
-     * List all records.
-     * @param args null
-     * @throws SchwIoException if error occurred reading file
+     * Lists all records.
+     *
+     * @param args Array of user's input.
+     * @throws SchwIoException If error occurred while reading file.
      */
     public String list(String[] args) {
         int index = 1;

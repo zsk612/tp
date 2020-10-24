@@ -15,12 +15,11 @@ import static ui.workout.workoutmanager.WorkoutManagerUi.EDIT_SUCCESS;
 public class EditWS extends Command {
 
     /**
-     * Edit a record at a given location.
-     * @param args index of the record to be editted
-     * @return Status OK and feedback message if file is edit
-     * @throws SchwarzeneggerException Throw NotANumberException if input is not a number
-     *         Throw InsufficientArgumentException if input is not sufficient
-     *         Throw OutOfArrayException if index is out of bound
+     * Edits a record at a given index.
+     *
+     * @param args Index of the record to be edited.
+     * @return Status OK and feedback message if file is edit.
+     * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {

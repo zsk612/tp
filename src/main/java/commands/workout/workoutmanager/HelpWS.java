@@ -10,10 +10,11 @@ import static ui.CommonUi.helpFormatter;
 public class HelpWS extends Command {
 
     /**
-     * Constructor of HelpWS.
-     * @param args null
-     * @return Status OK and information to be printed
-     * @throws SchwarzeneggerException null
+     * Executes help command in Workout Menu.
+     *
+     * @param args Array of user's input.
+     * @return Status OK and information to be printed.
+     * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {
