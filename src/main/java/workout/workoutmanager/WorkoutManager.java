@@ -27,7 +27,7 @@ public class WorkoutManager {
     }
 
     /**
-     * Start a workout manager. Goes into a REPL until 'end' command is given.
+     * Starts a workout manager. Goes into a REPL until 'end' command is given.
      */
     public void start() {
         logger.log(Level.INFO, "Entered workout manager");

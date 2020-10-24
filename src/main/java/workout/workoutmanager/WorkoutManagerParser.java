@@ -14,18 +14,18 @@ public class WorkoutManagerParser {
     private static final int DATE = 2;
 
     /**
-     * Parse user inputs into single words.
-     * @param comm user input raw
-     * @return an array of strings
+     * Parses user inputs into single words.
+     * @param comm User's raw input.
+     * @return An array of strings.
      */
     public static String[] parse(String comm) {
         return comm.split(" ");
     }
 
     /**
-     * parse user input into a list of tags.
-     * @param arr user inputs
-     * @return a list of tags
+     * Parses user input into a list of tags.
+     * @param arr User inputs.
+     * @return A list of tags.
      */
     public static ArrayList<String> parseTags(String[] arr) {
         ArrayList<String> result = new ArrayList<>();
@@ -45,9 +45,9 @@ public class WorkoutManagerParser {
     }
 
     /**
-     * parse user input into a list of predicates which will be used as search conditions.
-     * @param arr user input
-     * @return a list of predicate which will be used as search conditions
+     * Parses user input into a list of predicates which will be used as search conditions.
+     * @param arr User input.
+     * @return A list of predicate which will be used as search conditions.
      */
     public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseSearchConditions(String[] arr) {
         ArrayList<String> tags = new ArrayList<>();

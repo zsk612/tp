@@ -70,7 +70,7 @@ public class CommandLib {
     }
 
     /**
-     * Initialize the commandLib with workout manager's commands.
+     * Initializes the commandLib with main menu's commands.
      */
     public void initMainMenu() {
         library.put(COMMAND_WORD_WRONG, new Wrong());
@@ -80,6 +80,9 @@ public class CommandLib {
         library.put(COMMAND_WORD_WORKOUT, new ToWorkout());
     }
 
+    /**
+     * Initializes the commandLib with profile menu's commands.
+     */
     public void initProfileSessionCL() {
         library.put(COMMAND_WORD_HELP, new ProfileHelp());
         library.put(COMMAND_WORD_ADD, new ProfileAdd());
@@ -90,6 +93,10 @@ public class CommandLib {
         library.put(COMMAND_WORD_WRONG, new ProfileWrong());
     }
 
+
+    /**
+     * Initializes the commandLib with workout menu's commands.
+     */
     public void initWorkoutManagerCL() {
         library.put(COMMAND_WORD_LIST, new ListWS());
         library.put(COMMAND_WORD_NEW, new NewWS());
@@ -142,6 +149,12 @@ public class CommandLib {
         library.put(COMMAND_WORD_WRONG, new FoodItemWrong());
     }
 
+    /**
+     * Gets specific Command object based on command keyword.
+     *
+     * @param keyword Keyword specifying type of command.
+     * @return Command object.
+     */
     public Command getCommand(String keyword) {
         if (library.containsKey(keyword)) {
             return library.get(keyword);

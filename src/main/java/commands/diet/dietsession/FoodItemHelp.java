@@ -2,16 +2,13 @@ package commands.diet.dietsession;
 
 import commands.Command;
 import diet.dietsession.Food;
-import logger.SchwarzeneggerLogger;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class FoodItemHelp extends Command {
-    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
      * Overrides execute for help command to display help information for dietSession.

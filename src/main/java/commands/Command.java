@@ -3,7 +3,6 @@ package commands;
 import diet.dietsession.Food;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
-import profile.Profile;
 import storage.diet.DietStorage;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
@@ -19,19 +18,27 @@ public abstract class Command {
     public static CommonUi ui = new CommonUi();
 
     /**
-     * Execute the command with given arguments.
-     * @param args user inputs into a list of string
+     * Executes the command with given arguments.
+     *
+     * @param args Array of user's input.
      * @return An object CommandResult containing the executing status and feedback message to be displayed
-     *         to user
-     * @throws SchwarzeneggerException If encounter any error in execution, the exception is thrown and
-     *         handled with customised handler
+     *         to user.
+     * @throws SchwarzeneggerException If there are caught exceptions.
      */
     public CommandResult execute(String[] args) throws SchwarzeneggerException {
         logger.log(Level.INFO, "Executing " + this);
         return new CommandResult();
     }
 
-    public CommandResult execute(String input, ProfileStorage storage) throws SchwarzeneggerException {
+    /**
+     * Executes the command with user's input.
+     *
+     * @param commandArgs User's input arguments.
+     * @param storage Profile Storage to load and save data.
+     * @return Result of command execution.
+     * @throws SchwarzeneggerException If there are caught exceptions.
+     */
+    public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         return new CommandResult();
     }
 

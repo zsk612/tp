@@ -16,11 +16,11 @@ import static workout.workoutmanager.WorkoutManagerParser.parseTags;
 public class NewWS extends Command {
 
     /**
-     *Constructor of NewWS.
-     * @param args list of tags to be attached to a new session
-     * @return Status OK and feedback message
-     * @throws SchwarzeneggerException Throw SchwIoException if error occurred in
-     *         reading and writing files
+     * Creates new workout session.
+     *
+     * @param args list of tags to be attached to a new session.
+     * @return Status OK and feedback message.
+     * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {

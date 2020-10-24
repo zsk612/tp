@@ -10,10 +10,11 @@ import static commands.ExecutionResult.OK;
 public class ListWS extends Command {
 
     /**
-     * Constructor of ListWS.
-     * @param args null
-     * @return Status OK and all past record in a table
-     * @throws SchwarzeneggerException null
+     * Lists past record of workout sessions.
+     *
+     * @param args Array of user's input.
+     * @return Status OK and all past records in a table.
+     * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {

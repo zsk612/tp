@@ -3,16 +3,14 @@ package commands.diet.dietsession;
 import commands.Command;
 import diet.dietsession.DietSessionParser;
 import diet.dietsession.Food;
-import logger.SchwarzeneggerLogger;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class FoodItemAdd extends Command {
-    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
+
     DietSessionUi ui = new DietSessionUi();
 
     /**

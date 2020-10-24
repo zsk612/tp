@@ -12,9 +12,10 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
     private final ArrayList<String> tags;
 
     /**
-     * Constructer of a new PastWorkoutSessionRecord.
-     * @param filePath File path of where the records of the session are stored
-     * @param tags Tags attached to this session
+     * Constructor of a new PastWorkoutSessionRecord.
+     *
+     * @param filePath File path of where the records of the session are stored.
+     * @param tags Tags attached to this session.
      */
     public PastWorkoutSessionRecord(String filePath, ArrayList<String> tags) {
         this.filePath = filePath;
@@ -32,7 +33,8 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
     }
 
     /**
-     * Check if this record contains all the given tag.
+     * Checks if this record contains all the given tag.
+     *
      * @param tgs list of tags specified
      * @return True if all contained; otherwise false
      */
@@ -41,7 +43,8 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
     }
 
     /**
-     * Check if this record is created on a given date.
+     * Checks if this record is created on a given date.
+     *
      * @param date list of tags specified
      * @return True if it is created on that day; otherwise false
      */
@@ -77,8 +80,9 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
     }
 
     /**
-     * Update last edited time when edited.
-     * @return a new PastWorkoutSessionRecord with updated lastEdit time
+     * Updates last edited time when edited.
+     *
+     * @return A new PastWorkoutSessionRecord with updated lastEdit time.
      */
     public PastWorkoutSessionRecord edit() {
         return new PastWorkoutSessionRecord(filePath, creationTime, LocalDateTime.now(), this.tags);

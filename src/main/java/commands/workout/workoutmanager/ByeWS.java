@@ -4,18 +4,15 @@ import commands.Command;
 import commands.CommandResult;
 import exceptions.EndException;
 import exceptions.SchwarzeneggerException;
-import logger.SchwarzeneggerLogger;
-
-import java.util.logging.Logger;
 
 public class ByeWS extends Command {
-    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
-     * Terminate workout manager and return to main menu.
-     * @param args user inputs into a list of string
+     * Terminates workout manager and return to main menu.
+     *
+     * @param args Array of user's input.
      * @return null
-     * @throws SchwarzeneggerException null
+     * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {

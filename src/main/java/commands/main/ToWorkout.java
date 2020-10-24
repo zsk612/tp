@@ -11,6 +11,12 @@ public class ToWorkout extends Command {
 
     CommonUi ui = new CommonUi();
 
+    /**
+     * Executes redirecting to Workout Menu command from Main Menu.
+     *
+     * @param args Array of user's input.
+     * @return Redirecting to Workout Menu message.
+     */
     @Override
     public CommandResult execute(String[] args) {
         ui.showToUser("Entering Workout Session...");

@@ -46,7 +46,7 @@ public class DietStorage {
     }
 
     /**
-     * Write the content in dietSession to a local file.
+     * Writes the content in dietSession to a local file.
      * If the local file is not found. It creates the relevant file and folder.
      *
      * @throws IOException If director or file cannot be created.
