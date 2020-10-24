@@ -11,7 +11,7 @@ import storage.profile.ProfileStorage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static profile.Constants.COMMAND_WORD_END;
+import static seedu.duke.Constant.COMMAND_WORD_END;
 
 /**
  * A representation of the command for exiting Profile session.

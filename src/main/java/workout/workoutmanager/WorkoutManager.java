@@ -22,17 +22,20 @@ public class WorkoutManager {
     public WorkoutManager() {
         cl = new CommandLib();
         cl.initWorkoutManagerCL();
-        logger.log(Level.INFO, "initialised workout manager command library");
+        logger.log(Level.INFO, "Initialised workout manager command library");
         ui = new WorkoutManagerUi();
     }
 
+    /**
+     * Start a workout manager. Goes into a REPL until 'end' command is given.
+     */
     public void start() {
-        logger.log(Level.INFO, "entered workout manager");
+        logger.log(Level.INFO, "Entered workout manager");
         WorkoutManagerUi.printOpening();
         while (true) {
 
             String command = ui.getCommand("Workout Manager");
-            logger.log(Level.FINE, "received input" + command);
+            logger.log(Level.INFO, "Received input" + command);
 
             String[] commParts = WorkoutManagerParser.parse(command);
             try {

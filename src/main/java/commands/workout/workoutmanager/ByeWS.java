@@ -11,9 +11,15 @@ import java.util.logging.Logger;
 public class ByeWS extends Command {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
+    /**
+     * Terminate workout manager and return to main menu.
+     * @param args user inputs into a list of string
+     * @return null
+     * @throws SchwarzeneggerException null
+     */
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {
-        logger.info("bye command carried out");
+        super.execute(args);
         throw new EndException();
     }
 }
