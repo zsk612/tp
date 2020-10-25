@@ -13,7 +13,7 @@ import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
 import static profile.Constants.MESSAGE_CREATE_PROFILE_ACK;
 import static profile.Constants.MESSAGE_PROFILE_EXIST;
-import static profile.ProfileParser.extractAge;
+import static profile.ProfileParser.extractCalories;
 import static profile.ProfileParser.extractCommandTagAndInfo;
 import static profile.ProfileParser.extractExpectedWeight;
 import static profile.ProfileParser.extractHeight;
@@ -46,10 +46,10 @@ public class ProfileAdd extends Command {
             HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_ADD, commandArgs);
             profile = new Profile(
                     extractName(parsedParams),
-                    extractAge(parsedParams),
                     extractHeight(parsedParams),
                     extractWeight(parsedParams),
-                    extractExpectedWeight(parsedParams)
+                    extractExpectedWeight(parsedParams),
+                    extractCalories(parsedParams)
             );
             storage.saveData(profile);
             return new CommandResult(String.format(MESSAGE_CREATE_PROFILE_ACK, profile.toString()), OK);

@@ -6,18 +6,21 @@ import static ui.CommonUi.LS;
  * Constants used in profile package.
  */
 public class Constants {
-    public static final String ADD_PROFILE_FORMAT = "add /n [YOUR_NAME] /a [YOUR_AGE] /h [YOUR_HEIGHT] "
-            + "/w [YOUR_WEIGHT] /e [YOUR_EXPECTED_WEIGHT]";
     public static final int AGE_LOWER_BOUND = 1;
     public static final int AGE_UPPER_BOUND = 123;
     public static final int COMMAND_ARGS_INDEX = 1;
     public static final int COMMAND_SPLIT_LIMIT = 2;
     public static final int COMMAND_TYPE_INDEX = 0;
-    public static final String EDIT_PROFILE_FORMAT = "edit </n [YOUR_NAME]> </a [YOUR_AGE]> </h [YOUR_HEIGHT]> "
-            + "</w [YOUR_WEIGHT]> </e [YOUR_EXPECTED_WEIGHT]>";
+
+    public static final String ADD_PROFILE_FORMAT = "add /n [NAME] /h [HEIGHT] "
+            + "/w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]";
+    public static final String EDIT_PROFILE_FORMAT = "edit /n [NAME] </h [HEIGHT]> "
+            + "/w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]";
+
     public static final String EMPTY_STRING = "";
     public static final int EXAMPLE_AGE = 30;
     public static final String EXAMPLE_BMI = "32.0 (Obesity Class 1)";
+    public static final double EXAMPLE_CALORIES = 2500;
     public static final double EXAMPLE_EXPECTED_WEIGHT = 100;
     public static final int EXAMPLE_HEIGHT = 188;
     public static final String EXAMPLE_NAME = "Schwarzenegger";
@@ -50,11 +53,11 @@ public class Constants {
             + "It seems like your profile data is corrupted!" + LS
             + "Please add your profile again using \"add\" command under Profile Menu." + LS
             + MESSAGE_HELP_FOR_MORE_INFO;
-    public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + LS + "\tAge: %d" + LS
+    public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + LS
             + "\tHeight: %d cm" + LS + "\tWeight: %.1f kg" + LS + "\tExpected Weight: %.1f kg"
-            + LS + "\tYour BMI: %s";
+            + LS + "\tExpected daily calories intake: %.1f calories" + LS + "\tYour BMI: %s";
     public static final String EXAMPLE_PROFILE_STRING = String.format(PROFILE_STRING_REPRESENTATION, EXAMPLE_NAME,
-            EXAMPLE_AGE, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_BMI);
+            EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES, EXAMPLE_BMI);
     public static final String SAD_FACE = ":(  OOPS!!! ";
     public static final String MESSAGE_INVALID_COMMAND_WORD = SAD_FACE + "Sorry, but I don't know what that means."
             + LS + "Please enter \"help\" for a list of available commands.";
@@ -63,6 +66,8 @@ public class Constants {
     public static final String MESSAGE_INVALID_AGE = String.format(
             SAD_FACE + "Please input an integer from %d to %d for age.", AGE_LOWER_BOUND, AGE_UPPER_BOUND);
     public static final String MESSAGE_INVALID_NAME = SAD_FACE + "Name cannot be empty.";
+    public static final String MESSAGE_INVALID_CALORIES = SAD_FACE
+            + "Expected daily calories intake cannot be negative.";
     public static final String MESSAGE_INVALID_HEIGHT = String.format(
             SAD_FACE + "Please input an integer from %d to %d for height.", HEIGHT_LOWER_BOUND, HEIGHT_UPPER_BOUND);
     public static final String MESSAGE_LOADING_ERROR = SAD_FACE + "An error has occurred while loading data."

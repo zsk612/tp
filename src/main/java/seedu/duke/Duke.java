@@ -68,7 +68,9 @@ public class Duke {
                 ui.showToUser(MESSAGE_WELCOME_NEW_USER);
             }
         } catch (Exception e) {
-            //ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
+            if (!(e instanceof NullPointerException)) {
+                ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
+            }
             ui.showToUser(MESSAGE_WELCOME_NEW_USER);
         }
     }
