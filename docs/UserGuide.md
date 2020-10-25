@@ -51,9 +51,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 
 ## 1. <a id="intro">Introduction</a>
 
-The Schwarzenegger is a desktop command line interface-based app for managing all your needs 
-regarding fitness. If you can type fast, The Schwarzenegger can help you 
-maximise your efficiency for maintaining fitness.
+The Schwarzenegger is a desktop command line interface-based app for managing all your needs regarding fitness. With the built-in personal assistant, you are able to track your daily workout and diet sessions based on your profile. If you can type fast, The Schwarzenegger can help you maximise your efficiency for maintaining fitness.
 
 ## 2. <a id="quickstart">Quick Start</a>
 
@@ -63,14 +61,17 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 1. Download the latest `duke.jar` from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
 1. Copy the file to the folder you want to use as the home folder for The Schwarzenegger.
 1. Open command prompt (on Windows)  or terminal (on MacOS/ Linux) and change to the directory of the folder of the application in step 3.
-1. Key in java -jar duke.jar. If the setup is correct, you should see something like below:
+1. Key in `java -jar duke.jar`. If the setup is correct, you should see something like below:
 
     ```
-        ______________________________________________________________________________
-        Welcome new user to Schwarzenegger! :D
-        Please add your profile using "add" command under Profile Menu.
-        For more information on command syntax, please type "help".
-        ______________________________________________________________________________
+         ______________________________________________________________________________
+         Welcome back to Schwarzenegger!
+         It seems like your profile data is corrupted!
+         Please add your profile again using "add" command under Profile Menu.
+         For more information on command syntax, please type "help".
+         ______________________________________________________________________________
+    
+    Main Menu >>>>>
     ```
    
 1. To use The Schwarzenegger, simply type a valid command into the terminal and press <kbd>Enter</kbd> to run the command.<br>
@@ -93,16 +94,42 @@ The available commands in Main Menu are listed below:
 #### 3.1.1. <a id="main-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Main Menu and how to use them.
 
-__Format:__ `help`
+__Format:__ `help`<br>
 
-Example: `help`
+Example: `help`<br>
+
+Expected outcome:
+
+```
+    ______________________________________________________________________________
+    profile  - profile
+          Go to Profile Menu to manage your profile
+    workout  - workout
+          Go to Workout Menu to manage your workout records and create new workout records
+    diet     - diet
+          Go to Diet Menu to manage your past diet records and create new diet records
+    end      - end
+          Exit the program
+______________________________________________________________________________
+```
+
 
 #### 3.1.2. <a id="main-profile">Entering Profile Menu: `profile`</a>
 The program will direct you to the Profile Menu.
 
-__Format:__ `profile`  
-
+__Format:__ `profile`
+  
 Example: `profile`
+
+Expected outcome:
+
+```
+    ______________________________________________________________________________
+    Entering Profile Menu...
+    ______________________________________________________________________________
+
+Profile Menu >>>>>
+```
 
 #### 3.1.3. <a id="main-diet">Entering Diet Menu: `diet`</a>
 The program will direct you to the Diet Menu.
@@ -111,6 +138,8 @@ __Format:__ `diet`
 
 Example: `diet`
 
+Expected outcome:
+
 #### 3.1.4. <a id="main-workout">Entering Workout Menu: `workout`</a>
 The program will direct you to the Workout Menu.
 
@@ -118,12 +147,22 @@ __Format:__ `workout`
 
 Example: `workout`
 
+Expected outcome:
+
 #### 3.1.5. <a id="main-end">Ending The Schwarzenegger: `end`</a>
 You enter this command when you want to terminate The Schwarzenegger.
 
 __Format:__ `end`  
 
 Example: `end`
+
+Expected outcome:
+
+```
+    ______________________________________________________________________________
+    Bye, you have exited the Schwarzenegger.
+    ______________________________________________________________________________
+```
 
 ### 3.2. <a id="profile-menu">Profile Menu</a>
 Profile Menu manages your profile including your name, physique data and expected daily calories intake. 
@@ -135,6 +174,21 @@ __Format:__ `help`
 
 Example: `help`
 
+Expected outcome:
+
+```
+    ______________________________________________________________________________
+    add      - add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]
+          Add your new profile
+    view     - view
+          View your profile
+    edit     - edit /n [NAME] </h [HEIGHT]> /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]
+          Edit your existing profile. You may edit only 1 field or all fields
+    delete   - delete
+          Delete your existing profile
+    ______________________________________________________________________________
+```
+
 #### 3.2.2. <a id="profile-add">Adding a profile: `add`</a>
 You can add your profile for the most customized experience in The Schwarzenegger. Your height should in centimeters and your input weight should be in kilograms.
 
@@ -144,12 +198,40 @@ Example: `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
 
 This command adds a profile with the name Schwarzenegger, height 188 cm, weight 113 kg, expected weight 100 kg and expected daily intake of 2500 calories.
 
+Expected outcome:
+
+```
+    ______________________________________________________________________________
+    Got it. Here's a confirmation of your profile:
+        Name: Schwarzenegger
+        Height: 188 cm
+        Weight: 113.0 kg
+        Expected Weight: 100.0 kg
+        Expected daily calories intake: 2500.0 calories
+        Your BMI: 32.0 (Obesity Class 1)
+    ______________________________________________________________________________
+```
+
 #### 3.2.3. <a id="profile-view">Viewing a profile: `view`</a>
 You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI and give you suggestions on an expected weight for better fitness if it detects your current expectation is not appropriate.
 
 __Format:__ `view`  
 
 Example: `view`
+
+Expected outcome:
+
+```
+    ______________________________________________________________________________
+    Here's your profile:
+        Name: Schwarzenegger
+        Height: 188 cm
+        Weight: 113.0 kg
+        Expected Weight: 100.0 kg
+        Expected daily calories intake: 2500.0 calories
+        Your BMI: 32.0 (Obesity Class 1)
+    ______________________________________________________________________________
+```
 
 #### 3.2.4. <a id="profile-delete">Deleting a profile: `delete`</a>
 You can delete your profile from the program. The program will ask for your confirmation, and it will only delete after you type in exactly "YES".
@@ -158,18 +240,72 @@ __Format:__ `delete`
 
 Example: `delete`
 
+Expected outcome:
+- If you type "YES" for confirmation:
+
+```
+    ______________________________________________________________________________
+    Alright! I've deleted your profile.
+    ______________________________________________________________________________
+```
+
+- If you do not type "YES" for confirmation:
+
+```
+    ______________________________________________________________________________
+    You have aborted the action!
+    ______________________________________________________________________________
+```
+
 #### 3.2.5. <a id="profile-edit">Editing a profile: `edit`</a>
 You can edit the profile after adding to the program.
 
 __Format:__ `edit /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`  
 
 Example: <br>
-    - `edit /h 180`<br>
-    This command edits your current height to 180 centimeters.<br>
-    - `edit /h 180 /w 50`<br>
-    This command edits your current height to 180 centimeters and current weight to 50 kilograms.<br>
-    - `edit /h 180 /w 50 /e 55`<br>
-     This command edits your current height to 180 centimeters, current weight to 50 kilograms and expected weight to 55 kilograms.<br>
+- `edit /h 180`<br>
+This command edits your current height to 180 centimeters.<br>
+Expected outcome:<br>
+    ```
+        ______________________________________________________________________________
+        Yay! Your profile is edited successfully. Here's your new profile:
+            Name: Schwarzenegger
+            Height: 180 cm
+            Weight: 113.0 kg
+            Expected Weight: 100.0 kg
+            Expected daily calories intake: 2500.0 calories
+            Your BMI: 32.0 (Obesity Class 1)
+        ______________________________________________________________________________`
+    ```
+- `edit /h 180 /w 50`<br>
+This command edits your current height to 180 centimeters and current weight to 50 kilograms.<br>
+Expected outcome:<br>
+    ```
+         ______________________________________________________________________________
+         Yay! Your profile is edited successfully. Here's your new profile:
+                Name: Schwarzenegger
+                Height: 180 cm
+                Weight: 50.0 kg
+                Expected Weight: 100.0 kg
+                Expected daily calories intake: 2500.0 calories
+                Your BMI: 15.4 (Underweight)
+         ______________________________________________________________________________
+    ```
+  
+- `edit /h 180 /w 50 /e 55`<br>
+This command edits your current height to 180 centimeters, current weight to 50 kilograms and expected weight to 55 kilograms.<br>
+Expected outcome:<br>
+    ```
+         ______________________________________________________________________________
+         Yay! Your profile is edited successfully. Here's your new profile:
+                Name: Schwarzenegger
+                Height: 180 cm
+                Weight: 50.0 kg
+                Expected Weight: 55.0 kg
+                Expected daily calories intake: 2500.0 calories
+                Your BMI: 15.4 (Underweight)
+         ______________________________________________________________________________
+    ```
 
 |:bulb:| You may edit from 1 field to all fields in your profile. |
 |------|:-----------|              
@@ -180,6 +316,14 @@ You use this command to switch back to the Main Menu.
 __Format:__ `end`  
 
 Example: `end`
+
+Expected outcome:
+
+```
+    ______________________________________________________________________________
+    Returning to Main Menu...
+    ______________________________________________________________________________
+```
 
 ### 3.3. <a id="diet-menu">Diet Menu</a>
 
