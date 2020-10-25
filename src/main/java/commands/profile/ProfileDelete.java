@@ -37,13 +37,14 @@ public class ProfileDelete extends Command {
             throw new RedundantParamException(COMMAND_WORD_DELETE);
         }
 
-        if (!ui.checkConfirmation("Profile Menu", "clear your profile")) {
-            return new CommandResult(CLEAR_ABORTED, ExecutionResult.ABORTED);
-        }
-
         Profile profile;
         try {
             profile = storage.loadData();
+
+            if (!ui.checkConfirmation("Profile Menu", "clear your profile")) {
+                return new CommandResult(CLEAR_ABORTED, ExecutionResult.ABORTED);
+            }
+
             storage.saveData(null);
             return new CommandResult(MESSAGE_DELETE_PROFILE, OK);
         } catch (InvalidSaveFormatException e) {

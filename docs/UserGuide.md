@@ -59,24 +59,43 @@ maximise your efficiency for maintaining fitness.
 
 When you first start using The Schwarzenegger, please ensure that you follow the instructions below:
 
-1. Ensure you have Java 11 or above installed in your Computer.
-1. Download the latest duke.jar from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
-1. Copy the file to the folder you want to use as the home folder for the gymming application.
-1. Open terminal or command prompt and change to the directory of the folder of the application.
-1. Key in java -jar duke.jar
+1. Ensure you have Java `11` or above installed in your Computer.
+1. Download the latest `duke.jar` from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
+1. Copy the file to the folder you want to use as the home folder for The Schwarzenegger.
+1. Open command prompt (on Windows)  or terminal (on MacOS/ Linux) and change to the directory of the folder of the application in step 3.
+1. Key in java -jar duke.jar. If the setup is correct, you should see something like below:
+
+    ```
+        ______________________________________________________________________________
+        Welcome new user to Schwarzenegger! :D
+        Please add your profile using "add" command under Profile Menu.
+        For more information on command syntax, please type "help".
+        ______________________________________________________________________________
+    ```
+   
+1. To use The Schwarzenegger, simply type a valid command into the terminal and press <kbd>Enter</kbd> to run the command.<br>
+    Example: Typing `help` command and pressing <kbd>Enter</kbd> will show you a list of available commands in The Schwarzenegger and their descriptions.
+1. Some example commands you can try:
+    - `help`: Shows all commands in The Schwarzenegger and their descriptions.
+    - `profile`: Directs you to Profile Menu where you can add and manage your profile.
+    - `diet`: Directs you to Diet Menu where you can add and manage your diet records.
+    - `workout`: Directs you to Workout Menu where you can add and manage your workout records.
+1. A summary of all the supported commands in Duke can be found in [Section 4. Command Summary](#4-command-summary).<br>
+Refer to [Section 3. Features](#3-features) for the detailed instructions of the various features in The Schwarzenegger.
 
 ## 3. Features 
 This section includes 4 sub sections which will guide you through the features available in Main Menu, Profile Menu, Workout Menu and Diet Menu.
 ### 3.1. Main Menu
-You can get access to Profile Menu, Workout Menu and Diet Menu from Main Menu.
+You can get access to Profile Menu, Diet Menu and Workout Menu from Main Menu.
 The available commands in Main Menu are listed below:
 
 #### 3.1.1. Viewing help: `help`
 The program will show a message explaining which commands are available for you to switch to the menu that you want (i.e. Profile Menu, Workout Menu and Diet Menu).
 
-__Format:__ `help`  
+__Format:__ `help`
 
 Example: `help`
+
 #### 3.1.2. Entering Profile Menu: `profile`
 The program will direct you to the Profile Menu.
 
@@ -133,7 +152,7 @@ Example: `delete`
 #### 3.2.5. Editing a profile: `edit`
 You can edit the profile after adding to the program.
 
-__Format:__ `edit /n [name or ]edit /h [height] or edit /w [weight] or edit /a [age] or edit /e [expection]`  
+__Format:__ `edit /n [name] edit /h [height] or edit /w [weight] or edit /a [age] or edit /e [expection]`  
 
 Example: `edit /h 180`
 
