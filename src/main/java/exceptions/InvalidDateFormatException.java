@@ -10,6 +10,6 @@ public class InvalidDateFormatException extends SchwarzeneggerException {
      */
     public InvalidDateFormatException() {
         super("Wrong format, please enter in the format: \n"
-                + "\t add /d [DATE_IN: DD-MM-YYYY]");
+                + "\t new /d [DATE: DD-MM-YYYY]");
     }
 }

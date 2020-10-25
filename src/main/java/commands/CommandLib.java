@@ -43,6 +43,7 @@ import commands.workout.workoutsession.WorkoutSessionHelp;
 import commands.workout.workoutsession.WorkoutSessionList;
 import commands.workout.workoutsession.WorkoutSessionSearch;
 import commands.workout.workoutsession.WorkoutSessionWrong;
+import seedu.duke.Constant;
 
 import java.util.Hashtable;
 
@@ -54,7 +55,6 @@ import static seedu.duke.Constant.COMMAND_WORD_EDIT;
 import static seedu.duke.Constant.COMMAND_WORD_END;
 import static seedu.duke.Constant.COMMAND_WORD_HELP;
 import static seedu.duke.Constant.COMMAND_WORD_LIST;
-import static seedu.duke.Constant.COMMAND_WORD_MEAL;
 import static seedu.duke.Constant.COMMAND_WORD_NEW;
 import static seedu.duke.Constant.COMMAND_WORD_PROFILE;
 import static seedu.duke.Constant.COMMAND_WORD_SEARCH;
@@ -128,7 +128,7 @@ public class CommandLib {
      */
     public void initDietManagerCL() {
         library.put(COMMAND_WORD_LIST, new DietSessionList());
-        library.put(COMMAND_WORD_MEAL, new DietSessionCreate());
+        library.put(COMMAND_WORD_NEW, new DietSessionCreate());
         library.put(COMMAND_WORD_HELP, new DietSessionHelp());
         library.put(COMMAND_WORD_CLEAR, new DietSessionClear());
         library.put(COMMAND_WORD_SEARCH, new DietSessionSearch());
