@@ -12,7 +12,7 @@ public class Utils {
      */
     public static boolean checkValidProfile(Profile profile) {
         return (checkValidName(profile.getName())
-                && checkValidAge(profile.getAge())
+                && checkCalories(profile.getCalories())
                 && checkValidHeight(profile.getHeight())
                 && checkValidWeight(profile.getWeight())
                 && checkValidWeight(profile.getExpectedWeight()));
@@ -29,14 +29,13 @@ public class Utils {
     }
 
     /**
-     * Verifies if user's input age is in the valid range
-     * (between {@link AGE_LOWER_BOUND} and {@link AGE_UPPER_BOUND} inclusive).
+     * Verifies if user's input calories is not negative.
      *
-     * @param age User's input age.
-     * @return Whether input age is valid.
+     * @param calories User's expected calories intake daily.
+     * @return Whether calories amount is not negative.
      */
-    public static boolean checkValidAge(int age) {
-        return (age >= Constants.AGE_LOWER_BOUND && age <= Constants.AGE_UPPER_BOUND);
+    public static boolean checkCalories(double calories) {
+        return calories >= 0;
     }
 
     /**

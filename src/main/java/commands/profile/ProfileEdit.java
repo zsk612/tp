@@ -15,7 +15,7 @@ import static commands.ExecutionResult.SKIPPED;
 import static profile.Constants.MESSAGE_EDIT_NOTHING;
 import static profile.Constants.MESSAGE_EDIT_PROFILE_ACK;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
-import static profile.ProfileParser.extractAge;
+import static profile.ProfileParser.extractCalories;
 import static profile.ProfileParser.extractCommandTagAndInfo;
 import static profile.ProfileParser.extractExpectedWeight;
 import static profile.ProfileParser.extractHeight;
@@ -46,13 +46,13 @@ public class ProfileEdit extends Command {
 
             HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_EDIT, commandArgs);
             String name = parsedParams.containsKey("/n") ? extractName(parsedParams) : profile.getName();
-            int age = parsedParams.containsKey("/a") ? extractAge(parsedParams) : profile.getAge();
             int height = parsedParams.containsKey("/h") ? extractHeight(parsedParams) : profile.getHeight();
             double weight = parsedParams.containsKey("/w") ? extractWeight(parsedParams) : profile.getWeight();
             double expectedWeight = parsedParams.containsKey("/e")
                     ? extractExpectedWeight(parsedParams) : profile.getExpectedWeight();
+            double calories = parsedParams.containsKey("/c") ? extractCalories(parsedParams) : profile.getCalories();
 
-            Profile editedProfile = new Profile(name, age, height, weight, expectedWeight);
+            Profile editedProfile = new Profile(name, height, weight, expectedWeight, calories);
 
             if (profile.equals(editedProfile)) {
                 return new CommandResult(MESSAGE_EDIT_NOTHING, SKIPPED);
