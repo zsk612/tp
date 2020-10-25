@@ -24,8 +24,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static profile.Constants.EMPTY_STRING;
-import static profile.Constants.PATH_TO_PROFILE_FILE;
-import static profile.Constants.PATH_TO_PROFILE_FOLDER;
+import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
+import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
 
 /**
  * A class that saves and loads user profile data on local hard disk.
@@ -46,6 +46,7 @@ public class ProfileStorage {
      *
      * @return User profile.
      * @throws LoadingException If there are failed or interrupted I/O operations.
+     * @throws InvalidSaveFormatException If data file saving format is corrupted.
      */
     public Profile loadData() throws LoadingException, InvalidSaveFormatException {
         Profile profile = null;

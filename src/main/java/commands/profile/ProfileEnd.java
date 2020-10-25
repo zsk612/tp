@@ -7,8 +7,6 @@ import exceptions.SchwarzeneggerException;
 import exceptions.profile.RedundantParamException;
 import storage.profile.ProfileStorage;
 
-import java.util.logging.Level;
-
 import static seedu.duke.Constant.COMMAND_WORD_END;
 
 /**
@@ -26,7 +24,7 @@ public class ProfileEnd extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
-        logger.log(Level.INFO, "executing End Command");
+        super.execute(commandArgs, storage);
 
         if (!commandArgs.isEmpty()) {
             throw new RedundantParamException(COMMAND_WORD_END);

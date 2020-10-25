@@ -8,8 +8,6 @@ import exceptions.profile.RedundantParamException;
 import profile.Profile;
 import storage.profile.ProfileStorage;
 
-import java.util.logging.Level;
-
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
 import static profile.Constants.MESSAGE_DELETE_NOTHING;
@@ -31,7 +29,7 @@ public class ProfileDelete extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
-        logger.log(Level.INFO, "executing Delete Command");
+        super.execute(commandArgs, storage);
 
         if (!commandArgs.isEmpty()) {
             throw new RedundantParamException(COMMAND_WORD_DELETE);

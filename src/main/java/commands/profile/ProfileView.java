@@ -8,8 +8,6 @@ import exceptions.profile.RedundantParamException;
 import profile.Profile;
 import storage.profile.ProfileStorage;
 
-import java.util.logging.Level;
-
 import static commands.ExecutionResult.FAILED;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.Constants.MESSAGE_VIEW_PROFILE;
@@ -30,7 +28,7 @@ public class ProfileView extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
-        logger.log(Level.INFO, "executing View Command");
+        super.execute(commandArgs, storage);
 
         if (!commandArgs.isEmpty()) {
             throw new RedundantParamException(COMMAND_WORD_VIEW);

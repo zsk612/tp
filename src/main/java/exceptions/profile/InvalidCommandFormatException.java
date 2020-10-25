@@ -2,6 +2,8 @@ package exceptions.profile;
 
 import exceptions.SchwarzeneggerException;
 
+import static profile.Constants.MESSAGE_INVALID_COMMAND_FORMAT;
+
 /**
  * Represents exception when command format is invalid.
  */
@@ -10,10 +12,9 @@ public class InvalidCommandFormatException extends SchwarzeneggerException {
     /**
      * Constructs InvalidCommandFormatException object inheriting abstract class SchwarzeneggerException.
      *
-     * @param command Command with invalid format.
+     * @param format Correct format of the command.
      */
-    public InvalidCommandFormatException(String command) {
-        super(String.format("%s command format is invalid. Please type \"help\" to see the correct format.",
-                command.toUpperCase()));
+    public InvalidCommandFormatException(String format) {
+        super(String.format(MESSAGE_INVALID_COMMAND_FORMAT, format));
     }
 }

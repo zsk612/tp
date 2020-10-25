@@ -5,16 +5,17 @@ import commands.CommandLib;
 import commands.CommandResult;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
+import exceptions.profile.InvalidSaveFormatException;
 import logger.SchwarzeneggerLogger;
 import profile.Profile;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static profile.Constants.MESSAGE_WELCOME_EXISTING_USER;
 import static profile.Constants.MESSAGE_WELCOME_NEW_USER;
+import static profile.Constants.MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT;
 import static seedu.duke.Constant.COMMAND_WORD_END;
 
 /**
@@ -54,22 +55,21 @@ public class Duke {
      * Starts up Duke with greeting message.
      */
     private void start() {
-        Profile profile = null;
+        Profile profile;
 
         try {
             profile = new ProfileStorage().loadData();
-        } catch (SchwarzeneggerException e) {
-            logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
-            ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
-        } catch (Exception e) {
-            logger.log(Level.WARNING, "processing uncaught exception", e);
-            ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
-        }
-
-        if (profile == null) {
-            ui.showToUser(MESSAGE_WELCOME_NEW_USER);
-        } else {
             ui.showToUser(String.format(MESSAGE_WELCOME_EXISTING_USER, profile.getName()));
+        } catch (SchwarzeneggerException e) {
+            if (e instanceof InvalidSaveFormatException) {
+                ui.showToUser(MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT);
+            } else {
+                ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
+                ui.showToUser(MESSAGE_WELCOME_NEW_USER);
+            }
+        } catch (Exception e) {
+            ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
+            ui.showToUser(MESSAGE_WELCOME_NEW_USER);
         }
     }
 
@@ -77,6 +77,8 @@ public class Duke {
      * Gets user's command and executes repeatedly until user requests to end Schwarzenegger.
      */
     private void runCommandLoopTillEnd() {
+        logger.info("running main menu loop");
+
         String response = ui.getCommand("Main Menu").trim();
         String[] dummy = {};
 

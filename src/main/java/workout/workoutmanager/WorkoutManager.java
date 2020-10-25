@@ -34,7 +34,7 @@ public class WorkoutManager {
         WorkoutManagerUi.printOpening();
         while (true) {
 
-            String command = ui.getCommand("Workout Manager");
+            String command = ui.getCommand("Workout Menu");
             logger.log(Level.INFO, "Received input" + command);
 
             String[] commParts = WorkoutManagerParser.parseCommandKw(command);

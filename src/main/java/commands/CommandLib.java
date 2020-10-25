@@ -157,8 +157,8 @@ public class CommandLib {
      * @return Command object.
      */
     public Command getCommand(String keyword) {
-        if (library.containsKey(keyword)) {
-            return library.get(keyword);
+        if (library.containsKey(keyword.toLowerCase())) {
+            return library.get(keyword.toLowerCase());
         } else {
             return library.get(COMMAND_WORD_WRONG);
         }
