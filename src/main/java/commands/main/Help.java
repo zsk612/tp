@@ -16,7 +16,7 @@ public class Help extends Command {
      * @return Help message.
      */
     @Override
-    public CommandResult execute(String[] args) {
+    public CommandResult execute(String args) {
 
         StringBuilder helpMessage = new StringBuilder();
         helpMessage.append(helpFormatter("profile", "profile",

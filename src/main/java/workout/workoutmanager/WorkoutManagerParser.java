@@ -18,8 +18,8 @@ public class WorkoutManagerParser {
      * @param comm User's raw input.
      * @return An array of strings.
      */
-    public static String[] parse(String comm) {
-        return comm.split(" ");
+    public static String[] parseCommandKw(String comm) {
+        return comm.split(" ", 1);
     }
 
     /**

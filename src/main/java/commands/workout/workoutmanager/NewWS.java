@@ -23,7 +23,7 @@ public class NewWS extends Command {
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
-    public CommandResult execute(String[] args) throws SchwarzeneggerException {
+    public CommandResult execute(String args) throws SchwarzeneggerException {
         /**
          * When starting a new workout session, a new file is created first.
          * The file path is passed into workoutSession constructor to instantiate

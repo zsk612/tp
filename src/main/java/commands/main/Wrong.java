@@ -16,7 +16,7 @@ public class Wrong extends Command {
      * @return Invalid input command message.
      */
     @Override
-    public CommandResult execute(String[] args) throws InvalidCommandWordException {
+    public CommandResult execute(String args) throws InvalidCommandWordException {
         throw new InvalidCommandWordException();
     }
 }

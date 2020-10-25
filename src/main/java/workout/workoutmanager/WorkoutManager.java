@@ -37,7 +37,7 @@ public class WorkoutManager {
             String command = ui.getCommand("Workout Manager");
             logger.log(Level.INFO, "Received input" + command);
 
-            String[] commParts = WorkoutManagerParser.parse(command);
+            String[] commParts = WorkoutManagerParser.parseCommandKw(command);
             try {
                 processCommand(commParts);
             } catch (EndException e) {
@@ -53,7 +53,7 @@ public class WorkoutManager {
 
     private void processCommand(String[] commands) throws SchwarzeneggerException {
         Command command = cl.getCommand(commands[0]);
-        CommandResult result = command.execute(Arrays.copyOfRange(commands, 1, commands.length));
+        CommandResult result = command.execute(commands[1]);
         ui.showToUser(result.getFeedbackMessage());
     }
 }

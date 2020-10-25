@@ -26,7 +26,7 @@ public abstract class Command {
      *         to user.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
-    public CommandResult execute(String[] args) throws SchwarzeneggerException {
+    public CommandResult execute(String args) throws SchwarzeneggerException {
         logger.log(Level.INFO, "Executing " + this);
         return new CommandResult();
     }
