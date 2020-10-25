@@ -8,10 +8,11 @@ import profile.Profile;
 import storage.profile.ProfileStorage;
 
 import java.util.HashMap;
-import java.util.logging.Level;
 
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
+import static commands.ExecutionResult.SKIPPED;
+import static profile.Constants.MESSAGE_EDIT_NOTHING;
 import static profile.Constants.MESSAGE_EDIT_PROFILE_ACK;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.ProfileParser.extractAge;
@@ -37,7 +38,7 @@ public class ProfileEdit extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
-        logger.log(Level.INFO, "executing Edit Command");
+        super.execute(commandArgs, storage);
 
         Profile profile;
         try {
@@ -51,8 +52,13 @@ public class ProfileEdit extends Command {
             double expectedWeight = parsedParams.containsKey("/e")
                     ? extractExpectedWeight(parsedParams) : profile.getExpectedWeight();
 
-            profile = new Profile(name, age, height, weight, expectedWeight);
-            storage.saveData(profile);
+            Profile editedProfile = new Profile(name, age, height, weight, expectedWeight);
+
+            if (profile.equals(editedProfile)) {
+                return new CommandResult(MESSAGE_EDIT_NOTHING, SKIPPED);
+            }
+
+            storage.saveData(editedProfile);
 
             return new CommandResult(String.format(MESSAGE_EDIT_PROFILE_ACK, profile.toString()), OK);
         } catch (InvalidSaveFormatException e) {
