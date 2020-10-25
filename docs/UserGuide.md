@@ -84,7 +84,7 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 Refer to [Section 3. Features](#features) for the detailed instructions of the various features in The Schwarzenegger.
 
 ## 3. <a id="features">Features</a> 
-This section includes 4 sub sections which will guide you through the features available in Main Menu, Profile Menu, Workout Menu and Diet Menu.
+This section includes 4 sub-sections which will guide you through the features available in Main Menu, Profile Menu, Workout Menu and Diet Menu.
 
 ### 3.1. <a id="main-menu">Main Menu</a>
 You can get access to Profile Menu, Diet Menu and Workout Menu from Main Menu.
@@ -296,7 +296,7 @@ Example |  Outcome
 
 ### 3.4.2. <a id="workout-start">Starting a New Workout Session: `new`</a>
 Creates a new workout session and go into the session. 
-Adds tags with “/t”. Tags are optional and more than one tag can be attached to a session.
+You can add tags with “/t”. Tags are optional and more than one tag can be attached to a session.
 
 __Format:__ `new /t <tag1> <tag2>`  
 Tags are optional and more than one tag can be attached to a session.
@@ -305,11 +305,11 @@ Example: `new /t legs chest`
 
 Situation | Example |  Outcome
 ----------|--------|------------------
-Create a workout session with tags "leg" and "chest" | `new /t legs chest`|sthst
+Create a workout session with tags "leg" and "chest" | `new /t legs chest`| TODO: sthst
 Repeated tags are attached| `new /t legs legs`| Only one will be added
 
 #### 3.4.2.1. <a id="ws-help">Viewing Help: `help`</a>
-Shows a list of commands and their way of use.
+You can see a complete list of available commands under Workout Session and how to use them.
 
 __Format:__ `help`  
 
@@ -356,8 +356,7 @@ Example |  Outcome
 **Command**: <br> `list` <br><br>| TODO:actual code UI output
 
 ### 3.4.4. <a id="workout-edit">Editing a Workout Session: `edit`</a>
-You can edits a past workout session in the record list. You will go into 
-the specific workout session after typing this.
+You can edit a past workout session in the record list. You will go into the specific workout session after typing this command.
 
 __Format:__ `edit <INDEX>` 
 
@@ -379,15 +378,14 @@ Example |  Outcome
 **Command**: <br> `delete 1` <br><br> **Description:** <br> Delete the record at index 1.| TODO:actual code UI output
 
 ### 3.4.6. <a id="workout-search">Searching a List of Workout Session: `search`</a>
-You can searches for a list of workout sessions that matches certain conditions.For exmaple, 
+You can search for a list of workout sessions that matches certain conditions. For example, 
 you can search for sessions created on a specific day or sessions that contains certain tags.
 
 __Format:__ `Search /d <DATE> /t <tag1> <tag2>`
 
-You can search records containing (a list of) tags with `/t` followed by the tags. If multiple
-tags are written, only sessions that contains all the tags will be selected.
+You can search records containing (a list of) tags with `/t` followed by the tags. If multiple tags are written, only sessions that contains all the tags will be selected.
 
-You can searches records created on a specific day with `/d` followed by a date.
+You can search records created on a specific day with `/d` followed by a date.
 Date should be keyed in  following one of the supported formats. 
 [See here](#notes) for a complete list of format supported. If the format is not recognised, sessions created on any day will be accepted.
 
