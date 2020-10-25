@@ -35,11 +35,7 @@ public class DietManagerUi extends CommonUi {
             InvalidDateFormatException {
         try {
             String dateString = input.split("/t")[0].split(" ", 2)[1].trim();
-            //Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
-            //Matcher matcher = pattern.matcher(dateString);
-            //String match = matcher.group();
             return DateParser.parseDate(dateString).format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-            //return LocalDate.parse(match).format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
         } catch (IndexOutOfBoundsException e) {
             showToUser("I do not understand your date input!");
