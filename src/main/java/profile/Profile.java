@@ -9,26 +9,26 @@ import static profile.Utils.checkValidProfile;
 public class Profile {
 
     protected String name;
-    protected int age;
     protected int height;
     protected double weight;
     protected double expectedWeight;
+    protected double calories;
 
     /**
      * Constructs Profile object.
      *
      * @param name User's name.
-     * @param age User's age.
      * @param height User's height in centimeters.
      * @param weight User's weight in kilograms.
      * @param expectedWeight User's expected weight in kilograms.
+     * @param calories User's expected calories intake daily.
      */
-    public Profile(String name, int age, int height, double weight, double expectedWeight) {
+    public Profile(String name, int height, double weight, double expectedWeight, double calories) {
         this.name = name;
-        this.age = age;
         this.height = height;
         this.weight = weight;
         this.expectedWeight = expectedWeight;
+        this.calories = calories;
     }
 
     /**
@@ -38,8 +38,8 @@ public class Profile {
      */
     public String toString() {
         assert checkValidProfile(this) : "Profile is invalid";
-        return String.format(PROFILE_STRING_REPRESENTATION, getName(), getAge(), getHeight(), getWeight(),
-                getExpectedWeight(), getBmiClassification());
+        return String.format(PROFILE_STRING_REPRESENTATION, getName(), getHeight(), getWeight(),
+                getExpectedWeight(), getCalories(), getBmiClassification());
     }
 
     /**
@@ -49,15 +49,6 @@ public class Profile {
      */
     public String getName() {
         return name;
-    }
-
-    /**
-     * Gets user's age.
-     *
-     * @return User's age.
-     */
-    public int getAge() {
-        return age;
     }
 
     /**
@@ -85,6 +76,15 @@ public class Profile {
      */
     public double getExpectedWeight() {
         return expectedWeight;
+    }
+
+    /**
+     * Gets user's expected calories intake daily..
+     *
+     * @return User's expected calories intake daily..
+     */
+    public double getCalories() {
+        return calories;
     }
 
     /**
@@ -131,7 +131,7 @@ public class Profile {
         }
         Profile profile = (Profile) o;
         return name.equals(profile.name)
-                && age == profile.age
+                && calories == profile.calories
                 && height == profile.height
                 && Double.compare(profile.weight, weight) == 0
                 && Double.compare(profile.expectedWeight, expectedWeight) == 0;
