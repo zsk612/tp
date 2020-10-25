@@ -1,5 +1,8 @@
 package seedu.duke;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Constant {
     public static final String COMMAND_WORD_DIET = "diet";
     public static final String COMMAND_WORD_PROFILE = "profile";
@@ -18,9 +21,21 @@ public class Constant {
     public static final String COMMAND_WORD_WRONG = "wrong";
     public static final String COMMAND_WORD_MEAL = "meal";
 
-    public static final String WORKOUTSESSIONHISTORY = "saves/workout/history.json";
-    public static final String WORKOUTSESSIONFOLDER = "saves/workout/workoutSession/";
-    public static final String DIETSESSIONHISTORY = "saves/diet/history.json";
-    public static final String DIETSESSIONFOLDER = "saves/diet/dietSession/";
-    public static final String LOG_FILE_PATH = "logs/SchwarzeneggerLogs.log";
+    public static final String PROJECT_ROOT = System.getProperty("user.dir");
+    public static final String DATA_FOLDER = "saves";
+
+    public static final Path PATH_TO_PROFILE_FILE = Paths.get(PROJECT_ROOT, DATA_FOLDER, "profile", "profile.json");
+    public static final Path PATH_TO_PROFILE_FOLDER = Paths.get(PROJECT_ROOT, DATA_FOLDER, "profile");
+
+    public static final String PATH_TO_WORKOUT_SESSION_HISTORY = Paths.get(PROJECT_ROOT, DATA_FOLDER, "workout",
+            "history.json").toString();
+    public static final String PATH_TO_WORKOUT_SESSION_FOLDER = Paths.get(PROJECT_ROOT, DATA_FOLDER, "workout",
+            "workoutSession").toString();
+
+    public static final String PATH_TO_DIET_SESSION_HISTORY = Paths.get(PROJECT_ROOT, DATA_FOLDER, "diet",
+            "history.json").toString();
+    public static final String PATH_TO_DIET_SESSION_FOLDER = Paths.get(PROJECT_ROOT, DATA_FOLDER, "diet",
+            "dietSession").toString();
+
+    public static final String PATH_TO_LOG_FILE = Paths.get(PROJECT_ROOT, "logs", "SchwarzeneggerLogs.log").toString();
 }

@@ -40,6 +40,7 @@ public abstract class Command {
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
+        logger.log(Level.INFO, "Executing " + this);
         return new CommandResult();
     }
 

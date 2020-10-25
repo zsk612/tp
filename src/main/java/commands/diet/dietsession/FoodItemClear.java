@@ -21,19 +21,12 @@ public class FoodItemClear extends Command {
      */
     @Override
     public void execute(String input, ArrayList<Food> foodList, DietStorage storage) {
-        if (checkConfirmation()) {
+        if (ui.checkConfirmation("Diet Menu", "clear all records")) {
             foodList.clear();
             ui.showToUser("Oops you have cleared all the food items.");
             logger.log(Level.INFO, "Cleared all food in arraylist");
         } else {
             System.out.println("You have aborted clear operation.");
         }
-    }
-
-    private boolean checkConfirmation() {
-        ui.showToUser("Are you sure you want to clear all records? This action is irrevocable.\n"
-                + "\t Key in YES to confirm.");
-        String input = ui.getCommand("Diet Menu");
-        return input.equals("YES");
     }
 }

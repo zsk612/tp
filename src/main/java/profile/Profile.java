@@ -113,4 +113,27 @@ public class Profile {
 
         return String.format("%.1f (%s)", bmiIndex, classification);
     }
+
+    /**
+     * Overrides equals method of class Object to compare Profile object.
+     *
+     * @param o Object to compare.
+     * @return True if this Profile object is the same as the obj
+     *         argument; false otherwise.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Profile profile = (Profile) o;
+        return name.equals(profile.name)
+                && age == profile.age
+                && height == profile.height
+                && Double.compare(profile.weight, weight) == 0
+                && Double.compare(profile.expectedWeight, expectedWeight) == 0;
+    }
 }

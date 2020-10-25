@@ -54,7 +54,7 @@ public class WorkOutManagerStorage {
         System.out.println(LOADINGFILE);
 
         ArrayList<PastWorkoutSessionRecord> pastFiles;
-        File file = new File(Constant.WORKOUTSESSIONHISTORY);
+        File file = new File(Constant.PATH_TO_WORKOUT_SESSION_HISTORY);
         Type taskListType = new TypeToken<ArrayList<PastWorkoutSessionRecord>>() {
         }.getType();
         try {
@@ -62,7 +62,7 @@ public class WorkOutManagerStorage {
             pastFiles = gson.fromJson(reader, taskListType);
         } catch (FileNotFoundException e) {
             logger.info("File is not found.");
-            createMetaFile(Constant.WORKOUTSESSIONHISTORY);
+            createMetaFile(Constant.PATH_TO_WORKOUT_SESSION_HISTORY);
             pastFiles = new ArrayList<>();
         }
         if (pastFiles == null) {
@@ -82,7 +82,7 @@ public class WorkOutManagerStorage {
      */
     public void writePastRecords(List<PastWorkoutSessionRecord> pastFiles) throws SchwIoException {
         logger.info("Saving the changes...");
-        File file = new File(Constant.WORKOUTSESSIONHISTORY);
+        File file = new File(Constant.PATH_TO_WORKOUT_SESSION_HISTORY);
         FileWriter writer;
         try {
             writer = new FileWriter(file.getPath());
@@ -115,7 +115,7 @@ public class WorkOutManagerStorage {
      * @throws SchwIoException If error occurs in creating the file.
      */
     public String createfile() throws SchwIoException {
-        String newFilePath = Constant.WORKOUTSESSIONFOLDER + recordCount + ".json";
+        String newFilePath = Constant.PATH_TO_WORKOUT_SESSION_FOLDER + recordCount + ".json";
         File file = new File(newFilePath);
         file.getParentFile().mkdirs();
         try {

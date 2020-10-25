@@ -22,7 +22,7 @@ class ProfileStorageTest {
     void testDecodeProfile_exampleProfileData_returnsExampleProfileString() throws SchwarzeneggerException,
             FileNotFoundException {
         ProfileStorage storage = new ProfileStorage();
-        String inputFilePath = System.getProperty("user.dir") + "/src/test/java/storage/profile/exampleProfileData.txt";
+        String inputFilePath = "src/test/java/storage/profile/exampleProfileData.json";
         Profile testProfile = storage.decodeProfile(inputFilePath);
         assertEquals(EXAMPLE_PROFILE_STRING, testProfile.toString());
     }
@@ -33,7 +33,7 @@ class ProfileStorageTest {
     @Test
     void testDecodeProfile_invalidDataInput_throwsInvalidSaveFormatException() {
         ProfileStorage storage = new ProfileStorage();
-        String inputFilePath = System.getProperty("user.dir") + "/src/test/java/storage/profile/invalidProfileData.txt";
+        String inputFilePath = "src/test/java/storage/profile/invalidProfileData.json";
         assertThrows(InvalidSaveFormatException.class, () -> {
             storage.decodeProfile(inputFilePath);
         });
