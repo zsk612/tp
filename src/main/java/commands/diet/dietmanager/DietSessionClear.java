@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 
 public class DietSessionClear extends Command {
-    
+
     private static final String FILEPATH = "saves/diet/";
     private final DietManagerUi ui = new DietManagerUi();
 
@@ -22,7 +22,7 @@ public class DietSessionClear extends Command {
     @Override
     public void execute(String input, DietStorage storage) {
         try {
-            if (checkConfirmation()) {
+            if (ui.checkConfirmation("Diet Menu", "clear all records")) {
                 File folder = new File(FILEPATH);
                 File[] listOfFiles = folder.listFiles();
                 for (int index = 0; index < Objects.requireNonNull(listOfFiles).length; index++) {
@@ -37,12 +37,5 @@ public class DietSessionClear extends Command {
             e.printStackTrace();
             logger.log(Level.INFO, "No sessions in dietManager for deletion");
         }
-    }
-
-    private boolean checkConfirmation() {
-        ui.showToUser("Are you sure you want to clear all records? This action is irrevocable.\n"
-                + "\t Key in YES to confirm.");
-        String input = ui.getCommand("Diet Menu");
-        return input.equals("YES");
     }
 }

@@ -32,10 +32,10 @@ public class CommonUi {
     }
 
     /**
-     * Formatter to get a input from user.
+     * Gets input from user.
      *
-     * @param menuName current menu name
-     * @return user input in a string
+     * @param menuName Current menu name.
+     * @return User input in a string.
      */
     public String getCommand(String menuName) {
         System.out.print(menuName + " >>>>> ");
@@ -51,4 +51,18 @@ public class CommonUi {
         return inputLine.trim().replaceAll(GREEDY_WHITE_SPACE, " ");
     }
 
+    /**
+     * Gets user confirmation a specific command.
+     *
+     * @param menuName Current menu name.
+     * @param action Action description.
+     * @return If user confirms the command execution.
+     */
+    public boolean checkConfirmation(String menuName, String action) {
+        String message = String.format("Are you sure you want to %s? This action is irrevocable.\n\t "
+                + "Key in \"YES\" to confirm.", action);
+        showToUser(message);
+        String input = getCommand(menuName);
+        return input.equals("YES");
+    }
 }

@@ -22,23 +22,11 @@ public class ClearWS extends Command {
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {
         super.execute(args);
-        if (!checkConfirmation()) {
+        if (!ui.checkConfirmation("Workout Menu", "clear all records")) {
             return new CommandResult(CLEAR_ABORTED, ExecutionResult.ABORTED);
         }
         PastRecordList.getInstance().clear();
         logger.info("Cleared successfully");
         return new CommandResult(CLEAR_SUCCESS, ExecutionResult.OK);
-    }
-
-    /**
-     * Gets user confirmation for clearing all workout sessions.
-     *
-     * @return If user confirms clearing all workout sessions.
-     */
-    private static boolean checkConfirmation() {
-        System.out.println("\t Are you sure you want to clear all records? This action is irrevocable.");
-        System.out.println("\t Key in 'YES' to confirm.");
-        String input = ui.getCommand("Workout Manager");
-        return input.equals("YES");
     }
 }
