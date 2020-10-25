@@ -11,6 +11,7 @@ public class DietManagerParser {
 
     /**
      * Parses user input to extract command words and instructions.
+     *
      * @param comm user input for command
      * @return a string array containing command words and instructions
      */
@@ -25,13 +26,14 @@ public class DietManagerParser {
     /**
      * Extracts out date and time by looking for date strings in YYYY-MM-DD format.
      *
-     * @param input date string
-     * @param message string builder that appends warnings and messages
+     * @param input user input for new diet session
+     * @param extractDateMessage string builder that appends warnings and messages
      * @return date in MMM dd yyyy if the user inputs date in YYYY-MM-DD format;
      *         else returns original string
      * @throws DateTimeParseException if the date string input is not a valid date
      */
-    public String extractDate(String input, StringBuilder extractDateMessage) throws DateTimeParseException, IllegalStateException,
+    public String extractDate(String input, StringBuilder extractDateMessage) throws DateTimeParseException,
+            IllegalStateException,
             InvalidDateFormatException {
         try {
             String dateString = input.split("/t")[0].split(" ", 2)[1].trim();
@@ -48,14 +50,22 @@ public class DietManagerParser {
         return dtf.format(now);
     }
 
+    /**
+     * Extracts out tag of the diet session.
+     *
+     * @param input user input for new diet session
+     * @param extractMealMessage string builder that appends warnings and messages
+     * @return tag input if there is any;
+     *         else returns "unspecified"
+     * @throws IndexOutOfBoundsException if there is no input for tag
+     * @throws NullPointerException if there is no input for tag
+     */
     public String extractMeal(String input, StringBuilder extractMealMessage)
             throws IndexOutOfBoundsException, NullPointerException {
         try {
             return input.split("/t")[1].trim();
-        } catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException | NullPointerException e) {
             extractMealMessage.append("Please specify your diet session tag, i.e. breakfast, lunch, dinner\n");
-        } catch (NullPointerException e) {
-            extractMealMessage.append("It looks like there's no input after /t\n");
         }
         extractMealMessage.append("\t Session is tagged as unspecified.\n");
         return "unspecified";
