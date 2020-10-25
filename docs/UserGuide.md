@@ -125,7 +125,7 @@ __Format:__ `end`
 Example: `end`
 
 ### 3.2. Profile Menu
-Profile Menu manages your profile including your name, age and physique data. 
+Profile Menu manages your profile including your name, physique data and expected daily calories intake. 
 
 #### 3.2.1. Viewing help: `help`
 The program will show a message explaining which commands are available Profile Menu.
@@ -137,11 +137,11 @@ Example: `help`
 #### 3.2.2. Adding a profile: `add`
 You can add your profile for the most customized experience in The Schwarzenegger. Your height should in centimeters and your input weight should be in kilograms.
 
-__Format:__ `add /n [NAME] /a [AGE] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT]`  
+__Format:__ `add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`  
 
-Example: `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
+Example: `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
 
-This command adds a profile with the name Schwarzenegger, age 30, height 188 cm, weight 113 kg and expected weight 100 kg.
+This command adds a profile with the name Schwarzenegger, height 188 cm, weight 113 kg, expected weight 100 kg and expected daily intake of 2500 calories.
 
 #### 3.2.3. Viewing a profile: `view`
 You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI and give you suggestions on an expected weight for better fitness if it detects your current expectation is not appropriate.
@@ -151,7 +151,7 @@ __Format:__ `view`
 Example: `view`
 
 #### 3.2.4. Deleting a profile: `delete`
-You can delete your profile from the program. The program will ask for your confirmation and it will only delete after you type in exactly "YES".
+You can delete your profile from the program. The program will ask for your confirmation, and it will only delete after you type in exactly "YES".
 
 __Format:__ `delete`  
 
@@ -160,7 +160,7 @@ Example: `delete`
 #### 3.2.5. Editing a profile: `edit`
 You can edit the profile after adding to the program.
 
-__Format:__ `edit /n [NAME] /a [AGE] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT]`  
+__Format:__ `edit /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`  
 
 Example: <br>
     - `edit /h 180`<br>
@@ -430,9 +430,9 @@ End|`end`
 **Action** |  **Format**
 --------|----------------------
 Help|`help`
-Add |`add /n [name] /a [age] /h [height] /w [weight] /e [expected weight]`<br><br>E.g. `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
+Add |`add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`<br><br>E.g. `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
 View|`view`
-Edit|`edit </n [name]> </a [age]> </h [height]> </w [weight]> </e [expected weight]>`<br><br>E.g. `edit /w 110`
+Edit|`edit /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`<br><br>E.g. `edit /w 110`, `edit /h 175 /w 110`, `edit /h 175 /w 110 /e 90`
 Delete|`delete`
 Return to Main Menu|`end`
 
