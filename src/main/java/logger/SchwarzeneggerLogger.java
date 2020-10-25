@@ -6,7 +6,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-import static seedu.duke.Constant.LOG_FILE_PATH;
+import static seedu.duke.Constant.PATH_TO_LOG_FILE;
 
 /**
  * A class to handle file logging.
@@ -20,12 +20,12 @@ public class SchwarzeneggerLogger {
      */
     private SchwarzeneggerLogger() {
         try {
-            File file = new File(LOG_FILE_PATH);
+            File file = new File(PATH_TO_LOG_FILE);
             file.getParentFile().mkdirs();
             file.createNewFile();
 
             SimpleFormatter formatter = new SimpleFormatter();
-            FileHandler fh = new FileHandler(LOG_FILE_PATH);
+            FileHandler fh = new FileHandler(PATH_TO_LOG_FILE);
             fh.setFormatter(formatter);
 
             logger = Logger.getLogger("SchwarzeneggerLogger");
