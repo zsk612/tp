@@ -3,15 +3,21 @@ package profile;
 import exceptions.profile.InvalidAgeException;
 import exceptions.profile.InvalidCommandFormatException;
 import exceptions.profile.InvalidHeightException;
+import exceptions.profile.InvalidNameException;
 import exceptions.profile.InvalidWeightException;
 
 import java.util.HashMap;
 
+import static profile.Constants.ADD_PROFILE_FORMAT;
 import static profile.Constants.COMMAND_ARGS_INDEX;
 import static profile.Constants.COMMAND_SPLIT_LIMIT;
 import static profile.Constants.COMMAND_TYPE_INDEX;
+import static profile.Constants.EDIT_PROFILE_FORMAT;
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.GREEDY_WHITE_SPACE;
+import static seedu.duke.Constant.COMMAND_WORD_ADD;
+import static seedu.duke.Constant.COMMAND_WORD_EDIT;
+import static seedu.duke.Constant.COMMAND_WORD_HELP;
 
 /**
  * A class that deals with making sense of user's command inside Profile Session.
@@ -43,7 +49,13 @@ public class ProfileParser {
     public static HashMap<String, String> extractCommandTagAndInfo(String command, String commandArgs)
             throws InvalidCommandFormatException {
         if (!commandArgs.contains("/")) {
-            throw new InvalidCommandFormatException(command);
+            if (command.equals(COMMAND_WORD_ADD)) {
+                throw new InvalidCommandFormatException(ADD_PROFILE_FORMAT);
+            } else if (command.equals(COMMAND_WORD_EDIT)) {
+                throw new InvalidCommandFormatException(EDIT_PROFILE_FORMAT);
+            } else {
+                throw new InvalidCommandFormatException(COMMAND_WORD_HELP);
+            }
         }
 
         HashMap<String, String> parsedParams = new HashMap<>();
@@ -59,7 +71,7 @@ public class ProfileParser {
                 }
 
                 String parsedOption = commandArgs.substring(startIndex + 2, endIndex).trim();
-                String optionIndicator = commandArgs.substring(startIndex, startIndex + 2).trim();
+                String optionIndicator = commandArgs.substring(startIndex, startIndex + 2).trim().toLowerCase();
                 parsedParams.put(optionIndicator, parsedOption);
 
                 startIndex = endIndex;
@@ -67,7 +79,13 @@ public class ProfileParser {
 
             return parsedParams;
         } catch (StringIndexOutOfBoundsException e) {
-            throw new InvalidCommandFormatException(command);
+            if (command.equals(COMMAND_WORD_ADD)) {
+                throw new InvalidCommandFormatException(ADD_PROFILE_FORMAT);
+            } else if (command.equals(COMMAND_WORD_EDIT)) {
+                throw new InvalidCommandFormatException(EDIT_PROFILE_FORMAT);
+            } else {
+                throw new InvalidCommandFormatException(COMMAND_WORD_HELP);
+            }
         }
     }
 
@@ -76,9 +94,16 @@ public class ProfileParser {
      *
      * @param parsedParams HashMap containing option indicator and parsed option pairs.
      * @return User's name.
+     * @throws InvalidNameException If input name is empty.
      */
-    public static String extractName(HashMap<String, String> parsedParams) {
-        return parsedParams.get("/n");
+    public static String extractName(HashMap<String, String> parsedParams) throws InvalidNameException {
+        String name = parsedParams.get("/n");
+
+        if (!Utils.checkValidName(name)) {
+            throw new InvalidNameException();
+        }
+
+        return name;
     }
 
     /**
