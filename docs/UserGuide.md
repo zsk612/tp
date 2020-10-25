@@ -76,10 +76,10 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 1. To use The Schwarzenegger, simply type a valid command into the terminal and press <kbd>Enter</kbd> to run the command.<br>
     Example: Typing `help` command and pressing <kbd>Enter</kbd> will show you a list of available commands in The Schwarzenegger and their descriptions.
 1. Some example commands you can try:
-    - `help`: Shows all commands in The Schwarzenegger and their descriptions.
-    - `profile`: Directs you to Profile Menu where you can add and manage your profile.
-    - `diet`: Directs you to Diet Menu where you can add and manage your diet records.
-    - `workout`: Directs you to Workout Menu where you can add and manage your workout records.
+    - `help` : Shows all commands in The Schwarzenegger and their descriptions.
+    - `profile` : Directs you to Profile Menu where you can add and manage your profile.
+    - `diet` : Directs you to Diet Menu where you can add and manage your diet records.
+    - `workout` : Directs you to Workout Menu where you can add and manage your workout records.
 1. A summary of all the supported commands in Duke can be found in [Section 4. Command Summary](#4-command-summary).<br>
 Refer to [Section 3. Features](#3-features) for the detailed instructions of the various features in The Schwarzenegger.
 
