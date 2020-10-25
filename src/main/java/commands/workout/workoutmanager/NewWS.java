@@ -32,7 +32,7 @@ public class NewWS extends Command {
         super.execute(args);
         ArrayList<String> tags = parseTags(args);
         String filePath = PastRecordList.getInstance().add(tags);
-        WorkoutSession ws = new WorkoutSession(filePath);
+        WorkoutSession ws = new WorkoutSession(filePath, true, -1);
         logger.info("New workout session created");
 
         ui.showToUser(STARTNEWSESSION);

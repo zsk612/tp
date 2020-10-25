@@ -2,6 +2,10 @@ package diet.dietsession;
 
 import commands.Command;
 import commands.CommandLib;
+import diet.DateParser;
+import exceptions.ExceptionHandler;
+import exceptions.InvalidCommandWordException;
+import exceptions.InvalidDateFormatException;
 import logger.SchwarzeneggerLogger;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
@@ -19,6 +23,8 @@ public class DietSession {
     private final String dateInput;
     private final String typeInput;
     private final LocalDate date;
+    private boolean isNew;
+    private int index;
 
     private final DietSessionUi dietSessionUI;
     private transient CommandLib cl;
@@ -29,15 +35,17 @@ public class DietSession {
     /**
      * Constructs DietSession and initialize command library for dietSession.
      */
-    public DietSession(String typeInput, String dateInput) {
+    public DietSession(String typeInput, String dateInput, boolean isNew, int index) throws InvalidDateFormatException {
         this.cl = new CommandLib();
         cl.initDietSessionCL();
         this.dateInput = dateInput;
-        this.date = parser.parseDate(dateInput);
+        this.date = DateParser.parseDate(dateInput).toLocalDate();
         this.typeInput = typeInput;
         this.foodList = new ArrayList<>();
         storage = new DietStorage();
         dietSessionUI = new DietSessionUi();
+        this.isNew = isNew;
+        this.index = index;
     }
 
     public String getDateInput() {
@@ -61,34 +69,47 @@ public class DietSession {
      *
      * @throws IOException handles input/output exception
      */
-    public void start() throws IOException {
+    public void start(boolean isNew, int index) throws IOException {
 
         logger.log(Level.INFO, "starting diet session");
         this.cl = new CommandLib();
         cl.initDietSessionCL();
         dietSessionUI.printOpening();
         setEndDietSession(false);
-        String input = dietSessionUI.getCommand("Diet Menu > Diet Session");
-        dietSessionInputLoop(input);
+        this.isNew = isNew;
+        this.index = index;
+        dietSessionInputLoop();
         setEndDietSession(true);
         dietSessionUI.printExit();
     }
 
     /**
      * Starts reading user input for dietSession commands.
-     *
-     * @param input user input for command
      */
-    private void dietSessionInputLoop(String input) {
+    private void dietSessionInputLoop() {
+        String input = "";
+
+        if (isNew) {
+            input = dietSessionUI.getCommand("Diet Menu > New Diet Session");
+        } else {
+            input = dietSessionUI.getCommand("Diet Menu > Diet Session " + index);
+        }
+
         while (!input.equals("end")) {
 
             try {
                 processCommand(input);
             } catch (NullPointerException e) {
-                System.out.println(e.getMessage());
+                dietSessionUI.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
                 break;
+            } catch (InvalidCommandWordException e) {
+                dietSessionUI.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             }
-            input = dietSessionUI.getCommand("Diet Menu > Diet Session");
+            if (isNew) {
+                input = dietSessionUI.getCommand("Diet Menu > New Diet Session");
+            } else {
+                input = dietSessionUI.getCommand("Diet Menu > Diet Session " + index);
+            }
         }
     }
 
@@ -98,7 +119,7 @@ public class DietSession {
      * @param input user input for command
      * @throws NullPointerException handles null pointer exception
      */
-    private void processCommand(String input) throws NullPointerException {
+    private void processCommand(String input) throws NullPointerException, InvalidCommandWordException {
         String[] commParts = parser.parse(input);
         Command command = cl.getCommand(commParts[0]);
         command.execute(commParts[1].trim(), foodList, storage);

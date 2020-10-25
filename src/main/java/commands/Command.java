@@ -1,6 +1,7 @@
 package commands;
 
 import diet.dietsession.Food;
+import exceptions.InvalidCommandWordException;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
 import storage.diet.DietStorage;
@@ -42,16 +43,18 @@ public abstract class Command {
         return new CommandResult();
     }
 
-    public void execute(String input, DietStorage storage) {
+    public void execute(String input, DietStorage storage) throws InvalidCommandWordException {
         return;
     }
 
-    public void execute(String input, ArrayList<Food> foodList, DietStorage storage) {
+    public void execute(String input, ArrayList<Food> foodList,
+                        DietStorage storage) throws InvalidCommandWordException {
         return;
     }
 
     public void execute(String[] inputs, ExerciseList exerciseList,
-                        String filePath, storage.workout.Storage storage, boolean[] hasEndedWorkoutSessions) {
+                        String filePath, storage.workout.Storage storage,
+                        boolean[] hasEndedWorkoutSessions) throws InvalidCommandWordException {
         return;
     }
 }

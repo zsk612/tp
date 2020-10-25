@@ -1,14 +1,13 @@
 package commands.diet.dietmanager;
 
 import commands.Command;
+import exceptions.InvalidCommandWordException;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
 import java.util.logging.Level;
 
 public class DietSessionWrong extends Command {
-
-    DietManagerUi ui = new DietManagerUi();
 
     /**
      * Overrides execute for wrong command.
@@ -17,8 +16,7 @@ public class DietSessionWrong extends Command {
      * @param storage storage for diet manager
      */
     @Override
-    public void execute(String input, DietStorage storage) {
-        ui.showToUser("Sorry! It seems like you've entered an invalid command!");
-        logger.log(Level.INFO, "Invalid command");
+    public void execute(String input, DietStorage storage) throws InvalidCommandWordException {
+        throw new InvalidCommandWordException();
     }
 }

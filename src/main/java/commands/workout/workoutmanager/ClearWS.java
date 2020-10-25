@@ -36,8 +36,8 @@ public class ClearWS extends Command {
      * @return If user confirms clearing all workout sessions.
      */
     private static boolean checkConfirmation() {
-        System.out.println("\tAre you sure you want to clear all records? This action is irrevocable.");
-        System.out.println("\tKey in 'YES' to confirm.");
+        System.out.println("\t Are you sure you want to clear all records? This action is irrevocable.");
+        System.out.println("\t Key in 'YES' to confirm.");
         String input = ui.getCommand("Workout Manager");
         return input.equals("YES");
     }

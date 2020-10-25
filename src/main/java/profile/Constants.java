@@ -34,7 +34,7 @@ public class Constants {
     public static final String MESSAGE_CREATE_PROFILE_ACK = "Got it. Here's a confirmation of your profile:"
             + LS + "%s";
     public static final String MESSAGE_DELETE_PROFILE = "Alright! I've deleted your profile.";
-    public static final String MESSAGE_EDIT_PROFILE_ACK = "Yay. Your profile is edited successfully. "
+    public static final String MESSAGE_EDIT_PROFILE_ACK = "Yay! Your profile is edited successfully. "
             + "Here's your new profile:" + LS + "%s";
     public static final String MESSAGE_END = "Returning to Main Menu...";
     public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. " + LS
@@ -57,7 +57,8 @@ public class Constants {
     public static final Path PATH_TO_PROFILE_FOLDER = Paths.get(PROJECT_ROOT, DATA_FOLDER, PROFILE_FOLDER);
     public static final Path PATH_TO_PROFILE_FILE = Paths.get(PROJECT_ROOT, DATA_FOLDER, PROFILE_FOLDER, DATA_FILE);
     public static final String SAD_FACE = ":(  OOPS!!! ";
-    public static final String MESSAGE_INVALID_COMMAND_WORD = SAD_FACE + "Sorry, but I don't know what that means.";
+    public static final String MESSAGE_INVALID_COMMAND_WORD = SAD_FACE + "Sorry, but I don't know what that means."
+            + LS + "Please enter \"help\" for a list of available commands.";
     public static final String MESSAGE_INVALID_SAVE_FORMAT = SAD_FACE + "Save format in "
             + "saves\\profile\\profile.txt is invalid.";
     public static final String MESSAGE_INVALID_AGE = String.format(

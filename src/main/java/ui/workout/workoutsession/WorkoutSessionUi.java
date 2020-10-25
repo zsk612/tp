@@ -12,8 +12,8 @@ public class WorkoutSessionUi extends CommonUi {
 
     public static void addFormatError() {
         printer.showToUser("Wrong format, please enter in the format: \n"
-                + "\t add [workout] /n [number of sets] /w "
-                + "[weight]");
+                + "\t add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w "
+                + "[WEIGHT]");
     }
 
     public static void inputNotRecognisedError() {
@@ -25,7 +25,7 @@ public class WorkoutSessionUi extends CommonUi {
     }
 
     public static void deleteFormatError() {
-        printer.showToUser("Wrong format, please enter in the format: delete [move ID]");
+        printer.showToUser("Wrong format, please enter in the format:\n\t delete [MOVE_ID]");
     }
 
     public static void deleteIndexError() {
@@ -34,13 +34,13 @@ public class WorkoutSessionUi extends CommonUi {
 
     public static void printHelp() {
         StringBuilder helpMessage = new StringBuilder();
-        helpMessage.append(helpFormatter("Add", "add [name of move] /n [number of repetitions] /w [weight]",
+        helpMessage.append(helpFormatter("Add", "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]",
                 "Adds a new workout."));
         helpMessage.append(helpFormatter("List", "list",
                 "Show all workouts in this current session."));
-        helpMessage.append(helpFormatter("Delete", "delete [move ID]",
+        helpMessage.append(helpFormatter("Delete", "delete [MOVE_ID]",
                 "Deletes the workout according to the number in the list."));
-        helpMessage.append(helpFormatter("Search", "search [name of move]",
+        helpMessage.append(helpFormatter("Search", "search [NAME_OF_MOVE]",
                 "Shows a list of workouts that match the entered workout."));
         helpMessage.append(helpFormatter("End", "end",
                 "Go back to the workout menu."));
@@ -48,11 +48,11 @@ public class WorkoutSessionUi extends CommonUi {
     }
 
     public static void emptyInputError() {
-        System.out.println("Please enter something.");
+        printer.showToUser("Please enter something.");
     }
 
     public static void searchInputError() {
-        printer.showToUser("Wrong format, please enter in the format: search [name of move]");
+        printer.showToUser("Wrong format, please enter in the format:\n\t search [NAME_OF_MOVE]");
     }
 
     public static void searchResultsEmpty() {

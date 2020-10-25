@@ -13,6 +13,7 @@ import commands.diet.dietsession.FoodItemClear;
 import commands.diet.dietsession.FoodItemDelete;
 import commands.diet.dietsession.FoodItemHelp;
 import commands.diet.dietsession.FoodItemList;
+import commands.diet.dietsession.FoodItemSearch;
 import commands.diet.dietsession.FoodItemWrong;
 import commands.main.Help;
 import commands.main.ToDiet;
@@ -144,7 +145,7 @@ public class CommandLib {
         library.put(COMMAND_WORD_DELETE, new FoodItemDelete());
         library.put(COMMAND_WORD_HELP, new FoodItemHelp());
         library.put(COMMAND_WORD_CLEAR, new FoodItemClear());
-        library.put(COMMAND_WORD_SEARCH, new FoodItemClear());
+        library.put(COMMAND_WORD_SEARCH, new FoodItemSearch());
         library.put(COMMAND_WORD_LIST, new FoodItemList());
         library.put(COMMAND_WORD_WRONG, new FoodItemWrong());
     }

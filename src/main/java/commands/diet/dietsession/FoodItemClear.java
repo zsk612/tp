@@ -31,8 +31,8 @@ public class FoodItemClear extends Command {
     }
 
     private boolean checkConfirmation() {
-        ui.showToUser("Are you sure you want to clear all records? This action is irrevocable."
-                + "\tKey in YES to confirm.");
+        ui.showToUser("Are you sure you want to clear all records? This action is irrevocable.\n"
+                + "\t Key in YES to confirm.");
         String input = ui.getCommand("Diet Menu");
         return input.equals("YES");
     }

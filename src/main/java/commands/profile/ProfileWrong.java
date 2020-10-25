@@ -3,7 +3,7 @@ package commands.profile;
 import commands.Command;
 import commands.CommandResult;
 import exceptions.SchwarzeneggerException;
-import exceptions.profile.InvalidCommandWordException;
+import exceptions.InvalidCommandWordException;
 import storage.profile.ProfileStorage;
 
 import java.util.logging.Level;
@@ -23,7 +23,6 @@ public class ProfileWrong extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
-        logger.log(Level.WARNING, "command not recognised");
         throw new InvalidCommandWordException();
     }
 }

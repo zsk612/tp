@@ -86,10 +86,8 @@ public class Duke {
             try {
                 CommandResult rs = cm.execute(dummy);
             } catch (SchwarzeneggerException e) {
-                logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
                 ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             } catch (Exception e) {
-                logger.log(Level.WARNING, "processing uncaught exception", e);
                 ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
             }
             response = ui.getCommand("Main Menu").trim();

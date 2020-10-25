@@ -2,6 +2,8 @@ package diet.dietmanager;
 
 import commands.CommandLib;
 import commands.Command;
+import exceptions.ExceptionHandler;
+import exceptions.InvalidCommandWordException;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
@@ -34,9 +36,8 @@ public class DietManager {
         while (!input.equals("end")) {
             try {
                 processCommand(input);
-            } catch (ExitException e) {
-                System.out.println(e.getMessage());
-                break;
+            } catch (InvalidCommandWordException e) {
+                dietManagerUI.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             }
             input = dietManagerUI.getCommand("Diet Menu");
         }
@@ -45,10 +46,11 @@ public class DietManager {
 
     /**
      * Processes the user input to interpret correct command words.
-     * @param input user input for command
-     * @throws ExitException handles exit exception
+     *
+     * @param input user input for command.
+     * @throws InvalidCommandWordException handles InvalidCommandWordException.
      */
-    private void processCommand(String input) throws ExitException {
+    private void processCommand(String input) throws InvalidCommandWordException {
         String[] commParts = parser.parse(input.trim());
         try {
             Command command = cl.getCommand(commParts[0]);

@@ -2,6 +2,7 @@ package commands.workout.workoutmanager;
 
 import commands.Command;
 import commands.CommandResult;
+import exceptions.InvalidCommandWordException;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
 import ui.workout.workoutmanager.WorkoutManagerUi;
@@ -23,7 +24,6 @@ public class WrongWS extends Command {
      */
     @Override
     public CommandResult execute(String[] args) throws SchwarzeneggerException {
-        super.execute(args);
-        return new CommandResult(COMMAND_NOT_FOUND, MISSING);
+        throw new InvalidCommandWordException();
     }
 }

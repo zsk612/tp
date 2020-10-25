@@ -42,7 +42,7 @@ public class EditWS extends Command {
             logger.warning("Index Out Of Bounds Exception caught");
             throw new OutOfArrayException();
         }
-        WorkoutSession ws = new WorkoutSession(filePath);
+        WorkoutSession ws = new WorkoutSession(filePath, false, index);
         logger.info("editing workout session created");
         ws.workoutSessionStart();
 
