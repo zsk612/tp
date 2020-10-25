@@ -2,15 +2,15 @@
 By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 
 ## Table of content
-1. [**Introduction**](#introduction)
-1. [**Quick Start**](#quick-start)
+1. [**Introduction**](#intro)
+1. [**Quick Start**](#quickstart)
 1. [**Features**](#features)<br>
 3.1. [Main Menu](#main-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.1.1. [Viewing help: `help`](#311-viewing-help-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.1.2. [Entering Profile Menu: `profile`](#312-entering-profile-menu-profile)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.1.3. [Entering Diet Menu: `diet`](#313-entering-diet-menu-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.1.4. [Entering Workout Menu: `workout`](#314-entering-workout-menu-workout)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.1.5.  [Ending The Schwarzenegger: `end`](#315-ending-the-schwarzenegger-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.1. [Viewing help: `help`](#main-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.2. [Entering Profile Menu: `profile`](#main-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.3. [Entering Diet Menu: `diet`](#main-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.4. [Entering Workout Menu: `workout`](#main-workout)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.5.  [Ending The Schwarzenegger: `end`](#main-end)<br>
 3.2. [Profile Menu](#32-profile-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.1. [Viewing help: `help`](#321-viewing-help-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.2. [Adding a profile: `add`](#322-adding-a-profile-add)<br>
@@ -49,13 +49,13 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 1. [**Command summary**](#command-summary)
 1. [**Notes**](#notes)
 
-## 1. Introduction
+## 1. <a id="intro">Introduction</a>
 
 The Schwarzenegger is a desktop command line interface-based app for managing all your needs 
 regarding fitness. If you can type fast, The Schwarzenegger can help you 
 maximise your efficiency for maintaining fitness.
 
-## 2. Quick Start
+## 2. <a id="quickstart">Quick Start</a>
 
 When you first start using The Schwarzenegger, please ensure that you follow the instructions below:
 
@@ -83,41 +83,42 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 1. A summary of all the supported commands in Duke can be found in [Section 4. Command Summary](#4-command-summary).<br>
 Refer to [Section 3. Features](#3-features) for the detailed instructions of the various features in The Schwarzenegger.
 
-## 3. Features 
+## 3. <a id="features">Features</a> 
 This section includes 4 sub sections which will guide you through the features available in Main Menu, Profile Menu, Workout Menu and Diet Menu.
-### 3.1. Main Menu
+
+### 3.1. <a id="main-menu">Main Menu</a>
 You can get access to Profile Menu, Diet Menu and Workout Menu from Main Menu.
 The available commands in Main Menu are listed below:
 
-#### 3.1.1. Viewing help: `help`
+#### 3.1.1. <a id="main-help">Viewing help: `help`</a>
 The program will show a message explaining which commands are available for you to switch to the menu that you want (i.e. Profile Menu, Workout Menu and Diet Menu).
 
 __Format:__ `help`
 
 Example: `help`
 
-#### 3.1.2. Entering Profile Menu: `profile`
+#### 3.1.2. <a id="main-profile">Entering Profile Menu: `profile`</a>
 The program will direct you to the Profile Menu.
 
 __Format:__ `profile`  
 
 Example: `profile`
 
-#### 3.1.3. Entering Diet Menu: `diet`
+#### 3.1.3. <a id="main-diet">Entering Diet Menu: `diet`</a>
 The program will direct you to the Diet Menu.
 
 __Format:__ `diet`  
 
 Example: `diet`
 
-#### 3.1.4. Entering Workout Menu: `workout`
+#### 3.1.4. <a id="main-workout">Entering Workout Menu: `workout`</a>
 The program will direct you to the Workout Menu.
 
 __Format:__ `workout`  
 
 Example: `workout`
 
-#### 3.1.5. Ending The Schwarzenegger: `end`
+#### 3.1.5. <a id="main-end">Ending The Schwarzenegger: `end`</a>
 You enter this command when you want to terminate The Schwarzenegger.
 
 __Format:__ `end`  
