@@ -5,7 +5,6 @@ import commands.CommandResult;
 import commands.ExecutionResult;
 
 import static ui.CommonUi.helpFormatter;
-import static ui.CommonUi.showUser;
 
 public class Help extends Command {
 
@@ -29,7 +28,7 @@ public class Help extends Command {
                         + " and create new diet records"));
         helpMessage.append(helpFormatter("end", "end",
                 "Exit the program"));
-        showUser(helpMessage.toString().trim());
+        ui.showToUser(helpMessage.toString().trim());
         return new CommandResult("", ExecutionResult.OK);
     }
 }

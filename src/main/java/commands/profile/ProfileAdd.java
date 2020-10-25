@@ -8,7 +8,6 @@ import profile.Profile;
 import storage.profile.ProfileStorage;
 
 import java.util.HashMap;
-import java.util.logging.Level;
 
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
@@ -37,7 +36,7 @@ public class ProfileAdd extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
-        logger.log(Level.INFO, "executing Add Command");
+        super.execute(commandArgs, storage);
 
         Profile profile;
         try {

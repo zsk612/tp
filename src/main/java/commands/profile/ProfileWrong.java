@@ -2,11 +2,9 @@ package commands.profile;
 
 import commands.Command;
 import commands.CommandResult;
-import exceptions.SchwarzeneggerException;
 import exceptions.InvalidCommandWordException;
+import exceptions.SchwarzeneggerException;
 import storage.profile.ProfileStorage;
-
-import java.util.logging.Level;
 
 /**
  * A representation of the command for invalid command.
@@ -23,6 +21,7 @@ public class ProfileWrong extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
+        super.execute(commandArgs, storage);
         throw new InvalidCommandWordException();
     }
 }
