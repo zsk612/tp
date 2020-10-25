@@ -35,12 +35,15 @@ public class DietSessionEdit extends Command {
             saveToFile(storage, ds);
             logger.log(Level.INFO, "Diet session in edit mode");
         } catch (NullPointerException | FileNotFoundException
-                | IndexOutOfBoundsException | NumberFormatException e) {
+                | NumberFormatException e) {
             ui.showToUser("Sorry, there is no file at that index.");
             logger.log(Level.WARNING, "No file found at array index");
         } catch (IOException e) {
             logger.log(Level.WARNING, "failed to execute diet session");
             e.printStackTrace();
+        } catch (IndexOutOfBoundsException e) {
+            ui.showToUser("Wrong format, please enter in the format:\n\t "
+                    + "edit [INDEX_OF_SESSION]");
         }
     }
 

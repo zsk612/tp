@@ -19,7 +19,6 @@ public class Constant {
     public static final String COMMAND_WORD_SEARCH = "search";
     public static final String COMMAND_WORD_LIST = "list";
     public static final String COMMAND_WORD_WRONG = "wrong";
-    public static final String COMMAND_WORD_MEAL = "meal";
 
     public static final String PROJECT_ROOT = System.getProperty("user.dir");
     public static final String DATA_FOLDER = "saves";

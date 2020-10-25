@@ -1,18 +1,19 @@
 package commands.diet.dietmanager;
 
 import commands.Command;
+import diet.dietmanager.DietManagerParser;
 import diet.dietsession.DietSession;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import storage.diet.DietStorage;
-import ui.diet.dietmanager.DietManagerUi;
+import ui.CommonUi;
 
 import java.io.IOException;
 import java.util.logging.Level;
 
 public class DietSessionCreate extends Command {
 
-    private final DietManagerUi ui = new DietManagerUi();
+    private final DietManagerParser parser = new DietManagerParser();
 
     /**
      * Overrides execute for create command to create new diet sessions.
@@ -24,8 +25,12 @@ public class DietSessionCreate extends Command {
     public void execute(String input, DietStorage storage) {
 
         try {
-            String typeInput = ui.extractMeal(input);
-            String dateInput = ui.extractDate(input);
+            StringBuilder message = new StringBuilder();
+            String dateInput = parser.extractDate(input, message);
+            message.append("\t ");
+            String typeInput = parser.extractMeal(input, message);
+
+            ui.showToUser(message.deleteCharAt(message.length() - 1).toString());
             DietSession ds = new DietSession(typeInput, dateInput, true, -1);
             assert ds != null;
             logger.log(Level.INFO, "Diet session successfully created");
@@ -51,7 +56,7 @@ public class DietSessionCreate extends Command {
             logger.log(Level.INFO, "Diet session successfully saved");
         } catch (IOException e) {
             logger.log(Level.WARNING, "save profile session failed");
-            System.out.println("Failed to save your diet session!");
+            ui.showToUser("Failed to save your diet session!");
         }
     }
 }
