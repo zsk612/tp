@@ -102,24 +102,28 @@ The program will direct you to the Profile Menu.
 __Format:__ `profile`  
 
 Example: `profile`
+
 #### 3.1.3. Entering Diet Menu: `diet`
 The program will direct you to the Diet Menu.
 
 __Format:__ `diet`  
 
 Example: `diet`
+
 #### 3.1.4. Entering Workout Menu: `workout`
 The program will direct you to the Workout Menu.
 
 __Format:__ `workout`  
 
 Example: `workout`
+
 #### 3.1.5. Ending The Schwarzenegger: `end`
-Terminates The Schwarzenegger.
+You enter this command when you want to terminate The Schwarzenegger.
 
 __Format:__ `end`  
 
 Example: `end`
+
 ### 3.2. Profile Menu
 Profile Menu manages your profile including your name, age and physique data. 
 
@@ -129,34 +133,46 @@ The program will show a message explaining which commands are available Profile 
 __Format:__ `help`  
 
 Example: `help`
+
 #### 3.2.2. Adding a profile: `add`
 You can add your profile for the most customized experience in The Schwarzenegger. Your height should in centimeters and your input weight should be in kilograms.
 
-__Format:__ `add /n [name] /a [age] /h [height] /w [weight] /e [expected weight]`  
+__Format:__ `add /n [NAME] /a [AGE] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT]`  
 
 Example: `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
 
 This command adds a profile with the name Schwarzenegger, age 30, height 188 cm, weight 113 kg and expected weight 100 kg.
+
 #### 3.2.3. Viewing a profile: `view`
-You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI and give you suggestions on your expected weight to be fitter.
+You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI and give you suggestions on an expected weight for better fitness if it detects your current expectation is not appropriate.
 
 __Format:__ `view`  
 
 Example: `view`
+
 #### 3.2.4. Deleting a profile: `delete`
-You can delete your profile from the program.
+You can delete your profile from the program. The program will ask for your confirmation and it will only delete after you type in exactly "YES".
 
 __Format:__ `delete`  
 
 Example: `delete`
+
 #### 3.2.5. Editing a profile: `edit`
 You can edit the profile after adding to the program.
 
-__Format:__ `edit /n [name] edit /h [height] or edit /w [weight] or edit /a [age] or edit /e [expection]`  
+__Format:__ `edit /n [NAME] /a [AGE] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT]`  
 
-Example: `edit /h 180`
+Example: <br>
+    - `edit /h 180`<br>
+    This command edits your current height to 180 centimeters.<br>
+    - `edit /h 180 /w 50`<br>
+    This command edits your current height to 180 centimeters and current weight to 50 kilograms.<br>
+    - `edit /h 180 /w 50 /e 55`<br>
+     This command edits your current height to 180 centimeters, current weight to 50 kilograms and expected weight to 55 kilograms.<br>
 
-This command edits your current height in the system to 180 centimeters.
+|:bulb:| You may edit from 1 field to all fields in your profile. |
+|------|:-----------|              
+    
 #### 3.2.6. Returning to Main Menu: `end`
 You use this command to switch back to the Main Menu.
 
