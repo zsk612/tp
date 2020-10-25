@@ -2,6 +2,7 @@ package commands.profile;
 
 import commands.Command;
 import commands.CommandResult;
+import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
 import exceptions.profile.RedundantParamException;
@@ -13,6 +14,7 @@ import static commands.ExecutionResult.OK;
 import static profile.Constants.MESSAGE_DELETE_NOTHING;
 import static profile.Constants.MESSAGE_DELETE_PROFILE;
 import static seedu.duke.Constant.COMMAND_WORD_DELETE;
+import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
 /**
  * A representation of the command for deleting user profile.
@@ -38,6 +40,11 @@ public class ProfileDelete extends Command {
         Profile profile;
         try {
             profile = storage.loadData();
+
+            if (!ui.checkConfirmation("Profile Menu", "clear your profile")) {
+                return new CommandResult(CLEAR_ABORTED, ExecutionResult.ABORTED);
+            }
+
             storage.saveData(null);
             return new CommandResult(MESSAGE_DELETE_PROFILE, OK);
         } catch (InvalidSaveFormatException e) {

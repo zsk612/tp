@@ -1,6 +1,6 @@
 package profile;
 
-import exceptions.profile.InvalidAgeException;
+import exceptions.profile.InvalidCaloriesException;
 import exceptions.profile.InvalidCommandFormatException;
 import exceptions.profile.InvalidHeightException;
 import exceptions.profile.InvalidNameException;
@@ -107,22 +107,22 @@ public class ProfileParser {
     }
 
     /**
-     * Extracts age from parsed HashMap.
+     * Extracts calories from parsed HashMap.
      *
      * @param parsedParams HashMap containing option indicator and parsed option pairs.
-     * @return User's age.
-     * @throws InvalidAgeException If input age is invalid.
+     * @return User's calories.
+     * @throws InvalidCaloriesException If input calories amount is invalid.
      */
-    public static int extractAge(HashMap<String, String> parsedParams) throws InvalidAgeException {
+    public static double extractCalories(HashMap<String, String> parsedParams) throws InvalidCaloriesException {
         try {
-            int age = Integer.parseInt(parsedParams.get("/a"));
+            double calories = Double.parseDouble(parsedParams.get("/c"));
 
-            if (!Utils.checkValidAge(age)) {
-                throw new InvalidAgeException();
+            if (!Utils.checkCalories(calories)) {
+                throw new InvalidCaloriesException();
             }
-            return age;
+            return calories;
         } catch (NumberFormatException e) {
-            throw new InvalidAgeException();
+            throw new InvalidCaloriesException();
         }
     }
 
