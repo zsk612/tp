@@ -60,7 +60,7 @@ public class ProfileEdit extends Command {
 
             storage.saveData(editedProfile);
 
-            return new CommandResult(String.format(MESSAGE_EDIT_PROFILE_ACK, profile.toString()), OK);
+            return new CommandResult(String.format(MESSAGE_EDIT_PROFILE_ACK, editedProfile.toString()), OK);
         } catch (InvalidSaveFormatException e) {
             return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_EDIT), FAILED);
         }
