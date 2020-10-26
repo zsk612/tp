@@ -30,7 +30,7 @@ public class DietSessionSearch extends Command {
      * @param storage storage for diet manager
      */
     @Override
-    public void execute(String input, DietStorage storage) {
+    public void execute(String input, DietStorage storage) throws InvalidDateFormatException {
 
 
         File folder = new File(FILEPATH);
@@ -45,16 +45,27 @@ public class DietSessionSearch extends Command {
             String tag = parser.extractSearchTag(parsedParams, searchResult);
             printSearchResult(listOfFiles, searchResult, startDate, endDate, tag);
 
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | InvalidCommandFormatException e) {
             ui.showToUser("Wrong format, please enter in the format:\n\t "
                     + "search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>");
         } catch (InvalidDateFormatException e) {
+            searchResult.append("Wrong format for date input.\n\t ");
+            ui.showToUser(searchResult.toString().trim());
             logger.log(Level.WARNING, "Invalid date format in diet session search");
-        } catch (InvalidCommandFormatException e) {
-            e.printStackTrace();
+            throw new InvalidDateFormatException();
         }
     }
 
+    /**
+     * Prints search results
+     *
+     * @param listOfFiles list of files from local storage
+     * @param searchResult string builder that accumulates warning messages
+     * @param startDate starting date for search
+     * @param endDate end date for search
+     * @param tag tag for search
+     * @throws InvalidDateFormatException
+     */
     private void printSearchResult(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate,
                                    LocalDateTime endDate, String tag) throws InvalidDateFormatException {
         try {
