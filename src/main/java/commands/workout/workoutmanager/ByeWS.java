@@ -10,8 +10,8 @@ public class ByeWS extends Command {
     /**
      * Terminates workout manager and return to main menu.
      *
-     * @param args Array of user's input.
-     * @return null
+     * @param args User's input.
+     * @return null.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override

@@ -10,7 +10,7 @@ public class ToProfile extends Command {
     /**
      * Executes redirecting to Profile Menu command from Main Menu.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Redirecting to Profile Menu message.
      */
     @Override

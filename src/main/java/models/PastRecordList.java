@@ -98,7 +98,6 @@ public class PastRecordList {
                 .filter(conditions.stream().reduce(x -> true, Predicate::and))
                 .collect(Collectors.toList());
 
-        int index = 1;
         String info = result.size() + "  records are found:" + LS;
         info = getListInTable(result, info);
         logger.log(Level.INFO, "Search completed.");
@@ -122,7 +121,7 @@ public class PastRecordList {
     /**
      * Edits a file and its past record at a given index.
      *
-     * @param index Index of the file to be edited
+     * @param index Index of the file to be edited.
      * @throws SchwIoException If error occurred while reading or writing to file.
      */
     public String edit(int index) throws SchwIoException {
@@ -153,7 +152,7 @@ public class PastRecordList {
     /**
      * Lists all records.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      */
     public String list(String args) {
 
@@ -163,7 +162,6 @@ public class PastRecordList {
                 .filter(conditions.stream().reduce(x -> true, Predicate::and))
                 .collect(Collectors.toList());
 
-        int index = 1;
         String info;
         if (conditions.size() == 0) {
             if (pastFiles.size() != 0) {

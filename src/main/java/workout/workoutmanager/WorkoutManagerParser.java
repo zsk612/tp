@@ -90,11 +90,11 @@ public class WorkoutManagerParser {
     }
 
     /**
-     * Parse the given input into a integer index.
+     * Parses the given input into a integer index.
      *
-     * @param args user input
-     * @return a integer which is the index given
-     * @throws NotANumberException if args is null, empty or not a number
+     * @param args user input.
+     * @return a integer which is the index given.
+     * @throws NotANumberException if args is null, empty or not a number.
      */
     public static int parseIndex(String args) throws NotANumberException {
         int index;
@@ -108,8 +108,9 @@ public class WorkoutManagerParser {
 
     /**
      * Parses user input into a list of predicates which will be used to limit period of record being listed.
-     * @param args user input
-     * @return predicates to limit period of record being listed
+     *
+     * @param args user input.
+     * @return predicates to limit period of record being listed.
      */
     public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseList(String args) {
         ArrayList<Predicate<PastWorkoutSessionRecord>> test = new ArrayList<>();

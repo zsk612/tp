@@ -10,7 +10,7 @@ public class WrongWS extends Command {
     /**
      * Notifies user invalid input command.
      *
-     * @param args User's input arguments.
+     * @param args User's input.
      * @return Status MISSING and COMMAND_NOT_FOUND feedback.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */

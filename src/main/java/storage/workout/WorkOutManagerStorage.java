@@ -32,8 +32,6 @@ public class WorkOutManagerStorage {
 
     /**
      * This variable keeps track of file name.
-     * It should be replaced with something else,
-     * TODO:e.g. a hashcode that can identify each file distinctly.
      */
     private int recordCount = 0;
 
