@@ -40,7 +40,7 @@ public class ProfileHelp extends Command {
         helpMessage.append(helpFormatter(COMMAND_WORD_ADD, ADD_PROFILE_FORMAT, "Add your new profile"));
         helpMessage.append(helpFormatter(COMMAND_WORD_VIEW, COMMAND_WORD_VIEW, "View your profile"));
         helpMessage.append(helpFormatter(COMMAND_WORD_EDIT, EDIT_PROFILE_FORMAT, "Edit your existing profile. "
-                + "You may edit only 1 field or all fields"));
+                + "You may edit from 1 field to all fields"));
         helpMessage.append(helpFormatter(COMMAND_WORD_DELETE, COMMAND_WORD_DELETE, "Delete your existing profile"));
 
         return new CommandResult(helpMessage.toString().trim());

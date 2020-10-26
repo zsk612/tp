@@ -602,7 +602,7 @@ End|`end`
 Help|`help`
 Add |`add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`<br><br>E.g. `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
 View|`view`
-Edit|`edit /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`<br><br>E.g. `edit /w 110`, `edit /h 175 /w 110`, `edit /h 175 /w 110 /e 90`
+Edit|`edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>`<br><br>E.g. `edit /w 110`, `edit /h 175 /w 110`, `edit /h 175 /w 110 /e 90`
 Delete|`delete`
 Return to Main Menu|`end`
 
