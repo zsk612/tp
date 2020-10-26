@@ -11,8 +11,6 @@ import java.util.logging.Level;
 
 public class FoodItemAdd extends Command {
 
-    DietSessionUi ui = new DietSessionUi();
-
     /**
      * Overrides execute for add command to add food items.
      *
@@ -31,7 +29,8 @@ public class FoodItemAdd extends Command {
             ui.showToUser("Yay! You have added " + temp.toString());
             logger.log(Level.INFO, "Added food to arraylist");
         } catch (IndexOutOfBoundsException e) {
-            ui.showToUser("Please specify food info.");
+            ui.showToUser("Wrong format, please enter in the format:\n\t "
+                    + "add [FOOD_NAME] /c [CALORIES]");
             logger.log(Level.WARNING, "Did not put food name or calories");
         } catch (NumberFormatException e) {
             ui.showToUser("Please input a number for calories.");

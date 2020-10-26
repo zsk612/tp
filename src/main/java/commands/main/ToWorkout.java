@@ -3,12 +3,9 @@ package commands.main;
 import commands.Command;
 import commands.CommandResult;
 import commands.ExecutionResult;
-import ui.CommonUi;
 import workout.workoutmanager.WorkoutManager;
 
 public class ToWorkout extends Command {
-
-    CommonUi ui = new CommonUi();
 
     /**
      * Executes redirecting to Workout Menu command from Main Menu.

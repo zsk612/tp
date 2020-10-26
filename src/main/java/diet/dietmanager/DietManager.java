@@ -41,7 +41,7 @@ public class DietManager {
             }
             input = dietManagerUI.getCommand("Diet Menu");
         }
-        dietManagerUI.showToUser("you have exited Diet Manager.");
+        DietManagerUi.printBye();
     }
 
     /**
