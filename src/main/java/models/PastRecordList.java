@@ -105,8 +105,8 @@ public class PastRecordList {
     }
 
     private String getListInTable(List<PastWorkoutSessionRecord> result, int index, String info) {
-        info += String.format("%-8s", "Index") + String.format("%-16s", "Creation date") +
-                String.format("%-8s", "Tags") + LS;
+        info += String.format("%-8s", "Index") + String.format("%-16s", "Creation date")
+                + String.format("%-8s", "Tags") + LS;
         StringBuilder infoBuilder = new StringBuilder(info);
         for (PastWorkoutSessionRecord wsr : result) {
             String row = String.format("%-8s", index) + wsr.toString() + LS;

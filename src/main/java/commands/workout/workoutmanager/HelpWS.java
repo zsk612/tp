@@ -20,18 +20,18 @@ public class HelpWS extends Command {
     public CommandResult execute(String args) throws SchwarzeneggerException {
         super.execute(args);
         String helpMessage = helpFormatter("List", "list </s [START DATE]> </e [END DATE]>",
-                "Show all past sessions. Can display sessions between a certain period") +
-                helpFormatter("New", "new </t [TAG]...>",
-                        "Create a new workout session and tags. Multiple tags are seperated by ','.") +
-                helpFormatter("Delete", "delete [INDEX]",
-                        "Delete the record indexed at x") +
-                helpFormatter("Edit", "edit [INDEX]",
-                        "Edit the record indexed at x") +
-                helpFormatter("Clear", "clear",
-                        "Clear all past results") +
-                helpFormatter("Search", "search </t [TAG]...> </d [DATE]>",
-                        "Search records based on tags and dates. Multiple tags are seperated by ','.") +
-                helpFormatter("End", "end",
+                "Show all past sessions. Can display sessions between a certain period")
+                + helpFormatter("New", "new </t [TAG]...>",
+                        "Create a new workout session and tags. Multiple tags are seperated by ','.")
+                + helpFormatter("Delete", "delete [INDEX]",
+                        "Delete the record indexed at x")
+                + helpFormatter("Edit", "edit [INDEX]",
+                        "Edit the record indexed at x")
+                + helpFormatter("Clear", "clear",
+                        "Clear all past results")
+                + helpFormatter("Search", "search </t [TAG]...> </d [DATE]>",
+                        "Search records based on tags and dates. Multiple tags are seperated by ','.")
+                + helpFormatter("End", "end",
                         "Go back to main menu");
         return new CommandResult(helpMessage.trim(), ExecutionResult.OK);
     }
