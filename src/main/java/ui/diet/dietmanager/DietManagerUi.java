@@ -26,7 +26,7 @@ public class DietManagerUi extends CommonUi {
         helpMessage.append(helpFormatter("Clear", "clear",
                 "Clear all past diet sessions"));
         helpMessage.append(helpFormatter("End", "end",
-                "Go back to main menu"));
+                "Go back to Main Menu"));
         showUser(helpMessage.toString().trim());
     }
 }
