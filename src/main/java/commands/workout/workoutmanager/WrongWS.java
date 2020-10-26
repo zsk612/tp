@@ -4,14 +4,6 @@ import commands.Command;
 import commands.CommandResult;
 import exceptions.InvalidCommandWordException;
 import exceptions.SchwarzeneggerException;
-import logger.SchwarzeneggerLogger;
-import ui.workout.workoutmanager.WorkoutManagerUi;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import static commands.ExecutionResult.MISSING;
-import static ui.workout.workoutmanager.WorkoutManagerUi.COMMAND_NOT_FOUND;
 
 public class WrongWS extends Command {
 
@@ -23,7 +15,7 @@ public class WrongWS extends Command {
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
-    public CommandResult execute(String[] args) throws SchwarzeneggerException {
+    public CommandResult execute(String args) throws SchwarzeneggerException {
         throw new InvalidCommandWordException();
     }
 }

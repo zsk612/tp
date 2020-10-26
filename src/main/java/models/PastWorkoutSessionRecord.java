@@ -8,7 +8,7 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
 
     private final String filePath;
     private final LocalDateTime creationTime;
-    private LocalDateTime lastEditTime;
+    private final LocalDateTime lastEditTime;
     private final ArrayList<String> tags;
 
     /**
@@ -39,7 +39,21 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
      * @return True if all contained; otherwise false
      */
     public boolean containsAll(ArrayList<String> tgs) {
-        return tags.containsAll(tgs);
+        for (String s : tgs) {
+            if (!isContained(s)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isContained(String s) {
+        for (String t : tags) {
+            if (t.contains(s)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -50,6 +64,14 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
      */
     public boolean isCreatedOn(LocalDate date) {
         return date.equals(creationTime.toLocalDate());
+    }
+
+    public boolean isCreatedAfter(LocalDate date) {
+        return date.equals(creationTime.toLocalDate()) || date.isBefore(creationTime.toLocalDate());
+    }
+
+    public boolean isCreatedBefore(LocalDate date) {
+        return date.equals(creationTime.toLocalDate()) || date.isAfter(creationTime.toLocalDate());
     }
 
     public String getFilePath() {

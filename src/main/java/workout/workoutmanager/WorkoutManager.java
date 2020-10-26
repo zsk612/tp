@@ -8,14 +8,13 @@ import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class WorkoutManager {
 
-    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
+    private static final Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private final CommandLib cl;
     private final WorkoutManagerUi ui;
 
@@ -31,18 +30,16 @@ public class WorkoutManager {
      */
     public void start() {
         logger.log(Level.INFO, "Entered workout manager");
-        WorkoutManagerUi.printOpening();
         while (true) {
 
             String command = ui.getCommand("Workout Menu");
             logger.log(Level.INFO, "Received input" + command);
 
-            String[] commParts = WorkoutManagerParser.parse(command);
+            String[] commParts = WorkoutManagerParser.parseCommandKw(command);
             try {
                 processCommand(commParts);
             } catch (EndException e) {
                 logger.log(Level.INFO, "exiting workout manager");
-                ui.showToUser(e.getMessage());
                 break;
             } catch (SchwarzeneggerException e) {
                 logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
@@ -53,7 +50,7 @@ public class WorkoutManager {
 
     private void processCommand(String[] commands) throws SchwarzeneggerException {
         Command command = cl.getCommand(commands[0]);
-        CommandResult result = command.execute(Arrays.copyOfRange(commands, 1, commands.length));
+        CommandResult result = command.execute((commands.length > 1)  ? commands[1].trim() : "");
         ui.showToUser(result.getFeedbackMessage());
     }
 }

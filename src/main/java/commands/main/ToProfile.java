@@ -14,7 +14,7 @@ public class ToProfile extends Command {
      * @return Redirecting to Profile Menu message.
      */
     @Override
-    public CommandResult execute(String[] args) {
+    public CommandResult execute(String args) {
         ui.printOpening("Profile Menu...");
 
         ProfileSession profileSession = new ProfileSession();

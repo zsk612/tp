@@ -81,6 +81,7 @@ When you first start using The Schwarzenegger, please ensure that you follow the
     - `profile` : Directs you to Profile Menu where you can add and manage your profile.
     - `diet` : Directs you to Diet Menu where you can add and manage your diet records.
     - `workout` : Directs you to Workout Menu where you can add and manage your workout records.
+1. The cursor e.g. `Main menu >>>>>` will indicate which menu you are currently in.
 1. A summary of all the supported commands in Duke can be found in [Section 4. Command Summary](#command-summary).<br>
 Refer to [Section 3. Features](#features) for the detailed instructions of the various features in The Schwarzenegger.
 
@@ -95,7 +96,7 @@ Example: in `add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAIL
 - Words that are enclosed with `<` and `>` are optional parameters. However, if all the parameters in a command are optional, you need to supply at least 1 of them.<br>
 Example: in `edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>`, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIES_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
 - Optional parameters with `…` after them can be used multiple times including zero times. <br>
-Example: for `<TAG>...`, the following format for Search Command: `search /t <TAG>... </d [DATE]>` can be used as `search /t chest` or `search /t chest bicep`.
+Example: for `<TAG>...`, the following format for Search Command: `search /t <TAG>... </d [DATE]>` can be used as `search /t chest` or `search /t chest, bicep`.
 ***
 
 ### 3.1. <a id="main-menu">Main Menu</a>
@@ -159,6 +160,7 @@ __Format:__ `workout`
 Example: `workout`
 
 Expected outcome:
+
 
 #### 3.1.5. <a id="main-end">Ending The Schwarzenegger: `end`</a>
 You enter this command when you want to terminate The Schwarzenegger.
