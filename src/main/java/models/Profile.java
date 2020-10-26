@@ -1,4 +1,4 @@
-package profile;
+package models;
 
 import static profile.Constants.PROFILE_STRING_REPRESENTATION;
 import static profile.Utils.checkValidProfile;
