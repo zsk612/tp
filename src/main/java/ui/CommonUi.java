@@ -65,4 +65,22 @@ public class CommonUi {
         String input = getCommand(menuName);
         return input.equals("YES");
     }
+
+    /**
+     * Prints opening message to user.
+     *
+     * @param menuName Name of menu entering.
+     */
+    public void printOpening(String menuName) {
+        showToUser(String.format("Starting %s...", menuName));
+    }
+
+    /**
+     * Prints returning message to user.
+     *
+     * @param menuName Name of menu to return to.
+     */
+    public void printReturning(String menuName) {
+        showToUser(String.format("Returning to %s...", menuName));
+    }
 }
