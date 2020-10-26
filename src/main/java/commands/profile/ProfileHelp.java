@@ -47,7 +47,7 @@ public class ProfileHelp extends Command {
                 "Edit your existing profile. You may edit from 1 field to all fields"));
         helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_DELETE), COMMAND_WORD_DELETE,
                 "Delete your existing profile"));
-        helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_END), COMMAND_WORD_DELETE,
+        helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_END), COMMAND_WORD_END,
                 "Go back to Main Menu"));
 
         return new CommandResult(helpMessage.toString().trim());

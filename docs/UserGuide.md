@@ -114,14 +114,14 @@ Expected outcome:
 
 ```
     ______________________________________________________________________________
-    profile  - profile
-          Go to Profile Menu to manage your profile
-    workout  - workout
-          Go to Workout Menu to manage your workout records and create new workout records
-    diet     - diet
-          Go to Diet Menu to manage your past diet records and create new diet records
-    end      - end
-          Exit the program
+    Profile  - profile
+             Go to Profile Menu to manage your profile
+    Workout  - workout
+             Go to Workout Menu to manage your workout records and create new workout records
+    Diet     - diet
+             Go to Diet Menu to manage your past diet records and create new diet records
+    End      - end
+             Exit The Schwarzenegger
     ______________________________________________________________________________
 ```
 
@@ -191,14 +191,16 @@ Expected outcome:
 
 ```
     ______________________________________________________________________________
-    add      - add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]
-          Add your new profile
-    view     - view
-          View your profile
-    edit     - edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>
-          Edit your existing profile. You may edit only 1 field or all fields
-    delete   - delete
-          Delete your existing profile
+    Add      - add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]
+             Add your new profile
+    View     - view
+             View your profile
+    Edit     - edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>
+             Edit your existing profile. You may edit from 1 field to all fields
+    Delete   - delete
+             Delete your existing profile
+    End      - end
+             Go back to Main Menu
     ______________________________________________________________________________
 ```
 
