@@ -85,7 +85,18 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 Refer to [Section 3. Features](#features) for the detailed instructions of the various features in The Schwarzenegger.
 
 ## 3. <a id="features">Features</a> 
-This section includes 4 sub-sections which will guide you through the features available in Main Menu, Profile Menu, Workout Menu and Diet Menu.
+This section includes 4 sub-sections which will guide you through the features available in Main Menu, Profile Menu, Workout Menu and Diet Menu. In explaining the syntax, we will adhere to the following format:
+
+***
+:information_source: **Command Format**
+
+- Words that are in `[UPPER_CASE]` are the parameters to be supplied by you.<br>
+Example: in `add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]`, `[NAME]`, `[HEIGHT]`, `[WEIGHT]`, `[EXPECTED_WEIGHT]` and `[DAILY_CALORIES_INTAKE]` are parameters which can be used as `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`.
+- Words that are enclosed with `<` and `>` are optional parameters. However, if all the parameters in a command are optional, you need to supply at least 1 of them.<br>
+Example: in `edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>`, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIES_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
+- Optional parameters with `…` after them can be used multiple times including zero times. <br>
+Example: for `<TAG>...`, the following format for Search Command: `search /t <TAG>... </d [DATE]>` can be used as `search /t chest` or `search /t chest bicep`.
+***
 
 ### 3.1. <a id="main-menu">Main Menu</a>
 You can get access to Profile Menu, Diet Menu and Workout Menu from Main Menu.
@@ -182,7 +193,7 @@ Expected outcome:
           Add your new profile
     view     - view
           View your profile
-    edit     - edit /n [NAME] </h [HEIGHT]> /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]
+    edit     - edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>
           Edit your existing profile. You may edit only 1 field or all fields
     delete   - delete
           Delete your existing profile
@@ -260,7 +271,7 @@ Expected outcome:
 #### 3.2.5. <a id="profile-edit">Editing a Profile: `edit`</a>
 You can edit the profile after adding to the program.
 
-__Format:__ `edit /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`  
+__Format:__ `edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>`  
 
 Example: <br>
 - `edit /h 180`<br>
