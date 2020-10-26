@@ -13,4 +13,7 @@ public class Food {
         return this.name + " with calories: " + this.calories;
     }
 
+    public double getCalories() {
+        return calories;
+    }
 }

@@ -14,7 +14,7 @@ public class ClearWS extends Command {
     /**
      * Executes all workout sessions.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Status OK and feedback message if the execution is affirmed.
      *         Status ABORTED if the execution is withdrawn.
      * @throws SchwarzeneggerException If there are caught exceptions.

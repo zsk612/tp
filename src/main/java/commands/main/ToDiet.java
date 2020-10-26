@@ -10,7 +10,7 @@ public class ToDiet extends Command {
     /**
      * Executes redirecting to Diet Menu command from Main Menu.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Redirecting to Diet Menu message.
      */
     @Override

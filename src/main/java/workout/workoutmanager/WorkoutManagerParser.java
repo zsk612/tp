@@ -12,6 +12,12 @@ import java.util.logging.Level;
 
 public class WorkoutManagerParser {
 
+    public static final String TAG_SPECIFIER = "/t";
+    public static final String TAG_SPLITTER = ",";
+    public static final String DATE_SPECIFIER = "/d";
+    public static final String START_DATE_SPECIFIER = "/s";
+    public static final String END_DATE_SPECIFIER = "/e";
+
     /**
      * Parses user inputs into single words.
      * @param comm User's raw input.
@@ -31,10 +37,10 @@ public class WorkoutManagerParser {
         String[] content = arr.split(" ", 2);
 
         try {
-            if (!content[0].equals("/t")) {
+            if (!content[0].equals(TAG_SPECIFIER)) {
                 return result;
             }
-            String[] tags = content[1].split(",");
+            String[] tags = content[1].split(TAG_SPLITTER);
             for (String tag : tags) {
                 if (!result.contains(tag.trim())) {
                     result.add(tag.trim());
@@ -55,9 +61,10 @@ public class WorkoutManagerParser {
         ArrayList<String> tags = new ArrayList<>();
         ArrayList<Predicate<PastWorkoutSessionRecord>> test = new ArrayList<>();
 
+        // parse tag conditions
         try {
-            String[] part1 = arr.split("/t");
-            String[] tagPart = part1[1].split("/d");
+            String[] part1 = arr.split(TAG_SPECIFIER);
+            String[] tagPart = part1[1].split(DATE_SPECIFIER);
             String[] tgs = tagPart[0].split(",");
             for (String t : tgs) {
                 tags.add(t.trim());
@@ -67,9 +74,10 @@ public class WorkoutManagerParser {
             SchwarzeneggerLogger.getInstanceLogger().log(Level.INFO, "No tag identifier is given.");
         }
 
+        // parse date conditions
         try {
-            String[] part2 = arr.split("/d");
-            String[] datePart = part2[1].split("/t");
+            String[] part2 = arr.split(DATE_SPECIFIER);
+            String[] datePart = part2[1].split(TAG_SPECIFIER);
             LocalDateTime finalDate = DateParser.parseDate(datePart[0].trim());
             if (finalDate != null) {
                 test.add(x -> x.isCreatedOn(finalDate.toLocalDate()));
@@ -81,6 +89,13 @@ public class WorkoutManagerParser {
         return test;
     }
 
+    /**
+     * Parses the given input into a integer index.
+     *
+     * @param args user input.
+     * @return a integer which is the index given.
+     * @throws NotANumberException if args is null, empty or not a number.
+     */
     public static int parseIndex(String args) throws NotANumberException {
         int index;
         try {
@@ -91,13 +106,19 @@ public class WorkoutManagerParser {
         return index;
     }
 
+    /**
+     * Parses user input into a list of predicates which will be used to limit period of record being listed.
+     *
+     * @param args user input.
+     * @return predicates to limit period of record being listed.
+     */
     public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseList(String args) {
         ArrayList<Predicate<PastWorkoutSessionRecord>> test = new ArrayList<>();
 
-        // catch start date
+        // parse start date
         try {
-            String[] part2 = args.split("/s");
-            String[] datePart = part2[1].split("/e");
+            String[] part2 = args.split(START_DATE_SPECIFIER);
+            String[] datePart = part2[1].split(END_DATE_SPECIFIER);
             LocalDateTime start = DateParser.parseDate(datePart[0].trim());
             if (start != null) {
                 test.add(x -> x.isCreatedAfter(start.toLocalDate()));
@@ -106,10 +127,10 @@ public class WorkoutManagerParser {
             SchwarzeneggerLogger.getInstanceLogger().log(Level.INFO, "No start date identifier is given.");
         }
 
-        // catch end date
+        // parse end date
         try {
-            String[] part2 = args.split("/e");
-            String[] datePart = part2[1].split("/s");
+            String[] part2 = args.split(END_DATE_SPECIFIER);
+            String[] datePart = part2[1].split(START_DATE_SPECIFIER);
             LocalDateTime end = DateParser.parseDate(datePart[0].trim());
             if (end != null) {
                 test.add(x -> x.isCreatedBefore(end.toLocalDate()));
@@ -120,6 +141,4 @@ public class WorkoutManagerParser {
 
         return test;
     }
-
-
 }

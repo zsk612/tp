@@ -17,7 +17,7 @@ public class DeleteWS extends Command {
     /**
      * Deletes a record at a specific index.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Status OK and feedback message if file is deleted.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */

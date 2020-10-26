@@ -10,7 +10,7 @@ public class ToWorkout extends Command {
     /**
      * Executes redirecting to Workout Menu command from Main Menu.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Redirecting to Workout Menu message.
      */
     @Override

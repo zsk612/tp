@@ -17,14 +17,14 @@ public class EditWS extends Command {
     /**
      * Edits a record at a given index.
      *
-     * @param args Index of the record to be edited.
+     * @param args User's input.
      * @return Status OK and feedback message if file is edit.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
     public CommandResult execute(String args) throws SchwarzeneggerException {
         super.execute(args);
-        int index = -1;
+        int index;
         try {
             index = Integer.parseInt(args);
         } catch (NumberFormatException e) {
