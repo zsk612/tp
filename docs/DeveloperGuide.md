@@ -4,22 +4,22 @@ By: `CS2113T-F11-1` Since: `2020`
 ![Supported Java versions](https://img.shields.io/badge/Java-11-blue.svg) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Windows|MacOS|Linux-yellow.svg) 
 ![Java CI](https://github.com/AY2021S1-CS2113T-F11-1/tp/workflows/Java%20CI/badge.svg)
 
-## Table of content
-1. [**Introduction**](#1-introduction)<br>
-1.1. [Background](#11--background)<br>
-1.2. [Purpose](#12-purpose)<br>
-1.3. [Scope](#13-scope)<br>
-2. [**Setting up**](#2-setting-up)<br>
-2.1. [Prerequisites](#21-prerequisites)<br>
-2.2. [Setting up the project in your computer](#22-setting-up-the-project-in-your-computer)<br>
-3. [**Design**](#3-design)<br>
-3.1. [Architecture](#31-architecture)<br>
-3.2. [Ui Component](#32-ui-component)<br>
-3.3. [Logic Component](#33-logic-component)<br>
-3.4. [Model Component](#34-model-component)<br>
-3.5. [Storage Component](#35-storage-component)<br>
-3.6. [Common Classes](#36-common-classes)<br>
-4. [**Implementation**](#4-implementation)<br>
+## Table of Contents
+1. [**Introduction**](#intro)<br>
+1.1. [Background](#background)<br>
+1.2. [Purpose](#purpose)<br>
+1.3. [Scope](#scope)<br>
+2. [**Setting Up**](#setting-up)<br>
+2.1. [Prerequisites](#prerequisites)<br>
+2.2. [Setting up the Project in Your Computer](#setting-up-the-project-in-your-computer)<br>
+3. [**Design**](#design)<br>
+3.1. [Architecture](#architecture)<br>
+3.2. [Ui Component](#ui-component)<br>
+3.3. [Logic Component](#logic-component)<br>
+3.4. [Model Component](#model-component)<br>
+3.5. [Storage Component](#storage-component)<br>
+3.6. [Common Classes](#common-classes)<br>
+4. [**Implementation**](#implementation)<br>
 4.1. [Main Menu-related Features](#41-main-menu-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu of Profile](#411-help-command-for-main-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.1.2. [Redirection to Profile Menu](#412-redirection-to-profile-menu)<br>
@@ -73,25 +73,25 @@ By: `CS2113T-F11-1` Since: `2020`
     + [Appendix F: Instructions for Manual Testing](#appendix-f-instructions-for-manual-testing)
     + [Appendix G: Supported Formats of Date Input](#appendix-g-supported-formats-of-date-input)
 
-## 1. Introduction
-### 1.1.  Background
-The Schwarzenegger is a desktop command line interface-based app for managing all your needs regarding fitness. If you can type fast, The Schwarzenegger can help you maximise your efficiency for maintaining fitness.
-### 1.2. Purpose
-The document contains the specified architecture and software design specifications for the application, The Schwarzenegger. 
-### 1.3. Scope
-This describes the software architecture and software design requirements for The Schwarzenegger. This guide is mainly for developers, designers and software engineers that are or going to work on The Schwarzenegger. 
+## 1. <a id="intro">Introduction</a>
+### 1.1.  <a=id="background">Background</a>
+The Schwarzenegger is a desktop command line interface-based app for managing all your needs regarding fitness. With the built-in personal assistant, you are able to track your daily workout and diet sessions based on your profile. If you can type fast, The Schwarzenegger can help you maximise your efficiency for maintaining fitness.
+### 1.2. <a id="purpose">Purpose</a>
+This document contains the specified architecture and software design specifications for the application, The Schwarzenegger. 
+### 1.3. <a id="scope">Scope</>
+This document describes the software architecture and software design requirements for The Schwarzenegger. This guide is mainly for developers, designers and software engineers that are or going to work on The Schwarzenegger. 
 
 [&#8593; Return to Top](#developer-guide)
 
-## 2. Setting up
+## 2. <a id="setting-up">Setting Up</a>
 
-### 2.1. Prerequisites
+### 2.1. <a id="prerequisites">Prerequisites</a>
 1. JDK `11`.
 2. IntelliJ IDEA IDE.
 
-### 2.2. Setting up the project in your computer
-1. Fork this repository, and clone the fork to your computer.
-2. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
+### 2.2. <a id="setting-up-the-project-in-your-computer">Setting up the Project in Your Computer</a>
+1. Fork [this repository](https://github.com/AY2021S1-CS2113T-F11-1/tp), and clone the fork to your computer.
+2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
 3. Set up the correct JDK version for Gradle  
    1. Click `Configure` > `Structure for New Projects` and then `Project Settings` > `Project` > `Project SDK`.
    2. If `JDK 11` is listed in the drop down, select it. Otherwise, click `New…` and select the directory where you installed `JDK 11`.
@@ -103,9 +103,9 @@ This describes the software architecture and software design requirements for Th
 
 [&#8593; Return to Top](#developer-guide)
 
-## 3. Design
+## 3. <a id="design">Design</a>
 This section provides a high level overview of our application, The Schwarzenegger.
-### 3.1. Architecture
+### 3.1. <a id="architect">Architecture</a>
 
 ![Architecture]
 The image above explains the design of the application, The Schwarzenegger. 
@@ -117,7 +117,7 @@ The main driver of the application is `Main: Duke`. It is responsible for mainly
     - This class will invoke cleanup method for the components when necessary.
     
 In addition to that, the architecture of The Schwarzenegger is broken down into several packages, mainly the following: 
-- `Ui`: This class mainly handles the UI of the application.
+- `Ui`: This class mainly handles the interactions with user of the application.
 - `Parser`: This class mainly handles the parsing and handling of user commands.
 - `Command`: This class handles the type of command.
 - `Profile`: This class manages the data of the user.
@@ -127,7 +127,7 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 
 [&#8593; Return to Top](#developer-guide)
 
-### 3.2. Ui Component
+### 3.2. <a id="ui-component">Ui Component</a>
 ![Ui Component](images/UI_Component.png)
 
 API: `Ui.java`
@@ -141,7 +141,7 @@ The `Ui` component,
 
 [&#8593; Return to Top](#developer-guide)
 
-### 3.3. Logic Component
+### 3.3. <a id="logic-component">Logic Component</a>
 
 ![Logic Component](images/logic_update.png)
 
@@ -150,7 +150,7 @@ The `Ui` component,
 
 [&#8593; Return to Top](#developer-guide)
 
-### 3.4. Model Component
+### 3.4. <a id="model-component">Model Component</a>
 
 ![Model Component](pictures/zesong/model.png)
 
@@ -163,7 +163,7 @@ The Model component contains `Profile`, `DietManager`,
 
 [&#8593; Return to Top](#developer-guide)
 
-### 3.5. Storage Component
+### 3.5. <a id="storage-component">Storage Component</a>
 
 ![Storage Class Diagram](images/Storage.png)
 
@@ -181,17 +181,17 @@ saveData() method in storage.profile is called when the user creates the user pr
 
 [&#8593; Return to Top](#developer-guide)
 
-### 3.6. Common Classes 
+### 3.6. <a id="common-classes">Common Classes</a> 
 Classes used by multiple components are in the `seedu.duke` and the `ui` package, specifically Constant.java and CommonUi.java.
 
 [&#8593; Return to Top](#developer-guide)
 
-## 4. Implementation
-This section describes some details on how the features are being implemented. All profile / diet / workout-related features.
+## 4. <a id="implementation">Implementation</a>
+This section describes some details on how the features are being implemented. All profile/ diet/ workout-related features.
 
 
 All profile/ diet/ workout-related features can be broken down into 4 distinct functionality, addition, viewing/ listing, deletion and editing.
-For diet and workout-realted features, there is an additional functionality of searching.
+For diet and workout-related features, there is an additional functionality of searching.
 
 ### 4.1. Main Menu-related Features
 
@@ -216,39 +216,42 @@ The redirection to profile page allows the user to enter Workout Menu to create,
 The command for this redirection is `workout`.
 
 ### 4.2. Profile-related Features
-#### 4.2.1. Creation of Profile
+#### 4.2.1. Adding a Profile
 
-User can create a new profile. 
-The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command format. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+This feature allows user to add a new profile. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command format. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+
 If the creation is successful, a confirmation message on the newly created profile will be displayed to the user. 
 
 ##### Implementation
 
-When the user attempts to create a new profile, the ProfileSession, Ui, ProfileParser, 
-Command and CommandResult class will be accessed, and the following sequence of 
-actions is called to return a command object AddProfile.
+When the user attempts to add a new profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, and CommandResult classes will be accessed, and the following sequence of actions is called to return a CommandResult object containing the feedback message and execution status.
 
-1. User executes `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
-    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
-1. Creation of Command object.
-    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `AddProfile`.
-1. Executing Command
-    1. `ProfileSession` calls `AddProfile.execute()` with the rest of parsed input.
-    1. `AddProfile` creates a new `Profile` object with the parsed information.
-    1. `AddProfile` calls `ProfileStorage.saveData()` to save the Profile object.
+1. User executes `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
+    1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
+    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+1. Creating ProfileAdd object.
+    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileAdd`.
+1. Executing command
+    1. `ProfileSession` calls `ProfileAdd.execute()` with the rest of parsed input.
+    1. `ProfileAdd` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is an existing profile, `ProfileAdd` returns a `CommandResult` object, which includes a message stating profile existed and `FAILED` execution status. Otherwise, the process continues with step `iii`, to `ProfileSession`.
+    1. `ProfileAdd` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information. 
+    1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileAdd` creates a new `Profile`.
+    1. `ProfileAdd` calls `ProfileStorage.saveData()` to save the Profile object.
+    1. `ProfileAdd` returns a `CommandResult` object, which includes a message stating successful profile addition and `OK` execution status, to `ProfileSession`.
 1. Prompting result to user.
-    1. `ProfileSession` calls `AddProfile.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
+
+The sequence diagram below summarizes how creating a new profile works:
+
+![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
 ##### Design considerations:
 Parsing of the user’s input command:
 
-- Alternative 1 (current choice): User’s command is split into size 2 array first
-containing command type and command arguments. Then arguments are split
-into command tag and information pairs.  
+- Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
 
 |     |     |
 |-----|-----|
@@ -261,10 +264,6 @@ into command tag and information pairs.
 |-----|-----|
 |**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
 |**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
-
-The sequence diagram below summarizes how creating a new profile works:
-
-![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.2.2. Viewing Profile

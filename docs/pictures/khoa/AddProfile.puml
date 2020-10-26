@@ -1,28 +1,36 @@
 @startuml
+!define PLANTUML_HOME %dirpath()/../../umldiagram
+!include PLANTUML_HOME/style.puml
+
 actor user
 activate ProfileSession
-user -> ProfileUi : add
-activate ProfileUi
-ProfileUi --> ProfileSession : command
+user -> Ui++ : add
+ProfileUi --> ProfileSession : input
 
-ProfileSession -> ProfileParser : parseCommand(command)
-activate ProfileParser
-ProfileParser --> ProfileSession : AddProfile
-deactivate ProfileParser
+ProfileSession -> ProfileParser ++ : parseCommand(input)
+ProfileParser --> ProfileSession -- : parsedInput
 
-ProfileSession -> Command : execute()
-activate Command
+ProfileSession -> CommandLib ++ : getCommand(parsedInput)
+CommandLib --> ProfileSession -- : command
 
-Command -> ProfileStorage : saveData(profile)
-activate ProfileStorage
-ProfileStorage --> Command
-deactivate ProfileStorage
+ProfileSession -> Command ++ : execute()
+Command -> ProfileStorage ++ : loadData()
+ProfileStorage --> Command -- : profile
 
-Command --> ProfileSession : Command Result
+opt hasExistingProfile
+    Command --> ProfileSession : result
+else
+    Command -> ProfileStorage ++ : saveData(newProfile)
+    ProfileStorage --> Command --
+    Command --> ProfileSession -- : result
+end
+
 deactivate Command
 
-ProfileSession -> ProfileUi : showToUser(Command Result)
+ProfileSession -> CommandResult ++ : getFeedbackMessage(result)
+CommandResult --> ProfileSession -- : message
+ProfileSession -> Ui : showToUser(message)
 
-ProfileUi --> user: print(Command Result)
-deactivate ProfileUi
+Ui --> user
+deactivate Ui
 @enduml
