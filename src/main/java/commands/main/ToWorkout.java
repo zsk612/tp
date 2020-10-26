@@ -14,10 +14,11 @@ public class ToWorkout extends Command {
      * @return Redirecting to Workout Menu message.
      */
     @Override
-    public CommandResult execute(String[] args) {
-        ui.showToUser("Entering Workout Session...");
+    public CommandResult execute(String args) {
+        ui.printOpening("Workout menu");
         WorkoutManager workoutManager = new WorkoutManager();
         workoutManager.start();
+        ui.printReturning("Main menu");
         return new CommandResult("", ExecutionResult.OK);
     }
 }

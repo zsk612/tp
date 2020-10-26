@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import static ui.CommonUi.LS;
+import static workout.workoutmanager.WorkoutManagerParser.parseList;
 import static workout.workoutmanager.WorkoutManagerParser.parseSearchConditions;
 
 /**
@@ -21,7 +22,7 @@ import static workout.workoutmanager.WorkoutManagerParser.parseSearchConditions;
  */
 public class PastRecordList {
     private static PastRecordList singlePastFile = null;
-    private Logger logger = SchwarzeneggerLogger.getInstanceLogger();
+    private final Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     private static List<PastWorkoutSessionRecord> pastFiles;
     WorkOutManagerStorage storage;
@@ -89,7 +90,7 @@ public class PastRecordList {
      * @param args String of user input.
      * @return String representation of all the records that satisfies the condition.
      */
-    public String search(String[] args) {
+    public String search(String args) {
         ArrayList<Predicate<PastWorkoutSessionRecord>> conditions = parseSearchConditions(args);
 
         List<PastWorkoutSessionRecord> result = pastFiles.stream()
@@ -97,14 +98,22 @@ public class PastRecordList {
                 .collect(Collectors.toList());
 
         int index = 1;
-        String info = pastFiles.size() + "  records are found:" + LS;
+        String info = result.size() + "  records are found:" + LS;
+        info = getListInTable(result, index, info);
+        logger.log(Level.INFO, "Search completed.");
+        return info;
+    }
+
+    private String getListInTable(List<PastWorkoutSessionRecord> result, int index, String info) {
+        info += String.format("%-8s", "Index") + String.format("%-16s", "Creation date")
+                + String.format("%-8s", "Tags") + LS;
+        StringBuilder infoBuilder = new StringBuilder(info);
         for (PastWorkoutSessionRecord wsr : result) {
             String row = String.format("%-8s", index) + wsr.toString() + LS;
-            info += row;
+            infoBuilder.append(row);
             index += 1;
         }
-        info = info.trim();
-        logger.log(Level.INFO, "Search completed.");
+        info = infoBuilder.toString().trim();
         return info;
     }
 
@@ -143,17 +152,27 @@ public class PastRecordList {
      * Lists all records.
      *
      * @param args Array of user's input.
-     * @throws SchwIoException If error occurred while reading file.
      */
-    public String list(String[] args) {
+    public String list(String args) {
+
+        ArrayList<Predicate<PastWorkoutSessionRecord>> conditions = parseList(args);
+
+        List<PastWorkoutSessionRecord> result = pastFiles.stream()
+                .filter(conditions.stream().reduce(x -> true, Predicate::and))
+                .collect(Collectors.toList());
+
         int index = 1;
-        String info = "You have " + pastFiles.size() + " records:" + LS;
-        for (PastWorkoutSessionRecord wsr : pastFiles) {
-            String row = String.format("%-8s", index) + wsr.toString() + LS;
-            info += row;
-            index += 1;
+        String info;
+        if (conditions.size() == 0) {
+            if (pastFiles.size() != 0) {
+                info = "You have " + pastFiles.size() + " records:" + LS;
+            } else {
+                info = "You do not have any record yet. Key in 'new' to start one." + LS;
+            }
+        } else {
+            info = "You have " + result.size() + " records in the given period:" + LS;
         }
-        info = info.trim();
+        info = getListInTable(result, index, info);
         logger.log(Level.INFO, "List completed.");
         return info;
     }
