@@ -5,6 +5,7 @@ import exceptions.profile.InvalidCommandFormatException;
 import exceptions.profile.InvalidHeightException;
 import exceptions.profile.InvalidNameException;
 import exceptions.profile.InvalidWeightException;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.HashMap;
 
@@ -97,7 +98,7 @@ public class ProfileParser {
      * @throws InvalidNameException If input name is empty.
      */
     public static String extractName(HashMap<String, String> parsedParams) throws InvalidNameException {
-        String name = parsedParams.get("/n");
+        String name = WordUtils.capitalizeFully(parsedParams.get("/n"));
 
         if (!Utils.checkValidName(name)) {
             throw new InvalidNameException();
