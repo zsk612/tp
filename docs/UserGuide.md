@@ -1,7 +1,7 @@
 # User Guide
 By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 
-## Table of content
+## Table of Contents
 1. [**Introduction**](#intro)
 1. [**Quick Start**](#quickstart)
 1. [**Features**](#features)<br>
