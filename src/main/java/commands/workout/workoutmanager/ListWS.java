@@ -12,7 +12,7 @@ public class ListWS extends Command {
     /**
      * Lists past record of workout sessions.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Status OK and all past records in a table.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */

@@ -12,7 +12,7 @@ public class HelpWS extends Command {
     /**
      * Executes help command in Workout Menu.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Status OK and information to be printed.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */

@@ -35,7 +35,7 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
     /**
      * Checks if this record contains all the given tag.
      *
-     * @param tgs list of tags specified
+     * @param tgs list of tags specified.
      * @return True if all contained; otherwise false
      */
     public boolean containsAll(ArrayList<String> tgs) {
@@ -59,17 +59,29 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
     /**
      * Checks if this record is created on a given date.
      *
-     * @param date list of tags specified
+     * @param date the given date
      * @return True if it is created on that day; otherwise false
      */
     public boolean isCreatedOn(LocalDate date) {
         return date.equals(creationTime.toLocalDate());
     }
 
+    /**
+     * Check if this record is created after a given date(inclusive).
+     *
+     * @param date the given date.
+     * @return True if it is created after or on that day; otherwise false.
+     */
     public boolean isCreatedAfter(LocalDate date) {
         return date.equals(creationTime.toLocalDate()) || date.isBefore(creationTime.toLocalDate());
     }
 
+    /**
+     * Check if this record is created before a given date(inclusive).
+     *
+     * @param date the given date.
+     * @return True if it is created before or on that day; otherwise false.
+     */
     public boolean isCreatedBefore(LocalDate date) {
         return date.equals(creationTime.toLocalDate()) || date.isAfter(creationTime.toLocalDate());
     }

@@ -7,6 +7,5 @@ public enum ExecutionResult {
     OK,
     ABORTED,
     FAILED,
-    SKIPPED,
-    MISSING
+    SKIPPED
 }

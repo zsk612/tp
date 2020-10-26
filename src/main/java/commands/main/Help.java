@@ -16,7 +16,7 @@ public class Help extends Command {
     /**
      * Executes help command in Main Menu.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Help message.
      */
     @Override
