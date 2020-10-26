@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import exceptions.workoutmanager.SchwIoException;
+import exceptions.workout.workoutmanager.SchwIoException;
 import logger.SchwarzeneggerLogger;
 import models.PastWorkoutSessionRecord;
 import seedu.duke.Constant;

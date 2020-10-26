@@ -4,7 +4,7 @@ import commands.Command;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import workout.workoutsession.WorkoutSessionParser;
-import workout.workoutsession.exercise.ExerciseList;
+import models.ExerciseList;
 
 
 public class WorkoutSessionSearch extends Command {
