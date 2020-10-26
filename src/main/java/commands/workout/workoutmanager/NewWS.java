@@ -18,17 +18,12 @@ public class NewWS extends Command {
     /**
      * Creates new workout session.
      *
-     * @param args list of tags to be attached to a new session.
+     * @param args User's input
      * @return Status OK and feedback message.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
-    public CommandResult execute(String[] args) throws SchwarzeneggerException {
-        /**
-         * When starting a new workout session, a new file is created first.
-         * The file path is passed into workoutSession constructor to instantiate
-         * a new workoutSession instance.
-         */
+    public CommandResult execute(String args) throws SchwarzeneggerException {
         super.execute(args);
         ArrayList<String> tags = parseTags(args);
         String filePath = PastRecordList.getInstance().add(tags);

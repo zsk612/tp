@@ -12,12 +12,12 @@ public class ListWS extends Command {
     /**
      * Lists past record of workout sessions.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Status OK and all past records in a table.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
-    public CommandResult execute(String[] args) throws SchwarzeneggerException {
+    public CommandResult execute(String args) throws SchwarzeneggerException {
         super.execute(args);
         String formattedInfo = PastRecordList.getInstance().list(args);
         logger.info("Listed successfully");

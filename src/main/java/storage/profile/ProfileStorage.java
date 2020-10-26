@@ -9,7 +9,7 @@ import exceptions.profile.InvalidSaveFormatException;
 import exceptions.profile.LoadingException;
 import exceptions.profile.SavingException;
 import logger.SchwarzeneggerLogger;
-import profile.Profile;
+import models.Profile;
 import profile.Utils;
 
 import java.io.File;

@@ -11,12 +11,12 @@ public class SearchWS extends Command {
     /**
      * Searches workout session.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Status OK and information to be printed.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
-    public CommandResult execute(String[] args) throws SchwarzeneggerException {
+    public CommandResult execute(String args) throws SchwarzeneggerException {
 
         super.execute(args);
         String formattedInfo = PastRecordList.getInstance().search(args);

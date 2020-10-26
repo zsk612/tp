@@ -3,25 +3,22 @@ package commands.main;
 import commands.Command;
 import commands.CommandResult;
 import commands.ExecutionResult;
-import ui.CommonUi;
-import ui.diet.dietsession.DietSessionUi;
 import workout.workoutmanager.WorkoutManager;
 
 public class ToWorkout extends Command {
 
-    CommonUi ui = new CommonUi();
-
     /**
      * Executes redirecting to Workout Menu command from Main Menu.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Redirecting to Workout Menu message.
      */
     @Override
-    public CommandResult execute(String[] args) {
-        ui.showToUser("Entering Workout Session...");
+    public CommandResult execute(String args) {
+        ui.printOpening("Workout menu");
         WorkoutManager workoutManager = new WorkoutManager();
         workoutManager.start();
+        ui.printReturning("Main menu");
         return new CommandResult("", ExecutionResult.OK);
     }
 }

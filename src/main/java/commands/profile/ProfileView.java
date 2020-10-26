@@ -5,7 +5,7 @@ import commands.CommandResult;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
 import exceptions.profile.RedundantParamException;
-import profile.Profile;
+import models.Profile;
 import storage.profile.ProfileStorage;
 
 import static commands.ExecutionResult.FAILED;

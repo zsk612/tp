@@ -7,7 +7,7 @@ import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
 import logger.SchwarzeneggerLogger;
-import profile.Profile;
+import models.Profile;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
 
@@ -22,9 +22,9 @@ import static seedu.duke.Constant.COMMAND_WORD_END;
  * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
  */
 public class Duke {
-    private CommandLib cl;
-    private CommonUi ui;
-    private Logger logger;
+    private final CommandLib cl;
+    private final CommonUi ui;
+    private final Logger logger;
 
     private Duke() {
         cl = new CommandLib();
@@ -68,7 +68,9 @@ public class Duke {
                 ui.showToUser(MESSAGE_WELCOME_NEW_USER);
             }
         } catch (Exception e) {
-            ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
+            if (!(e instanceof NullPointerException)) {
+                ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
+            }
             ui.showToUser(MESSAGE_WELCOME_NEW_USER);
         }
     }
@@ -80,7 +82,7 @@ public class Duke {
         logger.info("running main menu loop");
 
         String response = ui.getCommand("Main Menu").trim();
-        String[] dummy = {};
+        String dummy = "";
 
         while (!response.equals(COMMAND_WORD_END)) {
             Command cm = cl.getCommand(response);

@@ -1,10 +1,11 @@
 package profile;
 
-import exceptions.profile.InvalidAgeException;
+import exceptions.profile.InvalidCaloriesException;
 import exceptions.profile.InvalidCommandFormatException;
 import exceptions.profile.InvalidHeightException;
 import exceptions.profile.InvalidNameException;
 import exceptions.profile.InvalidWeightException;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.HashMap;
 
@@ -97,7 +98,7 @@ public class ProfileParser {
      * @throws InvalidNameException If input name is empty.
      */
     public static String extractName(HashMap<String, String> parsedParams) throws InvalidNameException {
-        String name = parsedParams.get("/n");
+        String name = WordUtils.capitalizeFully(parsedParams.get("/n"));
 
         if (!Utils.checkValidName(name)) {
             throw new InvalidNameException();
@@ -107,22 +108,22 @@ public class ProfileParser {
     }
 
     /**
-     * Extracts age from parsed HashMap.
+     * Extracts calories from parsed HashMap.
      *
      * @param parsedParams HashMap containing option indicator and parsed option pairs.
-     * @return User's age.
-     * @throws InvalidAgeException If input age is invalid.
+     * @return User's calories.
+     * @throws InvalidCaloriesException If input calories amount is invalid.
      */
-    public static int extractAge(HashMap<String, String> parsedParams) throws InvalidAgeException {
+    public static double extractCalories(HashMap<String, String> parsedParams) throws InvalidCaloriesException {
         try {
-            int age = Integer.parseInt(parsedParams.get("/a"));
+            double calories = Double.parseDouble(parsedParams.get("/c"));
 
-            if (!Utils.checkValidAge(age)) {
-                throw new InvalidAgeException();
+            if (!Utils.checkCalories(calories)) {
+                throw new InvalidCaloriesException();
             }
-            return age;
-        } catch (NumberFormatException e) {
-            throw new InvalidAgeException();
+            return calories;
+        } catch (NumberFormatException | NullPointerException e) {
+            throw new InvalidCaloriesException();
         }
     }
 
@@ -161,7 +162,7 @@ public class ProfileParser {
                 throw new InvalidWeightException();
             }
             return weight;
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             throw new InvalidWeightException();
         }
     }
@@ -181,7 +182,7 @@ public class ProfileParser {
                 throw new InvalidWeightException();
             }
             return expectedWeight;
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             throw new InvalidWeightException();
         }
     }

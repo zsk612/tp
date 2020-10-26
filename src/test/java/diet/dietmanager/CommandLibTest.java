@@ -38,7 +38,7 @@ public class CommandLibTest {
     void get_new_returnNewCommand() {
         CommandLib cl = new CommandLib();
         cl.initDietManagerCL();
-        assertTrue(cl.getCommand("meal") instanceof DietSessionCreate);
+        assertTrue(cl.getCommand("new") instanceof DietSessionCreate);
     }
 
     @Test

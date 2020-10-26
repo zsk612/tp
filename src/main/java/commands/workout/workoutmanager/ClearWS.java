@@ -14,13 +14,13 @@ public class ClearWS extends Command {
     /**
      * Executes all workout sessions.
      *
-     * @param args Array of user's input.
+     * @param args User's input.
      * @return Status OK and feedback message if the execution is affirmed.
      *         Status ABORTED if the execution is withdrawn.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
-    public CommandResult execute(String[] args) throws SchwarzeneggerException {
+    public CommandResult execute(String args) throws SchwarzeneggerException {
         super.execute(args);
         if (!ui.checkConfirmation("Workout Menu", "clear all records")) {
             return new CommandResult(CLEAR_ABORTED, ExecutionResult.ABORTED);

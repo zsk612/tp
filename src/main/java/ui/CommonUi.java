@@ -9,7 +9,7 @@ import static profile.Constants.HELP_FORMAT;
 public class CommonUi {
     protected static final String LINE_PREFIX = "\t ";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
-    protected static final String HORIZONTAL_LINE = LINE_PREFIX
+    public static final String HORIZONTAL_LINE = LINE_PREFIX
             + "______________________________________________________________________________";
     protected static final String MESSAGE_FORMAT_GENERAL = HORIZONTAL_LINE + LS + "%s" + System.lineSeparator()
             + HORIZONTAL_LINE + System.lineSeparator();
@@ -64,5 +64,23 @@ public class CommonUi {
         showToUser(message);
         String input = getCommand(menuName);
         return input.equals("YES");
+    }
+
+    /**
+     * Prints opening message to user.
+     *
+     * @param menuName Name of menu entering.
+     */
+    public void printOpening(String menuName) {
+        showToUser(String.format("Starting %s...", menuName));
+    }
+
+    /**
+     * Prints returning message to user.
+     *
+     * @param menuName Name of menu to return to.
+     */
+    public void printReturning(String menuName) {
+        showToUser(String.format("Returning to %s...", menuName));
     }
 }
