@@ -3,6 +3,7 @@ package commands;
 import diet.dietsession.Food;
 import exceptions.InvalidCommandWordException;
 import exceptions.SchwarzeneggerException;
+import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
 import storage.diet.DietStorage;
 import storage.profile.ProfileStorage;
@@ -44,7 +45,8 @@ public abstract class Command {
         return new CommandResult();
     }
 
-    public void execute(String input, DietStorage storage) throws InvalidCommandWordException {
+    public void execute(String input, DietStorage storage) throws InvalidCommandWordException,
+            InvalidCommandFormatException {
         return;
     }
 
