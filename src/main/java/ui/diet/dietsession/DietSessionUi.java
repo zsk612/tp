@@ -20,7 +20,7 @@ public class DietSessionUi extends CommonUi {
         helpMessage.append(helpFormatter("Clear", "clear",
                 "Clear all food items"));
         helpMessage.append(helpFormatter("End", "end",
-                "Go back to the diet manager menu."));
+                "Go back to the Diet Menu."));
         printer.showToUser(helpMessage.toString().trim());
     }
 
