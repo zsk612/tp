@@ -2,12 +2,22 @@ package diet.dietmanager;
 
 import diet.DateParser;
 import exceptions.InvalidDateFormatException;
+import exceptions.profile.InvalidCommandFormatException;
+import logger.SchwarzeneggerLogger;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static seedu.duke.Constant.COMMAND_WORD_HELP;
+import static seedu.duke.Constant.COMMAND_WORD_SEARCH;
 
 public class DietManagerParser {
+
+    public Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
      * Parses user input to extract command words and instructions.
@@ -73,4 +83,82 @@ public class DietManagerParser {
         extractMealMessage.append("\t Session is tagged as unspecified.");
         return "unspecified";
     }
+
+    public HashMap<String, String> extractDietManagerCommandTagAndInfo(String command, String commandArgs)
+            throws InvalidCommandFormatException {
+
+        HashMap<String, String> parsedParams = new HashMap<>();
+        int startIndex = 0;
+        int endIndex = 0;
+
+        try {
+            while (commandArgs.indexOf("/", startIndex) != -1) {
+                endIndex = commandArgs.indexOf("/", startIndex + 1);
+
+                if (endIndex == -1) {
+                    endIndex = commandArgs.length();
+                }
+
+                String parsedOption = commandArgs.substring(startIndex + 2, endIndex).trim();
+                String optionIndicator = commandArgs.substring(startIndex, startIndex + 2).trim().toLowerCase();
+                parsedParams.put(optionIndicator, parsedOption);
+
+                startIndex = endIndex;
+            }
+
+            return parsedParams;
+        } catch (StringIndexOutOfBoundsException e) {
+            logger.log(Level.WARNING, "Wrong format for search input");
+        }
+        return null;
+    }
+
+    public String extractSearchTag(HashMap<String, String> parsedParams, StringBuilder searchResult) {
+        try {
+            String tag = parsedParams.get("/t").trim();
+            return tag;
+        } catch (NullPointerException e) {
+            logger.log(Level.WARNING, "It looks like there is no date input for search tag");
+        }
+        return "";
+    }
+
+    public LocalDateTime extractStartDates(HashMap<String, String> parsedParams, StringBuilder searchResult)
+            throws InvalidDateFormatException {
+
+        try {
+            String startDate = parsedParams.get("/s");
+            return DateParser.parseDate(startDate);
+
+        } catch (IndexOutOfBoundsException e) {
+            logger.log(Level.WARNING, "I do not understand your date input in start date");
+        } catch (NullPointerException e) {
+            logger.log(Level.WARNING, "It looks like there is no date input in start date");
+        } catch (InvalidDateFormatException e) {
+            logger.log(Level.WARNING, "Invalid date in start date");
+        }
+        searchResult.append("Starting date is empty, "
+                + "and it is replaced with the earliest date.\n\t ");
+        return DateParser.parseDate("0001-01-01");
+    }
+
+    public LocalDateTime extractEndDates(HashMap<String, String> parsedParams, StringBuilder searchResult)
+            throws InvalidDateFormatException {
+
+        try {
+            String startDate = parsedParams.get("/e");
+            return DateParser.parseDate(startDate);
+
+        } catch (IndexOutOfBoundsException e) {
+            logger.log(Level.WARNING, "I do not understand your date input in end date");
+        } catch (NullPointerException e) {
+            logger.log(Level.WARNING, "It looks like there is no date input in end date");
+        } catch (InvalidDateFormatException e) {
+            logger.log(Level.WARNING, "Invalid date in start date");
+        }
+        searchResult.append("End date is empty, "
+                + "and it is replaced with the latest date.\n\t ");
+        return DateParser.parseDate("9999-12-12");
+    }
+
 }
