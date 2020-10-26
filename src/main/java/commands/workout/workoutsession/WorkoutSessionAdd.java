@@ -18,7 +18,7 @@ public class WorkoutSessionAdd extends Command {
         try {
             exerciseList.exerciseList.add(WorkoutSessionParser.addParser(inputs));
             storage.writeToStorage(filePath, exerciseList);
-            Exercise addedExercise = exerciseList.exerciseList.get(exerciseList.exerciseList.size()-1);
+            Exercise addedExercise = exerciseList.exerciseList.get(exerciseList.exerciseList.size() - 1);
             WorkoutSessionUi.addExerciseSuccess(addedExercise);
         } catch (NumberFormatException e) {
             WorkoutSessionUi.addFormatError();

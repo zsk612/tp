@@ -60,13 +60,13 @@ public class WorkoutSessionUi extends CommonUi {
         printer.showToUser("No matching result has been found.");
     }
 
-    public static void addExerciseSuccess(Exercise exercise){
+    public static void addExerciseSuccess(Exercise exercise) {
         String toPrint = String.format("Yay! You have added %s to your list. [Repetitions: %s || Weight: %s]",
                 exercise.getDescription(), exercise.getRepetitions(), exercise.getWeight());
         printer.showToUser(toPrint);
     }
 
-    public static void deleteExerciseSuccess(Exercise exercise){
+    public static void deleteExerciseSuccess(Exercise exercise) {
         String toPrint = String.format("You have deleted %s from your list! [Repetitions: %s || Weight: %s]",
                 exercise.getDescription(), exercise.getRepetitions(), exercise.getWeight());
         printer.showToUser(toPrint);

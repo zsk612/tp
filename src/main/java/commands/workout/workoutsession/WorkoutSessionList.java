@@ -37,7 +37,7 @@ public class WorkoutSessionList extends Command {
         String returnString = String.format("%-8s", "Index") + String.format("%-20s", "Exercise")
                 + String.format("%-12s", "Repetitions") + String.format("%-10s", "Weight") + LS;
         StringBuilder infoBuilder = new StringBuilder(returnString);
-        for (int i = 0; i< exercise.size(); i++) {
+        for (int i = 0; i < exercise.size(); i++) {
             String rowContent = String.format("%-19s %-11s %s", exercise.get(i).getDescription(),
                     exercise.get(i).getRepetitions(), exercise.get(i).getWeight());
             String row = String.format("%-8s", i + 1) + rowContent + LS;
