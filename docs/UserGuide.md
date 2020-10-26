@@ -13,10 +13,10 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.1.5.  [Ending The Schwarzenegger: `end`](#main-end)<br>
 3.2. [Profile Menu](#profile-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.1. [Viewing Help: `help`](#profile-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.2. [Adding a profile: `add`](#profile-add)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.3. [Viewing a profile: `view`](#profile-view)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.4. [Deleting a profile: `delete`](#profile-delete)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.5. [Editing a profile: `edit`](#profile-edit)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.2. [Adding a Profile: `add`](#profile-add)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.3. [Viewing a Profile: `view`](#profile-view)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.4. [Deleting a Profile: `delete`](#profile-delete)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.5. [Editing a Profile: `edit`](#profile-edit)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.6. [Returning to Main Menu: `end`](#profile-end)<br>
 3.3. [Diet Menu](#diet-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.1. [Viewing Help: `help`](#diet-help)<br>
@@ -110,7 +110,7 @@ Expected outcome:
           Go to Diet Menu to manage your past diet records and create new diet records
     end      - end
           Exit the program
-______________________________________________________________________________
+    ______________________________________________________________________________
 ```
 
 
@@ -167,7 +167,7 @@ Expected outcome:
 ### 3.2. <a id="profile-menu">Profile Menu</a>
 Profile Menu manages your profile including your name, physique data and expected daily calories intake. 
 
-#### 3.2.1. <a id="profile-help">Viewing help: `help`</a>
+#### 3.2.1. <a id="profile-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Profile Menu and how to use them.
 
 __Format:__ `help`  
@@ -189,7 +189,7 @@ Expected outcome:
     ______________________________________________________________________________
 ```
 
-#### 3.2.2. <a id="profile-add">Adding a profile: `add`</a>
+#### 3.2.2. <a id="profile-add">Adding a Profile: `add`</a>
 You can add your profile for the most customized experience in The Schwarzenegger. Your height should in centimeters and your input weight should be in kilograms.
 
 __Format:__ `add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`  
@@ -212,7 +212,7 @@ Expected outcome:
     ______________________________________________________________________________
 ```
 
-#### 3.2.3. <a id="profile-view">Viewing a profile: `view`</a>
+#### 3.2.3. <a id="profile-view">Viewing a Profile: `view`</a>
 You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI and give you suggestions on an expected weight for better fitness if it detects your current expectation is not appropriate.
 
 __Format:__ `view`  
@@ -233,7 +233,7 @@ Expected outcome:
     ______________________________________________________________________________
 ```
 
-#### 3.2.4. <a id="profile-delete">Deleting a profile: `delete`</a>
+#### 3.2.4. <a id="profile-delete">Deleting a Profile: `delete`</a>
 You can delete your profile from the program. The program will ask for your confirmation, and it will only delete after you type in exactly "YES".
 
 __Format:__ `delete`  
@@ -257,7 +257,7 @@ Expected outcome:
     ______________________________________________________________________________
 ```
 
-#### 3.2.5. <a id="profile-edit">Editing a profile: `edit`</a>
+#### 3.2.5. <a id="profile-edit">Editing a Profile: `edit`</a>
 You can edit the profile after adding to the program.
 
 __Format:__ `edit /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`  
