@@ -20,7 +20,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.6. [Returning to Main Menu: `end`](#profile-end)<br>
 3.3. [Diet Menu](#diet-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.1. [Viewing Help: `help`](#diet-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.3.2. [Starting to record diet data: `meal`](#diet-start)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.2. [Starting to record diet data: `new`](#diet-start)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.1. [Viewing Help: `help`](#meal-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.2. [Adding Food Items for the Current Meal: `add`](#meal-add)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.3. [Listing Data for the Current Meal: `list`](#meal-list)<br>
@@ -344,20 +344,20 @@ You can see a complete list of available commands under Diet Menu and how to use
 __Format:__ `help`
 Example: `help`
  
-### 3.3.2. <a id="diet-start">Starting to Record Diet Data: `meal`</a>
+### 3.3.2. <a id="diet-start">Starting to Record Diet Data: `new`</a>
 This command creates a new meal session.
 You will be directed immediately into the meal session.
 
 The date and tag can be added on creation with "/d" for date and "/t" for meal type.
 
-__Format:__ `meal /d [date] /t [type]`
+__Format:__ `new /d [DATE] /t [TYPE]`
  
-Example: `meal /d 2020-08-05 /t lunch`
+Example: `new /d 2020-08-05 /t lunch`
 
 Situation | Example |  Outcome
 ----------|--------|------------------
-Create a meal session | `meal`| a meal session of type unspecified with today's date will be created
-Create a meal session with date and type| `meal /d 2020-05-04 breakfast`| A meal session with date 2020-05-04 and type breakfast will be created
+Create a meal session | `new`| a meal session of type unspecified with today's date will be created
+Create a meal session with date and type| `new /d 2020-05-04 /t breakfast`| A meal session with date 2020-05-04 and type breakfast will be created
 
 #### 3.3.2.1. <a id="meal-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Diet Session and how to use them.
@@ -368,7 +368,7 @@ Example: `help`
 #### 3.3.2.2. <a id="meal-add">Adding Food Items for the Current Meal: `add`</a>
 This command adds a food item into the current meal session
 
-__Format:__ `add [food name] /c [amount of calories]` 
+__Format:__ `add [FOOD_NAME] /c [CALORIES]` 
 
 Example: `add chicken nuggets /c 120`
 
@@ -380,9 +380,9 @@ __Format:__ `list`
 Example: `list`
 
 #### 3.3.2.4. <a id="meal-delete">Deleting Data From the Current Meal: `delete`</a>
-Deletes the dish according to the ID in the current meal session list.
+Deletes the dish according to the index in the current meal session list.
 
-__Format:__ `delete [dish ID]`
+__Format:__ `delete [INDEX_OF_SESSION]`
 
 Example: `delete 3`
  
@@ -410,14 +410,14 @@ Example: `list`
 ### 3.3.4. <a id="diet-edit">Editing a Past Diet Session: `edit`</a>
 Edits a previous meal session based on a numbered index that can be found in the list.
 
-__Format:__ `edit [index number]`
+__Format:__ `edit [INDEX_OF_SESSION]`
 
 Example: `edit 3` 
 
 ### 3.3.5. <a id="diet-delete">Deleting a Past Diet Session: `delete`</a>
 Deletes a previous meal session based on a numbered index that can be found in the list.
 
-__Format:__ `delete [index number]`
+__Format:__ `delete [INDEX_OF_SESSION]`
 
 Example: `delete 3`
  
@@ -453,7 +453,7 @@ Example |  Outcome
 Creates a new workout session and go into the session. 
 You can add tags with “/t”. Tags are optional and more than one tag can be attached to a session.
 
-__Format:__ `new /t <tag1> <tag2>`  
+__Format:__ `new /t <TAG1> <TAG2>`  
 Tags are optional and more than one tag can be attached to a session.
 
 Example: `new /t legs chest`
@@ -473,7 +473,7 @@ Example: `help`
 #### 3.4.2.2. <a id="ws-add">Adding Data for Current Workout Session: `add`</a>
 Adds moves with number of moves per set and weights of equipment (if the move does not require weights, input 0 for weight).
 
-__Format:__ `add [name of move] /n [number of moves per set] /w [weight]`  
+__Format:__ `add [NAME_OF_MOVE] /n [NUMBER_OF_MOVES_PER_SET] /w [WEIGHT]`  
 
 Example: `add squat /n 15 /w 40`
 
@@ -485,10 +485,10 @@ __Format:__ `list`
 Example: `list`
 
 #### 3.4.2.4. <a id="ws-delete">Deleting Data From the Current Workout Session: `delete`</a>
-Deletes the move according to move ID in the current workout session list.
+Deletes the move according to move index in the current workout session list.
 
 
-__Format:__ `delete [move ID]`  
+__Format:__ `delete [INDEX_OF_MOVE]`  
 
 Example: `delete 1`
 
@@ -513,7 +513,7 @@ Example |  Outcome
 ### 3.4.4. <a id="workout-edit">Editing a Workout Session: `edit`</a>
 You can edit a past workout session in the record list. You will go into the specific workout session after typing this command.
 
-__Format:__ `edit <INDEX>` 
+__Format:__ `edit [INDEX_OF_SESSION]` 
 
 The index can be found by listing the results
 
@@ -524,7 +524,7 @@ Example |  Outcome
 ### 3.4.5. <a id="workout-delete">Deleting a Workout Session: `delete`</a>
 You can delete a past workout session in the record list.
 
-__Format:__ `delete <INDEX>` 
+__Format:__ `delete [INDEX_OF_SESSION]` 
 
 The index can be found by listing the results
 
@@ -536,7 +536,7 @@ Example |  Outcome
 You can search for a list of workout sessions that matches certain conditions. For example, 
 you can search for sessions created on a specific day or sessions that contains certain tags.
 
-__Format:__ `Search /d <DATE> /t <tag1> <tag2>`
+__Format:__ `Search /d <DATE> /t <TAG1> <TAG2>`
 
 You can search records containing (a list of) tags with `/t` followed by the tags. If multiple tags are written, only sessions that contains all the tags will be selected.
 
@@ -611,10 +611,10 @@ Return to Main Menu|`end`
 **Action** |  **Format**
 --------|----------------------
 Help|`help`
-Start meal session |`meal /d [date] /t [type]`<br><br>E.g. `meal /d 2020-05-04 /t breakfast`
+Start meal session |`new /d [DATE] /t [TYPE]`<br><br>E.g. `new /d 2020-05-04 /t breakfast`
 List|`list`
-Edit|`edit [meal session ID]`<br><br>E.g. `edit 1`
-Delete|`delete [meal session ID]`<br><br>E.g. `delete 1`
+Edit|`edit [INDEX_OF_SESSION]`<br><br>E.g. `edit 1`
+Delete|`delete [INDEX_OF_SESSION]`<br><br>E.g. `delete 1`
 Clear|`clear`
 Return to Main Menu|`end`
 
@@ -623,9 +623,9 @@ Return to Main Menu|`end`
 **Action** |  **Format**
 --------|----------------------
 Help|`help`
-Add |`add [dish] /c [calorie count]`<br><br>E.g. `add spinach /c 90`
+Add |`add [FOOD_NAME] /c [CALORIES]`<br><br>E.g. `add spinach /c 90`
 List|`list`
-Delete|`delete [dish ID]`<br><br>E.g. `delete 1`
+Delete|`delete [INDEX_OF_FOOD]`<br><br>E.g. `delete 1`
 Clear|`clear`
 Return to Main Menu|`end`
 
@@ -633,11 +633,11 @@ Return to Main Menu|`end`
 
 **Action** |  **Format**
 --------|----------------------
-Start workout session |`new /t <tag1> <tag2>`<br><br>E.g. `new /t leg chest`
+Start workout session |`new /t <TAG1> <TAG2>`<br><br>E.g. `new /t leg chest`
 List|`list`
-Edit|`edit <session ID>`<br><br>E.g. `edit 1`
-Delete|`delete <session ID>`<br><br>E.g. `delete 1`
-Search|`search /d <date> /t <tag1> <tag2>`<br><br>E.g. `search /t leg chest /d 20201018`
+Edit|`edit [INDEX_OF_SESSION]`<br><br>E.g. `edit 1`
+Delete|`delete [INDEX_OF_SESSION]`<br><br>E.g. `delete 1`
+Search|`search /d <DATE> /t <TAG1> <TAG2>`<br><br>E.g. `search /t leg chest /d 20201018`
 Help|`help`
 Clear|`clear`
 Return to Main Menu|`end`
