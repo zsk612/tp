@@ -160,6 +160,13 @@ __Format:__ `workout`
 Example: `workout`
 
 Expected outcome:
+```
+	 ______________________________________________________________________________
+	 Starting Workout menu...
+	 ______________________________________________________________________________
+
+Workout Menu >>>>> 
+```
 
 
 #### 3.1.5. <a id="main-end">Ending The Schwarzenegger: `end`</a>
@@ -447,23 +454,52 @@ You can see a complete list of available commands under Workout Menu and how to 
 
 __Format:__ `help`
 
-Example |  Outcome
---------|------------------
-**Command**: <br> `help` <br><br> **Description:** <br> show help manual| TODO:actual code UI output
+Expected outcome:
+
+```
+ ______________________________________________________________________________
+	 List     - list </s [START DATE]> </e [END DATE]>
+	          Show all past sessions. Can display sessions between a certain period
+	 New      - new </t [TAG]...>
+	          Create a new workout session and tags. Multiple tags are seperated by ','.
+	 Delete   - delete [INDEX]
+	          Delete the record indexed at x
+	 Edit     - edit [INDEX]
+	          Edit the record indexed at x
+	 Clear    - clear
+	          Clear all past results
+	 Search   - search </t [TAG]...> </d [DATE]>
+	          Search records based on tags and dates. Multiple tags are seperated by ','.
+	 End      - end
+	          Go back to main menu
+	 ______________________________________________________________________________
+```
 
 ### 3.4.2. <a id="workout-start">Starting a New Workout Session: `new`</a>
 Creates a new workout session and go into the session. 
 You can add tags with “/t”. Tags are optional and more than one tag can be attached to a session.
 
-__Format:__ `new /t <tag1> <tag2>`  
-Tags are optional and more than one tag can be attached to a session.
+Tags are optional and more than one tag can be attached to a session. If more than one tag is added, each one should be seperated by `,`. After `new`, user will be directed into workout session to manage the given session. You may verify that by looking at the cursor changes from 
 
-Example: `new /t legs chest`
+`Workout Menu >>>>> `
 
-Situation | Example |  Outcome
-----------|--------|------------------
-Create a workout session with tags "leg" and "chest" | `new /t legs chest`| TODO: sthst
-Repeated tags are attached| `new /t legs legs`| Only one will be added
+to
+
+```Workout Menu > New Workout Session >>>>> ```.
+
+__Format:__ `new </t [TAG]...>`  
+
+Example: `new /t legs day, tricep`
+
+Expected outcome:
+```
+	 ______________________________________________________________________________
+	 You have started a new workout session!
+	 ______________________________________________________________________________
+
+Workout Menu > New Workout Session >>>>> 
+```
+
 
 #### 3.4.2.1. <a id="ws-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Workout Session and how to use them.
@@ -503,25 +539,45 @@ __Format:__ `end`
 Example: `end`
 
 ### 3.4.3. <a id="workout-list">Listing All Past Workout Sessions: `list`</a>
-You can see all your past workout sessions. They will be summarised and 
-printed in a table with their index, creation date and tags.
+You can see all your past workout sessions. They will be summarised and printed in a table with their index, creation date and tags.
 
-__Format:__ `list`  
+You can specify start date and end date to show sessions created in a selected period using `\s` for start date and `\e` for end date. If start date is not specified, it will take the earliest date a start date. If end date is not specified, it will take today as the end date.
 
-Example |  Outcome
---------|------------------
-**Command**: <br> `list` <br><br>| TODO:actual code UI output
+__Format:__ `list [/s <START DATE>] [/e <END DATE>]`  
+
+Example `list /e 20201026`
+
+Expected output
+```
+	 ______________________________________________________________________________
+	 You have 1 records in the given period:
+	 Index   Creation date   Tags    
+	 1       2020-10-26      [legs day, tricep]
+	 ______________________________________________________________________________
+```
 
 ### 3.4.4. <a id="workout-edit">Editing a Workout Session: `edit`</a>
-You can edit a past workout session in the record list. You will go into the specific workout session after typing this command.
+You can edit a past workout session in the record list.
 
-__Format:__ `edit <INDEX>` 
+`__Format:__ `edit <INDEX>` 
 
-The index can be found by listing the results
+You will go into the specific workout session after typing this command. You may verify by seeing the curcur changes from 
 
-Example |  Outcome
---------|------------------
-**Command**: <br> `edit 1` <br><br> **Description:** <br> Edit the record at index 1.| TODO:actual code UI output
+```Workout Menu >>>>>``` 
+
+to
+
+```Workout Menu > Workout Session X >>>>>``` .
+
+The index can be found by listing all results or searching the target record.
+
+Example
+`edit 1`
+
+Expected output:
+```
+Workout Menu > Workout Session 3 >>>>> 
+```
 
 ### 3.4.5. <a id="workout-delete">Deleting a Workout Session: `delete`</a>
 You can delete a past workout session in the record list.
@@ -530,33 +586,43 @@ __Format:__ `delete <INDEX>`
 
 The index can be found by listing the results
 
-Example |  Outcome
---------|------------------
-**Command**: <br> `delete 1` <br><br> **Description:** <br> Delete the record at index 1.| TODO:actual code UI output
+Example：
+`delete 1`
 
+Expected output:
+```
+ ______________________________________________________________________________
+	 You have deleted that record!
+	 ______________________________________________________________________________
+```
 ### 3.4.6. <a id="workout-search">Searching a List of Workout Session: `search`</a>
-You can search for a list of workout sessions that matches certain conditions. For example, 
-you can search for sessions created on a specific day or sessions that contains certain tags.
+You can search for a list of workout sessions that matches certain conditions. For example, you can search for sessions created on a specific day or sessions that contains certain tags.
 
-__Format:__ `Search /d <DATE> /t <tag1> <tag2>`
+__Format:__ `Search [/d <DATE>] [/t <TAG>...]`
 
-You can search records containing (a list of) tags with `/t` followed by the tags. If multiple tags are written, only sessions that contains all the tags will be selected.
+- Tag condition
 
-You can search records created on a specific day with `/d` followed by a date.
-Date should be keyed in  following one of the supported formats. 
-[See here](#notes) for a complete list of format supported. If the format is not recognised, sessions created on any day will be accepted.
+You can search records containing (a list of) tags with `/t` followed by the tags. Multiple tags should be seperated by `,`. If you give multiple tags, only sessions that contains all the tags will be selected. You can search with part of the tag as well. For example searching with tag `leg` will match any tags that contains `leg`, e.g. `legs`.
 
-The conditions are optional. You may have zero, one or both conditions while searching.
-If both conditions are specified, only sessions that meet both conditions will be selected.
+- Date condition
 
-You can see all the sessions that meet the conditions. They will be summarised and 
-printed in a table with their index, creation date and tags.
+You can search records created on a specific day with `/d` followed by a date. Date should be keyed in  following one of the supported formats. [See here](#notes) for a complete list of format supported. If the format is wrong, sessions created on any day will be accepted.
 
-Situation | Example |  Outcome
-----------|--------|------------------
-Search all sessions created on Oct 17 2020 | `search /d 20201018`|TODO:sthst
-Search all sessions with "arm" tag| `search /t arm`|sth
-Search all sessions with "arm" tag on Oct 17 2020| `search /t arm /d 20201018`|sth
+Both date and tag conditions are optional. You may have zero, one or both conditions while searching. If both conditions are given, only sessions that meet both conditions will be selected.
+
+You can see all the sessions that meet the conditions. They will be summarised and printed in a table with their index, creation date and tags.
+
+Example: `search /t le`
+
+Expected output
+```
+	 ______________________________________________________________________________
+	 1  records are found:
+	 Index   Creation date   Tags    
+	 2       2020-10-26      [legs day, tricep]
+	 ______________________________________________________________________________
+```
+
 
 ### 3.4.7. <a id="workout-clear">Clearing All Workout Sessions: `clear`</a>
 You can erase all workout sessions.
@@ -566,11 +632,24 @@ __Format:__ `clear`
 This command is dangerous as you will not be able to 
 recover the data.
 After typing this command, you will be asked to reconfirm it by typing in
-`YES`. Else the action will be aborted. 
+`YES`. Any other input will abort the clearing. 
 
-Example |  Outcome
---------|------------------
-**Command**: <br> `clear`| TODO:
+Example `clear`
+
+Expected output:
+```
+	 ______________________________________________________________________________
+	 Are you sure you want to clear all records? This action is irrevocable.
+	 Key in "YES" to confirm.
+	 ______________________________________________________________________________
+
+Workout Menu >>>>> YES
+	 ______________________________________________________________________________
+	 You have cleared all records!
+	 ______________________________________________________________________________
+
+Workout Menu >>>>> 
+```
 
 ### 3.4.8. <a id="workout-end">Returning to Main Menu: `end`</a>
 
@@ -579,11 +658,18 @@ You can return to the main menu.
 __Format:__ `end`
 
 After typing in this, you will see your prompt in your terminal
-changes from `workout>>>` to `main>>>`. 
+changes from `Workout Menu>>>` to `Main Menu>>>`. 
  
-Example |  Outcome
---------|------------------
-**Command**: <br> `clear`| TODO:
+Example `end`
+
+Expected output
+```
+	 ______________________________________________________________________________
+	 Returning to Main menu...
+	 ______________________________________________________________________________
+
+Main Menu >>>>> 
+```
 
 ## 4. <a id="command-summary">Command Summary</a>
 
@@ -635,11 +721,11 @@ Return to Main Menu|`end`
 
 **Action** |  **Format**
 --------|----------------------
-Start workout session |`new /t <tag1> <tag2>`<br><br>E.g. `new /t leg chest`
-List|`list`
+Start workout session |`new [/t <TAG>...]`<br><br>E.g. `new /t leg, chest`
+List|`list [/s <START DATE>] [/e <END DATE]`<br><br>E.g. `list /s 20201001 /e 2020/10/25`
 Edit|`edit <session ID>`<br><br>E.g. `edit 1`
 Delete|`delete <session ID>`<br><br>E.g. `delete 1`
-Search|`search /d <date> /t <tag1> <tag2>`<br><br>E.g. `search /t leg chest /d 20201018`
+Search|`search /d <date> /t <tag1> <tag2>`<br><br>E.g. `search /t leg day, chest /d 2020-10-18`
 Help|`help`
 Clear|`clear`
 Return to Main Menu|`end`
@@ -662,3 +748,6 @@ Return to Main Menu|`end`
     `yyyy-MM-dd`
     `yyyy MM dd`
     `yyyy/MM/dd`
+    
+    `dd MM yyyy`
+    `ddMMyyyy`

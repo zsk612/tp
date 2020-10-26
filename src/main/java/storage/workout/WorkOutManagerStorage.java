@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-import static ui.workout.workoutmanager.WorkoutManagerUi.LOADINGFILE;
-
 public class WorkOutManagerStorage {
 
     /**
@@ -51,7 +49,6 @@ public class WorkOutManagerStorage {
      */
     public ArrayList<PastWorkoutSessionRecord> readPastRecords() throws SchwIoException {
         logger.info("Start loading files");
-        System.out.println(LOADINGFILE);
 
         ArrayList<PastWorkoutSessionRecord> pastFiles;
         File file = new File(Constant.PATH_TO_WORKOUT_SESSION_HISTORY);
