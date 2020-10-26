@@ -27,7 +27,6 @@ public class DietSessionCreate extends Command {
         try {
             StringBuilder message = new StringBuilder();
             String dateInput = parser.extractDate(input, message);
-            message.append("\t ");
             String typeInput = parser.extractMeal(input, message);
 
             ui.showToUser(message.deleteCharAt(message.length() - 1).toString());
