@@ -80,7 +80,7 @@ public class Duke {
         logger.info("running main menu loop");
 
         String response = ui.getCommand("Main Menu").trim();
-        String[] dummy = {};
+        String dummy = "";
 
         while (!response.equals(COMMAND_WORD_END)) {
             Command cm = cl.getCommand(response);

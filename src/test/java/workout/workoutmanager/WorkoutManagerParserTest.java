@@ -17,7 +17,7 @@ class WorkoutManagerParserTest {
 
     @Test
     void parseTags_ValidInput_Success() {
-        String[] args = {"/t", "legs", "chest"};
+        String args = "/t legs, chest";
         ArrayList<String> result = parseTags(args);
         ArrayList<String> expected = new ArrayList<>();
         expected.add("legs");
@@ -27,16 +27,16 @@ class WorkoutManagerParserTest {
 
     @Test
     void parseTags_MissingOrWrongIdentifierKey_Empty() {
-        String[] in1 = {"/tt", "legs", "chest"};
+        String in1 = "/tt legs chest";
         ArrayList<String> out1 = parseTags(in1);
         ArrayList<String> expected = new ArrayList<>();
         assertEquals(expected, out1);
 
-        String[] in2 = {"legs", "/t", "chest"};
+        String in2 = "legs /t chest";
         ArrayList<String> out2 = parseTags(in2);
         assertEquals(expected, out2);
 
-        String[] in3 = {"legs", "chest"};
+        String in3 = "legs chest";
         ArrayList<String> out3 = parseTags(in3);
         assertEquals(expected, out3);
     }
@@ -53,8 +53,8 @@ class WorkoutManagerParserTest {
                 0);
         PastWorkoutSessionRecord record = new PastWorkoutSessionRecord("random",
                 date, date, tags);
-        String[] in1 = {"/d", "20201017"};
-        List<Boolean> expected1 = Arrays.asList(true, true);
+        String in1 = "/d 20201017";
+        List<Boolean> expected1 = Arrays.asList(true);
         ArrayList<Boolean> testResults1 = new ArrayList<>();
         ArrayList<Predicate<PastWorkoutSessionRecord>> tests = parseSearchConditions(in1);
 
@@ -63,8 +63,8 @@ class WorkoutManagerParserTest {
         }
         assertEquals(expected1, testResults1);
 
-        String[] in2 = {"/d", "20201017", "/t", "arms"};
-        List<Boolean> expected2 = Arrays.asList(true, false);
+        String in2 = "/d 20201017 /t arms";
+        List<Boolean> expected2 = Arrays.asList(false, true);
         ArrayList<Boolean> testResults2 = new ArrayList<>();
         tests = parseSearchConditions(in2);
 
@@ -73,7 +73,7 @@ class WorkoutManagerParserTest {
         }
         assertEquals(expected2, testResults2);
 
-        String[] in3 = {"/d", "20201017", "/t", "legs", "chest"};
+        String in3 = "/d 20201017 /t legs, chest";
         List<Boolean> expected3 = Arrays.asList(true, true);
         ArrayList<Boolean> testResults3 = new ArrayList<>();
         tests = parseSearchConditions(in3);
@@ -96,8 +96,8 @@ class WorkoutManagerParserTest {
                 0);
         PastWorkoutSessionRecord record = new PastWorkoutSessionRecord("random",
                 date, date, tags);
-        String[] in1 = {"20201017", "/d"};
-        List<Boolean> expected1 = Arrays.asList(true);
+        String in1 = "20201017 /d";
+        List<Boolean> expected1 = new ArrayList<>();
         ArrayList<Boolean> testResults1 = new ArrayList<>();
         ArrayList<Predicate<PastWorkoutSessionRecord>> tests = parseSearchConditions(in1);
 
@@ -106,8 +106,8 @@ class WorkoutManagerParserTest {
         }
         assertEquals(expected1, testResults1);
 
-        String[] in2 = {"20201017", "arms"};
-        List<Boolean> expected2 = Arrays.asList(true);
+        String in2 = "20201017 arms";
+        List<Boolean> expected2 = new ArrayList<>();
         ArrayList<Boolean> testResults2 = new ArrayList<>();
         tests = parseSearchConditions(in2);
 

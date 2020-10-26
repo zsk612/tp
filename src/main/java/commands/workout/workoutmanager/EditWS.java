@@ -26,7 +26,7 @@ public class EditWS extends Command {
         super.execute(args);
         int index = -1;
         try {
-            index = Integer.parseInt(args[0]);
+            index = Integer.parseInt(args);
         } catch (NumberFormatException e) {
             logger.warning("Number format exception caught");
             throw new NotANumberException();

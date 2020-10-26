@@ -53,7 +53,7 @@ public class WorkoutManager {
 
     private void processCommand(String[] commands) throws SchwarzeneggerException {
         Command command = cl.getCommand(commands[0]);
-        CommandResult result = command.execute(commands[1]);
+        CommandResult result = command.execute((commands.length > 1)  ? commands[1].trim() : "");
         ui.showToUser(result.getFeedbackMessage());
     }
 }
