@@ -17,23 +17,22 @@ public class HelpWS extends Command {
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
-    public CommandResult execute(String[] args) throws SchwarzeneggerException {
+    public CommandResult execute(String args) throws SchwarzeneggerException {
         super.execute(args);
-        StringBuilder helpMessage = new StringBuilder();
-        helpMessage.append(helpFormatter("List", "list",
-                "Show all past sessions"));
-        helpMessage.append(helpFormatter("New", "new /t <tag1> <tag2>",
-                "Create a new workout session and tags"));
-        helpMessage.append(helpFormatter("Delete", "delete x",
-                "Delete the record indexed at x"));
-        helpMessage.append(helpFormatter("Edit", "edit x",
-                "Edit the record indexed at x"));
-        helpMessage.append(helpFormatter("Clear", "clear",
-                "Clear all past results"));
-        helpMessage.append(helpFormatter("Search", "search /t <tag1> <tag2> /d <date>",
-                "Search records based on tags and dates"));
-        helpMessage.append(helpFormatter("End", "end",
-                "Go back to Main Menu"));
-        return new CommandResult(helpMessage.toString().trim(), ExecutionResult.OK);
+        String helpMessage = helpFormatter("List", "list </s [START DATE]> </e [END DATE]>",
+                "Show all past sessions. Can display sessions between a certain period")
+                + helpFormatter("New", "new </t [TAG]...>",
+                "Create a new workout session and tags. Multiple tags are seperated by ','.")
+                + helpFormatter("Delete", "delete [INDEX]",
+                "Delete the record indexed at x")
+                + helpFormatter("Edit", "edit [INDEX]",
+                "Edit the record indexed at x")
+                + helpFormatter("Clear", "clear",
+                "Clear all past results")
+                + helpFormatter("Search", "search </t [TAG]...> </d [DATE]>",
+                "Search records based on tags and dates. Multiple tags are seperated by ','.")
+                + helpFormatter("End", "end",
+                "Go back to Main Menu");
+        return new CommandResult(helpMessage.trim(), ExecutionResult.OK);
     }
 }

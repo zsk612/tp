@@ -16,7 +16,7 @@ public class SearchWS extends Command {
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     @Override
-    public CommandResult execute(String[] args) throws SchwarzeneggerException {
+    public CommandResult execute(String args) throws SchwarzeneggerException {
 
         super.execute(args);
         String formattedInfo = PastRecordList.getInstance().search(args);

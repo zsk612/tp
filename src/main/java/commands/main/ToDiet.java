@@ -14,7 +14,7 @@ public class ToDiet extends Command {
      * @return Redirecting to Diet Menu message.
      */
     @Override
-    public CommandResult execute(String[] args) {
+    public CommandResult execute(String args) {
         DietManager dietManager = new DietManager();
         dietManager.start();
         return new CommandResult("", ExecutionResult.OK);
