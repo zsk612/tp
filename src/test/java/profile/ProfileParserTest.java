@@ -34,12 +34,14 @@ class ProfileParserTest {
 
     @Test
     void testExtractCommandTagAndInfo_missingSplashInput_throwInvalidCommandFormatException() {
-        assertThrows(InvalidCommandFormatException.class, () -> extractCommandTagAndInfo("add", "add n Schwarzenegger"));
+        assertThrows(InvalidCommandFormatException.class, () ->
+                extractCommandTagAndInfo("add", "add n Schwarzenegger"));
     }
 
     @Test
     void testExtractCommandTagAndInfo_excessiveSplashInput_throwInvalidCommandFormatException() {
-        assertThrows(InvalidCommandFormatException.class, () -> extractCommandTagAndInfo("add", "add //n Schwarzenegger"));
+        assertThrows(InvalidCommandFormatException.class, () ->
+                extractCommandTagAndInfo("add", "add //n Schwarzenegger"));
     }
 
     @Test
