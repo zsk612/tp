@@ -65,9 +65,12 @@ public class DietManagerParser {
         try {
             return input.split("/t")[1].trim();
         } catch (IndexOutOfBoundsException | NullPointerException e) {
+            if (!extractMealMessage.toString().isEmpty()) {
+                extractMealMessage.append("\t ");
+            }
             extractMealMessage.append("Please specify your diet session tag, i.e. breakfast, lunch, dinner\n");
         }
-        extractMealMessage.append("\t Session is tagged as unspecified.\n");
+        extractMealMessage.append("\t Session is tagged as unspecified.");
         return "unspecified";
     }
 }
