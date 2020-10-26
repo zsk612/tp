@@ -22,9 +22,9 @@ import static seedu.duke.Constant.COMMAND_WORD_END;
  * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
  */
 public class Duke {
-    private CommandLib cl;
-    private CommonUi ui;
-    private Logger logger;
+    private final CommandLib cl;
+    private final CommonUi ui;
+    private final Logger logger;
 
     private Duke() {
         cl = new CommandLib();

@@ -8,14 +8,13 @@ import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class WorkoutManager {
 
-    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
+    private static final Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private final CommandLib cl;
     private final WorkoutManagerUi ui;
 
@@ -31,7 +30,6 @@ public class WorkoutManager {
      */
     public void start() {
         logger.log(Level.INFO, "Entered workout manager");
-        WorkoutManagerUi.printOpening();
         while (true) {
 
             String command = ui.getCommand("Workout Menu");
@@ -42,7 +40,6 @@ public class WorkoutManager {
                 processCommand(commParts);
             } catch (EndException e) {
                 logger.log(Level.INFO, "exiting workout manager");
-                ui.showToUser(e.getMessage());
                 break;
             } catch (SchwarzeneggerException e) {
                 logger.log(Level.WARNING, "processing SchwarzeneggerException", e);

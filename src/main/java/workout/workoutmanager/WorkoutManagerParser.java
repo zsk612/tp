@@ -1,21 +1,16 @@
 package workout.workoutmanager;
 
-import exceptions.workoutmanager.InsufficientArgumentException;
 import exceptions.workoutmanager.NotANumberException;
 import logger.SchwarzeneggerLogger;
 import models.PastWorkoutSessionRecord;
 import workout.DateParser;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 
 public class WorkoutManagerParser {
-
-    private static final int NOTHING = 0;
-    private static final int TAG = 1;
-    private static final int DATE = 2;
 
     /**
      * Parses user inputs into single words.
@@ -40,9 +35,9 @@ public class WorkoutManagerParser {
                 return result;
             }
             String[] tags = content[1].split(",");
-            for (int i = 0; i < tags.length; i++) {
-                if (!result.contains(tags[i].trim())) {
-                    result.add(tags[i].trim());
+            for (String tag : tags) {
+                if (!result.contains(tag.trim())) {
+                    result.add(tag.trim());
                 }
             }
         } catch (Exception e) {
@@ -75,9 +70,9 @@ public class WorkoutManagerParser {
         try {
             String[] part2 = arr.split("/d");
             String[] datePart = part2[1].split("/t");
-            LocalDate finalDate = DateParser.parseDate(datePart[0].trim()).toLocalDate();
+            LocalDateTime finalDate = DateParser.parseDate(datePart[0].trim());
             if (finalDate != null) {
-                test.add(x -> x.isCreatedOn(finalDate));
+                test.add(x -> x.isCreatedOn(finalDate.toLocalDate()));
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             SchwarzeneggerLogger.getInstanceLogger().log(Level.INFO, "No date identifier is given.");
@@ -86,14 +81,12 @@ public class WorkoutManagerParser {
         return test;
     }
 
-    public static int parseIndex(String args) throws NotANumberException, InsufficientArgumentException {
-        int index = -1;
+    public static int parseIndex(String args) throws NotANumberException {
+        int index;
         try {
             index = Integer.parseInt(args);
         } catch (NumberFormatException e) {
             throw new NotANumberException();
-        } catch (IndexOutOfBoundsException e) {
-            throw new InsufficientArgumentException();
         }
         return index;
     }
@@ -105,9 +98,9 @@ public class WorkoutManagerParser {
         try {
             String[] part2 = args.split("/s");
             String[] datePart = part2[1].split("/e");
-            LocalDate start = DateParser.parseDate(datePart[0].trim()).toLocalDate();
+            LocalDateTime start = DateParser.parseDate(datePart[0].trim());
             if (start != null) {
-                test.add(x -> x.isCreatedAfter(start));
+                test.add(x -> x.isCreatedAfter(start.toLocalDate()));
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             SchwarzeneggerLogger.getInstanceLogger().log(Level.INFO, "No start date identifier is given.");
@@ -117,9 +110,9 @@ public class WorkoutManagerParser {
         try {
             String[] part2 = args.split("/e");
             String[] datePart = part2[1].split("/s");
-            LocalDate end = DateParser.parseDate(datePart[0].trim()).toLocalDate();
+            LocalDateTime end = DateParser.parseDate(datePart[0].trim());
             if (end != null) {
-                test.add(x -> x.isCreatedBefore(end));
+                test.add(x -> x.isCreatedBefore(end.toLocalDate()));
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             SchwarzeneggerLogger.getInstanceLogger().log(Level.INFO, "No end date identifier is given.");

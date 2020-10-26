@@ -8,7 +8,7 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
 
     private final String filePath;
     private final LocalDateTime creationTime;
-    private LocalDateTime lastEditTime;
+    private final LocalDateTime lastEditTime;
     private final ArrayList<String> tags;
 
     /**
