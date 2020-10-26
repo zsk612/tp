@@ -45,7 +45,7 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past meal sessions](#436-clear-all-past-meal-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Exit the meal manager](#437-exit-the-meal-manager)<br>
 4.4. [Workout-related Features](#44-workout-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creation of new workout session](#441-creation-of-new-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creating a new workout session](#441-creating-a-new-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an exercise](#4411-Adding-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an exercise](#4412-Deleting-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing all exercises in this session](#4413-listing-all-exercises-in-this-session)<br>
@@ -53,9 +53,9 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for related exercises](#4415-Searching-for-related-exercises)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the workout session](#4416-Ending-the-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing past workout sessions](#442-listing-past-workout-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing of workout session](#443-editing-of-workout-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deletion of workout session](#444-deletion-of-workout-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.5. [Search based on conditions](#445-search-based-on-conditions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing workout session](#443-editing-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a workout session](#444-deleting-a-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.5. [Searching based on conditions](#445-searching-based-on-conditions)<br>
 4.5. [Recommendations-related Features](#46-recommendations-related-features)<br> 
 &nbsp;&nbsp;&nbsp;&nbsp;4.5.1. [Display expenditure](#451-display-expenditure)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Expenditure functionality](#452-expenditure-functionality)<br>
@@ -108,6 +108,7 @@ This section provides a high level overview of our application, The Schwarzenegg
 ### 3.1. <a id="architect">Architecture</a>
 
 ![Architecture]
+
 The image above explains the design of the application, The Schwarzenegger. 
 
 The main driver of the application is `Main: Duke`. It is responsible for mainly two phases:
@@ -629,7 +630,7 @@ When the user types `end` the following sequence occurs.
 
 
 ### 4.4. Workout-related Features
-#### 4.4.1. Creation of new workout session
+#### 4.4.1. Creating a new workout session
 
 Users can create a new workout session. The failure to do so will trigger an exception where the user will be notified 
 of the reason, e.g. invalid command or IO related errors. The action will be aborted. If the creation is successful, 
@@ -797,7 +798,7 @@ print the list
 |**Cons** | All data of pastRecord will be exposed.|
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.3. Editing of workout session
+#### 4.4.3. Editing workout session
 User can anytime go back to edit a workout session created in the past such as
 adding or removing exercies in that session.
 
@@ -850,7 +851,7 @@ meta information in a separate file
 |**Cons** | The application initialization will grow quickly as the application scales.|
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.4. Deletion of workout session
+#### 4.4.4. Deleting a workout session
 User can delete a workout session created in the past by giving its index.
 
 Each past workout session is stored in a different file name following its creation time.
@@ -898,7 +899,7 @@ The following sequence diagram shows how the new command works
 |-----|-----|
 |**Pros** | More alteratives for users. Can bulk delete files with certain attributes|  
 |**Cons** | Tags and dates does not uniquely identify the record hence may result in accidental wrong deletion|
-#### 4.4.5. Search based on conditions
+#### 4.4.5. Searching based on conditions
 The feature `search` allows the user to view a summary of all the history 
 workout sessions which satisfies certain conditions.
 
