@@ -43,7 +43,7 @@ public class WorkoutSessionUi extends CommonUi {
         helpMessage.append(helpFormatter("Search", "search [NAME_OF_MOVE]",
                 "Shows a list of workouts that match the entered workout."));
         helpMessage.append(helpFormatter("End", "end",
-                "Go back to the workout menu."));
+                "Go back to the Workout Menu."));
         printer.showToUser(helpMessage.toString().trim());
     }
 

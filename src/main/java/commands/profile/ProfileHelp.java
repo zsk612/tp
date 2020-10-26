@@ -4,6 +4,7 @@ import commands.Command;
 import commands.CommandResult;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.RedundantParamException;
+import org.apache.commons.lang3.StringUtils;
 import storage.profile.ProfileStorage;
 
 import static profile.Constants.ADD_PROFILE_FORMAT;
@@ -11,6 +12,7 @@ import static profile.Constants.EDIT_PROFILE_FORMAT;
 import static seedu.duke.Constant.COMMAND_WORD_ADD;
 import static seedu.duke.Constant.COMMAND_WORD_DELETE;
 import static seedu.duke.Constant.COMMAND_WORD_EDIT;
+import static seedu.duke.Constant.COMMAND_WORD_END;
 import static seedu.duke.Constant.COMMAND_WORD_HELP;
 import static seedu.duke.Constant.COMMAND_WORD_VIEW;
 import static ui.CommonUi.helpFormatter;
@@ -37,11 +39,16 @@ public class ProfileHelp extends Command {
         }
 
         StringBuilder helpMessage = new StringBuilder();
-        helpMessage.append(helpFormatter(COMMAND_WORD_ADD, ADD_PROFILE_FORMAT, "Add your new profile"));
-        helpMessage.append(helpFormatter(COMMAND_WORD_VIEW, COMMAND_WORD_VIEW, "View your profile"));
-        helpMessage.append(helpFormatter(COMMAND_WORD_EDIT, EDIT_PROFILE_FORMAT, "Edit your existing profile. "
-                + "You may edit only 1 field or all fields"));
-        helpMessage.append(helpFormatter(COMMAND_WORD_DELETE, COMMAND_WORD_DELETE, "Delete your existing profile"));
+        helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_ADD), ADD_PROFILE_FORMAT,
+                "Add your new profile"));
+        helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_VIEW), COMMAND_WORD_VIEW,
+                "View your profile"));
+        helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_EDIT), EDIT_PROFILE_FORMAT,
+                "Edit your existing profile. You may edit from 1 field to all fields"));
+        helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_DELETE), COMMAND_WORD_DELETE,
+                "Delete your existing profile"));
+        helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_END), COMMAND_WORD_END,
+                "Go back to Main Menu"));
 
         return new CommandResult(helpMessage.toString().trim());
     }
