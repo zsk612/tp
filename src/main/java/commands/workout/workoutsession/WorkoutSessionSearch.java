@@ -14,6 +14,7 @@ import static ui.CommonUi.LS;
 
 public class WorkoutSessionSearch extends Command {
     private boolean isEmptySearchResult = true;
+
     @Override
     public void execute(String[] inputs, ExerciseList exerciseList,
                         String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
