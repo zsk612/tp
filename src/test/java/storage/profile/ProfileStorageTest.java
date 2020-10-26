@@ -3,7 +3,7 @@ package storage.profile;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
 import org.junit.jupiter.api.Test;
-import profile.Profile;
+import models.Profile;
 
 import java.io.FileNotFoundException;
 

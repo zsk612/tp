@@ -1,5 +1,7 @@
 package profile;
 
+import models.Profile;
+
 /**
  * A class containing utility methods used in Profile Menu.
  */

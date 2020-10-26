@@ -7,7 +7,7 @@ import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
 import logger.SchwarzeneggerLogger;
-import profile.Profile;
+import models.Profile;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
 

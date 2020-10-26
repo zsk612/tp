@@ -4,7 +4,7 @@ import commands.Command;
 import commands.CommandResult;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
-import profile.Profile;
+import models.Profile;
 import storage.profile.ProfileStorage;
 
 import java.util.HashMap;
