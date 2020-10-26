@@ -3,6 +3,8 @@ package commands.diet.dietsession;
 import commands.Command;
 import diet.dietsession.DietSessionParser;
 import diet.dietsession.Food;
+import exceptions.diet.NegativeCaloriesException;
+import exceptions.profile.InvalidCaloriesException;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
 
@@ -35,6 +37,8 @@ public class FoodItemAdd extends Command {
         } catch (NumberFormatException e) {
             ui.showToUser("Please input a number for calories.");
             logger.log(Level.WARNING, "Put calories in a wrong format");
+        } catch (NegativeCaloriesException e) {
+            ui.showToUser("Please enter a positive number for calories!");
         }
     }
 }

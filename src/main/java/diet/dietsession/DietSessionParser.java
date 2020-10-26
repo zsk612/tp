@@ -1,5 +1,7 @@
 package diet.dietsession;
 
+import exceptions.diet.NegativeCaloriesException;
+import exceptions.profile.InvalidCaloriesException;
 import logger.SchwarzeneggerLogger;
 
 import java.time.LocalDate;
@@ -38,8 +40,11 @@ public class DietSessionParser {
      * @return food calories
      * @throws NumberFormatException handles exception for wrong calories input
      */
-    public double processFoodCalories(String food) throws NumberFormatException {
+    public double processFoodCalories(String food) throws NumberFormatException, NegativeCaloriesException {
         String[] temp = food.trim().split("/c", 2);
+        if (Double.parseDouble(temp[1]) < 0) {
+            throw new NegativeCaloriesException();
+        }
         logger.log(Level.INFO, "Processed food calories successfully");
         return Double.parseDouble(temp[1]);
     }

@@ -23,6 +23,8 @@ public class DietManagerUi extends CommonUi {
                 "Delete the diet session at the input index"));
         helpMessage.append(helpFormatter("Edit", "edit [INDEX_OF_SESSION]",
                 "Edit the diet session at the input index"));
+        helpMessage.append(helpFormatter("Search", "search [MEAL_TYPE]",
+                "Search for diet sessions with the specified tag"));
         helpMessage.append(helpFormatter("Clear", "clear",
                 "Clear all past diet sessions"));
         helpMessage.append(helpFormatter("End", "end",

@@ -38,7 +38,7 @@ public class DietSessionSearch extends Command {
                 }
             }
             if (numberOfResults == 0) {
-                ui.showToUser("Sorry, there is nothing found in your diet manager.");
+                ui.showToUser("Sorry! There seems to be no diet sessions found with your searched tag.");
             }
             logger.log(Level.INFO, "Listed all searched diet sessions");
         } catch (NullPointerException e) {

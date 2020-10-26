@@ -124,4 +124,12 @@ public class DietSession {
         Command command = cl.getCommand(commParts[0]);
         command.execute(commParts[1].trim(), foodList, storage);
     }
+
+    public double getTotalCalories() {
+        double totalCalories = 0;
+        for (int i = 0; i < foodList.size(); i++) {
+            totalCalories += foodList.get(i).getCalories();
+        }
+        return totalCalories;
+    }
 }
