@@ -33,7 +33,7 @@ public class HelpWS extends Command {
         helpMessage.append(helpFormatter("Search", "search /t <tag1> <tag2> /d <date>",
                 "Search records based on tags and dates"));
         helpMessage.append(helpFormatter("End", "end",
-                "Go back to main menu"));
+                "Go back to Main Menu"));
         return new CommandResult(helpMessage.toString().trim(), ExecutionResult.OK);
     }
 }
