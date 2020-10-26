@@ -121,7 +121,7 @@ public class ProfileParser {
                 throw new InvalidCaloriesException();
             }
             return calories;
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             throw new InvalidCaloriesException();
         }
     }
@@ -161,7 +161,7 @@ public class ProfileParser {
                 throw new InvalidWeightException();
             }
             return weight;
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             throw new InvalidWeightException();
         }
     }
@@ -181,7 +181,7 @@ public class ProfileParser {
                 throw new InvalidWeightException();
             }
             return expectedWeight;
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             throw new InvalidWeightException();
         }
     }
