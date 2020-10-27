@@ -20,17 +20,23 @@ public class FoodItemList extends Command {
     @Override
     public void execute(String input, ArrayList<Food> foodList, DietStorage storage) {
         try {
+            double totalCalories = 0;
+            StringBuilder listResult = new StringBuilder();
             if (foodList.size() > 0) {
                 int i;
-                StringBuilder listResult = new StringBuilder();
-                listResult.append("Here is your food list: \n\t");
+                listResult.append("Here is your food list: \n\t ");
                 for (i = 0; i < foodList.size(); i++) {
                     listResult.append(" " + (i + 1) + ". " + foodList.get(i).toString() + "\n\t");
+                    totalCalories += foodList.get(i).getCalories();
                 }
+                String totalMealCalories = " Your total calories for this meal is " + totalCalories + ".";
+                listResult.append(totalMealCalories);
                 ui.showToUser(listResult.toString().trim());
+
                 logger.log(Level.INFO, "Listed all foods in Diet Session");
             } else {
-                ui.showToUser("Sorry, there is nothing in your food list.");
+                listResult.append("Sorry, there is nothing in your food list.");
+                ui.showToUser(listResult.toString().trim());
             }
         } catch (NullPointerException e) {
             ui.showToUser("Sorry, there is nothing in your food list.");
