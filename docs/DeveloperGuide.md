@@ -237,7 +237,7 @@ When the user attempts to add a new profile, the ProfileSession, Ui, ProfilePars
     1. `ProfileAdd` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is an existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
     1. `ProfileAdd` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information. 
     1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileAdd` creates a new `Profile`.
-    1. `ProfileAdd` calls `ProfileStorage.saveData()` to save the Profile object.
+    1. `ProfileAdd` calls `ProfileStorage.saveData()` to save the `Profile` object.
     1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
@@ -295,7 +295,7 @@ The sequence diagram below summarizes how viewing an added profile works:
 ![Load Data Sequence Diagram](pictures/khoa/ViewProfile.png)
 
 ##### Design considerations:
-Aspects: Status of stored data
+Aspects: Loading of stored data
 
 - Alternative 1 (current choice): call public methods of Storage class to 
 load the profile from hard disk every time the user wants to view profile.
@@ -315,36 +315,38 @@ load the profile from hard disk every time the user wants to view profile.
 [&#8593; Return to Top](#developer-guide)
 
 #### 4.2.3. Editing of Profile
-User can anytime go back to edit a profile created in the past such as
-editing physique data.
+User can anytime go back to edit a profile created in the past such as editing physique data and expected daily calories intake.
 
 ##### Implementation
-When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, 
-Command and CommandResult class will be called upon. The following sequence of steps will then occur:
+When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `edit /w 60`
-    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
-    1. `ProfileParser.parseCommand()` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
-1. Creation of command object.
-    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `EditProfile`.
+    1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
+    1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+1. Creating ProfileEdit object.
+    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileEdit`.
 1. Executing Command
-    1. `ProfileSession` calls `EditProfile.execute()` with the rest of parsed input.
-    1. `EditProfile` calls `ProfileParser.extractCommandTagAndInfo()` to parse the arguments to identify the tags.
-    1. `EditProfile` creates and returns a new `Profile` Object with the parsed information.  
+    1. `ProfileSession` calls `ProfileEdit.execute()` with the rest of parsed input.
+    1. `ProfileEdit` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileEdit` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information.
+    1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileEdit` creates a new `Profile`.
+    1. `ProfileEdit` calls `Profile.equals()` to compare the edited and existing profile. If there are no changes, `ProfileEdit` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `vi`.
+    1. `ProfileEdit` calls `ProfileStorage.saveData()` to save the edited `Profile` object.
+    1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
-    1. `ProfileSession` calls `EditProfile.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
-The following sequence diagram shows how the new command works
+
+The sequence diagram below summarizes how creating a new profile works:
+
+![Load Data Sequence Diagram](pictures/khoa/EditProfile.png)
 
 ##### Design considerations:
 Parsing of the user’s input command:
 
-- Alternative 1 (current choice): User’s command is split into size 2 array first
-containing command type and command arguments. Then arguments are split
-into command tag and information pairs.  
+- Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
 
 |     |     |
 |-----|-----|
