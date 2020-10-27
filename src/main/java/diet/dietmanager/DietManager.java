@@ -1,14 +1,21 @@
 package diet.dietmanager;
 
-import commands.CommandLib;
 import commands.Command;
+import commands.CommandLib;
+import diet.dietsession.DietSession;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
 import exceptions.InvalidDateFormatException;
 import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
+import logger.SchwarzeneggerLogger;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
+
+import java.io.File;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class DietManager {
@@ -65,5 +72,30 @@ public class DietManager {
         } catch (InvalidSearchDateException e) {
             dietManagerUI.showToUser("Starting date should be earlier than end date.");
         }
+    }
+
+    public double getTodayTotalCalories() {
+        Logger logger = SchwarzeneggerLogger.getInstanceLogger();
+        double todayTotalCalories = 0;
+        File folder = new File("saves/diet/");
+        File[] listOfFiles = folder.listFiles();
+        StringBuilder listResult = new StringBuilder();
+        assert folder.exists();
+        try {
+            if (Objects.requireNonNull(listOfFiles).length == 0) {
+                listResult.append("It seems like you have not eaten anything today!");
+            }
+
+            for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++) {
+                DietSession ds = storage.readDietSession(listOfFiles[i].getName());
+                if (ds.getDate().equals(java.time.LocalDate.now())) {
+                    todayTotalCalories += ds.getTotalCalories();
+                }
+            }
+            logger.log(Level.INFO, "Calculated total calories so far today");
+        } catch (NullPointerException e) {
+            logger.log(Level.WARNING, "No instances of diet sessions saved");
+        }
+        return todayTotalCalories;
     }
 }

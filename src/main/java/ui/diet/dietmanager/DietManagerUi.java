@@ -5,11 +5,11 @@ import ui.CommonUi;
 public class DietManagerUi extends CommonUi {
 
     public static void printOpening() {
-        showUser("You're now in diet manager!");
+        showUser("Starting diet manager...");
     }
 
     public static void printBye() {
-        showUser("Exiting diet manager!");
+        showUser("Returning to Main menu...");
     }
 
     public static void printHelp() {

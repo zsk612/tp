@@ -37,7 +37,7 @@ public class DietSessionList extends Command {
                 double totalCalories = ds.getTotalCalories();
                 listResult.append("\t" + (i + 1) + ". "
                         + listOfFiles[i].getName().replaceFirst("[.][^.]+$", "")
-                        + " [Total calories:" + totalCalories + "]" + "\n\t ");
+                        + " [Total calories: " + totalCalories + "]" + "\n\t ");
             }
             logger.log(Level.INFO, "Listed all available diet sessions");
             ui.showToUser(listResult.toString().trim());
