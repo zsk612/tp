@@ -20,16 +20,16 @@ By: `CS2113T-F11-1` Since: `2020`
 3.5. [Storage Component](#storage-component)<br>
 3.6. [Common Classes](#common-classes)<br>
 4. [**Implementation**](#implementation)<br>
-4.1. [Main Menu-related Features](#41-main-menu-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu of Profile](#411-help-command-for-main-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.2. [Redirection to Profile Menu](#412-redirection-to-profile-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.3. [Redirection to Diet Menu](#413-redirection-to-diet-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.4. [Redirection to Workout Menu](#414-redirection-to-workout-menu)<br>
-4.2. [Profile-related Features](#42-profile-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. [Creation of Profile](#421-creation-of-profile)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. [Viewing Profile](#422-viewing-profile)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.3. [Editing of Profile](#423-eiting-of-profile)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deletion of Profile](#424-deletion-of-profile)<br>
+4.1. [Main Menu-related Features](#main-menu-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu](#main-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.2. [Redirecting to Profile Menu](#redirection-to-profile-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.3. [Redirecting to Diet Menu](#redirection-to-diet-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.4. [Redirecting to Workout Menu](#redirecting-to-workout-menu)<br>
+4.2. [Profile-related Features](#profile-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. [Adding a Profile](#adding-a-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. [Viewing a Profile](#viewing-a-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.3. [Editing a Profile](#editing-a-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deleting a Profile](#deleting-a-profile)<br>
 4.3. [Diet-related Features](#43-diet-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#431-list-out-all-commands)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording meal data](#432-start-recording-diet-data)<br>
@@ -44,11 +44,11 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past meal session](#435-delete-a-past-meal-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past meal sessions](#436-clear-all-past-meal-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Exit the meal manager](#437-exit-the-meal-manager)<br>
-4.4. [Workout-related Features](#44-workout-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creating a new workout session](#441-creating-a-new-workout-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an exercise](#4411-Adding-an-exercise)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an exercise](#4412-Deleting-an-exercise)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing all exercises in this session](#4413-listing-all-exercises-in-this-session)<br>
+4.4. [Workout-related Features](#workout-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creating a New Workout Session](#creating-a-new-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an Exercise](#deleting-an-exercise)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing All Exercises in This Session](#listing-all-exercises-in-this-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing users to view help commands](#4414-Allowing-users-to-view-help-commands)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for related exercises](#4415-Searching-for-related-exercises)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the workout session](#4416-Ending-the-workout-session)<br>
@@ -194,30 +194,27 @@ This section describes some details on how the features are being implemented. A
 All profile/ diet/ workout-related features can be broken down into 4 distinct functionality, addition, viewing/ listing, deletion and editing.
 For diet and workout-related features, there is an additional functionality of searching.
 
-### 4.1. Main Menu-related Features
+### 4.1. <a id="main-menu-related-features">Main Menu-related Features</a>
 
-#### 4.1.1. Help Command for Main Menu
+#### 4.1.1. <a id="main-help">Help Command for Main Menu</a>
 
 The help command allows users to view all the available commands in the main page.
 The command for help is `help`.
 
-#### 4.1.2. Redirection to Profile Menu
+#### 4.1.2. <a id="redirecting-to-profile-menu">Redirecting to Profile Menu</a>
 
-The redirection to profile page allows the user to enter Profile Menu to create, edit, view and delete user profile.
-The command for this redirection is `profile`.
+The redirection to profile page allows the user to enter Profile Menu to create, edit, view and delete user profile. The command for this redirection is `profile`.
 
-#### 4.1.3. Redirection to Diet Menu
+#### 4.1.3. <a id="redirecting-to-diet-menu">Redirecting to Diet Menu</a>
 
-The redirection to profile page allows the user to enter Diet Menu to create, edit, list and delete diet sessions.
-The command for this redirection is `diet`.
+The redirection to profile page allows the user to enter Diet Menu to create, edit, list and delete diet sessions. The command for this redirection is `diet`.
 
-#### 4.1.4. Redirection to Workout Menu
+#### 4.1.4. <a id="redirecting-to-workout-menu">Redirecting to Workout Menu</a>
 
-The redirection to profile page allows the user to enter Workout Menu to create, edit, list and delete workout sessions.
-The command for this redirection is `workout`.
+The redirection to profile page allows the user to enter Workout Menu to create, edit, list and delete workout sessions. The command for this redirection is `workout`.
 
-### 4.2. Profile-related Features
-#### 4.2.1. Adding a Profile
+### 4.2. <a id="profile-related-features">Profile-related Features</a>
+#### 4.2.1. <a id="adding-a-profile">Adding a Profile</a>
 
 This feature allows user to add a new profile. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command format. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
 
@@ -268,7 +265,7 @@ Parsing of the user’s input command:
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.2.2. Viewing a Profile
+#### 4.2.2. <a id="viewing-a-profile">Viewing a Profile</a>
 This feature allows user to view added profile with calculated BMI based on height and weight. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. redundant parameters. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
 
 If the data loading is successful, a message on the added profile will be displayed to the user. 
@@ -316,7 +313,7 @@ load the profile from hard disk every time the user wants to view profile.
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.2.3. Editing a Profile
+#### 4.2.3. <a id="editing-a-profile">Editing a Profile</a>
 This feature allows user to anytime go back to edit a profile created in the past such as editing physique data and expected daily calories intake. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command format. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
 
 If the editing is successful, a confirmation message on the edited profile will be displayed to the user. 
@@ -366,7 +363,7 @@ Parsing of the user’s input command:
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.2.4. Deleting Profile
+#### 4.2.4. <a id="deleting-a-profile">Deleting a Profile</a>
 
 This feature allows user to delete a profile created in the past. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. redundant parameters. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
 
@@ -398,18 +395,16 @@ The sequence diagram below summarizes how deleting an added profile works:
 
 ##### Design considerations:
 
-Aspects: Status of stored data
+Aspects: Loading of stored data
 
-- Alternative 1 (current choice): call public methods of Storage class to 
-load the profile from hard disk every time the user wants to view profile.
+- Alternative 1 (current choice): call public methods of Storage class to load the profile from hard disk every time the user wants to delete profile.
 
 |     |     |
 |-----|-----|
 |**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|  
 |**Cons** | Execution time is slow down due to loading the data.|
 
-- Alternative 2: call public methods of Storage class to 
-load the profile from hard disk when user enter Profile Menu.
+- Alternative 2: call public methods of Storage class to load the profile from hard disk when user enter Profile Menu.
 
 |     |     |
 |-----|-----|
@@ -649,8 +644,8 @@ When the user types `end` the following sequence occurs.
 [&#8593; Return to Top](#developer-guide)
 
 
-### 4.4. Workout-related Features
-#### 4.4.1. Creating a new workout session
+### 4.4. <a id="workout-related-features">Workout-related Features</a>
+#### 4.4.1. <a id="creating-a-new-workout-session">Creating a New Workout Session</a>
 
 Users can create a new workout session. The failure to do so will trigger an exception where the user will be notified 
 of the reason, e.g. invalid command or IO related errors. The action will be aborted. If the creation is successful, 
@@ -704,7 +699,7 @@ Parsing of the user’s input command:
 |**Cons** | The constant prompting could subject the application to a negative experience in the difficulty to use the commands.|
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.1.1. Adding an exercise
+#### 4.4.1.1. <a id="adding-an-exercise">Adding an Exercise</a>
 
 Users can add a new exercise. The failure to do so will trigger an exception where the user will be notified of 
 the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
@@ -734,7 +729,7 @@ The sequence diagram below summarizes how creating new workout session works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.1.2. Deleting an exercise
+#### 4.4.1.2. <a id="deleting-an-exercise">Deleting an Exercise</a>
 
 Users can delete an exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
 the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
@@ -764,7 +759,7 @@ The sequence diagram below summarizes how creating new workout session works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.1.3. Listing all exercises in this session
+#### 4.4.1.3. <a id="listing-all-exercises-in-this-session">Listing All Exercises in This Session</a>
 
 
 [&#8593; Return to Top](#developer-guide)
