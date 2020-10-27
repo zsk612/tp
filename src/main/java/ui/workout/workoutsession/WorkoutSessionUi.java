@@ -12,18 +12,20 @@ public class WorkoutSessionUi extends CommonUi {
     }
 
     public static void addFormatError() {
-        printer.showToUser("Wrong format, please enter in the format: \n\t "
+        printer.showToUser("Wrong format, please enter in the format:\n\t "
                 + "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]");
     }
 
     public static void addFormatNegativeError() {
-        printer.showToUser("Wrong format, please enter in the format: \n\t "
+        printer.showToUser("Wrong format, please enter in the format:\n\t "
                 + "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]\n\t "
-                + "Please make sure [NUMBER_OF_REPETITIONS] and [WEIGHT] are positive numbers.");
+                + "Please make sure [NUMBER_OF_REPETITIONS] and [WEIGHT] are numbers greater than zero.");
     }
 
-    public static void inputNotRecognisedError() {
-        printer.showToUser("Command not recognised.");
+    public static void saveCorruptedError(String filePath) {
+        printer.showToUser(":( Save format in "
+                + filePath + " is invalid.\n\t "
+                + "File is cleared.");
     }
 
     public static void emptyListError() {

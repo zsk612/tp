@@ -10,7 +10,7 @@ public class CommonUi {
     protected static final String LINE_PREFIX = "\t ";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
     public static final String HORIZONTAL_LINE = LINE_PREFIX
-            + "______________________________________________________________________________";
+            + "_________________________________________________________________________________________________";
     protected static final String MESSAGE_FORMAT_GENERAL = HORIZONTAL_LINE + LS + "%s" + System.lineSeparator()
             + HORIZONTAL_LINE + System.lineSeparator();
 
