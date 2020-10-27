@@ -225,20 +225,20 @@ If the creation is successful, a confirmation message on the newly created profi
 
 ##### Implementation
 
-When the user attempts to add a new profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, and CommandResult classes will be accessed, and the following sequence of actions is called to return a CommandResult object containing the feedback message and execution status.
+When the user attempts to add a new profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
     1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
-    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+    1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating ProfileAdd object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileAdd`.
 1. Executing command
     1. `ProfileSession` calls `ProfileAdd.execute()` with the rest of parsed input.
-    1. `ProfileAdd` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is an existing profile, `ProfileAdd` returns a `CommandResult` object, which includes a message stating profile existed and `FAILED` execution status. Otherwise, the process continues with step `iii`, to `ProfileSession`.
+    1. `ProfileAdd` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is an existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
     1. `ProfileAdd` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information. 
     1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileAdd` creates a new `Profile`.
     1. `ProfileAdd` calls `ProfileStorage.saveData()` to save the Profile object.
-    1. `ProfileAdd` returns a `CommandResult` object, which includes a message stating successful profile addition and `OK` execution status, to `ProfileSession`.
+    1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
     1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
@@ -264,29 +264,36 @@ Parsing of the user’s input command:
 |     |     |
 |-----|-----|
 |**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
-|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
+|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive, especially for user's name.|
 
 [&#8593; Return to Top](#developer-guide)
+
 #### 4.2.2. Viewing Profile
-The feature to view profile allows the user to view added profile
-with calculated BMI based on height and weight.
+The feature allows the user to view added profile with calculated BMI based on height and weight.
 
 ##### Implementation
-When the user attempts to view profile, the ProfileSession, Ui, ProfileParser, 
-Command and CommandResult class will be called upon. The following sequence of steps will then occur:
+When the user attempts to add a new profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `view`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
-    1. `ProfileParser.parseCommand()` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
-1. Creation of Command object.
-    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `ViewProfile`.
-1. Executing Command
-    1. `ProfileSession` calls `ViewProfile.execute()` with the rest of parsed input.
-    1. `ViewProfile` returns the same `Profile` object.  
+    1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+1. Creating ProfileView object.
+    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileView`.
+1. Executing command
+    1. `ProfileSession` calls `ProfileView.execute()` with the rest of parsed input.
+    1. `ProfileView` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileView` calls `Profile.toString()` to get string representation of `Profile`.
+    1. `ProfileView` returns a result to `ProfileSession`.    
 1. Prompting result to user.
-    1. `ProfileSession` calls `ViewProfile.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommandResult.getCommandResult()` to get the `CommandResult` object.
+    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+
+All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
+
+The sequence diagram below summarizes how viewing an added profile works:
+
+![Load Data Sequence Diagram](pictures/khoa/ViewProfile.png)
+
 ##### Design considerations:
 Aspects: Status of stored data
 
@@ -296,15 +303,14 @@ load the profile from hard disk every time the user wants to view profile.
 |     |     |
 |-----|-----|
 |**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|  
-|**Cons** | Execution time is slow down due to loading the data.|
+|**Cons** | Execution time is slow down due to multiple times of loading the data.|
 
-- Alternative 2: call public methods of Storage class to 
-load the profile from hard disk when user enter Profile Menu.
+- Alternative 2: call public methods of Storage class to load the profile from hard disk only when user enters Profile Menu.
 
 |     |     |
 |-----|-----|
 |**Pros** | Execution time is fast.|  
-|**Cons** | Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.|
+|**Cons** | Profile data is not updated in real time if user edits it in text editor while running The Schwarzenegger.|
 
 [&#8593; Return to Top](#developer-guide)
 
