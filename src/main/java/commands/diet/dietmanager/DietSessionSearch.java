@@ -4,6 +4,7 @@ import commands.Command;
 import diet.DateParser;
 import diet.dietmanager.DietManagerParser;
 import exceptions.InvalidDateFormatException;
+import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
@@ -26,11 +27,13 @@ public class DietSessionSearch extends Command {
     /**
      * Overrides execute for search command to search diet sessions.
      *
-     * @param input user input for command
-     * @param storage storage for diet manager
+     * @param input user input for search command
+     * @param storage storage file
+     * @throws InvalidDateFormatException if the date is in wrong format
+     * @throws InvalidSearchDateException if the starting date is later than end date
      */
-    @Override
-    public void execute(String input, DietStorage storage) {
+    public void execute(String input, DietStorage storage) throws InvalidDateFormatException,
+            InvalidSearchDateException {
 
 
         File folder = new File(FILEPATH);
@@ -42,19 +45,36 @@ public class DietSessionSearch extends Command {
                     input);
             LocalDateTime startDate = parser.extractStartDates(parsedParams, searchResult);
             LocalDateTime endDate = parser.extractEndDates(parsedParams, searchResult);
+            if (startDate.compareTo(endDate) > 0) {
+                throw new InvalidSearchDateException("Starting date should be earlier than end date.");
+            }
             String tag = parser.extractSearchTag(parsedParams, searchResult);
             printSearchResult(listOfFiles, searchResult, startDate, endDate, tag);
 
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | InvalidCommandFormatException e) {
             ui.showToUser("Wrong format, please enter in the format:\n\t "
                     + "search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>");
         } catch (InvalidDateFormatException e) {
+            searchResult.append("Wrong format for date input.\n\t ");
+            ui.showToUser(searchResult.toString().trim());
             logger.log(Level.WARNING, "Invalid date format in diet session search");
-        } catch (InvalidCommandFormatException e) {
-            e.printStackTrace();
+            throw new InvalidDateFormatException();
+        } catch (InvalidSearchDateException e) {
+            logger.log(Level.WARNING, "Invalid date format in diet session search");
+            throw new InvalidSearchDateException("Starting date should be earlier than end date.");
         }
     }
 
+    /**
+     * Prints search results.
+     *
+     * @param listOfFiles list of files from local storage
+     * @param searchResult string builder that accumulates warning messages
+     * @param startDate starting date for search
+     * @param endDate end date for search
+     * @param tag tag for search
+     * @throws InvalidDateFormatException if date is in wrong format
+     */
     private void printSearchResult(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate,
                                    LocalDateTime endDate, String tag) throws InvalidDateFormatException {
         try {

@@ -90,6 +90,11 @@ public class DietManagerParser {
         HashMap<String, String> parsedParams = new HashMap<>();
         int startIndex = 0;
         int endIndex = 0;
+        if (commandArgs.isEmpty() || !(commandArgs.contains("/t")
+                || commandArgs.contains("/s") || commandArgs.contains("/e"))) {
+            throw new InvalidCommandFormatException("Wrong format , please enter in the format:\n\t "
+                    + "search /s [STARTING _DATE] /e [END_DATE] /t [TAG]");
+        }
 
         try {
             while (commandArgs.indexOf("/", startIndex) != -1) {
@@ -109,8 +114,9 @@ public class DietManagerParser {
             return parsedParams;
         } catch (StringIndexOutOfBoundsException e) {
             logger.log(Level.WARNING, "Wrong format for search input");
+            throw new InvalidCommandFormatException("Wrong format , please enter in the format:\n\t "
+                    + "search /s [STARTING _DATE] /e [END_DATE] /t [TAG]");
         }
-        return null;
     }
 
     public String extractSearchTag(HashMap<String, String> parsedParams, StringBuilder searchResult) {
@@ -136,6 +142,7 @@ public class DietManagerParser {
             logger.log(Level.WARNING, "It looks like there is no date input in start date");
         } catch (InvalidDateFormatException e) {
             logger.log(Level.WARNING, "Invalid date in start date");
+            throw new InvalidDateFormatException();
         }
         searchResult.append("Starting date is empty, "
                 + "and it is replaced with the earliest date.\n\t ");
@@ -155,6 +162,7 @@ public class DietManagerParser {
             logger.log(Level.WARNING, "It looks like there is no date input in end date");
         } catch (InvalidDateFormatException e) {
             logger.log(Level.WARNING, "Invalid date in start date");
+            throw new InvalidDateFormatException();
         }
         searchResult.append("End date is empty, "
                 + "and it is replaced with the latest date.\n\t ");

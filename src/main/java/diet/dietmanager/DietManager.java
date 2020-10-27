@@ -4,6 +4,8 @@ import commands.CommandLib;
 import commands.Command;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
+import exceptions.InvalidDateFormatException;
+import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
@@ -57,7 +59,11 @@ public class DietManager {
             Command command = cl.getCommand(commParts[0]);
             command.execute(commParts[1].trim(), storage);
         } catch (ArrayIndexOutOfBoundsException | InvalidCommandFormatException e) {
-            dietManagerUI.showToUser("Looks like you've typed an improper command!");
+            throw new InvalidCommandWordException();
+        } catch (InvalidDateFormatException e) {
+            dietManagerUI.showToUser("wrong format for date input.");
+        } catch (InvalidSearchDateException e) {
+            dietManagerUI.showToUser("Starting date should be earlier than end date.");
         }
     }
 }
