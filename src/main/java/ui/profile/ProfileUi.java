@@ -1,7 +1,11 @@
 package ui.profile;
 
-import profile.Constants;
 import ui.CommonUi;
+
+import static profile.Constants.HEIGHT_LOWER_BOUND;
+import static profile.Constants.HEIGHT_UPPER_BOUND;
+import static profile.Constants.WEIGHT_LOWER_BOUND;
+import static profile.Constants.WEIGHT_UPPER_BOUND;
 
 /**
  * A class that contains templates of message to show to user.
@@ -18,13 +22,6 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_ENOUGH_CALORIES = "you've achieved your target calories intake for today!";
     public static final String MESSAGE_HELP_FOR_MORE_INFO = "For more information on command syntax, please type "
             + "\"help\".";
-    public static final String MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT = "Welcome back to Schwarzenegger!" + LS
-            + "It seems like your profile data is corrupted!" + LS
-            + "Please add your profile again using \"add\" command under Profile Menu." + LS
-            + MESSAGE_HELP_FOR_MORE_INFO;
-    public static final String MESSAGE_WELCOME_NEW_USER = "Welcome new user to Schwarzenegger! :D" + LS
-            + "Please add your profile using \"add\" command under Profile Menu." + LS
-            + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Wrong format, please enter in the format:" + LS
             + "%s" + LS + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String MESSAGE_MORE_CALORIES = "take %.1f more calories to achieve your target for today!";
@@ -35,9 +32,16 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s" + LS + "By the way, %s";
     public static final String MESSAGE_WELCOME_EXISTING_USER = "Welcome back to Schwarzenegger, %s!" + LS
             + "How can I help you today?";
+    public static final String MESSAGE_WELCOME_NEW_USER = "Welcome new user to Schwarzenegger! :D" + LS
+            + "Please add your profile using \"add\" command under Profile Menu." + LS
+            + MESSAGE_HELP_FOR_MORE_INFO;
+    public static final String MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT = "Welcome back to Schwarzenegger!" + LS
+            + "It seems like your profile data is corrupted!" + LS
+            + "Please add your profile again using \"add\" command under Profile Menu." + LS
+            + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String SAD_FACE = ":(  OOPS!!! ";
     public static final String MESSAGE_INVALID_WEIGHT = String.format(
-            SAD_FACE + "Please input a number from %.1f to %.1f for weight.", Constants.WEIGHT_LOWER_BOUND, Constants.WEIGHT_UPPER_BOUND);
+            SAD_FACE + "Please input a number from %.1f to %.1f for weight.", WEIGHT_LOWER_BOUND, WEIGHT_UPPER_BOUND);
     public static final String MESSAGE_EDIT_NOTHING = SAD_FACE
             + "The information you entered is the same as your current profile!";
     public static final String MESSAGE_DELETE_NOTHING = SAD_FACE + "You haven't added any profile yet!";
@@ -48,7 +52,7 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_LOADING_ERROR = SAD_FACE + "An error has occurred while loading data."
             + LS + "%s";
     public static final String MESSAGE_INVALID_HEIGHT = String.format(
-            SAD_FACE + "Please input an integer from %d to %d for height.", Constants.HEIGHT_LOWER_BOUND, Constants.HEIGHT_UPPER_BOUND);
+            SAD_FACE + "Please input an integer from %d to %d for height.", HEIGHT_LOWER_BOUND, HEIGHT_UPPER_BOUND);
     public static final String MESSAGE_INVALID_CALORIES = SAD_FACE
             + "Expected daily calories intake cannot be negative.";
     public static final String MESSAGE_INVALID_NAME = SAD_FACE + "Name cannot be empty.";
