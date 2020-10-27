@@ -5,7 +5,7 @@
 actor user
 activate ProfileSession
 user -> Ui++ : view
-Ui --> ProfileSession : input
+Ui --> ProfileSession -- : input
 
 ProfileSession -> ProfileParser ++ : parseCommand(input)
 ProfileParser --> ProfileSession -- : parsedInput
@@ -32,7 +32,7 @@ destroy Command
 
 ProfileSession -> CommandResult ++ : getFeedbackMessage(result)
 CommandResult --> ProfileSession -- : message
-ProfileSession -> Ui : showToUser(message)
+ProfileSession -> Ui ++ : showToUser(message)
 destroy CommandResult
 Ui --> user
 deactivate Ui

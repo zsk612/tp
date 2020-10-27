@@ -230,7 +230,7 @@ When the user attempts to add a new profile, the ProfileSession, Ui, ProfilePars
 1. User executes `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
     1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
     1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
-1. Creating ProfileAdd object.
+1. Creating `ProfileAdd` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileAdd`.
 1. Executing command
     1. `ProfileSession` calls `ProfileAdd.execute()` with the rest of parsed input.
@@ -243,7 +243,7 @@ When the user attempts to add a new profile, the ProfileSession, Ui, ProfilePars
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
     1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
 
-All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
 
 The sequence diagram below summarizes how creating a new profile works:
 
@@ -268,27 +268,29 @@ Parsing of the user’s input command:
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.2.2. Viewing Profile
-The feature allows the user to view added profile with calculated BMI based on height and weight.
+#### 4.2.2. Viewing a Profile
+This feature allows user to view added profile with calculated BMI based on height and weight. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. redundant parameters. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+
+If the data loading is successful, a message on the added profile will be displayed to the user. 
 
 ##### Implementation
-When the user attempts to add a new profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
+When the user attempts to view an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `view`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
     1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
-1. Creating ProfileView object.
+1. Creating `ProfileView` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileView`.
 1. Executing command
     1. `ProfileSession` calls `ProfileView.execute()` with the rest of parsed input.
-    1. `ProfileView` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileView` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileView` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
     1. `ProfileView` calls `Profile.toString()` to get string representation of `Profile`.
     1. `ProfileView` returns a result to `ProfileSession`.    
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getCommandResult()` to get the `CommandResult` object.
     1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
 
-All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
 
 The sequence diagram below summarizes how viewing an added profile works:
 
@@ -314,8 +316,10 @@ load the profile from hard disk every time the user wants to view profile.
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.2.3. Editing of Profile
-User can anytime go back to edit a profile created in the past such as editing physique data and expected daily calories intake.
+#### 4.2.3. Editing a Profile
+This feature allows user to anytime go back to edit a profile created in the past such as editing physique data and expected daily calories intake. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command format. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+
+If the editing is successful, a confirmation message on the edited profile will be displayed to the user. 
 
 ##### Implementation
 When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
@@ -323,7 +327,7 @@ When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser,
 1. User executes `edit /w 60`
     1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
     1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
-1. Creating ProfileEdit object.
+1. Creating `ProfileEdit` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileEdit`.
 1. Executing Command
     1. `ProfileSession` calls `ProfileEdit.execute()` with the rest of parsed input.
@@ -337,7 +341,7 @@ When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser,
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
     1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
 
-All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
 
 The sequence diagram below summarizes how creating a new profile works:
 
@@ -362,27 +366,35 @@ Parsing of the user’s input command:
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.2.4. Deletion of Profile
-User can delete a profile created in the past.
+#### 4.2.4. Deleting Profile
+
+This feature allows user to delete a profile created in the past. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. redundant parameters. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+
+If the deletion is successful, a confirmation message on the profile deletion will be displayed to the user. 
 
 ##### Implementation
-When the user attempts to view profile, the ProfileSession, Ui, ProfileParser, 
-Command and CommandResult class will be called upon. The following sequence of steps will then occur:
+When the user attempts to delete an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `delete`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
-    1. `ProfileParser.parseCommand()` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
-1. Creation of Command object.
-    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `DeleteProfile`.
-1. Executing Command
-    1. `ProfileSession` calls `ViewProfile.execute()` with the rest of parsed input.
-    1. `DeleteProfile` returns the null.  
+    1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+1. Creating `ProfileDelete` object.
+   1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileDelete`.
+1. Executing command
+    1. `ProfileSession` calls `ProfileDelete.execute()` with the rest of parsed input.
+    1. `ProfileDelete` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileDelete` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileDelete` calls `Ui.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `iv`.
+    1. `ProfileDelete` calls `ProfileStorage.saveData()` to save a `null` object which represents a deleted profile.
+    1. `ProfileDelete` returns a result to `ProfileSession`.   
 1. Prompting result to user.
-    1. `ProfileSession` calls `DeleteProfile.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
 
-All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+
+The sequence diagram below summarizes how deleting an added profile works:
+
+![Load Data Sequence Diagram](pictures/khoa/DeleteProfile.png)
 
 ##### Design considerations:
 
