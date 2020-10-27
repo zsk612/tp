@@ -3,7 +3,7 @@ package commands.workout.workoutsession;
 import commands.Command;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
-import workout.workoutsession.exercise.ExerciseList;
+import models.ExerciseList;
 
 import java.io.IOException;
 

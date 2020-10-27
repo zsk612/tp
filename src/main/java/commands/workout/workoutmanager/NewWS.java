@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static commands.ExecutionResult.OK;
 import static ui.workout.workoutmanager.WorkoutManagerUi.NEW_SUCCESS;
-import static ui.workout.workoutmanager.WorkoutManagerUi.STARTNEWSESSION;
+import static ui.workout.workoutmanager.WorkoutManagerUi.START_NEW_SESSION;
 import static workout.workoutmanager.WorkoutManagerParser.parseTags;
 
 public class NewWS extends Command {
@@ -30,7 +30,7 @@ public class NewWS extends Command {
         WorkoutSession ws = new WorkoutSession(filePath, true, -1);
         logger.info("New workout session created");
 
-        ui.showToUser(STARTNEWSESSION);
+        ui.showToUser(START_NEW_SESSION);
 
         ws.workoutSessionStart();
 

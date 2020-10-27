@@ -1,4 +1,4 @@
-package exceptions.workoutmanager;
+package exceptions.workout.workoutmanager;
 
 import exceptions.SchwarzeneggerException;
 

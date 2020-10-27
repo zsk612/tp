@@ -1,13 +1,17 @@
 package commands.workout.workoutsession;
 
 import commands.Command;
+import models.PastWorkoutSessionRecord;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
-import workout.workoutsession.exercise.Exercise;
-import workout.workoutsession.exercise.ExerciseList;
+import models.Exercise;
+import models.ExerciseList;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import static ui.CommonUi.LS;
 
 public class WorkoutSessionList extends Command {
 
@@ -26,8 +30,20 @@ public class WorkoutSessionList extends Command {
         if (exercise.size() <= 0) {
             WorkoutSessionUi.emptyListError();
         }
+        ui.showToUser(formatList(exercise));
+    }
+
+    private String formatList(ArrayList<Exercise> exercise) {
+        String returnString = String.format("%-8s", "Index") + String.format("%-20s", "Exercise")
+                + String.format("%-12s", "Repetitions") + String.format("%-10s", "Weight") + LS;
+        StringBuilder infoBuilder = new StringBuilder(returnString);
         for (int i = 0; i < exercise.size(); i++) {
-            System.out.println((i + 1) + ": " + exercise.get(i).toString());
+            String rowContent = String.format("%-19s %-11s %s", exercise.get(i).getDescription(),
+                    exercise.get(i).getRepetitions(), exercise.get(i).getWeight());
+            String row = String.format("%-8s", i + 1) + rowContent + LS;
+            infoBuilder.append(row);
         }
+        returnString = infoBuilder.toString().trim();
+        return returnString;
     }
 }

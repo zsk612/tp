@@ -1,6 +1,6 @@
 package workout.workoutmanager;
 
-import exceptions.workoutmanager.NotANumberException;
+import exceptions.workout.workoutmanager.NotANumberException;
 import logger.SchwarzeneggerLogger;
 import models.PastWorkoutSessionRecord;
 import workout.DateParser;
