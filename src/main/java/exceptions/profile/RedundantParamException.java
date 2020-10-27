@@ -2,7 +2,7 @@ package exceptions.profile;
 
 import exceptions.SchwarzeneggerException;
 
-import static profile.Constants.MESSAGE_REDUNDANT_PARAM;
+import static ui.profile.ProfileUi.MESSAGE_REDUNDANT_PARAM;
 
 /**
  * Represents exception when input parameters are redundant.

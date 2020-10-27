@@ -2,7 +2,7 @@ package exceptions.profile;
 
 import exceptions.SchwarzeneggerException;
 
-import static profile.Constants.MESSAGE_INVALID_CALORIES;
+import static ui.profile.ProfileUi.MESSAGE_INVALID_CALORIES;
 
 /**
  * Represents exception when input calories is invalid.

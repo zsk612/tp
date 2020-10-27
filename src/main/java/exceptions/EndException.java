@@ -1,6 +1,6 @@
 package exceptions;
 
-import static profile.Constants.MESSAGE_END;
+import static ui.profile.ProfileUi.MESSAGE_END;
 
 public class EndException extends SchwarzeneggerException {
 

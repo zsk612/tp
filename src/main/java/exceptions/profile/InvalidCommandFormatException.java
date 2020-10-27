@@ -2,7 +2,7 @@ package exceptions.profile;
 
 import exceptions.SchwarzeneggerException;
 
-import static profile.Constants.MESSAGE_INVALID_COMMAND_FORMAT;
+import static ui.profile.ProfileUi.MESSAGE_INVALID_COMMAND_FORMAT;
 
 /**
  * Represents exception when command format is invalid.

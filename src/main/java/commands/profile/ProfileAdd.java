@@ -11,8 +11,8 @@ import java.util.HashMap;
 
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
-import static profile.Constants.MESSAGE_CREATE_PROFILE_ACK;
-import static profile.Constants.MESSAGE_PROFILE_EXIST;
+import static ui.profile.ProfileUi.MESSAGE_CREATE_PROFILE_ACK;
+import static ui.profile.ProfileUi.MESSAGE_PROFILE_EXIST;
 import static profile.ProfileParser.extractCalories;
 import static profile.ProfileParser.extractCommandTagAndInfo;
 import static profile.ProfileParser.extractExpectedWeight;
