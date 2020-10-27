@@ -63,7 +63,7 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.6.1. [Storage for Profile](#441-select-files-to-load-from-and-save-to)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.6.2. [Storage for Diet](#442-save-current-state)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.6.3. [Storage for Workout](#443-insert-name-here)<br>
-4.7. [Logging](#47-loggingToBeDeleted)<br>
+4.7. [Logging](#logging)<br>
   * [**Appendices**](#appendices)
     + [Appendix A: Product Scope](#appendix-a-product-scope)
     + [Appendix B: User Stories](#appendix-b-user-stories)
@@ -998,7 +998,7 @@ Storage handles reading of file data by calling readDietSession() and overwritin
 #### 4.6.3. Storage for workout
 
 
-### 4.7. Logging
+### 4.7. <a id="logging">Logging</a>
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
 
 The `java.util.logging` package in Java is used for logging. The logging mechanism can be managed from the `SchwarzeneggerLogger` class through the `logger` attribute. 
