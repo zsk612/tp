@@ -40,7 +40,9 @@ public class Constants {
             + "Please delete it using \"delete\" command before adding a new one.";
     public static final String MESSAGE_PROFILE_NOT_EXIST = "There's no profile to %s. "
             + "Please add a new one using \"add\" command :D";
-    public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s";
+    public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s" + LS + "By the way, %s";
+    public static final String MESSAGE_ENOUGH_CALORIES = "you've achieved your target calories intake for today!";
+    public static final String MESSAGE_MORE_CALORIES = "take %.1f more calories to achieve your target for today!";
     public static final String MESSAGE_WELCOME_EXISTING_USER = "Welcome back to Schwarzenegger, %s!" + LS
             + "How can I help you today?";
     public static final String MESSAGE_WELCOME_NEW_USER = "Welcome new user to Schwarzenegger! :D" + LS

@@ -2,6 +2,7 @@ package commands.profile;
 
 import commands.Command;
 import commands.CommandResult;
+import diet.dietmanager.DietManager;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
 import exceptions.profile.RedundantParamException;
@@ -9,6 +10,8 @@ import models.Profile;
 import storage.profile.ProfileStorage;
 
 import static commands.ExecutionResult.FAILED;
+import static profile.Constants.MESSAGE_ENOUGH_CALORIES;
+import static profile.Constants.MESSAGE_MORE_CALORIES;
 import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.Constants.MESSAGE_VIEW_PROFILE;
 import static seedu.duke.Constant.COMMAND_WORD_VIEW;
@@ -38,7 +41,18 @@ public class ProfileView extends Command {
         try {
             profile = storage.loadData();
             assert profile != null : "profile should not be null after loading";
-            return new CommandResult(String.format(MESSAGE_VIEW_PROFILE, profile.toString()));
+
+            double todayCalories = new DietManager().getTodayTotalCalories();
+            double caloriesToGoal = profile.getCalories() - todayCalories;
+
+            String caloriesMessage;
+            if (caloriesToGoal > 0) {
+                caloriesMessage = String.format(MESSAGE_MORE_CALORIES, caloriesToGoal);
+            } else {
+                caloriesMessage = MESSAGE_ENOUGH_CALORIES;
+            }
+
+            return new CommandResult(String.format(MESSAGE_VIEW_PROFILE, profile.toString(), caloriesMessage));
         } catch (InvalidSaveFormatException e) {
             return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_VIEW), FAILED);
         }

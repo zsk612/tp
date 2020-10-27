@@ -24,9 +24,10 @@ public class DietManager {
     private final DietManagerParser parser;
     private final DietManagerUi dietManagerUi;
     private final DietStorage storage;
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
-     * Constructs DietManager and initialize command library for dietManager.
+     * Constructs DietManager and initializes command library for dietManager.
      */
     public DietManager() {
         storage = new DietStorage();
@@ -75,7 +76,6 @@ public class DietManager {
     }
 
     public double getTodayTotalCalories() {
-        Logger logger = SchwarzeneggerLogger.getInstanceLogger();
         double todayTotalCalories = 0;
         File folder = new File("saves/diet/");
         File[] listOfFiles = folder.listFiles();
