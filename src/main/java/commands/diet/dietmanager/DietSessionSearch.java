@@ -62,7 +62,7 @@ public class DietSessionSearch extends Command {
                 searchResult.append("Tag is empty, "
                         + "all the sessions within input dates will be shown.\n\t ");
             }
-            searchResult.append("Here is the search result!\n\t ");
+            searchResult.append("Here are the search results!\n\t ");
             if (Objects.requireNonNull(listOfFiles).length == 0) {
                 searchResult.append("It seems like you do not have any meal sessions stored!\n\t ");
             }
@@ -73,7 +73,6 @@ public class DietSessionSearch extends Command {
                 if (startDate.compareTo(fileDate) <= 0 && endDate.compareTo(fileDate) >= 0 && fileTag.contains(tag)) {
                     searchResult.append("\t" + (++numberOfResults) + ". "
                             + listOfFiles[i].getName().replaceFirst("[.][^.]+$", "") + "\n\t ");
-
                 }
             }
             if (numberOfResults == 0) {
