@@ -4,10 +4,10 @@ import diet.dietsession.Food;
 import exceptions.InvalidCommandWordException;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
+import models.ExerciseList;
 import storage.diet.DietStorage;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
-import models.ExerciseList;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 public abstract class Command {
 
-    public Logger logger = SchwarzeneggerLogger.getInstanceLogger();
+    protected static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     public static CommonUi ui = new CommonUi();
 
     /**
