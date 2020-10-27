@@ -15,10 +15,10 @@ public class ToWorkout extends Command {
      */
     @Override
     public CommandResult execute(String args) {
-        ui.printOpening("Workout menu");
+        ui.printOpening("Workout Menu");
         WorkoutManager workoutManager = new WorkoutManager();
         workoutManager.start();
-        ui.printReturning("Main menu");
+        ui.printReturning("Main Menu");
         return new CommandResult("", ExecutionResult.OK);
     }
 }
