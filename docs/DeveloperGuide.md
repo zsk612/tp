@@ -78,7 +78,7 @@ By: `CS2113T-F11-1` Since: `2020`
 The Schwarzenegger is a desktop command line interface-based app for managing all your needs regarding fitness. With the built-in personal assistant, you are able to track your daily workout and diet sessions based on your profile. If you can type fast, The Schwarzenegger can help you maximise your efficiency for maintaining fitness.
 ### 1.2. <a id="purpose">Purpose</a>
 This document contains the specified architecture and software design specifications for the application, The Schwarzenegger. 
-### 1.3. <a id="scope">Scope</>
+### 1.3. <a id="scope">Scope</a>
 This document describes the software architecture and software design requirements for The Schwarzenegger. This guide is mainly for developers, designers and software engineers that are or going to work on The Schwarzenegger. 
 
 [&#8593; Return to Top](#developer-guide)
@@ -198,8 +198,7 @@ For diet and workout-related features, there is an additional functionality of s
 
 #### 4.1.1. <a id="main-help">Help Command for Main Menu</a>
 
-The help command allows users to view all the available commands in the main page.
-The command for help is `help`.
+The `help` command allows users to view all the available commands in the main page. The command for showing help message is `help`.
 
 #### 4.1.2. <a id="redirecting-to-profile-menu">Redirecting to Profile Menu</a>
 
@@ -220,7 +219,7 @@ This feature allows user to add a new profile. The failure to do so will trigger
 
 If the creation is successful, a confirmation message on the newly created profile will be displayed to the user. 
 
-##### Implementation
+**Implementation**
 
 When the user attempts to add a new profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
@@ -246,7 +245,7 @@ The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
-##### Design considerations:
+**Design considerations**
 Parsing of the user’s input command:
 
 - Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
@@ -270,7 +269,7 @@ This feature allows user to view added profile with calculated BMI based on heig
 
 If the data loading is successful, a message on the added profile will be displayed to the user. 
 
-##### Implementation
+**Implementation**
 When the user attempts to view an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `view`
@@ -293,7 +292,7 @@ The sequence diagram below summarizes how viewing an added profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/ViewProfile.png)
 
-##### Design considerations:
+**Design considerations**
 Aspects: Loading of stored data
 
 - Alternative 1 (current choice): call public methods of Storage class to 
@@ -318,7 +317,7 @@ This feature allows user to anytime go back to edit a profile created in the pas
 
 If the editing is successful, a confirmation message on the edited profile will be displayed to the user. 
 
-##### Implementation
+**Implementation**
 When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `edit /w 60`
@@ -344,7 +343,7 @@ The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/EditProfile.png)
 
-##### Design considerations:
+**Design considerations**
 Parsing of the user’s input command:
 
 - Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
@@ -369,7 +368,7 @@ This feature allows user to delete a profile created in the past. The failure to
 
 If the deletion is successful, a confirmation message on the profile deletion will be displayed to the user. 
 
-##### Implementation
+**Implementation**
 When the user attempts to delete an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `delete`
@@ -393,7 +392,7 @@ The sequence diagram below summarizes how deleting an added profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/DeleteProfile.png)
 
-##### Design considerations:
+**Design considerations**
 
 Aspects: Loading of stored data
 
@@ -415,7 +414,7 @@ Aspects: Loading of stored data
 #### 4.3.1. Listing out all commands: `help`
 The command to list out all help commands is a hard-typed list of commands that indicates to the user all the commands available and how to use them.
 
-##### Implementation  
+**Implementation**  
 When the user types `help` the following sequence occurs. 
 1. The user keys in `help`.
     
@@ -432,7 +431,7 @@ When the user types `help` the following sequence occurs.
 #### 4.3.2. Start recording meal data: `meal`
 The feature allows users to start recording meal data. 
 
-##### Implementation  
+**Implementation**  
 When the user types `meal /d [date] /t [type]` the following sequence occurs. 
 1. The user keys in `meal /d 2020-05-04 /t breakfast`.
     
@@ -454,7 +453,7 @@ The sequence diagram below summarizes how creating new diet session works:
 #### 4.3.2.1. Showing help message: `help`
 The command to list out all help commands is a hard-typed list of commands that indicates to the user all the commands available and how to use them.
 
-##### Implementation  
+**Implementation**  
 When the user types `help` the following sequence occurs. 
 1. The user keys in `help`.
     
@@ -473,7 +472,7 @@ When the user types `help` the following sequence occurs.
 
 The feature allows users to add food items into the current meal session. 
 
-##### Implementation  
+**Implementation**  
 When the user types `add [food] /c [calories]` the following sequence occurs. 
 1. The user keys in `add bologna /c 123`.
     
@@ -493,7 +492,7 @@ When the user types `add [food] /c [calories]` the following sequence occurs.
 
 The feature allows users to view all food items in the current meal session. 
 
-##### Implementation  
+**Implementation**  
 When the user types `list` the following sequence occurs. 
 1. The user keys in `list`.
     
@@ -510,7 +509,7 @@ When the user types `list` the following sequence occurs.
 
 The feature allows users to remove food items into the current meal session. 
 
-##### Implementation  
+**Implementation**  
 When the user types `delete [Food ID]` the following sequence occurs. 
 1. The user keys in `delete 1`.
     
@@ -527,7 +526,7 @@ When the user types `delete [Food ID]` the following sequence occurs.
 
 The feature allows users to remove food items into the current meal session. 
 
-##### Implementation  
+**Implementation**  
 When the user types `clear` the following sequence occurs. 
 1. The user keys in `clear`.
     
@@ -544,7 +543,7 @@ When the user types `clear` the following sequence occurs.
 
 The feature allows users to end the current meal session and return back to the meal manager.
 
-##### Implementation  
+**Implementation**  
 When the user types `end` the following sequence occurs. 
 1. The user keys in `end`.
     
@@ -558,7 +557,7 @@ When the user types `end` the following sequence occurs.
 
 The feature allows users to view all past created diet sessions.
 
-##### Implementation  
+**Implementation**  
 When the user types `list` the following sequence occurs. 
 1. The user keys in `list`.
     
@@ -575,7 +574,7 @@ When the user types `list` the following sequence occurs.
 
 The feature allows users to edit previously created diet sessions.
 
-##### Implementation  
+**Implementation**  
 When the user types `edit [diet session ID]` the following sequence occurs. 
 1. The user keys in `edit 1`.
     
@@ -596,7 +595,7 @@ The sequence diagram below summarizes how editing Diet session works:
 
 The feature allows users to delete previously created diet sessions.
 
-##### Implementation  
+**Implementation**  
 When the user types `delete [diet session ID]` the following sequence occurs. 
 1. The user keys in `delete 1`.
     
@@ -613,7 +612,7 @@ When the user types `delete [diet session ID]` the following sequence occurs.
 
 The feature allows users to clear all previously created diet sessions.
 
-##### Implementation  
+**Implementation**  
 When the user types `clear` the following sequence occurs. 
 1. The user keys in `clear`.
     
@@ -630,7 +629,7 @@ When the user types `clear` the following sequence occurs.
 
 The function returns user back to the main menu of The Schwarzenegger.
 
-##### Implementation  
+**Implementation**  
 When the user types `end` the following sequence occurs. 
 1. The user keys in `end`.
     
@@ -654,7 +653,7 @@ the user will go into the new workout session to edit the exercises in that sess
 The user can specify tags for the session. Creation time, last edit time and saving file name will be auto generated 
 by the application and saved. 
 
-##### Implementation
+**Implementation**
 
 When the user attempts to create a new workout session, the Ui, WorkoutManagerParser 
 and CommandLib class will be accessed and the following sequence of 
@@ -681,7 +680,7 @@ The following sequence diagram shows how the new command works
 
 The sequence diagram below summarizes how creating new workout session works:
 ![Load Data Sequence Diagram](pictures/zesong/NewWS.png)
-##### Design considerations:
+**Design considerations**
 Parsing of the user’s input command:  
 
 - Alternative 1 (current choice): User’s command are divided by space
@@ -705,7 +704,7 @@ Users can add a new exercise. The failure to do so will trigger an exception whe
 the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
 a new exercise will be added to the exerciselist.
 
-##### Implementation
+**Implementation**
 
 When the user attempts to create a new workout session, the Ui, WorkoutManagerParser 
 and CommandLib class will be accessed and the following sequence of 
@@ -735,7 +734,7 @@ Users can delete an exercise from a pre-existing list of exercise. The failure t
 the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
 a new exercise will be added to the exerciselist.
 
-##### Implementation
+**Implementation**
 
 When the user attempts to create a new workout session, the Ui, WorkoutManagerParser 
 and CommandLib class will be accessed and the following sequence of 
@@ -779,7 +778,7 @@ The sequence diagram below summarizes how creating new workout session works:
 The feature to list workoutSessions allows the user to view a summary of all the history 
 workout sessions, including their index, creation date and tags.
 
-##### Implementation
+**Implementation**
 When the user attempts to list workoutSessions, the WorkoutManger, WorkoutManagerParse, ListWS and 
 WorkoutManagerStorage class will be called upon. The following sequence of steps will then occur:
 
@@ -794,7 +793,7 @@ WorkoutManagerStorage class will be called upon. The following sequence of steps
     1. `WorkOutManagerStorage` will call Ui to print a formated table of the past records.
     6. `WorkoutManager` returns a `ExecutionResult`.
 1. Based on `ExecutionResult`, correct response will be be printed to user.
-##### Design considerations:
+**Design considerations**
 Aspects: Security of stored data
 
 - Alternative 1 (current choice): call public methods of Storage class to 
@@ -822,7 +821,7 @@ The meta information of these past records such as file name, creation time are
 stored in another file which will be loaded as the program initlises.
 The actual workout session record will only be loaded if needed e.g. when editting is called. 
 
-##### Implementation
+**Implementation**
 When the user attempts to edit a past workout session, the Ui, WorkoutManagerParser, CommandLib
 and WorkoutStorage class will be accessed and the following sequence of 
 actions are called.
@@ -847,7 +846,7 @@ The following sequence diagram shows how the new command works
 
 The sequence diagram below summarizes how editting past record works:
 ![Load Data Sequence Diagram](pictures/zesong/EditWS.png)
-##### Design considerations:
+**Design considerations**
 Past record storage and model design:  
 
 - Alternative 1 (current choice): store past workout sessions in different files and their 
@@ -878,7 +877,7 @@ file and delete it. Then the meta information of the record will be deleted.
 User can clear all data by iteratively delete the record until the meta data file is empty. To simplify that,
 user can use `clear` command to achieve that.
 
-##### Implementation
+**Implementation**
 
 When the user attempts to delete a past workout session, the Ui, WorkoutManagerParser, CommandLib
 and WorkoutStorage class will be accessed and the following sequence of actions are called.
@@ -899,7 +898,7 @@ and WorkoutStorage class will be accessed and the following sequence of actions 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
 The following sequence diagram shows how the new command works
 
-##### Design considerations:
+**Design considerations**
 
 - Alternative 1 (current choice): Delete `workoutSession` by specifying index of it.
 
@@ -921,7 +920,7 @@ workout sessions which satisfies certain conditions.
 The user can search by the date of creation or the tags that the session has. User can put in 0
 or 1 or 2 criteria during search. 
 
-##### Implementation
+**Implementation**
 Format: `search /t <tag1> <tag2> /d <date>`
 
 The user can attach variable number of tags after `/t` and one date after `/d`. The date must be specified
@@ -955,7 +954,7 @@ WorkoutManagerParse class will be called upon. The following sequence of steps w
 
 The sequence diagram below summarizes how searching record works:
 ![Load Data Sequence Diagram](pictures/zesong/SearchWS.png)
-##### Design considerations:
+**Design considerations**
 Aspects: indexing the selected results
 
 The index of an record is not stored in the schema because it easily varies with 
@@ -992,7 +991,7 @@ Storage for diet saves diet sessions created as individual files sorted based on
 - A corresponding file is updated in the local file when the user edits a diet session by calling DietSessionEdit.execute().
 - A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
 
-##### Implementation
+**Implementation**
 Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
 
 #### 4.6.3. Storage for workout
