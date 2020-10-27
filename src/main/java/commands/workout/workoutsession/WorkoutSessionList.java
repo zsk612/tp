@@ -18,8 +18,8 @@ public class WorkoutSessionList extends Command {
     @Override
     public void execute(String[] inputs, ExerciseList exerciseList,
                         String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
-        printList(exerciseList.exerciseList);
         try {
+            printList(exerciseList.exerciseList);
             storage.writeToStorage(filePath, exerciseList);
         } catch (IOException e) {
             WorkoutSessionUi.printError();
@@ -27,11 +27,12 @@ public class WorkoutSessionList extends Command {
     }
 
     private void printList(ArrayList<Exercise> exercise) {
-        assert exercise == null : "exercise list not found";
+        assert exercise != null : "exercise list not found";
         if (exercise.size() <= 0) {
             WorkoutSessionUi.emptyListError();
+        } else {
+            ui.showToUser(formatList(exercise));
         }
-        ui.showToUser(formatList(exercise));
     }
 
     private String formatList(ArrayList<Exercise> exercise) {

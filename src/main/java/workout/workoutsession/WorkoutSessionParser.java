@@ -1,7 +1,8 @@
 package workout.workoutsession;
 
+import exceptions.workout.workoutsession.AddFormatException;
 import exceptions.workout.workoutsession.DeleteFormatException;
-import ui.workout.workoutsession.WorkoutSessionUi;
+
 import models.Exercise;
 
 public class WorkoutSessionParser {
@@ -11,9 +12,7 @@ public class WorkoutSessionParser {
         return input.split(" ");
     }
 
-    public static Exercise addParser(String[] input) throws NumberFormatException {
-        Exercise exercise = null;
-
+    public static Exercise addParser(String[] input) throws NumberFormatException, AddFormatException {
         String[] returnString = new String[4];
         for (int i = 0; i < returnString.length; i++) {
             returnString[i] = "";
@@ -32,8 +31,12 @@ public class WorkoutSessionParser {
                 returnString[tracker] += (s + " ");
             }
         }
-        exercise = new Exercise(returnString[1].trim(), Integer.parseInt(returnString[2]),
-                Integer.parseInt(returnString[3]));
+        int repetitions = Integer.parseInt(returnString[2]);
+        int weight = Integer.parseInt(returnString[3]);
+        if (repetitions < 0 || weight < 0) {
+            throw new AddFormatException();
+        }
+        Exercise exercise = new Exercise(returnString[1].trim(), repetitions, weight);
 
         return exercise;
     }
