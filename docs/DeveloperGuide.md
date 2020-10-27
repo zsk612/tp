@@ -229,7 +229,7 @@ When the user attempts to add a new profile, the ProfileSession, Ui, ProfilePars
     1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileAdd` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileAdd`.
-1. Executing command
+1. Executing command.
     1. `ProfileSession` calls `ProfileAdd.execute()` with the rest of parsed input.
     1. `ProfileAdd` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is an existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
     1. `ProfileAdd` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information. 
@@ -278,7 +278,7 @@ When the user attempts to view an added profile, the ProfileSession, Ui, Profile
     1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileView` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileView`.
-1. Executing command
+1. Executing command.
     1. `ProfileSession` calls `ProfileView.execute()` with the rest of parsed input.
     1. `ProfileView` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileView` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
     1. `ProfileView` calls `Profile.toString()` to get string representation of `Profile`.
@@ -326,7 +326,7 @@ When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser,
     1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileEdit` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileEdit`.
-1. Executing Command
+1. Executing command.
     1. `ProfileSession` calls `ProfileEdit.execute()` with the rest of parsed input.
     1. `ProfileEdit` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
     1. `ProfileEdit` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information.
@@ -377,7 +377,7 @@ When the user attempts to delete an added profile, the ProfileSession, Ui, Profi
     1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileDelete` object.
    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileDelete`.
-1. Executing command
+1. Executing command.
     1. `ProfileSession` calls `ProfileDelete.execute()` with the rest of parsed input.
     1. `ProfileDelete` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileDelete` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
     1. `ProfileDelete` calls `Ui.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `iv`.
@@ -1001,9 +1001,9 @@ Storage handles reading of file data by calling readDietSession() and overwritin
 ### 4.7. Logging
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
 
-The `java.util.logging` package in Java is used for logging. The logging mechanism can be managed from the `SchwarzeneggerLogger` class through the `logger` attribute.
+The `java.util.logging` package in Java is used for logging. The logging mechanism can be managed from the `SchwarzeneggerLogger` class through the `logger` attribute. 
 
-All control of the logger for the application can be viewed/ altered in the `initSchwarzeneggerLogger()` method. The current settings for the logger are as follow:
+All controls of the logger for the application can be viewed/ altered in the class construction. The current settings for the logger are as follow:
 
 - All information is logged into a log file, `SchwarzeneggerLogs.log`.
 - Logging is made to be displayed in the `SimpleFormatter` style where the date, class and error description are logged.
@@ -1015,13 +1015,13 @@ Logging Levels:
 - `Level.CONFIG`: hardware configuration, such as CPU type.
 - `Level.FINE`, `Level.FINER`, `Level.FINEST`: three levels used for providing tracing information for the software developers.
 
-Additional logging can be done by adding the calling of the global logger and invoking the function `log()`. This will ensure that all loggings will be made to the same file across the various classes. 
+`SchwarzeneggerLogger` follows singleton design pattern. Thus, other classes can access the `logger` by calling `SchwarzeneggerLogger.getInstanceLogger()`, and logging can be done by invoking the function `log()`. This will ensure that all loggings will be made to the same file across the various classes. 
 
 An example is shown below:
 
 ```
-public static final Logger logger = SchwarzenggerLogger.logger;
-logger.log(Level.WARNING, description_of_warning_here, e.toString());
+private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
+logger.log(Level.WARNING, DESCRIPTION_OF_WARNING, e.toString());
 ```
 
 [&#8593; Return to Top](#developer-guide)
