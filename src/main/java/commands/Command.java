@@ -2,7 +2,10 @@ package commands;
 
 import diet.dietsession.Food;
 import exceptions.InvalidCommandWordException;
+import exceptions.InvalidDateFormatException;
 import exceptions.SchwarzeneggerException;
+import exceptions.diet.InvalidSearchDateException;
+import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
 import models.ExerciseList;
 import storage.diet.DietStorage;
@@ -44,7 +47,8 @@ public abstract class Command {
         return new CommandResult();
     }
 
-    public void execute(String input, DietStorage storage) throws InvalidCommandWordException {
+    public void execute(String input, DietStorage storage) throws InvalidCommandWordException,
+            InvalidCommandFormatException, InvalidDateFormatException, InvalidSearchDateException {
         return;
     }
 

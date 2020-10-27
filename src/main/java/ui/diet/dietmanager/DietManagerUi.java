@@ -23,6 +23,9 @@ public class DietManagerUi extends CommonUi {
                 "Delete the diet session at the input index"));
         helpMessage.append(helpFormatter("Edit", "edit [INDEX_OF_SESSION]",
                 "Edit the diet session at the input index"));
+        helpMessage.append(helpFormatter("Search",
+                "search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>",
+                "Search the diet session in between starting and end dates with tags in its name"));
         helpMessage.append(helpFormatter("Clear", "clear",
                 "Clear all past diet sessions"));
         helpMessage.append(helpFormatter("End", "end",
