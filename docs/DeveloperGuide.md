@@ -272,7 +272,7 @@ If the data loading is successful, a message on the added profile will be displa
 
 **Implementation**
 
-When the user attempts to view an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
+When the user attempts to view an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile, DietManager and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `view`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
@@ -282,8 +282,8 @@ When the user attempts to view an added profile, the ProfileSession, Ui, Profile
 1. Executing command.
     1. `ProfileSession` calls `ProfileView.execute()` with the rest of parsed input.
     1. `ProfileView` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileView` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
-    1. `ProfileView` calls `Profile.toString()` to get string representation of `Profile`.
-    1. `ProfileView` returns a result to `ProfileSession`.    
+    1. `ProfileView` calls `DietManager.getTodayTotalCalories()` to get user's calories intake today.
+    1. Based on user's calories intake today and string representation of `Profile`, `ProfileView` returns a result to `ProfileSession`.    
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getCommandResult()` to get the `CommandResult` object.
     1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
