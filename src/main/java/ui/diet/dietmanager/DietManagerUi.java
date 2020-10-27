@@ -4,14 +4,6 @@ import ui.CommonUi;
 
 public class DietManagerUi extends CommonUi {
 
-    public static void printOpening() {
-        showUser("Starting diet manager...");
-    }
-
-    public static void printBye() {
-        showUser("Returning to Main menu...");
-    }
-
     public static void printHelp() {
         StringBuilder helpMessage = new StringBuilder();
 

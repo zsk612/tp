@@ -41,13 +41,13 @@ public class WorkoutSessionUi extends CommonUi {
     public static void printHelp() {
         StringBuilder helpMessage = new StringBuilder();
         helpMessage.append(helpFormatter("Add", "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]",
-                "Adds a new workout."));
+                "Add a new workout."));
         helpMessage.append(helpFormatter("List", "list",
                 "Show all workouts in this current session."));
         helpMessage.append(helpFormatter("Delete", "delete [MOVE_ID]",
-                "Deletes the workout according to the number in the list."));
+                "Delete the workout according to the number in the list."));
         helpMessage.append(helpFormatter("Search", "search [NAME_OF_MOVE]",
-                "Shows a list of workouts that match the entered workout."));
+                "Show a list of workouts that match the entered workout."));
         helpMessage.append(helpFormatter("End", "end",
                 "Go back to the Workout Menu."));
         printer.showToUser(helpMessage.toString().trim());

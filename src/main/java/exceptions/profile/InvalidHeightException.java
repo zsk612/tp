@@ -2,7 +2,7 @@ package exceptions.profile;
 
 import exceptions.SchwarzeneggerException;
 
-import static profile.Constants.MESSAGE_INVALID_HEIGHT;
+import static ui.profile.ProfileUi.MESSAGE_INVALID_HEIGHT;
 
 /**
  * Represents exception when input height is invalid.

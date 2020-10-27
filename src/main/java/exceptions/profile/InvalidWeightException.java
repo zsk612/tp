@@ -2,7 +2,7 @@ package exceptions.profile;
 
 import exceptions.SchwarzeneggerException;
 
-import static profile.Constants.MESSAGE_INVALID_WEIGHT;
+import static ui.profile.ProfileUi.MESSAGE_INVALID_WEIGHT;
 
 /**
  * Represents exception when input weight is invalid.

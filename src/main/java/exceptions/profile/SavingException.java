@@ -2,7 +2,7 @@ package exceptions.profile;
 
 import exceptions.SchwarzeneggerException;
 
-import static profile.Constants.MESSAGE_SAVING_ERROR;
+import static ui.profile.ProfileUi.MESSAGE_SAVING_ERROR;
 
 /**
  * Represents exception while saving data.

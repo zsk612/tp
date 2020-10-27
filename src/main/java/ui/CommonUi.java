@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.GREEDY_WHITE_SPACE;
-import static profile.Constants.HELP_FORMAT;
+import static ui.profile.ProfileUi.HELP_FORMAT;
 
 public class CommonUi {
     protected static final String LINE_PREFIX = "\t ";

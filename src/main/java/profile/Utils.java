@@ -27,7 +27,7 @@ public class Utils {
      * @return Whether input name is valid.
      */
     public static boolean checkValidName(String name) {
-        return !name.isEmpty();
+        return name != null && !name.isEmpty();
     }
 
     /**

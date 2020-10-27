@@ -22,36 +22,37 @@ public class DietManager {
 
     private final CommandLib cl;
     private final DietManagerParser parser;
-    private final DietManagerUi dietManagerUI;
+    private final DietManagerUi dietManagerUi;
     private final DietStorage storage;
+    private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
-     * Constructs DietManager and initialize command library for dietManager.
+     * Constructs DietManager and initializes command library for dietManager.
      */
     public DietManager() {
         storage = new DietStorage();
         cl = new CommandLib();
         cl.initDietManagerCL();
         parser = new DietManagerParser();
-        dietManagerUI = new DietManagerUi();
+        dietManagerUi = new DietManagerUi();
     }
 
     /**
      * Starts diet manager to read user input.
      */
     public void start() {
-        DietManagerUi.printOpening();
-        String input = dietManagerUI.getCommand("Diet Menu");
+        dietManagerUi.printOpening("Diet Menu");
+        String input = dietManagerUi.getCommand("Diet Menu");
         assert input != null : "Null input before input loop";
         while (!input.equals("end")) {
             try {
                 processCommand(input);
             } catch (InvalidCommandWordException e) {
-                dietManagerUI.showToUser(ExceptionHandler.handleCheckedExceptions(e));
+                dietManagerUi.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             }
-            input = dietManagerUI.getCommand("Diet Menu");
+            input = dietManagerUi.getCommand("Diet Menu");
         }
-        DietManagerUi.printBye();
+        dietManagerUi.printReturning("Main Menu");
     }
 
     /**
@@ -68,14 +69,13 @@ public class DietManager {
         } catch (ArrayIndexOutOfBoundsException | InvalidCommandFormatException e) {
             throw new InvalidCommandWordException();
         } catch (InvalidDateFormatException e) {
-            dietManagerUI.showToUser("wrong format for date input.");
+            dietManagerUi.showToUser("wrong format for date input.");
         } catch (InvalidSearchDateException e) {
-            dietManagerUI.showToUser("Starting date should be earlier than end date.");
+            dietManagerUi.showToUser("Starting date should be earlier than end date.");
         }
     }
 
     public double getTodayTotalCalories() {
-        Logger logger = SchwarzeneggerLogger.getInstanceLogger();
         double todayTotalCalories = 0;
         File folder = new File("saves/diet/");
         File[] listOfFiles = folder.listFiles();
