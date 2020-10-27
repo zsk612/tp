@@ -1,4 +1,4 @@
-package workout.workoutsession.exercise;
+package models;
 
 import java.util.ArrayList;
 

@@ -43,6 +43,7 @@ public class ProfileEdit extends Command {
         Profile profile;
         try {
             profile = storage.loadData();
+            assert profile != null : "profile should not be null after loading";
 
             HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_EDIT, commandArgs);
             String name = parsedParams.containsKey("/n") ? extractName(parsedParams) : profile.getName();

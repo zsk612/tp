@@ -8,7 +8,7 @@ import logger.SchwarzeneggerLogger;
 import storage.workout.Storage;
 import ui.CommonUi;
 import ui.workout.workoutsession.WorkoutSessionUi;
-import workout.workoutsession.exercise.ExerciseList;
+import models.ExerciseList;
 
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
