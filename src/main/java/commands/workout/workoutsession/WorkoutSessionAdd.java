@@ -1,6 +1,7 @@
 package commands.workout.workoutsession;
 
 import commands.Command;
+import exceptions.workout.workoutsession.AddFormatException;
 import models.Exercise;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
@@ -24,6 +25,8 @@ public class WorkoutSessionAdd extends Command {
             WorkoutSessionUi.addFormatError();
         } catch (IOException e) {
             WorkoutSessionUi.printError();
+        } catch (AddFormatException e) {
+            WorkoutSessionUi.addFormatNegativeError();
         }
     }
 }
