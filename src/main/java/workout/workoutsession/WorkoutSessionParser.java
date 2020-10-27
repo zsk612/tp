@@ -13,8 +13,6 @@ public class WorkoutSessionParser {
     }
 
     public static Exercise addParser(String[] input) throws NumberFormatException, AddFormatException {
-        Exercise exercise = null;
-
         String[] returnString = new String[4];
         for (int i = 0; i < returnString.length; i++) {
             returnString[i] = "";
@@ -35,10 +33,10 @@ public class WorkoutSessionParser {
         }
         int repetitions = Integer.parseInt(returnString[2]);
         int weight = Integer.parseInt(returnString[3]);
-        if(repetitions<0||weight<0){
+        if (repetitions < 0 || weight < 0) {
             throw new AddFormatException();
         }
-        exercise = new Exercise(returnString[1].trim(), repetitions, weight);
+        Exercise exercise = new Exercise(returnString[1].trim(), repetitions, weight);
 
         return exercise;
     }
