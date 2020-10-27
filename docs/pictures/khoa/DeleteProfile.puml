@@ -18,16 +18,17 @@ Command -> ProfileStorage ++ : loadData()
 ProfileStorage --> Command -- : profile
 
 opt hasExistingProfile
-    Command --> ProfileSession : result
+    Command -> Ui ++ : getConfirmation()
+    Ui --> Command -- : isConfirmed
+
+    opt isConfirmed
+        Command -> ProfileStorage ++ : saveData(null)
+        ProfileStorage --> Command --
+        Command --> ProfileSession: result
+    else
+        Command --> ProfileSession: result
+    end
 else
-    Command -> ProfileParser ++ : extractCommandTagAndInfo(parsedInput)
-    ProfileParser --> Command -- : parsedInfo
-    Command -> Profile ** : parsedInfo
-    activate Profile
-    Profile --> Command -- : newProfile
-    Command -> ProfileStorage ++ : saveData(newProfile)
-    destroy Profile
-    ProfileStorage --> Command --
     Command --> ProfileSession -- : result
 end
 

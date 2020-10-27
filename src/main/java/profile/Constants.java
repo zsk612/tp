@@ -69,7 +69,8 @@ public class Constants {
             + LS + "%s";
     public static final String MESSAGE_SAVING_ERROR = SAD_FACE + "An error has occurred while saving data."
             + LS + "%s";
-    public static final String MESSAGE_REDUNDANT_PARAM = SAD_FACE + "%s command does not take parameters.";
+    public static final String MESSAGE_REDUNDANT_PARAM = SAD_FACE + "%s command does not take parameters."
+            + LS + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String MESSAGE_DELETE_NOTHING = SAD_FACE + "You haven't added any profile yet!";
     public static final String MESSAGE_EDIT_NOTHING = SAD_FACE
             + "The information you entered is the same as your current profile!";
