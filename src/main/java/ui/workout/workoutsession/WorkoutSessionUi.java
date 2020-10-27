@@ -12,9 +12,14 @@ public class WorkoutSessionUi extends CommonUi {
     }
 
     public static void addFormatError() {
-        printer.showToUser("Wrong format, please enter in the format: \n"
-                + "\t add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w "
-                + "[WEIGHT]");
+        printer.showToUser("Wrong format, please enter in the format: \n\t "
+                + "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]");
+    }
+
+    public static void addFormatNegativeError() {
+        printer.showToUser("Wrong format, please enter in the format: \n\t "
+                + "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]\n\t "
+                + "Please make sure [NUMBER_OF_REPETITIONS] and [WEIGHT] are positive numbers.");
     }
 
     public static void inputNotRecognisedError() {
