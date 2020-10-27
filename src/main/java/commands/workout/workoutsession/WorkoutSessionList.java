@@ -27,6 +27,7 @@ public class WorkoutSessionList extends Command {
     }
 
     private void printList(ArrayList<Exercise> exercise) {
+        assert exercise == null: "exercise list not found";
         if (exercise.size() <= 0) {
             WorkoutSessionUi.emptyListError();
         }
