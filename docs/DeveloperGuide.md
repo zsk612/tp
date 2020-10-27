@@ -246,6 +246,7 @@ The sequence diagram below summarizes how creating a new profile works:
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
 **Design considerations**
+
 Parsing of the user’s input command:
 
 - Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
@@ -270,6 +271,7 @@ This feature allows user to view added profile with calculated BMI based on heig
 If the data loading is successful, a message on the added profile will be displayed to the user. 
 
 **Implementation**
+
 When the user attempts to view an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `view`
@@ -293,6 +295,7 @@ The sequence diagram below summarizes how viewing an added profile works:
 ![Load Data Sequence Diagram](pictures/khoa/ViewProfile.png)
 
 **Design considerations**
+
 Aspects: Loading of stored data
 
 - Alternative 1 (current choice): call public methods of Storage class to 
@@ -318,6 +321,7 @@ This feature allows user to anytime go back to edit a profile created in the pas
 If the editing is successful, a confirmation message on the edited profile will be displayed to the user. 
 
 **Implementation**
+
 When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `edit /w 60`
@@ -344,6 +348,7 @@ The sequence diagram below summarizes how creating a new profile works:
 ![Load Data Sequence Diagram](pictures/khoa/EditProfile.png)
 
 **Design considerations**
+
 Parsing of the user’s input command:
 
 - Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
@@ -369,6 +374,7 @@ This feature allows user to delete a profile created in the past. The failure to
 If the deletion is successful, a confirmation message on the profile deletion will be displayed to the user. 
 
 **Implementation**
+
 When the user attempts to delete an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `delete`
