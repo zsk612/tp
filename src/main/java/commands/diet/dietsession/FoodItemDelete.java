@@ -29,11 +29,11 @@ public class FoodItemDelete extends Command {
             foodList.remove(temp);
             logger.log(Level.INFO, "Removed food from arraylist");
         } catch (IndexOutOfBoundsException e) {
-            ui.showToUser("Wrong format, please enter in the format:\n\t "
-                    + "delete [INDEX_OF_FOOD]");
+            ui.showToUser("Sorry, there is no food item at that index.");
             logger.log(Level.WARNING, "Did not input index");
         } catch (NumberFormatException e) {
-            ui.showToUser("Sorry! It seems like you've entered an invalid number or input!");
+            ui.showToUser("Wrong format, please enter in the format:\n\t "
+                    + "delete [INDEX_OF_FOOD]");
             logger.log(Level.WARNING, "Did not input correct index");
         }
     }
