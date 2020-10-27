@@ -37,6 +37,7 @@ public class ProfileView extends Command {
         Profile profile;
         try {
             profile = storage.loadData();
+            assert profile != null : "profile should not be null after loading";
             return new CommandResult(String.format(MESSAGE_VIEW_PROFILE, profile.toString()));
         } catch (InvalidSaveFormatException e) {
             return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_VIEW), FAILED);

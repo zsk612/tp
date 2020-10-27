@@ -66,14 +66,12 @@ public class ProfileSession {
             try {
                 processCommand(commParts);
             } catch (SchwarzeneggerException e) {
-                logger.log(Level.WARNING, "processing SchwarzeneggerException", e);
                 ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
-                
+
                 if (e instanceof EndException) {
                     break;
                 }
             } catch (Exception e) {
-                logger.log(Level.WARNING, "processing uncaught exception", e);
                 ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
             }
         }

@@ -7,7 +7,7 @@ import logger.SchwarzeneggerLogger;
 import storage.diet.DietStorage;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
-import workout.workoutsession.exercise.ExerciseList;
+import models.ExerciseList;
 
 import java.util.ArrayList;
 import java.util.logging.Level;

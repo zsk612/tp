@@ -4,32 +4,32 @@ By: `CS2113T-F11-1` Since: `2020`
 ![Supported Java versions](https://img.shields.io/badge/Java-11-blue.svg) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Windows|MacOS|Linux-yellow.svg) 
 ![Java CI](https://github.com/AY2021S1-CS2113T-F11-1/tp/workflows/Java%20CI/badge.svg)
 
-## Table of content
-1. [**Introduction**](#1-introduction)<br>
-1.1. [Background](#11--background)<br>
-1.2. [Purpose](#12-purpose)<br>
-1.3. [Scope](#13-scope)<br>
-2. [**Setting up**](#2-setting-up)<br>
-2.1. [Prerequisites](#21-prerequisites)<br>
-2.2. [Setting up the project in your computer](#22-setting-up-the-project-in-your-computer)<br>
-3. [**Design**](#3-design)<br>
-3.1. [Architecture](#31-architecture)<br>
-3.2. [Ui Component](#32-ui-component)<br>
-3.3. [Logic Component](#33-logic-component)<br>
-3.4. [Model Component](#34-model-component)<br>
-3.5. [Storage Component](#35-storage-component)<br>
-3.6. [Common Classes](#36-common-classes)<br>
-4. [**Implementation**](#4-implementation)<br>
-4.1. [Main Menu-related Features](#41-main-menu-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu of Profile](#411-help-command-for-main-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.2. [Redirection to Profile Menu](#412-redirection-to-profile-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.3. [Redirection to Diet Menu](#413-redirection-to-diet-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.4. [Redirection to Workout Menu](#414-redirection-to-workout-menu)<br>
-4.2. [Profile-related Features](#42-profile-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. [Creation of Profile](#421-creation-of-profile)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. [Viewing Profile](#422-viewing-profile)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.3. [Editing of Profile](#423-eiting-of-profile)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deletion of Profile](#424-deletion-of-profile)<br>
+## Table of Contents
+1. [**Introduction**](#intro)<br>
+1.1. [Background](#background)<br>
+1.2. [Purpose](#purpose)<br>
+1.3. [Scope](#scope)<br>
+2. [**Setting Up**](#setting-up)<br>
+2.1. [Prerequisites](#prerequisites)<br>
+2.2. [Setting up the Project in Your Computer](#setting-up-the-project-in-your-computer)<br>
+3. [**Design**](#design)<br>
+3.1. [Architecture](#architecture)<br>
+3.2. [Ui Component](#ui-component)<br>
+3.3. [Logic Component](#logic-component)<br>
+3.4. [Model Component](#model-component)<br>
+3.5. [Storage Component](#storage-component)<br>
+3.6. [Common Classes](#common-classes)<br>
+4. [**Implementation**](#implementation)<br>
+4.1. [Main Menu-related Features](#main-menu-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu](#main-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.2. [Redirecting to Profile Menu](#redirection-to-profile-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.3. [Redirecting to Diet Menu](#redirection-to-diet-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.4. [Redirecting to Workout Menu](#redirecting-to-workout-menu)<br>
+4.2. [Profile-related Features](#profile-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.1. [Adding a Profile](#adding-a-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.2. [Viewing a Profile](#viewing-a-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.3. [Editing a Profile](#editing-a-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deleting a Profile](#deleting-a-profile)<br>
 4.3. [Diet-related Features](#43-diet-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#431-list-out-all-commands)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording meal data](#432-start-recording-diet-data)<br>
@@ -44,18 +44,18 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past meal session](#435-delete-a-past-meal-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past meal sessions](#436-clear-all-past-meal-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Exit the meal manager](#437-exit-the-meal-manager)<br>
-4.4. [Workout-related Features](#44-workout-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creation of new workout session](#441-creation-of-new-workout-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an exercise](#4411-Adding-an-exercise)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an exercise](#4412-Deleting-an-exercise)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing all exercises in this session](#4413-listing-all-exercises-in-this-session)<br>
+4.4. [Workout-related Features](#workout-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creating a New Workout Session](#creating-a-new-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an Exercise](#deleting-an-exercise)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing All Exercises in This Session](#listing-all-exercises-in-this-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing users to view help commands](#4414-Allowing-users-to-view-help-commands)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for related exercises](#4415-Searching-for-related-exercises)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the workout session](#4416-Ending-the-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing past workout sessions](#442-listing-past-workout-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing of workout session](#443-editing-of-workout-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deletion of workout session](#444-deletion-of-workout-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.5. [Search based on conditions](#445-search-based-on-conditions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing workout session](#443-editing-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a workout session](#444-deleting-a-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.5. [Searching based on conditions](#445-searching-based-on-conditions)<br>
 4.5. [Recommendations-related Features](#46-recommendations-related-features)<br> 
 &nbsp;&nbsp;&nbsp;&nbsp;4.5.1. [Display expenditure](#451-display-expenditure)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Expenditure functionality](#452-expenditure-functionality)<br>
@@ -73,25 +73,25 @@ By: `CS2113T-F11-1` Since: `2020`
     + [Appendix F: Instructions for Manual Testing](#appendix-f-instructions-for-manual-testing)
     + [Appendix G: Supported Formats of Date Input](#appendix-g-supported-formats-of-date-input)
 
-## 1. Introduction
-### 1.1.  Background
-The Schwarzenegger is a desktop command line interface-based app for managing all your needs regarding fitness. If you can type fast, The Schwarzenegger can help you maximise your efficiency for maintaining fitness.
-### 1.2. Purpose
-The document contains the specified architecture and software design specifications for the application, The Schwarzenegger. 
-### 1.3. Scope
-This describes the software architecture and software design requirements for The Schwarzenegger. This guide is mainly for developers, designers and software engineers that are or going to work on The Schwarzenegger. 
+## 1. <a id="intro">Introduction</a>
+### 1.1.  <a=id="background">Background</a>
+The Schwarzenegger is a desktop command line interface-based app for managing all your needs regarding fitness. With the built-in personal assistant, you are able to track your daily workout and diet sessions based on your profile. If you can type fast, The Schwarzenegger can help you maximise your efficiency for maintaining fitness.
+### 1.2. <a id="purpose">Purpose</a>
+This document contains the specified architecture and software design specifications for the application, The Schwarzenegger. 
+### 1.3. <a id="scope">Scope</>
+This document describes the software architecture and software design requirements for The Schwarzenegger. This guide is mainly for developers, designers and software engineers that are or going to work on The Schwarzenegger. 
 
 [&#8593; Return to Top](#developer-guide)
 
-## 2. Setting up
+## 2. <a id="setting-up">Setting Up</a>
 
-### 2.1. Prerequisites
+### 2.1. <a id="prerequisites">Prerequisites</a>
 1. JDK `11`.
 2. IntelliJ IDEA IDE.
 
-### 2.2. Setting up the project in your computer
-1. Fork this repository, and clone the fork to your computer.
-2. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
+### 2.2. <a id="setting-up-the-project-in-your-computer">Setting up the Project in Your Computer</a>
+1. Fork [this repository](https://github.com/AY2021S1-CS2113T-F11-1/tp), and clone the fork to your computer.
+2. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project dialog first).
 3. Set up the correct JDK version for Gradle  
    1. Click `Configure` > `Structure for New Projects` and then `Project Settings` > `Project` > `Project SDK`.
    2. If `JDK 11` is listed in the drop down, select it. Otherwise, click `New…` and select the directory where you installed `JDK 11`.
@@ -103,11 +103,12 @@ This describes the software architecture and software design requirements for Th
 
 [&#8593; Return to Top](#developer-guide)
 
-## 3. Design
+## 3. <a id="design">Design</a>
 This section provides a high level overview of our application, The Schwarzenegger.
-### 3.1. Architecture
+### 3.1. <a id="architect">Architecture</a>
 
 ![Architecture]
+
 The image above explains the design of the application, The Schwarzenegger. 
 
 The main driver of the application is `Main: Duke`. It is responsible for mainly two phases:
@@ -117,7 +118,7 @@ The main driver of the application is `Main: Duke`. It is responsible for mainly
     - This class will invoke cleanup method for the components when necessary.
     
 In addition to that, the architecture of The Schwarzenegger is broken down into several packages, mainly the following: 
-- `Ui`: This class mainly handles the UI of the application.
+- `Ui`: This class mainly handles the interactions with user of the application.
 - `Parser`: This class mainly handles the parsing and handling of user commands.
 - `Command`: This class handles the type of command.
 - `Profile`: This class manages the data of the user.
@@ -127,7 +128,7 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 
 [&#8593; Return to Top](#developer-guide)
 
-### 3.2. Ui Component
+### 3.2. <a id="ui-component">Ui Component</a>
 ![Ui Component](images/UI_Component.png)
 
 API: `Ui.java`
@@ -141,7 +142,7 @@ The `Ui` component,
 
 [&#8593; Return to Top](#developer-guide)
 
-### 3.3. Logic Component
+### 3.3. <a id="logic-component">Logic Component</a>
 
 ![Logic Component](images/logic_update.png)
 
@@ -150,7 +151,7 @@ The `Ui` component,
 
 [&#8593; Return to Top](#developer-guide)
 
-### 3.4. Model Component
+### 3.4. <a id="model-component">Model Component</a>
 
 ![Model Component](pictures/zesong/model.png)
 
@@ -163,7 +164,7 @@ The Model component contains `Profile`, `DietManager`,
 
 [&#8593; Return to Top](#developer-guide)
 
-### 3.5. Storage Component
+### 3.5. <a id="storage-component">Storage Component</a>
 
 ![Storage Class Diagram](images/Storage.png)
 
@@ -181,114 +182,119 @@ saveData() method in storage.profile is called when the user creates the user pr
 
 [&#8593; Return to Top](#developer-guide)
 
-### 3.6. Common Classes 
+### 3.6. <a id="common-classes">Common Classes</a> 
 Classes used by multiple components are in the `seedu.duke` and the `ui` package, specifically Constant.java and CommonUi.java.
 
 [&#8593; Return to Top](#developer-guide)
 
-## 4. Implementation
-This section describes some details on how the features are being implemented. All profile / diet / workout-related features.
+## 4. <a id="implementation">Implementation</a>
+This section describes some details on how the features are being implemented. All profile/ diet/ workout-related features.
 
 
 All profile/ diet/ workout-related features can be broken down into 4 distinct functionality, addition, viewing/ listing, deletion and editing.
-For diet and workout-realted features, there is an additional functionality of searching.
+For diet and workout-related features, there is an additional functionality of searching.
 
-### 4.1. Main Menu-related Features
+### 4.1. <a id="main-menu-related-features">Main Menu-related Features</a>
 
-#### 4.1.1. Help Command for Main Menu
+#### 4.1.1. <a id="main-help">Help Command for Main Menu</a>
 
 The help command allows users to view all the available commands in the main page.
 The command for help is `help`.
 
-#### 4.1.2. Redirection to Profile Menu
+#### 4.1.2. <a id="redirecting-to-profile-menu">Redirecting to Profile Menu</a>
 
-The redirection to profile page allows the user to enter Profile Menu to create, edit, view and delete user profile.
-The command for this redirection is `profile`.
+The redirection to profile page allows the user to enter Profile Menu to create, edit, view and delete user profile. The command for this redirection is `profile`.
 
-#### 4.1.3. Redirection to Diet Menu
+#### 4.1.3. <a id="redirecting-to-diet-menu">Redirecting to Diet Menu</a>
 
-The redirection to profile page allows the user to enter Diet Menu to create, edit, list and delete diet sessions.
-The command for this redirection is `diet`.
+The redirection to profile page allows the user to enter Diet Menu to create, edit, list and delete diet sessions. The command for this redirection is `diet`.
 
-#### 4.1.4. Redirection to Workout Menu
+#### 4.1.4. <a id="redirecting-to-workout-menu">Redirecting to Workout Menu</a>
 
-The redirection to profile page allows the user to enter Workout Menu to create, edit, list and delete workout sessions.
-The command for this redirection is `workout`.
+The redirection to profile page allows the user to enter Workout Menu to create, edit, list and delete workout sessions. The command for this redirection is `workout`.
 
-### 4.2. Profile-related Features
-#### 4.2.1. Creation of Profile
+### 4.2. <a id="profile-related-features">Profile-related Features</a>
+#### 4.2.1. <a id="adding-a-profile">Adding a Profile</a>
 
-User can create a new profile. 
-The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command format. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+This feature allows user to add a new profile. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command format. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+
 If the creation is successful, a confirmation message on the newly created profile will be displayed to the user. 
 
 ##### Implementation
 
-When the user attempts to create a new profile, the ProfileSession, Ui, ProfileParser, 
-Command and CommandResult class will be accessed, and the following sequence of 
-actions is called to return a command object AddProfile.
+When the user attempts to add a new profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
-1. User executes `add /n Schwarzenegger /a 30 /h 188 /w 113 /e 100`
-    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
-1. Creation of Command object.
-    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `AddProfile`.
-1. Executing Command
-    1. `ProfileSession` calls `AddProfile.execute()` with the rest of parsed input.
-    1. `AddProfile` creates a new `Profile` object with the parsed information.
-    1. `AddProfile` calls `ProfileStorage.saveData()` to save the Profile object.
+1. User executes `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
+    1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
+    1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+1. Creating `ProfileAdd` object.
+    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileAdd`.
+1. Executing command
+    1. `ProfileSession` calls `ProfileAdd.execute()` with the rest of parsed input.
+    1. `ProfileAdd` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is an existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileAdd` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information. 
+    1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileAdd` creates a new `Profile`.
+    1. `ProfileAdd` calls `ProfileStorage.saveData()` to save the `Profile` object.
+    1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
-    1. `ProfileSession` calls `AddProfile.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
 
-All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
-
-##### Design considerations:
-Parsing of the user’s input command:
-
-- Alternative 1 (current choice): User’s command is split into size 2 array first
-containing command type and command arguments. Then arguments are split
-into command tag and information pairs.  
-
-|     |     |
-|-----|-----|
-|**Pros** | Command tags do not have to follow a fixed order.|
-|**Cons** | It takes multiple steps in parsing the command.|
-
-- Alternative 2: User’s command is divided by space
-                 
-|     |     |
-|-----|-----|
-|**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
-|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
+All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
 
 The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
+##### Design considerations:
+Parsing of the user’s input command:
+
+- Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
+
+|     |     |
+|-----|-----|
+|**Pros** | Command tags do not have to follow a fixed order.|
+|**Cons** | It takes multiple steps in parsing the command.|
+
+- Alternative 2: User’s command is divided by space
+                 
+|     |     |
+|-----|-----|
+|**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
+|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive, especially for user's name.|
+
 [&#8593; Return to Top](#developer-guide)
-#### 4.2.2. Viewing Profile
-The feature to view profile allows the user to view added profile
-with calculated BMI based on height and weight.
+
+#### 4.2.2. <a id="viewing-a-profile">Viewing a Profile</a>
+This feature allows user to view added profile with calculated BMI based on height and weight. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. redundant parameters. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+
+If the data loading is successful, a message on the added profile will be displayed to the user. 
 
 ##### Implementation
-When the user attempts to view profile, the ProfileSession, Ui, ProfileParser, 
-Command and CommandResult class will be called upon. The following sequence of steps will then occur:
+When the user attempts to view an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `view`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
-    1. `ProfileParser.parseCommand()` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
-1. Creation of Command object.
-    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `ViewProfile`.
-1. Executing Command
-    1. `ProfileSession` calls `ViewProfile.execute()` with the rest of parsed input.
-    1. `ViewProfile` returns the same `Profile` object.  
+    1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+1. Creating `ProfileView` object.
+    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileView`.
+1. Executing command
+    1. `ProfileSession` calls `ProfileView.execute()` with the rest of parsed input.
+    1. `ProfileView` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileView` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileView` calls `Profile.toString()` to get string representation of `Profile`.
+    1. `ProfileView` returns a result to `ProfileSession`.    
 1. Prompting result to user.
-    1. `ProfileSession` calls `ViewProfile.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommandResult.getCommandResult()` to get the `CommandResult` object.
+    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+
+All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+
+The sequence diagram below summarizes how viewing an added profile works:
+
+![Load Data Sequence Diagram](pictures/khoa/ViewProfile.png)
+
 ##### Design considerations:
-Aspects: Status of stored data
+Aspects: Loading of stored data
 
 - Alternative 1 (current choice): call public methods of Storage class to 
 load the profile from hard disk every time the user wants to view profile.
@@ -296,49 +302,52 @@ load the profile from hard disk every time the user wants to view profile.
 |     |     |
 |-----|-----|
 |**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|  
-|**Cons** | Execution time is slow down due to loading the data.|
+|**Cons** | Execution time is slow down due to multiple times of loading the data.|
 
-- Alternative 2: call public methods of Storage class to 
-load the profile from hard disk when user enter Profile Menu.
+- Alternative 2: call public methods of Storage class to load the profile from hard disk only when user enters Profile Menu.
 
 |     |     |
 |-----|-----|
 |**Pros** | Execution time is fast.|  
-|**Cons** | Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.|
+|**Cons** | Profile data is not updated in real time if user edits it in text editor while running The Schwarzenegger.|
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.2.3. Editing of Profile
-User can anytime go back to edit a profile created in the past such as
-editing physique data.
+#### 4.2.3. <a id="editing-a-profile">Editing a Profile</a>
+This feature allows user to anytime go back to edit a profile created in the past such as editing physique data and expected daily calories intake. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command format. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+
+If the editing is successful, a confirmation message on the edited profile will be displayed to the user. 
 
 ##### Implementation
-When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, 
-Command and CommandResult class will be called upon. The following sequence of steps will then occur:
+When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `edit /w 60`
-    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
-    1. `ProfileParser.parseCommand()` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
-1. Creation of command object.
-    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `EditProfile`.
+    1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
+    1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+1. Creating `ProfileEdit` object.
+    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileEdit`.
 1. Executing Command
-    1. `ProfileSession` calls `EditProfile.execute()` with the rest of parsed input.
-    1. `EditProfile` calls `ProfileParser.extractCommandTagAndInfo()` to parse the arguments to identify the tags.
-    1. `EditProfile` creates and returns a new `Profile` Object with the parsed information.  
+    1. `ProfileSession` calls `ProfileEdit.execute()` with the rest of parsed input.
+    1. `ProfileEdit` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileEdit` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information.
+    1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileEdit` creates a new `Profile`.
+    1. `ProfileEdit` calls `Profile.equals()` to compare the edited and existing profile. If there are no changes, `ProfileEdit` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `vi`.
+    1. `ProfileEdit` calls `ProfileStorage.saveData()` to save the edited `Profile` object.
+    1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
-    1. `ProfileSession` calls `EditProfile.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
 
-All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
-The following sequence diagram shows how the new command works
+All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+
+The sequence diagram below summarizes how creating a new profile works:
+
+![Load Data Sequence Diagram](pictures/khoa/EditProfile.png)
 
 ##### Design considerations:
 Parsing of the user’s input command:
 
-- Alternative 1 (current choice): User’s command is split into size 2 array first
-containing command type and command arguments. Then arguments are split
-into command tag and information pairs.  
+- Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
 
 |     |     |
 |-----|-----|
@@ -354,42 +363,48 @@ into command tag and information pairs.
 
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.2.4. Deletion of Profile
-User can delete a profile created in the past.
+#### 4.2.4. <a id="deleting-a-profile">Deleting a Profile</a>
+
+This feature allows user to delete a profile created in the past. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. redundant parameters. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
+
+If the deletion is successful, a confirmation message on the profile deletion will be displayed to the user. 
 
 ##### Implementation
-When the user attempts to view profile, the ProfileSession, Ui, ProfileParser, 
-Command and CommandResult class will be called upon. The following sequence of steps will then occur:
+When the user attempts to delete an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `delete`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    2. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input.
-    1. `ProfileParser.parseCommand()` calls `ProfileParser.splitCommandWordAndArgs()` to split user input into string array.
-1. Creation of Command object.
-    1. Based on the parsed input, `ProfileParser.parseCommand()` returns the correct Command Object `DeleteProfile`.
-1. Executing Command
-    1. `ProfileSession` calls `ViewProfile.execute()` with the rest of parsed input.
-    1. `DeleteProfile` returns the null.  
+    1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+1. Creating `ProfileDelete` object.
+   1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileDelete`.
+1. Executing command
+    1. `ProfileSession` calls `ProfileDelete.execute()` with the rest of parsed input.
+    1. `ProfileDelete` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileDelete` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileDelete` calls `Ui.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `iv`.
+    1. `ProfileDelete` calls `ProfileStorage.saveData()` to save a `null` object which represents a deleted profile.
+    1. `ProfileDelete` returns a result to `ProfileSession`.   
 1. Prompting result to user.
-    1. `ProfileSession` calls `DeleteProfile.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `profileUi.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
 
-All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+
+The sequence diagram below summarizes how deleting an added profile works:
+
+![Load Data Sequence Diagram](pictures/khoa/DeleteProfile.png)
 
 ##### Design considerations:
 
-Aspects: Status of stored data
+Aspects: Loading of stored data
 
-- Alternative 1 (current choice): call public methods of Storage class to 
-load the profile from hard disk every time the user wants to view profile.
+- Alternative 1 (current choice): call public methods of Storage class to load the profile from hard disk every time the user wants to delete profile.
 
 |     |     |
 |-----|-----|
 |**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|  
 |**Cons** | Execution time is slow down due to loading the data.|
 
-- Alternative 2: call public methods of Storage class to 
-load the profile from hard disk when user enter Profile Menu.
+- Alternative 2: call public methods of Storage class to load the profile from hard disk when user enter Profile Menu.
 
 |     |     |
 |-----|-----|
@@ -629,8 +644,8 @@ When the user types `end` the following sequence occurs.
 [&#8593; Return to Top](#developer-guide)
 
 
-### 4.4. Workout-related Features
-#### 4.4.1. Creation of new workout session
+### 4.4. <a id="workout-related-features">Workout-related Features</a>
+#### 4.4.1. <a id="creating-a-new-workout-session">Creating a New Workout Session</a>
 
 Users can create a new workout session. The failure to do so will trigger an exception where the user will be notified 
 of the reason, e.g. invalid command or IO related errors. The action will be aborted. If the creation is successful, 
@@ -684,7 +699,7 @@ Parsing of the user’s input command:
 |**Cons** | The constant prompting could subject the application to a negative experience in the difficulty to use the commands.|
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.1.1. Adding an exercise
+#### 4.4.1.1. <a id="adding-an-exercise">Adding an Exercise</a>
 
 Users can add a new exercise. The failure to do so will trigger an exception where the user will be notified of 
 the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
@@ -714,7 +729,7 @@ The sequence diagram below summarizes how creating new workout session works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.1.2. Deleting an exercise
+#### 4.4.1.2. <a id="deleting-an-exercise">Deleting an Exercise</a>
 
 Users can delete an exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
 the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
@@ -744,7 +759,7 @@ The sequence diagram below summarizes how creating new workout session works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.1.3. Listing all exercises in this session
+#### 4.4.1.3. <a id="listing-all-exercises-in-this-session">Listing All Exercises in This Session</a>
 
 
 [&#8593; Return to Top](#developer-guide)
@@ -798,7 +813,7 @@ print the list
 |**Cons** | All data of pastRecord will be exposed.|
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.3. Editing of workout session
+#### 4.4.3. Editing workout session
 User can anytime go back to edit a workout session created in the past such as
 adding or removing exercies in that session.
 
@@ -851,7 +866,7 @@ meta information in a separate file
 |**Cons** | The application initialization will grow quickly as the application scales.|
 
 [&#8593; Return to Top](#developer-guide)
-#### 4.4.4. Deletion of workout session
+#### 4.4.4. Deleting a workout session
 User can delete a workout session created in the past by giving its index.
 
 Each past workout session is stored in a different file name following its creation time.
@@ -899,7 +914,7 @@ The following sequence diagram shows how the new command works
 |-----|-----|
 |**Pros** | More alteratives for users. Can bulk delete files with certain attributes|  
 |**Cons** | Tags and dates does not uniquely identify the record hence may result in accidental wrong deletion|
-#### 4.4.5. Search based on conditions
+#### 4.4.5. Searching based on conditions
 The feature `search` allows the user to view a summary of all the history 
 workout sessions which satisfies certain conditions.
 

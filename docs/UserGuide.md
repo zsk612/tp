@@ -1,7 +1,7 @@
 # User Guide
 By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 
-## Table of content
+## Table of Contents
 1. [**Introduction**](#intro)
 1. [**Quick Start**](#quickstart)
 1. [**Features**](#features)<br>
@@ -228,7 +228,7 @@ Expected outcome:
 ```
 
 #### 3.2.3. <a id="profile-view">Viewing a Profile: `view`</a>
-You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI and give you suggestions on an expected weight for better fitness if it detects your current expectation is not appropriate.
+You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI classification so that you can have a good suggestion on your current fitness.
 
 __Format:__ `view`  
 

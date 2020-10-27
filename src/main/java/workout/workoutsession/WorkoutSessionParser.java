@@ -1,7 +1,8 @@
 package workout.workoutsession;
 
+import exceptions.workout.workoutsession.DeleteFormatException;
 import ui.workout.workoutsession.WorkoutSessionUi;
-import workout.workoutsession.exercise.Exercise;
+import models.Exercise;
 
 public class WorkoutSessionParser {
 
@@ -38,12 +39,12 @@ public class WorkoutSessionParser {
     }
 
 
-    public static int deleteParser(String[] input) {
+    public static int deleteParser(String[] input) throws DeleteFormatException {
         int returnInt = 0;
         try {
             returnInt = Integer.parseInt(input[1]);
         } catch (NumberFormatException e) {
-            WorkoutSessionUi.deleteFormatError();
+            throw new DeleteFormatException();
         }
         return returnInt;
     }

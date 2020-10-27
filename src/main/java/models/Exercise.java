@@ -1,4 +1,4 @@
-package workout.workoutsession.exercise;
+package models;
 
 public class Exercise {
 
@@ -23,5 +23,13 @@ public class Exercise {
 
     public String getDescription() {
         return moveName;
+    }
+
+    public String getRepetitions() {
+        return Integer.toString(repetitions);
+    }
+
+    public String getWeight() {
+        return Integer.toString(weight);
     }
 }
