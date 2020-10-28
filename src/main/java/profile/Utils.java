@@ -13,8 +13,9 @@ public class Utils {
      * @return Whether input profile is valid.
      */
     public static boolean checkValidProfile(Profile profile) {
-        return (checkValidName(profile.getName())
-                && checkCalories(profile.getCalories())
+        return (profile != null
+                && checkValidName(profile.getName())
+                && checkValidCalories(profile.getCalories())
                 && checkValidHeight(profile.getHeight())
                 && checkValidWeight(profile.getWeight())
                 && checkValidWeight(profile.getExpectedWeight()));
@@ -36,7 +37,7 @@ public class Utils {
      * @param calories User's expected calories intake daily.
      * @return Whether calories amount is not negative.
      */
-    public static boolean checkCalories(double calories) {
+    public static boolean checkValidCalories(double calories) {
         return calories >= 0;
     }
 
