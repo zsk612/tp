@@ -605,9 +605,28 @@ You can see a complete list of available commands under Workout Menu and how to 
 
 __Format:__ `help`
 
-Example |  Outcome
---------|------------------
-**Command**: <br> `help` <br><br> **Description:** <br> show help manual| TODO:actual code UI output
+Example: `help`
+
+Expected outcome:
+```
+_________________________________________________________________________________________________
+	 New      - new </t [TAG]...>
+	          Create a new workout session and tags. Multiple tags are separated by ','.
+	 List     - list </s [START_DATE]> </e [END_DATE]>
+	          Show all past sessions. Can display sessions between a certain period
+	 Delete   - delete [INDEX]
+	          Delete the record indexed at x
+	 Edit     - edit [INDEX]
+	          Edit the record indexed at x
+	 Clear    - clear
+	          Clear all past results
+	 Search   - search </t [TAG]...> </d [DATE]>
+	          Search records based on tags and dates. Multiple tags are seperated by ','.
+	 End      - end
+	          Go back to Main Menu
+_________________________________________________________________________________________________
+
+```
 
 ### 3.4.2. <a id="workout-start">Starting a New Workout Session: `new`</a>
 Creates a new workout session and go into the session. 

@@ -32,7 +32,7 @@ public class EditWS extends Command {
             throw new NotANumberException();
         } catch (IndexOutOfBoundsException e) {
             logger.warning("Insufficient arguments given!");
-            throw new InsufficientArgumentException();
+            throw new InsufficientArgumentException("edit [INDEX]");
         }
 
         String filePath;

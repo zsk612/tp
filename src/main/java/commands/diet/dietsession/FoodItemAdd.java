@@ -4,6 +4,7 @@ import commands.Command;
 import diet.dietsession.DietSessionParser;
 import diet.dietsession.Food;
 import exceptions.diet.NegativeCaloriesException;
+import exceptions.diet.NoNameException;
 import exceptions.profile.InvalidCaloriesException;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
@@ -40,6 +41,10 @@ public class FoodItemAdd extends Command {
             logger.log(Level.WARNING, "Put calories in a wrong format");
         } catch (NegativeCaloriesException e) {
             ui.showToUser("Please enter a positive number for calories!");
+            logger.log(Level.WARNING, "Put negative calories");
+        } catch (NoNameException e) {
+            ui.showToUser("Please enter food name!");
+            logger.log(Level.WARNING, "no food name");
         }
     }
 }
