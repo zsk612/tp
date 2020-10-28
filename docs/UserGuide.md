@@ -346,12 +346,31 @@ Expected outcome:
 ```
 
 ### 3.3. <a id="diet-menu">Diet Menu</a>
-
+Diet Menu manages your diet sessions which record food items and calories intake.
 ### 3.3.1. <a id="diet-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Diet Menu and how to use them.
 
 __Format:__ `help`
 Example: `help`
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 List     - list
+	          Show all past diet session
+	 New      - new /d [DATE] /t [TAG]
+	          Create a new diet session
+	 Delete   - delete [INDEX_OF_SESSION]
+	          Delete the diet session at the input index
+	 Edit     - edit [INDEX_OF_SESSION]
+	          Edit the diet session at the input index
+	 Search   - search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>
+	          Search the diet session in between starting and end dates with tags in its name
+	 Clear    - clear
+	          Clear all past diet sessions
+	 End      - end
+	          Go back to Main Menu
+	 _________________________________________________________________________________________________
+```
  
 ### 3.3.2. <a id="diet-start">Starting to Record Diet Data: `new`</a>
 This command creates a new meal session.
@@ -359,14 +378,23 @@ You will be directed immediately into the meal session.
 
 The date and tag can be added on creation with "/d" for date and "/t" for meal type.
 
-__Format:__ `new /d [DATE] /t [TYPE]`
+__Format:__ `new /d [DATE] /t [TAG]`
  
 Example: `new /d 2020-08-05 /t lunch`
 
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Starting Diet Session!
+	 _________________________________________________________________________________________________
+
+new /d 2020-08-05 /t lunch
+```
+
 Situation | Example |  Outcome
 ----------|--------|------------------
-Create a meal session | `new`| a meal session of type unspecified with today's date will be created
-Create a meal session with date and type| `new /d 2020-05-04 /t breakfast`| A meal session with date 2020-05-04 and type breakfast will be created
+Create a meal session | `new`| a meal session tagged as unspecified with today's date will be created
+Create a meal session with date and tag| `new /d 2020-05-04 /t breakfast`| A meal session with date 2020-05-04 and type breakfast will be created
 
 #### 3.3.2.1. <a id="meal-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Diet Session and how to use them.
@@ -374,12 +402,36 @@ You can see a complete list of available commands under Diet Session and how to 
 __Format:__ `help` 
 
 Example: `help`
+
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Add      - add [FOOD_NAME] /c [CALORIES]
+	          Add a new food item
+	 List     - list
+	          Show all food items
+	 Delete   - delete [INDEX_OF_FOOD]
+	          Delete the food item at the input index
+	 Clear    - clear
+	          Clear all food items
+	 End      - end
+	          Go back to the Diet Menu.
+	 _________________________________________________________________________________________________
+```
 #### 3.3.2.2. <a id="meal-add">Adding Food Items for the Current Meal: `add`</a>
 This command adds a food item into the current meal session
 
 __Format:__ `add [FOOD_NAME] /c [CALORIES]` 
 
 Example: `add chicken nuggets /c 120`
+
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Yay! You have added chicken nuggets with calories: 120.0
+	 _________________________________________________________________________________________________
+
+```
 
 #### 3.3.2.3. <a id="meal-list">Listing Data for the Current Meal: `list`</a>
 Lists all the added dishes for the current meal, with a numbered sequence according to sequence entered.
@@ -388,19 +440,49 @@ __Format:__ `list`
 
 Example: `list`
 
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Yay! You have added chicken nuggets with calories: 120.0
+	 _________________________________________________________________________________________________
+
+```
+
 #### 3.3.2.4. <a id="meal-delete">Deleting Data From the Current Meal: `delete`</a>
 Deletes the dish according to the index in the current meal session list.
 
 __Format:__ `delete [INDEX_OF_SESSION]`
 
-Example: `delete 3`
- 
+Example: `delete 1`
+
+Expected outcome:
+
+```
+	 _________________________________________________________________________________________________
+	 You have deleted chicken nuggets with calories: 120.0 from your list!
+	 _________________________________________________________________________________________________
+
+``` 
 #### 3.3.2.5. <a id="meal-clear">Clearing Data From the Current Meal: `clear`</a>
-Clears all the dishes in the current meal list.
+Clears all the dishes in the current meal list. This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
 
 __Format:__ `clear` 
 
 Example: `clear`
+
+Expected outcome:
+```
+     	 _________________________________________________________________________________________________
+     	 Are you sure you want to clear all records? This action is irrevocable.
+     	 Key in "YES" to confirm.
+     	 _________________________________________________________________________________________________
+     
+     Diet Menu > New Diet Session >>>>> YES
+     	 _________________________________________________________________________________________________
+     	 Oops you have cleared all the food items.
+     	 _________________________________________________________________________________________________
+
+```
 
 #### 3.3.2.6. <a id="meal-end">Ending the Recording of Meal Data: `end`</a>
 Ends the current meal session and saves the data.
@@ -409,6 +491,13 @@ __Format:__ `end`
 
 Example: `end`
 
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Exiting Diet Session!
+	 _________________________________________________________________________________________________
+
+```
 ### 3.3.3. <a id="diet-list">Listing All Past Diet Sessions: `list`</a>
 Obtains a list of information about past diet sessions together with their numbered index.
 
@@ -416,43 +505,98 @@ __Format:__ `list`
 
 Example: `list`
 
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Here is your diet session list: 
+	 	1. 2020-08-05 lunch [Total calories: 0.0]
+	 	2. 2020-10-28 unspecified [Total calories: 0.0]
+	 _________________________________________________________________________________________________
+
+```
+
 ### 3.3.4. <a id="diet-edit">Editing a Past Diet Session: `edit`</a>
 Edits a previous meal session based on a numbered index that can be found in the list.
 
 __Format:__ `edit [INDEX_OF_SESSION]`
 
-Example: `edit 3` 
+Example: `edit 2` 
+
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Starting Diet Session!
+	 _________________________________________________________________________________________________
+
+Diet Menu > Diet Session 2 >>>>> 
+```
 
 ### 3.3.5. <a id="diet-delete">Deleting a Past Diet Session: `delete`</a>
 Deletes a previous meal session based on a numbered index that can be found in the list.
 
 __Format:__ `delete [INDEX_OF_SESSION]`
 
-Example: `delete 3`
+Example: `delete 2`
+
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Oh no! You have deleted 2020-10-28 unspecified
+	 _________________________________________________________________________________________________
+
+```
  
 ### 3.3.6. <a id="diet-clear">Clearing All Past Diet Sessions: `clear`</a>
-Deletes all previous diet sessions.
+Clears all previous diet sessions. This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
 
 __Format:__ `clear`
 
 Example: `clear`
 
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Are you sure you want to clear all records? This action is irrevocable.
+	 Key in "YES" to confirm.
+	 _________________________________________________________________________________________________
+
+Diet Menu >>>>> YES
+	 _________________________________________________________________________________________________
+	 You have cleared all diet sessions!
+	 _________________________________________________________________________________________________
+
+```
+
 ### 3.3.7. <a id="diet-search">Searching for Past Diet Sessions: `search`</a>
 Searches for specified range of diet sessions with identifiers like start date, end date and tags.
 
-__Format:__ `search /s [START DATE] /e [END DATE] /t [TAG]`
+__Format:__ `search </s [START DATE]> </e [END DATE]> </t [TAG]>`
 
 Example: `search /s 2020-05-06 /e 2020-05-10 /t breakfast`
 
-### 3.3.8. <a id="diet-end">Returning to Main Menu: `end`</a>
-Ends the current meal session and saves the data.
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Here are the search results!
+	 	1. 2020-05-08 breakfast
+	 _________________________________________________________________________________________________
 
-__Format:__ `end` 
+```
+
+### 3.3.8. <a id="diet-end">Returning to Main Menu: `end`</a>
 Exits the diet manager and returns you back to the main menu.
 
 __Format:__ `end`
 
 Example: `end`
+
+Expected outcome:
+```
+	 _________________________________________________________________________________________________
+	 Returning to Main Menu...
+	 _________________________________________________________________________________________________
+
+```
 
 ### 3.4. <a id="workout-menu">Workout Menu</a>
 

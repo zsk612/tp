@@ -23,7 +23,8 @@ public class DietSessionDelete extends Command {
         try {
             assert !input.isEmpty() : "No files to delete or wrong folder";
             assert listOfFiles != null;
-            String fileName = listOfFiles[Integer.parseInt(input) - 1].getName();
+            String fileName = listOfFiles[Integer.parseInt(input) - 1]
+                    .getName().replaceFirst("[.][^.]+$", "");
             ui.showToUser("Oh no! You have deleted " + fileName);
             listOfFiles[Integer.parseInt(input) - 1].delete();
             logger.log(Level.INFO, "Deleted Diet Session successfully");
