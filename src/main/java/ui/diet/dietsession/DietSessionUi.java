@@ -6,8 +6,6 @@ import ui.CommonUi;
 
 public class DietSessionUi extends CommonUi {
 
-    private static CommonUi printer = new CommonUi();
-
     public static void printHelp() {
         StringBuilder helpMessage = new StringBuilder();
 
@@ -15,23 +13,23 @@ public class DietSessionUi extends CommonUi {
                 "Add a new food item"));
         helpMessage.append(helpFormatter("List", "list",
                 "Show all food items"));
-        helpMessage.append(helpFormatter("Delete", "delete [INDEX_OF_FOOD]",
+        helpMessage.append(helpFormatter("Delete", "delete [INDEX]",
                 "Delete the food item at the input index"));
         helpMessage.append(helpFormatter("Clear", "clear",
                 "Clear all food items"));
         helpMessage.append(helpFormatter("End", "end",
                 "Go back to the Diet Menu."));
-        printer.showToUser(helpMessage.toString().trim());
+        showUser(helpMessage.toString().trim());
     }
 
     public void printOpening() {
-        showToUser("Starting Diet Session!");
+        showUser("Starting Diet Session!");
     }
 
     public static String MESSAGE_NEGATIVE_CALORIES = "The amount of calories in a food cannot be negative!";
 
     public void printExit() {
-        showToUser("Exiting Diet Session!");
+        showUser("Exiting Diet Session!");
     }
 
     public String getInput() {
