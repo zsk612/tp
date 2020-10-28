@@ -5,7 +5,6 @@ import commands.CommandResult;
 import diet.dietmanager.DietManager;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
-import exceptions.profile.RedundantParamException;
 import models.Profile;
 import storage.profile.ProfileStorage;
 
@@ -32,10 +31,6 @@ public class ProfileView extends Command {
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         super.execute(commandArgs, storage);
-
-        if (!commandArgs.isEmpty()) {
-            throw new RedundantParamException(COMMAND_WORD_VIEW);
-        }
 
         Profile profile;
         try {
