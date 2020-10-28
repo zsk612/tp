@@ -5,7 +5,7 @@ import exceptions.SchwarzeneggerException;
 public class InvalidSearchDateException extends SchwarzeneggerException {
 
     /**
-     * Constructs SchwarzeneggerException object inheriting class Exception.
+     * Constructs InvalidSearchDateException object inheriting class SchwarzeneggerException.
      *
      * @param message Error message.
      */

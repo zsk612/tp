@@ -1,0 +1,20 @@
+@startuml
+@startuml
+actor user
+user -> DietSession : input
+activate DietSession
+
+DietSession -> CommandLib : get()
+activate CommandLib
+CommandLib --> DietSession : FoodItemAdd
+deactivate CommandLib
+
+DietSession -> FoodItemAdd : execute()
+activate FoodItemAdd
+
+FoodItemAdd --> DietSession
+deactivate FoodItemAdd
+
+DietSession --> user : output
+@enduml
+@enduml

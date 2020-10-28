@@ -1,0 +1,21 @@
+@startuml
+!define PLANTUML_HOME %dirpath()/../../umldiagram
+!include PLANTUML_HOME/style.puml
+
+actor user
+user -> DietManager : input
+activate DietManager
+
+DietManager -> CommandLib : get()
+activate CommandLib
+CommandLib --> DietManager : Command
+deactivate CommandLib
+
+DietManager -> DietSessionClear : execute()
+activate DietSessionClear
+
+DietSessionClear --> DietManager
+deactivate DietSessionClear
+
+DietManager --> user : output
+@enduml
