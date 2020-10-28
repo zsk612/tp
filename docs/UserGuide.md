@@ -49,6 +49,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.8. [Returning to Main Menu: `end`](#workout-end)
 1. [**Command Summary**](#command-summary)
 1. [**Notes**](#notes)
+1. [**FAQ**](#faq)
 
 ## 1. <a id="intro">Introduction</a>
 
@@ -61,7 +62,7 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 1. Ensure you have Java `11` or above installed in your Computer.
 1. Download the latest `duke.jar` from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
 1. Copy the file to the folder you want to use as the home folder for The Schwarzenegger.
-1. Open command prompt (on Windows)  or terminal (on MacOS/ Linux) and change to the directory of the folder of the application in step 3.
+1. Open command prompt (on Windows)  or terminal (on macOS/ Linux) and change to the directory of the folder of the application in step 3.
 1. Key in `java -jar duke.jar`. If the setup is correct, you should see something like below:
 
     ```
@@ -468,7 +469,7 @@ Example |  Outcome
 Creates a new workout session and go into the session. 
 You can add tags with “/t”. Tags are optional and more than one tag can be attached to a session.
 
-Tags are optional and more than one tag can be attached to a session. If more than one tag is added, each one should be seperated by `,`. After `new`, user will be directed into workout session to manage the given session. You may verify that by looking at the cursor changes from 
+Tags are optional and more than one tag can be attached to a session. If more than one tag is added, each one should be separated by `,`. After `new`, user will be directed into workout session to manage the given session. You may verify that by looking at the cursor changes from 
 
 `Workout Menu >>>>> `
 
@@ -532,7 +533,7 @@ You can see all your past workout sessions. They will be summarised and printed 
 
 You can specify start date and end date to show sessions created in a selected period using `\s` for start date and `\e` for end date. If start date is not specified, it will take the earliest date a start date. If end date is not specified, it will take today as the end date.
 
-__Format:__ `list [/s <START DATE>] [/e <END DATE>]`  
+__Format:__ `list </s [START_DATE]> </e [END_DATE]>`  
 
 Example `list /e 20201026`
 
@@ -548,9 +549,9 @@ Expected output
 ### 3.4.4. <a id="workout-edit">Editing a Workout Session: `edit`</a>
 You can edit a past workout session in the record list.
 
-`__Format:__ `edit <INDEX>` 
+__Format:__ `edit [INDEX]` 
 
-You will go into the specific workout session after typing this command. You may verify by seeing the curcur changes from 
+You will go into the specific workout session after typing this command. You may verify by seeing the cursor changes from 
 
 ```Workout Menu >>>>>``` 
 
@@ -560,18 +561,17 @@ to
 
 The index can be found by listing all results or searching the target record.
 
-Example
-`edit 1`
+Example: `edit 1`
 
 Expected output:
 ```
-Workout Menu > Workout Session 3 >>>>> 
+Workout Menu > Workout Session 1 >>>>> 
 ```
 
 ### 3.4.5. <a id="workout-delete">Deleting a Workout Session: `delete`</a>
 You can delete a past workout session in the record list.
 
-__Format:__ `delete [INDEX_OF_SESSION]` 
+__Format:__ `delete [INDEX]` 
 
 The index can be found by listing the results
 
@@ -580,18 +580,18 @@ Example：
 
 Expected output:
 ```
- ______________________________________________________________________________
-	 You have deleted that record!
-	 ______________________________________________________________________________
+    ______________________________________________________________________________
+    You have deleted that record!
+    ______________________________________________________________________________
 ```
 ### 3.4.6. <a id="workout-search">Searching a List of Workout Session: `search`</a>
 You can search for a list of workout sessions that matches certain conditions. For example, you can search for sessions created on a specific day or sessions that contains certain tags.
 
-__Format:__ `Search </d [DATE]> </t [TAG]...>`
+__Format:__ `search </d [DATE]> </t [TAG]...>`
 
 - Tag condition
 
-You can search records containing (a list of) tags with `/t` followed by the tags. Multiple tags should be seperated by `,`. If you give multiple tags, only sessions that contains all the tags will be selected. You can search with part of the tag as well. For example searching with tag `leg` will match any tags that contains `leg`, e.g. `legs`.
+You can search records containing (a list of) tags with `/t` followed by the tags. Multiple tags should be separated by `,`. If you give multiple tags, only sessions that contains all the tags will be selected. You can search with part of the tag as well. For example searching with tag `leg` will match any tags that contains `leg`, e.g. `legs`.
 
 - Date condition
 
@@ -688,10 +688,11 @@ Return to Main Menu|`end`
 **Action** |  **Format**
 --------|----------------------
 Help|`help`
-Start meal session |`new /d [DATE] /t [TYPE]`<br><br>E.g. `new /d 2020-05-04 /t breakfast`
+Start diet session |`new /d [DATE] /t [TAG]`<br><br>E.g. `new /d 2020-05-04 /t breakfast`
 List|`list`
-Edit|`edit [INDEX_OF_SESSION]`<br><br>E.g. `edit 1`
-Delete|`delete [INDEX_OF_SESSION]`<br><br>E.g. `delete 1`
+Edit|`edit [INDEX]`<br><br>E.g. `edit 1`
+Delete|`delete [INDEX]`<br><br>E.g. `delete 1`
+Search|`search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>`<br><br>E.g. `search /t lunch`
 Clear|`clear`
 Return to Main Menu|`end`
 
@@ -702,7 +703,7 @@ Return to Main Menu|`end`
 Help|`help`
 Add |`add [FOOD_NAME] /c [CALORIES]`<br><br>E.g. `add spinach /c 90`
 List|`list`
-Delete|`delete [INDEX_OF_FOOD]`<br><br>E.g. `delete 1`
+Delete|`delete [INDEX]`<br><br>E.g. `delete 1`
 Clear|`clear`
 Return to Main Menu|`end`
 
@@ -710,12 +711,12 @@ Return to Main Menu|`end`
 
 **Action** |  **Format**
 --------|----------------------
-Start workout session |`new [/t <TAG>...]`<br><br>E.g. `new /t leg, chest`
-List|`list [/s <START DATE>] [/e <END DATE]`<br><br>E.g. `list /s 20201001 /e 2020/10/25`
-Edit|`edit <INDEX>`<br><br>E.g. `edit 1`
-Delete|`delete <INDEX>`<br><br>E.g. `delete 1`
-Search|`search </d [DATE]> </t [TAG]...>`<br><br>E.g. `search /t leg day, chest /d 2020-10-18`
 Help|`help`
+Start workout session |`new </t [TAG]...>`<br><br>E.g. `new /t leg, chest`
+List|`list </s [START_DATE]> </e [END_DATE]>`<br><br>E.g. `list /s 20201001 /e 2020/10/25`
+Edit|`edit <INDEX>`<br><br>E.g. `edit 1`
+Delete|`delete [INDEX]`<br><br>E.g. `delete 1`
+Search|`search </t [TAG]...> </d [DATE]>`<br><br>E.g. `search /t leg day, chest /d 2020-10-18`
 Clear|`clear`
 Return to Main Menu|`end`
 
@@ -740,3 +741,15 @@ Return to Main Menu|`end`
     
     `dd MM yyyy`
     `ddMMyyyy`
+
+## 6. <a id="faq">FAQ</a>
+Below are the answers to some frequently asked questions about The Schwarzenegger:
+
+**Q**: Can I use The Schwarzenegger on another operating systems apart from Windows?<br>
+**A**: Yes. The Schwarzenegger is compatible with Windows, macOS and Linux.
+
+**Q**: How do I transfer my data to another Computer?<br>
+**A**: Install The Schwarzenegger in the other computer and overwrite the `saves` folder it creates with the `saves` folder of your previous The Schwarzenegger.
+
+**Q**: Can I exit The Schwarzenegger without typing `end` command?<br>
+**A**: Yes. Your data is saved automatically to `saves` folder whenever it changes. Therefore, you can exit The Schwarzenegger worry-free.

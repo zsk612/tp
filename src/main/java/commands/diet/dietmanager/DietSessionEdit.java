@@ -3,7 +3,6 @@ package commands.diet.dietmanager;
 import commands.Command;
 import diet.dietsession.DietSession;
 import storage.diet.DietStorage;
-import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,7 +12,6 @@ import java.util.logging.Level;
 public class DietSessionEdit extends Command {
 
     static final String FILEPATH = "saves/diet/";
-    DietManagerUi ui = new DietManagerUi();
 
     /**
      * Overrides execute for edit command to edit diet sessions.

@@ -3,14 +3,11 @@ package commands.diet.dietsession;
 import commands.Command;
 import diet.dietsession.Food;
 import storage.diet.DietStorage;
-import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 
 public class FoodItemDelete extends Command {
-
-    DietSessionUi ui = new DietSessionUi();
 
     /**
      * Overrides execute for delete command to delete food items.

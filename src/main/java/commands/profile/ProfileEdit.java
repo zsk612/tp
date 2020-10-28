@@ -12,9 +12,6 @@ import java.util.HashMap;
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
 import static commands.ExecutionResult.SKIPPED;
-import static ui.profile.ProfileUi.MESSAGE_EDIT_NOTHING;
-import static ui.profile.ProfileUi.MESSAGE_EDIT_PROFILE_ACK;
-import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.ProfileParser.extractCalories;
 import static profile.ProfileParser.extractCommandTagAndInfo;
 import static profile.ProfileParser.extractExpectedWeight;
@@ -22,6 +19,9 @@ import static profile.ProfileParser.extractHeight;
 import static profile.ProfileParser.extractName;
 import static profile.ProfileParser.extractWeight;
 import static seedu.duke.Constant.COMMAND_WORD_EDIT;
+import static ui.profile.ProfileUi.MESSAGE_EDIT_NOTHING;
+import static ui.profile.ProfileUi.MESSAGE_EDIT_PROFILE_ACK;
+import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;
 
 /**
  * A representation of the command for editing profile.
@@ -45,15 +45,7 @@ public class ProfileEdit extends Command {
             profile = storage.loadData();
             assert profile != null : "profile should not be null after loading";
 
-            HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_EDIT, commandArgs);
-            String name = parsedParams.containsKey("/n") ? extractName(parsedParams) : profile.getName();
-            int height = parsedParams.containsKey("/h") ? extractHeight(parsedParams) : profile.getHeight();
-            double weight = parsedParams.containsKey("/w") ? extractWeight(parsedParams) : profile.getWeight();
-            double expectedWeight = parsedParams.containsKey("/e")
-                    ? extractExpectedWeight(parsedParams) : profile.getExpectedWeight();
-            double calories = parsedParams.containsKey("/c") ? extractCalories(parsedParams) : profile.getCalories();
-
-            Profile editedProfile = new Profile(name, height, weight, expectedWeight, calories);
+            Profile editedProfile = createEditedProfile(commandArgs, profile);
 
             if (profile.equals(editedProfile)) {
                 return new CommandResult(MESSAGE_EDIT_NOTHING, SKIPPED);
@@ -65,5 +57,25 @@ public class ProfileEdit extends Command {
         } catch (InvalidSaveFormatException e) {
             return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_EDIT), FAILED);
         }
+    }
+
+    /**
+     * Creates a new Profile object from edited information.
+     *
+     * @param commandArgs User's input arguments.
+     * @param profile User's existing profile.
+     * @return Edited Profile object.
+     * @throws SchwarzeneggerException If there are caught exceptions.
+     */
+    private Profile createEditedProfile(String commandArgs, Profile profile) throws SchwarzeneggerException {
+        HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_EDIT, commandArgs);
+        String name = parsedParams.containsKey("/n") ? extractName(parsedParams) : profile.getName();
+        int height = parsedParams.containsKey("/h") ? extractHeight(parsedParams) : profile.getHeight();
+        double weight = parsedParams.containsKey("/w") ? extractWeight(parsedParams) : profile.getWeight();
+        double expectedWeight = parsedParams.containsKey("/e")
+                ? extractExpectedWeight(parsedParams) : profile.getExpectedWeight();
+        double calories = parsedParams.containsKey("/c") ? extractCalories(parsedParams) : profile.getCalories();
+
+        return new Profile(name, height, weight, expectedWeight, calories);
     }
 }

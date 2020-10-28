@@ -3,11 +3,11 @@ package commands.main;
 import commands.Command;
 import commands.CommandResult;
 import exceptions.InvalidCommandWordException;
-import ui.CommonUi;
 
-public class Wrong extends Command {
-
-    CommonUi ui = new CommonUi();
+/**
+ * A representation of invalid command in Main Menu.
+ */
+public class MainWrong extends Command {
 
     /**
      * Notifies user invalid input command.
