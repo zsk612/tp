@@ -120,7 +120,7 @@ public class ProfileParser {
      * @param command Command with invalid format.
      * @throws InsufficientArgumentException If command has invalid format.
      */
-    private static void throwInsufficientArgument(String command, HashMap<String, String> parsedParams)
+    private static void throwInsufficientArgument(String command)
             throws InsufficientArgumentException {
         if (command.equals(COMMAND_WORD_ADD)) {
             throw new InsufficientArgumentException(ADD_PROFILE_FORMAT);
