@@ -1,6 +1,7 @@
 package diet.dietsession;
 
 import diet.dietsession.DietSessionParser;
+import exceptions.diet.NoNameException;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DietSessionParserTest {
 
     @Test
-    void processFoodName_ValidInput_Success() {
+    void processFoodName_ValidInput_Success() throws NoNameException {
         String input = "Food /c 123";
         DietSessionParser parser = new DietSessionParser();
         String expected = "Food";
