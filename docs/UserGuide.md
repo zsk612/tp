@@ -49,6 +49,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.8. [Returning to Main Menu: `end`](#workout-end)
 1. [**Command Summary**](#command-summary)
 1. [**Notes**](#notes)
+1. [**FAQ**](#faq)
 
 ## 1. <a id="intro">Introduction</a>
 
@@ -61,7 +62,7 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 1. Ensure you have Java `11` or above installed in your Computer.
 1. Download the latest `duke.jar` from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
 1. Copy the file to the folder you want to use as the home folder for The Schwarzenegger.
-1. Open command prompt (on Windows)  or terminal (on MacOS/ Linux) and change to the directory of the folder of the application in step 3.
+1. Open command prompt (on Windows)  or terminal (on macOS/ Linux) and change to the directory of the folder of the application in step 3.
 1. Key in `java -jar duke.jar`. If the setup is correct, you should see something like below:
 
     ```
@@ -740,3 +741,15 @@ Return to Main Menu|`end`
     
     `dd MM yyyy`
     `ddMMyyyy`
+
+## 6. <a id="faq">FAQ</a>
+Below are the answers to some frequently asked questions about The Schwarzenegger:
+
+**Q**: Can I use The Schwarzenegger on another operating systems apart from Windows?<br>
+**A**: Yes. The Schwarzenegger is compatible with Windows, macOS and Linux.
+
+**Q**: How do I transfer my data to another Computer?<br>
+**A**: Install The Schwarzenegger in the other computer and overwrite the `saves` folder it creates with the `saves` folder of your previous The Schwarzenegger.
+
+**Q**: Can I exit The Schwarzenegger without typing `end` command?<br>
+**A**: Yes. Your data is saved automatically to `saves` folder whenever it changes. Therefore, you can exit The Schwarzenegger worry-free.
