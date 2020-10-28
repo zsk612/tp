@@ -2,12 +2,15 @@ package storage.workout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import exceptions.profile.InvalidSaveFormatException;
 import exceptions.workout.workoutmanager.SchwIoException;
 import logger.SchwarzeneggerLogger;
 import models.PastWorkoutSessionRecord;
 import seedu.duke.Constant;
+import ui.workout.workoutsession.WorkoutSessionUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,7 +48,7 @@ public class WorkOutManagerStorage {
      * @return A list of PastWorkoutSessionRecord.
      * @throws SchwIoException If error in reading the file.
      */
-    public ArrayList<PastWorkoutSessionRecord> readPastRecords() throws SchwIoException {
+    public ArrayList<PastWorkoutSessionRecord> readPastRecords() throws SchwIoException, InvalidSaveFormatException {
         logger.info("Start loading files");
 
         ArrayList<PastWorkoutSessionRecord> pastFiles;
@@ -59,6 +62,9 @@ public class WorkOutManagerStorage {
             logger.info("File is not found.");
             createMetaFile(Constant.PATH_TO_WORKOUT_SESSION_HISTORY);
             pastFiles = new ArrayList<>();
+        } catch (JsonSyntaxException e) {
+            logger.info("File is not found.");
+            throw new InvalidSaveFormatException(Constant.PATH_TO_WORKOUT_SESSION_HISTORY);
         }
         if (pastFiles == null) {
             pastFiles = new ArrayList<>();

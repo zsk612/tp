@@ -87,13 +87,13 @@ public class ProfileStorage {
 
             if (profile == null || !Utils.checkValidProfile(profile)) {
                 logger.log(Level.WARNING, "processing invalid profile data");
-                throw new InvalidSaveFormatException();
+                throw new InvalidSaveFormatException(filePath);
             }
 
             return profile;
         } catch (JsonSyntaxException e) {
             logger.log(Level.WARNING, "processing invalid syntax in data file", e);
-            throw new InvalidSaveFormatException();
+            throw new InvalidSaveFormatException(filePath);
         }
     }
 
