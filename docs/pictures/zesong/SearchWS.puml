@@ -4,29 +4,29 @@ activate WorkoutManager
 user -> WorkoutManager
 WorkoutManager -> WorkoutManagerParser : parse()
 activate WorkoutManagerParser
-WorkoutManagerParser -> WorkoutManager : parsed input
+WorkoutManagerParser --> WorkoutManager : parsed input
 deactivate WorkoutManagerParser
 
 WorkoutManager -> CommandLib : get()
 activate CommandLib
-CommandLib -> WorkoutManager : Command
+CommandLib --> WorkoutManager : Command
 deactivate CommandLib
 
 WorkoutManager -> Command : execute()
 activate Command
 
-activate WorkoutManagerStorage
-Command -> WorkoutManagerStorage : search()
-WorkoutManagerStorage -> WorkoutManagerParser : parse()
+Command -> PastRecordList : search()
+activate PastRecordList
+PastRecordList -> WorkoutManagerParser : parse()
 activate WorkoutManagerParser
-WorkoutManagerParser -> WorkoutManagerStorage : list of predicates
+WorkoutManagerParser --> PastRecordList : list of predicates
 deactivate WorkoutManagerParser
-WorkoutManagerStorage -> WorkoutManagerStorage: filter and print
+PastRecordList --> Command: filtered formatted list
+deactivate PastRecordList
 
-WorkoutManagerStorage -> Command
-Command -> WorkoutManager : ExecutionResult
+Command --> WorkoutManager : CommandResult
 deactivate Command
 
-WorkoutManager ->  user : output
+WorkoutManager -->  user : output
 
 @enduml

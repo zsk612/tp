@@ -587,7 +587,7 @@ Expected output:
 ### 3.4.6. <a id="workout-search">Searching a List of Workout Session: `search`</a>
 You can search for a list of workout sessions that matches certain conditions. For example, you can search for sessions created on a specific day or sessions that contains certain tags.
 
-__Format:__ `Search [/d <DATE>] [/t <TAG>...]`
+__Format:__ `Search </d [DATE]> </t [TAG]...>`
 
 - Tag condition
 
@@ -712,9 +712,9 @@ Return to Main Menu|`end`
 --------|----------------------
 Start workout session |`new [/t <TAG>...]`<br><br>E.g. `new /t leg, chest`
 List|`list [/s <START DATE>] [/e <END DATE]`<br><br>E.g. `list /s 20201001 /e 2020/10/25`
-Edit|`edit <session ID>`<br><br>E.g. `edit 1`
-Delete|`delete <session ID>`<br><br>E.g. `delete 1`
-Search|`search /d <date> /t <tag1> <tag2>`<br><br>E.g. `search /t leg day, chest /d 2020-10-18`
+Edit|`edit <INDEX>`<br><br>E.g. `edit 1`
+Delete|`delete <INDEX>`<br><br>E.g. `delete 1`
+Search|`search </d [DATE]> </t [TAG]...>`<br><br>E.g. `search /t leg day, chest /d 2020-10-18`
 Help|`help`
 Clear|`clear`
 Return to Main Menu|`end`
