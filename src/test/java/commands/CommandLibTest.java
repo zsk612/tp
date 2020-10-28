@@ -13,11 +13,11 @@ import commands.diet.dietsession.FoodItemDelete;
 import commands.diet.dietsession.FoodItemHelp;
 import commands.diet.dietsession.FoodItemList;
 import commands.diet.dietsession.FoodItemWrong;
-import commands.main.Help;
+import commands.main.MainHelp;
 import commands.main.ToDiet;
 import commands.main.ToProfile;
 import commands.main.ToWorkout;
-import commands.main.Wrong;
+import commands.main.MainWrong;
 import commands.profile.ProfileAdd;
 import commands.profile.ProfileDelete;
 import commands.profile.ProfileEdit;
@@ -271,7 +271,7 @@ class CommandLibTest {
     void getCommandTest_mainHelpCommand_returnHelp() {
         CommandLib cl = new CommandLib();
         cl.initMainMenu();
-        assertTrue(cl.getCommand("help") instanceof Help);
+        assertTrue(cl.getCommand("help") instanceof MainHelp);
     }
 
     @Test
@@ -299,6 +299,6 @@ class CommandLibTest {
     void getCommandTest_mainUnrecognisedCommand_returnWrong() {
         CommandLib cl = new CommandLib();
         cl.initMainMenu();
-        assertTrue(cl.getCommand("asdf") instanceof Wrong);
+        assertTrue(cl.getCommand("asdf") instanceof MainWrong);
     }
 }

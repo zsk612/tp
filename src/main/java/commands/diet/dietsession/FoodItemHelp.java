@@ -19,7 +19,6 @@ public class FoodItemHelp extends Command {
      */
     @Override
     public void execute(String input, ArrayList<Food> foodList, DietStorage storage) {
-
         DietSessionUi.printHelp();
         logger.log(Level.INFO, "Displayed help in dietSession");
     }

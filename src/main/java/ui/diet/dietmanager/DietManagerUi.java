@@ -7,13 +7,13 @@ public class DietManagerUi extends CommonUi {
     public static void printHelp() {
         StringBuilder helpMessage = new StringBuilder();
 
-        helpMessage.append(helpFormatter("List", "list",
-                "Show all past diet session"));
         helpMessage.append(helpFormatter("New", "new /d [DATE] /t [TAG]",
                 "Create a new diet session"));
-        helpMessage.append(helpFormatter("Delete", "delete [INDEX_OF_SESSION]",
+        helpMessage.append(helpFormatter("List", "list",
+                "Show all past diet sessions"));
+        helpMessage.append(helpFormatter("Delete", "delete [INDEX]",
                 "Delete the diet session at the input index"));
-        helpMessage.append(helpFormatter("Edit", "edit [INDEX_OF_SESSION]",
+        helpMessage.append(helpFormatter("Edit", "edit [INDEX]",
                 "Edit the diet session at the input index"));
         helpMessage.append(helpFormatter("Search",
                 "search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>",

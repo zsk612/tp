@@ -3,7 +3,6 @@ package commands.diet.dietmanager;
 import commands.Command;
 import diet.dietsession.DietSession;
 import storage.diet.DietStorage;
-import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
 import java.util.Objects;
@@ -12,7 +11,6 @@ import java.util.logging.Level;
 public class DietSessionList extends Command {
 
     static final String FILEPATH = "saves/diet/";
-    DietManagerUi ui = new DietManagerUi();
 
     /**
      * Overrides execute for list command to list diet sessions.
@@ -42,7 +40,7 @@ public class DietSessionList extends Command {
             logger.log(Level.INFO, "Listed all available diet sessions");
             ui.showToUser(listResult.toString().trim());
         } catch (NullPointerException e) {
-            ui.showToUser("Sorry! It seems like you have no meal sessions saved!.");
+            ui.showToUser("Sorry! It seems like you have no diet sessions saved!");
             logger.log(Level.WARNING, "No instances of diet sessions saved");
         }
     }

@@ -5,6 +5,9 @@ import commands.CommandResult;
 import commands.ExecutionResult;
 import workout.workoutmanager.WorkoutManager;
 
+/**
+ * A representation of the command for redirecting to Workout Menu from Main Menu.
+ */
 public class ToWorkout extends Command {
 
     /**

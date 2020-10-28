@@ -4,6 +4,9 @@ import exceptions.SchwarzeneggerException;
 
 import static ui.workout.workoutmanager.WorkoutManagerUi.MESSAGE_OUT_OF_ARRAY;
 
+/**
+ * Represents exception when index is out of array.
+ */
 public class OutOfArrayException extends SchwarzeneggerException {
 
     /**
