@@ -118,7 +118,7 @@ public class ProfileParser {
         try {
             double calories = Double.parseDouble(parsedParams.get("/c"));
 
-            if (!Utils.checkCalories(calories)) {
+            if (!Utils.checkValidCalories(calories)) {
                 throw new InvalidCaloriesException();
             }
             return calories;
