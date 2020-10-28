@@ -16,10 +16,10 @@ import commands.diet.dietsession.FoodItemList;
 import commands.diet.dietsession.FoodItemSearch;
 import commands.diet.dietsession.FoodItemWrong;
 import commands.main.MainHelp;
+import commands.main.MainWrong;
 import commands.main.ToDiet;
 import commands.main.ToProfile;
 import commands.main.ToWorkout;
-import commands.main.MainWrong;
 import commands.profile.ProfileAdd;
 import commands.profile.ProfileDelete;
 import commands.profile.ProfileEdit;
@@ -61,10 +61,16 @@ import static seedu.duke.Constant.COMMAND_WORD_VIEW;
 import static seedu.duke.Constant.COMMAND_WORD_WORKOUT;
 import static seedu.duke.Constant.COMMAND_WORD_WRONG;
 
+/**
+ * A class for extracting the correct Command object for each command word.
+ */
 public class CommandLib {
 
     public Hashtable<String, Command> library;
 
+    /**
+     * Constructs CommandLib object.
+     */
     public CommandLib() {
         library = new Hashtable<>();
     }

@@ -17,7 +17,7 @@ import static profile.Constants.COMMAND_ARGS_INDEX;
 import static profile.Constants.COMMAND_TYPE_INDEX;
 
 /**
- * A class that is responsible for interacting with user when he/she enters Profile Session.
+ * A class that is responsible for interacting with user in Profile Session.
  */
 public class ProfileSession {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
