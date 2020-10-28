@@ -32,18 +32,18 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deleting a Profile](#deleting-a-profile)<br>
 4.3. [Diet-related Features](#43-diet-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#431-list-out-all-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording meal data](#432-start-recording-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording diet data](#432-start-recording-diet-data)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#4321-showing-help-message)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current meal](#4322-adding-food-items-for-the-current-meal)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current meal](#4323-listing-data-for-the-current-meal)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current meal](#4324-deleting-data-from-the-current-meal)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current meal](#4325-clearing-data-from-the-current-meal)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of meal data](#4326-stopping-the-recording-of-meal-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past meal sessions](#433-list-all-past-meal-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past meal session](#434-edit-a-past-meal-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past meal session](#435-delete-a-past-meal-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past meal sessions](#436-clear-all-past-meal-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Exit the meal manager](#437-exit-the-meal-manager)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current diet](#4322-adding-food-items-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current diet](#4323-listing-data-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current diet](#4324-deleting-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current diet](#4325-clearing-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of diet data](#4326-stopping-the-recording-of-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past diet sessions](#433-list-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past diet session](#434-edit-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past diet session](#435-delete-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past diet sessions](#436-clear-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Exit the diet manager](#437-exit-the-diet-manager)<br>
 4.4. [Workout-related Features](#workout-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creating a New Workout Session](#creating-a-new-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
@@ -107,7 +107,7 @@ This document describes the software architecture and software design requiremen
 This section provides a high level overview of our application, The Schwarzenegger.
 ### 3.1. <a id="architect">Architecture</a>
 
-![Architecture]
+![Architecture](pictures/zesong/Architecture.png)
 
 The image above explains the design of the application, The Schwarzenegger. 
 
@@ -122,7 +122,7 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 - `Parser`: This class mainly handles the parsing and handling of user commands.
 - `Command`: This class handles the type of command.
 - `Profile`: This class manages the data of the user.
-- `Diet`: This class manages the meal recording sessions.
+- `Diet`: This class manages the diet recording sessions.
 - `Workout`: This class manages the data workout recording sessions.
 - `Storage`: This class reads data from and writes data back into a text file for future uses.
 
@@ -168,17 +168,19 @@ The Model component contains `Profile`, `DietManager`,
 
 ![Storage Class Diagram](images/Storage.png)
 
-Profiles, Diet sessions and workout sessions are stored in separate folders. 
+Profiles, Diet sessions and Workout sessions are stored in separate folders. 
 
 The Storage package contains subpackages for profile, diet manager and workout manager.
 
-The readDietSession() method in storage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past meal session.
+The readDietSession() method in storage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past diet session.
 readPastRecords() and readFileContents() methods in storage.workout package are used for loading saved workout managers and workout sessions respectively. It is called when the user accesses the workout manager.
 loadData() from storage.profile is used to load user profile data and is called when the program starts up. 
 
-The writeToStorageDietSession() method in storage.diet package saves the meal session and is called when the user exits it.
+The writeToStorageDietSession() method in storage.diet package saves the diet session and is called when the user exits it.
 writePastRecords() and writeToStorage() methods in storage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
-saveData() method in storage.profile is called when the user creates the user profile or edits it.
+
+The saveData() method in storage.profile is called after the user creates the user profile or edits it.
+readData() is storage.profile is called when duke starts up.
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -418,37 +420,37 @@ Aspects: Loading of stored data
 
 ### 4.3. Diet-related Features
 #### 4.3.1. Listing out all commands: `help`
-The command to list out all help commands is a hard-typed list of commands that indicates to the user all the commands available and how to use them.
+This command lists out all help commands in a typed list that indicates to the user all the commands available and how to use them.
 
 **Implementation**  
-When the user types `help` the following sequence occurs. 
+When the user types `help` in a Diet Manager instance, the following sequence occurs. 
 1. The user keys in `help`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
     1. Input will be parsed in `processCommand()`.   
     
-2. Creation of command object from input
-    1. This will create a DietSessionHelp() instantiation of which the method execute() is called.
+2. Creation of `DietSessionHelp` command object from input
+    1. This will create a `DietSessionHelp()` instantiation of which the method `execute()` is called.
     
 3. Executing Command
-    1. The newly created object will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
+    1. The execute() method will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.2. Start recording meal data: `meal`
-The feature allows users to start recording meal data. 
+#### 4.3.2. Start recording diet data: `new`
+The feature allows users to start recording diet data. 
 
 **Implementation**  
-When the user types `meal /d [date] /t [type]` the following sequence occurs. 
-1. The user keys in `meal /d 2020-05-04 /t breakfast`.
+When the user types `new /d [date] /t [type]` the following sequence occurs. 
+1. The user keys in `new /d 2020-05-04 /t breakfast`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
+    1. Input will be parsed in `processCommand()`, which splits the input into the `command` and the `input`.   
     
 2. Creation of command object from input
-    1. This will create a DietSessionCreate() of which the method execute() is called.
+    1. This will create an instantiation DietSessionCreate() command object of which the method execute() is called.
     
 3. Executing Command
-    1. The newly created object will then create an instantiation of a DietSession.
+    1. The newly created object will then create an instantiation of a `DietSession`, and call the `start()` method.
 
 The sequence diagram below summarizes how creating new diet session works:
 
@@ -457,7 +459,7 @@ The sequence diagram below summarizes how creating new diet session works:
 [&#8593; Return to Top](#developer-guide)
 
 #### 4.3.2.1. Showing help message: `help`
-The command to list out all help commands is a hard-typed list of commands that indicates to the user all the commands available and how to use them.
+This command lists out all help commands in a typed list that indicates to the user all the commands available and how to use them.
 
 **Implementation**  
 When the user types `help` the following sequence occurs. 
@@ -467,16 +469,16 @@ When the user types `help` the following sequence occurs.
     1. Input will be parsed in `processCommand()`.   
     
 2. Creation of command object from input
-    1. This will create a FoodItemHelp() instantiation of which the method execute() is called.
+    1. This will create a `FoodItemHelp()` instantiation of which the method `execute()` is called.
     
 3. Executing Command
-    1. The newly created object will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
+    1. The newly created object will then print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
     
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.2.2. Adding food items for the current meal: `add`
+#### 4.3.2.2. Adding food items for the current diet: `add`
 
-The feature allows users to add food items into the current meal session. 
+The feature allows users to add food items into the current diet session. 
 
 **Implementation**  
 When the user types `add [food] /c [calories]` the following sequence occurs. 
@@ -486,34 +488,38 @@ When the user types `add [food] /c [calories]` the following sequence occurs.
     1. Input will be parsed in `processCommand()`.   
     
 2. Creation of command object from input
-    1. This will create a FoodItemAdd() instantiation of which the method execute() is called.
-    1. The food component and calories component are passed into the constructor of a Food instantiation.
+    1. This will create a `FoodItemAdd()` instantiation of which the method `execute()` is called.
+    1. The food component `bologna` and calories component `123` are passed into the constructor of a Food instantiation.
     
 3. Executing Command
-    1. The newly created food object will then be added to an ArrayList<Food>.
+    1. The newly created food object will then be added to the `ArrayList<Food> foodList` in diet session.
 
+The sequence diagram below summarizes how adding a new food to the diet session works:
+
+![Load Data Sequence Diagram](pictures/Zeon/FoodItemAdd.png)
 [&#8593; Return to Top](#developer-guide)
 
-#### 4.3.2.3. Listing data for the current meal: `list`
+#### 4.3.2.3. Listing data for the current diet: `list`
 
-The feature allows users to view all food items in the current meal session. 
+This command allows users to view all food items in the current diet session. 
 
 **Implementation**  
 When the user types `list` the following sequence occurs. 
 1. The user keys in `list`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
+    1. The input is then parsed in `processCommand()`.   
     
 2. Creation of command object from input
     1. This will create a FoodItemList() instantiation of which the method execute() is called.
     
 3. Executing Command
     1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
+    1. The total calories of the current meal is also printed.
 
-#### 4.3.2.4. Deleting data from the current meal: `delete`
+#### 4.3.2.4. Deleting data from the current diet session: `delete`
 
-The feature allows users to remove food items into the current meal session. 
+The feature allows users to remove food items into the current diet session. 
 
 **Implementation**  
 When the user types `delete [Food ID]` the following sequence occurs. 
@@ -523,14 +529,14 @@ When the user types `delete [Food ID]` the following sequence occurs.
     1. Input will be parsed in `processCommand()`.   
     
 2. Creation of command object from input
-    1. This will create a FoodItemDelete() instantiation of which the method execute() is called.
+    1. This will create a `FoodItemDelete()` instantiation of which the method execute() is called.
     
 3. Executing Command
     1. The Food ID according to the index based on the ArrayList<Food> is deleted.
 
-#### 4.3.2.5. Clearing all data from the current meal `clear`
+#### 4.3.2.5. Clearing all data from the current diet session `clear`
 
-The feature allows users to remove food items into the current meal session. 
+The feature allows users to remove food items into the current diet session. 
 
 **Implementation**  
 When the user types `clear` the following sequence occurs. 
@@ -545,9 +551,9 @@ When the user types `clear` the following sequence occurs.
 3. Executing Command
     1. The ArrayList Clear method is called and removes all Food entries from the ArrayList.
 
-#### 4.3.2.6. Stopping the recording of meal data: `end`
+#### 4.3.2.6. Stopping the recording of diet session data: `end`
 
-The feature allows users to end the current meal session and return back to the meal manager.
+The feature allows users to end the current diet session and return back to the diet manager.
 
 **Implementation**  
 When the user types `end` the following sequence occurs. 
@@ -564,7 +570,7 @@ When the user types `end` the following sequence occurs.
 The feature allows users to view all past created diet sessions.
 
 **Implementation**  
-When the user types `list` the following sequence occurs. 
+When the user types `list` in a diet manager instance the following sequence occurs. 
 1. The user keys in `list`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
@@ -576,6 +582,9 @@ When the user types `list` the following sequence occurs.
 3. Executing Command
     1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
 
+The sequence diagram below summarizes how listing past Diet sessions work:
+
+![Load Data Sequence Diagram](pictures/Zeon/DietSessionList.png)
 #### 4.3.4. Edit a past diet session: `edit`
 
 The feature allows users to edit previously created diet sessions.
@@ -587,36 +596,60 @@ When the user types `edit [diet session ID]` the following sequence occurs.
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
     1. Input will be parsed in `processCommand()`.   
     
-2. Creation of command object from input
-    1. A DietSessionEdit() command class instantiation is created and the execute() method is called.
+2. Creation of `DietSessionEdit` command object from input
+    1. A `DietSessionEdit()` command class instantiation is created and the execute() method is called.
     
 3. Executing Command
-    1. This will call readDietSession() from storage.diet.Storage and it reads the file stored at saves/diet.
-    1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
+    1. This will call `readDietSession()` from `storage.diet.DietStorage` and it reads the file stored at `saves/diet`.
+    1. The `start()` method is then called in the diet session, starting a diet session instance.
+    
+4. After Execution
+    1. The diet session instance is then saved by calling `writeToStorageDietSession()` from `DietStorage`
 
 The sequence diagram below summarizes how editing Diet session works:
 
 ![Load Data Sequence Diagram](pictures/Zeon/DietSessionEdit.png)
-#### 4.3.5. Edit a past diet session: `delete`
+
+**Design considerations**
+Saving of the user’s Diet sessions:  
+
+- Alternative 1 (current choice): Saving at the end of a diet session
+
+|     |     |
+|-----|-----|
+|**Pros** | The cost of saving is low, file writes only happen once per Diet session instance|
+|**Cons** | If any crashes occur during a diet session, no input data will be saved|
+
+- Alternative 2: Saving during any alterations made to the Diet session
+
+|     |     |
+|-----|-----|
+|**Pros** | The files will still be saved even if a crash occurs|  
+|**Cons** | Saving often might be taxing on the user's computer|
+#### 4.3.5. Delete a previously created diet session: `delete`
 
 The feature allows users to delete previously created diet sessions.
 
 **Implementation**  
-When the user types `delete [diet session ID]` the following sequence occurs. 
+When the user types `delete [diet session ID]` from a Diet manager instance the following sequence occurs. 
 1. The user keys in `delete 1`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
+    1. The input is then parsed in `processCommand()` which splits the input into a command portion and the input parameters.   
     
-2. Creation of command object from input
-    1. A DietSessionDelete() command class instantiation is created and the execute() method is called.
+2. Creation of `DietSessionDelete()` command object from input
+    1. The `CommandLib` is referenced to find information on `DietSessionDelete()`.
+    2. A `DietSessionDelete()` command class instantiation is created and the `execute()` method is called.
     
 3. Executing Command
-    1. This will delete the diet session at index 1 based on the `list` command.
+    1. `DietSessionDelete()` will then delete the diet session at index `1` based on the `list` command.
 
+The sequence diagram below summarizes how Diet sessions are deleted:
+
+![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionDelete.png)
 #### 4.3.6. Edit a past diet session: `clear`
 
-The feature allows users to clear all previously created diet sessions.
+The feature allows users to clear all previously created diet sessions at once.
 
 **Implementation**  
 When the user types `clear` the following sequence occurs. 
@@ -625,25 +658,29 @@ When the user types `clear` the following sequence occurs.
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
     1. Input will be parsed in `processCommand()`.   
     
-2. Creation of command object from input
-    1. A DietSessionClear() command class instantiation is created and the execute() method is called.
+2. Creation of `DietSessionClear()` command object from input
+    1. The `CommandLib` is referenced to find information on `DietSessionClear()`.
+    2. A `DietSessionClear()` command class instantiation is created and the `execute()` method is called.
     
 3. Executing Command
     1. This will iterate through every file in saves/diet/ and delete it.
 
-#### 4.3.7. Edit a past diet session: `end`
+The sequence diagram below summarizes how Diet sessions are all cleared:
 
-The function returns user back to the main menu of The Schwarzenegger.
+![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionClear.png)
+#### 4.3.7. Exit the Diet manager: `end`
+
+The function returns the user back to the main menu of The Schwarzenegger.
 
 **Implementation**  
 When the user types `end` the following sequence occurs. 
 1. The user keys in `end`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
+    1. Input will be parsed in `processCommand()`.  
     
 2. Exiting of inputLoop()
-    The inputLoop() exits when userInput.equals("end").
+    The inputLoop() exits when userInput.equals("end"), returning to the `Start()` method, then ending the `DietManager` instance.
 
 
 [&#8593; Return to Top](#developer-guide)
@@ -979,7 +1016,7 @@ Storage in the application refers to storing files of user profile and workout, 
 #### 4.6.2. Storage for diet
 Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
 - Each file is created as a json file and named as `[date] [tag].json`.
-- A corresponding file is updated in the local file when the user edits a diet session by calling DietSessionEdit.execute().
+- A corresponding file is updated in the local file after the user edits a diet session by calling DietSessionEdit.execute().
 - A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
 
 **Implementation**

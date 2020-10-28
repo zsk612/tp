@@ -69,14 +69,19 @@ public class DietManager {
             Command command = cl.getCommand(commParts[0]);
             command.execute(commParts[1].trim(), storage);
         } catch (ArrayIndexOutOfBoundsException | InvalidCommandFormatException e) {
+            logger.log(Level.WARNING, "Invalid command in diet session");
             throw new InvalidCommandWordException();
         } catch (InvalidDateFormatException e) {
-            dietManagerUi.showToUser("wrong format for date input.");
+            logger.log(Level.WARNING, "Wrong format for date input.");
         } catch (InvalidSearchDateException e) {
             dietManagerUi.showToUser("Starting date should be earlier than end date.");
         }
     }
 
+    /**
+     * Gets total calories of the diet session today.
+     * @return total calories
+     */
     public double getTodayTotalCalories() {
         double todayTotalCalories = 0;
         File folder = new File("saves/diet/");

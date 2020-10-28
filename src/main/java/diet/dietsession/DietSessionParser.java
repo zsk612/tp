@@ -1,6 +1,7 @@
 package diet.dietsession;
 
 import exceptions.diet.NegativeCaloriesException;
+import exceptions.diet.NoNameException;
 import exceptions.profile.InvalidCaloriesException;
 import logger.SchwarzeneggerLogger;
 
@@ -28,8 +29,11 @@ public class DietSessionParser {
      * @return food name
      * @throws IndexOutOfBoundsException handles exception for not inputting food name or calories
      */
-    public String processFoodName(String food) throws IndexOutOfBoundsException {
+    public String processFoodName(String food) throws IndexOutOfBoundsException, NoNameException {
         String[] temp = food.trim().split("/c", 2);
+        if (temp[0].trim().isEmpty()) {
+            throw new NoNameException();
+        }
         return temp[0].trim();
     }
 

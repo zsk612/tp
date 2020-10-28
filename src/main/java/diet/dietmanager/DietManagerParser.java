@@ -12,9 +12,6 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static seedu.duke.Constant.COMMAND_WORD_HELP;
-import static seedu.duke.Constant.COMMAND_WORD_SEARCH;
-
 public class DietManagerParser {
 
     public Logger logger = SchwarzeneggerLogger.getInstanceLogger();
@@ -84,7 +81,13 @@ public class DietManagerParser {
         return "unspecified";
     }
 
-    public HashMap<String, String> extractDietManagerCommandTagAndInfo(String command, String commandArgs)
+    /**
+     * Extracts out starting date, end date and tag information.
+     * @param commandArgs user input
+     * @return a hashmap where each information corresponds to the correct separator
+     * @throws InvalidCommandFormatException if user enters invalid commands
+     */
+    public HashMap<String, String> extractDietManagerCommandTagAndInfo(String commandArgs)
             throws InvalidCommandFormatException {
 
         HashMap<String, String> parsedParams = new HashMap<>();
@@ -119,16 +122,29 @@ public class DietManagerParser {
         }
     }
 
+    /**
+     * Extracts out search tag.
+     * @param parsedParams a hashmap that contains information about tag
+     * @param searchResult string build that contains warning messages
+     * @return search tag
+     */
     public String extractSearchTag(HashMap<String, String> parsedParams, StringBuilder searchResult) {
         try {
             String tag = parsedParams.get("/t").trim();
             return tag;
         } catch (NullPointerException e) {
-            logger.log(Level.WARNING, "It looks like there is no date input for search tag");
+            logger.log(Level.WARNING, "It looks like there is no input for search tag");
         }
         return "";
     }
 
+    /**
+     * Extracts out starting date.
+     * @param parsedParams a hashmap that contains information about starting date
+     * @param searchResult string build that contains warning messages
+     * @return starting date
+     * @throws InvalidDateFormatException if the date is in wrong format
+     */
     public LocalDateTime extractStartDates(HashMap<String, String> parsedParams, StringBuilder searchResult)
             throws InvalidDateFormatException {
 
@@ -149,6 +165,13 @@ public class DietManagerParser {
         return DateParser.parseDate("0001-01-01");
     }
 
+    /**
+     * Extracts out end date.
+     * @param parsedParams a hashmap that contains information about end date
+     * @param searchResult string build that contains warning messages
+     * @return end date
+     * @throws InvalidDateFormatException if the date is in wrong format
+     */
     public LocalDateTime extractEndDates(HashMap<String, String> parsedParams, StringBuilder searchResult)
             throws InvalidDateFormatException {
 
