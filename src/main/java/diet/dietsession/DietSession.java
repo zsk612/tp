@@ -26,7 +26,7 @@ public class DietSession {
     private boolean isNew;
     private int index;
 
-    private final DietSessionUi dietSessionUI;
+    private final DietSessionUi dietSessionUi;
     private transient CommandLib cl;
     private final DietStorage storage;
     private final DietSessionParser parser = new DietSessionParser();
@@ -43,7 +43,7 @@ public class DietSession {
         this.typeInput = typeInput;
         this.foodList = new ArrayList<>();
         storage = new DietStorage();
-        dietSessionUI = new DietSessionUi();
+        dietSessionUi = new DietSessionUi();
         this.isNew = isNew;
         this.index = index;
     }
@@ -74,13 +74,13 @@ public class DietSession {
         logger.log(Level.INFO, "starting diet session");
         this.cl = new CommandLib();
         cl.initDietSessionCL();
-        dietSessionUI.printOpening();
+        dietSessionUi.printOpening();
         setEndDietSession(false);
         this.isNew = isNew;
         this.index = index;
         dietSessionInputLoop();
         setEndDietSession(true);
-        dietSessionUI.printExit();
+        dietSessionUi.printExit();
     }
 
     /**
@@ -90,9 +90,9 @@ public class DietSession {
         String input = "";
 
         if (isNew) {
-            input = dietSessionUI.getCommand("Diet Menu > New Diet Session");
+            input = dietSessionUi.getCommand("Diet Menu > New Diet Session");
         } else {
-            input = dietSessionUI.getCommand("Diet Menu > Diet Session " + index);
+            input = dietSessionUi.getCommand("Diet Menu > Diet Session " + index);
         }
 
         while (!input.equals("end")) {
@@ -100,15 +100,15 @@ public class DietSession {
             try {
                 processCommand(input);
             } catch (NullPointerException e) {
-                dietSessionUI.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
+                dietSessionUi.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
                 break;
             } catch (InvalidCommandWordException e) {
-                dietSessionUI.showToUser(ExceptionHandler.handleCheckedExceptions(e));
+                dietSessionUi.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             }
             if (isNew) {
-                input = dietSessionUI.getCommand("Diet Menu > New Diet Session");
+                input = dietSessionUi.getCommand("Diet Menu > New Diet Session");
             } else {
-                input = dietSessionUI.getCommand("Diet Menu > Diet Session " + index);
+                input = dietSessionUi.getCommand("Diet Menu > Diet Session " + index);
             }
         }
     }

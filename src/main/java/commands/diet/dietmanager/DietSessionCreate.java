@@ -6,7 +6,6 @@ import diet.dietsession.DietSession;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import storage.diet.DietStorage;
-import ui.CommonUi;
 
 import java.io.IOException;
 import java.util.logging.Level;

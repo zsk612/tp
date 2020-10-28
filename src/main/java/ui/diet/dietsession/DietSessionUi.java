@@ -1,7 +1,5 @@
 package ui.diet.dietsession;
 
-import java.util.Scanner;
-
 import ui.CommonUi;
 
 public class DietSessionUi extends CommonUi {
@@ -30,10 +28,5 @@ public class DietSessionUi extends CommonUi {
 
     public void printExit() {
         showUser("Exiting Diet Session!");
-    }
-
-    public String getInput() {
-        Scanner in = new Scanner(System.in);
-        return in.nextLine();
     }
 }
