@@ -75,7 +75,7 @@ public class ProfileParser {
             }
 
             if (!checkSufficientParams(command, parsedParams)) {
-                throwInsufficientArgument(command, parsedParams);
+                throwInsufficientArgument(command);
             }
         } catch (StringIndexOutOfBoundsException e) {
             throwInvalidCommandFormat(command);
