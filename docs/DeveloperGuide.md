@@ -56,14 +56,11 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing workout session](#443-editing-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a workout session](#444-deleting-a-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.5. [Searching based on conditions](#445-searching-based-on-conditions)<br>
-4.5. [Recommendations-related Features](#46-recommendations-related-features)<br> 
-&nbsp;&nbsp;&nbsp;&nbsp;4.5.1. [Display expenditure](#451-display-expenditure)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Expenditure functionality](#452-expenditure-functionality)<br>
-4.6. [Storage](#45-storage)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.6.1. [Storage for Profile](#441-select-files-to-load-from-and-save-to)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.6.2. [Storage for Diet](#442-save-current-state)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.6.3. [Storage for Workout](#443-insert-name-here)<br>
-4.7. [Logging](#logging)<br>
+4.5. [Storage](#storage)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.5.1. [Storage for Profile](#storage-for-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Storage for Diet](#storage-for-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.5.3. [Storage for Workout](#storage-for-workout)<br>
+4.6. [Logging](#logging)<br>
   * [**Appendices**](#appendices)
     + [Appendix A: Product Scope](#appendix-a-product-scope)
     + [Appendix B: User Stories](#appendix-b-user-stories)
@@ -1006,14 +1003,19 @@ in the meta info file.
 
 [&#8593; Return to Top](#developer-guide)
 
-### 4.5. Recommendations
+### 4.5. <a id="storage">Storage</a>
+Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called `/saves` which is in the same directory as the project root.
 
-[&#8593; Return to Top](#developer-guide)
-### 4.6. Storage
-Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called /saves.
-#### 4.6.1. Storage for profile
+#### 4.5.1. <a id="storage-for-profile">Storage for Profile
+Storage for profile saves user profile created as `profile.json` in the `/saves/profile` directory. Profile data file is created as follows:
+- `profile.json` is updated in the local hard disk after the user adds/ edits a profile by calling `ProfileAdd.execute()`/ `ProfileEdit.execute()`.
+- `profile.json` content will be cleared after the user deletes a profile by calling `ProfileDelete.execute()`.
 
-#### 4.6.2. Storage for diet
+**Implementation**
+Profile storage handles reading of file data by calling `loadData()` and overwriting of file data by calling `saveData()`.
+
+
+#### 4.5.2. <a id="storage-for-diet">Storage for Diet
 Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
 - Each file is created as a json file and named as `[date] [tag].json`.
 - A corresponding file is updated in the local file after the user edits a diet session by calling DietSessionEdit.execute().
@@ -1022,7 +1024,7 @@ Storage for diet saves diet sessions created as individual files sorted based on
 **Implementation**
 Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
 
-#### 4.6.3. Storage for workout
+#### 4.5.3. <a id="storage-for-workout">Storage for Workout
 
 Storage for workout saves workout sessions created as individual files named based on the time created in `/saves/workout` directory. The metainformation of the files such as createion date and last edit date is saved in  `/saves/workout/history.json`.
 
@@ -1034,7 +1036,7 @@ Only history.json file is load when initilizing the application. The rest of Ses
 Meta information file can be overwritten with `writePastRecords()` and be read with `readPastRecords()`.
 
 
-### 4.7. <a id="logging">Logging</a>
+### 4.6. <a id="logging">Logging</a>
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
 
 The `java.util.logging` package in Java is used for logging. The logging mechanism can be managed from the `SchwarzeneggerLogger` class through the `logger` attribute. 
@@ -1094,7 +1096,7 @@ __Target user profile__:
 ### Appendix D: Non-Functional Requirements
 
 1. Should work on any mainstream OS as long as it has Java `11` or above installed.
-2. An user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+2. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 3. Should not require user to install program file.
 4. Should work for single user.
 5. Should be able to run without internet connection.
