@@ -71,6 +71,7 @@ public abstract class Command {
      *
      * @param input User's input for command.
      * @param storage Diet Storage to load and save data.
+     * @param index Integer variable that shows the index of diet session
      * @throws InvalidCommandWordException If command word is invalid.
      */
     public void execute(String input, ArrayList<Food> foodList,
