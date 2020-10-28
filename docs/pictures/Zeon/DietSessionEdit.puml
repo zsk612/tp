@@ -14,8 +14,14 @@ activate DietSessionEdit
 DietSessionEdit -> DietStorage : readDietSession()
 activate DietStorage
 DietStorage --> DietSessionEdit : DietSession
-deactivate DietStorage
 
+DietSessionEdit -> DietSession : start()
+activate DietSession
+DietSession --> DietSessionEdit
+deactivate DietSession
+DietSessionEdit -> DietStorage : writeToStorageDietSession()
+DietStorage --> DietSessionEdit
+deactivate DietStorage
 DietSessionEdit --> DietManager
 deactivate DietSessionEdit
 
