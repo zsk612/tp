@@ -81,6 +81,12 @@ public class ProfileSession {
         logger.log(Level.INFO, "exiting profile session loop");
     }
 
+    /**
+     * Processes and displays parsed user input.
+     *
+     * @param commParts Size 2 array; first element is the command type and second element is the arguments string.
+     * @throws SchwarzeneggerException If there are caught exceptions.
+     */
     private void processCommand(String[] commParts) throws SchwarzeneggerException {
         Command command = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
         assert command != null : "command object should not be null null";

@@ -5,6 +5,9 @@ import commands.CommandResult;
 import commands.ExecutionResult;
 import diet.dietmanager.DietManager;
 
+/**
+ * A representation of the command for redirecting to Diet Menu from Main Menu.
+ */
 public class ToDiet extends Command {
 
     /**

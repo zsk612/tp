@@ -29,7 +29,7 @@ public class ProfileParser {
      * Parses and returns the Command associated with the user input.
      *
      * @param userInputString User's raw input string.
-     * @return Size 2 array; first element is the command type and second element is the arguments string..
+     * @return Size 2 array; first element is the command type and second element is the arguments string.
      */
     public String[] parseCommand(String userInputString) {
         String[] split = userInputString.trim().split(GREEDY_WHITE_SPACE, COMMAND_SPLIT_LIMIT);

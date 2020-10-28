@@ -7,7 +7,7 @@ import exceptions.SchwarzeneggerException;
 import storage.profile.ProfileStorage;
 
 /**
- * A representation of the command for invalid command.
+ * A representation of invalid command in Profile Menu.
  */
 public class ProfileWrong extends Command {
 

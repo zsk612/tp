@@ -15,11 +15,11 @@ import commands.diet.dietsession.FoodItemHelp;
 import commands.diet.dietsession.FoodItemList;
 import commands.diet.dietsession.FoodItemSearch;
 import commands.diet.dietsession.FoodItemWrong;
-import commands.main.Help;
+import commands.main.MainHelp;
 import commands.main.ToDiet;
 import commands.main.ToProfile;
 import commands.main.ToWorkout;
-import commands.main.Wrong;
+import commands.main.MainWrong;
 import commands.profile.ProfileAdd;
 import commands.profile.ProfileDelete;
 import commands.profile.ProfileEdit;
@@ -43,7 +43,6 @@ import commands.workout.workoutsession.WorkoutSessionHelp;
 import commands.workout.workoutsession.WorkoutSessionList;
 import commands.workout.workoutsession.WorkoutSessionSearch;
 import commands.workout.workoutsession.WorkoutSessionWrong;
-import seedu.duke.Constant;
 
 import java.util.Hashtable;
 
@@ -74,8 +73,8 @@ public class CommandLib {
      * Initializes the commandLib with main menu's commands.
      */
     public void initMainMenu() {
-        library.put(COMMAND_WORD_WRONG, new Wrong());
-        library.put(COMMAND_WORD_HELP, new Help());
+        library.put(COMMAND_WORD_WRONG, new MainWrong());
+        library.put(COMMAND_WORD_HELP, new MainHelp());
         library.put(COMMAND_WORD_DIET, new ToDiet());
         library.put(COMMAND_WORD_PROFILE, new ToProfile());
         library.put(COMMAND_WORD_WORKOUT, new ToWorkout());
