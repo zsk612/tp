@@ -9,7 +9,9 @@ import models.ExerciseList;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static ui.CommonUi.LS;
 
@@ -36,11 +38,22 @@ public class WorkoutSessionList extends Command {
     }
 
     private String formatList(ArrayList<Exercise> exercise) {
-        String returnString = String.format("%-8s", "Index") + String.format("%-20s", "Exercise")
+
+        ArrayList<String> exerciseNames = (ArrayList<String>) exercise.stream()
+                .map(Exercise::getDescription).collect(Collectors.toList());
+        int descriptionMaxLenInt = Math.max(20,
+                exerciseNames.stream().max(Comparator.comparingInt(String::length)).get().length());
+
+        String descriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt + 1) + "s";
+
+        String returnString = String.format("%-8s", "Index") + String.format(descriptionFormat, "Exercise")
                 + String.format("%-12s", "Repetitions") + String.format("%-10s", "Weight") + LS;
+
         StringBuilder infoBuilder = new StringBuilder(returnString);
+
+        String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-11s %s";
         for (int i = 0; i < exercise.size(); i++) {
-            String rowContent = String.format("%-19s %-11s %s", exercise.get(i).getDescription(),
+            String rowContent = String.format(listDescriptionFormat, exercise.get(i).getDescription(),
                     exercise.get(i).getRepetitions(), exercise.get(i).getWeight());
             String row = String.format("%-8s", i + 1) + rowContent + LS;
             infoBuilder.append(row);
@@ -48,4 +61,6 @@ public class WorkoutSessionList extends Command {
         returnString = infoBuilder.toString().trim();
         return returnString;
     }
+
+
 }

@@ -67,13 +67,13 @@ public class WorkoutSessionUi extends CommonUi {
     }
 
     public static void addExerciseSuccess(Exercise exercise) {
-        String toPrint = String.format("Yay! You have added %s to your list. [Repetitions: %s || Weight: %s]",
+        String toPrint = String.format("Yay! You have added %s to your list.\n\t [Repetitions: %s || Weight: %s]",
                 exercise.getDescription(), exercise.getRepetitions(), exercise.getWeight());
         showUser(toPrint);
     }
 
     public static void deleteExerciseSuccess(Exercise exercise) {
-        String toPrint = String.format("You have deleted %s from your list! [Repetitions: %s || Weight: %s]",
+        String toPrint = String.format("You have deleted %s from your list!\n\t [Repetitions: %s || Weight: %s]",
                 exercise.getDescription(), exercise.getRepetitions(), exercise.getWeight());
         showUser(toPrint);
     }
