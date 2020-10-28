@@ -2,7 +2,6 @@ package commands.diet.dietmanager;
 
 import commands.Command;
 import storage.diet.DietStorage;
-import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -10,7 +9,6 @@ import java.util.logging.Level;
 public class DietSessionDelete extends Command {
 
     static final String FILEPATH = "saves/diet/";
-    DietManagerUi ui = new DietManagerUi();
 
     /**
      * Overrides execute for delete command to delete diet sessions.

@@ -5,31 +5,26 @@ activate WorkoutManager
 
 WorkoutManager -> CommandLib : get()
 activate CommandLib
-CommandLib -> WorkoutManager : Command
+CommandLib --> WorkoutManager : Command
 deactivate CommandLib
 
 WorkoutManager -> EditCommand : execute()
 activate EditCommand
 
-EditCommand -> WorkoutManagerStorage : edit()
-activate WorkoutManagerStorage
-WorkoutManagerStorage --> EditCommand : filePath
-deactivate WorkoutManagerStorage
+EditCommand -> PastRecordList : edit()
+activate PastRecordList
+PastRecordList --> EditCommand : filePath
+deactivate PastRecordList
 
 EditCommand -> workoutSession : new WorkoutSession(filePath)
 activate workoutSession
-workoutSession -> workoutSessionStorage: init()
-activate workoutSessionStorage
-workoutSessionStorage -> workoutSession: loaded with exercise data
-deactivate workoutSessionStorage
 
-EditCommand -> workoutSession : start()
-workoutSession -> EditCommand
+workoutSession --> EditCommand
 deactivate workoutSession
 
-EditCommand -> WorkoutManager : ExecutionResult
+EditCommand --> WorkoutManager : CommandResult
 deactivate EditCommand
 
-WorkoutManager ->  user : output
+WorkoutManager -->  user : output
 
 @enduml

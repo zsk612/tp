@@ -2,7 +2,6 @@ package commands.diet.dietmanager;
 
 import commands.Command;
 import storage.diet.DietStorage;
-import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
 import java.util.Objects;
@@ -11,7 +10,6 @@ import java.util.logging.Level;
 public class DietSessionClear extends Command {
 
     private static final String FILEPATH = "saves/diet/";
-    private final DietManagerUi ui = new DietManagerUi();
 
     /**
      * Overrides execute for clear command to clear all diet sessions.

@@ -2,6 +2,9 @@ package exceptions.diet;
 
 import exceptions.SchwarzeneggerException;
 
+/**
+ * Represents exception when search date is invalid.
+ */
 public class InvalidSearchDateException extends SchwarzeneggerException {
 
     /**

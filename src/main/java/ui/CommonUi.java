@@ -20,6 +20,7 @@ public class CommonUi {
      * @param result Message to be displayed.
      */
     public void showToUser(String result) {
+        assert result != null : "result should not be null";
         System.out.println(String.format(MESSAGE_FORMAT_GENERAL, result));
     }
 
