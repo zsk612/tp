@@ -7,18 +7,19 @@ activate WorkoutManagerParser
 WorkoutManagerParser -> WorkoutManager : parsed input
 deactivate WorkoutManagerParser
 
-WorkoutManager -> CommandLib : get()
-activate CommandLib
-CommandLib -> WorkoutManager : Command
-deactivate CommandLib
-
 WorkoutManager -> Command : execute()
 activate Command
 
-Command -> WorkoutManagerStorage : add()
+Command -> PastRecordList : add()
+activate PastRecordList
+
+PastRecordList -> WorkoutManagerStorage : add()
 activate WorkoutManagerStorage
-WorkoutManagerStorage --> Command : filePath
+WorkoutManagerStorage --> PastRecordList : filePath
 deactivate WorkoutManagerStorage
+
+PastRecordList --> Command : filePath
+deactivate PastRecordList
 
 Command -> Command : new WorkoutSession
 Command -> workoutSession : start()
@@ -26,7 +27,7 @@ activate workoutSession
 workoutSession -> Command
 deactivate workoutSession
 
-Command -> WorkoutManager : ExecutionResult
+Command -> WorkoutManager : CommandResult
 deactivate Command
 
 WorkoutManager ->  user : output

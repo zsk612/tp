@@ -654,13 +654,13 @@ actions are called to return a command object NewWs.
 1. Executing Command
     1. `WorkoutManager` calls `NewWS.execute()` with the rest of parsed input.
     1. `NewWS` parse the arguments to identify the tags
-    3. `NewWS` calls `WorkOutManagerStorage.add()` to create a new file to store information in this session. 
+    3. `NewWS` calls `PastRecordList.add()` to create a new file to store information in this session. 
     If the creation fails, the action is aborted. Else, this record will be stored and the file path will 
     be returned.
     4. `NewWS` creates a new `WorkoutSession` Object with the file path. 
     5.  `NewWS` calls `workoutSession. workoutSessionStart()` so that user can add information into this session.
-    6. After user exits this workout, `WorkoutManager` returns a `ExecutionResult`.
-1. Based on `ExecutionResult`, correct response will be be printed to user.
+    6. After user exits this workout, `WorkoutManager` returns a `CommandResult`.
+1. Based on `CommandResult`, correct response will be be printed to user.
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
 The following sequence diagram shows how the new command works
@@ -776,9 +776,9 @@ WorkoutManagerStorage class will be called upon. The following sequence of steps
      1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `ListWS`.
 1. Executing Command
     1. `WorkoutManager` calls `ListWS.execute()` to execute the command
-    3. `NewWS` calls `WorkOutManagerStorage.list()`
-    1. `WorkOutManagerStorage` will call Ui to print a formated table of the past records.
-    6. `WorkoutManager` returns a `ExecutionResult`.
+    3. `ListWS` calls `PastRecordList.list()`
+    1. `PastRecordList` will return formatted list.
+    6. `WorkoutManager` returns a `CommandResult` which contains the formated list and execution result.
 1. Based on `ExecutionResult`, correct response will be be printed to user.
 ##### Design considerations:
 Aspects: Security of stored data
@@ -797,6 +797,8 @@ print the list
 |-----|-----|
 |**Pros** | More versatile operations can be done.|  
 |**Cons** | All data of pastRecord will be exposed.|
+
+![Load Data Sequence Diagram](pictures/zesong/ListWS.png)
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.3. Editing workout session
@@ -820,13 +822,11 @@ actions are called.
      1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `EditWS`.
 1. Executing Command
     1. `WorkoutManager` calls `EditWS.execute()` with the rest of parsed input.
-    3. `EditWS` calls `WorkOutManagerStorage.edit()` to locate the file. If the does not exist, the action is aborted.
-    Else, `WorkOutManagerStorage` updates the meta information of the file. The file path will be returned.
-    4. `EditWS` creates a new `WorkoutSession` Object with the file path. `WorkoutSession` is initilised by loading the 
-    data in the file.
+    3. `EditWS` calls `PastRecordList.edit()` to locate the file. If the does not exist, the action is aborted. Else, `PastRecordList` updates the meta information of the file. The file path will be returned.
+    4. `EditWS` creates a new `WorkoutSession` Object with the file path. `WorkoutSession` is initilised by loading the data in the file.
     5.  `EditWS` calls `workoutSession.workoutSessionStart()` so that user start editing this session.
-    6. After user exits this workout, `WorkoutManager` returns a `ExecutionResult`.
-1. Based on `ExecutionResult`, correct response will be be printed to user.
+    6. After user exits this workout, `WorkoutManager` returns a `CommandResult`.
+1. Based on `CommandResult`, correct response will be printed to user.
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
 The following sequence diagram shows how the new command works
@@ -844,7 +844,7 @@ meta information in a separate file
 |**Pros** | Initialization will be faster as data loaded grows little even in long terms.|
 |**Cons** | Deleting files and creating files need to handle file names carefully.|
 
-- Alternative 2: Load all past records during initilization
+- Alternative 2: Load all past records during initilization.
 
 |     |     |
 |-----|-----|
@@ -877,13 +877,11 @@ and WorkoutStorage class will be accessed and the following sequence of actions 
      or `clearWS`.
 1. Executing Command
     1. `WorkoutManager` calls `DeleteWS.execute()` with the rest of parsed input.
-    3. `DeleteWS` calls `WorkOutManagerStorage.delete()` to locate the file. If the does not exist, the action is aborted.
-    Else, `WorkOutManagerStorage` remove the meta information of the file and delete the record file.
-    6. After user exits this workout, `WorkoutManager` returns a `ExecutionResult`.
-1. Based on `ExecutionResult`, correct response will be be printed to user.
+    3. `DeleteWS` calls `PastRecorList.delete()` to locate the file. If the does not exist, the action is aborted. Else, `PastRecorList` remove the meta information of the file and delete the record file.
+    6. After user exits this workout, `WorkoutManager` returns a `CommandResult`.
+1. Based on `CommandResult`, correct response will be printed to user.
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
-The following sequence diagram shows how the new command works
 
 ##### Design considerations:
 

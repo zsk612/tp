@@ -1,0 +1,24 @@
+@startuml
+actor user
+user -> WorkoutManager : input
+activate WorkoutManager
+
+WorkoutManager -> CommandLib : get()
+activate CommandLib
+CommandLib -> WorkoutManager : Command
+deactivate CommandLib
+
+WorkoutManager -> ListCommand : execute()
+activate ListCommand
+
+ListCommand -> PastRecordList : list()
+activate PastRecordList
+PastRecordList --> ListCommand : formated list
+deactivate PastRecordList
+
+ListCommand -> WorkoutManager : CommandResult
+deactivate ListCommand
+
+WorkoutManager ->  user : output
+
+@enduml
