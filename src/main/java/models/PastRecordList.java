@@ -1,7 +1,6 @@
 package models;
 
 import exceptions.SchwarzeneggerException;
-import exceptions.profile.InvalidSaveFormatException;
 import exceptions.workout.workoutmanager.SchwIoException;
 import logger.SchwarzeneggerLogger;
 import storage.workout.WorkOutManagerStorage;
@@ -42,9 +41,6 @@ public class PastRecordList {
             pastFiles = new ArrayList<>();
             logger.log(Level.INFO, "Workout records cannot be loaded.");
             System.out.println("got bug");
-        } catch (InvalidSaveFormatException e) {
-            e.printStackTrace();
-            //TODO zesong
         }
     }
 
