@@ -37,9 +37,7 @@ public class DietStorage {
 
         String fileName = "saves/diet/" + filePath + ".json";
         file = new File(fileName);
-        if (file.exists()) {
-            file.delete();
-        }
+
         file.getParentFile().mkdirs();
         file.createNewFile();
 
