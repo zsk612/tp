@@ -100,7 +100,7 @@ public class PastRecordList {
 
         String info;
 
-        if(result.size() == 0) {
+        if (result.size() == 0) {
             info = "You do not have any records that satisfies the condition.";
             logger.log(Level.INFO, "Search completed.");
             return info;
@@ -176,7 +176,7 @@ public class PastRecordList {
             info = "You do not have any record yet. Key in 'new' to start one.";
             logger.log(Level.INFO, "List completed.");
             return info;
-        } else if(result.size() == 0) {
+        } else if (result.size() == 0) {
             info = "You do not have any records between that period.";
             logger.log(Level.INFO, "List completed.");
             return info;
