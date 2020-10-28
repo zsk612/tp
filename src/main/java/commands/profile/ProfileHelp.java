@@ -18,7 +18,7 @@ import static seedu.duke.Constant.COMMAND_WORD_VIEW;
 import static ui.CommonUi.helpFormatter;
 
 /**
- * A representation of the command for showing help message in Profile session.
+ * A representation of the command for showing help message in Profile Menu.
  */
 public class ProfileHelp extends Command {
 

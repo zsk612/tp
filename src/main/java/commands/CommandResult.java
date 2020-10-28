@@ -37,10 +37,20 @@ public class CommandResult {
         status = ExecutionResult.OK;
     }
 
+    /**
+     * Gets execution status.
+     *
+     * @return Execution status.
+     */
     public ExecutionResult getStatus() {
         return status;
     }
 
+    /**
+     * Gets feedback message to user.
+     *
+     * @return Feedback message to user.
+     */
     public String getFeedbackMessage() {
         return feedbackMessage;
     }

@@ -17,6 +17,8 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static seedu.duke.Constant.COMMAND_WORD_END;
+
 
 public class DietManager {
 
@@ -44,7 +46,7 @@ public class DietManager {
         dietManagerUi.printOpening("Diet Menu");
         String input = dietManagerUi.getCommand("Diet Menu");
         assert input != null : "Null input before input loop";
-        while (!input.equals("end")) {
+        while (!input.equals(COMMAND_WORD_END)) {
             try {
                 processCommand(input);
             } catch (InvalidCommandWordException e) {

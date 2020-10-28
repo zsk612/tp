@@ -10,11 +10,11 @@ import models.Profile;
 import storage.profile.ProfileStorage;
 
 import static commands.ExecutionResult.FAILED;
+import static seedu.duke.Constant.COMMAND_WORD_VIEW;
 import static ui.profile.ProfileUi.MESSAGE_ENOUGH_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_MORE_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;
 import static ui.profile.ProfileUi.MESSAGE_VIEW_PROFILE;
-import static seedu.duke.Constant.COMMAND_WORD_VIEW;
 
 /**
  * A representation of the command for viewing profile.

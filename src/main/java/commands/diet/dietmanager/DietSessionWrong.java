@@ -3,9 +3,6 @@ package commands.diet.dietmanager;
 import commands.Command;
 import exceptions.InvalidCommandWordException;
 import storage.diet.DietStorage;
-import ui.diet.dietmanager.DietManagerUi;
-
-import java.util.logging.Level;
 
 public class DietSessionWrong extends Command {
 

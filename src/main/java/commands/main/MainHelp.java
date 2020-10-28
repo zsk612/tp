@@ -11,7 +11,10 @@ import static seedu.duke.Constant.COMMAND_WORD_PROFILE;
 import static seedu.duke.Constant.COMMAND_WORD_WORKOUT;
 import static ui.CommonUi.helpFormatter;
 
-public class Help extends Command {
+/**
+ * A representation of the command for showing help message in Main Menu.
+ */
+public class MainHelp extends Command {
 
     /**
      * Executes help command in Main Menu.

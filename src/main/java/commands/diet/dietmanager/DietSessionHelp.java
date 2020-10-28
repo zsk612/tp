@@ -16,7 +16,6 @@ public class DietSessionHelp extends Command {
      */
     @Override
     public void execute(String input, DietStorage storage) {
-
         DietManagerUi.printHelp();
         logger.log(Level.INFO, "Displayed help in dietManager");
     }

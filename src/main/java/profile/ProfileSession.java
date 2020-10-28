@@ -17,7 +17,7 @@ import static profile.Constants.COMMAND_ARGS_INDEX;
 import static profile.Constants.COMMAND_TYPE_INDEX;
 
 /**
- * A class that is responsible for interacting with user when he/she enters Profile Session.
+ * A class that is responsible for interacting with user in Profile Session.
  */
 public class ProfileSession {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
@@ -47,7 +47,7 @@ public class ProfileSession {
     }
 
     /**
-     * Starts up Profile Session with welcome message.
+     * Starts up Profile Session.
      */
     private void start() {
         logger.log(Level.INFO, "starting profile session");
@@ -61,7 +61,10 @@ public class ProfileSession {
 
         while (true) {
             String userCommand = ui.getCommand("Profile Menu");
+            assert userCommand != null : "input should not be null before process loop";
+
             String[] commParts = profileParser.parseCommand(userCommand);
+            assert commParts != null : "parsed array should not be null before process loop";
 
             try {
                 processCommand(commParts);
@@ -78,9 +81,19 @@ public class ProfileSession {
         logger.log(Level.INFO, "exiting profile session loop");
     }
 
+    /**
+     * Processes and displays parsed user input.
+     *
+     * @param commParts Size 2 array; first element is the command type and second element is the arguments string.
+     * @throws SchwarzeneggerException If there are caught exceptions.
+     */
     private void processCommand(String[] commParts) throws SchwarzeneggerException {
         Command command = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
+        assert command != null : "command object should not be null null";
+
         CommandResult result = command.execute(commParts[COMMAND_ARGS_INDEX], storage);
+        assert result != null : "command result object should not be null null";
+
         ui.showToUser(result.getFeedbackMessage());
     }
 }

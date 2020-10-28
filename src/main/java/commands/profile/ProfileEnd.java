@@ -10,7 +10,7 @@ import storage.profile.ProfileStorage;
 import static seedu.duke.Constant.COMMAND_WORD_END;
 
 /**
- * A representation of the command for exiting Profile session.
+ * A representation of the command for exiting Profile Menu.
  */
 public class ProfileEnd extends Command {
 

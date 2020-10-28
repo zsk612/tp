@@ -5,6 +5,9 @@ import commands.CommandResult;
 import commands.ExecutionResult;
 import profile.ProfileSession;
 
+/**
+ * A representation of the command for redirecting to Profile Menu from Main Menu.
+ */
 public class ToProfile extends Command {
 
     /**

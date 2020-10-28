@@ -3,14 +3,11 @@ package commands.diet.dietsession;
 import commands.Command;
 import diet.dietsession.Food;
 import storage.diet.DietStorage;
-import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 
 public class FoodItemClear extends Command {
-
-    DietSessionUi ui = new DietSessionUi();
 
     /**
      * Overrides execute for clear command to clear all food items.
