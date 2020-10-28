@@ -679,7 +679,7 @@ actions are called to return a command object NewWs.
     4. `NewWS` creates a new `WorkoutSession` Object with the file path. 
     5.  `NewWS` calls `workoutSession. workoutSessionStart()` so that user can add information into this session.
     6. After user exits this workout, `WorkoutManager` returns a `CommandResult`.
-1. Based on `CommandResult`, correct response will be be printed to user.
+1. Based on `CommandResult`, correct response will be printed to user.
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
 The following sequence diagram shows how the new command works
@@ -725,7 +725,7 @@ actions are called to return a command object NewWs.
     1. `WorkoutManager` calls `WorkoutSessionAdd.execute()` with the rest of parsed input.
     2. `WorkoutSessionAdd` parse the arguments to identify the repetitions and weight for the exercise.
     3. `WorkoutSessionAdd` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
-1. Based on `ExecutionResult`, correct response will be be printed to user.
+1. Based on `ExecutionResult`, correct response will be printed to user.
 
 All description, warnings and response will be handled by `ui` to ensure consistence across the app.
 The following sequence diagram shows how the add command works
@@ -755,7 +755,7 @@ actions are called to return a command object NewWs.
     1. `WorkoutManager` calls `WorkoutSessionAdd.execute()` with the rest of parsed input.
     2. `WorkoutSessionAdd` parse the arguments to identify the repetitions and weight for the exercise.
     3. `WorkoutSessionAdd` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
-1. Based on `ExecutionResult`, correct response will be be printed to user.
+1. Based on `ExecutionResult`, correct response will be printed to user.
 
 All description, warnings and response will be handled by `ui` to ensure consistence across the app.
 The following sequence diagram shows how the add command works
@@ -781,14 +781,12 @@ The sequence diagram below summarizes how creating new workout session works:
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.2. Listing past workout sessions
-The feature to list workoutSessions allows the user to view a summary of all the history 
-workout sessions, including their index, creation date and tags.
+The feature to list workoutSessions allows the user to view a summary of all the history workout sessions, including their index, creation date and tags.
 
 **Implementation**
-When the user attempts to list workoutSessions, the WorkoutManger, WorkoutManagerParse, ListWS and 
-WorkoutManagerStorage class will be called upon. The following sequence of steps will then occur:
+When the user attempts to list workoutSessions, the WorkoutManger, WorkoutManagerParse, ListWS and WorkoutManagerStorage class will be called upon. The following sequence of steps will then occur:
 
-1. User executes `list`
+1. User executes `list /s 20201010 /e 20201025`
      1. `WorkoutManager` calls `Ui.getUserCommand()` to receive user input.
      2. `WorkoutManager` calls `WorkoutManagerParser.parse` into a string array
 1. Creation of command object.
@@ -798,7 +796,10 @@ WorkoutManagerStorage class will be called upon. The following sequence of steps
     3. `ListWS` calls `PastRecordList.list()`
     1. `PastRecordList` will return formatted list.
     6. `WorkoutManager` returns a `CommandResult` which contains the formated list and execution result.
-1. Based on `ExecutionResult`, correct response will be be printed to user.
+1. Based on `CommandResult`, correct response will be printed to user.
+
+![Load Data Sequence Diagram](pictures/zesong/ListWS.png)
+
 **Design considerations**
 Aspects: Security of stored data
 
@@ -817,8 +818,6 @@ print the list
 |**Pros** | More versatile operations can be done.|  
 |**Cons** | All data of pastRecord will be exposed.|
 
-![Load Data Sequence Diagram](pictures/zesong/ListWS.png)
-
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.3. Editing workout session
 User can anytime go back to edit a workout session created in the past such as
@@ -830,8 +829,7 @@ stored in another file which will be loaded as the program initlises.
 The actual workout session record will only be loaded if needed e.g. when editting is called. 
 
 **Implementation**
-When the user attempts to edit a past workout session, the Ui, WorkoutManagerParser, CommandLib
-and WorkoutStorage class will be accessed and the following sequence of 
+When the user attempts to edit a past workout session, the Ui, WorkoutManagerParser, CommandLib and WorkoutStorage class will be accessed and the following sequence of 
 actions are called.
 
 1. User executes `edit 1`
@@ -841,7 +839,7 @@ actions are called.
      1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `EditWS`.
 1. Executing Command
     1. `WorkoutManager` calls `EditWS.execute()` with the rest of parsed input.
-    3. `EditWS` calls `PastRecordList.edit()` to locate the file. If the does not exist, the action is aborted. Else, `PastRecordList` updates the meta information of the file. The file path will be returned.
+    3. `EditWS` calls `PastRecordList.edit()` to locate the file. If the does not exist, the action is aborted. Else, `PastRecordList` updates the meta information of the file and write to local storage. The file path will be returned.
     4. `EditWS` creates a new `WorkoutSession` Object with the file path. `WorkoutSession` is initilised by loading the data in the file.
     5.  `EditWS` calls `workoutSession.workoutSessionStart()` so that user start editing this session.
     6. After user exits this workout, `WorkoutManager` returns a `CommandResult`.
@@ -874,14 +872,9 @@ meta information in a separate file
 #### 4.4.4. Deleting a workout session
 User can delete a workout session created in the past by giving its index.
 
-Each past workout session is stored in a different file name following its creation time.
-The meta information of these past records such as file name, creation time are
-stored in another file which will be loaded as the program initlises.
-When the user tries to delete a file, the application refers to the meta information of the file to locate the
-file and delete it. Then the meta information of the record will be deleted.
+Each past workout session is stored in a different file name following its creation time. The meta information of these past records such as file name, creation time are stored in another file which will be loaded as the program initlises. When the user tries to delete a file, the application refers to the meta information of the file to locate the file and delete it. Then the meta information of the record will be deleted.
 
-User can clear all data by iteratively delete the record until the meta data file is empty. To simplify that,
-user can use `clear` command to achieve that.
+User can clear all data by iteratively delete the record until the meta data file is empty. To simplify that, user can use `clear` command to achieve that.
 
 **Implementation**
 
@@ -896,11 +889,14 @@ and WorkoutStorage class will be accessed and the following sequence of actions 
      or `clearWS`.
 1. Executing Command
     1. `WorkoutManager` calls `DeleteWS.execute()` with the rest of parsed input.
-    3. `DeleteWS` calls `PastRecorList.delete()` to locate the file. If the does not exist, the action is aborted. Else, `PastRecorList` remove the meta information of the file and delete the record file.
+    3. `DeleteWS` calls `PastRecorList.delete()` to locate the file. If the does not exist, the action is aborted. Else, `PastRecorList` remove the meta information of the file and delete the local storage file.
     6. After user exits this workout, `WorkoutManager` returns a `CommandResult`.
 1. Based on `CommandResult`, correct response will be printed to user.
 
 All description, warnings and response will be handled by `Ui` to ensure consistence across the app.
+
+The sequence diagram below summarizes how deleting past record works:
+![Load Data Sequence Diagram](pictures/zesong/DeleteWS.png)
 
 **Design considerations**
 
@@ -915,31 +911,26 @@ All description, warnings and response will be handled by `Ui` to ensure consist
 
 |     |     |
 |-----|-----|
-|**Pros** | More alteratives for users. Can bulk delete files with certain attributes|  
+|**Pros** | More alternatives for users. Can bulk delete files with certain attributes|  
 |**Cons** | Tags and dates does not uniquely identify the record hence may result in accidental wrong deletion|
 #### 4.4.5. Searching based on conditions
 The feature `search` allows the user to view a summary of all the history 
 workout sessions which satisfies certain conditions.
 
-The user can search by the date of creation or the tags that the session has. User can put in 0
+The user can search by the date of creation, or the tags that the session has. User can put in 0
 or 1 or 2 criteria during search. 
 
-**Implementation**
-Format: `search /t <tag1> <tag2> /d <date>`
 
-The user can attach variable number of tags after `/t` and one date after `/d`. The date must be specified
-in certain formats for it to be recognisable. Else, it will be treated as there is no date criteria given.
+The user can attach variable number of tags after `/t` and one date after `/d`. The date must be specified in certain formats for it to be recognisable. Else, it will be treated as there is no date criteria given.
 [See here](#appendix-g-supported-formats-of-date-input) for all supported formats.
 
-The tag criterion selects sessions which contains all the tags that the user specified in the search.
-The date criterion selects the sessions which is created on that date. Only sessoins that satisfies all condtions 
-will be selected and displayed.
+The tag criterion selects sessions which contains all the tags that the user specified in the search. The date criterion selects the sessions which is created on that date. Only sessions that satisfies all conditions will be selected and displayed.
 
-The result is displayed in a table with the index of the selected records so that users can easily 
-do further operations on them, e.g. `delete` or `edit`.
+The result is displayed in a table with the index of the selected records so that users can easily do further operations on them, e.g. `delete` or `edit`.
  
-When the user attempts to list workoutSessions, the WorkoutManger, DeleteWS, WorkoutManagerStorage and 
-WorkoutManagerParse class will be called upon. The following sequence of steps will then occur:
+ **Implementation**
+ 
+When the user attempts to list workoutSessions, the WorkoutManger, DeleteWS, WorkoutManagerStorage and WorkoutManagerParse class will be called upon. The following sequence of steps will then occur:
 
 1. User executes `search /t leg /d 20201017`
      1. `WorkoutManager` calls `Ui.getUserCommand()` to receive user input.
@@ -948,22 +939,18 @@ WorkoutManagerParse class will be called upon. The following sequence of steps w
      1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `SearchWS`.
 1. Executing Command
     1. `WorkoutManager` calls `SearchWS.execute()` to execute the command
-    3. `SearchWS` calls `WorkOutManagerStorage.search()`
-    1. `WorkOutManagerStorage` will call `WorkoutManagerParser.parse` to parse the arguments into
-    an array of predicates
-    1. `WorkOutManagerStorage` filters the pastRecord arraylist and print out the ones
-    which satisfy the predication.
-    6. `WorkoutManager` returns a `ExecutionResult`.
-1. Based on `ExecutionResult`, correct response will be be printed to user.
+    3. `SearchWS` calls `PastRecorList.search()`
+    1. `PastRecorList` will call `WorkoutManagerParser.parse` to parse the arguments into an array of predicates
+    1. `PastRecorList` filters the pastRecord arraylist and return a string representation of the filtered records to `WorkoutManager`
+    6. `WorkoutManager` returns a `CommandResult`.
+1. Based on `CommandResult`, correct response will be printed to user.
 
 The sequence diagram below summarizes how searching record works:
 ![Load Data Sequence Diagram](pictures/zesong/SearchWS.png)
 **Design considerations**
 Aspects: indexing the selected results
 
-The index of an record is not stored in the schema because it easily varies with 
-addition and deletion. Thus given a record, searching for its index will have higher
-time complexity.
+The index of a record is not stored in the schema because it easily varies with addition and deletion. Thus given a record, searching for its index will have higher time complexity.
 
 - Alternative 1 (current choice): print out the actual index of the record 
 in the meta info file.
@@ -990,7 +977,7 @@ Storage in the application refers to storing files of user profile and workout, 
 #### 4.6.1. Storage for profile
 
 #### 4.6.2. Storage for diet
-Storage for diet saves diet sessions created as individual files sorted based on the time created in the /saves/diet directory. Each diet session file is created as follows:
+Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
 - Each file is created as a json file and named as `[date] [tag].json`.
 - A corresponding file is updated in the local file when the user edits a diet session by calling DietSessionEdit.execute().
 - A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
@@ -999,6 +986,15 @@ Storage for diet saves diet sessions created as individual files sorted based on
 Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
 
 #### 4.6.3. Storage for workout
+
+Storage for workout saves workout sessions created as individual files named based on the time created in `/saves/workout` directory. The metainformation of the files such as createion date and last edit date is saved in  `/saves/workout/history.json`.
+
+Only history.json file is load when initilizing the application. The rest of Session files are load on request, e.g. `edit`. When a new workout session is created, a new file will be stored and its meta information will be appended to `history.json`. When a workout session is deleted, the file will be removed and its record will be removed from `history.json`.
+
+
+**Implementation**
+
+Meta information file can be overwritten with `writePastRecords()` and be read with `readPastRecords()`.
 
 
 ### 4.7. <a id="logging">Logging</a>
@@ -1077,7 +1073,7 @@ __Target user profile__:
 ### Appendix F: Instructions for Manual Testing
 #### F.1. Launch and Shutdown
 ### Appendix G: Supported Formats of Date Input
-Here shows all 12 valid formats.
+Here shows all 14 valid formats.
     
     `yyyyMMdd HH:mm`
     `yyyy-MM-dd HH:mm`
@@ -1093,5 +1089,8 @@ Here shows all 12 valid formats.
     `yyyy-MM-dd`
     `yyyy MM dd`
     `yyyy/MM/dd`
+    
+    `dd MM yyyy`
+    `ddMMyyyy`
 
 [&#8593; Return to Top](#developer-guide)

@@ -5,7 +5,7 @@ activate WorkoutManager
 
 WorkoutManager -> CommandLib : get()
 activate CommandLib
-CommandLib -> WorkoutManager : Command
+CommandLib --> WorkoutManager : Command
 deactivate CommandLib
 
 WorkoutManager -> EditCommand : execute()
@@ -19,12 +19,12 @@ deactivate PastRecordList
 EditCommand -> workoutSession : new WorkoutSession(filePath)
 activate workoutSession
 
-workoutSession -> EditCommand
+workoutSession --> EditCommand
 deactivate workoutSession
 
-EditCommand -> WorkoutManager : CommandResult
+EditCommand --> WorkoutManager : CommandResult
 deactivate EditCommand
 
-WorkoutManager ->  user : output
+WorkoutManager -->  user : output
 
 @enduml

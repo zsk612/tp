@@ -4,7 +4,7 @@ activate WorkoutManager
 user -> WorkoutManager
 WorkoutManager -> WorkoutManagerParser : parse()
 activate WorkoutManagerParser
-WorkoutManagerParser -> WorkoutManager : parsed input
+WorkoutManagerParser --> WorkoutManager : parsed input
 deactivate WorkoutManagerParser
 
 WorkoutManager -> Command : execute()
@@ -24,12 +24,12 @@ deactivate PastRecordList
 Command -> Command : new WorkoutSession
 Command -> workoutSession : start()
 activate workoutSession
-workoutSession -> Command
+workoutSession --> Command
 deactivate workoutSession
 
-Command -> WorkoutManager : CommandResult
+Command --> WorkoutManager : CommandResult
 deactivate Command
 
-WorkoutManager ->  user : output
+WorkoutManager -->  user : output
 
 @enduml
