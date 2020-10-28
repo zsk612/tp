@@ -1,17 +1,21 @@
 @startuml
+!define PLANTUML_HOME %dirpath()/../../umldiagram
+!include PLANTUML_HOME/style.puml
+
 actor user
 user -> WorkoutSession : add
 activate WorkoutSession
 
 WorkoutSession -> CommandLib : get()
 activate CommandLib
-CommandLib -> WorkoutSession : Command
+CommandLib --> WorkoutSession : Command
 deactivate CommandLib
 
 WorkoutSession -> WorkoutSessionAdd : execute()
 activate WorkoutSessionAdd
-
-WorkoutSessionAdd -> WorkoutSession.Storage : writeToFile()
+WorkoutSessionAdd-> WorkoutSession : exerciseList.add()
+WorkoutSession --> WorkoutSessionAdd
+WorkoutSessionAdd -> WorkoutSession.Storage : writeToStorage()
 activate WorkoutSession.Storage
 WorkoutSession.Storage --> WorkoutSessionAdd
 deactivate WorkoutSession.Storage
