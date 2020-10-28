@@ -1,6 +1,6 @@
 package exceptions;
 
-import static profile.Constants.MESSAGE_INVALID_COMMAND_WORD;
+import static ui.profile.ProfileUi.MESSAGE_INVALID_COMMAND_WORD;
 
 /**
  * Represents exception when command word is invalid.

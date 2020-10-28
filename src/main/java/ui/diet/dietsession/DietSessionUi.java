@@ -28,6 +28,8 @@ public class DietSessionUi extends CommonUi {
         showToUser("Starting Diet Session!");
     }
 
+    public static String MESSAGE_NEGATIVE_CALORIES = "The amount of calories in a food cannot be negative!";
+
     public void printExit() {
         showToUser("Exiting Diet Session!");
     }

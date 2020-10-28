@@ -13,9 +13,9 @@ import ui.CommonUi;
 
 import java.util.logging.Logger;
 
-import static profile.Constants.MESSAGE_WELCOME_EXISTING_USER;
-import static profile.Constants.MESSAGE_WELCOME_NEW_USER;
-import static profile.Constants.MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT;
+import static ui.profile.ProfileUi.MESSAGE_WELCOME_EXISTING_USER;
+import static ui.profile.ProfileUi.MESSAGE_WELCOME_NEW_USER;
+import static ui.profile.ProfileUi.MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT;
 import static seedu.duke.Constant.COMMAND_WORD_END;
 
 /**

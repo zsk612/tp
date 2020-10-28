@@ -24,18 +24,16 @@ public class FoodItemSearch extends Command {
         try {
             int numberOfResults = 0;
             StringBuilder searchResult = new StringBuilder();
-            searchResult.append("Here are the search results: \n\t");
+            searchResult.append("Here is the search result: \n\t ");
             for (Food food : foodList) {
                 if (food.toString().contains(input.trim())) {
-                    //System.out.println("\t" + (++numberOfResults) + ". " + food.toString());
-                    searchResult.append(" " + (++numberOfResults) + ". " + food.toString() + "\n\t");
+                    searchResult.append(" " + (++numberOfResults) + ". " + food.toString() + "\n\t ");
                 }
             }
             if (numberOfResults == 0) {
-                ui.showToUser("Sorry, there is nothing found in your food list.");
-            } else {
-                ui.showToUser(searchResult.toString().trim());
+                searchResult.append("Sorry, there is nothing found in your food list.");
             }
+            ui.showToUser(searchResult.toString().trim());
             logger.log(Level.INFO, "Listed all searched foods in Diet Session");
         } catch (NullPointerException e) {
             ui.showToUser("Sorry, there is nothing in your food list.");

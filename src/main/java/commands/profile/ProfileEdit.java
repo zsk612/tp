@@ -12,9 +12,9 @@ import java.util.HashMap;
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
 import static commands.ExecutionResult.SKIPPED;
-import static profile.Constants.MESSAGE_EDIT_NOTHING;
-import static profile.Constants.MESSAGE_EDIT_PROFILE_ACK;
-import static profile.Constants.MESSAGE_PROFILE_NOT_EXIST;
+import static ui.profile.ProfileUi.MESSAGE_EDIT_NOTHING;
+import static ui.profile.ProfileUi.MESSAGE_EDIT_PROFILE_ACK;
+import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;
 import static profile.ProfileParser.extractCalories;
 import static profile.ProfileParser.extractCommandTagAndInfo;
 import static profile.ProfileParser.extractExpectedWeight;
@@ -43,6 +43,7 @@ public class ProfileEdit extends Command {
         Profile profile;
         try {
             profile = storage.loadData();
+            assert profile != null : "profile should not be null after loading";
 
             HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_EDIT, commandArgs);
             String name = parsedParams.containsKey("/n") ? extractName(parsedParams) : profile.getName();

@@ -1,7 +1,7 @@
 package models;
 
 import exceptions.SchwarzeneggerException;
-import exceptions.workoutmanager.SchwIoException;
+import exceptions.workout.workoutmanager.SchwIoException;
 import logger.SchwarzeneggerLogger;
 import storage.workout.WorkOutManagerStorage;
 

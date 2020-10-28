@@ -11,8 +11,8 @@ import storage.profile.ProfileStorage;
 
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
-import static profile.Constants.MESSAGE_DELETE_NOTHING;
-import static profile.Constants.MESSAGE_DELETE_PROFILE;
+import static ui.profile.ProfileUi.MESSAGE_DELETE_NOTHING;
+import static ui.profile.ProfileUi.MESSAGE_DELETE_PROFILE;
 import static seedu.duke.Constant.COMMAND_WORD_DELETE;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 

@@ -2,10 +2,12 @@ package storage.workout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import workout.workoutsession.exercise.Exercise;
-import workout.workoutsession.exercise.ExerciseList;
+import models.Exercise;
+import models.ExerciseList;
+import ui.workout.workoutsession.WorkoutSessionUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,6 +52,8 @@ public class Storage {
             exerciseList.exerciseList.addAll(gson.fromJson(reader, taskListType));
         } catch (NullPointerException e) {
             System.out.printf("");
+        } catch (JsonSyntaxException e) {
+            WorkoutSessionUi.saveCorruptedError(filePath);
         }
     }
 

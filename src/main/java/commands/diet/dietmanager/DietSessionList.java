@@ -1,6 +1,7 @@
 package commands.diet.dietmanager;
 
 import commands.Command;
+import diet.dietsession.DietSession;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
@@ -23,17 +24,23 @@ public class DietSessionList extends Command {
     public void execute(String input, DietStorage storage) {
         File folder = new File(FILEPATH);
         File[] listOfFiles = folder.listFiles();
+        StringBuilder listResult = new StringBuilder();
         assert folder.exists();
         try {
-            ui.showToUser("Here are all the saved meal sessions!");
+            listResult.append("Here is your diet session list: \n\t ");
             if (Objects.requireNonNull(listOfFiles).length == 0) {
-                ui.showToUser("It seems like you do not have any meal sessions stored!");
+                listResult.append("It seems like you do not have any sessions stored!");
             }
+
             for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++) {
-                System.out.println("\t" + (i + 1) + ". "
-                        + listOfFiles[i].getName().replaceFirst("[.][^.]+$", ""));
+                DietSession ds = storage.readDietSession(listOfFiles[i].getName());
+                double totalCalories = ds.getTotalCalories();
+                listResult.append("\t" + (i + 1) + ". "
+                        + listOfFiles[i].getName().replaceFirst("[.][^.]+$", "")
+                        + " [Total calories: " + totalCalories + "]" + "\n\t ");
             }
             logger.log(Level.INFO, "Listed all available diet sessions");
+            ui.showToUser(listResult.toString().trim());
         } catch (NullPointerException e) {
             ui.showToUser("Sorry! It seems like you have no meal sessions saved!.");
             logger.log(Level.WARNING, "No instances of diet sessions saved");

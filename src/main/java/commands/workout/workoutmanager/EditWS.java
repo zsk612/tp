@@ -4,9 +4,9 @@ import commands.Command;
 import commands.CommandResult;
 import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
-import exceptions.workoutmanager.InsufficientArgumentException;
-import exceptions.workoutmanager.NotANumberException;
-import exceptions.workoutmanager.OutOfArrayException;
+import exceptions.workout.workoutmanager.InsufficientArgumentException;
+import exceptions.workout.workoutmanager.NotANumberException;
+import exceptions.workout.workoutmanager.OutOfArrayException;
 import models.PastRecordList;
 import workout.workoutsession.WorkoutSession;
 

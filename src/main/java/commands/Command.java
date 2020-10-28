@@ -2,12 +2,15 @@ package commands;
 
 import diet.dietsession.Food;
 import exceptions.InvalidCommandWordException;
+import exceptions.InvalidDateFormatException;
 import exceptions.SchwarzeneggerException;
+import exceptions.diet.InvalidSearchDateException;
+import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
+import models.ExerciseList;
 import storage.diet.DietStorage;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
-import workout.workoutsession.exercise.ExerciseList;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -15,7 +18,7 @@ import java.util.logging.Logger;
 
 public abstract class Command {
 
-    public Logger logger = SchwarzeneggerLogger.getInstanceLogger();
+    protected static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     public static CommonUi ui = new CommonUi();
 
     /**
@@ -44,7 +47,8 @@ public abstract class Command {
         return new CommandResult();
     }
 
-    public void execute(String input, DietStorage storage) throws InvalidCommandWordException {
+    public void execute(String input, DietStorage storage) throws InvalidCommandWordException,
+            InvalidCommandFormatException, InvalidDateFormatException, InvalidSearchDateException {
         return;
     }
 

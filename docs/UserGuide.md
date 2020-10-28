@@ -1,7 +1,7 @@
 # User Guide
 By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 
-## Table of content
+## Table of Contents
 1. [**Introduction**](#intro)
 1. [**Quick Start**](#quickstart)
 1. [**Features**](#features)<br>
@@ -31,7 +31,8 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.4. [Editing a Past Diet Session: `edit`](#diet-edit)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.5. [Deleting a Past Diet Session: `delete`](#diet-delete)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.6. [Clearing All Past Diet Sessions: `clear`](#diet-clear)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.3.7. [Returning to Main Menu: `end`](#diet-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.7. [Searching for Past Diet Sessions: `search`](#diet-search)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.8. [Returning to Main Menu: `end`](#diet-end)<br>
 3.4. [Workout Menu](#workout-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.1. [Viewing Help: `help`](#workout-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.2. [Starting a New Workout Session: `new`](#workout-start)<br>
@@ -228,7 +229,7 @@ Expected outcome:
 ```
 
 #### 3.2.3. <a id="profile-view">Viewing a Profile: `view`</a>
-You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI and give you suggestions on an expected weight for better fitness if it detects your current expectation is not appropriate.
+You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI classification so that you can have a good suggestion on your current fitness.
 
 __Format:__ `view`  
 
@@ -432,7 +433,14 @@ __Format:__ `clear`
 
 Example: `clear`
 
-### 3.3.7. <a id="diet-end">Returning to Main Menu: `end`</a>
+### 3.3.7. <a id="diet-search">Searching for Past Diet Sessions: `search`</a>
+Searches for specified range of diet sessions with identifiers like start date, end date and tags.
+
+__Format:__ `search /s [START DATE] /e [END DATE] /t [TAG]`
+
+Example: `search /s 2020-05-06 /e 2020-05-10 /t breakfast`
+
+### 3.3.8. <a id="diet-end">Returning to Main Menu: `end`</a>
 Ends the current meal session and saves the data.
 
 __Format:__ `end` 

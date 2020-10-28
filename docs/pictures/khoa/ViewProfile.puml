@@ -4,7 +4,7 @@
 
 actor user
 activate ProfileSession
-user -> Ui++ : add
+user -> Ui++ : view
 Ui --> ProfileSession -- : input
 
 ProfileSession -> ProfileParser ++ : parseCommand(input)
@@ -18,17 +18,13 @@ Command -> ProfileStorage ++ : loadData()
 ProfileStorage --> Command -- : profile
 
 opt hasExistingProfile
+    Command -> Profile : toString()
+    activate Profile
+    Profile --> Command -- : profileString
+    destroy Profile
     Command --> ProfileSession : result
 else
-    Command -> ProfileParser ++ : extractCommandTagAndInfo(parsedInput)
-    ProfileParser --> Command -- : parsedInfo
-    Command -> Profile ** : parsedInfo
-    activate Profile
-    Profile --> Command -- : newProfile
-    Command -> ProfileStorage ++ : saveData(newProfile)
-    destroy Profile
-    ProfileStorage --> Command --
-    Command --> ProfileSession -- : result
+    Command --> ProfileSession --: result
 end
 
 deactivate Command

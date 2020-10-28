@@ -2,7 +2,7 @@ package exceptions.profile;
 
 import exceptions.SchwarzeneggerException;
 
-import static profile.Constants.MESSAGE_LOADING_ERROR;
+import static ui.profile.ProfileUi.MESSAGE_LOADING_ERROR;
 
 /**
  * Represents exception while loading data.

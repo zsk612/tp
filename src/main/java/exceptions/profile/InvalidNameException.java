@@ -2,7 +2,7 @@ package exceptions.profile;
 
 import exceptions.SchwarzeneggerException;
 
-import static profile.Constants.MESSAGE_INVALID_NAME;
+import static ui.profile.ProfileUi.MESSAGE_INVALID_NAME;
 
 /**
  * Represents exception when input name is invalid.
