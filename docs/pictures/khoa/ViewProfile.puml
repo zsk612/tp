@@ -18,10 +18,12 @@ Command -> ProfileStorage ++ : loadData()
 ProfileStorage --> Command -- : profile
 
 opt hasExistingProfile
-    Command -> Profile : toString()
-    activate Profile
-    Profile --> Command -- : profileString
-    destroy Profile
+    Command -> DietManager**
+    activate DietManager
+    DietManager --> Command --
+    Command -> DietManager ++ : getTodayTotalCalories()
+    DietManager --> Command : calories
+    destroy DietManager
     Command --> ProfileSession : result
 else
     Command --> ProfileSession --: result

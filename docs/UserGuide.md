@@ -229,7 +229,9 @@ Expected outcome:
 ```
 
 #### 3.2.3. <a id="profile-view">Viewing a Profile: `view`</a>
-You can view your profile recorded in the program. The Schwarzenegger will also show your current BMI classification so that you can have a good suggestion on your current fitness.
+You can view your profile recorded in the program. The Schwarzenegger will also show 2 additional information:
+- Your current BMI classification so that you can have a good suggestion on your current fitness level.
+- Comparison between your calories today with your expected daily calories intake.
 
 __Format:__ `view`  
 
@@ -246,6 +248,7 @@ Expected outcome:
         Expected Weight: 100.0 kg
         Expected daily calories intake: 2500.0 calories
         Your BMI: 32.0 (Obesity Class 1)
+    By the way, take 755.5 more calories to achieve your target for today!
     ______________________________________________________________________________
 ```
 
