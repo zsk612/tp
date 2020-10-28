@@ -18,10 +18,17 @@ public class FoodItemClear extends Command {
      * @param input user input for command
      * @param foodList arraylist that stored all the food items
      * @param storage storage for diet session
+     * @param index Integer variable that shows the index of the session
      */
     @Override
-    public void execute(String input, ArrayList<Food> foodList, DietStorage storage) {
-        if (ui.checkConfirmation("Diet Menu", "clear all records")) {
+    public void execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
+        String prompt;
+        if (index <= 0) {
+            prompt = "Diet Menu > New Diet Session";
+        } else {
+            prompt = "Diet Menu > Diet Session " + index;
+        }
+        if (ui.checkConfirmation(prompt, "clear all records")) {
             foodList.clear();
             ui.showToUser("Oops you have cleared all the food items.");
             logger.log(Level.INFO, "Cleared all food in arraylist");

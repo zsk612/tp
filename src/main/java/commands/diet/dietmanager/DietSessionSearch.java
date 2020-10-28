@@ -41,8 +41,7 @@ public class DietSessionSearch extends Command {
         assert folder.exists();
         StringBuilder searchResult = new StringBuilder();
         try {
-            HashMap<String, String> parsedParams = parser.extractDietManagerCommandTagAndInfo(COMMAND_WORD_SEARCH,
-                    input);
+            HashMap<String, String> parsedParams = parser.extractDietManagerCommandTagAndInfo(input);
             LocalDateTime startDate = parser.extractStartDates(parsedParams, searchResult);
             LocalDateTime endDate = parser.extractEndDates(parsedParams, searchResult);
             if (startDate.compareTo(endDate) > 0) {

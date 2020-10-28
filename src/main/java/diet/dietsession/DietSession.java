@@ -122,7 +122,7 @@ public class DietSession {
     private void processCommand(String input) throws NullPointerException, InvalidCommandWordException {
         String[] commParts = parser.parse(input);
         Command command = cl.getCommand(commParts[0]);
-        command.execute(commParts[1].trim(), foodList, storage);
+        command.execute(commParts[1].trim(), foodList, storage, index);
     }
 
     public double getTotalCalories() {

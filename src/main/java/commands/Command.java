@@ -53,7 +53,7 @@ public abstract class Command {
     }
 
     public void execute(String input, ArrayList<Food> foodList,
-                        DietStorage storage) throws InvalidCommandWordException {
+                        DietStorage storage, Integer index) throws InvalidCommandWordException {
         return;
     }
 

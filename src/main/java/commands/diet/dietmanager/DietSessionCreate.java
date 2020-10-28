@@ -6,7 +6,6 @@ import diet.dietsession.DietSession;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import storage.diet.DietStorage;
-import ui.CommonUi;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -28,8 +27,9 @@ public class DietSessionCreate extends Command {
             StringBuilder message = new StringBuilder();
             String dateInput = parser.extractDate(input, message);
             String typeInput = parser.extractMeal(input, message);
-
-            ui.showToUser(message.deleteCharAt(message.length() - 1).toString());
+            if (message.length() != 0) {
+                ui.showToUser(message.deleteCharAt(message.length() - 1).toString());
+            }
             DietSession ds = new DietSession(typeInput, dateInput, true, -1);
             assert ds != null;
             logger.log(Level.INFO, "Diet session successfully created");
