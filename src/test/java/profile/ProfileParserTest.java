@@ -1,5 +1,6 @@
 package profile;
 
+import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidCommandFormatException;
 import org.junit.jupiter.api.Test;
 
@@ -45,16 +46,16 @@ class ProfileParserTest {
     }
 
     @Test
-    void testExtractCommandTagAndInfo_validInput_returnValidParsedParams() throws InvalidCommandFormatException {
+    void testExtractCommandTagAndInfo_validInput_returnValidParsedParams() throws SchwarzeneggerException {
         HashMap<String, String> parsedParams = new HashMap<>();
         parsedParams.put("/n", "Schwarzenegger");
-        parsedParams.put("/a", "30");
+        parsedParams.put("/c", "2500");
         parsedParams.put("/h", "188");
         parsedParams.put("/w", "113");
         parsedParams.put("/e", "100");
 
         String command = "add";
-        String commandArgs = "/n Schwarzenegger /a 30 /h 188 /w 113 /e 100";
+        String commandArgs = "/n Schwarzenegger /c 2500 /h 188 /w 113 /e 100";
 
         assertEquals(parsedParams.toString(), extractCommandTagAndInfo(command, commandArgs).toString());
     }

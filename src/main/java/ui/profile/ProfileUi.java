@@ -57,7 +57,7 @@ public class ProfileUi extends CommonUi {
             + "Expected daily calories intake cannot be negative.";
     public static final String MESSAGE_INVALID_NAME = SAD_FACE + "Name cannot be empty.";
     public static final String MESSAGE_INVALID_SAVE_FORMAT = SAD_FACE + "Save format in "
-            + "saves\\profile\\profile.txt is invalid.";
+            + "%s is invalid.";
     public static final String MESSAGE_INVALID_COMMAND_WORD = SAD_FACE + "Sorry, but I don't know what that means."
             + LS + "Please enter \"help\" for a list of available commands.";
 }
