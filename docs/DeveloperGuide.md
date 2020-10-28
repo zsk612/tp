@@ -74,7 +74,7 @@ By: `CS2113T-F11-1` Since: `2020`
     + [Appendix G: Supported Formats of Date Input](#appendix-g-supported-formats-of-date-input)
 
 ## 1. <a id="intro">Introduction</a>
-### 1.1.  <a=id="background">Background</a>
+### 1.1.  <a id="background">Background</a>
 The Schwarzenegger is a desktop command line interface-based app for managing all your needs regarding fitness. With the built-in personal assistant, you are able to track your daily workout and diet sessions based on your profile. If you can type fast, The Schwarzenegger can help you maximise your efficiency for maintaining fitness.
 ### 1.2. <a id="purpose">Purpose</a>
 This document contains the specified architecture and software design specifications for the application, The Schwarzenegger. 
