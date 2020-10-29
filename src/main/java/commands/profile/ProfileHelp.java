@@ -3,7 +3,6 @@ package commands.profile;
 import commands.Command;
 import commands.CommandResult;
 import exceptions.SchwarzeneggerException;
-import exceptions.profile.RedundantParamException;
 import org.apache.commons.lang3.StringUtils;
 import storage.profile.ProfileStorage;
 
@@ -13,7 +12,6 @@ import static seedu.duke.Constant.COMMAND_WORD_ADD;
 import static seedu.duke.Constant.COMMAND_WORD_DELETE;
 import static seedu.duke.Constant.COMMAND_WORD_EDIT;
 import static seedu.duke.Constant.COMMAND_WORD_END;
-import static seedu.duke.Constant.COMMAND_WORD_HELP;
 import static seedu.duke.Constant.COMMAND_WORD_VIEW;
 import static ui.CommonUi.helpFormatter;
 
@@ -33,10 +31,6 @@ public class ProfileHelp extends Command {
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         super.execute(commandArgs, storage);
-
-        if (!commandArgs.isEmpty()) {
-            throw new RedundantParamException(COMMAND_WORD_HELP);
-        }
 
         StringBuilder helpMessage = new StringBuilder();
         helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_ADD), ADD_PROFILE_FORMAT,

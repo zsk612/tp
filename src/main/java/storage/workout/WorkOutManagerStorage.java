@@ -2,6 +2,7 @@ package storage.workout;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import exceptions.workout.workoutmanager.SchwIoException;
@@ -58,6 +59,9 @@ public class WorkOutManagerStorage {
         } catch (FileNotFoundException e) {
             logger.info("File is not found.");
             createMetaFile(Constant.PATH_TO_WORKOUT_SESSION_HISTORY);
+            pastFiles = new ArrayList<>();
+        } catch (JsonSyntaxException e) {
+            logger.info("File is corrupted.");
             pastFiles = new ArrayList<>();
         }
         if (pastFiles == null) {

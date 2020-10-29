@@ -1,0 +1,32 @@
+@startuml
+!define PLANTUML_HOME %dirpath()/../../umldiagram
+!include PLANTUML_HOME/style.puml
+
+actor user
+user -> WorkoutSession : add
+activate WorkoutSession
+
+WorkoutSession -> CommandLib : get()
+activate CommandLib
+CommandLib --> WorkoutSession : Command
+deactivate CommandLib
+
+WorkoutSession -> WorkoutSessionList : execute()
+activate WorkoutSessionList
+WorkoutSessionList -> WorkoutSessionList : printList()
+activate WorkoutSessionList
+WorkoutSessionList -> WorkoutSessionList : formatList()
+activate WorkoutSessionList
+WorkoutSessionList --> WorkoutSessionList
+deactivate WorkoutSessionList
+WorkoutSessionList --> WorkoutSessionList
+deactivate WorkoutSessionList
+
+WorkoutSessionList -> WorkoutSession.Storage : writeToStorage()
+activate WorkoutSession.Storage
+WorkoutSession.Storage --> WorkoutSessionList
+deactivate WorkoutSession.Storage
+
+WorkoutSessionList --> WorkoutSession
+deactivate WorkoutSessionList
+@enduml

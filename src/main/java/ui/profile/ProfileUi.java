@@ -33,11 +33,11 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_WELCOME_EXISTING_USER = "Welcome back to Schwarzenegger, %s!" + LS
             + "How can I help you today?";
     public static final String MESSAGE_WELCOME_NEW_USER = "Welcome new user to Schwarzenegger! :D" + LS
-            + "Please add your profile using \"add\" command under Profile Menu." + LS
+            + "Please add your profile under Profile Menu." + LS
             + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT = "Welcome back to Schwarzenegger!" + LS
             + "It seems like your profile data is corrupted!" + LS
-            + "Please add your profile again using \"add\" command under Profile Menu." + LS
+            + "Please add your profile again under Profile Menu." + LS
             + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String SAD_FACE = ":(  OOPS!!! ";
     public static final String MESSAGE_INVALID_WEIGHT = String.format(
@@ -52,12 +52,12 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_LOADING_ERROR = SAD_FACE + "An error has occurred while loading data."
             + LS + "%s";
     public static final String MESSAGE_INVALID_HEIGHT = String.format(
-            SAD_FACE + "Please input an integer from %d to %d for height.", HEIGHT_LOWER_BOUND, HEIGHT_UPPER_BOUND);
+            SAD_FACE + "Please input height as an integer from %d to %d.", HEIGHT_LOWER_BOUND, HEIGHT_UPPER_BOUND);
     public static final String MESSAGE_INVALID_CALORIES = SAD_FACE
             + "Expected daily calories intake cannot be negative.";
     public static final String MESSAGE_INVALID_NAME = SAD_FACE + "Name cannot be empty.";
     public static final String MESSAGE_INVALID_SAVE_FORMAT = SAD_FACE + "Save format in "
-            + "saves\\profile\\profile.txt is invalid.";
+            + "%s is invalid.";
     public static final String MESSAGE_INVALID_COMMAND_WORD = SAD_FACE + "Sorry, but I don't know what that means."
             + LS + "Please enter \"help\" for a list of available commands.";
 }

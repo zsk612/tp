@@ -55,7 +55,7 @@ public class WorkoutSessionParser {
     public static String searchParser(String[] input) {
         String returnString = new String();
         for (int i = 1; i < input.length; i++) {
-            returnString += input[i];
+            returnString += " " + input[i];
         }
         return returnString.trim();
     }
