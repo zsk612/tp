@@ -7,7 +7,7 @@ public class DietManagerUi extends CommonUi {
     public static void printHelp() {
         StringBuilder helpMessage = new StringBuilder();
 
-        helpMessage.append(helpFormatter("New", "new /d [DATE] /t [TAG]",
+        helpMessage.append(helpFormatter("New", "new </d [DATE]> </t [TAG]>",
                 "Create a new diet session"));
         helpMessage.append(helpFormatter("List", "list",
                 "Show all past diet sessions"));
