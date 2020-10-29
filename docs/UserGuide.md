@@ -22,11 +22,11 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.1. [Viewing Help: `help`](#diet-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.2. [Starting to a New Diet Session: `new`](#diet-start)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.1. [Viewing Help in Diet Session: `help`](#meal-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.2. [Adding Food Items for the Current Diet Session: `add`](#meal-add)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.3. [Listing Data for the Diet Session: `list`](#meal-list)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.4. [Deleting Data From the Diet Session: `delete`](#meal-delete)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.5. [Clearing Data From the Current Diet Session: `clear`](#meal-clear)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.6. [Ending the Diet Session: `end`](#meal-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.2. [Adding Food Items to the Current Diet Session: `add`](#meal-add)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.3. [Listing Food Items from the Current Diet Session: `list`](#meal-list)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.4. [Deleting Food Items from the Current Diet Session: `delete`](#meal-delete)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.5. [Clearing All Food Items from the Current Diet Session: `clear`](#meal-clear)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.6. [Ending the Current Diet Session: `end`](#meal-end)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.3. [Listing All Past Diet Sessions: `list`](#diet-list)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.4. [Editing a Past Diet Session: `edit`](#diet-edit)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.5. [Deleting a Past Diet Session: `delete`](#diet-delete)<br>
@@ -36,11 +36,11 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 3.4. [Workout Menu](#workout-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.1. [Viewing Help: `help`](#workout-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.2. [Starting a New Workout Session: `new`](#workout-start)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.1. [Viewing Help: `help`](#ws-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.2. [Adding Data for Current Workout Session: `add`](#ws-add)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.3. [Listing Data for the Current Workout Session: `list`](#ws-list)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.4. [Deleting Data From the Current Workout Session: `delete`](#ws-delete)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.5. [Ending the Recording Data for the Current Workout Session: `end`](#ws-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.1. [Viewing Help in Workout Session: `help`](#ws-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.2. [Adding a Move to the Current Workout Session: `add`](#ws-add)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.3. [Listing All Moves from the Current Workout Session: `list`](#ws-list)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.4. [Deleting a Move From the Current Workout Session: `delete`](#ws-delete)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.5. [Ending the Current Workout Session: `end`](#ws-end)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.3. [Listing All Past Workout Sessions: `list`](#workout-list)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.4. [Editing a Workout Session: `edit`](#workout-edit)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.5. [Deleting a Workout Session: `delete`](#workout-delete)<br>
@@ -396,9 +396,15 @@ Expected outcome:
 ```
  
 ### 3.3.2. <a id="diet-start">Starting to a New Diet Session: `new`</a>
-This command creates a new diet session. You will be directed immediately into the new diet session.
+This command creates a new diet session. The date and tag can be added on creation with "/d" for date and "/t" for meal type. 
 
-The date and tag can be added on creation with "/d" for date and "/t" for meal type.
+You will be directed immediately into the new diet session. You may verify that by looking at the cursor changes from 
+
+`Diet Menu >>>>> `
+
+to
+
+```Diet Menu > New Diet Session >>>>> ```. 
 
 __Format:__ `new </d [DATE]> </t [TAG]>`
  
@@ -454,7 +460,7 @@ Expected outcome:
 	          Go back to the Diet Menu.
 	 _________________________________________________________________________________________________
 ```
-#### 3.3.2.2. <a id="meal-add">Adding Food Items for the Current Diet Session: `add`</a>
+#### 3.3.2.2. <a id="meal-add">Adding Food Items to the Current Diet Session: `add`</a>
 This command adds a food item into the current diet session.
 
 __Format:__ `add [FOOD_NAME] /c [CALORIES]` 
@@ -468,7 +474,7 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 ```
 
-#### 3.3.2.3. <a id="meal-list">Listing Data for the Diet Session: `list`</a>
+#### 3.3.2.3. <a id="meal-list">Listing Food Items from the Current Diet Session: `list`</a>
 Lists all the added food items for the current diet session, with a numbered sequence according to sequence entered.
 
 __Format:__ `list` 
@@ -484,7 +490,7 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 ```
 
-#### 3.3.2.4. <a id="meal-delete">Deleting Data From the Diet Session: `delete`</a>
+#### 3.3.2.4. <a id="meal-delete">Deleting Food Items from the Current Diet Session: `delete`</a>
 Deletes the food item according to the index in the current meal session list.
 
 __Format:__ `delete [INDEX]`
@@ -499,7 +505,7 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 
 ``` 
-#### 3.3.2.5. <a id="meal-clear">Clearing Data From the Current Diet Session: `clear`</a>
+#### 3.3.2.5. <a id="meal-clear">Clearing All Food Items from the Current Diet Session: `clear`</a>
 Clears all the food items in the current diet session list.
 
 This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
@@ -521,8 +527,8 @@ Expected outcome:
      _________________________________________________________________________________________________
 ```
 
-#### 3.3.2.6. <a id="meal-end">Ending the Diet Session: `end`</a>
-Ends the current diet session and saves the data.
+#### 3.3.2.6. <a id="meal-end">Ending the Current Diet Session: `end`</a>
+Ends the current diet session, saves the data and returns to Diet Menu.
 
 __Format:__ `end` 
 
@@ -620,7 +626,7 @@ Expected outcome:
 ```
 
 ### 3.3.8. <a id="diet-end">Returning to Main Menu: `end`</a>
-Exits the diet manager and returns you back to the main menu.
+You use this command to exit Diet Menu and return to the Main Menu.
 
 __Format:__ `end`
 
@@ -661,14 +667,13 @@ ________________________________________________________________________________
 	 End      - end
 	          Go back to Main Menu
 _________________________________________________________________________________________________
-
 ```
 
 ### 3.4.2. <a id="workout-start">Starting a New Workout Session: `new`</a>
 Creates a new workout session and go into the session. 
 You can add tags with “/t”. Tags are optional and more than one tag can be attached to a session.
 
-Tags are optional and more than one tag can be attached to a session. If more than one tag is added, each one should be separated by `,`. After `new`, user will be directed into workout session to manage the given session. You may verify that by looking at the cursor changes from 
+If more than one tag is added, each one should be separated by `,`. After `new`, user will be directed into workout session to manage the given session. You may verify that by looking at the cursor changes from 
 
 `Workout Menu >>>>> `
 
@@ -690,42 +695,91 @@ Workout Menu > New Workout Session >>>>>
 ```
 
 
-#### 3.4.2.1. <a id="ws-help">Viewing Help: `help`</a>
+#### 3.4.2.1. <a id="ws-help">Viewing Help in Workout Session: `help`</a>
 You can see a complete list of available commands under Workout Session and how to use them.
 
 __Format:__ `help`  
 
 Example: `help`
 
-#### 3.4.2.2. <a id="ws-add">Adding Data for Current Workout Session: `add`</a>
-Adds moves with number of moves per set and weights of equipment (if the move does not require weights, input 0 for weight).
+Expected outcome:
+
+```
+     _________________________________________________________________________________________________
+     Add      - add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]
+              Add a new move.
+     List     - list
+              Show all moves in this current session.
+     Delete   - delete [INDEX]
+              Delete a move according to the index in the list.
+     Search   - search [NAME_OF_MOVE]
+              Show a list of moves that match the entered keyword.
+     End      - end
+              Go back to the Workout Menu.
+     _________________________________________________________________________________________________
+```
+
+#### 3.4.2.2. <a id="ws-add">Adding a Move to the Current Workout Session: `add`</a>
+Adds a move with number of moves per set and weights of equipment (if the move does not require weights, input 0 for weight).
 
 __Format:__ `add [NAME_OF_MOVE] /n [NUMBER_OF_MOVES_PER_SET] /w [WEIGHT]`  
 
 Example: `add squat /n 15 /w 40`
 
-#### 3.4.2.3. <a id="ws-list">Listing Data for the Current Workout Session: `list`</a>
+Expected outcome:
+
+```
+     _________________________________________________________________________________________________
+     Yay! You have added squat to your list.
+     [Repetitions: 15 || Weight: 40]
+     _________________________________________________________________________________________________
+```
+
+#### 3.4.2.3. <a id="ws-list">Listing All Moves from the Current Workout Session: `list`</a>
 Lists all the added moves for the current workout session, with a numbered sequence according to sequence entered.
 
 __Format:__ `list`  
 
 Example: `list`
 
-#### 3.4.2.4. <a id="ws-delete">Deleting Data From the Current Workout Session: `delete`</a>
-Deletes the move according to move index in the current workout session list.
+Expected outcome:
+```
+     _________________________________________________________________________________________________
+     Index   Exercise             Repetitions Weight
+     1       squat                15          40
+     _________________________________________________________________________________________________
+```
 
+#### 3.4.2.4. <a id="ws-delete">Deleting a Move From the Current Workout Session: `delete`</a>
+Deletes a move according to move index in the current workout session list.
 
-__Format:__ `delete [INDEX_OF_MOVE]`  
+__Format:__ `delete [INDEX]`  
 
 Example: `delete 1`
 
-#### 3.4.2.5. <a id="ws-end">Ending the Recording Data for the Current Workout Session: `end`</a>
-Ends the current workout session and saves the relevant data.
+Expected outcome:
 
+```
+     _________________________________________________________________________________________________
+     You have deleted squat from your list!
+     [Repetitions: 15 || Weight: 40]
+     _________________________________________________________________________________________________
+```
+
+#### 3.4.2.5. <a id="ws-end">Ending the Current Workout Session: `end`</a>
+Ends the current workout session and saves the relevant data.
 
 __Format:__ `end`  
 
 Example: `end`
+
+Expected outcome:
+
+```
+     _________________________________________________________________________________________________
+     Congratulations! You have finished today's workout!
+     _________________________________________________________________________________________________
+```
 
 ### 3.4.3. <a id="workout-list">Listing All Past Workout Sessions: `list`</a>
 You can see all your past workout sessions. They will be summarised and printed in a table with their index, creation date and tags.
@@ -736,12 +790,13 @@ __Format:__ `list </s [START_DATE]> </e [END_DATE]>`
 
 Example `list /e 20201026`
 
-Expected output
+Expected outcome:
 ```
 	 ______________________________________________________________________________
-	 You have 1 records in the given period:
+	 You have 2 records in the given period:
 	 Index   Creation date   Tags    
 	 1       2020-10-26      [legs day, tricep]
+	 2       2020-10-26      [chest]
 	 ______________________________________________________________________________
 ```
 
@@ -762,7 +817,7 @@ The index can be found by listing all results or searching the target record.
 
 Example: `edit 1`
 
-Expected output:
+Expected outcome:
 ```
 Workout Menu > Workout Session 1 >>>>> 
 ```
@@ -777,14 +832,14 @@ The index can be found by listing the results
 Example：
 `delete 1`
 
-Expected output:
+Expected outcome:
 ```
     ______________________________________________________________________________
     You have deleted that record!
     ______________________________________________________________________________
 ```
-### 3.4.6. <a id="workout-search">Searching a List of Workout Session: `search`</a>
-You can search for a list of workout sessions that matches certain conditions. For example, you can search for sessions created on a specific day or sessions that contains certain tags.
+### 3.4.6. <a id="workout-search">Searching a List of Workout Sessions: `search`</a>
+You can search for a list of workout sessions that match certain conditions. For example, you can search for sessions created on a specific day or sessions that contain certain tags.
 
 __Format:__ `search </d [DATE]> </t [TAG]...>`
 
@@ -802,7 +857,7 @@ You can see all the sessions that meet the conditions. They will be summarised a
 
 Example: `search /t le`
 
-Expected output
+Expected outcome:
 ```
 	 ______________________________________________________________________________
 	 1  records are found:
@@ -810,7 +865,6 @@ Expected output
 	 2       2020-10-26      [legs day, tricep]
 	 ______________________________________________________________________________
 ```
-
 
 ### 3.4.7. <a id="workout-clear">Clearing All Workout Sessions: `clear`</a>
 You can erase all workout sessions.
@@ -824,7 +878,7 @@ After typing this command, you will be asked to reconfirm it by typing in
 
 Example `clear`
 
-Expected output:
+Expected outcome:
 ```
 	 ______________________________________________________________________________
 	 Are you sure you want to clear all records? This action is irrevocable.
@@ -876,9 +930,9 @@ End|`end`
 **Action** |  **Format**
 --------|----------------------
 Help|`help`
-Add |`add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`<br><br>E.g. `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
+Add |`add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]`<br><br>E.g. `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
 View|`view`
-Edit|`edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>`<br><br>E.g. `edit /w 110`, `edit /h 175 /w 110`, `edit /h 175 /w 110 /e 90`
+Edit|`edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>`<br><br>E.g. `edit /w 110`, `edit /h 175 /w 110`, `edit /h 175 /w 110 /e 90`
 Delete|`delete`
 Return to Main Menu|`end`
 
@@ -904,7 +958,7 @@ Add |`add [FOOD_NAME] /c [CALORIES]`<br><br>E.g. `add spinach /c 90`
 List|`list`
 Delete|`delete [INDEX]`<br><br>E.g. `delete 1`
 Clear|`clear`
-Return to Main Menu|`end`
+Return to Diet Menu|`end`
 
 **Workout Menu**
 
@@ -918,6 +972,14 @@ Delete|`delete [INDEX]`<br><br>E.g. `delete 1`
 Search|`search </t [TAG]...> </d [DATE]>`<br><br>E.g. `search /t leg day, chest /d 2020-10-18`
 Clear|`clear`
 Return to Main Menu|`end`
+
+**Workout Session**
+--------|----------------------
+Help|`help`
+Add |`add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]`<br><br>E.g. `add squat /n 15 /w 40`
+List|`list`
+Delete|`delete [INDEX]`<br><br>E.g. `delete 1`
+Return to Workout Menu|`end`
 
 ## 5. <a id="notes">Notes</a>
 
