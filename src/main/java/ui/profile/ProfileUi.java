@@ -35,15 +35,14 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_WELCOME_EXISTING_USER = "Welcome back to Schwarzenegger, %s!" + LS
             + "How can I help you today?";
     public static final String MESSAGE_WELCOME_NEW_USER = "Welcome new user to Schwarzenegger! :D" + LS
-            + "Please add your profile under Profile Menu." + LS
-            + MESSAGE_HELP_FOR_MORE_INFO;
+            + "Please add your profile under Profile Menu." + LS + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT = "Welcome back to Schwarzenegger!" + LS
             + "It seems like your profile data is corrupted!" + LS
-            + "Please add your profile again under Profile Menu." + LS
-            + MESSAGE_HELP_FOR_MORE_INFO;
+            + "Please add your profile again under Profile Menu." + LS + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String SAD_FACE = ":(  OOPS!!! ";
     public static final String MESSAGE_INVALID_WEIGHT = String.format(
-            SAD_FACE + "Please input a number from %.1f to %.1f for weight.", WEIGHT_LOWER_BOUND, WEIGHT_UPPER_BOUND);
+            SAD_FACE + "Please input current weight/ expected weight as a number from %.1f to %.1f.",
+            WEIGHT_LOWER_BOUND, WEIGHT_UPPER_BOUND);
     public static final String MESSAGE_EDIT_NOTHING = SAD_FACE
             + "The information you entered is the same as your current profile!";
     public static final String MESSAGE_DELETE_NOTHING = SAD_FACE + "You haven't added any profile yet!";
@@ -54,7 +53,7 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_INVALID_HEIGHT = String.format(
             SAD_FACE + "Please input height as an integer from %d to %d.", HEIGHT_LOWER_BOUND, HEIGHT_UPPER_BOUND);
     public static final String MESSAGE_INVALID_CALORIES = SAD_FACE
-            + String.format("Please input expected daily calories intake as a number from %.1f to %.1f",
+            + String.format("Please input expected daily calorie intake as a number from %.1f to %.1f",
             CALORIES_LOWER_BOUND, CALORIES_UPPER_BOUND);
     public static final String MESSAGE_INVALID_NAME = SAD_FACE + "Name cannot be empty.";
     public static final String MESSAGE_INVALID_SAVE_FORMAT = SAD_FACE + "Save format in %s is invalid.";
