@@ -1,6 +1,7 @@
 package commands.diet.dietmanager;
 
 import commands.Command;
+import org.apache.commons.lang3.ObjectUtils;
 import storage.diet.DietStorage;
 
 import java.io.File;
@@ -35,6 +36,8 @@ public class DietSessionDelete extends Command {
         } catch (IndexOutOfBoundsException e) {
             ui.showToUser("Sorry, there is no file at that index.");
             logger.log(Level.INFO, "No input for session index");
+        } catch (NullPointerException e) {
+            ui.showToUser("It looks like you have no sessions saved!");
         }
     }
 }
