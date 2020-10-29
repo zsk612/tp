@@ -15,18 +15,18 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.1. [Viewing Help: `help`](#profile-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.2. [Adding a Profile: `add`](#profile-add)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.3. [Viewing a Profile: `view`](#profile-view)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.4. [Deleting a Profile: `delete`](#profile-delete)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.5. [Editing a Profile: `edit`](#profile-edit)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.4. [Editing a Profile: `delete`](#profile-edit)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.5. [Deleting a Profile: `delete`](#profile-delete)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.6. [Returning to Main Menu: `end`](#profile-end)<br>
 3.3. [Diet Menu](#diet-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.1. [Viewing Help: `help`](#diet-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.3.2. [Starting to record diet data: `new`](#diet-start)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.1. [Viewing Help: `help`](#meal-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.2. [Adding Food Items for the Current Meal: `add`](#meal-add)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.3. [Listing Data for the Current Meal: `list`](#meal-list)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.4. [Deleting Data From the Current Meal: `delete`](#meal-delete)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.5. [Clearing Data From the Current Meal: `clear`](#meal-clear)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.6. [Ending the Recording of Meal Data: `end`](#meal-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.2. [Starting to a New Diet Session: `new`](#diet-start)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.1. [Viewing Help in Diet Session: `help`](#meal-help)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.2. [Adding Food Items for the Current Diet Session: `add`](#meal-add)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.3. [Listing Data for the Diet Session: `list`](#meal-list)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.4. [Deleting Data From the Diet Session: `delete`](#meal-delete)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.5. [Clearing Data From the Current Diet Session: `clear`](#meal-clear)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.6. [Ending the Diet Session: `end`](#meal-end)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.3. [Listing All Past Diet Sessions: `list`](#diet-list)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.4. [Editing a Past Diet Session: `edit`](#diet-edit)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.5. [Deleting a Past Diet Session: `delete`](#diet-delete)<br>
@@ -66,39 +66,41 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 1. Key in `java -jar duke.jar`. If the setup is correct, you should see something like below:
 
     ```
-         ______________________________________________________________________________
-         Welcome back to Schwarzenegger!
-         It seems like your profile data is corrupted!
-         Please add your profile again using "add" command under Profile Menu.
-         For more information on command syntax, please type "help".
-         ______________________________________________________________________________
-    
-    Main Menu >>>>>
+        _________________________________________________________________________________________________
+        Welcome new user to Schwarzenegger! :D
+        Please add your profile under Profile Menu.
+        For more information on command syntax, please type "help".
+        _________________________________________________________________________________________________
     ```
    
 1. To use The Schwarzenegger, simply type a valid command into the terminal and press <kbd>Enter</kbd> to run the command.<br>
-    Example: Typing `help` command and pressing <kbd>Enter</kbd> will show you a list of available commands in The Schwarzenegger and their descriptions.
+    Example: Typing `help` command in Main Menu and pressing <kbd>Enter</kbd> will show you a list of available commands in Main Menu of The Schwarzenegger and their descriptions.
 1. Some example commands you can try:
-    - `help` : Shows all commands in The Schwarzenegger and their descriptions.
     - `profile` : Directs you to Profile Menu where you can add and manage your profile.
     - `diet` : Directs you to Diet Menu where you can add and manage your diet records.
     - `workout` : Directs you to Workout Menu where you can add and manage your workout records.
-1. The cursor e.g. `Main menu >>>>>` will indicate which menu you are currently in.
-1. A summary of all the supported commands in Duke can be found in [Section 4. Command Summary](#command-summary).<br>
-Refer to [Section 3. Features](#features) for the detailed instructions of the various features in The Schwarzenegger.
+1. The text before the cursor indicates which menu you are currently in (e.g. `Main menu >>>>>` indicates that you are currently in the Main Menu).
+1. A summary of all the supported commands in The Schwarzenegger can be found in [Section 4. Command Summary](#command-summary).<br>
+You can refer to [Section 3. Features](#features) for the detailed instructions of the various features in The Schwarzenegger.
 
 ## 3. <a id="features">Features</a> 
-This section includes 4 sub-sections which will guide you through the features available in Main Menu, Profile Menu, Workout Menu and Diet Menu. In explaining the syntax, we will adhere to the following format:
+This section includes 4 sub-sections which will guide you through the features available in Main Menu, Profile Menu, Workout Menu and Diet Menu of the Schwarzenegger. In explaining the syntax, we will adhere to the following format:
 
 ***
-:information_source: **Command Format**
+**Command Format**
 
-- Words that are in `[UPPER_CASE]` are the parameters to be supplied by you.<br>
-Example: in `add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]`, `[NAME]`, `[HEIGHT]`, `[WEIGHT]`, `[EXPECTED_WEIGHT]` and `[DAILY_CALORIES_INTAKE]` are parameters which can be used as `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`.
+- Words that are in `[UPPER_CASE]` format are the parameters to be supplied by you.<br>
+Example: in `add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]` command, `[NAME]`, `[HEIGHT]`, `[CURRENT_WEIGHT]`, `[EXPECTED_WEIGHT]` and `[DAILY_CALORIE_INTAKE]` are parameters which can be used as `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`.
 - Words that are enclosed with `<` and `>` are optional parameters. However, if all the parameters in a command are optional, you need to supply at least 1 of them.<br>
-Example: in `edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>`, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIES_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
+Example: in `edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>` command, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [CURRENT_WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIE_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
 - Optional parameters with `…` after them can be used multiple times including zero times. <br>
-Example: for `<TAG>...`, the following format for Search Command: `search /t <TAG>... </d [DATE]>` can be used as `search /t chest` or `search /t chest, bicep`.
+Example: for `<TAG>...`, the following format for Search Command in Workout Menu: `search </d [DATE]> </t [TAG]...>` can be used as `search /t le` or `search /t chest, bicep`.
+
+**Notations Used**
+
+Below are the meaning of icons for you to take note of while using a feature. 
+- :bulb: indicates a tip.
+- :warning: indicates a warning.  
 ***
 
 ### 3.1. <a id="main-menu">Main Menu</a>
@@ -138,12 +140,13 @@ Example: `profile`
 Expected outcome:
 
 ```
-    ______________________________________________________________________________
-    Entering Profile Menu...
-    ______________________________________________________________________________
-
-Profile Menu >>>>>
+    _________________________________________________________________________________________________
+    Starting Profile Menu......
+    _________________________________________________________________________________________________
 ```
+
+|:bulb:| You can verify that you are in Profile Menu if the text before your cursor becomes `Profile Menu >>>>>`. |
+|------|:-----------|
 
 #### 3.1.3. <a id="main-diet">Entering Diet Menu: `diet`</a>
 The program will direct you to the Diet Menu.
@@ -154,15 +157,32 @@ Example: `diet`
 
 Expected outcome:
 
+```
+    _________________________________________________________________________________________________
+    Starting Diet Menu...
+    _________________________________________________________________________________________________
+```
+
+|:bulb:| You can verify that you are in Diet Menu if the text before your cursor becomes `Diet Menu >>>>>`. |
+|------|:-----------|
+
 #### 3.1.4. <a id="main-workout">Entering Workout Menu: `workout`</a>
 The program will direct you to the Workout Menu.
 
-__Format:__ `workout`  
+__Format:__ `workout`
 
 Example: `workout`
 
 Expected outcome:
 
+```
+    _________________________________________________________________________________________________
+    Starting Workout Menu...
+    _________________________________________________________________________________________________
+```
+
+|:bulb:| You can verify that you are in Workout Menu if the text before your cursor becomes `Workout Menu >>>>>`. |
+|------|:-----------|
 
 #### 3.1.5. <a id="main-end">Ending The Schwarzenegger: `end`</a>
 You enter this command when you want to terminate The Schwarzenegger.
@@ -175,7 +195,7 @@ Expected outcome:
 
 ```
     ______________________________________________________________________________
-    Bye, you have exited the Schwarzenegger.
+    Bye, you have exited The Schwarzenegger.
     ______________________________________________________________________________
 ```
 
@@ -192,24 +212,24 @@ Example: `help`
 Expected outcome:
 
 ```
-    ______________________________________________________________________________
-    Add      - add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]
+    _________________________________________________________________________________________________
+    Add      - add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]
              Add your new profile
     View     - view
              View your profile
-    Edit     - edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>
+    Edit     - edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>
              Edit your existing profile. You may edit from 1 field to all fields
     Delete   - delete
              Delete your existing profile
     End      - end
              Go back to Main Menu
-    ______________________________________________________________________________
+    _________________________________________________________________________________________________
 ```
 
 #### 3.2.2. <a id="profile-add">Adding a Profile: `add`</a>
-You can add your profile for the most customized experience in The Schwarzenegger. Your height should in centimeters and your input weight should be in kilograms.
+You can add your profile for the most customized experience in The Schwarzenegger. Your height should in centimeters, your current weight and expected weight should be in kilograms, and your expected daily calorie intake should be in calories.
 
-__Format:__ `add /n [NAME] /h [HEIGHT] /w [WEIGHT] /e [EXPECTED_WEIGHT] /c [EXPECTED_DAILY_CALORIES_INTAKE]`  
+__Format:__ `add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]`  
 
 Example: `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
 
@@ -218,7 +238,7 @@ This command adds a profile with the name Schwarzenegger, height 188 cm, weight 
 Expected outcome:
 
 ```
-    ______________________________________________________________________________
+    _________________________________________________________________________________________________
     Got it. Here's a confirmation of your profile:
         Name: Schwarzenegger
         Height: 188 cm
@@ -226,13 +246,16 @@ Expected outcome:
         Expected Weight: 100.0 kg
         Expected daily calories intake: 2500.0 calories
         Your BMI: 32.0 (Obesity Class 1)
-    ______________________________________________________________________________
+    _________________________________________________________________________________________________
 ```
+
+|:warning:| The Schwarzenegger currently does not support name containing "/" character. |
+|------|:-----------|
 
 #### 3.2.3. <a id="profile-view">Viewing a Profile: `view`</a>
 You can view your profile recorded in the program. The Schwarzenegger will also show 2 additional information:
 - Your current BMI classification so that you can have a good suggestion on your current fitness level.
-- Comparison between your calories today with your expected daily calories intake.
+- Comparison between your calorie intake today with your expected daily calorie intake.
 
 __Format:__ `view`  
 
@@ -241,7 +264,7 @@ Example: `view`
 Expected outcome:
 
 ```
-    ______________________________________________________________________________
+    _________________________________________________________________________________________________
     Here's your profile:
         Name: Schwarzenegger
         Height: 188 cm
@@ -249,35 +272,11 @@ Expected outcome:
         Expected Weight: 100.0 kg
         Expected daily calories intake: 2500.0 calories
         Your BMI: 32.0 (Obesity Class 1)
-    By the way, take 755.5 more calories to achieve your target for today!
-    ______________________________________________________________________________
+    By the way, take 2500.0 more calories to achieve your target for today!
+    _________________________________________________________________________________________________
 ```
 
-#### 3.2.4. <a id="profile-delete">Deleting a Profile: `delete`</a>
-You can delete your profile from the program. The program will ask for your confirmation, and it will only delete after you type in exactly "YES".
-
-__Format:__ `delete`  
-
-Example: `delete`
-
-Expected outcome:
-- If you type "YES" for confirmation:
-
-```
-    ______________________________________________________________________________
-    Alright! I've deleted your profile.
-    ______________________________________________________________________________
-```
-
-- If you do not type "YES" for confirmation:
-
-```
-    ______________________________________________________________________________
-    You have aborted the action!
-    ______________________________________________________________________________
-```
-
-#### 3.2.5. <a id="profile-edit">Editing a Profile: `edit`</a>
+#### 3.2.4. <a id="profile-edit">Editing a Profile: `edit`</a>
 You can edit the profile after adding to the program.
 
 __Format:__ `edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>`  
@@ -328,10 +327,31 @@ Expected outcome:<br>
     ```
 
 |:bulb:| You may edit from 1 field to all fields in your profile. |
-|------|:-----------|              
+|------|:-----------|      
+
+
+#### 3.2.5. <a id="profile-delete">Deleting a Profile: `delete`</a>
+This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the deletion.
+
+__Format:__ `delete`  
+
+Example: `delete`
+
+Expected outcome:
+```
+    _________________________________________________________________________________________________
+    Are you sure you want to clear your profile? This action is irrevocable.
+    Key in "YES" to confirm.
+    _________________________________________________________________________________________________
+
+Profile Menu >>>>> YES
+    _________________________________________________________________________________________________
+    Alright! I've deleted your profile.
+    _________________________________________________________________________________________________
+```
     
 #### 3.2.6. <a id="profile-end">Returning to Main Menu: `end`</a>
-You use this command to switch back to the Main Menu.
+You use this command to exit Profile Menu and return to the Main Menu.
 
 __Format:__ `end`  
 
@@ -340,9 +360,9 @@ Example: `end`
 Expected outcome:
 
 ```
-    ______________________________________________________________________________
+    _________________________________________________________________________________________________
     Returning to Main Menu...
-    ______________________________________________________________________________
+    _________________________________________________________________________________________________
 ```
 
 ### 3.3. <a id="diet-menu">Diet Menu</a>
@@ -351,55 +371,66 @@ Diet Menu manages your diet sessions which record food items and calories intake
 You can see a complete list of available commands under Diet Menu and how to use them.
 
 __Format:__ `help`
+
 Example: `help`
+
 Expected outcome:
+
 ```
-	 _________________________________________________________________________________________________
-	 List     - list
-	          Show all past diet session
-	 New      - new </d [DATE]> </t [TAG]>
-	          Create a new diet session
-	 Delete   - delete [INDEX_OF_SESSION]
-	          Delete the diet session at the input index
-	 Edit     - edit [INDEX_OF_SESSION]
-	          Edit the diet session at the input index
-	 Search   - search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>
-	          Search the diet session in between starting and end dates with tags in its name
-	 Clear    - clear
-	          Clear all past diet sessions
-	 End      - end
-	          Go back to Main Menu
-	 _________________________________________________________________________________________________
+     _________________________________________________________________________________________________
+     New      - new </d [DATE]> </t [TAG]>
+              Create a new diet session
+     List     - list
+              Show all past diet sessions
+     Delete   - delete [INDEX]
+              Delete the diet session at the input index
+     Edit     - edit [INDEX]
+              Edit the diet session at the input index
+     Search   - search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>
+              Search the diet session in between starting and end dates with tags in its name
+     Clear    - clear
+              Clear all past diet sessions
+     End      - end
+              Go back to Main Menu
+     _________________________________________________________________________________________________
 ```
  
-### 3.3.2. <a id="diet-start">Starting to Record Diet Data: `new`</a>
-This command creates a new meal session.
-You will be directed immediately into the meal session.
+### 3.3.2. <a id="diet-start">Starting to a New Diet Session: `new`</a>
+This command creates a new diet session. You will be directed immediately into the new diet session.
 
 The date and tag can be added on creation with "/d" for date and "/t" for meal type.
 
 __Format:__ `new </d [DATE]> </t [TAG]>`
  
-Example: `new /d 2020-08-05 /t lunch`
-
+Example:
+- `new`<br>
+This command creates a new diet session tagged as unspecified with today's date.<br>
 Expected outcome:
 ```
-	 _________________________________________________________________________________________________
-	 Starting Diet Session!
-	 _________________________________________________________________________________________________
-
-new /d 2020-08-05 /t lunch
+     _________________________________________________________________________________________________
+     No date input is detected.
+     I've replaced it with today's date.
+     No tag is detected, and the session is tagged as "unspecified".
+     _________________________________________________________________________________________________
+    
+     _________________________________________________________________________________________________
+     Starting Diet Session!
+     _________________________________________________________________________________________________
 ```
 
-|:bulb:| You may edit choose to not add the date or tag, but duplicates will be overwritten!|
-|------|:-----------|  
-            
-Situation | Example |  Outcome
-----------|--------|------------------
-Create a meal session | `new`| a meal session tagged as unspecified with today's date will be created
-Create a meal session with date and tag| `new /d 2020-05-04 /t breakfast`| A meal session with date 2020-05-04 and type breakfast will be created
+- `new /d 2020-05-04 /t breakfast`
+This command creates a diet session with date 2020-05-04 and type breakfast.<br>
+Expected outcome:
+```
+     _________________________________________________________________________________________________
+     Starting Diet Session!
+     _________________________________________________________________________________________________
+```
 
-#### 3.3.2.1. <a id="meal-help">Viewing Help: `help`</a>
+|:warning:| You may choose not to add the date or tag, but diet sessions with the same date and tag will be overwritten!|
+|------|:-----------|
+  
+#### 3.3.2.1. <a id="meal-help">Viewing Help in Diet Session: `help`</a>
 You can see a complete list of available commands under Diet Session and how to use them.
 
 __Format:__ `help` 
@@ -423,8 +454,8 @@ Expected outcome:
 	          Go back to the Diet Menu.
 	 _________________________________________________________________________________________________
 ```
-#### 3.3.2.2. <a id="meal-add">Adding Food Items for the Current Meal: `add`</a>
-This command adds a food item into the current meal session
+#### 3.3.2.2. <a id="meal-add">Adding Food Items for the Current Diet Session: `add`</a>
+This command adds a food item into the current diet session.
 
 __Format:__ `add [FOOD_NAME] /c [CALORIES]` 
 
@@ -435,11 +466,10 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 	 Yay! You have added chicken nuggets with calories: 120.0
 	 _________________________________________________________________________________________________
-
 ```
 
-#### 3.3.2.3. <a id="meal-list">Listing Data for the Current Meal: `list`</a>
-Lists all the added dishes for the current meal, with a numbered sequence according to sequence entered.
+#### 3.3.2.3. <a id="meal-list">Listing Data for the Diet Session: `list`</a>
+Lists all the added food items for the current diet session, with a numbered sequence according to sequence entered.
 
 __Format:__ `list` 
 
@@ -452,13 +482,12 @@ Expected outcome:
 	 1       chicken nuggets 120.0
 	 Your total calories for this meal is 120.0.
 	 _________________________________________________________________________________________________
-
 ```
 
-#### 3.3.2.4. <a id="meal-delete">Deleting Data From the Current Meal: `delete`</a>
-Deletes the dish according to the index in the current meal session list.
+#### 3.3.2.4. <a id="meal-delete">Deleting Data From the Diet Session: `delete`</a>
+Deletes the food item according to the index in the current meal session list.
 
-__Format:__ `delete [INDEX_OF_SESSION]`
+__Format:__ `delete [INDEX]`
 
 Example: `delete 1`
 
@@ -470,8 +499,10 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 
 ``` 
-#### 3.3.2.5. <a id="meal-clear">Clearing Data From the Current Meal: `clear`</a>
-Clears all the dishes in the current meal list. This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
+#### 3.3.2.5. <a id="meal-clear">Clearing Data From the Current Diet Session: `clear`</a>
+Clears all the food items in the current diet session list.
+
+This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
 
 __Format:__ `clear` 
 
@@ -479,20 +510,19 @@ Example: `clear`
 
 Expected outcome:
 ```
-     	 _________________________________________________________________________________________________
-     	 Are you sure you want to clear all records? This action is irrevocable.
-     	 Key in "YES" to confirm.
-     	 _________________________________________________________________________________________________
-     
-     Diet Menu > New Diet Session >>>>> YES
-     	 _________________________________________________________________________________________________
-     	 Oops you have cleared all the food items.
-     	 _________________________________________________________________________________________________
-
+     _________________________________________________________________________________________________
+     Are you sure you want to clear all records? This action is irrevocable.
+     Key in "YES" to confirm.
+     _________________________________________________________________________________________________
+ 
+ Diet Menu > New Diet Session >>>>> YES
+     _________________________________________________________________________________________________
+     Oops you have cleared all the food items.
+     _________________________________________________________________________________________________
 ```
 
-#### 3.3.2.6. <a id="meal-end">Ending the Recording of Meal Data: `end`</a>
-Ends the current meal session and saves the data.
+#### 3.3.2.6. <a id="meal-end">Ending the Diet Session: `end`</a>
+Ends the current diet session and saves the data.
 
 __Format:__ `end` 
 
@@ -514,18 +544,18 @@ Example: `list`
 
 Expected outcome:
 ```
-	 _________________________________________________________________________________________________
-	 You have 1 records
-	 Index   Tags             Date        Calories  
-	 1       lunch            2020-10-29  120.0
-	 _________________________________________________________________________________________________
-
+    _________________________________________________________________________________________________
+    You have 2 records
+    Index   Tags        Date        Calories
+    1       dinner      2020-10-29  110.0
+    2       lunch       2020-10-29  120.0
+    _________________________________________________________________________________________________
 ```
 
 ### 3.3.4. <a id="diet-edit">Editing a Past Diet Session: `edit`</a>
-Edits a previous meal session based on a numbered index that can be found in the list.
+Edits a previous diet session based on a numbered index that can be found in the list.
 
-__Format:__ `edit [INDEX_OF_SESSION]`
+__Format:__ `edit [INDEX]`
 
 Example: `edit 2` 
 
@@ -539,22 +569,23 @@ Diet Menu > Diet Session 2 >>>>>
 ```
 
 ### 3.3.5. <a id="diet-delete">Deleting a Past Diet Session: `delete`</a>
-Deletes a previous meal session based on a numbered index that can be found in the list.
+Deletes a previous diet session based on a numbered index that can be found in the list.
 
-__Format:__ `delete [INDEX_OF_SESSION]`
+__Format:__ `delete [INDEX]`
 
 Example: `delete 2`
 
 Expected outcome:
 ```
-	 _________________________________________________________________________________________________
-	 Oh no! You have deleted 2020-10-28 unspecified
-	 _________________________________________________________________________________________________
-
+     _________________________________________________________________________________________________
+     Oh no! You have deleted 2020-10-29 lunch
+     _________________________________________________________________________________________________
 ```
  
 ### 3.3.6. <a id="diet-clear">Clearing All Past Diet Sessions: `clear`</a>
-Clears all previous diet sessions. This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
+Clears all previous diet sessions. 
+
+This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
 
 __Format:__ `clear`
 
@@ -571,11 +602,10 @@ Diet Menu >>>>> YES
 	 _________________________________________________________________________________________________
 	 You have cleared all diet sessions!
 	 _________________________________________________________________________________________________
-
 ```
 
 ### 3.3.7. <a id="diet-search">Searching for Past Diet Sessions: `search`</a>
-Searches for specified range of diet sessions with identifiers like start date, end date and tags.
+Searches for specified range of diet sessions with identifiers such as start date, end date and tags.
 
 __Format:__ `search </s [START DATE]> </e [END DATE]> </t [TAG]>`
 
@@ -587,7 +617,6 @@ Expected outcome:
 	 Here are the search results!
 	 	1. 2020-05-08 breakfast
 	 _________________________________________________________________________________________________
-
 ```
 
 ### 3.3.8. <a id="diet-end">Returning to Main Menu: `end`</a>
