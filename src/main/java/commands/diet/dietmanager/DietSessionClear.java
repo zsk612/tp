@@ -32,7 +32,7 @@ public class DietSessionClear extends Command {
                 ui.showToUser("You have aborted clear operation.");
             }
         } catch (NullPointerException e) {
-            e.printStackTrace();
+            ui.showToUser("Sorry, there is no diet session to be cleared!");
             logger.log(Level.INFO, "No sessions in dietManager for deletion");
         }
     }
