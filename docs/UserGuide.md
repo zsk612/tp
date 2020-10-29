@@ -769,7 +769,7 @@ Expected outcome:
 
 
 #### 3.4.2.5. <a id="ws-search">Searching for a keyword in the Current Workout Session: `search`</a>
-Ends the current workout session and saves the relevant data.
+Searches the current workout session for the keyword and shows the relevant data found in a neat list.
 
 __Format:__ `search [NAME_OF_MOVE]`  
 
