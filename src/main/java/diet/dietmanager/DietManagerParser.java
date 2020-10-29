@@ -67,28 +67,29 @@ public class DietManagerParser {
      * @param extractMealMessage string builder that appends warnings and messages
      * @return tag input if there is any;
      *         else returns "unspecified"
-     * @throws if there is nothing in tag input
+     * @throws NullPointerException if there is nothing in tag input
      */
     public String extractNewTag(HashMap<String, String> parsedParams, StringBuilder extractMealMessage)
             throws NullPointerException {
         try {
             String tag = parsedParams.get("/t").trim();
             if (tag.isEmpty()) {
-                extractMealMessage.append("Tag input is empty, " +
-                        "and it is replaced with \"unspecified\".");
+                extractMealMessage.append("Tag input is empty, "
+                        + "and it is replaced with \"unspecified\".");
                 return "unspecified";
             } else {
                 return tag;
             }
         } catch (NullPointerException e) {
-            extractMealMessage.append("No tag is detected, " +
-                    "and the session is tagged as \"unspecified\".");
+            extractMealMessage.append("No tag is detected, "
+                    + "and the session is tagged as \"unspecified\".");
             return "unspecified";
         }
     }
 
     /**
      * Extracts out starting date, end date and tag information.
+     *
      * @param cmd user command
      * @param commandArgs user input
      * @return a hashmap where each information corresponds to the correct separator
@@ -139,6 +140,7 @@ public class DietManagerParser {
 
     /**
      * Extracts out search tag.
+     *
      * @param parsedParams a hashmap that contains information about tag
      * @param searchResult string build that contains warning messages
      * @return search tag
@@ -155,6 +157,7 @@ public class DietManagerParser {
 
     /**
      * Extracts out starting date.
+     *
      * @param parsedParams a hashmap that contains information about starting date
      * @param searchResult string build that contains warning messages
      * @return starting date
@@ -182,6 +185,7 @@ public class DietManagerParser {
 
     /**
      * Extracts out end date.
+     *
      * @param parsedParams a hashmap that contains information about end date
      * @param searchResult string build that contains warning messages
      * @return end date
