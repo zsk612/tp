@@ -2,6 +2,8 @@ package ui.profile;
 
 import ui.CommonUi;
 
+import static profile.Constants.CALORIES_LOWER_BOUND;
+import static profile.Constants.CALORIES_UPPER_BOUND;
 import static profile.Constants.HEIGHT_LOWER_BOUND;
 import static profile.Constants.HEIGHT_UPPER_BOUND;
 import static profile.Constants.WEIGHT_LOWER_BOUND;
@@ -45,8 +47,6 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_EDIT_NOTHING = SAD_FACE
             + "The information you entered is the same as your current profile!";
     public static final String MESSAGE_DELETE_NOTHING = SAD_FACE + "You haven't added any profile yet!";
-    public static final String MESSAGE_REDUNDANT_PARAM = SAD_FACE + "%s command does not take parameters."
-            + LS + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String MESSAGE_SAVING_ERROR = SAD_FACE + "An error has occurred while saving data."
             + LS + "%s";
     public static final String MESSAGE_LOADING_ERROR = SAD_FACE + "An error has occurred while loading data."
@@ -54,10 +54,10 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_INVALID_HEIGHT = String.format(
             SAD_FACE + "Please input height as an integer from %d to %d.", HEIGHT_LOWER_BOUND, HEIGHT_UPPER_BOUND);
     public static final String MESSAGE_INVALID_CALORIES = SAD_FACE
-            + "Expected daily calories intake cannot be negative.";
+            + String.format("Please input expected daily calories intake as a number from %.1f to %.1f",
+            CALORIES_LOWER_BOUND, CALORIES_UPPER_BOUND);
     public static final String MESSAGE_INVALID_NAME = SAD_FACE + "Name cannot be empty.";
-    public static final String MESSAGE_INVALID_SAVE_FORMAT = SAD_FACE + "Save format in "
-            + "%s is invalid.";
+    public static final String MESSAGE_INVALID_SAVE_FORMAT = SAD_FACE + "Save format in %s is invalid.";
     public static final String MESSAGE_INVALID_COMMAND_WORD = SAD_FACE + "Sorry, but I don't know what that means."
             + LS + "Please enter \"help\" for a list of available commands.";
 }

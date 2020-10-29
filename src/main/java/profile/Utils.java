@@ -2,6 +2,13 @@ package profile;
 
 import models.Profile;
 
+import static profile.Constants.CALORIES_LOWER_BOUND;
+import static profile.Constants.CALORIES_UPPER_BOUND;
+import static profile.Constants.HEIGHT_LOWER_BOUND;
+import static profile.Constants.HEIGHT_UPPER_BOUND;
+import static profile.Constants.WEIGHT_LOWER_BOUND;
+import static profile.Constants.WEIGHT_UPPER_BOUND;
+
 /**
  * A class containing utility methods used in Profile Menu.
  */
@@ -38,7 +45,7 @@ public class Utils {
      * @return Whether calories amount is not negative.
      */
     public static boolean checkValidCalories(double calories) {
-        return calories >= 0;
+        return (calories >= CALORIES_LOWER_BOUND && calories <= CALORIES_UPPER_BOUND);
     }
 
     /**
@@ -49,7 +56,7 @@ public class Utils {
      * @return Whether input height is valid.
      */
     public static boolean checkValidHeight(int height) {
-        return (height >= Constants.HEIGHT_LOWER_BOUND && height <= Constants.HEIGHT_UPPER_BOUND);
+        return (height >= HEIGHT_LOWER_BOUND && height <= HEIGHT_UPPER_BOUND);
     }
 
     /**
@@ -60,6 +67,6 @@ public class Utils {
      * @return Whether input weight is valid.
      */
     public static boolean checkValidWeight(double weight) {
-        return (weight >= Constants.WEIGHT_LOWER_BOUND && weight <= Constants.WEIGHT_UPPER_BOUND);
+        return (weight >= WEIGHT_LOWER_BOUND && weight <= WEIGHT_UPPER_BOUND);
     }
 }
