@@ -15,7 +15,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.1. [Viewing Help: `help`](#profile-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.2. [Adding a Profile: `add`](#profile-add)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.3. [Viewing a Profile: `view`](#profile-view)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.2.4. [Editing a Profile: `delete`](#profile-edit)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2.4. [Editing a Profile: `edit`](#profile-edit)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.5. [Deleting a Profile: `delete`](#profile-delete)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.6. [Returning to Main Menu: `end`](#profile-end)<br>
 3.3. [Diet Menu](#diet-menu)<br>
