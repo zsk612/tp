@@ -40,7 +40,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.2. [Adding a Move to the Current Workout Session: `add`](#ws-add)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.3. [Listing All Moves from the Current Workout Session: `list`](#ws-list)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.4. [Deleting a Move From the Current Workout Session: `delete`](#ws-delete)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.5. [Deleting a Move From the Current Workout Session: `search`](#ws-search)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.5. [Searching for a keyword in the Current Workout Session: `search`](#ws-search)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.6. [Ending the Current Workout Session: `end`](#ws-end)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.3. [Listing All Past Workout Sessions: `list`](#workout-list)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.4. [Editing a Workout Session: `edit`](#workout-edit)<br>
@@ -768,7 +768,7 @@ Expected outcome:
 ```
 
 
-#### 3.4.2.5. <a id="ws-end">Searching for a keyword in the Current Workout Session: `search`</a>
+#### 3.4.2.5. <a id="ws-search">Searching for a keyword in the Current Workout Session: `search`</a>
 Ends the current workout session and saves the relevant data.
 
 __Format:__ `search [NAME_OF_MOVE]`  
