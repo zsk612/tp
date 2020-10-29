@@ -31,7 +31,7 @@ public class FoodItemDelete extends Command {
             logger.log(Level.WARNING, "Did not input index");
         } catch (NumberFormatException e) {
             ui.showToUser("Wrong format, please enter in the format:\n\t "
-                    + "delete [INDEX_OF_FOOD]");
+                    + "delete [INDEX]");
             logger.log(Level.WARNING, "Did not input correct index");
         }
     }

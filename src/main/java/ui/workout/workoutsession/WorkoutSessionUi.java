@@ -32,7 +32,7 @@ public class WorkoutSessionUi extends CommonUi {
     }
 
     public static void deleteFormatError() {
-        showUser("Wrong format, please enter in the format:\n\t delete [MOVE_ID]");
+        showUser("Wrong format, please enter in the format:\n\t delete [INDEX]");
     }
 
     public static void deleteIndexError() {

@@ -31,7 +31,7 @@ public class DietSessionDelete extends Command {
             logger.log(Level.INFO, "Deleted Diet Session successfully");
         } catch (NumberFormatException e) {
             ui.showToUser("Wrong format, please enter in the format:\n\t "
-                    + "delete [INDEX_OF_SESSION]");
+                    + "delete [INDEX]");
             logger.log(Level.INFO, "No or wrong index for deletion in dietManager");
         } catch (IndexOutOfBoundsException e) {
             ui.showToUser("Sorry, there is no file at that index.");
