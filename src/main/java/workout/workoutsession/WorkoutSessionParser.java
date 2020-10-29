@@ -33,10 +33,11 @@ public class WorkoutSessionParser {
         }
         int repetitions = Integer.parseInt(returnString[2]);
         int weight = Integer.parseInt(returnString[3]);
-        if (repetitions < 0 || weight < 0) {
+        String description = returnString[1].trim();
+        if (repetitions < 0 || weight < 0 || description.length() <= 0) {
             throw new AddFormatException();
         }
-        Exercise exercise = new Exercise(returnString[1].trim(), repetitions, weight);
+        Exercise exercise = new Exercise(description, repetitions, weight);
 
         return exercise;
     }
