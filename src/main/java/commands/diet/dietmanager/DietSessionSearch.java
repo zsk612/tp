@@ -39,7 +39,7 @@ public class DietSessionSearch extends Command {
         assert folder.exists();
         StringBuilder searchResult = new StringBuilder();
         try {
-            HashMap<String, String> parsedParams = parser.extractDietManagerCommandTagAndInfo(input);
+            HashMap<String, String> parsedParams = parser.extractDietManagerCommandTagAndInfo("search", input);
             LocalDateTime startDate = parser.extractStartDates(parsedParams, searchResult);
             LocalDateTime endDate = parser.extractEndDates(parsedParams, searchResult);
             if (startDate.compareTo(endDate) > 0) {
@@ -86,7 +86,8 @@ public class DietSessionSearch extends Command {
             int numberOfResults = 0;
             for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++) {
                 LocalDateTime fileDate = DateParser.parseDate(listOfFiles[i].getName().split(" ", 2)[0]);
-                String fileTag = listOfFiles[i].getName().split(" ", 2)[1];
+                String fileTag = listOfFiles[i].getName().split(" ", 2)[1]
+                        .replaceFirst("[.][^.]+$", "");
                 if (startDate.compareTo(fileDate) <= 0 && endDate.compareTo(fileDate) >= 0 && fileTag.contains(tag)) {
                     searchResult.append("\t" + (++numberOfResults) + ". "
                             + listOfFiles[i].getName().replaceFirst("[.][^.]+$", "") + "\n\t ");
