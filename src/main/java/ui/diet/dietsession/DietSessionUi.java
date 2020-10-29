@@ -13,6 +13,8 @@ public class DietSessionUi extends CommonUi {
                 "Show all food items"));
         helpMessage.append(helpFormatter("Delete", "delete [INDEX]",
                 "Delete the food item at the input index"));
+        helpMessage.append(helpFormatter("Search", "Search [FOOD_NAME]",
+                "Search the diet session for food with the name specified"));
         helpMessage.append(helpFormatter("Clear", "clear",
                 "Clear all food items"));
         helpMessage.append(helpFormatter("End", "end",

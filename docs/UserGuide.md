@@ -391,6 +391,9 @@ Expected outcome:
 new /d 2020-08-05 /t lunch
 ```
 
+|:bulb:| You may edit choose to not add the date or tag, but duplicates will be overwritten!|
+|------|:-----------|  
+            
 Situation | Example |  Outcome
 ----------|--------|------------------
 Create a meal session | `new`| a meal session tagged as unspecified with today's date will be created
@@ -412,6 +415,8 @@ Expected outcome:
 	          Show all food items
 	 Delete   - delete [INDEX_OF_FOOD]
 	          Delete the food item at the input index
+	 Search   - search [FOOD_NAME]
+	          Search the diet session for food with the name specified
 	 Clear    - clear
 	          Clear all food items
 	 End      - end
@@ -443,7 +448,9 @@ Example: `list`
 Expected outcome:
 ```
 	 _________________________________________________________________________________________________
-	 Yay! You have added chicken nuggets with calories: 120.0
+	 Index   Food            Calories 
+	 1       chicken nuggets 120.0
+	 Your total calories for this meal is 120.0.
 	 _________________________________________________________________________________________________
 
 ```
@@ -508,9 +515,9 @@ Example: `list`
 Expected outcome:
 ```
 	 _________________________________________________________________________________________________
-	 Here is your diet session list: 
-	 	1. 2020-08-05 lunch [Total calories: 0.0]
-	 	2. 2020-10-28 unspecified [Total calories: 0.0]
+	 You have 1 records
+	 Index   Tags             Date        Calories  
+	 1       lunch            2020-10-29  120.0
 	 _________________________________________________________________________________________________
 
 ```

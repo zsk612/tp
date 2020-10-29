@@ -20,4 +20,8 @@ public class Food {
     public double getCalories() {
         return calories;
     }
+
+    public String getName() {
+        return this.name;
+    }
 }
