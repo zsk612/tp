@@ -11,6 +11,8 @@ public class InvalidSaveFormatException extends SchwarzeneggerException {
 
     /**
      * Constructs InvalidSaveFormatException object inheriting abstract class SchwarzeneggerException.
+     *
+     * @param filePath Path to file with invalid save format.
      */
     public InvalidSaveFormatException(String filePath) {
         super(String.format(MESSAGE_INVALID_SAVE_FORMAT, filePath));

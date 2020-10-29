@@ -11,9 +11,9 @@ public class Constants {
     public static final int COMMAND_TYPE_INDEX = 0;
 
     public static final String ADD_PROFILE_FORMAT = "add /n [NAME] /h [HEIGHT] "
-            + "/w [WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIES_INTAKE]";
+            + "/w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]";
     public static final String EDIT_PROFILE_FORMAT = "edit </n [NAME]> </h [HEIGHT]> "
-            + "</w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>";
+            + "</w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>";
 
     public static final String EMPTY_STRING = "";
     public static final String EXAMPLE_BMI = "32.0 (Obesity Class 1)";
@@ -32,4 +32,6 @@ public class Constants {
             EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES, EXAMPLE_BMI);
     public static final double WEIGHT_LOWER_BOUND = 2.1;
     public static final double WEIGHT_UPPER_BOUND = 635;
+    public static final double CALORIES_UPPER_BOUND = 200000;
+    public static final double CALORIES_LOWER_BOUND = 0;
 }

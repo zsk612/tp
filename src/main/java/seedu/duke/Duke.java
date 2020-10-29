@@ -102,7 +102,7 @@ public class Duke {
      * Ends Schwarzenegger.
      */
     private void end() {
-        ui.showToUser("Bye, you have exited the Schwarzenegger.");
+        ui.showToUser("Bye, you have exited The Schwarzenegger.");
         System.exit(0);
     }
 }

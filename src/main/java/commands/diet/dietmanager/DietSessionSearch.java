@@ -99,7 +99,7 @@ public class DietSessionSearch extends Command {
             ui.showToUser(searchResult.toString().trim());
             logger.log(Level.INFO, "Listed all searched diet sessions");
         } catch (NullPointerException e) {
-            ui.showToUser("Sorry! It seems like you have no meal sessions saved!.");
+            ui.showToUser("Sorry! It seems like you have no meal sessions saved!");
             logger.log(Level.WARNING, "No instances of diet sessions saved");
         }
     }
