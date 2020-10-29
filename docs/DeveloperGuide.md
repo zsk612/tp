@@ -746,9 +746,9 @@ a new exercise will be added to the exerciselist.
 
 **Implementation**
 
-When the user attempts to create a new workout session, the Ui, WorkoutManagerParser 
+When the user attempts to add a new exercise, the Ui, WorkoutSessionParser 
 and CommandLib class will be accessed and the following sequence of 
-actions are called to return a command object NewWs.
+actions are called.
 
 1. User executes `add benchpress /n 6 /w 120`
      1. `WorkoutSession` calls `Ui.getUserCommand()` to receive user input.
@@ -759,7 +759,6 @@ actions are called to return a command object NewWs.
     1. `WorkoutManager` calls `WorkoutSessionAdd.execute()` with the rest of parsed input.
     2. `WorkoutSessionAdd` parse the arguments to identify the repetitions and weight for the exercise.
     3. `WorkoutSessionAdd` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
-1. Based on `ExecutionResult`, correct response will be printed to user.
 
 All description, warnings and response will be handled by `ui` to ensure consistence across the app.
 The following sequence diagram shows how the add command works
@@ -776,43 +775,42 @@ a new exercise will be added to the exerciselist.
 
 **Implementation**
 
-When the user attempts to create a new workout session, the Ui, WorkoutManagerParser 
+When the user attempts to delete an exercise, the Ui, WorkoutSessionParser 
 and CommandLib class will be accessed and the following sequence of 
 actions are called to return a command object NewWs.
 
-1. User executes `add benchpress /n 6 /w 120`
+1. User executes `delete 1`
      1. `WorkoutSession` calls `Ui.getUserCommand()` to receive user input.
      2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
 1. Creation of command object.
-     1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `WorkoutSessionAdd`.
+     1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `WorkoutSessionDelete`.
 1. Executing Command
-    1. `WorkoutManager` calls `WorkoutSessionAdd.execute()` with the rest of parsed input.
-    2. `WorkoutSessionAdd` parse the arguments to identify the repetitions and weight for the exercise.
-    3. `WorkoutSessionAdd` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
-1. Based on `ExecutionResult`, correct response will be printed to user.
+    1. `WorkoutManager` calls `WorkoutSessionDelete.execute()` with the rest of parsed input.
+    2. `WorkoutSessionDelete` parse the arguments to identify the repetitions and weight for the exercise.
+    3. `WorkoutSessionDelete` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
 
 All description, warnings and response will be handled by `ui` to ensure consistence across the app.
 The following sequence diagram shows how the add command works
 
 The sequence diagram below summarizes how creating new workout session works:
-![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
+![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionDelete.png)
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.1.3. <a id="listing-all-exercises-in-this-session">Listing All Exercises in This Session</a>
 
-
+![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionList.png)
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.1.4. Allowing users to view help commands
 
-
+![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionHelp.png)
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.1.5. Searching for related exercises
 
-
+![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionSearch.png)
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.1.6. Ending the workout session
 
-
+![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionEnd.png)
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.2. Listing past workout sessions
 The feature to list workoutSessions allows the user to view a summary of all the history workout sessions, including their index, creation date and tags.
