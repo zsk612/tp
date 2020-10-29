@@ -6,11 +6,7 @@ public class Food {
 
     public Food(String name, double calories) {
         this.name = name;
-        if (calories > 200000) {
-            this.calories = 200000;
-        } else {
-            this.calories = calories;
-        }
+        this.calories = Math.min(calories, 200000);
     }
 
     public String toString() {
