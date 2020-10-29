@@ -357,7 +357,7 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 	 List     - list
 	          Show all past diet session
-	 New      - new /d [DATE] /t [TAG]
+	 New      - new </d [DATE]> </t [TAG]>
 	          Create a new diet session
 	 Delete   - delete [INDEX_OF_SESSION]
 	          Delete the diet session at the input index
@@ -378,7 +378,7 @@ You will be directed immediately into the meal session.
 
 The date and tag can be added on creation with "/d" for date and "/t" for meal type.
 
-__Format:__ `new /d [DATE] /t [TAG]`
+__Format:__ `new </d [DATE]> </t [TAG]>`
  
 Example: `new /d 2020-08-05 /t lunch`
 
@@ -851,7 +851,7 @@ Return to Main Menu|`end`
 **Action** |  **Format**
 --------|----------------------
 Help|`help`
-Start diet session |`new /d [DATE] /t [TAG]`<br><br>E.g. `new /d 2020-05-04 /t breakfast`
+Start diet session |`new </d [DATE]> </t [TAG]>`<br><br>E.g. `new /d 2020-05-04 /t breakfast`
 List|`list`
 Edit|`edit [INDEX]`<br><br>E.g. `edit 1`
 Delete|`delete [INDEX]`<br><br>E.g. `delete 1`
