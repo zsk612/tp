@@ -437,7 +437,7 @@ When the user types `help` in a Diet Manager instance, the following sequence oc
 The feature allows users to start recording diet data. 
 
 **Implementation**  
-When the user types `new /d [date] /t [type]` the following sequence occurs. 
+When the user types `new </d [DATE]> </t [TAG]>` the following sequence occurs. 
 1. The user keys in `new /d 2020-05-04 /t breakfast`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
@@ -478,7 +478,7 @@ When the user types `help` the following sequence occurs.
 The feature allows users to add food items into the current diet session. 
 
 **Implementation**  
-When the user types `add [food] /c [calories]` the following sequence occurs. 
+When the user types `add [FOOD_NAME] /c [CALORIES]` the following sequence occurs. 
 1. The user keys in `add bologna /c 123`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
@@ -519,7 +519,7 @@ When the user types `list` the following sequence occurs.
 The feature allows users to remove food items into the current diet session. 
 
 **Implementation**  
-When the user types `delete [Food ID]` the following sequence occurs. 
+When the user types `delete [INDEX_OF_FOOD]` the following sequence occurs. 
 1. The user keys in `delete 1`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
@@ -587,7 +587,7 @@ The sequence diagram below summarizes how listing past Diet sessions work:
 The feature allows users to edit previously created diet sessions.
 
 **Implementation**  
-When the user types `edit [diet session ID]` the following sequence occurs. 
+When the user types `edit [INDEX_OF_SESSION]` the following sequence occurs. 
 1. The user keys in `edit 1`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
@@ -628,7 +628,7 @@ Saving of the user’s Diet sessions:
 The feature allows users to delete previously created diet sessions.
 
 **Implementation**  
-When the user types `delete [diet session ID]` from a Diet manager instance the following sequence occurs. 
+When the user types `delete [INDEX_OF_SESSION]` from a Diet manager instance the following sequence occurs. 
 1. The user keys in `delete 1`.
     
     1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
@@ -723,7 +723,7 @@ The sequence diagram below summarizes how creating new workout session works:
 **Design considerations**
 Parsing of the user’s input command:  
 
-- Alternative 1 (current choice): User’s command are divided by space
+- Alternative 1 (current choice): User’s commands are divided by space
 
 |     |     |
 |-----|-----|
@@ -1017,7 +1017,7 @@ Profile storage handles reading of file data by calling `loadData()` and overwri
 
 #### 4.5.2. <a id="storage-for-diet">Storage for Diet
 Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
-- Each file is created as a json file and named as `[date] [tag].json`.
+- Each file is created as a json file and named as `[DATE] [TAG].json`.
 - A corresponding file is updated in the local file after the user edits a diet session by calling DietSessionEdit.execute().
 - A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
 
