@@ -387,7 +387,7 @@ Expected outcome:
      Edit     - edit [INDEX]
               Edit the diet session at the input index
      Search   - search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>
-              Search the diet session in between starting and end dates with tags in its name
+              Search the diet session in between starting and end dates with a specific tag
      Clear    - clear
               Clear all past diet sessions
      End      - end
