@@ -2,11 +2,18 @@ package commands.diet.dietmanager;
 
 import commands.Command;
 import diet.dietsession.DietSession;
+import models.Exercise;
 import storage.diet.DietStorage;
 
 import java.io.File;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.NoSuchElementException;
 import java.util.logging.Level;
+import java.util.stream.Collectors;
+
+import static ui.CommonUi.LS;
 
 public class DietSessionList extends Command {
 
@@ -25,23 +32,46 @@ public class DietSessionList extends Command {
         StringBuilder listResult = new StringBuilder();
         assert folder.exists();
         try {
-            listResult.append("Here is your diet session list: \n\t ");
-            if (Objects.requireNonNull(listOfFiles).length == 0) {
-                listResult.append("It seems like you do not have any sessions stored!");
-            }
-
-            for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++) {
-                DietSession ds = storage.readDietSession(listOfFiles[i].getName());
-                double totalCalories = ds.getTotalCalories();
-                listResult.append("\t" + (i + 1) + ". "
-                        + listOfFiles[i].getName().replaceFirst("[.][^.]+$", "")
-                        + " [Total calories: " + totalCalories + "]" + "\n\t ");
-            }
+            String dietSessionListSize = "You have " + listOfFiles.length + " records" + LS;
+            String dietSessionList = formatList(listOfFiles, storage);
+            listResult.append(dietSessionListSize);
+            listResult.append(dietSessionList);
+            ui.showToUser(listResult.toString());
             logger.log(Level.INFO, "Listed all available diet sessions");
-            ui.showToUser(listResult.toString().trim());
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | NoSuchElementException e) {
             ui.showToUser("Sorry! It seems like you have no diet sessions saved!");
             logger.log(Level.WARNING, "No instances of diet sessions saved");
         }
+    }
+
+    private String formatList(File[] listOfFiles, DietStorage storage) {
+        ArrayList<File> fileArrayList = new ArrayList<>();
+        Collections.addAll(fileArrayList, listOfFiles);
+
+        ArrayList<String> fileNames = (ArrayList<String>) fileArrayList.stream()
+                .map(f -> f.getName().split(" ", 2)[1].trim()).collect(Collectors.toList());
+        int descriptionMaxLenInt = Math.max(8,
+                fileNames.stream().max(Comparator.comparingInt(String::length)).get().length());
+
+        String descriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt + 1) + "s";
+
+        String returnString = String.format("%-8s", "Index") + String.format(descriptionFormat, "Tags")
+                + String.format("%-12s", "Date") + String.format("%-10s", "Calories") + LS;
+
+        StringBuilder infoBuilder = new StringBuilder(returnString);
+
+        String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-11s %s";
+        for (int i = 0; i < fileArrayList.size(); i++) {
+            DietSession ds = storage.readDietSession(listOfFiles[i].getName());
+            double totalCalories = ds.getTotalCalories();
+            String rowContent = String.format(listDescriptionFormat,
+                    fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "").split(" ",2)[1],
+                    fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "").split(" ",2)[0],
+                    totalCalories);
+            String row = String.format("%-8s", i + 1) + rowContent + LS;
+            infoBuilder.append(row);
+        }
+        returnString = infoBuilder.toString().trim();
+        return returnString;
     }
 }

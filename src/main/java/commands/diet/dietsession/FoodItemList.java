@@ -2,10 +2,15 @@ package commands.diet.dietsession;
 
 import commands.Command;
 import diet.dietsession.Food;
+import models.Exercise;
 import storage.diet.DietStorage;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.logging.Level;
+import java.util.stream.Collectors;
+
+import static ui.CommonUi.LS;
 
 public class FoodItemList extends Command {
 
@@ -23,16 +28,14 @@ public class FoodItemList extends Command {
             double totalCalories = 0;
             StringBuilder listResult = new StringBuilder();
             if (foodList.size() > 0) {
-                int i;
-                listResult.append("Here is your food list: \n\t ");
-                for (i = 0; i < foodList.size(); i++) {
-                    listResult.append(" " + (i + 1) + ". " + foodList.get(i).toString() + "\n\t");
+                for (int i = 0; i < foodList.size(); i++) {
                     totalCalories += foodList.get(i).getCalories();
                 }
-                String totalMealCalories = " Your total calories for this meal is " + totalCalories + ".";
+                String totalMealCalories = LS + "Your total calories for this meal is " + totalCalories + ".";
+                String formattedList = formatList(foodList);
+                listResult.append(formattedList);
                 listResult.append(totalMealCalories);
                 ui.showToUser(listResult.toString().trim());
-
                 logger.log(Level.INFO, "Listed all foods in Diet Session");
             } else {
                 listResult.append("Sorry, there is nothing in your food list.");
@@ -42,5 +45,30 @@ public class FoodItemList extends Command {
             ui.showToUser("Sorry, there is nothing in your food list.");
             logger.log(Level.WARNING, "No item in food list");
         }
+    }
+
+    private String formatList(ArrayList<Food> foodList) {
+
+        ArrayList<String> foodNames = (ArrayList<String>) foodList.stream()
+                .map(Food::getName).collect(Collectors.toList());
+        int descriptionMaxLenInt = Math.max(10,
+                foodNames.stream().max(Comparator.comparingInt(String::length)).get().length());
+
+        String descriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt + 1) + "s";
+
+        String returnString = String.format("%-8s", "Index") + String.format(descriptionFormat, "Food")
+                + String.format("%-9s", "Calories") + LS;
+
+        StringBuilder infoBuilder = new StringBuilder(returnString);
+
+        String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-9s ";
+        for (int i = 0; i < foodList.size(); i++) {
+            String rowContent = String.format(listDescriptionFormat, foodList.get(i).getName(),
+                    foodList.get(i).getCalories());
+            String row = String.format("%-8s", i + 1) + rowContent + LS;
+            infoBuilder.append(row);
+        }
+        returnString = infoBuilder.toString().trim();
+        return returnString;
     }
 }

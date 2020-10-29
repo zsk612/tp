@@ -622,7 +622,7 @@ Saving of the user’s Diet sessions:
 |     |     |
 |-----|-----|
 |**Pros** | The files will still be saved even if a crash occurs|  
-|**Cons** | Saving often might be taxing on the user's computer|
+|**Cons** | Saving often might be taxing on the user's computer especially on slower models|
 #### 4.3.5. Delete a previously created diet session: `delete`
 
 The feature allows users to delete previously created diet sessions.
