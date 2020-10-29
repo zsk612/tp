@@ -5,7 +5,6 @@ import commands.CommandResult;
 import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
-import exceptions.profile.RedundantParamException;
 import models.Profile;
 import storage.profile.ProfileStorage;
 
@@ -13,7 +12,6 @@ import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
 import static ui.profile.ProfileUi.MESSAGE_DELETE_NOTHING;
 import static ui.profile.ProfileUi.MESSAGE_DELETE_PROFILE;
-import static seedu.duke.Constant.COMMAND_WORD_DELETE;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
 /**
@@ -32,10 +30,6 @@ public class ProfileDelete extends Command {
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         super.execute(commandArgs, storage);
-
-        if (!commandArgs.isEmpty()) {
-            throw new RedundantParamException(COMMAND_WORD_DELETE);
-        }
 
         Profile profile;
         try {

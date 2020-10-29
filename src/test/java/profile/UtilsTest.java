@@ -14,6 +14,7 @@ import static profile.Constants.HEIGHT_LOWER_BOUND;
 import static profile.Constants.HEIGHT_UPPER_BOUND;
 import static profile.Constants.WEIGHT_LOWER_BOUND;
 import static profile.Constants.WEIGHT_UPPER_BOUND;
+import static profile.Utils.checkValidName;
 import static profile.Utils.checkValidProfile;
 
 class UtilsTest {
@@ -23,6 +24,11 @@ class UtilsTest {
         Profile validProfile = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
                 EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
         assertTrue(checkValidProfile(validProfile));
+    }
+
+    @Test
+    void testCheckValidProfile_nullInput_returnFalse() {
+        assertFalse(checkValidProfile(null));
     }
 
     @Test
@@ -58,5 +64,20 @@ class UtilsTest {
         Profile inValidProfile = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
                 EXAMPLE_EXPECTED_WEIGHT, -1);
         assertFalse(checkValidProfile(inValidProfile));
+    }
+
+    @Test
+    void testCheckValidName_validInput_returnTrue() {
+        assertTrue(checkValidName("Schwarzenegger"));
+    }
+
+    @Test
+    void testCheckValidName_emptyInput_returnFalse() {
+        assertFalse(checkValidName(""));
+    }
+
+    @Test
+    void testCheckValidName_nullInput_returnFalse() {
+        assertFalse(checkValidName(null));
     }
 }

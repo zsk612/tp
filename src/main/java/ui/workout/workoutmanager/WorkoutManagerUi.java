@@ -2,6 +2,8 @@ package ui.workout.workoutmanager;
 
 import ui.CommonUi;
 
+import static ui.profile.ProfileUi.MESSAGE_HELP_FOR_MORE_INFO;
+
 public class WorkoutManagerUi extends CommonUi {
 
     public static String CLEAR_SUCCESS = "You have cleared all records!";
@@ -13,7 +15,8 @@ public class WorkoutManagerUi extends CommonUi {
     public static String START_NEW_SESSION = "You have started a new workout session!";
 
     public static String MESSAGE_NOT_A_NUMBER = "Index must be a number. Your input is not a number!";
-    public static String MESSAGE_INSUFFICIENT_ARGUMENT = "Insufficient arguments are given!";
+    public static String MESSAGE_INSUFFICIENT_ARGUMENT = "Insufficient arguments are given! "
+            + "Please follow this format:" + LS + "%s" + LS + MESSAGE_HELP_FOR_MORE_INFO;
     public static String MESSAGE_OUT_OF_ARRAY = "The record specified is not found. Please check the index!";
 
 }

@@ -1,10 +1,12 @@
 package profile;
 
+import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidCaloriesException;
 import exceptions.profile.InvalidCommandFormatException;
 import exceptions.profile.InvalidHeightException;
 import exceptions.profile.InvalidNameException;
 import exceptions.profile.InvalidWeightException;
+import exceptions.workout.workoutmanager.InsufficientArgumentException;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.HashMap;
@@ -45,18 +47,12 @@ public class ProfileParser {
      * @param command Command being executed.
      * @param commandArgs User's input arguments.
      * @return HashMap containing option indicator and parsed option pairs.
-     * @throws InvalidCommandFormatException If the input command has invalid format.
+     * @throws SchwarzeneggerException If there are caught exceptions.
      */
     public static HashMap<String, String> extractCommandTagAndInfo(String command, String commandArgs)
-            throws InvalidCommandFormatException {
+            throws SchwarzeneggerException {
         if (!commandArgs.contains("/")) {
-            if (command.equals(COMMAND_WORD_ADD)) {
-                throw new InvalidCommandFormatException(ADD_PROFILE_FORMAT);
-            } else if (command.equals(COMMAND_WORD_EDIT)) {
-                throw new InvalidCommandFormatException(EDIT_PROFILE_FORMAT);
-            } else {
-                throw new InvalidCommandFormatException(COMMAND_WORD_HELP);
-            }
+            throwInvalidCommandFormat(command);
         }
 
         HashMap<String, String> parsedParams = new HashMap<>();
@@ -78,15 +74,76 @@ public class ProfileParser {
                 startIndex = endIndex;
             }
 
-            return parsedParams;
-        } catch (StringIndexOutOfBoundsException e) {
-            if (command.equals(COMMAND_WORD_ADD)) {
-                throw new InvalidCommandFormatException(ADD_PROFILE_FORMAT);
-            } else if (command.equals(COMMAND_WORD_EDIT)) {
-                throw new InvalidCommandFormatException(EDIT_PROFILE_FORMAT);
-            } else {
-                throw new InvalidCommandFormatException(COMMAND_WORD_HELP);
+            if (!checkSufficientParams(command, parsedParams)) {
+                throwInsufficientArgument(command);
             }
+        } catch (StringIndexOutOfBoundsException e) {
+            throwInvalidCommandFormat(command);
+        }
+
+        return parsedParams;
+    }
+
+    /**
+     * Checks if user inputs sufficient number of params to the command.
+     *
+     * @param command Type of command being executed.
+     * @param parsedParams HashMap containing option indicator and parsed option pairs.
+     * @return If the number of params input to the command is sufficient.
+     */
+    private static boolean checkSufficientParams(String command, HashMap<String, String> parsedParams) {
+        boolean isSufficient = true;
+
+        switch (command) {
+        case COMMAND_WORD_ADD:
+            if (!parsedParams.containsKey("/n") || !parsedParams.containsKey("/h") || !parsedParams.containsKey("/w")
+                    || !parsedParams.containsKey("/e") || !parsedParams.containsKey("/c")) {
+                isSufficient = false;
+            }
+            break;
+        case COMMAND_WORD_EDIT:
+            if (!(parsedParams.containsKey("/n") || parsedParams.containsKey("/h") || parsedParams.containsKey("/w")
+                    || parsedParams.containsKey("/e") || parsedParams.containsKey("/c"))) {
+                isSufficient = false;
+            }
+            break;
+        default:
+            isSufficient = true;
+            break;
+        }
+        return isSufficient;
+    }
+
+    /**
+     * Throws InsufficientArgumentException with the correct param based on the command.
+     *
+     * @param command Command with invalid format.
+     * @throws InsufficientArgumentException If command has invalid format.
+     */
+    private static void throwInsufficientArgument(String command)
+            throws InsufficientArgumentException {
+        if (command.equals(COMMAND_WORD_ADD)) {
+            throw new InsufficientArgumentException(ADD_PROFILE_FORMAT);
+        } else if (command.equals(COMMAND_WORD_EDIT)) {
+            throw new InsufficientArgumentException(EDIT_PROFILE_FORMAT);
+        } else {
+            throw new InsufficientArgumentException(COMMAND_WORD_HELP);
+        }
+    }
+
+    /**
+     * Throws InvalidCommandFormatException with the correct param based on the command.
+     *
+     * @param command Command with invalid format.
+     * @throws InvalidCommandFormatException If command has invalid format.
+     */
+    private static void throwInvalidCommandFormat(String command) throws InvalidCommandFormatException {
+        if (command.equals(COMMAND_WORD_ADD)) {
+            throw new InvalidCommandFormatException(ADD_PROFILE_FORMAT);
+        } else if (command.equals(COMMAND_WORD_EDIT)) {
+            throw new InvalidCommandFormatException(EDIT_PROFILE_FORMAT);
+        } else {
+            throw new InvalidCommandFormatException(COMMAND_WORD_HELP);
         }
     }
 
@@ -118,7 +175,7 @@ public class ProfileParser {
         try {
             double calories = Double.parseDouble(parsedParams.get("/c"));
 
-            if (!Utils.checkCalories(calories)) {
+            if (!Utils.checkValidCalories(calories)) {
                 throw new InvalidCaloriesException();
             }
             return calories;
