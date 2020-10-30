@@ -31,10 +31,5 @@ public class Constant {
     public static final String PATH_TO_WORKOUT_SESSION_FOLDER = Paths.get(PROJECT_ROOT, DATA_FOLDER, "workout",
             "workoutSession").toString();
 
-    public static final String PATH_TO_DIET_SESSION_HISTORY = Paths.get(PROJECT_ROOT, DATA_FOLDER, "diet",
-            "history.json").toString();
-    public static final String PATH_TO_DIET_SESSION_FOLDER = Paths.get(PROJECT_ROOT, DATA_FOLDER, "diet",
-            "dietSession").toString();
-
     public static final String PATH_TO_LOG_FILE = Paths.get(PROJECT_ROOT, "logs", "SchwarzeneggerLogs.log").toString();
 }
