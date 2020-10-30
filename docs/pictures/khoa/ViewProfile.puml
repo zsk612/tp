@@ -17,15 +17,15 @@ ProfileSession -> Command ++ : execute()
 Command -> ProfileStorage ++ : loadData()
 ProfileStorage --> Command -- : profile
 
-opt hasExistingProfile
+alt hasExistingProfile
     Command -> DietManager**
     activate DietManager
     DietManager --> Command --
     Command -> DietManager ++ : getTodayTotalCalories()
-    DietManager --> Command : calories
-    destroy DietManager
+    DietManager --> Command -- : calories
     Command --> ProfileSession : result
-else
+    destroy DietManager
+else else
     Command --> ProfileSession --: result
 end
 
