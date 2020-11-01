@@ -26,7 +26,8 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.3. [Listing Food Items from the Current Diet Session: `list`](#meal-list)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.4. [Deleting Food Items from the Current Diet Session: `delete`](#meal-delete)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.5. [Clearing All Food Items from the Current Diet Session: `clear`](#meal-clear)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.6. [Ending the Current Diet Session: `end`](#meal-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.6. [Searching for Food Items from the Current Diet Session: `search`](#meal-search)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.7. [Ending the Current Diet Session: `end`](#meal-end)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.3. [Listing All Past Diet Sessions: `list`](#diet-list)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.4. [Editing a Past Diet Session: `edit`](#diet-edit)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.5. [Deleting a Past Diet Session: `delete`](#diet-delete)<br>
@@ -487,6 +488,7 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 	 Index   Food            Calories 
 	 1       chicken nuggets 120.0
+
 	 Your total calories for this meal is 120.0.
 	 _________________________________________________________________________________________________
 ```
@@ -527,8 +529,29 @@ Expected outcome:
      Oops you have cleared all the food items.
      _________________________________________________________________________________________________
 ```
+#### 3.3.2.6. <a id="meal-clear">Searching for Food Items from the Current Diet Session: `search`</a>
+Searches for all the food items that contain the word entered in the current diet session.
 
-#### 3.3.2.6. <a id="meal-end">Ending the Current Diet Session: `end`</a>
+
+__Format:__ `search [FOOD_NAME]` 
+
+Example: `search rice`
+
+Expected outcome:
+```
+Diet Menu > Diet Session 1 >>>>> search rice
+	 _________________________________________________________________________________________________
+	 Here are the search results: 
+	 Index   Food         Calories 
+	 1       chicken rice 332.0     
+	 2       fried rice   452.0     
+	 
+	 You have 2 record(s)
+	 _________________________________________________________________________________________________
+
+```
+
+#### 3.3.2.7. <a id="meal-end">Ending the Current Diet Session: `end`</a>
 Ends the current diet session, saves the data and returns to Diet Menu.
 
 __Format:__ `end` 
@@ -622,7 +645,10 @@ Expected outcome:
 ```
 	 _________________________________________________________________________________________________
 	 Here are the search results!
-	 	1. 2020-05-08 breakfast
+	 Index   Date             Tag         Calories  
+	 1       2020-05-08       unspecified 112.0
+	 
+	 You have 1 record(s)
 	 _________________________________________________________________________________________________
 ```
 
@@ -978,6 +1004,7 @@ Help|`help`
 Add |`add [FOOD_NAME] /c [CALORIES]`<br><br>E.g. `add spinach /c 90`
 List|`list`
 Delete|`delete [INDEX]`<br><br>E.g. `delete 1`
+Search|`search [FOOD_NAME]`<br><br>E.g. `search rice`
 Clear|`clear`
 Return to Diet Menu|`end`
 
@@ -1000,29 +1027,28 @@ Help|`help`
 Add |`add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]`<br><br>E.g. `add squat /n 15 /w 40`
 List|`list`
 Delete|`delete [INDEX]`<br><br>E.g. `delete 1`
+Search|`search [NAME_OF_MOVE]`<br><br>E.g. `search bench`
 Return to Workout Menu|`end`
 
 ## 5. <a id="notes">Notes</a>
 
-[1] Here shows all 14 valid formats.
+[1] Here shows all 12 valid formats.
     
     `yyyyMMdd HH:mm`
     `yyyy-MM-dd HH:mm`
     `yyyy MM dd HH:mm`
-    `yyyy/MM/dd HH:mm`
     
     `yyyyMMdd HHmm`
     `yyyy-MM-dd HHmm`
     `yyyy MM dd HHmm`
-    `yyyy/MM/dd HHmm`
     
     `yyyyMMdd`
     `yyyy-MM-dd`
     `yyyy MM dd`
-    `yyyy/MM/dd`
     
     `dd MM yyyy`
     `ddMMyyyy`
+    `dd-MM-yyyy`
 
 ## 6. <a id="faq">FAQ</a>
 Below are the answers to some frequently asked questions about The Schwarzenegger:
