@@ -168,8 +168,9 @@ public class DietManagerParser {
 
         try {
             String startDate = parsedParams.get("/s");
-            return DateParser.parseDate(startDate);
-
+            if (!startDate.isEmpty()) {
+                return DateParser.parseDate(startDate);
+            }
         } catch (IndexOutOfBoundsException e) {
             logger.log(Level.WARNING, "I do not understand your date input in start date");
         } catch (NullPointerException e) {
@@ -195,9 +196,10 @@ public class DietManagerParser {
             throws InvalidDateFormatException {
 
         try {
-            String startDate = parsedParams.get("/e");
-            return DateParser.parseDate(startDate);
-
+            String endDate = parsedParams.get("/e");
+            if (!endDate.isEmpty()) {
+                return DateParser.parseDate(endDate);
+            }
         } catch (IndexOutOfBoundsException e) {
             logger.log(Level.WARNING, "I do not understand your date input in end date");
         } catch (NullPointerException e) {

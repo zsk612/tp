@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
@@ -74,6 +75,9 @@ public class DietSessionSearch extends Command {
         } catch (InvalidSearchDateException e) {
             logger.log(Level.WARNING, "Invalid date format in diet session search");
             throw new InvalidSearchDateException("Starting date should be earlier than end date.");
+        } catch (NoSuchElementException e) {
+            logger.log(Level.WARNING, "No such element in diet session search");
+            ui.showToUser("Sorry, there is nothing found in your diet menu.");
         }
     }
 
@@ -85,39 +89,12 @@ public class DietSessionSearch extends Command {
      * @param startDate starting date for search
      * @param endDate end date for search
      * @param tag tag for search
+     * @param storage storage for diet sessions
      * @throws InvalidDateFormatException if date is in wrong format
      */
     private void printSearchResult(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate,
-                                     LocalDateTime endDate, String tag, DietStorage storage) throws InvalidDateFormatException {
-//        try {
-//            if (tag.isEmpty()) {
-//                searchResult.append("Tag is empty, "
-//                        + "all the sessions within input dates will be shown.\n\t ");
-//            }
-//            searchResult.append("Here are the search results!\n\t ");
-//            if (Objects.requireNonNull(listOfFiles).length == 0) {
-//                searchResult.append("It seems like you do not have any meal sessions stored!\n\t ");
-//            }
-//            int numberOfResults = 0;
-//            for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++) {
-//                LocalDateTime fileDate = DateParser.parseDate(listOfFiles[i].getName().split(" ", 2)[0]);
-//                String fileTag = listOfFiles[i].getName().split(" ", 2)[1]
-//                        .replaceFirst("[.][^.]+$", "");
-//                if (startDate.compareTo(fileDate) <= 0 && endDate.compareTo(fileDate) >= 0 && fileTag.contains(tag)) {
-//                    searchResult.append("\t" + (++numberOfResults) + ". "
-//                            + listOfFiles[i].getName().replaceFirst("[.][^.]+$", "") + "\n\t ");
-//                }
-//            }
-//            if (numberOfResults == 0) {
-//                searchResult.append("Sorry! There seems to be no diet sessions found with your searched tag.");
-//            }
-//            ui.showToUser(searchResult.toString().trim());
-//            logger.log(Level.INFO, "Listed all searched diet sessions");
-//        } catch (NullPointerException e) {
-//            ui.showToUser("Sorry! It seems like you have no meal sessions saved!");
-//            logger.log(Level.WARNING, "No instances of diet sessions saved");
-//        }
-//    }
+                                   LocalDateTime endDate, String tag, DietStorage storage)
+            throws InvalidDateFormatException {
         ArrayList<File> fileArrayList = new ArrayList<>();
         Collections.addAll(fileArrayList, listOfFiles);
 
@@ -136,8 +113,10 @@ public class DietSessionSearch extends Command {
         for (int i = 0; i < fileArrayList.size(); i++) {
             DietSession ds = storage.readDietSession(listOfFiles[i].getName());
             double totalCalories = ds.getTotalCalories();
-            String fileTag = fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "").split(" ", 2)[1];
-            String fileDate = fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "").split(" ", 2)[0];
+            String fileTag = fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "")
+                    .split(" ", 2)[1];
+            String fileDate = fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "")
+                    .split(" ", 2)[0];
             LocalDateTime dateFormat = DateParser.parseDate(fileDate);
             if (startDate.compareTo(dateFormat) <= 0 && endDate.compareTo(dateFormat) >= 0 && fileTag.contains(tag)) {
                 String rowContent = String.format(listDescriptionFormat, fileDate, fileTag, totalCalories);
@@ -145,7 +124,11 @@ public class DietSessionSearch extends Command {
                 searchResult.append(row);
             }
         }
-        String dietSessionSearchSize = "\n\t You have " + listOfFiles.length + " records" + LS;
+        String dietSessionSearchSize = "\n\t You have " + numberOfResult + " record(s)" + LS;
+        if (numberOfResult == 0) {
+            searchResult.setLength(0);
+            searchResult.append("Sorry, there is nothing found in your diet menu.");
+        }
         searchResult.append(dietSessionSearchSize);
     }
 }
