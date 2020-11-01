@@ -1112,24 +1112,22 @@ __Target user profile__:
 ### Appendix F: Instructions for Manual Testing
 #### F.1. Launch and Shutdown
 ### Appendix G: Supported Formats of Date Input
-Here shows all 14 valid formats.
+Here shows all 12 valid formats.
     
     `yyyyMMdd HH:mm`
     `yyyy-MM-dd HH:mm`
     `yyyy MM dd HH:mm`
-    `yyyy/MM/dd HH:mm`
     
     `yyyyMMdd HHmm`
     `yyyy-MM-dd HHmm`
     `yyyy MM dd HHmm`
-    `yyyy/MM/dd HHmm`
     
     `yyyyMMdd`
     `yyyy-MM-dd`
     `yyyy MM dd`
-    `yyyy/MM/dd`
     
     `dd MM yyyy`
     `ddMMyyyy`
+    `dd-MM-yyyy`
 
 [&#8593; Return to Top](#developer-guide)
