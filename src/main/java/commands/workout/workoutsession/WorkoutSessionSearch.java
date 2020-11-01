@@ -9,6 +9,7 @@ import models.ExerciseList;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import static ui.CommonUi.LS;
@@ -21,18 +22,22 @@ public class WorkoutSessionSearch extends Command {
     public void execute(String[] inputs, ExerciseList exerciseList,
                         String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
         String searchTerm = WorkoutSessionParser.searchParser(inputs).toLowerCase();
+        try {
+            if (searchTerm.length() > 0) {
 
-        if (searchTerm.length() > 0) {
-
-            String searchResult = formatList(exerciseList.exerciseList, searchTerm);
-
-            if (!isEmptySearchResult) {
-                ui.showToUser(searchResult);
-            } else {
+                String searchResult = formatList(exerciseList.exerciseList, searchTerm);
                 WorkoutSessionUi.searchResultsEmpty();
+
+                if (!isEmptySearchResult) {
+                    ui.showToUser(searchResult);
+                } else {
+                    WorkoutSessionUi.searchResultsEmpty();
+                }
+            } else {
+                WorkoutSessionUi.searchInputError();
             }
-        } else {
-            WorkoutSessionUi.searchInputError();
+        } catch (NoSuchElementException e) {
+            WorkoutSessionUi.searchResultsEmpty();
         }
     }
 
@@ -40,6 +45,7 @@ public class WorkoutSessionSearch extends Command {
 
         ArrayList<String> exerciseNames = (ArrayList<String>) exercise.stream()
                 .map(Exercise::getDescription).collect(Collectors.toList());
+
         int descriptionMaxLenInt = Math.max(20,
                 exerciseNames.stream().max(Comparator.comparingInt(String::length)).get().length());
 
