@@ -2,6 +2,7 @@ package profile;
 
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidCommandFormatException;
+import logic.parser.ProfileParser;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -9,7 +10,7 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static profile.ProfileParser.extractCommandTagAndInfo;
+import static logic.parser.ProfileParser.extractCommandTagAndInfo;
 
 class ProfileParserTest {
 

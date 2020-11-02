@@ -24,8 +24,12 @@ public class MainHelp extends Command {
      */
     @Override
     public CommandResult execute(String args) {
-
         StringBuilder helpMessage = new StringBuilder();
+
+        if (!args.isEmpty()) {
+            ui.showWarning("\"help\" command does not take in parameters");
+        }
+
         helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_PROFILE), COMMAND_WORD_PROFILE,
                 "Go to Profile Menu to manage your profile"));
         helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_WORKOUT), COMMAND_WORD_WORKOUT,

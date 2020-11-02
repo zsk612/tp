@@ -14,7 +14,6 @@ import static profile.Constants.WEIGHT_UPPER_BOUND;
  */
 public class ProfileUi extends CommonUi {
 
-    public static final String HELP_FORMAT = "%-8s - %s" + LS + "%-8s %s" + LS;
     public static final String MESSAGE_CREATE_PROFILE_ACK = "Got it. Here's a confirmation of your profile:"
             + LS + "%s";
     public static final String MESSAGE_DELETE_PROFILE = "Alright! I've deleted your profile.";
