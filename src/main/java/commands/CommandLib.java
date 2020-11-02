@@ -15,6 +15,7 @@ import commands.diet.dietsession.FoodItemHelp;
 import commands.diet.dietsession.FoodItemList;
 import commands.diet.dietsession.FoodItemSearch;
 import commands.diet.dietsession.FoodItemWrong;
+import commands.main.MainEnd;
 import commands.main.MainHelp;
 import commands.main.MainWrong;
 import commands.main.ToDiet;
@@ -84,6 +85,7 @@ public class CommandLib {
         library.put(COMMAND_WORD_DIET, new ToDiet());
         library.put(COMMAND_WORD_PROFILE, new ToProfile());
         library.put(COMMAND_WORD_WORKOUT, new ToWorkout());
+        library.put(COMMAND_WORD_END, new MainEnd());
     }
 
     /**
