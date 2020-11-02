@@ -642,7 +642,9 @@ Expected outcome:
 ```
 
 ### 3.4. <a id="workout-menu">Workout Menu</a>
+This section shows the command you can use when you are in workout menu.
 
+Click [here](#main-workout) to learn how to enter workout menu.
 ### 3.4.1. <a id="workout-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Workout Menu and how to use them.
 
@@ -995,6 +997,8 @@ Clear|`clear`
 Return to Main Menu|`end`
 
 **Workout Session**
+
+**Action** | **Format**
 --------|----------------------
 Help|`help`
 Add |`add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]`<br><br>E.g. `add squat /n 15 /w 40`

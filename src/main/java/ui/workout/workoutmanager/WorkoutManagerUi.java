@@ -6,7 +6,6 @@ import static ui.profile.ProfileUi.MESSAGE_HELP_FOR_MORE_INFO;
 
 public class WorkoutManagerUi extends CommonUi {
 
-    public static String CLEAR_SUCCESS = "You have cleared all records!";
     public static String CLEAR_ABORTED = "You have aborted the action!";
     public static String DELETE_SUCCESS = "You have deleted that record!";
     public static String EDIT_SUCCESS = "Congratulations! You have successfully edited the workout!";
@@ -18,5 +17,4 @@ public class WorkoutManagerUi extends CommonUi {
     public static String MESSAGE_INSUFFICIENT_ARGUMENT = "Insufficient arguments are given! "
             + "Please follow this format:" + LS + "%s" + LS + MESSAGE_HELP_FOR_MORE_INFO;
     public static String MESSAGE_OUT_OF_ARRAY = "The record specified is not found. Please check the index!";
-
 }

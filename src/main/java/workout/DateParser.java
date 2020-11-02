@@ -4,29 +4,30 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.Arrays;
 import java.util.List;
 
 public class DateParser {
     private static final List<DateTimeFormatter> dtFormaters = Arrays.asList(
-            DateTimeFormatter.ofPattern("yyyyMMdd HH:mm"),
-            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"),
-            DateTimeFormatter.ofPattern("yyyy MM dd HH:mm"),
-            DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm"),
-            DateTimeFormatter.ofPattern("yyyyMMdd HHmm"),
-            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"),
-            DateTimeFormatter.ofPattern("yyyy MM dd HHmm"),
-            DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm")
+            DateTimeFormatter.ofPattern("yyyyMMdd HH:mm").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("yyyy MM dd HH:mm").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("yyyyMMdd HHmm").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("yyyy MM dd HHmm").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("yyyy/MM/dd HHmm").withResolverStyle(ResolverStyle.STRICT)
     );
     private static final List<DateTimeFormatter> dFormaters = Arrays.asList(
-            DateTimeFormatter.ofPattern("yyyyMMdd"),
-            DateTimeFormatter.ofPattern("yyyy/MM/dd"),
-            DateTimeFormatter.ofPattern("yyyy-MM-dd"),
-            DateTimeFormatter.ofPattern("yyyy MM dd"),
-            DateTimeFormatter.ofPattern("dd-MM-yyyy"),
-            DateTimeFormatter.ofPattern("dd/MM/yyyy"),
-            DateTimeFormatter.ofPattern("dd MM yyyy"),
-            DateTimeFormatter.ofPattern("ddMMyyyy")
+            DateTimeFormatter.ofPattern("yyyyMMdd").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("yyyy/MM/dd").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("yyyy MM dd").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("dd-MM-yyyy").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("dd/MM/yyyy").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("dd MM yyyy").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("ddMMyyyy").withResolverStyle(ResolverStyle.STRICT)
     );
 
     /**
