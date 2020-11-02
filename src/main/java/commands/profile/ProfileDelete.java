@@ -31,9 +31,12 @@ public class ProfileDelete extends Command {
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         super.execute(commandArgs, storage);
 
-        Profile profile;
+        if (!commandArgs.isEmpty()) {
+            ui.showWarning("\"delete\" command does not take in parameters");
+        }
+
         try {
-            profile = storage.loadData();
+            Profile profile = storage.loadData();
 
             if (!ui.checkConfirmation("Profile Menu", "clear your profile")) {
                 return new CommandResult(CLEAR_ABORTED, ExecutionResult.ABORTED);

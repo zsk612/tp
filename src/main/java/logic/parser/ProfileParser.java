@@ -1,4 +1,4 @@
-package logic;
+package logic.parser;
 
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidCaloriesException;
@@ -10,7 +10,10 @@ import exceptions.workout.workoutmanager.InsufficientArgumentException;
 import org.apache.commons.lang3.text.WordUtils;
 import profile.Utils;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import static profile.Constants.ADD_PROFILE_FORMAT;
 import static profile.Constants.EDIT_PROFILE_FORMAT;
@@ -94,6 +97,24 @@ public class ProfileParser extends CommonParser {
             break;
         }
         return isSufficient;
+    }
+
+    /**
+     * Finds invalid tags (option indicators) in user's input.
+     *
+     * @param parsedParams HashMap containing option indicator and parsed option pairs.
+     * @return String containing invalid tags.
+     */
+    public static String findInvalidTags(HashMap<String, String> parsedParams) {
+        StringBuilder result = new StringBuilder();
+
+        Set<String> validTags = new HashSet<>(Arrays.asList("/n", "/h", "/w", "/e", "/c"));
+        parsedParams.keySet().stream()
+                .filter(tag -> !validTags.contains(tag))
+                .forEach(tag -> result.append(String.format("\"%s\", ", tag)));
+
+        String trimmedResult = result.toString().trim();
+        return trimmedResult.isEmpty() ? trimmedResult : trimmedResult.substring(0, trimmedResult.length() - 1);
     }
 
     /**

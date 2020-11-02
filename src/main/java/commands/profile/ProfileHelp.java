@@ -32,6 +32,10 @@ public class ProfileHelp extends Command {
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         super.execute(commandArgs, storage);
 
+        if (!commandArgs.isEmpty()) {
+            ui.showWarning("\"help\" command does not take in parameters");
+        }
+
         StringBuilder helpMessage = new StringBuilder();
         helpMessage.append(helpFormatter(StringUtils.capitalize(COMMAND_WORD_ADD), ADD_PROFILE_FORMAT,
                 "Add your new profile"));

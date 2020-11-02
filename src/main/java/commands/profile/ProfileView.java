@@ -32,9 +32,12 @@ public class ProfileView extends Command {
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         super.execute(commandArgs, storage);
 
-        Profile profile;
+        if (!commandArgs.isEmpty()) {
+            ui.showWarning("\"view\" command does not take in parameters");
+        }
+
         try {
-            profile = storage.loadData();
+            Profile profile = storage.loadData();
             assert profile != null : "profile should not be null after loading";
 
             double todayCalories = new DietManager().getTodayTotalCalories();

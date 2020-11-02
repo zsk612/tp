@@ -22,6 +22,11 @@ public class ProfileEnd extends Command {
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         super.execute(commandArgs, storage);
+
+        if (!commandArgs.isEmpty()) {
+            ui.showWarning("\"end\" command does not take in parameters");
+        }
+
         throw new EndException();
     }
 }
