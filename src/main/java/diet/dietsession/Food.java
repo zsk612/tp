@@ -6,7 +6,7 @@ public class Food {
 
     public Food(String name, double calories) {
         this.name = name;
-        this.calories = Math.min(calories, 200000);
+        this.calories = calories;
     }
 
     public String toString() {

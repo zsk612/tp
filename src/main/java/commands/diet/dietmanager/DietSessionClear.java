@@ -26,7 +26,7 @@ public class DietSessionClear extends Command {
                 for (int index = 0; index < Objects.requireNonNull(listOfFiles).length; index++) {
                     listOfFiles[index].delete();
                 }
-                ui.showToUser("You have cleared all diet sessions!");
+                ui.showToUser("Alright, your diet sessions have been cleared.");
                 logger.log(Level.INFO, "Cleared all diet sessions");
             } else {
                 ui.showToUser("You have aborted clear operation.");
