@@ -1,4 +1,4 @@
-package diet;
+package utils;
 
 import exceptions.InvalidDateFormatException;
 
@@ -15,6 +15,7 @@ public class DateParser {
             DateTimeFormatter.ofPattern("uuuuMMdd HH:mm").withResolverStyle(ResolverStyle.STRICT),
             DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm").withResolverStyle(ResolverStyle.STRICT),
             DateTimeFormatter.ofPattern("uuuu MM dd HH:mm").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm").withResolverStyle(ResolverStyle.STRICT),
             DateTimeFormatter.ofPattern("uuuuMMdd HHmm").withResolverStyle(ResolverStyle.STRICT),
             DateTimeFormatter.ofPattern("uuuu-MM-dd HHmm").withResolverStyle(ResolverStyle.STRICT),
             DateTimeFormatter.ofPattern("uuuu MM dd HHmm").withResolverStyle(ResolverStyle.STRICT),
@@ -23,6 +24,7 @@ public class DateParser {
 
     private static final List<DateTimeFormatter> dFormatters = Arrays.asList(
             DateTimeFormatter.ofPattern("uuuuMMdd").withResolverStyle(ResolverStyle.STRICT),
+            DateTimeFormatter.ofPattern("uuuu/MM/dd").withResolverStyle(ResolverStyle.STRICT),
             DateTimeFormatter.ofPattern("uuuu-MM-dd").withResolverStyle(ResolverStyle.STRICT),
             DateTimeFormatter.ofPattern("uuuu MM dd").withResolverStyle(ResolverStyle.STRICT),
             DateTimeFormatter.ofPattern("dd-MM-uuuu").withResolverStyle(ResolverStyle.STRICT),
@@ -30,7 +32,6 @@ public class DateParser {
             DateTimeFormatter.ofPattern("dd MM uuuu").withResolverStyle(ResolverStyle.STRICT),
             DateTimeFormatter.ofPattern("ddMMuuuu").withResolverStyle(ResolverStyle.STRICT)
     );
-
 
     /**
      * Parses a given string following one of the accepted format into date-time format.

@@ -1,6 +1,6 @@
 package diet.dietmanager;
 
-import diet.DateParser;
+import utils.DateParser;
 import exceptions.InvalidDateFormatException;
 import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;

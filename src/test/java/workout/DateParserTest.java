@@ -1,11 +1,15 @@
 package workout;
 
+import exceptions.InvalidDateFormatException;
 import org.junit.jupiter.api.Test;
+import utils.DateParser;
 
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class DateParserTest {
 
@@ -13,27 +17,27 @@ class DateParserTest {
     void parseDate_correctFormat_returnParsedDate() {
         LocalDateTime dt = LocalDateTime.of(2020, 10, 22, 0, 0);
 
-        String in1 = "20201022";
-        assertEquals(dt, DateParser.parseDate(in1));
+        try {
+            String in1 = "20201022";
+            assertEquals(dt, DateParser.parseDate(in1));
 
-        String in2 = "2020-10-22";
-        assertEquals(dt, DateParser.parseDate(in2));
+            String in2 = "2020-10-22";
+            assertEquals(dt, DateParser.parseDate(in2));
 
-        String in3 = "2020 10 22";
-        assertEquals(dt, DateParser.parseDate(in3));
+            String in3 = "2020 10 22";
+            assertEquals(dt, DateParser.parseDate(in3));
+        } catch (InvalidDateFormatException e) {
+            fail();
+        }
     }
 
     @Test
     void parseDate_wrongFormat_returnNull() {
-        String in1 = "2020:10:22";
-        assertNull(DateParser.parseDate(in1));
-
+        assertThrows(InvalidDateFormatException.class, () -> DateParser.parseDate("2020:10:22"));
     }
 
     @Test
-    void parseDate_invalidDate_returnNull() {
-        String in1 = "20202131";
-        assertNull(DateParser.parseDate(in1));
-
+    void parseDate_invalidDate_throwsInvalidDateFormatException() {
+        assertThrows(InvalidDateFormatException.class, () -> DateParser.parseDate("20202131"));
     }
 }
