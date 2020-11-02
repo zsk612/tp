@@ -16,9 +16,9 @@ ProfileSession -> Command ++ : execute()
 Command -> ProfileStorage ++ : loadData()
 ProfileStorage --> Command -- : profile
 
-opt hasExistingProfile
+alt hasExistingProfile
     Command --> ProfileSession : result
-else
+else else
     Command -> ProfileParser ++ : extractCommandTagAndInfo(parsedInput)
     ProfileParser --> Command -- : parsedInfo
     Command -> Profile ** : parsedInfo

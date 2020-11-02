@@ -17,18 +17,18 @@ ProfileSession -> Command ++ : execute()
 Command -> ProfileStorage ++ : loadData()
 ProfileStorage --> Command -- : profile
 
-opt hasExistingProfile
+alt hasExistingProfile
     Command -> Ui ++ : getConfirmation()
     Ui --> Command -- : isConfirmed
 
-    opt isConfirmed
+    alt isConfirmed
         Command -> ProfileStorage ++ : saveData(null)
         ProfileStorage --> Command --
         Command --> ProfileSession: result
-    else
+    else else
         Command --> ProfileSession: result
     end
-else
+else else
     Command --> ProfileSession -- : result
 end
 

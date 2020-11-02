@@ -27,7 +27,7 @@ public class FoodItemClear extends Command {
         }
         if (ui.checkConfirmation(prompt, "clear all records")) {
             foodList.clear();
-            ui.showToUser("Oops you have cleared all the food items.");
+            ui.showToUser("Alright, your food items have been cleared.");
             logger.log(Level.INFO, "Cleared all food in arraylist");
         } else {
             System.out.println("You have aborted clear operation.");

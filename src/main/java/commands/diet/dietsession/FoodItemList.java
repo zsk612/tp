@@ -31,7 +31,7 @@ public class FoodItemList extends Command {
                 for (int i = 0; i < foodList.size(); i++) {
                     totalCalories += foodList.get(i).getCalories();
                 }
-                String totalMealCalories = LS + "Your total calories for this meal is " + totalCalories + ".";
+                String totalMealCalories = "\n" + LS + "Your total calories for this meal is " + totalCalories + ".";
                 String formattedList = formatList(foodList);
                 listResult.append(formattedList);
                 listResult.append(totalMealCalories);

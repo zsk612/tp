@@ -32,7 +32,7 @@ public class DietSessionList extends Command {
         StringBuilder listResult = new StringBuilder();
         assert folder.exists();
         try {
-            String dietSessionListSize = "You have " + listOfFiles.length + " records" + LS;
+            String dietSessionListSize = "You have " + listOfFiles.length + " record(s)" + LS;
             String dietSessionList = formatList(listOfFiles, storage);
             listResult.append(dietSessionListSize);
             listResult.append(dietSessionList);

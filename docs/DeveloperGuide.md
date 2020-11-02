@@ -1004,7 +1004,8 @@ in the meta info file.
 ### 4.5. <a id="storage">Storage</a>
 Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called `/saves` which is in the same directory as the project root.
 
-#### 4.5.1. <a id="storage-for-profile">Storage for Profile
+#### 4.5.1. <a id="storage-for-profile">Storage for Profile</a>
+
 Storage for profile saves user profile created as `profile.json` in the `/saves/profile` directory. Profile data file is created as follows:
 - `profile.json` is updated in the local hard disk after the user adds/ edits a profile by calling `ProfileAdd.execute()`/ `ProfileEdit.execute()`.
 - `profile.json` content will be cleared after the user deletes a profile by calling `ProfileDelete.execute()`.
@@ -1013,7 +1014,8 @@ Storage for profile saves user profile created as `profile.json` in the `/saves/
 Profile storage handles reading of file data by calling `loadData()` and overwriting of file data by calling `saveData()`.
 
 
-#### 4.5.2. <a id="storage-for-diet">Storage for Diet
+#### 4.5.2. <a id="storage-for-diet">Storage for Diet</a>
+
 Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
 - Each file is created as a json file and named as `[DATE] [TAG].json`.
 - A corresponding file is updated in the local file after the user edits a diet session by calling DietSessionEdit.execute().
@@ -1022,7 +1024,7 @@ Storage for diet saves diet sessions created as individual files sorted based on
 **Implementation**
 Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
 
-#### 4.5.3. <a id="storage-for-workout">Storage for Workout
+#### 4.5.3. <a id="storage-for-workout">Storage for Workout</a>
 
 Storage for workout saves workout sessions created as individual files named based on the time created in `/saves/workout` directory. The metainformation of the files such as createion date and last edit date is saved in  `/saves/workout/history.json`.
 
@@ -1110,24 +1112,22 @@ __Target user profile__:
 ### Appendix F: Instructions for Manual Testing
 #### F.1. Launch and Shutdown
 ### Appendix G: Supported Formats of Date Input
-Here shows all 14 valid formats.
+Here shows all 12 valid formats.
     
     `yyyyMMdd HH:mm`
     `yyyy-MM-dd HH:mm`
     `yyyy MM dd HH:mm`
-    `yyyy/MM/dd HH:mm`
     
     `yyyyMMdd HHmm`
     `yyyy-MM-dd HHmm`
     `yyyy MM dd HHmm`
-    `yyyy/MM/dd HHmm`
     
     `yyyyMMdd`
     `yyyy-MM-dd`
     `yyyy MM dd`
-    `yyyy/MM/dd`
     
     `dd MM yyyy`
     `ddMMyyyy`
+    `dd-MM-yyyy`
 
 [&#8593; Return to Top](#developer-guide)
