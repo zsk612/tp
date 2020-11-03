@@ -166,11 +166,9 @@ Expected outcome:
     _________________________________________________________________________________________________
 ```
 
-|:bulb: You can verify that you are in Diet Menu if the text before your cursor becomes `Diet Menu >>>>>`. |
-|:-----------|
+> :bulb: You can verify that you are in Diet Menu if the text before your cursor becomes `Diet Menu >>>>>`.
 
-|:bulb: You can return to Main Menu from Diet Menu by entering command `end`. You can refer to [Section 3.3.8. Returning to Main Menu](#diet-end) for more details. |
-|:-----------|
+> :bulb: You can return to Main Menu from Diet Menu by entering command `end`. You can refer to [Section 3.3.8. Returning to Main Menu](#diet-end) for more details.
 
 #### 3.1.4. <a id="main-workout">Entering Workout Menu: `workout`</a>
 The program will direct you to the Workout Menu.
@@ -187,11 +185,9 @@ Expected outcome:
     _________________________________________________________________________________________________
 ```
 
-|:bulb: You can verify that you are in Workout Menu if the text before your cursor becomes `Workout Menu >>>>>`. |
-|:-----------|
+> :bulb: You can verify that you are in Workout Menu if the text before your cursor becomes `Workout Menu >>>>>`.
 
-|:bulb: You can return to Main Menu from Workout Menu by entering command `end`. You can refer to [Section 3.4.8. Returning to Main Menu](#workout-end) for more details. |
-|:-----------|
+> :bulb: You can return to Main Menu from Workout Menu by entering command `end`. You can refer to [Section 3.4.8. Returning to Main Menu](#workout-end) for more details.
 
 
 #### 3.1.5. <a id="main-end">Ending The Schwarzenegger: `end`</a>
@@ -261,8 +257,7 @@ Expected outcome:
     _________________________________________________________________________________________________
 ```
 
-|:warning: The Schwarzenegger currently does not support name containing "/" character. |
-|:-----------|
+> :warning: The Schwarzenegger currently does not support name containing "/" character.
 
 #### 3.2.3. <a id="profile-view">Viewing a Profile: `view`</a>
 You can view your profile recorded in the program. The Schwarzenegger will also show 2 additional information:
@@ -338,8 +333,7 @@ Expected outcome:<br>
          ______________________________________________________________________________
     ```
 
-|:bulb: You may edit from 1 field to all fields in your profile. |
-|:-----------|      
+> :bulb: You may edit from 1 field to all fields in your profile.      
 
 
 #### 3.2.5. <a id="profile-delete">Deleting a Profile: `delete`</a>
@@ -448,8 +442,7 @@ Expected outcome:
      _________________________________________________________________________________________________
 ```
 
-|:warning: You may choose not to add the date or tag, but diet sessions with the same date and tag will be overwritten!|
-|:-----------|
+> :warning: You may choose not to add the date or tag, but diet sessions with the same date and tag will be overwritten!
   
 #### 3.3.2.1. <a id="meal-help">Viewing Help in Diet Session: `help`</a>
 You can see a complete list of available commands under Diet Session and how to use them.
