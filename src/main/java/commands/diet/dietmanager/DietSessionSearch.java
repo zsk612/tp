@@ -1,7 +1,7 @@
 package commands.diet.dietmanager;
 
 import commands.Command;
-import diet.DateParser;
+import utils.DateParser;
 import diet.dietmanager.DietManagerParser;
 import diet.dietsession.DietSession;
 import exceptions.InvalidDateFormatException;
