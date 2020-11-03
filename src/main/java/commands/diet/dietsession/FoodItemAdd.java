@@ -10,15 +10,17 @@ import storage.diet.DietStorage;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+import static profile.Constants.CALORIES_UPPER_BOUND;
+
 public class FoodItemAdd extends Command {
 
     /**
      * Overrides execute for add command to add food items.
      *
-     * @param input    user input for command
+     * @param input user input for command
      * @param foodList arraylist that stored all the food items
-     * @param storage  storage for diet session
-     * @param index    Integer variable that shows the index of the session
+     * @param storage storage for diet session
+     * @param index Integer variable that shows the index of the session
      */
     @Override
     public void execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
@@ -28,9 +30,9 @@ public class FoodItemAdd extends Command {
             assert !input.isEmpty();
             StringBuilder userOutput = new StringBuilder();
             Double calories = parser.processFoodCalories(input);
-            Food temp = new Food(parser.processFoodName(input), Math.min(calories, 200000));
+            Food temp = new Food(parser.processFoodName(input), Math.min(calories, CALORIES_UPPER_BOUND));
             foodList.add(temp);
-            if (calories > 200000) {
+            if (calories > CALORIES_UPPER_BOUND) {
                 userOutput.append("Your calories for this food item seems a little high, "
                         + "so I've set it to 200,000.\n\t ");
             }
