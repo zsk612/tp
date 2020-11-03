@@ -19,7 +19,9 @@ import static logic.parser.ProfileParser.extractHeight;
 import static logic.parser.ProfileParser.extractName;
 import static logic.parser.ProfileParser.extractWeight;
 import static logic.parser.ProfileParser.findInvalidTags;
+import static profile.Constants.CALORIES_UPPER_BOUND;
 import static seedu.duke.Constant.COMMAND_WORD_EDIT;
+import static ui.profile.ProfileUi.MESSAGE_ADJUST_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_EDIT_NOTHING;
 import static ui.profile.ProfileUi.MESSAGE_EDIT_PROFILE_ACK;
 import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;
@@ -82,7 +84,12 @@ public class ProfileEdit extends Command {
         double expectedWeight = parsedParams.containsKey("/e")
                 ? extractExpectedWeight(parsedParams) : profile.getExpectedWeight();
         double calories = parsedParams.containsKey("/c") ? extractCalories(parsedParams) : profile.getCalories();
+        double adjustedCalories = Math.min(calories, CALORIES_UPPER_BOUND);
 
-        return new Profile(name, height, weight, expectedWeight, calories);
+        if (calories > CALORIES_UPPER_BOUND) {
+            ui.showWarning(MESSAGE_ADJUST_CALORIES);
+        }
+
+        return new Profile(name, height, weight, expectedWeight, adjustedCalories);
     }
 }
