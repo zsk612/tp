@@ -14,6 +14,8 @@ import static profile.Constants.WEIGHT_UPPER_BOUND;
  */
 public class ProfileUi extends CommonUi {
 
+    public static final String MESSAGE_ADJUST_CALORIES = "Your expected daily calorie intake seems a little "
+            + "high, so I've set it to 200,000";
     public static final String MESSAGE_CREATE_PROFILE_ACK = "Got it. Here's a confirmation of your profile:"
             + LS + "%s";
     public static final String MESSAGE_DELETE_PROFILE = String.format(MESSAGE_CLEAR_FORMAT, "profile has");
@@ -25,8 +27,6 @@ public class ProfileUi extends CommonUi {
             + "\"help\".";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Wrong format, please enter in the format:" + LS
             + "%s" + LS + MESSAGE_HELP_FOR_MORE_INFO;
-    public static final String MESSAGE_ADJUST_CALORIES = "Your expected daily calorie intake seems a little "
-            + "high, so I've set it to 200,000";
     public static final String MESSAGE_MORE_CALORIES = "take %.1f more calories to achieve your target for today!";
     public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. " + LS
             + "Please delete it using \"delete\" command before adding a new one.";
