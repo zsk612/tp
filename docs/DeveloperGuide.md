@@ -248,17 +248,15 @@ The sequence diagram below summarizes how creating a new profile works:
 
 Parsing of the user’s input command:
 
-- Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
+- **Alternative 1 (current choice):** User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
 
-**Pros** | Command tags do not have to follow a fixed order.
-|-----|:-----|
-**Cons** | It takes multiple steps in parsing the command.
+    - Pros: Command tags do not have to follow a fixed order. 
+    - Cons: It takes multiple steps in parsing the command.
 
-- Alternative 2: User’s command is divided by space
-                 
-|**Pros** | The parsing can be easily done by calling Java built-in function `split()`. Supports multiple tags or no tags.|
-|-----|:-----|
-|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive, especially for user's name.|
+- **Alternative 2:** User’s command is divided by space.
+
+    - Pros: The parsing can be easily done by calling Java built-in function `split()`. Supports multiple tags or no tags.
+    - Cons: Values for each variable cannot contain spaces which makes the application restrictive, especially for user's name.
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -295,19 +293,16 @@ The sequence diagram below summarizes how viewing an added profile works:
 
 Aspects: Loading of stored data
 
-- Alternative 1 (current choice): call public methods of Storage class to 
+- **Alternative 1 (current choice):** call public methods of Storage class to 
 load the profile from hard disk every time the user wants to view profile.
 
-|**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|
-|-----|:-----|  
-|**Cons** | Execution time is slow down due to multiple times of loading the data.|
+    - Pros: Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.
+    - Cons: Execution time is slow down due to multiple times of loading the data.
 
-- Alternative 2: call public methods of Storage class to load the profile from hard disk only when user enters Profile Menu.
+- **Alternative 2:** call public methods of Storage class to load the profile from hard disk only when user enters Profile Menu.
 
-|     |     |
-|-----|-----|
-|**Pros** | Execution time is fast.|  
-|**Cons** | Profile data is not updated in real time if user edits it in text editor while running The Schwarzenegger.|
+    - Pros: Execution time is fast. 
+    - Cons: Profile data is not updated in real time if user edits it in text editor while running The Schwarzenegger.
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -347,19 +342,15 @@ The sequence diagram below summarizes how creating a new profile works:
 
 Parsing of the user’s input command:
 
-- Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
+- **Alternative 1 (current choice):** User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
 
-|     |     |
-|-----|-----|
-|**Pros** | Command tags do not have to follow a fixed order.|
-|**Cons** | It takes multiple steps in parsing the command.|
+    - Pros: Command tags do not have to follow a fixed order.
+    - Cons: It takes multiple steps in parsing the command.
 
-- Alternative 2: User’s command is divided by space
-                 
-|     |     |
-|-----|-----|
-|**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
-|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
+- **Alternative 2:** User’s command is divided by space.
+
+    - Pros: The parsing can be easily done by calling Java built-in function `split()`. Supports multiple tags or no tags.
+    - Cons: Values for each variable cannot contain spaces which makes the application restrictive.
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -398,19 +389,15 @@ The sequence diagram below summarizes how deleting an added profile works:
 
 Aspects: Loading of stored data
 
-- Alternative 1 (current choice): call public methods of Storage class to load the profile from hard disk every time the user wants to delete profile.
+- **Alternative 1 (current choice):** call public methods of Storage class to load the profile from hard disk every time the user wants to delete profile.
 
-|     |     |
-|-----|-----|
-|**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|  
-|**Cons** | Execution time is slow down due to loading the data.|
+    - Pros: Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.
+    - Cons: Execution time is slow down due to loading the data.
 
-- Alternative 2: call public methods of Storage class to load the profile from hard disk when user enter Profile Menu.
+- **Alternative 2:** call public methods of Storage class to load the profile from hard disk when user enter Profile Menu.
 
-|     |     |
-|-----|-----|
-|**Pros** | Execution time is fast.|  
-|**Cons** | Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.|
+    - Pros: Execution time is fast. 
+    - Cons: Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.
 
 ### 4.3. Diet-related Features
 #### 4.3.1. Listing out all commands: `help`
@@ -491,6 +478,7 @@ When the user types `add [FOOD_NAME] /c [CALORIES]` the following sequence occur
 The sequence diagram below summarizes how adding a new food to the diet session works:
 
 ![Load Data Sequence Diagram](pictures/Zeon/FoodItemAdd.png)
+
 [&#8593; Return to Top](#developer-guide)
 
 #### 4.3.2.3. Listing data for the current diet: `list`
@@ -607,19 +595,16 @@ The sequence diagram below summarizes how editing Diet session works:
 **Design considerations**
 Saving of the user’s Diet sessions:  
 
-- Alternative 1 (current choice): Saving at the end of a diet session
+- **Alternative 1 (current choice):** Saving at the end of a diet session
 
-|     |     |
-|-----|-----|
-|**Pros** | The cost of saving is low, file writes only happen once per Diet session instance|
-|**Cons** | If any crashes occur during a diet session, no input data will be saved|
+    - Pros: The cost of saving is low, file writes only happen once per Diet session instance. 
+    - Cons: If any crashes occur during a diet session, no input data will be saved.
 
-- Alternative 2: Saving during any alterations made to the Diet session
+- **Alternative 2:** Saving during any alterations made to the Diet session
 
-|     |     |
-|-----|-----|
-|**Pros** | The files will still be saved even if a crash occurs|  
-|**Cons** | Saving often might be taxing on the user's computer especially on slower models|
+    - Pros: The files will still be saved even if a crash occurs.
+    - Cons: Saving often might be taxing on the user's computer especially on slower models.
+
 #### 4.3.5. Delete a previously created diet session: `delete`
 
 The feature allows users to delete previously created diet sessions.
@@ -720,19 +705,15 @@ The sequence diagram below summarizes how creating new workout session works:
 **Design considerations**
 Parsing of the user’s input command:  
 
-- Alternative 1 (current choice): User’s commands are divided by space
+- **Alternative 1 (current choice):** User’s commands are divided by space.
 
-|     |     |
-|-----|-----|
-|**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
-|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
+    - Pros: The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.
+    - Cons: Values for each variable cannot contain spaces which makes the application restrictive.
 
-- Alternative 2: Multiple prompts for user’s input of a workout data
+- **Alternative 2:** Multiple prompts for user’s input of a workout data.
 
-|     |     |
-|-----|-----|
-|**Pros** | Users would not have to make sure that their command is syntactically right.|  
-|**Cons** | The constant prompting could subject the application to a negative experience in the difficulty to use the commands.|
+    - Pros: Users would not have to make sure that their command is syntactically right. 
+    - Cons: The constant prompting could subject the application to a negative experience in the difficulty to use the commands.
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.1.1. <a id="adding-an-exercise">Adding an Exercise</a>
@@ -832,22 +813,19 @@ When the user attempts to list workoutSessions, the WorkoutManger, WorkoutManage
 **Design considerations**
 Aspects: Security of stored data
 
-- Alternative 1 (current choice): call public methods of Storage class to 
+- **Alternative 1 (current choice):** call public methods of Storage class to 
 print the list
 
-|     |     |
-|-----|-----|
-|**Pros** | pastRecord are private and it can only be manipulated through designed public methods. Only selected data will be printed and viewed.|  
-|**Cons** | Most methods Storage needs to be a static.|
+    - Pros: pastRecord are private and it can only be manipulated through designed public methods. Only selected data will be printed and viewed.
+    - Cons: Most methods Storage needs to be a static.
 
-- Alternative 2: Storage return a readonly list of pastRecord.
+- **Alternative 2:** Storage return a readonly list of pastRecord.
 
-|     |     |
-|-----|-----|
-|**Pros** | More versatile operations can be done.|  
-|**Cons** | All data of pastRecord will be exposed.|
+    - Pros: More versatile operations can be done.
+    - Cons: All data of pastRecord will be exposed.
 
 [&#8593; Return to Top](#developer-guide)
+
 #### 4.4.3. Editing workout session
 User can anytime go back to edit a workout session created in the past such as
 adding or removing exercies in that session.
@@ -882,20 +860,15 @@ The sequence diagram below summarizes how editting past record works:
 **Design considerations**
 Past record storage and model design:  
 
-- Alternative 1 (current choice): store past workout sessions in different files and their 
-meta information in a separate file
+- **Alternative 1 (current choice):** store past workout sessions in different files and their meta information in a separate file
 
-|     |     |
-|-----|-----|
-|**Pros** | Initialization will be faster as data loaded grows little even in long terms.|
-|**Cons** | Deleting files and creating files need to handle file names carefully.|
+    - Pros: Initialization will be faster as data loaded grows little even in long terms. 
+    - Cons: Deleting files and creating files need to handle file names carefully.
 
-- Alternative 2: Load all past records during initilization.
+- **Alternative 2:** Load all past records during initialization.
 
-|     |     |
-|-----|-----|
-|**Pros** | Run time can retrieve data faster as there is no need to access data in hard disk.|  
-|**Cons** | The application initialization will grow quickly as the application scales.|
+    - Pros:  Run time can retrieve data faster as there is no need to access data in hard disk. 
+    - Cons: The application initialization will grow quickly as the application scales.
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.4. Deleting a workout session
@@ -929,19 +902,16 @@ The sequence diagram below summarizes how deleting past record works:
 
 **Design considerations**
 
-- Alternative 1 (current choice): Delete `workoutSession` by specifying index of it.
+- **Alternative 1 (current choice):** Delete `workoutSession` by specifying index of it.
 
-|     |     |
-|-----|-----|
-|**Pros** | Quick and easy deletion by using ArrayList.get().|
-|**Cons** | DLesser alternatives for the user and user would have to identify the index first by executing `list` to get index of the session to be deleted.|
+    - Pros: Quick and easy deletion by using ArrayList.get().
+    - Cons: Lesser alternatives for the user and user would have to identify the index first by executing `list` to get index of the session to be deleted.
 
-- Alternative 2: Delete `workoutSession` by specifying `workoutSession` tags or dates.
+- **Alternative 2:** Delete `workoutSession` by specifying `workoutSession` tags or dates.
 
-|     |     |
-|-----|-----|
-|**Pros** | More alternatives for users. Can bulk delete files with certain attributes|  
-|**Cons** | Tags and dates does not uniquely identify the record hence may result in accidental wrong deletion|
+    - Pros: More alternatives for users. Can bulk delete files with certain attributes. 
+    - Cons: Tags and dates does not uniquely identify the record hence may result in accidental wrong deletion.
+
 #### 4.4.5. Searching based on conditions
 The feature `search` allows the user to view a summary of all the history 
 workout sessions which satisfies certain conditions.
@@ -981,20 +951,16 @@ Aspects: indexing the selected results
 
 The index of a record is not stored in the schema because it easily varies with addition and deletion. Thus given a record, searching for its index will have higher time complexity.
 
-- Alternative 1 (current choice): print out the actual index of the record 
+- **Alternative 1 (current choice):** print out the actual index of the record 
 in the meta info file.
 
-|     |     |
-|-----|-----|
-|**Pros** | The index is useful for user to use for future actions.|  
-|**Cons** | Checking for the actual location complicates the search time complexity.|
+    - Pros: The index is useful for user to use for future actions.
+    - Cons: Checking for the actual location complicates the search time complexity.
 
-- Alternative 2: print out the index of the element in the result list.
+- **Alternative 2:** print out the index of the element in the result list.
 
-|     |     |
-|-----|-----|
-|**Pros** | Easy to implement. Low time complexity|  
-|**Cons** | Since the index in result list is not the same as the index in actual record meta, user cannot use the index for further actions|
+    - Pros: Easy to implement. Low time complexity.
+    - Cons: Since the index in result list is not the same as the index in actual record meta, user cannot use the index for further actions.
 
 [&#8593; Return to Top](#developer-guide)
 
