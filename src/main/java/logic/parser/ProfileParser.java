@@ -1,4 +1,4 @@
-package profile;
+package logic.parser;
 
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidCaloriesException;
@@ -8,16 +8,15 @@ import exceptions.profile.InvalidNameException;
 import exceptions.profile.InvalidWeightException;
 import exceptions.workout.workoutmanager.InsufficientArgumentException;
 import org.apache.commons.lang3.text.WordUtils;
+import profile.Utils;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import static profile.Constants.ADD_PROFILE_FORMAT;
-import static profile.Constants.COMMAND_ARGS_INDEX;
-import static profile.Constants.COMMAND_SPLIT_LIMIT;
-import static profile.Constants.COMMAND_TYPE_INDEX;
 import static profile.Constants.EDIT_PROFILE_FORMAT;
-import static profile.Constants.EMPTY_STRING;
-import static profile.Constants.GREEDY_WHITE_SPACE;
 import static seedu.duke.Constant.COMMAND_WORD_ADD;
 import static seedu.duke.Constant.COMMAND_WORD_EDIT;
 import static seedu.duke.Constant.COMMAND_WORD_HELP;
@@ -25,21 +24,7 @@ import static seedu.duke.Constant.COMMAND_WORD_HELP;
 /**
  * A class that deals with making sense of user's command inside Profile Session.
  */
-public class ProfileParser {
-
-    /**
-     * Parses and returns the Command associated with the user input.
-     *
-     * @param userInputString User's raw input string.
-     * @return Size 2 array; first element is the command type and second element is the arguments string.
-     */
-    public String[] parseCommand(String userInputString) {
-        String[] split = userInputString.trim().split(GREEDY_WHITE_SPACE, COMMAND_SPLIT_LIMIT);
-        String commandType = split[COMMAND_TYPE_INDEX].toLowerCase();
-        String commandArgs = (split.length == COMMAND_SPLIT_LIMIT ? split[COMMAND_ARGS_INDEX] : EMPTY_STRING);
-
-        return new String[]{commandType, commandArgs};
-    }
+public class ProfileParser extends CommonParser {
 
     /**
      * Extracts command tags from user input to get option indicator and parsed option.
@@ -112,6 +97,24 @@ public class ProfileParser {
             break;
         }
         return isSufficient;
+    }
+
+    /**
+     * Finds invalid tags (option indicators) in user's input.
+     *
+     * @param parsedParams HashMap containing option indicator and parsed option pairs.
+     * @return String containing invalid tags.
+     */
+    public static String findInvalidTags(HashMap<String, String> parsedParams) {
+        StringBuilder result = new StringBuilder();
+
+        Set<String> validTags = new HashSet<>(Arrays.asList("/n", "/h", "/w", "/e", "/c"));
+        parsedParams.keySet().stream()
+                .filter(tag -> !validTags.contains(tag))
+                .forEach(tag -> result.append(String.format("\"%s\", ", tag)));
+
+        String trimmedResult = result.toString().trim();
+        return trimmedResult.isEmpty() ? trimmedResult : trimmedResult.substring(0, trimmedResult.length() - 1);
     }
 
     /**

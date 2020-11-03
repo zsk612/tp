@@ -12,12 +12,13 @@ import java.util.HashMap;
 import static commands.ExecutionResult.FAILED;
 import static commands.ExecutionResult.OK;
 import static commands.ExecutionResult.SKIPPED;
-import static profile.ProfileParser.extractCalories;
-import static profile.ProfileParser.extractCommandTagAndInfo;
-import static profile.ProfileParser.extractExpectedWeight;
-import static profile.ProfileParser.extractHeight;
-import static profile.ProfileParser.extractName;
-import static profile.ProfileParser.extractWeight;
+import static logic.parser.ProfileParser.extractCalories;
+import static logic.parser.ProfileParser.extractCommandTagAndInfo;
+import static logic.parser.ProfileParser.extractExpectedWeight;
+import static logic.parser.ProfileParser.extractHeight;
+import static logic.parser.ProfileParser.extractName;
+import static logic.parser.ProfileParser.extractWeight;
+import static logic.parser.ProfileParser.findInvalidTags;
 import static seedu.duke.Constant.COMMAND_WORD_EDIT;
 import static ui.profile.ProfileUi.MESSAGE_EDIT_NOTHING;
 import static ui.profile.ProfileUi.MESSAGE_EDIT_PROFILE_ACK;
@@ -40,12 +41,18 @@ public class ProfileEdit extends Command {
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
         super.execute(commandArgs, storage);
 
-        Profile profile;
         try {
-            profile = storage.loadData();
+            Profile profile = storage.loadData();
             assert profile != null : "profile should not be null after loading";
 
-            Profile editedProfile = createEditedProfile(commandArgs, profile);
+            HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_EDIT, commandArgs);
+
+            String invalidTags = findInvalidTags(parsedParams);
+            if (!invalidTags.isEmpty()) {
+                ui.showWarning("\"edit\" command does not take in the following parameter(s): " + invalidTags);
+            }
+
+            Profile editedProfile = createEditedProfile(parsedParams, profile);
 
             if (profile.equals(editedProfile)) {
                 return new CommandResult(MESSAGE_EDIT_NOTHING, SKIPPED);
@@ -62,13 +69,13 @@ public class ProfileEdit extends Command {
     /**
      * Creates a new Profile object from edited information.
      *
-     * @param commandArgs User's input arguments.
+     * @param parsedParams HashMap containing option indicator and parsed option pairs.
      * @param profile User's existing profile.
      * @return Edited Profile object.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
-    private Profile createEditedProfile(String commandArgs, Profile profile) throws SchwarzeneggerException {
-        HashMap<String, String> parsedParams = extractCommandTagAndInfo(COMMAND_WORD_EDIT, commandArgs);
+    private Profile createEditedProfile(HashMap<String, String> parsedParams, Profile profile)
+            throws SchwarzeneggerException {
         String name = parsedParams.containsKey("/n") ? extractName(parsedParams) : profile.getName();
         int height = parsedParams.containsKey("/h") ? extractHeight(parsedParams) : profile.getHeight();
         double weight = parsedParams.containsKey("/w") ? extractWeight(parsedParams) : profile.getWeight();

@@ -4,14 +4,15 @@ import java.util.Scanner;
 
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.GREEDY_WHITE_SPACE;
-import static ui.profile.ProfileUi.HELP_FORMAT;
 
 public class CommonUi {
-    protected static final String LINE_PREFIX = "\t ";
+    public static final String LINE_PREFIX = "\t ";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
+    public static final String HELP_FORMAT = "%-8s - %s" + LS + "%-8s %s" + LS;
+    public static final String WARNING_FORMAT = "! WARNING: %s!";
     public static final String HORIZONTAL_LINE = LINE_PREFIX
             + "_________________________________________________________________________________________________";
-    protected static final String MESSAGE_FORMAT_GENERAL = HORIZONTAL_LINE + LS + "%s" + System.lineSeparator()
+    public static final String MESSAGE_FORMAT_GENERAL = HORIZONTAL_LINE + LS + "%s" + System.lineSeparator()
             + HORIZONTAL_LINE + System.lineSeparator();
 
     /**
@@ -41,6 +42,15 @@ public class CommonUi {
     }
 
     /**
+     * Prints formatted warning message.
+     *
+     * @param message Warning message.
+     */
+    public void showWarning(String message) {
+        showToUser(String.format(WARNING_FORMAT, message));
+    }
+
+    /**
      * Gets input from user.
      *
      * @param menuName Current menu name.
@@ -57,7 +67,7 @@ public class CommonUi {
             inputLine = sc.nextLine();
         }
 
-        return inputLine.trim().replaceAll(GREEDY_WHITE_SPACE, " ");
+        return inputLine.replaceAll(GREEDY_WHITE_SPACE, " ").trim();
     }
 
     /**

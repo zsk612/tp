@@ -18,7 +18,9 @@ public class ToProfile extends Command {
      */
     @Override
     public CommandResult execute(String args) {
-        ui.printOpening("Profile Menu...");
+        if (!args.isEmpty()) {
+            ui.showWarning("\"profile\" command does not take in parameters");
+        }
 
         ProfileSession profileSession = new ProfileSession();
         profileSession.run();

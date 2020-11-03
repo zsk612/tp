@@ -18,6 +18,10 @@ public class ToDiet extends Command {
      */
     @Override
     public CommandResult execute(String args) {
+        if (!args.isEmpty()) {
+            ui.showWarning("\"diet\" command does not take in parameters");
+        }
+
         DietManager dietManager = new DietManager();
         dietManager.start();
         return new CommandResult("", ExecutionResult.OK);

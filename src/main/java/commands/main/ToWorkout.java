@@ -18,10 +18,13 @@ public class ToWorkout extends Command {
      */
     @Override
     public CommandResult execute(String args) {
-        ui.printOpening("Workout Menu");
+        if (!args.isEmpty()) {
+            ui.showWarning("\"workout\" command does not take in parameters");
+        }
+
         WorkoutManager workoutManager = new WorkoutManager();
         workoutManager.start();
-        ui.printReturning("Main Menu");
+
         return new CommandResult("", ExecutionResult.OK);
     }
 }
