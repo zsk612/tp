@@ -244,6 +244,8 @@ The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
+![Load Data Sequence Diagram](pictures/khoa/ParseInput.png)
+
 **Design considerations**
 
 Parsing of the user’s input command:
@@ -325,8 +327,8 @@ When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser,
     1. `ProfileEdit` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
     1. `ProfileEdit` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information.
     1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileEdit` creates a new `Profile`.
-    1. `ProfileEdit` calls `Profile.equals()` to compare the edited and existing profile. If there are no changes, `ProfileEdit` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `6`.
-    1. `ProfileEdit` calls `ProfileStorage.saveData()` to save the edited `Profile` object.
+    1. `ProfileEdit` calls `Profile.equals()` to compare the newly created and existing profile. If there are no changes, `ProfileEdit` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `6`.
+    1. `ProfileEdit` calls `ProfileStorage.saveData()` to save the newly created `Profile` object.
     1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
