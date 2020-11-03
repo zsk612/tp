@@ -10,6 +10,7 @@ public class CommonUi {
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
     public static final String HELP_FORMAT = "%-8s - %s" + LS + "%-8s %s" + LS;
     public static final String WARNING_FORMAT = "! WARNING: %s!";
+    public static final String MESSAGE_CLEAR_FORMAT = "Alright, your %s been cleared!";
     public static final String HORIZONTAL_LINE = LINE_PREFIX
             + "_________________________________________________________________________________________________";
     public static final String MESSAGE_FORMAT_GENERAL = HORIZONTAL_LINE + LS + "%s" + System.lineSeparator()

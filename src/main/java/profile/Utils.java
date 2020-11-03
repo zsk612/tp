@@ -45,7 +45,7 @@ public class Utils {
      * @return Whether calories amount is not negative.
      */
     public static boolean checkValidCalories(double calories) {
-        return (calories >= CALORIES_LOWER_BOUND && calories <= CALORIES_UPPER_BOUND);
+        return (calories >= CALORIES_LOWER_BOUND);
     }
 
     /**
