@@ -41,12 +41,12 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.2. [Adding a Move to the Current Workout Session: `add`](#ws-add)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.3. [Listing All Moves from the Current Workout Session: `list`](#ws-list)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.4. [Deleting a Move From the Current Workout Session: `delete`](#ws-delete)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.5. [Searching for a keyword in the Current Workout Session: `search`](#ws-search)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.5. [Searching for a Keyword in the Current Workout Session: `search`](#ws-search)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2.6. [Ending the Current Workout Session: `end`](#ws-end)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.3. [Listing All Past Workout Sessions: `list`](#workout-list)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.4. [Editing a Workout Session: `edit`](#workout-edit)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.5. [Deleting a Workout Session: `delete`](#workout-delete)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.4.6. [Searching a List of Workout Session: `search`](#workout-search)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.4.6. [Searching a List of Workout Sessions: `search`](#workout-search)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.7. [Clearing All Workout Sessions: `clear`](#workout-clear)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.4.8. [Returning to Main Menu: `end`](#workout-end)
 1. [**Command Summary**](#command-summary)
@@ -150,6 +150,9 @@ Expected outcome:
 |:bulb:| You can verify that you are in Profile Menu if the text before your cursor becomes `Profile Menu >>>>>`. |
 |------|:-----------|
 
+|:bulb:| You can return to Main Menu from Profile Menu by entering command `end`. You can refer to [Section 3.2.6. Returning to Main Menu](#profile-end) for more details. |
+|------|:-----------|
+
 #### 3.1.3. <a id="main-diet">Entering Diet Menu: `diet`</a>
 The program will direct you to the Diet Menu.
 
@@ -166,6 +169,9 @@ Expected outcome:
 ```
 
 |:bulb:| You can verify that you are in Diet Menu if the text before your cursor becomes `Diet Menu >>>>>`. |
+|------|:-----------|
+
+|:bulb:| You can return to Main Menu from Diet Menu by entering command `end`. You can refer to [Section 3.3.8. Returning to Main Menu](#diet-end) for more details. |
 |------|:-----------|
 
 #### 3.1.4. <a id="main-workout">Entering Workout Menu: `workout`</a>
@@ -186,8 +192,12 @@ Expected outcome:
 |:bulb:| You can verify that you are in Workout Menu if the text before your cursor becomes `Workout Menu >>>>>`. |
 |------|:-----------|
 
+|:bulb:| You can return to Main Menu from Workout Menu by entering command `end`. You can refer to [Section 3.4.8. Returning to Main Menu](#workout-end) for more details. |
+|------|:-----------|
+
+
 #### 3.1.5. <a id="main-end">Ending The Schwarzenegger: `end`</a>
-You enter this command when you want to terminate The Schwarzenegger.
+You use this command when you want to terminate The Schwarzenegger.
 
 __Format:__ `end`  
 
@@ -203,6 +213,8 @@ Expected outcome:
 
 ### 3.2. <a id="profile-menu">Profile Menu</a>
 Profile Menu manages your profile including your name, physique data and expected daily calories intake. 
+
+Click [here](#main-profile) to learn how to enter Profile Menu.
 
 #### 3.2.1. <a id="profile-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Profile Menu and how to use them.
@@ -369,6 +381,9 @@ Expected outcome:
 
 ### 3.3. <a id="diet-menu">Diet Menu</a>
 Diet Menu manages your diet sessions which record food items and calories intake.
+
+Click [here](#main-diet) to learn how to enter Diet Menu.
+
 ### 3.3.1. <a id="diet-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Diet Menu and how to use them.
 
@@ -670,7 +685,7 @@ Expected outcome:
 ### 3.4. <a id="workout-menu">Workout Menu</a>
 This section shows the command you can use when you are in workout menu.
 
-Click [here](#main-workout) to learn how to enter workout menu.
+Click [here](#main-workout) to learn how to enter Workout Menu.
 ### 3.4.1. <a id="workout-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Workout Menu and how to use them.
 
@@ -796,7 +811,7 @@ Expected outcome:
 ```
 
 
-#### 3.4.2.5. <a id="ws-search">Searching for a keyword in the Current Workout Session: `search`</a>
+#### 3.4.2.5. <a id="ws-search">Searching for a Keyword in the Current Workout Session: `search`</a>
 Searches the current workout session for the keyword and shows the relevant data found in a neat list.
 
 __Format:__ `search [NAME_OF_MOVE]`  
