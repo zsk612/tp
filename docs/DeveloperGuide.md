@@ -229,7 +229,7 @@ When the user attempts to add a new profile, the ProfileSession, Ui, ProfilePars
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileAdd`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileAdd.execute()` with the rest of parsed input.
-    1. `ProfileAdd` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is an existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileAdd` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is an existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
     1. `ProfileAdd` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information. 
     1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileAdd` creates a new `Profile`.
     1. `ProfileAdd` calls `ProfileStorage.saveData()` to save the `Profile` object.
@@ -276,7 +276,7 @@ When the user attempts to view an added profile, the ProfileSession, Ui, Profile
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileView`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileView.execute()` with the rest of parsed input.
-    1. `ProfileView` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileView` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileView` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileView` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
     1. `ProfileView` calls `DietManager.getTodayTotalCalories()` to get user's calories intake today.
     1. Based on user's calories intake today and string representation of `Profile`, `ProfileView` returns a result to `ProfileSession`.    
 1. Prompting result to user.
@@ -322,10 +322,10 @@ When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser,
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileEdit`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileEdit.execute()` with the rest of parsed input.
-    1. `ProfileEdit` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileEdit` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
     1. `ProfileEdit` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information.
     1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileEdit` creates a new `Profile`.
-    1. `ProfileEdit` calls `Profile.equals()` to compare the edited and existing profile. If there are no changes, `ProfileEdit` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `vi`.
+    1. `ProfileEdit` calls `Profile.equals()` to compare the edited and existing profile. If there are no changes, `ProfileEdit` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `6`.
     1. `ProfileEdit` calls `ProfileStorage.saveData()` to save the edited `Profile` object.
     1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
@@ -371,8 +371,8 @@ When the user attempts to delete an added profile, the ProfileSession, Ui, Profi
    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileDelete`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileDelete.execute()` with the rest of parsed input.
-    1. `ProfileDelete` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileDelete` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
-    1. `ProfileDelete` calls `Ui.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `iv`.
+    1. `ProfileDelete` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileDelete` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
+    1. `ProfileDelete` calls `Ui.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `4`.
     1. `ProfileDelete` calls `ProfileStorage.saveData()` to save a `null` object which represents a deleted profile.
     1. `ProfileDelete` returns a result to `ProfileSession`.   
 1. Prompting result to user.
@@ -805,7 +805,7 @@ When the user attempts to list workoutSessions, the WorkoutManger, WorkoutManage
     1. `WorkoutManager` calls `ListWS.execute()` to execute the command
     3. `ListWS` calls `PastRecordList.list()`
     1. `PastRecordList` will return formatted list.
-    6. `WorkoutManager` returns a `CommandResult` which contains the formated list and execution result.
+    6. `WorkoutManager` returns a `CommandResult` which contains the formatted list and execution result.
 1. Based on `CommandResult`, correct response will be printed to user.
 
 ![Load Data Sequence Diagram](pictures/zesong/ListWS.png)
@@ -912,6 +912,7 @@ The sequence diagram below summarizes how deleting past record works:
     - Pros: More alternatives for users. Can bulk delete files with certain attributes. 
     - Cons: Tags and dates does not uniquely identify the record hence may result in accidental wrong deletion.
 
+[&#8593; Return to Top](#developer-guide)
 #### 4.4.5. Searching based on conditions
 The feature `search` allows the user to view a summary of all the history 
 workout sessions which satisfies certain conditions.
@@ -976,7 +977,7 @@ Storage for profile saves user profile created as `profile.json` in the `/saves/
 **Implementation**
 Profile storage handles reading of file data by calling `loadData()` and overwriting of file data by calling `saveData()`.
 
-
+[&#8593; Return to Top](#developer-guide)
 #### 4.5.2. <a id="storage-for-diet">Storage for Diet</a>
 
 Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
@@ -987,6 +988,7 @@ Storage for diet saves diet sessions created as individual files sorted based on
 **Implementation**
 Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
 
+[&#8593; Return to Top](#developer-guide)
 #### 4.5.3. <a id="storage-for-workout">Storage for Workout</a>
 
 Storage for workout saves workout sessions created as individual files named based on the time created in `/saves/workout` directory. The metainformation of the files such as createion date and last edit date is saved in  `/saves/workout/history.json`.
@@ -998,7 +1000,7 @@ Only history.json file is load when initilizing the application. The rest of Ses
 
 Meta information file can be overwritten with `writePastRecords()` and be read with `readPastRecords()`.
 
-
+[&#8593; Return to Top](#developer-guide)
 ### 4.6. <a id="logging">Logging</a>
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
 
