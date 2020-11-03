@@ -52,7 +52,7 @@ public class ProfileSession {
      */
     private void start() {
         logger.log(Level.INFO, "starting profile session");
-        ui.printOpening("Profile Menu...");
+        ui.printOpening("Profile Menu");
     }
 
     /**
