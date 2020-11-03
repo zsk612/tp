@@ -2,7 +2,7 @@ package diet.dietsession;
 
 import commands.Command;
 import commands.CommandLib;
-import diet.DateParser;
+import utils.DateParser;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
 import exceptions.InvalidDateFormatException;

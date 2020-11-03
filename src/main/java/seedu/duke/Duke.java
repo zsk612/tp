@@ -51,6 +51,7 @@ public class Duke {
      * Runs Schwarzenegger.
      */
     private void run() {
+        System.out.println();
         start();
         runCommandLoopTillEnd();
         end();

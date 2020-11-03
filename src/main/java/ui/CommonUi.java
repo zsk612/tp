@@ -33,6 +33,14 @@ public class CommonUi {
         return String.format(HELP_FORMAT, commandName, commandFormat, EMPTY_STRING, description);
     }
 
+    public static String clearMsg(String content) {
+        return String.format("Alright, your %s been cleared!", content); // "name + has/have"
+    }
+
+    public static String searchRecords(int num, String content) {
+        return String.format("%d %s been found!", num, content) + LS;
+    }
+
     /**
      * Prints formatted warning message.
      *

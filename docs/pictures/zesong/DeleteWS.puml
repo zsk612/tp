@@ -13,7 +13,7 @@ activate DeleteCommand
 
 DeleteCommand -> PastRecordList : delete()
 activate PastRecordList
-PastRecordList -> workoutManagerStorage: write to storage
+PastRecordList -> workoutManagerStorage: writeToStorage()
 activate workoutManagerStorage
 workoutManagerStorage --> PastRecordList
 deactivate workoutManagerStorage

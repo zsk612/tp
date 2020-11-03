@@ -6,8 +6,8 @@ import commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
 import models.PastRecordList;
 
+import static ui.CommonUi.clearMsg;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
-import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_SUCCESS;
 
 public class ClearWS extends Command {
 
@@ -27,6 +27,7 @@ public class ClearWS extends Command {
         }
         PastRecordList.getInstance().clear();
         logger.info("Cleared successfully");
-        return new CommandResult(CLEAR_SUCCESS, ExecutionResult.OK);
+        String content = clearMsg("past workout records have");
+        return new CommandResult(content, ExecutionResult.OK);
     }
 }
