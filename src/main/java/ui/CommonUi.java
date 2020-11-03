@@ -8,7 +8,7 @@ import static profile.Constants.GREEDY_WHITE_SPACE;
 public class CommonUi {
     public static final String LINE_PREFIX = "\t ";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
-    public static final String HELP_FORMAT = "%-8s - %s" + LS + "%-8s %s" + LS;
+    public static final String HELP_FORMAT = "%-8s %s" + LS + "%-8s %s" + LS;
     public static final String WARNING_FORMAT = "! WARNING: %s!";
     public static final String MESSAGE_CLEAR_FORMAT = "Alright, your %s been cleared!";
     public static final String HORIZONTAL_LINE = LINE_PREFIX
@@ -35,7 +35,7 @@ public class CommonUi {
     }
 
     public static String clearMsg(String content) {
-        return String.format("Alright, your %s been cleared!", content); // "name + has/have"
+        return String.format(MESSAGE_CLEAR_FORMAT, content);
     }
 
     public static String searchRecords(int num, String content) {
