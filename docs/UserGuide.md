@@ -147,11 +147,9 @@ Expected outcome:
     _________________________________________________________________________________________________
 ```
 
-|:bulb: You can verify that you are in Profile Menu if the text before your cursor becomes `Profile Menu >>>>>`. |
-|:------|
+> :bulb: You can verify that you are in Profile Menu if the text before your cursor becomes `Profile Menu >>>>>`.
 
-|:bulb: You can return to Main Menu from Profile Menu by entering command `end`. You can refer to [Section 3.2.6. Returning to Main Menu](#profile-end) for more details. |
-|:-----------|
+> :bulb: You can return to Main Menu from Profile Menu by entering command `end`. You can refer to [Section 3.2.6. Returning to Main Menu](#profile-end) for more details.
 
 #### 3.1.3. <a id="main-diet">Entering Diet Menu: `diet`</a>
 The program will direct you to the Diet Menu.
