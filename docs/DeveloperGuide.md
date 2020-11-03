@@ -250,16 +250,14 @@ Parsing of the user’s input command:
 
 - Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
 
-|     |     |
-|-----|-----|
-|**Pros** | Command tags do not have to follow a fixed order.|
-|**Cons** | It takes multiple steps in parsing the command.|
+**Pros** | Command tags do not have to follow a fixed order.
+|-----|:-----|
+**Cons** | It takes multiple steps in parsing the command.
 
 - Alternative 2: User’s command is divided by space
                  
-|     |     |
-|-----|-----|
-|**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
+|**Pros** | The parsing can be easily done by calling Java built-in function `split()`. Supports multiple tags or no tags.|
+|-----|:-----|
 |**Cons** | Values for each variable cannot contain spaces which makes the application restrictive, especially for user's name.|
 
 [&#8593; Return to Top](#developer-guide)
@@ -300,9 +298,8 @@ Aspects: Loading of stored data
 - Alternative 1 (current choice): call public methods of Storage class to 
 load the profile from hard disk every time the user wants to view profile.
 
-|     |     |
-|-----|-----|
-|**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|  
+|**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|
+|-----|:-----|  
 |**Cons** | Execution time is slow down due to multiple times of loading the data.|
 
 - Alternative 2: call public methods of Storage class to load the profile from hard disk only when user enters Profile Menu.

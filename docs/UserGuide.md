@@ -981,7 +981,7 @@ Main Menu >>>>>
 
 **Main Menu**
 
-**Action** |  **Format**
+**Action** |  Format
 --------|----------------------
 Help|`help`
 Profile Menu |`profile`
