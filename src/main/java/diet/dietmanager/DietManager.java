@@ -1,7 +1,7 @@
 package diet.dietmanager;
 
-import commands.Command;
-import commands.CommandLib;
+import logic.commands.Command;
+import logic.commands.CommandLib;
 import diet.dietsession.DietSession;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;

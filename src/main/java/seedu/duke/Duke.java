@@ -1,8 +1,8 @@
 package seedu.duke;
 
-import commands.Command;
-import commands.CommandLib;
-import commands.CommandResult;
+import logic.commands.Command;
+import logic.commands.CommandLib;
+import logic.commands.CommandResult;
 import exceptions.EndException;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
