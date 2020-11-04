@@ -14,9 +14,11 @@ import static profile.Constants.WEIGHT_UPPER_BOUND;
  */
 public class ProfileUi extends CommonUi {
 
+    public static final String MESSAGE_ADJUST_CALORIES = "Your expected daily calorie intake seems a little "
+            + "high, so I've set it to 200,000";
     public static final String MESSAGE_CREATE_PROFILE_ACK = "Got it. Here's a confirmation of your profile:"
             + LS + "%s";
-    public static final String MESSAGE_DELETE_PROFILE = "Alright! I've deleted your profile.";
+    public static final String MESSAGE_DELETE_PROFILE = String.format(MESSAGE_CLEAR_FORMAT, "profile has");
     public static final String MESSAGE_EDIT_PROFILE_ACK = "Yay! Your profile is edited successfully. "
             + "Here's your new profile:" + LS + "%s";
     public static final String MESSAGE_END = "Returning to Main Menu...";
