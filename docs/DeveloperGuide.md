@@ -61,14 +61,22 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Storage for Diet](#storage-for-diet)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.5.3. [Storage for Workout](#storage-for-workout)<br>
 4.6. [Logging](#logging)<br>
+5. [**Testing**](#testing)<br>
+5.1. [Running Tests](#running-tests)<br>
+5.2. [Types of Tests](#types-of-tests)<br>
+6. [**Dev Ops**](#dev-ops)<br>
+6.1. [Build Automation](#build-automation)<br>
+6.2. [Continuous Integration](#continuous-integration)<br>
+6.3. [Coverage Report](#coverage-report)<br>
+6.4. [Making a Release](#making-a-release)<br>
+6.5. [Managing Dependencies](#managing-dependencies)<br>
   * [**Appendices**](#appendices)
     + [Appendix A: Product Scope](#appendix-a-product-scope)
     + [Appendix B: User Stories](#appendix-b-user-stories)
     + [Appendix C: Value proposition - Use cases](#appendix-c-value-proposition---use-cases)
     + [Appendix D: Non-Functional Requirements](#appendix-d-non-functional-requirements)
     + [Appendix E: Glossary](#appendix-e-glossary)
-    + [Appendix F: Instructions for Manual Testing](#appendix-f-instructions-for-manual-testing)
-    + [Appendix G: Supported Formats of Date Input](#appendix-g-supported-formats-of-date-input)
+    + [Appendix F: Supported Formats of Date Input](#appendix-f-supported-formats-of-date-input)
 
 ## 1. <a id="intro">Introduction</a>
 ### 1.1.  <a id="background">Background</a>
@@ -1031,6 +1039,79 @@ logger.log(Level.WARNING, DESCRIPTION_OF_WARNING, e.toString());
 
 [&#8593; Return to Top](#developer-guide)
 
+## 5. <a id="testing">Testing</a>
+### 5.1. <a id="running-tests">Running Tests</a>
+There are two ways to run tests for The Schwarzenegger.
+
+**Method 1: Using IntelliJ JUnit test runner**
+
+- To run all tests, right-click on the `src/test/java` folder and choose `Run 'All Tests'`.
+- To run a subset of tests, you can right-click on a test package, test class, or a test and choose `Run 'ABC'`.
+
+**Method 2: Using Gradle**
+
+- To run all tests, open a console and run the command `gradlew clean test` (Mac/Linux: `./gradlew clean test`)
+ 
+ > **Note:** If you are new to Gradle, refer to this [Gradle Tutorial](#https://se-education.org/guides/tutorials/gradle.html) to get more tips on how to use Gradle commands.
+
+[&#8593; Return to Top](#developer-guide)
+### 5.2. <a id="types-of-tests">Types of Tests</a>
+We have use types of tests:
+
+1. Unit tests targeting the lowest level methods/classes.<br>
+e.g. profile.UtilsTest
+
+1. Integration tests that are checking the integration of multiple code units (those code units are assumed to be working).
+e.g. storage.profile.ProfileStorageTest
+
+1. Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.
+e.g. logic.LogicManagerTest
+
+[&#8593; Return to Top](#developer-guide)
+## 6. <a id="dev-ops">Dev Ops</a>
+### 6.1. <a id="build-automation">Build Automation</a>
+We use Gradle for tasks related to build automation, such as running tests, and checking code for style compliance.
+
+To run all build-related tasks:
+
+1. Open a terminal in the project’s root directory.
+2. Run the command:
+    - Windows: `gradlew build`
+    - Mac/Linux: `./gradlew build`
+3. A message stating `BUILD SUCCESSFUL` will be shown in the terminal if all tasks run successfully.<br>
+Otherwise, use the error report provided to resolve the issue before trying again. 
+
+[&#8593; Return to Top](#developer-guide)
+### 6.2. <a id="continuous-integration>Continuous Integration</a>
+We use Github Actions for continuous integration. No setup will be required for users who fork from the main The Schwarzenegger repository.
+
+Whenever you create a pull request to the main repository for The Schwarzenegger:
+- Various checks will automatically be executed on your pull request.
+- If any checks fail, click on it to view the cause of the error, and fix it in your branch before pushing it again.
+- Ensure that all checks pass before merging your pull request.
+
+[&#8593; Return to Top](#developer-guide)
+
+### 6.3. <a id="coverage-report">Coverage Report</a>
+We use the IntelliJ IDEA’s coverage analysis tool for coverage reporting. A tutorial on how to install and use this tool can be found [here](#https://www.youtube.com/watch?v=yNYzZvyA2ik).
+
+[&#8593; Return to Top](#developer-guide)
+### 6.4. <a id="making-a-release">Making a Release</a>
+You can follow the steps below to make a new release:
+1. Generate the JAR file using Gradle by opening a terminal in the project’s root directory, and run the command:
+    - Windows: `gradlew clean shadowJar`
+    - Mac/Linux: `./gradlew clean shadowJar`
+1. Find the JAR file in the `build/libs` directory.
+1. Tag the repository with the new version number (e.g. `v2.1`).
+1. Create a new release using Github and upload the JAR file found in step 3.
+
+[&#8593; Return to Top](#developer-guide)
+### 6.5. <a id="managing-dependencies">Managing Dependencies</a>
+Currently, the [Gson library](#https://github.com/google/gson) is being used for JSON parsing, and the [Apache Commons Lang](#https://commons.apache.org/proper/commons-lang) for being used for string processing in The Schwarzenegger. Below are 2 ways to manage these dependencies.
+- Use Gradle to manage and automatically download dependencies (Recommended).
+- Manually download and include those libraries in the repo (this requires extra work and bloats the repo size). 
+
+[&#8593; Return to Top](#developer-guide)
 ## Appendices 
 ### Appendix A: Product Scope
 
@@ -1077,9 +1158,7 @@ __Target user profile__:
  
 [&#8593; Return to Top](#developer-guide)
 
-### Appendix F: Instructions for Manual Testing
-#### F.1. Launch and Shutdown
-### Appendix G: Supported Formats of Date Input
+### Appendix F: Supported Formats of Date Input
 Here shows all 12 valid formats.
     
     `yyyyMMdd HH:mm`
