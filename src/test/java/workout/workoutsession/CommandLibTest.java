@@ -1,13 +1,13 @@
 package workout.workoutsession;
 
-import commands.CommandLib;
-import commands.workout.workoutsession.WorkoutSessionAdd;
-import commands.workout.workoutsession.WorkoutSessionDelete;
-import commands.workout.workoutsession.WorkoutSessionEnd;
-import commands.workout.workoutsession.WorkoutSessionHelp;
-import commands.workout.workoutsession.WorkoutSessionList;
-import commands.workout.workoutsession.WorkoutSessionSearch;
-import commands.workout.workoutsession.WorkoutSessionWrong;
+import logic.commands.CommandLib;
+import logic.commands.workout.workoutsession.WorkoutSessionAdd;
+import logic.commands.workout.workoutsession.WorkoutSessionDelete;
+import logic.commands.workout.workoutsession.WorkoutSessionEnd;
+import logic.commands.workout.workoutsession.WorkoutSessionHelp;
+import logic.commands.workout.workoutsession.WorkoutSessionList;
+import logic.commands.workout.workoutsession.WorkoutSessionSearch;
+import logic.commands.workout.workoutsession.WorkoutSessionWrong;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

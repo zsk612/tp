@@ -1,12 +1,12 @@
 package workout.workoutmanager;
 
-import commands.CommandLib;
-import commands.workout.workoutmanager.WrongWS;
+import logic.commands.CommandLib;
+import logic.commands.workout.workoutmanager.WrongWS;
 import org.junit.jupiter.api.Test;
-import commands.workout.workoutmanager.ByeWS;
-import commands.workout.workoutmanager.DeleteWS;
-import commands.workout.workoutmanager.ListWS;
-import commands.workout.workoutmanager.NewWS;
+import logic.commands.workout.workoutmanager.ByeWS;
+import logic.commands.workout.workoutmanager.DeleteWS;
+import logic.commands.workout.workoutmanager.ListWS;
+import logic.commands.workout.workoutmanager.NewWS;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
