@@ -24,4 +24,7 @@ public class DietManagerUi extends CommonUi {
                 "Go back to Main Menu"));
         showUser(helpMessage.toString().trim());
     }
+
+    public static String DIET_NEW_SUCCESS = "Exiting Diet Session!";
+    public static String DIET_DELETE_SUCCESS = "You have deleted that diet session!";
 }

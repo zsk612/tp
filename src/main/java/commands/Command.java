@@ -61,9 +61,9 @@ public abstract class Command {
      * @throws InvalidDateFormatException If date format is invalid.
      * @throws InvalidSearchDateException If search date is invalid.
      */
-    public void execute(String input, DietStorage storage) throws InvalidCommandWordException,
+    public CommandResult execute(String input, DietStorage storage) throws InvalidCommandWordException,
             InvalidCommandFormatException, InvalidDateFormatException, InvalidSearchDateException {
-        return;
+        return new CommandResult();
     }
 
     /**

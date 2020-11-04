@@ -1,13 +1,14 @@
 package commands.diet.dietmanager;
 
 import commands.Command;
-import utils.DateParser;
+import commands.CommandResult;
 import diet.dietmanager.DietManagerParser;
 import diet.dietsession.DietSession;
 import exceptions.InvalidDateFormatException;
 import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import storage.diet.DietStorage;
+import utils.DateParser;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -20,28 +21,25 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
-import static seedu.duke.Constant.COMMAND_WORD_SEARCH;
+import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.LS;
 
 public class DietSessionSearch extends Command {
-
-    static final String FILEPATH = "saves/diet/";
-
     private final DietManagerParser parser = new DietManagerParser();
 
     /**
      * Overrides execute for search command to search diet sessions.
      *
-     * @param input user input for search command
+     * @param input   user input for search command
      * @param storage storage file
+     * @return CommandResult string variable
      * @throws InvalidDateFormatException if the date is in wrong format
      * @throws InvalidSearchDateException if the starting date is later than end date
      */
-    public void execute(String input, DietStorage storage) throws InvalidDateFormatException,
+    public CommandResult execute(String input, DietStorage storage) throws InvalidDateFormatException,
             InvalidSearchDateException {
-
-
-        File folder = new File(FILEPATH);
+        String message = "";
+        File folder = new File(PATH_TO_DIET_FOLDER);
         File[] listOfFiles = folder.listFiles();
         assert folder.exists();
         StringBuilder searchResult = new StringBuilder();
@@ -51,7 +49,7 @@ public class DietSessionSearch extends Command {
 
             LocalDateTime endDate = parser.extractEndDates(parsedParams, searchResult);
             if (startDate.compareTo(endDate) > 0) {
-                throw new InvalidSearchDateException("Starting date should be earlier than end date.");
+                throw new InvalidSearchDateException();
             }
             String tag = parser.extractSearchTag(parsedParams, searchResult);
             if (tag.isEmpty()) {
@@ -74,22 +72,23 @@ public class DietSessionSearch extends Command {
             throw new InvalidDateFormatException();
         } catch (InvalidSearchDateException e) {
             logger.log(Level.WARNING, "Invalid date format in diet session search");
-            throw new InvalidSearchDateException("Starting date should be earlier than end date.");
+            throw new InvalidSearchDateException();
         } catch (NoSuchElementException e) {
             logger.log(Level.WARNING, "No such element in diet session search");
             ui.showToUser("Sorry, there is nothing found in your diet menu.");
         }
+        return null;
     }
 
     /**
      * Prints search results.
      *
-     * @param listOfFiles list of files from local storage
+     * @param listOfFiles  list of files from local storage
      * @param searchResult string builder that accumulates warning messages
-     * @param startDate starting date for search
-     * @param endDate end date for search
-     * @param tag tag for search
-     * @param storage storage for diet sessions
+     * @param startDate    starting date for search
+     * @param endDate      end date for search
+     * @param tag          tag for search
+     * @param storage      storage for diet sessions
      * @throws InvalidDateFormatException if date is in wrong format
      */
     private void printSearchResult(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate,

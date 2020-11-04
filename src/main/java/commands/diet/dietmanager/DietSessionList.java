@@ -1,8 +1,8 @@
 package commands.diet.dietmanager;
 
 import commands.Command;
+import commands.CommandResult;
 import diet.dietsession.DietSession;
-import models.Exercise;
 import storage.diet.DietStorage;
 
 import java.io.File;
@@ -13,21 +13,20 @@ import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
+import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.LS;
 
 public class DietSessionList extends Command {
-
-    static final String FILEPATH = "saves/diet/";
-
     /**
      * Overrides execute for list command to list diet sessions.
-     *
-     * @param input user input for command
+     *  @param input user input for command
      * @param storage storage for diet manager
+     * @return CommandResult with list message
      */
     @Override
-    public void execute(String input, DietStorage storage) {
-        File folder = new File(FILEPATH);
+    public CommandResult execute(String input, DietStorage storage) {
+        String message = "";
+        File folder = new File(PATH_TO_DIET_FOLDER);
         File[] listOfFiles = folder.listFiles();
         StringBuilder listResult = new StringBuilder();
         assert folder.exists();
@@ -36,12 +35,13 @@ public class DietSessionList extends Command {
             String dietSessionList = formatList(listOfFiles, storage);
             listResult.append(dietSessionListSize);
             listResult.append(dietSessionList);
-            ui.showToUser(listResult.toString());
+            message = listResult.toString();
             logger.log(Level.INFO, "Listed all available diet sessions");
         } catch (NullPointerException | NoSuchElementException e) {
-            ui.showToUser("Sorry! It seems like you have no diet sessions saved!");
+            message = "Sorry! It seems like you have no diet sessions saved!";
             logger.log(Level.WARNING, "No instances of diet sessions saved");
         }
+        return new CommandResult(message);
     }
 
     private String formatList(File[] listOfFiles, DietStorage storage) {

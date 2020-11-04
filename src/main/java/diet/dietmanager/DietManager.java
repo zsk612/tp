@@ -2,10 +2,12 @@ package diet.dietmanager;
 
 import commands.Command;
 import commands.CommandLib;
+import commands.CommandResult;
 import diet.dietsession.DietSession;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
 import exceptions.InvalidDateFormatException;
+import exceptions.SchwarzeneggerException;
 import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
@@ -49,8 +51,10 @@ public class DietManager {
         while (!input.equals(COMMAND_WORD_END)) {
             try {
                 processCommand(input);
-            } catch (InvalidCommandWordException e) {
+            } catch (SchwarzeneggerException e) {
                 dietManagerUi.showToUser(ExceptionHandler.handleCheckedExceptions(e));
+            } catch (Exception e) {
+                dietManagerUi.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
             }
             input = dietManagerUi.getCommand("Diet Menu");
         }
@@ -63,18 +67,16 @@ public class DietManager {
      * @param input user input for command.
      * @throws InvalidCommandWordException handles InvalidCommandWordException.
      */
-    private void processCommand(String input) throws InvalidCommandWordException {
+    private void processCommand(String input) throws InvalidCommandWordException, InvalidDateFormatException,
+            InvalidSearchDateException {
         String[] commParts = parser.parse(input.trim());
         try {
             Command command = cl.getCommand(commParts[0]);
-            command.execute(commParts[1].trim(), storage);
+            CommandResult commandResult = command.execute(commParts[1].trim(), storage);
+            dietManagerUi.showToUser(commandResult.getFeedbackMessage());
         } catch (ArrayIndexOutOfBoundsException | InvalidCommandFormatException e) {
             logger.log(Level.WARNING, "Invalid command in diet session");
             throw new InvalidCommandWordException();
-        } catch (InvalidDateFormatException e) {
-            logger.log(Level.WARNING, "Wrong format for date input.");
-        } catch (InvalidSearchDateException e) {
-            dietManagerUi.showToUser("Starting date should be earlier than end date.");
         }
     }
 
