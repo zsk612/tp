@@ -1,4 +1,4 @@
-# User Guide
+# The Schwarzenegger - User Guide
 By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 
 ## Table of Contents
@@ -20,7 +20,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.6. [Returning to Main Menu: `end`](#profile-end)<br>
 3.3. [Diet Menu](#diet-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.1. [Viewing Help: `help`](#diet-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.3.2. [Starting to a New Diet Session: `new`](#diet-start)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.2. [Starting a New Diet Session: `new`](#diet-start)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.1. [Viewing Help in Diet Session: `help`](#meal-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.2. [Adding Food Items to the Current Diet Session: `add`](#meal-add)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.3. [Listing Food Items from the Current Diet Session: `list`](#meal-list)<br>
@@ -376,7 +376,7 @@ Diet Menu manages your diet sessions which record food items and calories intake
 
 Click [here](#main-diet) to learn how to enter Diet Menu.
 
-### 3.3.1. <a id="diet-help">Viewing Help: `help`</a>
+#### 3.3.1. <a id="diet-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Diet Menu and how to use them.
 
 __Format:__ `help`
@@ -404,7 +404,7 @@ Expected outcome:
      _________________________________________________________________________________________________
 ```
  
-### 3.3.2. <a id="diet-start">Starting to a New Diet Session: `new`</a>
+#### 3.3.2. <a id="diet-start">Starting a New Diet Session: `new`</a>
 You can create a new diet session with this command. The date and tag can be added on creation with "/d" for date and "/t" for meal type. 
 
 You will be directed immediately into the new diet session. You may verify that as seen from how the cursor changes from 
@@ -580,7 +580,7 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 
 ```
-### 3.3.3. <a id="diet-list">Listing All Past Diet Sessions: `list`</a>
+#### 3.3.3. <a id="diet-list">Listing All Past Diet Sessions: `list`</a>
 You can obtain a list of information about past diet sessions together with their numbered index and calories.
 
 __Format:__ `list`
@@ -597,7 +597,7 @@ Expected outcome:
     _________________________________________________________________________________________________
 ```
 
-### 3.3.4. <a id="diet-edit">Editing a Past Diet Session: `edit`</a>
+#### 3.3.4. <a id="diet-edit">Editing a Past Diet Session: `edit`</a>
 You can edit a previous diet session based on a numbered index that can be found in the `list` command.
 
 __Format:__ `edit [INDEX]`
@@ -616,7 +616,7 @@ Diet Menu > Diet Session 2 >>>>>
 > :bulb: Editing a diet session works exactly like how it does when you create a new diet session.
 
 
-### 3.3.5. <a id="diet-delete">Deleting a Past Diet Session: `delete`</a>
+#### 3.3.5. <a id="diet-delete">Deleting a Past Diet Session: `delete`</a>
 You can delete a previously created diet session based on a numbered index that can be found in the `list` command.
 
 __Format:__ `delete [INDEX]`
@@ -634,7 +634,7 @@ Expected outcome:
 
 
  
-### 3.3.6. <a id="diet-clear">Clearing All Past Diet Sessions: `clear`</a>
+#### 3.3.6. <a id="diet-clear">Clearing All Past Diet Sessions: `clear`</a>
 You can clear all previously saved diet sessions. 
 
 __Format:__ `clear`
@@ -657,7 +657,7 @@ Diet Menu >>>>> YES
 > :warning: This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
 
 
-### 3.3.7. <a id="diet-search">Searching for Past Diet Sessions: `search`</a>
+#### 3.3.7. <a id="diet-search">Searching for Past Diet Sessions: `search`</a>
 Searches for specified range of diet sessions with identifiers such as start date, end date and tags.
 
 __Format:__ `search </s [START DATE]> </e [END DATE]> </t [TAG]>`
@@ -670,13 +670,14 @@ Expected outcome:
 	 Here are the search results!
 	 Index   Date             Tag         Calories  
 	 1       2020-05-08       breakfast   112.0
+     2       2020-05-09       breakfast   250.0
 	 
-	 You have 1 record(s)
+	 You have 2 record(s)
 	 _________________________________________________________________________________________________
 ```
 
-### 3.3.8. <a id="diet-end">Returning to Main Menu: `end`</a>
-You use this command to exit Diet Menu and return to the Main Menu.
+#### 3.3.8. <a id="diet-end">Returning to Main Menu: `end`</a>
+You can use this command to exit Diet Menu and return to the Main Menu.
 
 __Format:__ `end`
 
