@@ -134,7 +134,7 @@ public class DietSessionSearch extends Command {
     }
 
     /**
-     * Reads file name and returns date
+     * Reads file name and returns date.
      *
      * @param fileArrayList list of files from local storage into array list
      * @param i index of file from search result
@@ -147,7 +147,7 @@ public class DietSessionSearch extends Command {
     }
 
     /**
-     * Reads file name and returns tags
+     * Reads file name and returns tags.
      *
      * @param fileArrayList list of files from local storage into array list
      * @param i index of file from search result

@@ -1,13 +1,12 @@
 package diet.dietmanager;
 
-import utils.DateParser;
 import exceptions.InvalidDateFormatException;
 import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
+import utils.DateParser;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,11 +32,11 @@ public class DietManagerParser {
     /**
      * Extracts out date and time by looking for date strings in YYYY-MM-DD format.
      *
-     * @param parsedParams user input for new diet session
+     * @param parsedParams       user input for new diet session
      * @param extractDateMessage string builder that appends warnings and messages
      * @return date in MMM dd yyyy if the user inputs date in YYYY-MM-DD format;
-     *         else returns original string
-     * @throws IllegalStateException if the date is in wrong state
+     * else returns original string
+     * @throws IllegalStateException      if the date is in wrong state
      * @throws InvalidDateFormatException if the date is in wrong format
      */
     public String extractNewDate(HashMap<String, String> parsedParams, StringBuilder extractDateMessage)
@@ -63,10 +62,10 @@ public class DietManagerParser {
     /**
      * Extracts out tag of the diet session.
      *
-     * @param parsedParams user input for new diet session
+     * @param parsedParams       user input for new diet session
      * @param extractMealMessage string builder that appends warnings and messages
      * @return tag input if there is any;
-     *         else returns "unspecified"
+     * else returns "unspecified"
      * @throws NullPointerException if there is nothing in tag input
      */
     public String extractNewTag(HashMap<String, String> parsedParams, StringBuilder extractMealMessage)
@@ -90,7 +89,7 @@ public class DietManagerParser {
     /**
      * Extracts out starting date, end date and tag information.
      *
-     * @param cmd user command
+     * @param cmd         user command
      * @param commandArgs user input
      * @return a hashmap where each information corresponds to the correct separator
      * @throws InvalidCommandFormatException if user enters invalid commands

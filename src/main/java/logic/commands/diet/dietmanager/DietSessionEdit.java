@@ -1,7 +1,7 @@
 package logic.commands.diet.dietmanager;
 
-import logic.commands.Command;
 import diet.dietsession.DietSession;
+import logic.commands.Command;
 import logic.commands.CommandResult;
 import storage.diet.DietStorage;
 
@@ -11,12 +11,15 @@ import java.io.IOException;
 import java.util.logging.Level;
 
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
-import static ui.diet.dietmanager.DietManagerUi.*;
+import static ui.diet.dietmanager.DietManagerUi.DIET_EDIT_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_ARRAY_OUT_OF_BOUND;
+import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 
 public class DietSessionEdit extends Command {
     /**
      * Overrides execute for edit command to edit diet sessions.
-     *  @param input user input for command
+     *
+     * @param input   user input for command
      * @param storage storage for diet manager
      * @return CommandResult instance to print command message
      */

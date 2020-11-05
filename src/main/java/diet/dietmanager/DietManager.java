@@ -49,6 +49,16 @@ public class DietManager {
         dietManagerUi.printOpening("Diet Menu");
         String input = dietManagerUi.getCommand("Diet Menu");
         assert input != null : "Null input before input loop";
+        inputLoop(input);
+        dietManagerUi.printReturning("Main Menu");
+    }
+
+    /**
+     * Loops the command processing until user types "end".
+     *
+     * @param input user input String
+     */
+    private void inputLoop(String input) {
         while (!input.equals(COMMAND_WORD_END)) {
             try {
                 processCommand(input);
@@ -59,7 +69,6 @@ public class DietManager {
             }
             input = dietManagerUi.getCommand("Diet Menu");
         }
-        dietManagerUi.printReturning("Main Menu");
     }
 
     /**
