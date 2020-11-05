@@ -1,19 +1,19 @@
 package logic.commands.diet.dietmanager;
 
 
-import logic.commands.Command;
 import diet.dietmanager.DietManagerParser;
 import diet.dietsession.DietSession;
 import exceptions.InvalidDateFormatException;
 import exceptions.profile.InvalidCommandFormatException;
+import logic.commands.Command;
 import logic.commands.CommandResult;
 import storage.diet.DietStorage;
-import static profile.Constants.EMPTY_STRING;
-import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
+
+import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 
 public class DietSessionCreate extends Command {
 
@@ -21,7 +21,8 @@ public class DietSessionCreate extends Command {
 
     /**
      * Overrides execute for create command to create new diet sessions.
-     *  @param input user input for command
+     *
+     * @param input   user input for command
      * @param storage storage for diet manager
      * @return
      */

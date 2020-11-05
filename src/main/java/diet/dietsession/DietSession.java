@@ -78,6 +78,8 @@ public class DietSession {
         setEndDietSession(false);
         this.isNew = isNew;
         this.index = index;
+        // save the file upon creation
+        saveToFile(storage, this);
         dietSessionInputLoop();
         setEndDietSession(true);
     }

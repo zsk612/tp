@@ -4,19 +4,20 @@ import logic.commands.Command;
 import logic.commands.CommandResult;
 import storage.diet.DietStorage;
 
-import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
-import static ui.CommonUi.clearMsg;
-import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
-
 import java.io.File;
 import java.util.Objects;
 import java.util.logging.Level;
+
+import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
+import static ui.CommonUi.clearMsg;
+import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
 public class DietSessionClear extends Command {
 
     /**
      * Overrides execute for clear command to clear all diet sessions.
-     *  @param input user input for command
+     *
+     * @param input   user input for command
      * @param storage storage for diet manager
      * @return CommandResult instance
      */

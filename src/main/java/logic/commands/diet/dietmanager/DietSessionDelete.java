@@ -8,16 +8,19 @@ import java.io.File;
 import java.util.logging.Level;
 
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
-import static ui.CommonUi.clearMsg;
 import static ui.diet.dietmanager.DietManagerUi.DIET_DELETE_SUCCESS;
+import static ui.diet.dietmanager.DietManagerUi.DIET_DELETE_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_ARRAY_OUT_OF_BOUND;
+import static ui.diet.dietmanager.DietManagerUi.DIET_NO_SESSIONS_SAVED;
 
 public class DietSessionDelete extends Command {
 
     /**
      * Overrides execute for delete command to delete diet sessions.
-     *  @param input user input for command
+     *
+     * @param input   user input for command
      * @param storage storage for diet manager
-     * @return
+     * @return CommandResult instance for delete message
      */
     @Override
     public CommandResult execute(String input, DietStorage storage) {
@@ -27,19 +30,17 @@ public class DietSessionDelete extends Command {
         try {
             assert !input.isEmpty() : "No files to delete or wrong folder";
             assert listOfFiles != null;
-            String fileName = listOfFiles[Integer.parseInt(input) - 1]
-                    .getName().replaceFirst("[.][^.]+$", "");
             result = DIET_DELETE_SUCCESS;
             listOfFiles[Integer.parseInt(input) - 1].delete();
             logger.log(Level.INFO, "Deleted Diet Session successfully");
         } catch (NumberFormatException e) {
-            result = "Wrong format, please enter in the format:\n\t delete [INDEX]";
+            result = DIET_DELETE_WRONG_FORMAT;
             logger.log(Level.INFO, "No or wrong index for deletion in dietManager");
         } catch (IndexOutOfBoundsException e) {
-            result = "Sorry, there is no file at that index.";
+            result = DIET_FILE_ARRAY_OUT_OF_BOUND;
             logger.log(Level.INFO, "No input for session index");
         } catch (NullPointerException e) {
-            result = "It looks like you have no sessions saved!";
+            result = DIET_NO_SESSIONS_SAVED;
         }
         return new CommandResult(result);
     }

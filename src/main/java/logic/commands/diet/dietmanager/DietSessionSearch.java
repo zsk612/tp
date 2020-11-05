@@ -24,6 +24,8 @@ import java.util.stream.Collectors;
 
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.LS;
+import static ui.diet.dietmanager.DietManagerUi.DIET_DATE_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_NO_SESSIONS_SAVED;
 
 public class DietSessionSearch extends Command {
     private final DietManagerParser parser = new DietManagerParser();
@@ -59,7 +61,7 @@ public class DietSessionSearch extends Command {
             }
             searchResult.append("Here are the search results!\n\t ");
             if (Objects.requireNonNull(listOfFiles).length == 0) {
-                searchResult.append("It seems like you do not have any meal sessions stored!\n\t ");
+                searchResult.append(DIET_NO_SESSIONS_SAVED + "\n\t");
             }
             printSearchResult(listOfFiles, searchResult, startDate, endDate, tag, storage);
             ui.showToUser(searchResult.toString().trim());
@@ -67,7 +69,7 @@ public class DietSessionSearch extends Command {
             ui.showToUser("Wrong format, please enter in the format:\n\t "
                     + "search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>");
         } catch (InvalidDateFormatException e) {
-            searchResult.append("Wrong format for date input.\n\t ");
+            searchResult.append(DIET_DATE_WRONG_FORMAT + "\n\t ");
             ui.showToUser(searchResult.toString().trim());
             logger.log(Level.WARNING, "Invalid date format in diet session search");
             throw new InvalidDateFormatException();
@@ -95,16 +97,17 @@ public class DietSessionSearch extends Command {
     private void printSearchResult(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate,
                                    LocalDateTime endDate, String tag, DietStorage storage)
             throws InvalidDateFormatException {
+        //convert the file array to an arraylist for easier manipulation
         ArrayList<File> fileArrayList = new ArrayList<>();
         Collections.addAll(fileArrayList, listOfFiles);
 
         ArrayList<String> fileNames = (ArrayList<String>) fileArrayList.stream()
                 .map(f -> f.getName().split(" ", 2)[1].trim()).collect(Collectors.toList());
+        // get column boundaries for the table format for printing
         int descriptionMaxLenInt = Math.max(8,
                 fileNames.stream().max(Comparator.comparingInt(String::length)).get().length());
 
         String descriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt + 1) + "s";
-
         String returnString = String.format("%-8s", "Index") + String.format(descriptionFormat, "Date")
                 + String.format("%-12s", "Tag") + String.format("%-10s", "Calories") + LS;
         searchResult.append(returnString);

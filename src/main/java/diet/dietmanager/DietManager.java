@@ -83,19 +83,16 @@ public class DietManager {
 
     /**
      * Gets total calories of the diet session today.
+     *
      * @return total calories
      */
     public double getTodayTotalCalories() {
         double todayTotalCalories = 0;
         File folder = new File(PATH_TO_DIET_FOLDER);
         File[] listOfFiles = folder.listFiles();
-        StringBuilder listResult = new StringBuilder();
-        assert folder.exists();
+        assert folder.exists() : "save folder must exist before getting total calories";
         try {
-            if (Objects.requireNonNull(listOfFiles).length == 0) {
-                listResult.append("It seems like you have not eaten anything today!");
-            }
-
+            // if date is same as today, add to todayTotalCalories
             for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++) {
                 DietSession ds = storage.readDietSession(listOfFiles[i].getName());
                 if (ds.getDate().equals(java.time.LocalDate.now())) {
