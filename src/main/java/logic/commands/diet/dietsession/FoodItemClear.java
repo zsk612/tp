@@ -2,11 +2,15 @@ package logic.commands.diet.dietsession;
 
 import logic.commands.Command;
 import diet.dietsession.Food;
+import logic.commands.CommandResult;
+import logic.commands.ExecutionResult;
 import storage.diet.DietStorage;
+import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+//@@author zsk612
 public class FoodItemClear extends Command {
 
     /**
@@ -16,21 +20,26 @@ public class FoodItemClear extends Command {
      * @param foodList arraylist that stored all the food items
      * @param storage storage for diet session
      * @param index Integer variable that shows the index of the session
+     * @return An object CommandResult containing the executing status and feedback message to be displayed
+     *         to user.
      */
     @Override
-    public void execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
+    public CommandResult execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
+        String result = "";
         String prompt;
         if (index <= 0) {
-            prompt = "Diet Menu > New Diet Session";
+            prompt = DietSessionUi.DIET_INPUT_PROMPT_NEW;
         } else {
-            prompt = "Diet Menu > Diet Session " + index;
+            prompt = DietSessionUi.DIET_INPUT_PROMPT_EDIT + index;
         }
         if (ui.checkConfirmation(prompt, "clear all records")) {
             foodList.clear();
-            ui.showToUser("Alright, your food items have been cleared.");
+            result = "Alright, your food items have been cleared.";
             logger.log(Level.INFO, "Cleared all food in arraylist");
+            return new CommandResult(result, ExecutionResult.OK);
         } else {
-            System.out.println("You have aborted clear operation.");
+            result = "You have aborted clear operation.";
+            return new CommandResult(result, ExecutionResult.ABORTED);
         }
     }
 }

@@ -2,6 +2,8 @@ package logic.commands.diet.dietsession;
 
 import logic.commands.Command;
 import diet.dietsession.Food;
+import logic.commands.CommandResult;
+import logic.commands.ExecutionResult;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
 
@@ -12,8 +14,11 @@ import java.util.stream.Collectors;
 
 import static ui.CommonUi.LS;
 
+//@@author zsk612
 public class FoodItemSearch extends Command {
 
+    public static final String MESSAGE_SEARCH_PROMPT = "Here are the search results: \n\t ";
+    public static final String MESSAGE_NO_FOOD = "Sorry, there is nothing in your food list.";
     DietSessionUi ui = new DietSessionUi();
 
     /**
@@ -23,21 +28,25 @@ public class FoodItemSearch extends Command {
      * @param foodList arraylist that stored all the food items
      * @param storage storage for diet session
      * @param index Integer variable that shows the index of the session
+     * @return An object CommandResult containing the executing status and feedback message to be displayed
+     *         to user.
      */
     @Override
-    public void execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
+    public CommandResult execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
+        String result = "";
         try {
 
             StringBuilder searchResult = new StringBuilder();
-            searchResult.append("Here are the search results: \n\t ");
+            searchResult.append(MESSAGE_SEARCH_PROMPT);
             String formattedList = formatList(foodList, input.trim());
             searchResult.append(formattedList);
-            ui.showToUser(searchResult.toString().trim());
+            result = searchResult.toString().trim();
             logger.log(Level.INFO, "Listed all searched foods in Diet Session");
         } catch (NullPointerException e) {
-            ui.showToUser("Sorry, there is nothing in your food list.");
+            result = MESSAGE_NO_FOOD;
             logger.log(Level.WARNING, "No item in food list for search");
         }
+        return new CommandResult(result, ExecutionResult.OK);
     }
 
     private String formatList(ArrayList<Food> foodList, String searchTag) {
