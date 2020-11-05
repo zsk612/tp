@@ -1,4 +1,4 @@
-# User Guide
+# The Schwarzenegger - User Guide
 By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 
 ## Table of Contents
@@ -20,7 +20,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.6. [Returning to Main Menu: `end`](#profile-end)<br>
 3.3. [Diet Menu](#diet-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.3.1. [Viewing Help: `help`](#diet-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.3.2. [Starting to a New Diet Session: `new`](#diet-start)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3.2. [Starting a New Diet Session: `new`](#diet-start)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.1. [Viewing Help in Diet Session: `help`](#meal-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.2. [Adding Food Items to the Current Diet Session: `add`](#meal-add)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2.3. [Listing Food Items from the Current Diet Session: `list`](#meal-list)<br>
@@ -376,7 +376,7 @@ Diet Menu manages your diet sessions which record food items and calories intake
 
 Click [here](#main-diet) to learn how to enter Diet Menu.
 
-### 3.3.1. <a id="diet-help">Viewing Help: `help`</a>
+#### 3.3.1. <a id="diet-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Diet Menu and how to use them.
 
 __Format:__ `help`
@@ -404,10 +404,10 @@ Expected outcome:
      _________________________________________________________________________________________________
 ```
  
-### 3.3.2. <a id="diet-start">Starting to a New Diet Session: `new`</a>
-This command creates a new diet session. The date and tag can be added on creation with "/d" for date and "/t" for meal type. 
+#### 3.3.2. <a id="diet-start">Starting a New Diet Session: `new`</a>
+You can create a new diet session with this command. The date and tag can be added on creation with "/d" for date and "/t" for meal type. 
 
-You will be directed immediately into the new diet session. You may verify that by looking at the cursor changes from 
+You will be directed immediately into the new diet session. You may verify that as seen from how the cursor changes from 
 
 `Diet Menu >>>>> `
 
@@ -444,6 +444,7 @@ Expected outcome:
 
 > :warning: You may choose not to add the date or tag, but diet sessions with the same date and tag will be overwritten!
   
+  
 #### 3.3.2.1. <a id="meal-help">Viewing Help in Diet Session: `help`</a>
 You can see a complete list of available commands under Diet Session and how to use them.
 
@@ -454,17 +455,17 @@ Example: `help`
 Expected outcome:
 ```
 	 _________________________________________________________________________________________________
-	 Add      - add [FOOD_NAME] /c [CALORIES]
+	 Add      add [FOOD_NAME] /c [CALORIES]
 	          Add a new food item
-	 List     - list
+	 List     list
 	          Show all food items
-	 Delete   - delete [INDEX_OF_FOOD]
+	 Delete   delete [INDEX_OF_FOOD]
 	          Delete the food item at the input index
-	 Search   - search [FOOD_NAME]
+	 Search   search [FOOD_NAME]
 	          Search the diet session for food with the name specified
-	 Clear    - clear
+	 Clear    clear
 	          Clear all food items
-	 End      - end
+	 End      end
 	          Go back to the Diet Menu.
 	 _________________________________________________________________________________________________
 ```
@@ -482,6 +483,9 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 ```
 
+> :bulb: Your calories per food item is capped at 200,000
+
+
 #### 3.3.2.3. <a id="meal-list">Listing Food Items from the Current Diet Session: `list`</a>
 Lists all the added food items for the current diet session, with a numbered sequence according to sequence entered.
 
@@ -493,14 +497,15 @@ Expected outcome:
 ```
 	 _________________________________________________________________________________________________
 	 Index   Food            Calories 
-	 1       chicken nuggets 120.0
+	 1       chicken nuggets 120.0     
+	 2       fries           240.0
 
-	 Your total calories for this meal is 120.0.
+	 Your total calories for this meal is 360.0.
 	 _________________________________________________________________________________________________
 ```
 
 #### 3.3.2.4. <a id="meal-delete">Deleting Food Items from the Current Diet Session: `delete`</a>
-Deletes the food item according to the index in the current meal session list.
+You can remove food items from your list according to the index in the current meal session list.
 
 __Format:__ `delete [INDEX]`
 
@@ -515,7 +520,7 @@ Expected outcome:
 
 ``` 
 #### 3.3.2.5. <a id="meal-clear">Clearing All Food Items from the Current Diet Session: `clear`</a>
-Clears all the food items in the current diet session list.
+You can clear all the food items in the current diet session list.
 
 This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
 
@@ -535,8 +540,12 @@ Expected outcome:
      Oops you have cleared all the food items.
      _________________________________________________________________________________________________
 ```
+
+> :warning: Your food items cannot be recovered once cleared!
+
+
 #### 3.3.2.6. <a id="meal-clear">Searching for Food Items from the Current Diet Session: `search`</a>
-Searches for all the food items that contain the word entered in the current diet session.
+You can search for all food items that contain the word entered, in the current diet session.
 
 
 __Format:__ `search [FOOD_NAME]` 
@@ -558,7 +567,7 @@ Diet Menu > Diet Session 1 >>>>> search rice
 ```
 
 #### 3.3.2.7. <a id="meal-end">Ending the Current Diet Session: `end`</a>
-Ends the current diet session, saves the data and returns to Diet Menu.
+You can return to the diet menu by ending your current diet session.
 
 __Format:__ `end` 
 
@@ -571,8 +580,8 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 
 ```
-### 3.3.3. <a id="diet-list">Listing All Past Diet Sessions: `list`</a>
-Obtains a list of information about past diet sessions together with their numbered index.
+#### 3.3.3. <a id="diet-list">Listing All Past Diet Sessions: `list`</a>
+You can obtain a list of information about past diet sessions together with their numbered index and calories.
 
 __Format:__ `list`
 
@@ -588,8 +597,8 @@ Expected outcome:
     _________________________________________________________________________________________________
 ```
 
-### 3.3.4. <a id="diet-edit">Editing a Past Diet Session: `edit`</a>
-Edits a previous diet session based on a numbered index that can be found in the list.
+#### 3.3.4. <a id="diet-edit">Editing a Past Diet Session: `edit`</a>
+You can edit a previous diet session based on a numbered index that can be found in the `list` command.
 
 __Format:__ `edit [INDEX]`
 
@@ -604,8 +613,11 @@ Expected outcome:
 Diet Menu > Diet Session 2 >>>>> 
 ```
 
-### 3.3.5. <a id="diet-delete">Deleting a Past Diet Session: `delete`</a>
-Deletes a previous diet session based on a numbered index that can be found in the list.
+> :bulb: Editing a diet session works exactly like how it does when you create a new diet session.
+
+
+#### 3.3.5. <a id="diet-delete">Deleting a Past Diet Session: `delete`</a>
+You can delete a previously created diet session based on a numbered index that can be found in the `list` command.
 
 __Format:__ `delete [INDEX]`
 
@@ -614,14 +626,16 @@ Example: `delete 2`
 Expected outcome:
 ```
      _________________________________________________________________________________________________
-     Oh no! You have deleted 2020-10-29 lunch
+     You have deleted that diet session!
      _________________________________________________________________________________________________
 ```
- 
-### 3.3.6. <a id="diet-clear">Clearing All Past Diet Sessions: `clear`</a>
-Clears all previous diet sessions. 
 
-This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
+> :warning: Deleted diet sessions cannot be recovered!
+
+
+ 
+#### 3.3.6. <a id="diet-clear">Clearing All Past Diet Sessions: `clear`</a>
+You can clear all previously saved diet sessions. 
 
 __Format:__ `clear`
 
@@ -640,7 +654,10 @@ Diet Menu >>>>> YES
 	 _________________________________________________________________________________________________
 ```
 
-### 3.3.7. <a id="diet-search">Searching for Past Diet Sessions: `search`</a>
+> :warning: This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
+
+
+#### 3.3.7. <a id="diet-search">Searching for Past Diet Sessions: `search`</a>
 Searches for specified range of diet sessions with identifiers such as start date, end date and tags.
 
 __Format:__ `search </s [START DATE]> </e [END DATE]> </t [TAG]>`
@@ -652,14 +669,15 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 	 Here are the search results!
 	 Index   Date             Tag         Calories  
-	 1       2020-05-08       unspecified 112.0
+	 1       2020-05-08       breakfast   112.0
+     2       2020-05-09       breakfast   250.0
 	 
-	 You have 1 record(s)
+	 You have 2 record(s)
 	 _________________________________________________________________________________________________
 ```
 
-### 3.3.8. <a id="diet-end">Returning to Main Menu: `end`</a>
-You use this command to exit Diet Menu and return to the Main Menu.
+#### 3.3.8. <a id="diet-end">Returning to Main Menu: `end`</a>
+You can use this command to exit Diet Menu and return to the Main Menu.
 
 __Format:__ `end`
 
