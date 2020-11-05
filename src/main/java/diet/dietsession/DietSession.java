@@ -78,9 +78,10 @@ public class DietSession {
         setEndDietSession(false);
         this.isNew = isNew;
         this.index = index;
+        // save the file upon creation
+        saveToFile(storage, this);
         dietSessionInputLoop();
         setEndDietSession(true);
-        dietSessionUi.printExit();
     }
 
     /**
@@ -123,6 +124,7 @@ public class DietSession {
         String[] commParts = parser.parse(input);
         Command command = cl.getCommand(commParts[0]);
         command.execute(commParts[1].trim(), foodList, storage, index);
+        saveToFile(storage, this);
     }
 
     public double getTotalCalories() {
@@ -131,5 +133,23 @@ public class DietSession {
             totalCalories += foodList.get(i).getCalories();
         }
         return totalCalories;
+    }
+
+
+    /**
+     * Constructs method to save changes to storage file.
+     *
+     * @param storage storage for diet manager
+     * @param ds dietSession that is being changed
+     */
+    private void saveToFile(DietStorage storage, DietSession ds) {
+        try {
+            storage.init(ds.getDate().toString() + " " + ds.getTypeInput());
+            storage.writeToStorageDietSession(ds.getDate().toString() + " " + ds.getTypeInput(), ds);
+            logger.log(Level.INFO, "Diet session successfully saved");
+        } catch (IOException e) {
+            logger.log(Level.WARNING, "save profile session failed");
+            dietSessionUi.showToUser("Failed to save your diet session!");
+        }
     }
 }

@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+//@@author CFZeon
 public class CommandLibTest {
     @Test
     void get_DietManagerUnrecognisedCommand_returnNull() {

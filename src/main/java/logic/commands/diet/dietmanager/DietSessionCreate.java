@@ -1,16 +1,23 @@
 package logic.commands.diet.dietmanager;
 
-import logic.commands.Command;
+
 import diet.dietmanager.DietManagerParser;
 import diet.dietsession.DietSession;
 import exceptions.InvalidDateFormatException;
 import exceptions.profile.InvalidCommandFormatException;
+import logic.commands.Command;
+import logic.commands.CommandResult;
 import storage.diet.DietStorage;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 
+import static ui.diet.dietmanager.DietManagerUi.DIET_CREATE_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_DATE_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
+
+//@@author CFZeon
 public class DietSessionCreate extends Command {
 
     private final DietManagerParser parser = new DietManagerParser();
@@ -18,52 +25,36 @@ public class DietSessionCreate extends Command {
     /**
      * Overrides execute for create command to create new diet sessions.
      *
-     * @param input user input for command
+     * @param input   user input for command
      * @param storage storage for diet manager
+     * @return CommandResult with ended diet session message
      */
     @Override
-    public void execute(String input, DietStorage storage) {
-
+    public CommandResult execute(String input, DietStorage storage) {
+        String result = "";
         try {
             StringBuilder message = new StringBuilder();
             HashMap<String, String> parsedParams = parser.extractDietManagerCommandTagAndInfo("new", input);
+            // extract the date and tags and assigns it to the string
             String date = parser.extractNewDate(parsedParams, message);
-
             String tag = parser.extractNewTag(parsedParams, message);
             if (message.length() != 0) {
                 ui.showToUser(message.toString().trim());
             }
             DietSession ds = new DietSession(tag, date, true, -1);
-            assert ds != null;
+            assert ds != null : "Diet session constructed without error";
             logger.log(Level.INFO, "Diet session successfully created");
             ds.start(true, -1);
-            saveToFile(storage, ds);
+            result = DIET_NEW_SUCCESS;
         } catch (IOException e) {
-            ui.showToUser("It seems like we ran into some problems saving your session...");
+            result = "It seems like we ran into some problems saving your session...";
         } catch (InvalidDateFormatException e) {
             logger.log(Level.WARNING, "Wrong date format");
-            ui.showToUser("Please key in correct date.");
+            result = DIET_DATE_WRONG_FORMAT;
         } catch (InvalidCommandFormatException e) {
             logger.log(Level.WARNING, "Invalid command in dietSessionCreate");
-            ui.showToUser("Wrong format, please enter in the format: \n\t "
-                    + "new </d [DATE]> </t [TAG]>");
+            result = DIET_CREATE_WRONG_FORMAT;
         }
-    }
-
-    /**
-     * Constructs method to save changes to storage file.
-     *
-     * @param storage storage for diet manager
-     * @param ds dietSession that is being changed
-     */
-    private void saveToFile(DietStorage storage, DietSession ds) {
-        try {
-            storage.init(ds.getDate().toString() + " " + ds.getTypeInput());
-            storage.writeToStorageDietSession(ds.getDate().toString() + " " + ds.getTypeInput(), ds);
-            logger.log(Level.INFO, "Diet session successfully saved");
-        } catch (IOException e) {
-            logger.log(Level.WARNING, "save profile session failed");
-            ui.showToUser("Failed to save your diet session!");
-        }
+        return new CommandResult(result);
     }
 }
