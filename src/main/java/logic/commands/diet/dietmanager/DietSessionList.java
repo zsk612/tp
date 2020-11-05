@@ -61,20 +61,25 @@ public class DietSessionList extends Command {
                 + String.format("%-12s", "Date") + String.format("%-10s", "Calories") + LS;
 
         StringBuilder infoBuilder = new StringBuilder(returnString);
-
         String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-11s %s";
         // adds the contents of each diet session and consolidates it into table format
         for (int i = 0; i < fileArrayList.size(); i++) {
             DietSession ds = storage.readDietSession(listOfFiles[i].getName());
             double totalCalories = ds.getTotalCalories();
-            String rowContent = String.format(listDescriptionFormat,
-                    fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "").split(" ", 2)[1],
-                    fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "").split(" ", 2)[0],
-                    totalCalories);
+            // formats each diet session entry into column form
+            String rowContent = formatRow(fileArrayList, listDescriptionFormat, i, totalCalories);
             String row = String.format("%-8s", i + 1) + rowContent + LS;
             infoBuilder.append(row);
         }
         returnString = infoBuilder.toString().trim();
         return returnString;
+    }
+
+    private String formatRow(ArrayList<File> fileArrayList, String listDescriptionFormat, int i, double totalCalories) {
+        String rowContent = String.format(listDescriptionFormat,
+                fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "").split(" ", 2)[1],
+                fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "").split(" ", 2)[0],
+                totalCalories);
+        return rowContent;
     }
 }

@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 
+import static ui.diet.dietmanager.DietManagerUi.DIET_CREATE_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 
 public class DietSessionCreate extends Command {
@@ -24,7 +25,7 @@ public class DietSessionCreate extends Command {
      *
      * @param input   user input for command
      * @param storage storage for diet manager
-     * @return
+     * @return CommandResult with ended diet session message
      */
     @Override
     public CommandResult execute(String input, DietStorage storage) {
@@ -32,14 +33,14 @@ public class DietSessionCreate extends Command {
         try {
             StringBuilder message = new StringBuilder();
             HashMap<String, String> parsedParams = parser.extractDietManagerCommandTagAndInfo("new", input);
-            // extract the date and assigns it to the string
+            // extract the date and tags and assigns it to the string
             String date = parser.extractNewDate(parsedParams, message);
             String tag = parser.extractNewTag(parsedParams, message);
             if (message.length() != 0) {
                 ui.showToUser(message.toString().trim());
             }
             DietSession ds = new DietSession(tag, date, true, -1);
-            assert ds != null;
+            assert ds != null : "Diet session constructed without error";
             logger.log(Level.INFO, "Diet session successfully created");
             ds.start(true, -1);
             result = DIET_NEW_SUCCESS;
@@ -50,8 +51,7 @@ public class DietSessionCreate extends Command {
             result = "Please key in correct date.";
         } catch (InvalidCommandFormatException e) {
             logger.log(Level.WARNING, "Invalid command in dietSessionCreate");
-            result = "Wrong format, please enter in the format: \n\t "
-                    + "new </d [DATE]> </t [TAG]>";
+            result = DIET_CREATE_WRONG_FORMAT;
         }
         return new CommandResult(result);
     }

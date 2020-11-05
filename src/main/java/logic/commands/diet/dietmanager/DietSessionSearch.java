@@ -9,7 +9,6 @@ import exceptions.InvalidDateFormatException;
 import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import storage.diet.DietStorage;
-import utils.DateParser;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -26,6 +25,8 @@ import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.LS;
 import static ui.diet.dietmanager.DietManagerUi.DIET_DATE_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NO_SESSIONS_SAVED;
+import static ui.diet.dietmanager.DietManagerUi.DIET_SEARCH_EMPTY_TAG;
+import static ui.diet.dietmanager.DietManagerUi.DIET_SEARCH_RESULTS_MESSAGE;
 
 public class DietSessionSearch extends Command {
     private final DietManagerParser parser = new DietManagerParser();
@@ -55,17 +56,13 @@ public class DietSessionSearch extends Command {
                 throw new InvalidSearchDateException();
             }
             String tag = parser.extractSearchTag(parsedParams, searchResult);
-            if (tag.isEmpty()) {
-                searchResult.append("Tag is empty, "
-                        + "all the sessions within input dates will be shown.\n\t ");
-            }
-            searchResult.append("Here are the search results!\n\t ");
-            if (Objects.requireNonNull(listOfFiles).length == 0) {
-                searchResult.append(DIET_NO_SESSIONS_SAVED + "\n\t");
-            }
-            printSearchResult(listOfFiles, searchResult, startDate, endDate, tag, storage);
+            //check for empty tag in search parameter
+            checkEmptyTag(searchResult, tag);
+            searchResult.append(DIET_SEARCH_RESULTS_MESSAGE + "\n\t ");
+            //check for presence of files in diet session save folder
+            checkEmptyFolder(listOfFiles, searchResult);
+            addToSearchResult(listOfFiles, searchResult, startDate, endDate, tag, storage);
             message = searchResult.toString();
-            //ui.showToUser(searchResult.toString().trim());
         } catch (NullPointerException | InvalidCommandFormatException e) {
             message = "Wrong format, please enter in the format:\n\t "
                     + "search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>";
@@ -83,6 +80,18 @@ public class DietSessionSearch extends Command {
         return new CommandResult(message.trim());
     }
 
+    private void checkEmptyFolder(File[] listOfFiles, StringBuilder searchResult) {
+        if (Objects.requireNonNull(listOfFiles).length == 0) {
+            searchResult.append(DIET_NO_SESSIONS_SAVED + "\n\t ");
+        }
+    }
+
+    private void checkEmptyTag(StringBuilder searchResult, String tag) {
+        if (tag.isEmpty()) {
+            searchResult.append(DIET_SEARCH_EMPTY_TAG + "\n\t ");
+        }
+    }
+
     /**
      * Prints search results.
      *
@@ -94,7 +103,7 @@ public class DietSessionSearch extends Command {
      * @param storage      storage for diet sessions
      * @throws InvalidDateFormatException if date is in wrong format
      */
-    private void printSearchResult(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate,
+    private void addToSearchResult(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate,
                                    LocalDateTime endDate, String tag, DietStorage storage)
             throws InvalidDateFormatException {
         //convert the file array to an arraylist for easier manipulation
@@ -113,11 +122,25 @@ public class DietSessionSearch extends Command {
         searchResult.append(returnString);
         String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-11s %s";
         int numberOfResult = 0;
+        numberOfResult = addRow(listOfFiles, searchResult, startDate, endDate, tag, storage, fileArrayList,
+                listDescriptionFormat, numberOfResult);
+        String dietSessionSearchSize = "\n\t You have " + numberOfResult + " record(s)" + LS;
+        if (numberOfResult == 0) {
+            searchResult.setLength(0);
+            searchResult.append("Sorry, there is nothing found in your diet menu.");
+        }
+        searchResult.append(dietSessionSearchSize);
+    }
+
+    private int addRow(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate, LocalDateTime endDate, String tag, DietStorage storage, ArrayList<File> fileArrayList, String listDescriptionFormat, int numberOfResult) throws InvalidDateFormatException {
         for (int i = 0; i < fileArrayList.size(); i++) {
+            //instantiates stored diet session to get total calorie count
             DietSession ds = storage.readDietSession(listOfFiles[i].getName());
             double totalCalories = ds.getTotalCalories();
+            //extract tags and dates and assigns to string from filename
             String fileTag = getFileTag(fileArrayList, i);
             String fileDate = getFileDate(fileArrayList, i);
+            // converts extracted date string to java dateFormat
             LocalDateTime dateFormat = DateParser.parseDate(fileDate);
             if (startDate.compareTo(dateFormat) <= 0 && endDate.compareTo(dateFormat) >= 0 && fileTag.contains(tag)) {
                 String rowContent = String.format(listDescriptionFormat, fileDate, fileTag, totalCalories);
@@ -125,12 +148,7 @@ public class DietSessionSearch extends Command {
                 searchResult.append(row);
             }
         }
-        String dietSessionSearchSize = "\n\t You have " + numberOfResult + " record(s)" + LS;
-        if (numberOfResult == 0) {
-            searchResult.setLength(0);
-            searchResult.append("Sorry, there is nothing found in your diet menu.");
-        }
-        searchResult.append(dietSessionSearchSize);
+        return numberOfResult;
     }
 
     /**
