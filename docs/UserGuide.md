@@ -64,7 +64,7 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 1. Ensure you have Java `11` or above installed in your Computer.
 1. Download the latest `schwarzenegger.jar` from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
 1. Copy the file to the folder you want to use as the home folder for The Schwarzenegger.
-1. Open command prompt (on Windows)  or terminal (on macOS/ Linux) and change to the directory of the folder of the application in step 3.
+1. Open Command Prompt (on Windows)  or Terminal (on MacOS/ Linux) and change to the directory of the folder of the application in step 3.
 1. Key in `java -jar schwarzenegger.jar`. If the setup is correct, you should see something like below:
 
     ```
@@ -1075,7 +1075,7 @@ Return to Workout Menu|`end`
 Below are the answers to some frequently asked questions about The Schwarzenegger:
 
 **Q**: Can I use The Schwarzenegger on another operating systems apart from Windows?<br>
-**A**: Yes. The Schwarzenegger is compatible with Windows, macOS and Linux.
+**A**: Yes. The Schwarzenegger is compatible with Windows, MacOS and Linux.
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install The Schwarzenegger in the other computer and overwrite the `saves` folder it creates with the `saves` folder of your previous The Schwarzenegger.

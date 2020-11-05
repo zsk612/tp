@@ -1050,7 +1050,7 @@ There are two ways to run tests for The Schwarzenegger.
 
 **Method 2: Using Gradle**
 
-- To run all tests, open a console and run the command `gradlew clean test` (Mac/Linux: `./gradlew clean test`)
+- To run all tests, open a console and run the command `gradlew clean test` (MacOS/Linux: `./gradlew clean test`)
  
  > **Note:** If you are new to Gradle, refer to this [Gradle Tutorial](#https://se-education.org/guides/tutorials/gradle.html) to get more tips on how to use Gradle commands.
 
@@ -1077,7 +1077,7 @@ To run all build-related tasks:
 1. Open a terminal in the project’s root directory.
 2. Run the command:
     - Windows: `gradlew build`
-    - Mac/Linux: `./gradlew build`
+    - MacOS/Linux: `./gradlew build`
 3. A message stating `BUILD SUCCESSFUL` will be shown in the terminal if all tasks run successfully.<br>
 Otherwise, use the error report provided to resolve the issue before trying again. 
 
@@ -1100,7 +1100,7 @@ We use the IntelliJ IDEA’s coverage analysis tool for coverage reporting. A tu
 You can follow the steps below to make a new release:
 1. Generate the JAR file using Gradle by opening a terminal in the project’s root directory, and run the command:
     - Windows: `gradlew clean shadowJar`
-    - Mac/Linux: `./gradlew clean shadowJar`
+    - MacOS/Linux: `./gradlew clean shadowJar`
 1. Find the JAR file in the `build/libs` directory.
 1. Tag the repository with the new version number (e.g. `v2.1`).
 1. Create a new release using Github and upload the JAR file found in step 3.
@@ -1154,7 +1154,7 @@ __Target user profile__:
 
 ### Appendix E: Glossary
 
-* *Mainstream OS* - Windows, Linux, Unix, OS-X  
+* *Mainstream OS* - Windows, Linux, Unix, MacOS  
  
 [&#8593; Return to Top](#developer-guide)
 
