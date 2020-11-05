@@ -128,10 +128,10 @@ __Format:__ `help`<br>
 **Example:** Whenever you want to see get assistant in the Main Menu, you follow the steps below:
 1. Type `help` to your console and press <kbd>Enter</kbd> to execute it.
 
-    ![main-help-1](pictures/screenshots/main-help-step-1.png)
+    ![main-help-1](pictures/UG_screenshots/main-help-step-1.png)
 
 2. You should be able to see a list of available commands like the screenshot below:
-    ![main-help-2](pictures/screenshots/main-help-step-2.png)
+    ![main-help-2](pictures/UG_screenshots/main-help-step-2.png)
 
 #### 3.1.2. <a id="main-profile">Entering Profile Menu: `profile`</a>
 The program will direct you to the Profile Menu.
