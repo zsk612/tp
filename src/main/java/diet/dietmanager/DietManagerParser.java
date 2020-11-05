@@ -35,7 +35,7 @@ public class DietManagerParser {
      * @param parsedParams       user input for new diet session
      * @param extractDateMessage string builder that appends warnings and messages
      * @return date in MMM dd yyyy if the user inputs date in YYYY-MM-DD format;
-     * else returns original string
+     *     else returns original string
      * @throws IllegalStateException      if the date is in wrong state
      * @throws InvalidDateFormatException if the date is in wrong format
      */
@@ -65,7 +65,7 @@ public class DietManagerParser {
      * @param parsedParams       user input for new diet session
      * @param extractMealMessage string builder that appends warnings and messages
      * @return tag input if there is any;
-     * else returns "unspecified"
+     *     else returns "unspecified"
      * @throws NullPointerException if there is nothing in tag input
      */
     public String extractNewTag(HashMap<String, String> parsedParams, StringBuilder extractMealMessage)
