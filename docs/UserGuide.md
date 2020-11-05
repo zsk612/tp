@@ -125,38 +125,28 @@ You can see a complete list of available commands under Main Menu and how to use
 
 __Format:__ `help`<br>
 
-Example: `help`<br>
+**Example:** Whenever you want to see get assistant in the Main Menu, you follow the steps below:
+1. Type `help` to your console and press <kbd>Enter</kbd> to execute it.
 
-Expected outcome:
+    ![main-help-1](pictures/screenshots/main-help-step-1.png)
 
-```
-    ______________________________________________________________________________
-    Profile  - profile
-             Go to Profile Menu to manage your profile
-    Workout  - workout
-             Go to Workout Menu to manage your workout records and create new workout records
-    Diet     - diet
-             Go to Diet Menu to manage your past diet records and create new diet records
-    End      - end
-             Exit The Schwarzenegger
-    ______________________________________________________________________________
-```
-
+2. You should be able to see a list of available commands like the screenshot below:
+    ![main-help-2](pictures/screenshots/main-help-step-2.png)
 
 #### 3.1.2. <a id="main-profile">Entering Profile Menu: `profile`</a>
 The program will direct you to the Profile Menu.
 
 __Format:__ `profile`
   
-Example: `profile`
+**Example**: 
+1. You type `profile` to your console and press <kbd>Enter</kbd> to execute it.
+1. If the redirection is successful, you should be able to see the message below:
 
-Expected outcome:
-
-```
-    _________________________________________________________________________________________________
-    Starting Profile Menu......
-    _________________________________________________________________________________________________
-```
+    ```
+        _________________________________________________________________________________________________
+        Starting Profile Menu......
+        _________________________________________________________________________________________________
+    ```
 
 > :bulb: You can verify that you are in Profile Menu if the text before your cursor becomes `Profile Menu >>>>>`.
 
@@ -167,15 +157,16 @@ The program will direct you to the Diet Menu.
 
 __Format:__ `diet`  
 
-Example: `diet`
+**Example**: 
+1. You type `diet` to your console and press <kbd>Enter</kbd> to execute it.
 
-Expected outcome:
+2. If the redirection is successful, you should be able to see the message below:
 
-```
-    _________________________________________________________________________________________________
-    Starting Diet Menu...
-    _________________________________________________________________________________________________
-```
+    ```
+        _________________________________________________________________________________________________
+        Starting Diet Menu...
+        _________________________________________________________________________________________________
+    ```
 
 > :bulb: You can verify that you are in Diet Menu if the text before your cursor becomes `Diet Menu >>>>>`.
 
@@ -186,15 +177,15 @@ The program will direct you to the Workout Menu.
 
 __Format:__ `workout`
 
-Example: `workout`
+**Example**: 
+1. You type `workout` to your console and press <kbd>Enter</kbd> to execute it.
+1. If the redirection is successful, you should be able to see the message below:
 
-Expected outcome:
-
-```
-    _________________________________________________________________________________________________
-    Starting Workout Menu...
-    _________________________________________________________________________________________________
-```
+    ```
+        _________________________________________________________________________________________________
+        Starting Workout Menu...
+        _________________________________________________________________________________________________
+    ```
 
 > :bulb: You can verify that you are in Workout Menu if the text before your cursor becomes `Workout Menu >>>>>`.
 
@@ -206,15 +197,15 @@ You use this command when you want to terminate The Schwarzenegger.
 
 __Format:__ `end`  
 
-Example: `end`
+Example: 
+1. You type `end` to your console and press <kbd>Enter</kbd> to execute it.
+1. If the program exits successfully, you should be able to see the message below:
 
-Expected outcome:
-
-```
-    ______________________________________________________________________________
-    Bye, you have exited The Schwarzenegger.
-    ______________________________________________________________________________
-```
+    ```
+        ______________________________________________________________________________
+        Bye, you have exited The Schwarzenegger.
+        ______________________________________________________________________________
+    ```
 
 ### 3.2. <a id="profile-menu">Profile Menu</a>
 Profile Menu manages your profile including your name, physique data and expected daily calories intake. 
