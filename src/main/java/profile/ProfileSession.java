@@ -1,12 +1,13 @@
 package profile;
 
-import commands.Command;
-import commands.CommandLib;
-import commands.CommandResult;
+import logic.commands.Command;
+import logic.commands.CommandLib;
+import logic.commands.CommandResult;
 import exceptions.EndException;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
+import logic.parser.CommonParser;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
 
@@ -22,8 +23,8 @@ import static profile.Constants.COMMAND_TYPE_INDEX;
 public class ProfileSession {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private CommonUi ui;
+    private CommonParser parser;
     private ProfileStorage storage;
-    private ProfileParser profileParser;
     private CommandLib cl;
 
     /**
@@ -33,7 +34,7 @@ public class ProfileSession {
         logger.log(Level.INFO, "initialising ProfileSession object");
         ui = new CommonUi();
         storage = new ProfileStorage();
-        profileParser = new ProfileParser();
+        parser = new CommonParser();
         cl = new CommandLib();
         cl.initProfileSessionCL();
     }
@@ -51,6 +52,7 @@ public class ProfileSession {
      */
     private void start() {
         logger.log(Level.INFO, "starting profile session");
+        ui.printOpening("Profile Menu");
     }
 
     /**
@@ -63,7 +65,7 @@ public class ProfileSession {
             String userCommand = ui.getCommand("Profile Menu");
             assert userCommand != null : "input should not be null before process loop";
 
-            String[] commParts = profileParser.parseCommand(userCommand);
+            String[] commParts = parser.parseCommand(userCommand);
             assert commParts != null : "parsed array should not be null before process loop";
 
             try {
@@ -84,7 +86,8 @@ public class ProfileSession {
     /**
      * Processes and displays parsed user input.
      *
-     * @param commParts Size 2 array; first element is the command type and second element is the arguments string.
+     * @param commParts Size 2 array; first element is the command type and second element is the arguments
+     *         string.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
     private void processCommand(String[] commParts) throws SchwarzeneggerException {

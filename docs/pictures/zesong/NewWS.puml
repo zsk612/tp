@@ -21,11 +21,13 @@ deactivate WorkoutManagerStorage
 PastRecordList --> Command : filePath
 deactivate PastRecordList
 
-Command -> Command : new WorkoutSession
-Command -> workoutSession : start()
-activate workoutSession
-workoutSession --> Command
-deactivate workoutSession
+Command -> WorkoutSession ** : filePath
+activate WorkoutSession
+    WorkoutSession --> Command -- : newWorkoutSession
+Command -> WorkoutSession : start()
+activate WorkoutSession
+WorkoutSession --> Command
+deactivate WorkoutSession
 
 Command --> WorkoutManager : CommandResult
 deactivate Command

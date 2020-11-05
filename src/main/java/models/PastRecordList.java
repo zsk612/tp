@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import static ui.CommonUi.LS;
+import static ui.CommonUi.searchRecords;
 import static workout.workoutmanager.WorkoutManagerParser.parseList;
 import static workout.workoutmanager.WorkoutManagerParser.parseSearchConditions;
 
@@ -101,12 +102,12 @@ public class PastRecordList {
         String info;
 
         if (result.size() == 0) {
-            info = "You do not have any records that satisfies the condition.";
+            info = "You do not have any record that satisfies the condition.";
             logger.log(Level.INFO, "Search completed.");
             return info;
         }
 
-        info = result.size() + "  records are found:" + LS;
+        info = searchRecords(result.size(), ((result.size() > 1) ? " records have" : " record has"));
 
         info = getListInTable(result, info);
         logger.log(Level.INFO, "Search completed.");
@@ -171,7 +172,7 @@ public class PastRecordList {
                 .filter(conditions.stream().reduce(x -> true, Predicate::and))
                 .collect(Collectors.toList());
 
-        String info;
+        String info = "";
         if (pastFiles.size() == 0) {
             info = "You do not have any record yet. Key in 'new' to start one.";
             logger.log(Level.INFO, "List completed.");
@@ -180,11 +181,6 @@ public class PastRecordList {
             info = "You do not have any records between that period.";
             logger.log(Level.INFO, "List completed.");
             return info;
-        }
-        if (conditions.size() == 0) {
-            info = "You have " + pastFiles.size() + " records:" + LS;
-        } else {
-            info = "You have " + result.size() + " records in the given period:" + LS;
         }
         info = getListInTable(result, info);
         logger.log(Level.INFO, "List completed.");

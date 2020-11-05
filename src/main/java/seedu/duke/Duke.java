@@ -1,36 +1,41 @@
 package seedu.duke;
 
-import commands.Command;
-import commands.CommandLib;
-import commands.CommandResult;
+import logic.commands.Command;
+import logic.commands.CommandLib;
+import logic.commands.CommandResult;
+import exceptions.EndException;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
 import logger.SchwarzeneggerLogger;
+import logic.parser.CommonParser;
 import models.Profile;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
 
 import java.util.logging.Logger;
 
+import static profile.Constants.COMMAND_ARGS_INDEX;
+import static profile.Constants.COMMAND_TYPE_INDEX;
 import static ui.profile.ProfileUi.MESSAGE_WELCOME_EXISTING_USER;
 import static ui.profile.ProfileUi.MESSAGE_WELCOME_NEW_USER;
 import static ui.profile.ProfileUi.MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT;
-import static seedu.duke.Constant.COMMAND_WORD_END;
 
 /**
  * The Schwarzenegger program implements an application that keeps track of the user's gym and diet record.
  */
 public class Duke {
-    private final CommandLib cl;
-    private final CommonUi ui;
-    private final Logger logger;
+    private static Logger logger;
+    private CommandLib cl;
+    private CommonUi ui;
+    private CommonParser parser;
 
     private Duke() {
+        logger = SchwarzeneggerLogger.getInstanceLogger();
         cl = new CommandLib();
         cl.initMainMenu();
         ui = new CommonUi();
-        logger = SchwarzeneggerLogger.getInstanceLogger();
+        parser = new CommonParser();
     }
 
     /**
@@ -81,20 +86,22 @@ public class Duke {
     private void runCommandLoopTillEnd() {
         logger.info("running main menu loop");
 
-        String response = ui.getCommand("Main Menu").trim();
-        String dummy = "";
-
-        while (!response.equals(COMMAND_WORD_END)) {
-            Command cm = cl.getCommand(response);
+        while (true) {
+            String userInput = ui.getCommand("Main Menu");
+            String[] commParts = parser.parseCommand(userInput);
+            Command cm = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
 
             try {
-                CommandResult rs = cm.execute(dummy);
+                CommandResult rs = cm.execute(commParts[COMMAND_ARGS_INDEX]);
             } catch (SchwarzeneggerException e) {
+                if (e instanceof EndException) {
+                    break;
+                }
+
                 ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             } catch (Exception e) {
                 ui.showToUser(ExceptionHandler.handleUncheckedExceptions(e));
             }
-            response = ui.getCommand("Main Menu").trim();
         }
     }
 

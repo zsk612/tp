@@ -61,14 +61,22 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Storage for Diet](#storage-for-diet)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.5.3. [Storage for Workout](#storage-for-workout)<br>
 4.6. [Logging](#logging)<br>
+5. [**Testing**](#testing)<br>
+5.1. [Running Tests](#running-tests)<br>
+5.2. [Types of Tests](#types-of-tests)<br>
+6. [**Dev Ops**](#dev-ops)<br>
+6.1. [Build Automation](#build-automation)<br>
+6.2. [Continuous Integration](#continuous-integration)<br>
+6.3. [Coverage Report](#coverage-report)<br>
+6.4. [Making a Release](#making-a-release)<br>
+6.5. [Managing Dependencies](#managing-dependencies)<br>
   * [**Appendices**](#appendices)
     + [Appendix A: Product Scope](#appendix-a-product-scope)
     + [Appendix B: User Stories](#appendix-b-user-stories)
     + [Appendix C: Value proposition - Use cases](#appendix-c-value-proposition---use-cases)
     + [Appendix D: Non-Functional Requirements](#appendix-d-non-functional-requirements)
     + [Appendix E: Glossary](#appendix-e-glossary)
-    + [Appendix F: Instructions for Manual Testing](#appendix-f-instructions-for-manual-testing)
-    + [Appendix G: Supported Formats of Date Input](#appendix-g-supported-formats-of-date-input)
+    + [Appendix F: Supported Formats of Date Input](#appendix-f-supported-formats-of-date-input)
 
 ## 1. <a id="intro">Introduction</a>
 ### 1.1.  <a id="background">Background</a>
@@ -229,7 +237,7 @@ When the user attempts to add a new profile, the ProfileSession, Ui, ProfilePars
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileAdd`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileAdd.execute()` with the rest of parsed input.
-    1. `ProfileAdd` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is an existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileAdd` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is an existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
     1. `ProfileAdd` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information. 
     1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileAdd` creates a new `Profile`.
     1. `ProfileAdd` calls `ProfileStorage.saveData()` to save the `Profile` object.
@@ -244,23 +252,21 @@ The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
+![Load Data Sequence Diagram](pictures/khoa/ParseInput.png)
+
 **Design considerations**
 
 Parsing of the user’s input command:
 
-- Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
+- **Alternative 1 (current choice):** User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
 
-|     |     |
-|-----|-----|
-|**Pros** | Command tags do not have to follow a fixed order.|
-|**Cons** | It takes multiple steps in parsing the command.|
+    - Pros: Command tags do not have to follow a fixed order. 
+    - Cons: It takes multiple steps in parsing the command.
 
-- Alternative 2: User’s command is divided by space
-                 
-|     |     |
-|-----|-----|
-|**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
-|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive, especially for user's name.|
+- **Alternative 2:** User’s command is divided by space.
+
+    - Pros: The parsing can be easily done by calling Java built-in function `split()`. Supports multiple tags or no tags.
+    - Cons: Values for each variable cannot contain spaces which makes the application restrictive, especially for user's name.
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -280,7 +286,7 @@ When the user attempts to view an added profile, the ProfileSession, Ui, Profile
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileView`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileView.execute()` with the rest of parsed input.
-    1. `ProfileView` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileView` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileView` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileView` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
     1. `ProfileView` calls `DietManager.getTodayTotalCalories()` to get user's calories intake today.
     1. Based on user's calories intake today and string representation of `Profile`, `ProfileView` returns a result to `ProfileSession`.    
 1. Prompting result to user.
@@ -297,20 +303,16 @@ The sequence diagram below summarizes how viewing an added profile works:
 
 Aspects: Loading of stored data
 
-- Alternative 1 (current choice): call public methods of Storage class to 
+- **Alternative 1 (current choice):** call public methods of Storage class to 
 load the profile from hard disk every time the user wants to view profile.
 
-|     |     |
-|-----|-----|
-|**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|  
-|**Cons** | Execution time is slow down due to multiple times of loading the data.|
+    - Pros: Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.
+    - Cons: Execution time is slow down due to multiple times of loading the data.
 
-- Alternative 2: call public methods of Storage class to load the profile from hard disk only when user enters Profile Menu.
+- **Alternative 2:** call public methods of Storage class to load the profile from hard disk only when user enters Profile Menu.
 
-|     |     |
-|-----|-----|
-|**Pros** | Execution time is fast.|  
-|**Cons** | Profile data is not updated in real time if user edits it in text editor while running The Schwarzenegger.|
+    - Pros: Execution time is fast. 
+    - Cons: Profile data is not updated in real time if user edits it in text editor while running The Schwarzenegger.
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -330,11 +332,11 @@ When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser,
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileEdit`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileEdit.execute()` with the rest of parsed input.
-    1. `ProfileEdit` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
+    1. `ProfileEdit` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileAdd` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
     1. `ProfileEdit` calls `ProfileParser.extractCommandTagAndInfo()` to parse user input into specific tags and information.
     1. Based on the parsed information from `ProfileParser.extractCommandTagAndInfo()`, `ProfileEdit` creates a new `Profile`.
-    1. `ProfileEdit` calls `Profile.equals()` to compare the edited and existing profile. If there are no changes, `ProfileEdit` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `vi`.
-    1. `ProfileEdit` calls `ProfileStorage.saveData()` to save the edited `Profile` object.
+    1. `ProfileEdit` calls `Profile.equals()` to compare the newly created and existing profile. If there are no changes, `ProfileEdit` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `6`.
+    1. `ProfileEdit` calls `ProfileStorage.saveData()` to save the newly created `Profile` object.
     1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
@@ -350,19 +352,15 @@ The sequence diagram below summarizes how creating a new profile works:
 
 Parsing of the user’s input command:
 
-- Alternative 1 (current choice): User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
+- **Alternative 1 (current choice):** User’s command is split into size 2 array first containing command type and command arguments. Then arguments are split into command tag and information pairs.  
 
-|     |     |
-|-----|-----|
-|**Pros** | Command tags do not have to follow a fixed order.|
-|**Cons** | It takes multiple steps in parsing the command.|
+    - Pros: Command tags do not have to follow a fixed order.
+    - Cons: It takes multiple steps in parsing the command.
 
-- Alternative 2: User’s command is divided by space
-                 
-|     |     |
-|-----|-----|
-|**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
-|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
+- **Alternative 2:** User’s command is divided by space.
+
+    - Pros: The parsing can be easily done by calling Java built-in function `split()`. Supports multiple tags or no tags.
+    - Cons: Values for each variable cannot contain spaces which makes the application restrictive.
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -383,8 +381,8 @@ When the user attempts to delete an added profile, the ProfileSession, Ui, Profi
    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileDelete`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileDelete.execute()` with the rest of parsed input.
-    1. `ProfileDelete` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileDelete` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `iii`.
-    1. `ProfileDelete` calls `Ui.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `iv`.
+    1. `ProfileDelete` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileDelete` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
+    1. `ProfileDelete` calls `Ui.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `4`.
     1. `ProfileDelete` calls `ProfileStorage.saveData()` to save a `null` object which represents a deleted profile.
     1. `ProfileDelete` returns a result to `ProfileSession`.   
 1. Prompting result to user.
@@ -401,19 +399,15 @@ The sequence diagram below summarizes how deleting an added profile works:
 
 Aspects: Loading of stored data
 
-- Alternative 1 (current choice): call public methods of Storage class to load the profile from hard disk every time the user wants to delete profile.
+- **Alternative 1 (current choice):** call public methods of Storage class to load the profile from hard disk every time the user wants to delete profile.
 
-|     |     |
-|-----|-----|
-|**Pros** | Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.|  
-|**Cons** | Execution time is slow down due to loading the data.|
+    - Pros: Profile data is up-to-date if the user prefers to edit it in text file rather than using commands in The Schwarzenegger.
+    - Cons: Execution time is slow down due to loading the data.
 
-- Alternative 2: call public methods of Storage class to load the profile from hard disk when user enter Profile Menu.
+- **Alternative 2:** call public methods of Storage class to load the profile from hard disk when user enter Profile Menu.
 
-|     |     |
-|-----|-----|
-|**Pros** | Execution time is fast.|  
-|**Cons** | Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.|
+    - Pros: Execution time is fast. 
+    - Cons: Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.
 
 ### 4.3. Diet-related Features
 #### 4.3.1. Listing out all commands: `help`
@@ -494,6 +488,7 @@ When the user types `add [FOOD_NAME] /c [CALORIES]` the following sequence occur
 The sequence diagram below summarizes how adding a new food to the diet session works:
 
 ![Load Data Sequence Diagram](pictures/Zeon/FoodItemAdd.png)
+
 [&#8593; Return to Top](#developer-guide)
 
 #### 4.3.2.3. Listing data for the current diet: `list`
@@ -610,19 +605,16 @@ The sequence diagram below summarizes how editing Diet session works:
 **Design considerations**
 Saving of the user’s Diet sessions:  
 
-- Alternative 1 (current choice): Saving at the end of a diet session
+- **Alternative 1 (current choice):** Saving at the end of a diet session
 
-|     |     |
-|-----|-----|
-|**Pros** | The cost of saving is low, file writes only happen once per Diet session instance|
-|**Cons** | If any crashes occur during a diet session, no input data will be saved|
+    - Pros: The cost of saving is low, file writes only happen once per Diet session instance. 
+    - Cons: If any crashes occur during a diet session, no input data will be saved.
 
-- Alternative 2: Saving during any alterations made to the Diet session
+- **Alternative 2:** Saving during any alterations made to the Diet session
 
-|     |     |
-|-----|-----|
-|**Pros** | The files will still be saved even if a crash occurs|  
-|**Cons** | Saving often might be taxing on the user's computer especially on slower models|
+    - Pros: The files will still be saved even if a crash occurs.
+    - Cons: Saving often might be taxing on the user's computer especially on slower models.
+
 #### 4.3.5. Delete a previously created diet session: `delete`
 
 The feature allows users to delete previously created diet sessions.
@@ -723,19 +715,15 @@ The sequence diagram below summarizes how creating new workout session works:
 **Design considerations**
 Parsing of the user’s input command:  
 
-- Alternative 1 (current choice): User’s commands are divided by space
+- **Alternative 1 (current choice):** User’s commands are divided by space.
 
-|     |     |
-|-----|-----|
-|**Pros** | The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.|
-|**Cons** | Values for each variable cannot contain spaces which makes the application restrictive.|
+    - Pros: The parsing can be easily done by calling Java built-in function .split(). Supports multiple tags or no tags.
+    - Cons: Values for each variable cannot contain spaces which makes the application restrictive.
 
-- Alternative 2: Multiple prompts for user’s input of a workout data
+- **Alternative 2:** Multiple prompts for user’s input of a workout data.
 
-|     |     |
-|-----|-----|
-|**Pros** | Users would not have to make sure that their command is syntactically right.|  
-|**Cons** | The constant prompting could subject the application to a negative experience in the difficulty to use the commands.|
+    - Pros: Users would not have to make sure that their command is syntactically right. 
+    - Cons: The constant prompting could subject the application to a negative experience in the difficulty to use the commands.
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.1.1. <a id="adding-an-exercise">Adding an Exercise</a>
@@ -827,7 +815,7 @@ When the user attempts to list workoutSessions, the WorkoutManger, WorkoutManage
     1. `WorkoutManager` calls `ListWS.execute()` to execute the command
     3. `ListWS` calls `PastRecordList.list()`
     1. `PastRecordList` will return formatted list.
-    6. `WorkoutManager` returns a `CommandResult` which contains the formated list and execution result.
+    6. `WorkoutManager` returns a `CommandResult` which contains the formatted list and execution result.
 1. Based on `CommandResult`, correct response will be printed to user.
 
 ![Load Data Sequence Diagram](pictures/zesong/ListWS.png)
@@ -835,22 +823,19 @@ When the user attempts to list workoutSessions, the WorkoutManger, WorkoutManage
 **Design considerations**
 Aspects: Security of stored data
 
-- Alternative 1 (current choice): call public methods of Storage class to 
+- **Alternative 1 (current choice):** call public methods of Storage class to 
 print the list
 
-|     |     |
-|-----|-----|
-|**Pros** | pastRecord are private and it can only be manipulated through designed public methods. Only selected data will be printed and viewed.|  
-|**Cons** | Most methods Storage needs to be a static.|
+    - Pros: pastRecord are private and it can only be manipulated through designed public methods. Only selected data will be printed and viewed.
+    - Cons: Most methods Storage needs to be a static.
 
-- Alternative 2: Storage return a readonly list of pastRecord.
+- **Alternative 2:** Storage return a readonly list of pastRecord.
 
-|     |     |
-|-----|-----|
-|**Pros** | More versatile operations can be done.|  
-|**Cons** | All data of pastRecord will be exposed.|
+    - Pros: More versatile operations can be done.
+    - Cons: All data of pastRecord will be exposed.
 
 [&#8593; Return to Top](#developer-guide)
+
 #### 4.4.3. Editing workout session
 User can anytime go back to edit a workout session created in the past such as
 adding or removing exercies in that session.
@@ -885,20 +870,15 @@ The sequence diagram below summarizes how editting past record works:
 **Design considerations**
 Past record storage and model design:  
 
-- Alternative 1 (current choice): store past workout sessions in different files and their 
-meta information in a separate file
+- **Alternative 1 (current choice):** store past workout sessions in different files and their meta information in a separate file
 
-|     |     |
-|-----|-----|
-|**Pros** | Initialization will be faster as data loaded grows little even in long terms.|
-|**Cons** | Deleting files and creating files need to handle file names carefully.|
+    - Pros: Initialization will be faster as data loaded grows little even in long terms. 
+    - Cons: Deleting files and creating files need to handle file names carefully.
 
-- Alternative 2: Load all past records during initilization.
+- **Alternative 2:** Load all past records during initialization.
 
-|     |     |
-|-----|-----|
-|**Pros** | Run time can retrieve data faster as there is no need to access data in hard disk.|  
-|**Cons** | The application initialization will grow quickly as the application scales.|
+    - Pros:  Run time can retrieve data faster as there is no need to access data in hard disk. 
+    - Cons: The application initialization will grow quickly as the application scales.
 
 [&#8593; Return to Top](#developer-guide)
 #### 4.4.4. Deleting a workout session
@@ -932,19 +912,17 @@ The sequence diagram below summarizes how deleting past record works:
 
 **Design considerations**
 
-- Alternative 1 (current choice): Delete `workoutSession` by specifying index of it.
+- **Alternative 1 (current choice):** Delete `workoutSession` by specifying index of it.
 
-|     |     |
-|-----|-----|
-|**Pros** | Quick and easy deletion by using ArrayList.get().|
-|**Cons** | DLesser alternatives for the user and user would have to identify the index first by executing `list` to get index of the session to be deleted.|
+    - Pros: Quick and easy deletion by using ArrayList.get().
+    - Cons: Lesser alternatives for the user and user would have to identify the index first by executing `list` to get index of the session to be deleted.
 
-- Alternative 2: Delete `workoutSession` by specifying `workoutSession` tags or dates.
+- **Alternative 2:** Delete `workoutSession` by specifying `workoutSession` tags or dates.
 
-|     |     |
-|-----|-----|
-|**Pros** | More alternatives for users. Can bulk delete files with certain attributes|  
-|**Cons** | Tags and dates does not uniquely identify the record hence may result in accidental wrong deletion|
+    - Pros: More alternatives for users. Can bulk delete files with certain attributes. 
+    - Cons: Tags and dates does not uniquely identify the record hence may result in accidental wrong deletion.
+
+[&#8593; Return to Top](#developer-guide)
 #### 4.4.5. Searching based on conditions
 The feature `search` allows the user to view a summary of all the history 
 workout sessions which satisfies certain conditions.
@@ -984,20 +962,16 @@ Aspects: indexing the selected results
 
 The index of a record is not stored in the schema because it easily varies with addition and deletion. Thus given a record, searching for its index will have higher time complexity.
 
-- Alternative 1 (current choice): print out the actual index of the record 
+- **Alternative 1 (current choice):** print out the actual index of the record 
 in the meta info file.
 
-|     |     |
-|-----|-----|
-|**Pros** | The index is useful for user to use for future actions.|  
-|**Cons** | Checking for the actual location complicates the search time complexity.|
+    - Pros: The index is useful for user to use for future actions.
+    - Cons: Checking for the actual location complicates the search time complexity.
 
-- Alternative 2: print out the index of the element in the result list.
+- **Alternative 2:** print out the index of the element in the result list.
 
-|     |     |
-|-----|-----|
-|**Pros** | Easy to implement. Low time complexity|  
-|**Cons** | Since the index in result list is not the same as the index in actual record meta, user cannot use the index for further actions|
+    - Pros: Easy to implement. Low time complexity.
+    - Cons: Since the index in result list is not the same as the index in actual record meta, user cannot use the index for further actions.
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -1013,7 +987,7 @@ Storage for profile saves user profile created as `profile.json` in the `/saves/
 **Implementation**
 Profile storage handles reading of file data by calling `loadData()` and overwriting of file data by calling `saveData()`.
 
-
+[&#8593; Return to Top](#developer-guide)
 #### 4.5.2. <a id="storage-for-diet">Storage for Diet</a>
 
 Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
@@ -1024,6 +998,7 @@ Storage for diet saves diet sessions created as individual files sorted based on
 **Implementation**
 Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
 
+[&#8593; Return to Top](#developer-guide)
 #### 4.5.3. <a id="storage-for-workout">Storage for Workout</a>
 
 Storage for workout saves workout sessions created as individual files named based on the time created in `/saves/workout` directory. The metainformation of the files such as createion date and last edit date is saved in  `/saves/workout/history.json`.
@@ -1035,7 +1010,7 @@ Only history.json file is load when initilizing the application. The rest of Ses
 
 Meta information file can be overwritten with `writePastRecords()` and be read with `readPastRecords()`.
 
-
+[&#8593; Return to Top](#developer-guide)
 ### 4.6. <a id="logging">Logging</a>
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
 
@@ -1064,6 +1039,79 @@ logger.log(Level.WARNING, DESCRIPTION_OF_WARNING, e.toString());
 
 [&#8593; Return to Top](#developer-guide)
 
+## 5. <a id="testing">Testing</a>
+### 5.1. <a id="running-tests">Running Tests</a>
+There are two ways to run tests for The Schwarzenegger.
+
+**Method 1: Using IntelliJ JUnit test runner**
+
+- To run all tests, right-click on the `src/test/java` folder and choose `Run 'All Tests'`.
+- To run a subset of tests, you can right-click on a test package, test class, or a test and choose `Run 'ABC'`.
+
+**Method 2: Using Gradle**
+
+- To run all tests, open a console and run the command `gradlew clean test` (Mac/Linux: `./gradlew clean test`)
+ 
+ > **Note:** If you are new to Gradle, refer to this [Gradle Tutorial](#https://se-education.org/guides/tutorials/gradle.html) to get more tips on how to use Gradle commands.
+
+[&#8593; Return to Top](#developer-guide)
+### 5.2. <a id="types-of-tests">Types of Tests</a>
+We have use types of tests:
+
+1. Unit tests targeting the lowest level methods/classes.<br>
+e.g. profile.UtilsTest
+
+1. Integration tests that are checking the integration of multiple code units (those code units are assumed to be working).
+e.g. storage.profile.ProfileStorageTest
+
+1. Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.
+e.g. logic.LogicManagerTest
+
+[&#8593; Return to Top](#developer-guide)
+## 6. <a id="dev-ops">Dev Ops</a>
+### 6.1. <a id="build-automation">Build Automation</a>
+We use Gradle for tasks related to build automation, such as running tests, and checking code for style compliance.
+
+To run all build-related tasks:
+
+1. Open a terminal in the project’s root directory.
+2. Run the command:
+    - Windows: `gradlew build`
+    - Mac/Linux: `./gradlew build`
+3. A message stating `BUILD SUCCESSFUL` will be shown in the terminal if all tasks run successfully.<br>
+Otherwise, use the error report provided to resolve the issue before trying again. 
+
+[&#8593; Return to Top](#developer-guide)
+### 6.2. <a id="continuous-integration>Continuous Integration</a>
+We use Github Actions for continuous integration. No setup will be required for users who fork from the main The Schwarzenegger repository.
+
+Whenever you create a pull request to the main repository for The Schwarzenegger:
+- Various checks will automatically be executed on your pull request.
+- If any checks fail, click on it to view the cause of the error, and fix it in your branch before pushing it again.
+- Ensure that all checks pass before merging your pull request.
+
+[&#8593; Return to Top](#developer-guide)
+
+### 6.3. <a id="coverage-report">Coverage Report</a>
+We use the IntelliJ IDEA’s coverage analysis tool for coverage reporting. A tutorial on how to install and use this tool can be found [here](#https://www.youtube.com/watch?v=yNYzZvyA2ik).
+
+[&#8593; Return to Top](#developer-guide)
+### 6.4. <a id="making-a-release">Making a Release</a>
+You can follow the steps below to make a new release:
+1. Generate the JAR file using Gradle by opening a terminal in the project’s root directory, and run the command:
+    - Windows: `gradlew clean shadowJar`
+    - Mac/Linux: `./gradlew clean shadowJar`
+1. Find the JAR file in the `build/libs` directory.
+1. Tag the repository with the new version number (e.g. `v2.1`).
+1. Create a new release using Github and upload the JAR file found in step 3.
+
+[&#8593; Return to Top](#developer-guide)
+### 6.5. <a id="managing-dependencies">Managing Dependencies</a>
+Currently, the [Gson library](#https://github.com/google/gson) is being used for JSON parsing, and the [Apache Commons Lang](#https://commons.apache.org/proper/commons-lang) for being used for string processing in The Schwarzenegger. Below are 2 ways to manage these dependencies.
+- Use Gradle to manage and automatically download dependencies (Recommended).
+- Manually download and include those libraries in the repo (this requires extra work and bloats the repo size). 
+
+[&#8593; Return to Top](#developer-guide)
 ## Appendices 
 ### Appendix A: Product Scope
 
@@ -1079,13 +1127,14 @@ __Target user profile__:
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|v1.0|New user|View user guide easily|I can learn more about the product before I use it|
-|v1.0|New user|Create a user profile|I can store my profile in the database|
+|v1.0|New user|View the available commands easily|I can learn more about the product before I use it.|
+|v1.0|New user|Create a user profile|I add |
+|v1.0|User|Edit user profile|I can change my data if something changes|
 |v1.0|New user|Create a new workout session|I can start a recorded workout session|
 |v1.0|User|Create a new workout session|I can start a recorded workout session|
-|v1.0|User|Edit user profile|I can change my data if something changes|
-|v1.0|User|Add actions into a session|I can personalise each workout session|
-|v1.0|User|Delete session record|I can correct accidental errors|
+|v1.0|User|Add moves into a workout session|I can personalise each workout session|
+|v1.0|User|Delete workout session record|I can correct accidental typos|
+|v2.0|User|
 
 [&#8593; Return to Top](#developer-guide)
 
@@ -1109,9 +1158,7 @@ __Target user profile__:
  
 [&#8593; Return to Top](#developer-guide)
 
-### Appendix F: Instructions for Manual Testing
-#### F.1. Launch and Shutdown
-### Appendix G: Supported Formats of Date Input
+### Appendix F: Supported Formats of Date Input
 Here shows all 12 valid formats.
     
     `yyyyMMdd HH:mm`

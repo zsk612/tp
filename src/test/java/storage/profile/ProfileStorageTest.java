@@ -9,7 +9,12 @@ import java.io.FileNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static profile.Constants.EXAMPLE_CALORIES;
+import static profile.Constants.EXAMPLE_EXPECTED_WEIGHT;
+import static profile.Constants.EXAMPLE_HEIGHT;
+import static profile.Constants.EXAMPLE_NAME;
 import static profile.Constants.EXAMPLE_PROFILE_STRING;
+import static profile.Constants.EXAMPLE_WEIGHT;
 
 class ProfileStorageTest {
 

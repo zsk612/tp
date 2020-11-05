@@ -1,7 +1,7 @@
 package workout.workoutsession;
 
-import commands.Command;
-import commands.CommandLib;
+import logic.commands.Command;
+import logic.commands.CommandLib;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
 import logger.SchwarzeneggerLogger;

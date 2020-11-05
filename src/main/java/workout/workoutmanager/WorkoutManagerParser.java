@@ -1,9 +1,10 @@
 package workout.workoutmanager;
 
+import exceptions.InvalidDateFormatException;
 import exceptions.workout.workoutmanager.NotANumberException;
 import logger.SchwarzeneggerLogger;
 import models.PastWorkoutSessionRecord;
-import workout.DateParser;
+import utils.DateParser;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public class WorkoutManagerParser {
         try {
             String[] part2 = arr.split(DATE_SPECIFIER);
             String[] datePart = part2[1].split(TAG_SPECIFIER);
-            LocalDateTime finalDate = DateParser.parseDate(datePart[0].trim());
+            LocalDateTime finalDate = getDate(datePart[0]);
             if (finalDate != null) {
                 test.add(x -> x.isCreatedOn(finalDate.toLocalDate()));
             }
@@ -119,7 +120,7 @@ public class WorkoutManagerParser {
         try {
             String[] part2 = args.split(START_DATE_SPECIFIER);
             String[] datePart = part2[1].split(END_DATE_SPECIFIER);
-            LocalDateTime start = DateParser.parseDate(datePart[0].trim());
+            LocalDateTime start = getDate(datePart[0]);
             if (start != null) {
                 test.add(x -> x.isCreatedAfter(start.toLocalDate()));
             }
@@ -131,7 +132,7 @@ public class WorkoutManagerParser {
         try {
             String[] part2 = args.split(END_DATE_SPECIFIER);
             String[] datePart = part2[1].split(START_DATE_SPECIFIER);
-            LocalDateTime end = DateParser.parseDate(datePart[0].trim());
+            LocalDateTime end = getDate(datePart[0]);
             if (end != null) {
                 test.add(x -> x.isCreatedBefore(end.toLocalDate()));
             }
@@ -140,5 +141,15 @@ public class WorkoutManagerParser {
         }
 
         return test;
+    }
+
+    private static LocalDateTime getDate(String content) {
+        LocalDateTime start;
+        try {
+            start = DateParser.parseDate(content.trim());
+        } catch (InvalidDateFormatException e) {
+            start = null;
+        }
+        return start;
     }
 }

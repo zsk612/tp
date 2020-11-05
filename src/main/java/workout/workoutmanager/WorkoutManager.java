@@ -1,8 +1,8 @@
 package workout.workoutmanager;
 
-import commands.Command;
-import commands.CommandLib;
-import commands.CommandResult;
+import logic.commands.Command;
+import logic.commands.CommandLib;
+import logic.commands.CommandResult;
 import exceptions.EndException;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
@@ -30,6 +30,8 @@ public class WorkoutManager {
      */
     public void start() {
         logger.log(Level.INFO, "Entered workout manager");
+        ui.printOpening("Workout Menu");
+
         while (true) {
 
             String command = ui.getCommand("Workout Menu");
@@ -46,11 +48,13 @@ public class WorkoutManager {
                 ui.showToUser(e.getMessage());
             }
         }
+
+        ui.printReturning("Main Menu");
     }
 
     private void processCommand(String[] commands) throws SchwarzeneggerException {
         Command command = cl.getCommand(commands[0]);
-        CommandResult result = command.execute((commands.length > 1)  ? commands[1].trim() : "");
+        CommandResult result = command.execute((commands.length > 1) ? commands[1].trim() : "");
         ui.showToUser(result.getFeedbackMessage());
     }
 }
