@@ -1,6 +1,7 @@
 package logic.commands.workout.workoutsession;
 
 import logic.commands.Command;
+import logic.commands.CommandResult;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import models.Exercise;
@@ -16,23 +17,27 @@ import static ui.CommonUi.LS;
 public class WorkoutSessionList extends Command {
 
     @Override
-    public void execute(String[] inputs, ExerciseList exerciseList,
-                        String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+    public CommandResult execute(String[] inputs, ExerciseList exerciseList,
+                                 String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+        String showToUser = "";
         try {
-            printList(exerciseList.exerciseList);
+            showToUser = printList(exerciseList.exerciseList);
             storage.writeToStorage(filePath, exerciseList);
         } catch (IOException e) {
-            WorkoutSessionUi.printError();
+            return new CommandResult(WorkoutSessionUi.printError());
         }
+        return new CommandResult(showToUser);
     }
 
-    private void printList(ArrayList<Exercise> exercise) {
+    private String printList(ArrayList<Exercise> exercise) {
         assert exercise != null : "exercise list not found";
+        String list = "";
         if (exercise.size() <= 0) {
-            WorkoutSessionUi.emptyListError();
+            list = WorkoutSessionUi.emptyListError();
         } else {
-            ui.showToUser(formatList(exercise));
+            list = formatList(exercise);
         }
+        return list;
     }
 
     private String formatList(ArrayList<Exercise> exercise) {

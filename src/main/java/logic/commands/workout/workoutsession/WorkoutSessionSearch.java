@@ -1,6 +1,7 @@
 package logic.commands.workout.workoutsession;
 
 import logic.commands.Command;
+import logic.commands.CommandResult;
 import models.Exercise;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
@@ -16,29 +17,31 @@ import static ui.CommonUi.LS;
 
 
 public class WorkoutSessionSearch extends Command {
-    private boolean isEmptySearchResult = true;
+    private boolean isEmptySearchResult;
 
     @Override
-    public void execute(String[] inputs, ExerciseList exerciseList,
-                        String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+    public CommandResult execute(String[] inputs, ExerciseList exerciseList,
+                                 String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+        isEmptySearchResult = true;
+        String showToUser = "";
         String searchTerm = WorkoutSessionParser.searchParser(inputs).toLowerCase();
         try {
             if (searchTerm.length() > 0) {
 
                 String searchResult = formatList(exerciseList.exerciseList, searchTerm);
-                WorkoutSessionUi.searchResultsEmpty();
 
                 if (!isEmptySearchResult) {
-                    ui.showToUser(searchResult);
+                    showToUser = (searchResult);
                 } else {
-                    WorkoutSessionUi.searchResultsEmpty();
+                    showToUser = WorkoutSessionUi.searchResultsEmpty();
                 }
             } else {
-                WorkoutSessionUi.searchInputError();
+                showToUser = WorkoutSessionUi.searchInputError();
             }
         } catch (NoSuchElementException e) {
-            WorkoutSessionUi.searchResultsEmpty();
+            return new CommandResult(WorkoutSessionUi.searchResultsEmpty());
         }
+        return new CommandResult(showToUser);
     }
 
     private String formatList(ArrayList<Exercise> exercise, String searchTerm) {

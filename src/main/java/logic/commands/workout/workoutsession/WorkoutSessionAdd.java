@@ -2,6 +2,7 @@ package logic.commands.workout.workoutsession;
 
 import logic.commands.Command;
 import exceptions.workout.workoutsession.AddFormatException;
+import logic.commands.CommandResult;
 import models.Exercise;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
@@ -14,19 +15,21 @@ import java.io.IOException;
 public class WorkoutSessionAdd extends Command {
 
     @Override
-    public void execute(String[] inputs, ExerciseList exerciseList,
-                        String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+    public CommandResult execute(String[] inputs, ExerciseList exerciseList,
+                                 String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+        String showToUser = "";
         try {
             exerciseList.exerciseList.add(WorkoutSessionParser.addParser(inputs));
             storage.writeToStorage(filePath, exerciseList);
             Exercise addedExercise = exerciseList.exerciseList.get(exerciseList.exerciseList.size() - 1);
-            WorkoutSessionUi.addExerciseSuccess(addedExercise);
+            showToUser = WorkoutSessionUi.addExerciseSuccess(addedExercise);
         } catch (NumberFormatException e) {
-            WorkoutSessionUi.addFormatError();
+            return new CommandResult(WorkoutSessionUi.addFormatError());
         } catch (IOException e) {
-            WorkoutSessionUi.printError();
+            return new CommandResult(WorkoutSessionUi.printError());
         } catch (AddFormatException e) {
-            WorkoutSessionUi.addFormatNegativeError();
+            return new CommandResult(WorkoutSessionUi.addFormatNegativeError());
         }
+        return new CommandResult(showToUser);
     }
 }

@@ -89,9 +89,10 @@ public abstract class Command {
      * @param hasEndedWorkoutSessions Array of booleans indicating if user has ended workout sessions.
      * @throws InvalidCommandWordException If command word is invalid.
      */
-    public void execute(String[] inputs, ExerciseList exerciseList,
+    public CommandResult execute(String[] inputs, ExerciseList exerciseList,
                         String filePath, storage.workout.Storage storage,
                         boolean[] hasEndedWorkoutSessions) throws InvalidCommandWordException {
-        return;
+        logger.log(Level.INFO, "Executing " + this);
+        return new CommandResult();
     }
 }
