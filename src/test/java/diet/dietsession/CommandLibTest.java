@@ -1,12 +1,12 @@
 package diet.dietsession;
 
-import commands.CommandLib;
-import commands.diet.dietsession.FoodItemAdd;
-import commands.diet.dietsession.FoodItemClear;
-import commands.diet.dietsession.FoodItemDelete;
-import commands.diet.dietsession.FoodItemHelp;
-import commands.diet.dietsession.FoodItemList;
-import commands.diet.dietsession.FoodItemWrong;
+import logic.commands.CommandLib;
+import logic.commands.diet.dietsession.FoodItemAdd;
+import logic.commands.diet.dietsession.FoodItemClear;
+import logic.commands.diet.dietsession.FoodItemDelete;
+import logic.commands.diet.dietsession.FoodItemHelp;
+import logic.commands.diet.dietsession.FoodItemList;
+import logic.commands.diet.dietsession.FoodItemWrong;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

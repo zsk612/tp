@@ -1,7 +1,7 @@
 package diet.dietsession;
 
-import commands.Command;
-import commands.CommandLib;
+import logic.commands.Command;
+import logic.commands.CommandLib;
 import utils.DateParser;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;

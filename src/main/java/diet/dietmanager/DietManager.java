@@ -1,8 +1,7 @@
 package diet.dietmanager;
 
-import commands.Command;
-import commands.CommandLib;
-import commands.CommandResult;
+import logic.commands.Command;
+import logic.commands.CommandLib;
 import diet.dietsession.DietSession;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
@@ -11,6 +10,7 @@ import exceptions.SchwarzeneggerException;
 import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
+import logic.commands.CommandResult;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static seedu.duke.Constant.COMMAND_WORD_END;
+import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 
 
 public class DietManager {
@@ -86,7 +87,7 @@ public class DietManager {
      */
     public double getTodayTotalCalories() {
         double todayTotalCalories = 0;
-        File folder = new File("saves/diet/");
+        File folder = new File(PATH_TO_DIET_FOLDER);
         File[] listOfFiles = folder.listFiles();
         StringBuilder listResult = new StringBuilder();
         assert folder.exists();
