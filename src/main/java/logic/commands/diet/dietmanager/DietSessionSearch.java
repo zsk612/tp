@@ -132,7 +132,9 @@ public class DietSessionSearch extends Command {
         searchResult.append(dietSessionSearchSize);
     }
 
-    private int addRow(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate, LocalDateTime endDate, String tag, DietStorage storage, ArrayList<File> fileArrayList, String listDescriptionFormat, int numberOfResult) throws InvalidDateFormatException {
+    private int addRow(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate,
+                       LocalDateTime endDate, String tag, DietStorage storage, ArrayList<File> fileArrayList,
+                       String listDescriptionFormat, int numberOfResult) throws InvalidDateFormatException {
         for (int i = 0; i < fileArrayList.size(); i++) {
             //instantiates stored diet session to get total calorie count
             DietSession ds = storage.readDietSession(listOfFiles[i].getName());
