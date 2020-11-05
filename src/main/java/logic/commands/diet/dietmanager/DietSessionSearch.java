@@ -64,13 +64,13 @@ public class DietSessionSearch extends Command {
                 searchResult.append(DIET_NO_SESSIONS_SAVED + "\n\t");
             }
             printSearchResult(listOfFiles, searchResult, startDate, endDate, tag, storage);
-            ui.showToUser(searchResult.toString().trim());
+            message = searchResult.toString();
+            //ui.showToUser(searchResult.toString().trim());
         } catch (NullPointerException | InvalidCommandFormatException e) {
-            ui.showToUser("Wrong format, please enter in the format:\n\t "
-                    + "search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>");
+            message = "Wrong format, please enter in the format:\n\t "
+                    + "search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>";
         } catch (InvalidDateFormatException e) {
             searchResult.append(DIET_DATE_WRONG_FORMAT + "\n\t ");
-            ui.showToUser(searchResult.toString().trim());
             logger.log(Level.WARNING, "Invalid date format in diet session search");
             throw new InvalidDateFormatException();
         } catch (InvalidSearchDateException e) {
@@ -80,7 +80,7 @@ public class DietSessionSearch extends Command {
             logger.log(Level.WARNING, "No such element in diet session search");
             ui.showToUser("Sorry, there is nothing found in your diet menu.");
         }
-        return null;
+        return new CommandResult(message.trim());
     }
 
     /**
