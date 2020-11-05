@@ -1,13 +1,13 @@
 package seedu.duke;
 
-import logic.commands.Command;
-import logic.commands.CommandLib;
-import logic.commands.CommandResult;
 import exceptions.EndException;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
 import logger.SchwarzeneggerLogger;
+import logic.commands.Command;
+import logic.commands.CommandLib;
+import logic.commands.CommandResult;
 import logic.parser.CommonParser;
 import models.Profile;
 import storage.profile.ProfileStorage;
@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 
 import static profile.Constants.COMMAND_ARGS_INDEX;
 import static profile.Constants.COMMAND_TYPE_INDEX;
+import static ui.CommonUi.LOGO;
 import static ui.profile.ProfileUi.MESSAGE_WELCOME_EXISTING_USER;
 import static ui.profile.ProfileUi.MESSAGE_WELCOME_NEW_USER;
 import static ui.profile.ProfileUi.MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT;
@@ -63,6 +64,7 @@ public class Duke {
         Profile profile;
 
         try {
+            ui.showToUser(LOGO);
             profile = new ProfileStorage().loadData();
             ui.showToUser(String.format(MESSAGE_WELCOME_EXISTING_USER, profile.getName()));
         } catch (SchwarzeneggerException e) {

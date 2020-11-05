@@ -8,6 +8,16 @@ import static profile.Constants.GREEDY_WHITE_SPACE;
 public class CommonUi {
     public static final String LINE_PREFIX = "\t ";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
+    public static final String LOGO = "   _____        _                                                             "
+            + "              " + LS
+            + "  / ____|      | |                                                                          " + LS
+            + " | (___    ___ | |__ __      __ __ _  _ __  ____ ___  _ __    ___   __ _   __ _   ___  _ __ " + LS
+            + "  \\___ \\  / __|| '_ \\\\ \\ /\\ / // _` || '__||_  // _ \\| '_ \\  / _ \\ / _` | / _` | / _ \\| "
+            + "'__|" + LS
+            + "  ____) || (__ | | | |\\ V  V /| (_| || |    / /|  __/| | | ||  __/| (_| || (_| ||  __/| |   " + LS
+            + " |_____/  \\___||_| |_| \\_/\\_/  \\__,_||_|   /___|\\___||_| |_| \\___| \\__, | \\__, | \\___||_|   "
+            + LS + "                                                                    __/ |  __/ |            " + LS
+            + "                                                                   |___/  |___/             ";
     public static final String HELP_FORMAT = "%-8s %s" + LS + "%-8s %s" + LS;
     public static final String WARNING_FORMAT = "! WARNING: %s!";
     public static final String MESSAGE_CLEAR_FORMAT = "Alright, your %s been cleared!";
