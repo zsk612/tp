@@ -77,7 +77,7 @@ public class WorkoutSession {
         String[] commParts = WorkoutSessionParser.workoutSessionParser(input.trim());
         Command command = cl.getCommand(commParts[0]);
         CommandResult commandResult = command.execute(commParts, exerciseList, filePath, storage, endWorkoutSession);
-        if(commandResult.getFeedbackMessage().compareTo("") != 0) {
+        if (commandResult.getFeedbackMessage().compareTo("") != 0) {
             ui.showToUser(commandResult.getFeedbackMessage());
         }
     }
