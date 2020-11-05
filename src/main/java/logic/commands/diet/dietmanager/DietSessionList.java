@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.LS;
 
+//@@author CFZeon
 public class DietSessionList extends Command {
     /**
      * Overrides execute for list command to list diet sessions.

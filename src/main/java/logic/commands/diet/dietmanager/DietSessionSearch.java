@@ -28,6 +28,7 @@ import static ui.diet.dietmanager.DietManagerUi.DIET_NO_SESSIONS_SAVED;
 import static ui.diet.dietmanager.DietManagerUi.DIET_SEARCH_EMPTY_TAG;
 import static ui.diet.dietmanager.DietManagerUi.DIET_SEARCH_RESULTS_MESSAGE;
 
+//@@author CFZeon
 public class DietSessionSearch extends Command {
     private final DietManagerParser parser = new DietManagerParser();
 

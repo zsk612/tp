@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 import static seedu.duke.Constant.COMMAND_WORD_END;
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 
-
+//@@author CFZeon
 public class DietManager {
 
     private final CommandLib cl;

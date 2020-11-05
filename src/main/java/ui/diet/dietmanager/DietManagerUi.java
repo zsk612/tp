@@ -2,6 +2,7 @@ package ui.diet.dietmanager;
 
 import ui.CommonUi;
 
+//@@author CFZeon
 public class DietManagerUi extends CommonUi {
     public static String DIET_FILE_ARRAY_OUT_OF_BOUND = "Sorry, there is no file at that index.";
     public static String DIET_NEW_SUCCESS = "Exiting Diet Session!";

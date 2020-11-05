@@ -12,8 +12,8 @@ import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.clearMsg;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
+//@@author CFZeon
 public class DietSessionClear extends Command {
-
     /**
      * Overrides execute for clear command to clear all diet sessions.
      *

@@ -5,6 +5,7 @@ import logic.commands.Command;
 import logic.commands.CommandResult;
 import storage.diet.DietStorage;
 
+//@@author CFZeon
 public class DietSessionWrong extends Command {
 
     /**

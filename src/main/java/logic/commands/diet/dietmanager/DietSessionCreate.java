@@ -17,6 +17,7 @@ import static ui.diet.dietmanager.DietManagerUi.DIET_CREATE_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_DATE_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 
+//@@author CFZeon
 public class DietSessionCreate extends Command {
 
     private final DietManagerParser parser = new DietManagerParser();

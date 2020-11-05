@@ -8,8 +8,8 @@ import java.util.logging.Level;
 
 import static ui.CommonUi.helpFormatter;
 
+//@@author CFZeon
 public class DietSessionHelp extends Command {
-
     /**
      * Overrides execute for help command to display help information.
      *

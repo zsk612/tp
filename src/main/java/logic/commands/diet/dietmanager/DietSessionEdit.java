@@ -15,6 +15,7 @@ import static ui.diet.dietmanager.DietManagerUi.DIET_EDIT_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_ARRAY_OUT_OF_BOUND;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 
+//@@author CFZeon
 public class DietSessionEdit extends Command {
     /**
      * Overrides execute for edit command to edit diet sessions.
