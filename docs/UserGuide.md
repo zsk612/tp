@@ -64,10 +64,21 @@ When you first start using The Schwarzenegger, please ensure that you follow the
 1. Ensure you have Java `11` or above installed in your Computer.
 1. Download the latest `schwarzenegger.jar` from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
 1. Copy the file to the folder you want to use as the home folder for The Schwarzenegger.
-1. Open command prompt (on Windows)  or terminal (on macOS/ Linux) and change to the directory of the folder of the application in step 3.
+1. Open Command Prompt (on Windows)  or Terminal (on MacOS/ Linux) and change to the directory of the folder of the application in step 3.
 1. Key in `java -jar schwarzenegger.jar`. If the setup is correct, you should see something like below:
 
     ```
+        _________________________________________________________________________________________________
+           _____        _                                                                           
+          / ____|      | |                                                                          
+         | (___    ___ | |__ __      __ __ _  _ __  ____ ___  _ __    ___   __ _   __ _   ___  _ __ 
+          \___ \  / __|| '_ \\ \ /\ / // _` || '__||_  // _ \| '_ \  / _ \ / _` | / _` | / _ \| '__|
+          ____) || (__ | | | |\ V  V /| (_| || |    / /|  __/| | | ||  __/| (_| || (_| ||  __/| |   
+         |_____/  \___||_| |_| \_/\_/  \__,_||_|   /___|\___||_| |_| \___| \__, | \__, | \___||_|   
+                                                                            __/ |  __/ |            
+                                                                           |___/  |___/             
+        _________________________________________________________________________________________________
+
         _________________________________________________________________________________________________
         Welcome new user to Schwarzenegger! :D
         Please add your profile under Profile Menu.
@@ -114,38 +125,28 @@ You can see a complete list of available commands under Main Menu and how to use
 
 __Format:__ `help`<br>
 
-Example: `help`<br>
+**Example:** Whenever you want to see get assistant in the Main Menu, you follow the steps below:
+1. Type `help` to your console and press <kbd>Enter</kbd> to execute it.
 
-Expected outcome:
+    ![main-help-1](pictures/UG_screenshots/main-help-step-1.png)
 
-```
-    ______________________________________________________________________________
-    Profile  - profile
-             Go to Profile Menu to manage your profile
-    Workout  - workout
-             Go to Workout Menu to manage your workout records and create new workout records
-    Diet     - diet
-             Go to Diet Menu to manage your past diet records and create new diet records
-    End      - end
-             Exit The Schwarzenegger
-    ______________________________________________________________________________
-```
-
+2. You should be able to see a list of available commands like the screenshot below:
+    ![main-help-2](pictures/UG_screenshots/main-help-step-2.png)
 
 #### 3.1.2. <a id="main-profile">Entering Profile Menu: `profile`</a>
 The program will direct you to the Profile Menu.
 
 __Format:__ `profile`
   
-Example: `profile`
+**Example**: 
+1. You type `profile` to your console and press <kbd>Enter</kbd> to execute it.
+1. If the redirection is successful, you should be able to see the message below:
 
-Expected outcome:
-
-```
-    _________________________________________________________________________________________________
-    Starting Profile Menu......
-    _________________________________________________________________________________________________
-```
+    ```
+        _________________________________________________________________________________________________
+        Starting Profile Menu......
+        _________________________________________________________________________________________________
+    ```
 
 > :bulb: You can verify that you are in Profile Menu if the text before your cursor becomes `Profile Menu >>>>>`.
 
@@ -156,15 +157,16 @@ The program will direct you to the Diet Menu.
 
 __Format:__ `diet`  
 
-Example: `diet`
+**Example**: 
+1. You type `diet` to your console and press <kbd>Enter</kbd> to execute it.
 
-Expected outcome:
+2. If the redirection is successful, you should be able to see the message below:
 
-```
-    _________________________________________________________________________________________________
-    Starting Diet Menu...
-    _________________________________________________________________________________________________
-```
+    ```
+        _________________________________________________________________________________________________
+        Starting Diet Menu...
+        _________________________________________________________________________________________________
+    ```
 
 > :bulb: You can verify that you are in Diet Menu if the text before your cursor becomes `Diet Menu >>>>>`.
 
@@ -175,15 +177,15 @@ The program will direct you to the Workout Menu.
 
 __Format:__ `workout`
 
-Example: `workout`
+**Example**: 
+1. You type `workout` to your console and press <kbd>Enter</kbd> to execute it.
+1. If the redirection is successful, you should be able to see the message below:
 
-Expected outcome:
-
-```
-    _________________________________________________________________________________________________
-    Starting Workout Menu...
-    _________________________________________________________________________________________________
-```
+    ```
+        _________________________________________________________________________________________________
+        Starting Workout Menu...
+        _________________________________________________________________________________________________
+    ```
 
 > :bulb: You can verify that you are in Workout Menu if the text before your cursor becomes `Workout Menu >>>>>`.
 
@@ -195,15 +197,15 @@ You use this command when you want to terminate The Schwarzenegger.
 
 __Format:__ `end`  
 
-Example: `end`
+Example: 
+1. You type `end` to your console and press <kbd>Enter</kbd> to execute it.
+1. If the program exits successfully, you should be able to see the message below:
 
-Expected outcome:
-
-```
-    ______________________________________________________________________________
-    Bye, you have exited The Schwarzenegger.
-    ______________________________________________________________________________
-```
+    ```
+        ______________________________________________________________________________
+        Bye, you have exited The Schwarzenegger.
+        ______________________________________________________________________________
+    ```
 
 ### 3.2. <a id="profile-menu">Profile Menu</a>
 Profile Menu manages your profile including your name, physique data and expected daily calories intake. 
@@ -1082,7 +1084,7 @@ Return to Workout Menu|`end`
 Below are the answers to some frequently asked questions about The Schwarzenegger:
 
 **Q**: Can I use The Schwarzenegger on another operating systems apart from Windows?<br>
-**A**: Yes. The Schwarzenegger is compatible with Windows, macOS and Linux.
+**A**: Yes. The Schwarzenegger is compatible with Windows, MacOS and Linux.
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install The Schwarzenegger in the other computer and overwrite the `saves` folder it creates with the `saves` folder of your previous The Schwarzenegger.
