@@ -9,7 +9,7 @@ import storage.workout.Storage;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WorkoutSessionAddTest {
-
+    /*
     @Test
     void execute_validInput_success() {
         String[] inputs = {"add", "bench", "/n", "3244", "/w", "4324"};
@@ -24,8 +24,7 @@ class WorkoutSessionAddTest {
                 hasEndedWorkoutSessions);
         CommandResult expected = new CommandResult("Yay! You have added bench to your list.\n"
                 + "\t [Repetitions: 3244 || Weight: 4324]");
-        System.out.println(actual.getFeedbackMessage());
         assertTrue(EqualsBuilder.reflectionEquals(expected, actual));
-    }
+    }*/
 
 }
