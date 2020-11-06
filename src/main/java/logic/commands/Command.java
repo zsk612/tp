@@ -56,6 +56,8 @@ public abstract class Command {
      *
      * @param input User's input for command.
      * @param storage Diet Storage to load and save data.
+     * @return An object CommandResult containing the executing status and feedback message to be displayed
+     *         to user.
      * @throws InvalidCommandWordException If command word is invalid.
      * @throws InvalidCommandFormatException If command format is invalid.
      * @throws InvalidDateFormatException If date format is invalid.
@@ -72,11 +74,13 @@ public abstract class Command {
      * @param input User's input for command.
      * @param storage Diet Storage to load and save data.
      * @param index Integer variable that shows the index of diet session
+     * @return An object CommandResult containing the executing status and feedback message to be displayed
+     *         to user.
      * @throws InvalidCommandWordException If command word is invalid.
      */
-    public void execute(String input, ArrayList<Food> foodList,
+    public CommandResult execute(String input, ArrayList<Food> foodList,
                         DietStorage storage, Integer index) throws InvalidCommandWordException {
-        return;
+        return new CommandResult();
     }
 
     /**
