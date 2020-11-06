@@ -19,21 +19,21 @@ public class WorkoutSessionList extends Command {
     @Override
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
                                  String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
-        String showToUser = "";
+        String result = "";
         try {
-            showToUser = printList(exerciseList.exerciseList);
+            result = printList(exerciseList.exerciseList);
             storage.writeToStorage(filePath, exerciseList);
         } catch (IOException e) {
-            return new CommandResult(WorkoutSessionUi.printError());
+            return new CommandResult(WorkoutSessionUi.PRINT_ERROR);
         }
-        return new CommandResult(showToUser);
+        return new CommandResult(result);
     }
 
     private String printList(ArrayList<Exercise> exercise) {
         assert exercise != null : "exercise list not found";
         String list = "";
         if (exercise.size() <= 0) {
-            list = WorkoutSessionUi.emptyListError();
+            list = WorkoutSessionUi.EMPTY_LIST_ERROR;
         } else {
             list = formatList(exercise);
         }

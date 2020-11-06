@@ -15,7 +15,7 @@ public class WorkoutSessionEnd extends Command {
         try {
             storage.writeToStorage(filePath, exerciseList);
         } catch (IOException e) {
-            return new CommandResult(WorkoutSessionUi.printError());
+            return new CommandResult(WorkoutSessionUi.PRINT_ERROR);
         }
         return new CommandResult();
     }

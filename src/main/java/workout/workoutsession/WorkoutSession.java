@@ -55,7 +55,7 @@ public class WorkoutSession {
         try {
             storage.readFileContents(filePath, exerciseList);
         } catch (FileNotFoundException e) {
-            WorkoutSessionUi.printError();
+            ui.showToUser(WorkoutSessionUi.PRINT_ERROR);
         }
 
         while (!endWorkoutSession[0]) {
@@ -66,7 +66,7 @@ public class WorkoutSession {
                     workoutSessionProcessCommand(ui.getCommand("Workout Menu > Workout Session " + index));
                 }
             } catch (NullPointerException e) {
-                WorkoutSessionUi.emptyInputError();
+                ui.showToUser(WorkoutSessionUi.EMPTY_INPUT_ERROR);
             } catch (InvalidCommandWordException e) {
                 ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             }

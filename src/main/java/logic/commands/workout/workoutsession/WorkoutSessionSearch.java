@@ -23,7 +23,7 @@ public class WorkoutSessionSearch extends Command {
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
                                  String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
         isEmptySearchResult = true;
-        String showToUser = "";
+        String result = "";
         String searchTerm = WorkoutSessionParser.searchParser(inputs).toLowerCase();
         try {
             if (searchTerm.length() > 0) {
@@ -31,17 +31,17 @@ public class WorkoutSessionSearch extends Command {
                 String searchResult = formatList(exerciseList.exerciseList, searchTerm);
 
                 if (!isEmptySearchResult) {
-                    showToUser = (searchResult);
+                    result = (searchResult);
                 } else {
-                    showToUser = WorkoutSessionUi.searchResultsEmpty();
+                    result = WorkoutSessionUi.SEARCH_RESULTS_EMPTY;
                 }
             } else {
-                showToUser = WorkoutSessionUi.searchInputError();
+                result = WorkoutSessionUi.SEARCH_INPUT_ERROR;
             }
         } catch (NoSuchElementException e) {
-            return new CommandResult(WorkoutSessionUi.searchResultsEmpty());
+            return new CommandResult(WorkoutSessionUi.SEARCH_RESULTS_EMPTY);
         }
-        return new CommandResult(showToUser);
+        return new CommandResult(result);
     }
 
     private String formatList(ArrayList<Exercise> exercise, String searchTerm) {

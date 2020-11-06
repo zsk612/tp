@@ -17,19 +17,19 @@ public class WorkoutSessionAdd extends Command {
     @Override
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
                                  String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
-        String showToUser = "";
+        String result = "";
         try {
             exerciseList.exerciseList.add(WorkoutSessionParser.addParser(inputs));
             storage.writeToStorage(filePath, exerciseList);
             Exercise addedExercise = exerciseList.exerciseList.get(exerciseList.exerciseList.size() - 1);
-            showToUser = WorkoutSessionUi.addExerciseSuccess(addedExercise);
+            result = WorkoutSessionUi.addExerciseSuccess(addedExercise);
         } catch (NumberFormatException e) {
-            return new CommandResult(WorkoutSessionUi.addFormatError());
+            return new CommandResult(WorkoutSessionUi.ADD_FORMAT_ERROR);
         } catch (IOException e) {
-            return new CommandResult(WorkoutSessionUi.printError());
+            return new CommandResult(WorkoutSessionUi.PRINT_ERROR);
         } catch (AddFormatException e) {
-            return new CommandResult(WorkoutSessionUi.addFormatNegativeError());
+            return new CommandResult(WorkoutSessionUi.ADD_FORMAT_NEGATIVE_ERROR);
         }
-        return new CommandResult(showToUser);
+        return new CommandResult(result);
     }
 }

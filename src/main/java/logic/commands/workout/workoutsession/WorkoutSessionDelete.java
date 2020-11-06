@@ -14,22 +14,22 @@ import java.io.IOException;
 public class WorkoutSessionDelete extends Command {
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
                                  String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
-        String showToUser = "";
+        String result = "";
         try {
             int removeIndex = WorkoutSessionParser.deleteParser(inputs);
             Exercise deletedExercise = exerciseList.exerciseList.get(removeIndex - 1);
             exerciseList.exerciseList.remove(removeIndex - 1);
             storage.writeToStorage(filePath, exerciseList);
-            showToUser = WorkoutSessionUi.deleteExerciseSuccess(deletedExercise);
+            result = WorkoutSessionUi.deleteExerciseSuccess(deletedExercise);
         } catch (IOException e) {
-            return new CommandResult(WorkoutSessionUi.printError());
+            return new CommandResult(WorkoutSessionUi.PRINT_ERROR);
         } catch (ArrayIndexOutOfBoundsException e) {
-            return new CommandResult(WorkoutSessionUi.deleteFormatError());
+            return new CommandResult(WorkoutSessionUi.DELETE_FORMAT_ERROR);
         } catch (IndexOutOfBoundsException e) {
-            return new CommandResult(WorkoutSessionUi.deleteIndexError());
+            return new CommandResult(WorkoutSessionUi.DELETE_INDEX_ERROR);
         } catch (SchwarzeneggerException e) {
-            return new CommandResult(WorkoutSessionUi.deleteFormatError());
+            return new CommandResult(WorkoutSessionUi.DELETE_FORMAT_ERROR);
         }
-        return new CommandResult(showToUser);
+        return new CommandResult(result);
     }
 }
