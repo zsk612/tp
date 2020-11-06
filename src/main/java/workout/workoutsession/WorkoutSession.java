@@ -5,6 +5,7 @@ import logic.commands.CommandLib;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
 import logger.SchwarzeneggerLogger;
+import logic.commands.CommandResult;
 import storage.workout.Storage;
 import ui.CommonUi;
 import ui.workout.workoutsession.WorkoutSessionUi;
@@ -54,7 +55,7 @@ public class WorkoutSession {
         try {
             storage.readFileContents(filePath, exerciseList);
         } catch (FileNotFoundException e) {
-            WorkoutSessionUi.printError();
+            ui.showToUser(WorkoutSessionUi.PRINT_ERROR);
         }
 
         while (!endWorkoutSession[0]) {
@@ -65,7 +66,7 @@ public class WorkoutSession {
                     workoutSessionProcessCommand(ui.getCommand("Workout Menu > Workout Session " + index));
                 }
             } catch (NullPointerException e) {
-                WorkoutSessionUi.emptyInputError();
+                ui.showToUser(WorkoutSessionUi.EMPTY_INPUT_ERROR);
             } catch (InvalidCommandWordException e) {
                 ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             }
@@ -75,7 +76,10 @@ public class WorkoutSession {
     private void workoutSessionProcessCommand(String input) throws NullPointerException, InvalidCommandWordException {
         String[] commParts = WorkoutSessionParser.workoutSessionParser(input.trim());
         Command command = cl.getCommand(commParts[0]);
-        command.execute(commParts, exerciseList, filePath, storage, endWorkoutSession);
+        CommandResult commandResult = command.execute(commParts, exerciseList, filePath, storage, endWorkoutSession);
+        if (commandResult.getFeedbackMessage().compareTo("") != 0) {
+            ui.showToUser(commandResult.getFeedbackMessage());
+        }
     }
 
 }
