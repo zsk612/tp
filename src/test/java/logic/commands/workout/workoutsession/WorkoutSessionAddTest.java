@@ -24,6 +24,7 @@ class WorkoutSessionAddTest {
                 hasEndedWorkoutSessions);
         CommandResult expected = new CommandResult("Yay! You have added bench to your list.\n"
                 + "\t [Repetitions: 3244 || Weight: 4324]");
+        System.out.println(actual.getFeedbackMessage());
         assertTrue(EqualsBuilder.reflectionEquals(expected, actual));
     }
 
