@@ -1,7 +1,10 @@
 package diet.dietsession;
 
+import exceptions.diet.InvalidSearchDateException;
+import exceptions.profile.InvalidCommandFormatException;
 import logic.commands.Command;
 import logic.commands.CommandLib;
+import logic.commands.CommandResult;
 import utils.DateParser;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
@@ -105,6 +108,12 @@ public class DietSession {
                 break;
             } catch (InvalidCommandWordException e) {
                 dietSessionUi.showToUser(ExceptionHandler.handleCheckedExceptions(e));
+            } catch (InvalidSearchDateException e) {
+                dietSessionUi.showToUser(ExceptionHandler.handleCheckedExceptions(e));
+            } catch (InvalidDateFormatException e) {
+                dietSessionUi.showToUser(ExceptionHandler.handleCheckedExceptions(e));
+            } catch (InvalidCommandFormatException e) {
+                dietSessionUi.showToUser(ExceptionHandler.handleCheckedExceptions(e));
             }
             if (isNew) {
                 input = dietSessionUi.getCommand("Diet Menu > New Diet Session");
@@ -120,10 +129,12 @@ public class DietSession {
      * @param input user input for command
      * @throws NullPointerException handles null pointer exception
      */
-    private void processCommand(String input) throws NullPointerException, InvalidCommandWordException {
+    private void processCommand(String input) throws NullPointerException, InvalidCommandWordException,
+            InvalidDateFormatException, InvalidSearchDateException, InvalidCommandFormatException {
         String[] commParts = parser.parse(input);
         Command command = cl.getCommand(commParts[0]);
-        command.execute(commParts[1].trim(), foodList, storage, index);
+        CommandResult commandResult = command.execute(commParts[1].trim(), foodList, storage, index);
+        dietSessionUi.showToUser(commandResult.getFeedbackMessage());
         saveToFile(storage, this);
     }
 

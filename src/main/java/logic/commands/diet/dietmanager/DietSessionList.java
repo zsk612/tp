@@ -4,6 +4,7 @@ import diet.dietsession.DietSession;
 import logic.commands.Command;
 import logic.commands.CommandResult;
 import storage.diet.DietStorage;
+import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import static ui.CommonUi.LS;
 
 //@@author CFZeon
 public class DietSessionList extends Command {
+
     /**
      * Overrides execute for list command to list diet sessions.
      *
@@ -40,7 +42,7 @@ public class DietSessionList extends Command {
             message = listResult.toString();
             logger.log(Level.INFO, "Listed all available diet sessions");
         } catch (NullPointerException | NoSuchElementException e) {
-            message = "Sorry! It seems like you have no diet sessions saved!";
+            message = DietManagerUi.DIET_NO_SESSION_SAVED;
             logger.log(Level.WARNING, "No instances of diet sessions saved");
         }
         return new CommandResult(message);

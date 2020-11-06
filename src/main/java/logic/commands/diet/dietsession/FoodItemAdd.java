@@ -5,13 +5,17 @@ import diet.dietsession.DietSessionParser;
 import diet.dietsession.Food;
 import exceptions.diet.NegativeCaloriesException;
 import exceptions.diet.NoNameException;
+import logic.commands.CommandResult;
+import logic.commands.ExecutionResult;
 import storage.diet.DietStorage;
+import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 
 import static profile.Constants.CALORIES_UPPER_BOUND;
 
+//@@author zsk612
 public class FoodItemAdd extends Command {
 
     /**
@@ -21,11 +25,13 @@ public class FoodItemAdd extends Command {
      * @param foodList arraylist that stored all the food items
      * @param storage storage for diet session
      * @param index Integer variable that shows the index of the session
+     * @return An object CommandResult containing the executing status and feedback message to be displayed
+     *         to user.
      */
     @Override
-    public void execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
+    public CommandResult execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
         DietSessionParser parser = new DietSessionParser();
-
+        String result = "";
         try {
             assert !input.isEmpty();
             StringBuilder userOutput = new StringBuilder();
@@ -33,25 +39,24 @@ public class FoodItemAdd extends Command {
             Food temp = new Food(parser.processFoodName(input), Math.min(calories, CALORIES_UPPER_BOUND));
             foodList.add(temp);
             if (calories > CALORIES_UPPER_BOUND) {
-                userOutput.append("Your calories for this food item seems a little high, "
-                        + "so I've set it to 200,000.\n\t ");
+                userOutput.append(DietSessionUi.MESSAGE_HIGH_CALORIES);
             }
             userOutput.append("Yay! You have added " + temp.toString());
-            ui.showToUser(userOutput.toString());
+            result = userOutput.toString();
             logger.log(Level.INFO, "Added food to arraylist");
         } catch (IndexOutOfBoundsException e) {
-            ui.showToUser("Wrong format, please enter in the format:\n\t "
-                    + "add [FOOD_NAME] /c [CALORIES]");
+            result = DietSessionUi.MESSAGE_ADD_WRONG_FORMAT;
             logger.log(Level.WARNING, "Did not put food name or calories");
         } catch (NumberFormatException e) {
-            ui.showToUser("Please input a number for calories.");
+            result = DietSessionUi.MESSAGE_WRONG_CALORIES;
             logger.log(Level.WARNING, "Put calories in a wrong format");
         } catch (NegativeCaloriesException e) {
-            ui.showToUser("Please enter a positive number for calories!");
+            result = DietSessionUi.MESSAGE_NEGATIVE_CALORIES;
             logger.log(Level.WARNING, "Put negative calories");
         } catch (NoNameException e) {
-            ui.showToUser("Please enter food name!");
+            result = DietSessionUi.MESSAGE_NO_FOOD_NAME;
             logger.log(Level.WARNING, "no food name");
         }
+        return new CommandResult(result);
     }
 }

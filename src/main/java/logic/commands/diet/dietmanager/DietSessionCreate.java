@@ -8,6 +8,7 @@ import exceptions.profile.InvalidCommandFormatException;
 import logic.commands.Command;
 import logic.commands.CommandResult;
 import storage.diet.DietStorage;
+import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -47,7 +48,7 @@ public class DietSessionCreate extends Command {
             ds.start(true, -1);
             result = DIET_NEW_SUCCESS;
         } catch (IOException e) {
-            result = "It seems like we ran into some problems saving your session...";
+            result = DietManagerUi.DIET_IO_WRONG_FORMAT;
         } catch (InvalidDateFormatException e) {
             logger.log(Level.WARNING, "Wrong date format");
             result = DIET_DATE_WRONG_FORMAT;
