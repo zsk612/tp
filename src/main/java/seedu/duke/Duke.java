@@ -17,6 +17,8 @@ import java.util.logging.Logger;
 
 import static profile.Constants.COMMAND_ARGS_INDEX;
 import static profile.Constants.COMMAND_TYPE_INDEX;
+import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
+import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
 import static ui.CommonUi.LOGO;
 import static ui.profile.ProfileUi.MESSAGE_WELCOME_EXISTING_USER;
 import static ui.profile.ProfileUi.MESSAGE_WELCOME_NEW_USER;
@@ -65,7 +67,7 @@ public class Duke {
 
         try {
             ui.showToUser(LOGO);
-            profile = new ProfileStorage().loadData();
+            profile = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE).loadData();
             ui.showToUser(String.format(MESSAGE_WELCOME_EXISTING_USER, profile.getName()));
         } catch (SchwarzeneggerException e) {
             if (e instanceof InvalidSaveFormatException) {
