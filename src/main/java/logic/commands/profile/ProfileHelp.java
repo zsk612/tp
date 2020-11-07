@@ -1,8 +1,8 @@
 package logic.commands.profile;
 
+import exceptions.SchwarzeneggerException;
 import logic.commands.Command;
 import logic.commands.CommandResult;
-import exceptions.SchwarzeneggerException;
 import org.apache.commons.lang3.StringUtils;
 import storage.profile.ProfileStorage;
 
@@ -16,6 +16,7 @@ import static seedu.duke.Constant.COMMAND_WORD_VIEW;
 import static ui.CommonUi.helpFormatter;
 
 //@@author tienkhoa16
+
 /**
  * A representation of the command for showing help message in Profile Menu.
  */
@@ -31,6 +32,9 @@ public class ProfileHelp extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
+        assert commandArgs != null : "command args cannot be null";
+        assert storage != null : "profile storage cannot be null";
+
         super.execute(commandArgs, storage);
 
         if (!commandArgs.isEmpty()) {
