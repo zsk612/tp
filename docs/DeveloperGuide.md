@@ -445,7 +445,7 @@ When the user types `new </d [DATE]> </t [TAG]>` the following sequence occurs.
 
 The sequence diagram below summarizes how creating new diet session works:
 
-![Load Data Sequence Diagram](pictures/Shukai/CreateDietSession.png)
+![Load Data Sequence Diagram](pictures/Zeon/CreateDietSession.png)
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -487,7 +487,7 @@ When the user types `add [FOOD_NAME] /c [CALORIES]` the following sequence occur
 
 The sequence diagram below summarizes how adding a new food to the diet session works:
 
-![Load Data Sequence Diagram](pictures/Zeon/FoodItemAdd.png)
+![Load Data Sequence Diagram](pictures/Shukai/FoodItemAdd.png)
 
 <a href="#top">&#8593; Return to Top</a>
 
