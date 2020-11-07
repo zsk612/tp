@@ -47,7 +47,7 @@ class CommandLibTest {
     void getCommandTest_dietManagerUnrecognisedCommand_returnDietSessionWrong() {
         CommandLib cl = new CommandLib();
         cl.initDietManagerCL();
-        assertTrue(cl.getCommand("asdf") instanceof DietSessionWrong);
+        assertTrue(cl.getCommand("unregconised") instanceof DietSessionWrong);
     }
 
     @Test
@@ -96,7 +96,7 @@ class CommandLibTest {
     void getCommandTest_DietManagerUnrecognisedCommand_returnFoodItemWrong() {
         CommandLib cl = new CommandLib();
         cl.initDietSessionCL();
-        assertTrue(cl.getCommand("asdf") instanceof FoodItemWrong);
+        assertTrue(cl.getCommand("unregconised") instanceof FoodItemWrong);
     }
 
     @Test
@@ -138,7 +138,7 @@ class CommandLibTest {
     void getCommandTest_WorkoutManagerUnrecognisedCommand_returnNull() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutManagerCL();
-        assertTrue(cl.getCommand("asdf") instanceof WrongWS);
+        assertTrue(cl.getCommand("unregconised") instanceof WrongWS);
     }
 
     @Test
@@ -173,7 +173,7 @@ class CommandLibTest {
     void getCommandTest_WorkoutSessionUnrecognisedCommand_returnNull() {
         CommandLib cl = new CommandLib();
         cl.initWorkoutSessionCL();
-        assertTrue(cl.getCommand("asdf") instanceof WorkoutSessionWrong);
+        assertTrue(cl.getCommand("unregconised") instanceof WorkoutSessionWrong);
     }
 
     @Test
@@ -264,7 +264,7 @@ class CommandLibTest {
     void getCommandTest_profileSessionUnrecognisedCommand_returnProfileWrong() {
         CommandLib cl = new CommandLib();
         cl.initProfileSessionCL();
-        assertTrue(cl.getCommand("asdf") instanceof ProfileWrong);
+        assertTrue(cl.getCommand("unregconised") instanceof ProfileWrong);
     }
 
     @Test
@@ -299,6 +299,6 @@ class CommandLibTest {
     void getCommandTest_mainUnrecognisedCommand_returnWrong() {
         CommandLib cl = new CommandLib();
         cl.initMainMenu();
-        assertTrue(cl.getCommand("asdf") instanceof MainWrong);
+        assertTrue(cl.getCommand("unregconised") instanceof MainWrong);
     }
 }
