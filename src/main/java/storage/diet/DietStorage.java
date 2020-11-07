@@ -14,12 +14,13 @@ import java.io.Reader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
+
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
  */
 public class DietStorage {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-    private static final String FILEPATH = "saves/diet/";
     private static Gson gson;
     private static File file = null;
 
@@ -29,13 +30,13 @@ public class DietStorage {
      *
      * @throws IOException If director or file cannot be created.
      */
-    public void init(String filePath) throws IOException {
+    public void init(String filePath, String filePathName) throws IOException {
         logger.log(Level.INFO, "creating diet session save file");
 
         gson = new GsonBuilder().setPrettyPrinting()
                 .create();
 
-        String fileName = "saves/diet/" + filePath + ".json";
+        String fileName = filePath + filePathName + ".json";
         file = new File(fileName);
 
         file.getParentFile().mkdirs();
@@ -49,9 +50,10 @@ public class DietStorage {
      *
      * @throws IOException If director or file cannot be created.
      */
-    public void writeToStorageDietSession(String filePath, DietSession dietSession) throws IOException {
+    public void writeToStorageDietSession(String filePath, String filePathName,
+                                          DietSession dietSession) throws IOException {
         logger.log(Level.INFO, "saving file to location");
-        File file = new File(FILEPATH + filePath + ".json");
+        File file = new File(filePath + filePathName + ".json");
         if (file.exists()) {
             file.delete();
         }
@@ -62,14 +64,20 @@ public class DietStorage {
         writer.close();
     }
 
-    public DietSession readDietSession(String filePath) {
+    /**
+     * Reads the content of the .json file and instantiates as a DietSession
+     *
+     * @param filePath path from source folder to save folder
+     * @param filePathName name of file
+     * @return DietSession instance
+     */
+    public DietSession readDietSession(String filePath, String filePathName) {
         Gson gson = new Gson();
         DietSession dietSession;
         dietSession = null;
         try {
             File file = new File(System.getProperty("user.dir") + "/"
-                    + FILEPATH + filePath);
-
+                    + filePath + filePathName);
             Reader reader = new FileReader(file.getPath());
             dietSession = gson.fromJson(reader, DietSession.class);
             reader.close();

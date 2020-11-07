@@ -68,7 +68,7 @@ public class DietSessionList extends Command {
         String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-11s %s";
         // adds the contents of each diet session and consolidates it into table format
         for (int i = 0; i < fileArrayList.size(); i++) {
-            DietSession ds = storage.readDietSession(listOfFiles[i].getName());
+            DietSession ds = storage.readDietSession(PATH_TO_DIET_FOLDER, listOfFiles[i].getName());
             double totalCalories = ds.getTotalCalories();
             // formats each diet session entry into column form
             String rowContent = formatRow(fileArrayList, listDescriptionFormat, i, totalCalories);

@@ -1,22 +1,24 @@
 package diet.dietsession;
 
-import logic.commands.Command;
-import logic.commands.CommandLib;
-import logic.commands.CommandResult;
-import models.Food;
-import utils.DateParser;
 import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
 import exceptions.InvalidDateFormatException;
 import logger.SchwarzeneggerLogger;
+import logic.commands.Command;
+import logic.commands.CommandLib;
+import logic.commands.CommandResult;
+import models.Food;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
+import utils.DateParser;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 
 //@@author zsk612
 public class DietSession {
@@ -82,7 +84,7 @@ public class DietSession {
         this.isNew = isNew;
         this.index = index;
         // save the file upon creation
-        saveToFile(storage, this);
+        saveToFile(PATH_TO_DIET_FOLDER, storage, this);
         dietSessionInputLoop();
         setEndDietSession(true);
     }
@@ -128,9 +130,14 @@ public class DietSession {
         Command command = cl.getCommand(commParts[0]);
         CommandResult commandResult = command.execute(commParts[1].trim(), foodList, storage, index);
         dietSessionUi.showToUser(commandResult.getFeedbackMessage());
-        saveToFile(storage, this);
+        saveToFile(PATH_TO_DIET_FOLDER, storage, this);
     }
 
+    /**
+     * Calculates the sum of all food calories in diet session.
+     *
+     * @return sum of calories of food
+     */
     public double getTotalCalories() {
         double totalCalories = 0;
         for (int i = 0; i < foodList.size(); i++) {
@@ -144,12 +151,12 @@ public class DietSession {
      * Constructs method to save changes to storage file.
      *
      * @param storage storage for diet manager
-     * @param ds dietSession that is being changed
+     * @param ds      dietSession that is being changed
      */
-    private void saveToFile(DietStorage storage, DietSession ds) {
+    public void saveToFile(String filePath, DietStorage storage, DietSession ds) {
         try {
-            storage.init(ds.getDate().toString() + " " + ds.getTypeInput());
-            storage.writeToStorageDietSession(ds.getDate().toString() + " " + ds.getTypeInput(), ds);
+            storage.init(filePath, ds.getDate().toString() + " " + ds.getTypeInput());
+            storage.writeToStorageDietSession(filePath, ds.getDate().toString() + " " + ds.getTypeInput(), ds);
             logger.log(Level.INFO, "Diet session successfully saved");
         } catch (IOException e) {
             logger.log(Level.WARNING, "save profile session failed");
