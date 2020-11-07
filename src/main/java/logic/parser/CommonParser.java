@@ -6,6 +6,10 @@ import static profile.Constants.COMMAND_TYPE_INDEX;
 import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.GREEDY_WHITE_SPACE;
 
+//@@author tienkhoa16
+/**
+ * A base class for dealing with making sense of user command.
+ */
 public class CommonParser {
 
     /**

@@ -1,4 +1,4 @@
-# About us
+# The Schwarzenegger - About Us
 
 Display | Name | Github Profile | Portfolio 
 --------|:----:|:--------------:|:---------:

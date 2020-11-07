@@ -16,6 +16,7 @@ import static ui.profile.ProfileUi.MESSAGE_MORE_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;
 import static ui.profile.ProfileUi.MESSAGE_VIEW_PROFILE;
 
+//@@author tienkhoa16
 /**
  * A representation of the command for viewing profile.
  */

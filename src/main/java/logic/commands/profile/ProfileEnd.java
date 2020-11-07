@@ -6,6 +6,7 @@ import exceptions.EndException;
 import exceptions.SchwarzeneggerException;
 import storage.profile.ProfileStorage;
 
+//@@author tienkhoa16
 /**
  * A representation of the command for exiting Profile Menu.
  */

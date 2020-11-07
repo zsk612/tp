@@ -8,6 +8,7 @@ import java.util.logging.SimpleFormatter;
 
 import static seedu.duke.Constant.PATH_TO_LOG_FILE;
 
+//@@author tienkhoa16
 /**
  * A class to handle file logging.
  */

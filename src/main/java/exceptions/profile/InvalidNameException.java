@@ -4,6 +4,7 @@ import exceptions.SchwarzeneggerException;
 
 import static ui.profile.ProfileUi.MESSAGE_INVALID_NAME;
 
+//@@author tienkhoa16
 /**
  * Represents exception when input name is invalid.
  */

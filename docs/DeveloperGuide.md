@@ -1,4 +1,4 @@
-# Developer Guide
+# The Schwarzenegger - Developer Guide
 By: `CS2113T-F11-1` Since: `2020`
 
 ![Supported Java versions](https://img.shields.io/badge/Java-11-blue.svg) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Windows|MacOS|Linux-yellow.svg) 
@@ -84,9 +84,9 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
 ### 1.2. <a id="purpose">Purpose</a>
 This document contains the specified architecture and software design specifications for the application, The Schwarzenegger. 
 ### 1.3. <a id="scope">Scope</a>
-This document describes the software architecture and software design requirements for The Schwarzenegger. This guide is mainly for developers, designers and software engineers that are or going to work on The Schwarzenegger. 
+This document describes the software architecture and software design requirements for The Schwarzenegger. This guide is mainly for developers, designers and software engineers that are or going to work on The Schwarzenegger.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ## 2. <a id="setting-up">Setting Up</a>
 
@@ -106,7 +106,7 @@ This document describes the software architecture and software design requiremen
 6. Click `Open as Project`.
 7. Click `OK` to accept the default settings if prompted. 
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ## 3. <a id="design">Design</a>
 This section provides a high level overview of our application, The Schwarzenegger.
@@ -131,7 +131,7 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 - `Workout`: This class manages the data workout recording sessions.
 - `Storage`: This class reads data from and writes data back into a text file for future uses.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### 3.2. <a id="ui-component">Ui Component</a>
 ![Ui Component](images/UI_Component.png)
@@ -145,7 +145,7 @@ The `Ui` component,
 * Takes in user input
 * Prints out response messages
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### 3.3. <a id="logic-component">Logic Component</a>
 
@@ -154,7 +154,7 @@ The `Ui` component,
 1. `The Schwarzenegger` uses `Parser` classes to parse the user command.
 2. This splits the user input into interpretable portions by other functions.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### 3.4. <a id="model-component">Model Component</a>
 
@@ -167,7 +167,7 @@ The Model component contains `Profile`, `DietManager`,
 * PastRecord: Stores meta information of each WorkoutSession files.
 * WorkoutSession: Stores the exercise data done in each workout session.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### 3.5. <a id="storage-component">Storage Component</a>
 
@@ -187,12 +187,12 @@ writePastRecords() and writeToStorage() methods in storage.workout package are u
 The saveData() method in storage.profile is called after the user creates the user profile or edits it.
 readData() is storage.profile is called when duke starts up.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### 3.6. <a id="common-classes">Common Classes</a> 
 Classes used by multiple components are in the `seedu.duke` and the `ui` package, specifically Constant.java and CommonUi.java.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ## 4. <a id="implementation">Implementation</a>
 This section describes some details on how the features are being implemented. All profile/ diet/ workout-related features.
@@ -268,7 +268,7 @@ Parsing of the user’s input command:
     - Pros: The parsing can be easily done by calling Java built-in function `split()`. Supports multiple tags or no tags.
     - Cons: Values for each variable cannot contain spaces which makes the application restrictive, especially for user's name.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.2.2. <a id="viewing-a-profile">Viewing a Profile</a>
 This feature allows user to view added profile with calculated BMI based on height and weight. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. redundant parameters. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
@@ -314,7 +314,7 @@ load the profile from hard disk every time the user wants to view profile.
     - Pros: Execution time is fast. 
     - Cons: Profile data is not updated in real time if user edits it in text editor while running The Schwarzenegger.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.2.3. <a id="editing-a-profile">Editing a Profile</a>
 This feature allows user to anytime go back to edit a profile created in the past such as editing physique data and expected daily calories intake. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command format. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
@@ -362,7 +362,7 @@ Parsing of the user’s input command:
     - Pros: The parsing can be easily done by calling Java built-in function `split()`. Supports multiple tags or no tags.
     - Cons: Values for each variable cannot contain spaces which makes the application restrictive.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.2.4. <a id="deleting-a-profile">Deleting a Profile</a>
 
@@ -425,7 +425,7 @@ When the user types `help` in a Diet Manager instance, the following sequence oc
     
 3. Executing Command
     1. The execute() method will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2. Start recording diet data: `new`
 The feature allows users to start recording diet data. 
@@ -447,7 +447,7 @@ The sequence diagram below summarizes how creating new diet session works:
 
 ![Load Data Sequence Diagram](pictures/Zeon/CreateDietSession.png)
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2.1. Showing help message: `help`
 This command lists out all help commands in a typed list that indicates to the user all the commands available and how to use them.
@@ -465,7 +465,7 @@ When the user types `help` the following sequence occurs.
 3. Executing Command
     1. The newly created object will then print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
     
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2.2. Adding food items for the current diet: `add`
 
@@ -489,7 +489,7 @@ The sequence diagram below summarizes how adding a new food to the diet session 
 
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemAdd.png)
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2.3. Listing data for the current diet: `list`
 
@@ -672,7 +672,7 @@ When the user types `end` the following sequence occurs.
     The inputLoop() exits when userInput.equals("end"), returning to the `Start()` method, then ending the `DietManager` instance.
 
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 
 ### 4.4. <a id="workout-related-features">Workout-related Features</a>
@@ -725,7 +725,7 @@ Parsing of the user’s input command:
     - Pros: Users would not have to make sure that their command is syntactically right. 
     - Cons: The constant prompting could subject the application to a negative experience in the difficulty to use the commands.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.1. <a id="adding-an-exercise">Adding an Exercise</a>
 
 Users can add a new exercise. The failure to do so will trigger an exception where the user will be notified of 
@@ -754,7 +754,7 @@ The following sequence diagram shows how the add command works
 The sequence diagram below summarizes how creating new workout session works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.2. <a id="deleting-an-exercise">Deleting an Exercise</a>
 
 Users can delete an exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
@@ -783,23 +783,23 @@ The following sequence diagram shows how the add command works
 The sequence diagram below summarizes how creating new workout session works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionDelete.png)
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.3. <a id="listing-all-exercises-in-this-session">Listing All Exercises in This Session</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionList.png)
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.4. Allowing users to view help commands
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionHelp.png)
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.5. Searching for related exercises
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionSearch.png)
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.6. Ending the workout session
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionEnd.png)
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.4.2. Listing past workout sessions
 The feature to list workoutSessions allows the user to view a summary of all the history workout sessions, including their index, creation date and tags.
 
@@ -834,7 +834,7 @@ print the list
     - Pros: More versatile operations can be done.
     - Cons: All data of pastRecord will be exposed.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.4.3. Editing workout session
 User can anytime go back to edit a workout session created in the past such as
@@ -880,7 +880,7 @@ Past record storage and model design:
     - Pros:  Run time can retrieve data faster as there is no need to access data in hard disk. 
     - Cons: The application initialization will grow quickly as the application scales.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.4.4. Deleting a workout session
 User can delete a workout session created in the past by giving its index.
 
@@ -922,7 +922,7 @@ The sequence diagram below summarizes how deleting past record works:
     - Pros: More alternatives for users. Can bulk delete files with certain attributes. 
     - Cons: Tags and dates does not uniquely identify the record hence may result in accidental wrong deletion.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.4.5. Searching based on conditions
 The feature `search` allows the user to view a summary of all the history 
 workout sessions which satisfies certain conditions.
@@ -973,7 +973,7 @@ in the meta info file.
     - Pros: Easy to implement. Low time complexity.
     - Cons: Since the index in result list is not the same as the index in actual record meta, user cannot use the index for further actions.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### 4.5. <a id="storage">Storage</a>
 Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called `/saves` which is in the same directory as the project root.
@@ -987,7 +987,7 @@ Storage for profile saves user profile created as `profile.json` in the `/saves/
 **Implementation**
 Profile storage handles reading of file data by calling `loadData()` and overwriting of file data by calling `saveData()`.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.5.2. <a id="storage-for-diet">Storage for Diet</a>
 
 Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
@@ -998,7 +998,7 @@ Storage for diet saves diet sessions created as individual files sorted based on
 **Implementation**
 Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 #### 4.5.3. <a id="storage-for-workout">Storage for Workout</a>
 
 Storage for workout saves workout sessions created as individual files named based on the time created in `/saves/workout` directory. The metainformation of the files such as createion date and last edit date is saved in  `/saves/workout/history.json`.
@@ -1010,7 +1010,7 @@ Only history.json file is load when initilizing the application. The rest of Ses
 
 Meta information file can be overwritten with `writePastRecords()` and be read with `readPastRecords()`.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 ### 4.6. <a id="logging">Logging</a>
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
 
@@ -1037,7 +1037,7 @@ private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 logger.log(Level.WARNING, DESCRIPTION_OF_WARNING, e.toString());
 ```
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ## 5. <a id="testing">Testing</a>
 ### 5.1. <a id="running-tests">Running Tests</a>
@@ -1054,7 +1054,7 @@ There are two ways to run tests for The Schwarzenegger.
  
  > **Note:** If you are new to Gradle, refer to this [Gradle Tutorial](#https://se-education.org/guides/tutorials/gradle.html) to get more tips on how to use Gradle commands.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 ### 5.2. <a id="types-of-tests">Types of Tests</a>
 We have use types of tests:
 
@@ -1067,7 +1067,7 @@ e.g. storage.profile.ProfileStorageTest
 1. Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.
 e.g. logic.LogicManagerTest
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 ## 6. <a id="dev-ops">Dev Ops</a>
 ### 6.1. <a id="build-automation">Build Automation</a>
 We use Gradle for tasks related to build automation, such as running tests, and checking code for style compliance.
@@ -1081,7 +1081,7 @@ To run all build-related tasks:
 3. A message stating `BUILD SUCCESSFUL` will be shown in the terminal if all tasks run successfully.<br>
 Otherwise, use the error report provided to resolve the issue before trying again. 
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 ### 6.2. <a id="continuous-integration>Continuous Integration</a>
 We use Github Actions for continuous integration. No setup will be required for users who fork from the main The Schwarzenegger repository.
 
@@ -1090,12 +1090,12 @@ Whenever you create a pull request to the main repository for The Schwarzenegger
 - If any checks fail, click on it to view the cause of the error, and fix it in your branch before pushing it again.
 - Ensure that all checks pass before merging your pull request.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### 6.3. <a id="coverage-report">Coverage Report</a>
 We use the IntelliJ IDEA’s coverage analysis tool for coverage reporting. A tutorial on how to install and use this tool can be found [here](#https://www.youtube.com/watch?v=yNYzZvyA2ik).
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 ### 6.4. <a id="making-a-release">Making a Release</a>
 You can follow the steps below to make a new release:
 1. Generate the JAR file using Gradle by opening a terminal in the project’s root directory, and run the command:
@@ -1105,13 +1105,13 @@ You can follow the steps below to make a new release:
 1. Tag the repository with the new version number (e.g. `v2.1`).
 1. Create a new release using Github and upload the JAR file found in step 3.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 ### 6.5. <a id="managing-dependencies">Managing Dependencies</a>
 Currently, the [Gson library](#https://github.com/google/gson) is being used for JSON parsing, and the [Apache Commons Lang](#https://commons.apache.org/proper/commons-lang) for being used for string processing in The Schwarzenegger. Below are 2 ways to manage these dependencies.
 - Use Gradle to manage and automatically download dependencies (Recommended).
 - Manually download and include those libraries in the repo (this requires extra work and bloats the repo size). 
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 ## Appendices 
 ### Appendix A: Product Scope
 
@@ -1121,7 +1121,7 @@ __Target user profile__:
 * Comfortable with using command line interface.  
 * Gyms regularly
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### Appendix B: User Stories
 
@@ -1136,11 +1136,11 @@ __Target user profile__:
 |v1.0|User|Delete workout session record|I can correct accidental typos|
 |v2.0|User|
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### Appendix C: Value proposition - Use cases
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### Appendix D: Non-Functional Requirements
 
@@ -1150,13 +1150,13 @@ __Target user profile__:
 4. Should work for single user.
 5. Should be able to run without internet connection.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### Appendix E: Glossary
 
 * *Mainstream OS* - Windows, Linux, Unix, MacOS  
  
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ### Appendix F: Supported Formats of Date Input
 Here shows all 12 valid formats.
@@ -1177,4 +1177,4 @@ Here shows all 12 valid formats.
     `ddMMyyyy`
     `dd-MM-yyyy`
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>

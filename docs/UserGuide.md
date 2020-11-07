@@ -697,7 +697,7 @@ Expected outcome:
 This section shows the command you can use when you are in workout menu.
 
 Click [here](#main-workout) to learn how to enter Workout Menu.
-### 3.4.1. <a id="workout-help">Viewing Help: `help`</a>
+#### 3.4.1. <a id="workout-help">Viewing Help: `help`</a>
 You can see a complete list of available commands under Workout Menu and how to use them.
 
 __Format:__ `help`
@@ -724,7 +724,7 @@ ________________________________________________________________________________
 _________________________________________________________________________________________________
 ```
 
-### 3.4.2. <a id="workout-start">Starting a New Workout Session: `new`</a>
+#### 3.4.2. <a id="workout-start">Starting a New Workout Session: `new`</a>
 Creates a new workout session and go into the session. 
 You can add tags with “/t”. Tags are optional and more than one tag can be attached to a session.
 
@@ -856,7 +856,7 @@ Expected outcome:
      _________________________________________________________________________________________________
 ```
 
-### 3.4.3. <a id="workout-list">Listing All Past Workout Sessions: `list`</a>
+#### 3.4.3. <a id="workout-list">Listing All Past Workout Sessions: `list`</a>
 You can see all your past workout sessions. They will be summarised and printed in a table with their index, creation date and tags.
 
 You can specify start date and end date to show sessions created in a selected period using `\s` for start date and `\e` for end date. If start date is not specified, it will take the earliest date a start date. If end date is not specified, it will take today as the end date.
@@ -875,7 +875,7 @@ Expected outcome:
 	 ______________________________________________________________________________
 ```
 
-### 3.4.4. <a id="workout-edit">Editing a Workout Session: `edit`</a>
+#### 3.4.4. <a id="workout-edit">Editing a Workout Session: `edit`</a>
 You can edit a past workout session in the record list.
 
 __Format:__ `edit [INDEX]` 
@@ -897,7 +897,7 @@ Expected outcome:
 Workout Menu > Workout Session 1 >>>>> 
 ```
 
-### 3.4.5. <a id="workout-delete">Deleting a Workout Session: `delete`</a>
+#### 3.4.5. <a id="workout-delete">Deleting a Workout Session: `delete`</a>
 You can delete a past workout session in the record list.
 
 __Format:__ `delete [INDEX]` 
@@ -913,7 +913,7 @@ Expected outcome:
     You have deleted that record!
     ______________________________________________________________________________
 ```
-### 3.4.6. <a id="workout-search">Searching a List of Workout Sessions: `search`</a>
+#### 3.4.6. <a id="workout-search">Searching a List of Workout Sessions: `search`</a>
 You can search for a list of workout sessions that match certain conditions. For example, you can search for sessions created on a specific day or sessions that contain certain tags.
 
 __Format:__ `search </d [DATE]> </t [TAG]...>`
@@ -941,7 +941,7 @@ Expected outcome:
 	 ______________________________________________________________________________
 ```
 
-### 3.4.7. <a id="workout-clear">Clearing All Workout Sessions: `clear`</a>
+#### 3.4.7. <a id="workout-clear">Clearing All Workout Sessions: `clear`</a>
 You can erase all workout sessions.
 
 __Format:__ `clear`
@@ -968,7 +968,7 @@ Workout Menu >>>>> YES
 Workout Menu >>>>> 
 ```
 
-### 3.4.8. <a id="workout-end">Returning to Main Menu: `end`</a>
+#### 3.4.8. <a id="workout-end">Returning to Main Menu: `end`</a>
 
 You can return to the main menu.
 

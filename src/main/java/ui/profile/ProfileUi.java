@@ -9,6 +9,7 @@ import static profile.Constants.HEIGHT_UPPER_BOUND;
 import static profile.Constants.WEIGHT_LOWER_BOUND;
 import static profile.Constants.WEIGHT_UPPER_BOUND;
 
+//@@author tienkhoa16
 /**
  * A class that contains templates of message to show to user.
  */
@@ -33,11 +34,11 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_PROFILE_NOT_EXIST = "There's no profile to %s. "
             + "Please add a new one using \"add\" command :D";
     public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s" + LS + "By the way, %s";
-    public static final String MESSAGE_WELCOME_EXISTING_USER = "Welcome back to Schwarzenegger, %s!" + LS
+    public static final String MESSAGE_WELCOME_EXISTING_USER = "Welcome back to The Schwarzenegger, %s!" + LS
             + "How can I help you today?";
-    public static final String MESSAGE_WELCOME_NEW_USER = "Welcome new user to Schwarzenegger! :D" + LS
+    public static final String MESSAGE_WELCOME_NEW_USER = "Welcome new user to The Schwarzenegger! :D" + LS
             + "Please add your profile under Profile Menu." + LS + MESSAGE_HELP_FOR_MORE_INFO;
-    public static final String MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT = "Welcome back to Schwarzenegger!" + LS
+    public static final String MESSAGE_WELCOME_WITH_INVALID_SAVE_FORMAT = "Welcome back to The Schwarzenegger!" + LS
             + "It seems like your profile data is corrupted!" + LS
             + "Please add your profile again under Profile Menu." + LS + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String SAD_FACE = ":(  OOPS!!! ";

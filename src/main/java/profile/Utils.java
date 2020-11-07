@@ -9,8 +9,9 @@ import static profile.Constants.HEIGHT_UPPER_BOUND;
 import static profile.Constants.WEIGHT_LOWER_BOUND;
 import static profile.Constants.WEIGHT_UPPER_BOUND;
 
+//@@author tienkhoa16
 /**
- * A class containing utility methods used in Profile Menu.
+ * A class containing utility methods used in Profile Session.
  */
 public class Utils {
     /**

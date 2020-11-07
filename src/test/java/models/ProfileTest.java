@@ -11,6 +11,7 @@ import static profile.Constants.EXAMPLE_HEIGHT;
 import static profile.Constants.EXAMPLE_NAME;
 import static profile.Constants.EXAMPLE_WEIGHT;
 
+//@@author tienkhoa16
 class ProfileTest {
 
     @Test

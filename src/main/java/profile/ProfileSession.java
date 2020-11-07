@@ -84,7 +84,7 @@ public class ProfileSession {
     }
 
     /**
-     * Processes and displays parsed user input.
+     * Processes and displays command execution result to user.
      *
      * @param commParts Size 2 array; first element is the command type and second element is the arguments
      *         string.
