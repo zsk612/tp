@@ -1,6 +1,8 @@
 package logic.commands.profile;
 
 import exceptions.SchwarzeneggerException;
+import exceptions.profile.InvalidCommandFormatException;
+import exceptions.profile.SavingException;
 import models.Profile;
 import org.junit.jupiter.api.Test;
 import storage.profile.ProfileStorage;
@@ -25,7 +27,7 @@ class ProfileAddTest {
             EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
 
     @Test
-    void testExecute_inputValidArguments_noExistingProfile_returnSuccess() throws SchwarzeneggerException {
+    void testExecute_noExistingProfile_inputValidArguments_returnSuccess() throws SchwarzeneggerException {
         String commandArgs = "/n Schwarzenegger /h 188 /w 113 /e 100 /c 2500";
         Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
@@ -36,13 +38,25 @@ class ProfileAddTest {
     }
 
     @Test
-    void testExecute_inputValidArguments_hasExistingProfile_returnFailure() throws SchwarzeneggerException {
+    void testExecute_hasExistingProfile_inputValidArguments_returnFailure() throws SchwarzeneggerException {
         String commandArgs = "/n Schwarzenegger /h 188 /w 113 /e 100 /c 2500";
         Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 
         assertEquals(MESSAGE_PROFILE_EXIST, new ProfileAdd().execute(commandArgs, storage).getFeedbackMessage());
+    }
+
+    @Test
+    void testExecute_noExistingProfile_inputEmptyArguments_ValidStorage_throwsInvalidCommandFormatException()
+            throws SavingException {
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
+        storage.saveData(null);
+
+        assertThrows(InvalidCommandFormatException.class, () -> {
+            new ProfileAdd().execute(EMPTY_STRING, storage);
+        });
     }
 
     @Test
