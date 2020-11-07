@@ -9,6 +9,8 @@ public class DietSessionUi extends CommonUi {
     public static final String DIET_INPUT_PROMPT_NEW = "Diet Menu > New Diet Session";
     public static final String MESSAGE_ADD_WRONG_FORMAT = "Wrong format, please enter in the format:\n\t "
             + "add [FOOD_NAME] /c [CALORIES]";
+    public static final String MESSAGE_CLEAR_ABORTED = "You have aborted clear operation.";
+    public static final String MESSAGE_CLEAR_SUCCESS = "Alright, your food items have been cleared.";
     public static final String MESSAGE_DELETE_WRONG_FORMAT = "Wrong format, please enter in the format:\n\t "
             + "delete [INDEX]";
     public static final String MESSAGE_HIGH_CALORIES = "Your calories for this food item seems a little high, "
@@ -17,6 +19,7 @@ public class DietSessionUi extends CommonUi {
     public static final String MESSAGE_NO_FOOD = "Sorry, there is nothing in your food list.";
     public static final String MESSAGE_NO_FOOD_NAME = "Please enter food name!";
     public static final String MESSAGE_NO_SUCH_INDEX = "Sorry, there is no food item at that index.";
+    public static final String MESSAGE_SEARCH_PROMPT = "Here are the search results: \n\t ";
     public static final String MESSAGE_WRONG_CALORIES = "Please input a number for calories.";
 
     public static void printHelp() {

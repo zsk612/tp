@@ -43,9 +43,6 @@ public class FoodItemAdd extends Command {
             userOutput.append("Yay! You have added " + temp.toString());
             result = userOutput.toString();
             logger.log(Level.INFO, "Added food to arraylist");
-        } catch (IndexOutOfBoundsException e) {
-            result = DietSessionUi.MESSAGE_ADD_WRONG_FORMAT;
-            logger.log(Level.WARNING, "Did not put food name or calories");
         } catch (NumberFormatException e) {
             result = DietSessionUi.MESSAGE_WRONG_CALORIES;
             logger.log(Level.WARNING, "Put calories in a wrong format");
