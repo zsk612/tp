@@ -27,7 +27,7 @@ class ProfileAddTest {
             EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
 
     @Test
-    void testExecute_noExistingProfile_inputValidArguments_returnSuccess() throws SchwarzeneggerException {
+    void testExecute_noExistingProfile_inputValidArguments_ValidStorage_returnSuccess() throws SchwarzeneggerException {
         String commandArgs = "/n Schwarzenegger /h 188 /w 113 /e 100 /c 2500";
         Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
@@ -38,7 +38,8 @@ class ProfileAddTest {
     }
 
     @Test
-    void testExecute_hasExistingProfile_inputValidArguments_returnFailure() throws SchwarzeneggerException {
+    void testExecute_hasExistingProfile_inputValidArguments_ValidStorage_returnFailure()
+            throws SchwarzeneggerException {
         String commandArgs = "/n Schwarzenegger /h 188 /w 113 /e 100 /c 2500";
         Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
