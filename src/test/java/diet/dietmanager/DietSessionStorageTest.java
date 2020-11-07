@@ -15,12 +15,24 @@ public class DietSessionStorageTest {
 
     private static final String TEST_SAVES_FOLDER_DIET = "src/test/java/diet/dietmanager/saves/";
     private static final String TEST_SAVE_NAME = "2020-05-04 breakfast";
+    private static final String TEST_CORRUPTED_FILE = "2020-05-05 breakfast";
 
     /**
      * Tests readDietSession method of class DietStorage when data from file is read.
      */
     @Test
     void testReadDietSession_exampleDietData_returnsDietSessionInstance() {
+        DietStorage storage = new DietStorage();
+        DietSession loadedInstance = null;
+        loadedInstance = storage.readDietSession(TEST_SAVES_FOLDER_DIET, "2020-11-05 breakfast.json");
+        assertNotNull(loadedInstance);
+    }
+
+    /**
+     * Tests readDietSession method of class DietStorage when data from file is read.
+     */
+    @Test
+    void testReadDietSession_exampleDietData_throws() {
         DietStorage storage = new DietStorage();
         DietSession loadedInstance = null;
         loadedInstance = storage.readDietSession(TEST_SAVES_FOLDER_DIET, "2020-11-05 breakfast.json");
