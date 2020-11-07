@@ -1,10 +1,10 @@
 package logic.commands.profile;
 
+import exceptions.SchwarzeneggerException;
+import exceptions.profile.InvalidSaveFormatException;
 import logic.commands.Command;
 import logic.commands.CommandResult;
 import logic.commands.ExecutionResult;
-import exceptions.SchwarzeneggerException;
-import exceptions.profile.InvalidSaveFormatException;
 import models.Profile;
 import storage.profile.ProfileStorage;
 
@@ -15,6 +15,7 @@ import static ui.profile.ProfileUi.MESSAGE_DELETE_PROFILE;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
 //@@author tienkhoa16
+
 /**
  * A representation of the command for deleting user profile.
  */
@@ -30,6 +31,9 @@ public class ProfileDelete extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
+        assert commandArgs != null : "command args cannot be null";
+        assert storage != null : "profile storage cannot be null";
+
         super.execute(commandArgs, storage);
 
         if (!commandArgs.isEmpty()) {
