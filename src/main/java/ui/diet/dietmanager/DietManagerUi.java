@@ -23,4 +23,5 @@ public class DietManagerUi extends CommonUi {
     public static String CLEAR_RECORD = "clear all records";
     public static String DIET_CLEAR_MSG = "diet sessions have";
     public static String DIET_NOTHING_TO_CLEAR_MSG = "Sorry, there is no diet session to be cleared!";
+    public static String DIET_FILE_CORRUPTED_MSG = "File Corrupted... Returning to Diet Menu...";
 }

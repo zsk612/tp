@@ -85,7 +85,7 @@ public class DietStorage {
             System.out.println("There seems to be no file");
         } catch (IOException e) {
             e.printStackTrace();
-            logger.log(Level.WARNING, "");
+            logger.log(Level.WARNING, "Could not read diet session");
         }
         return dietSession;
     }

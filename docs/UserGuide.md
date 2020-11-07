@@ -223,15 +223,15 @@ Expected outcome:
 
 ```
     _________________________________________________________________________________________________
-    Add      - add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]
+    Add      add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]
              Add your new profile
-    View     - view
+    View     view
              View your profile
-    Edit     - edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>
+    Edit     edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>
              Edit your existing profile. You may edit from 1 field to all fields
-    Delete   - delete
+    Delete   delete
              Delete your existing profile
-    End      - end
+    End      end
              Go back to Main Menu
     _________________________________________________________________________________________________
 ```
@@ -389,19 +389,19 @@ Expected outcome:
 
 ```
      _________________________________________________________________________________________________
-     New      - new </d [DATE]> </t [TAG]>
+     New      new </d [DATE]> </t [TAG]>
               Create a new diet session
-     List     - list
+     List     list
               Show all past diet sessions
-     Delete   - delete [INDEX]
+     Delete   delete [INDEX]
               Delete the diet session at the input index
-     Edit     - edit [INDEX]
+     Edit     edit [INDEX]
               Edit the diet session at the input index
-     Search   - search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>
+     Search   search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>
               Search the diet session in between starting and end dates with a specific tag
-     Clear    - clear
+     Clear    clear
               Clear all past diet sessions
-     End      - end
+     End      end
               Go back to Main Menu
      _________________________________________________________________________________________________
 ```
@@ -707,19 +707,19 @@ Example: `help`
 Expected outcome:
 ```
 _________________________________________________________________________________________________
-	 New      - new </t [TAG]...>
+	 New      new </t [TAG]...>
 	          Create a new workout session and tags. Multiple tags are separated by ','.
-	 List     - list </s [START_DATE]> </e [END_DATE]>
+	 List     list </s [START_DATE]> </e [END_DATE]>
 	          Show all past sessions. Can display sessions between a certain period
-	 Delete   - delete [INDEX]
+	 Delete   delete [INDEX]
 	          Delete the record indexed at x
-	 Edit     - edit [INDEX]
+	 Edit     edit [INDEX]
 	          Edit the record indexed at x
-	 Clear    - clear
+	 Clear    clear
 	          Clear all past results
-	 Search   - search </t [TAG]...> </d [DATE]>
+	 Search   search </t [TAG]...> </d [DATE]>
 	          Search records based on tags and dates. Multiple tags are seperated by ','.
-	 End      - end
+	 End      end
 	          Go back to Main Menu
 _________________________________________________________________________________________________
 ```
@@ -761,15 +761,15 @@ Expected outcome:
 
 ```
      _________________________________________________________________________________________________
-     Add      - add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]
+     Add      add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]
               Add a new move.
-     List     - list
+     List     list
               Show all moves in this current session.
-     Delete   - delete [INDEX]
+     Delete   delete [INDEX]
               Delete a move according to the index in the list.
-     Search   - search [NAME_OF_MOVE]
+     Search   search [NAME_OF_MOVE]
               Show a list of moves that match the entered keyword.
-     End      - end
+     End      end
               Go back to the Workout Menu.
      _________________________________________________________________________________________________
 ```

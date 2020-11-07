@@ -22,8 +22,7 @@ public class DietSessionUi extends CommonUi {
     public static final String MESSAGE_SEARCH_PROMPT = "Here are the search results: \n\t ";
     public static final String MESSAGE_WRONG_CALORIES = "Please input a number for calories.";
 
-    public static void printHelp() {
-        StringBuilder helpMessage = new StringBuilder();
+    public static void printHelp(StringBuilder helpMessage) {
 
         helpMessage.append(helpFormatter("Add", "add [FOOD_NAME] /c [CALORIES]",
                 "Add a new food item"));
@@ -37,7 +36,6 @@ public class DietSessionUi extends CommonUi {
                 "Clear all food items"));
         helpMessage.append(helpFormatter("End", "end",
                 "Go back to the Diet Menu."));
-        showUser(helpMessage.toString().trim());
     }
 
     public void printOpening() {

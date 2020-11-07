@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.diet.dietmanager.DietManagerUi.DIET_EDIT_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_ARRAY_OUT_OF_BOUND;
+import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_CORRUPTED_MSG;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 
 //@@author CFZeon
@@ -36,7 +37,7 @@ public class DietSessionEdit extends Command {
             ds.start(false, Integer.parseInt(input));
             logger.log(Level.INFO, "Diet session in edit mode");
             result = DIET_NEW_SUCCESS;
-        } catch (NullPointerException | FileNotFoundException
+        } catch (FileNotFoundException
                 | NumberFormatException e) {
             result = DIET_EDIT_WRONG_FORMAT;
             logger.log(Level.WARNING, "No file found at array index");
@@ -44,6 +45,9 @@ public class DietSessionEdit extends Command {
             logger.log(Level.WARNING, "failed to execute diet session");
         } catch (IndexOutOfBoundsException e) {
             result = DIET_FILE_ARRAY_OUT_OF_BOUND;
+        } catch (NullPointerException e) {
+            logger.log(Level.WARNING, "File might be corrupted");
+            result = DIET_FILE_CORRUPTED_MSG;
         }
         return new CommandResult(result);
     }
