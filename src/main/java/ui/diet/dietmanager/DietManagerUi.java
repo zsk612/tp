@@ -19,4 +19,8 @@ public class DietManagerUi extends CommonUi {
     public static String DIET_SEARCH_RESULTS_MESSAGE = "Here are the search results!";
     public static String DIET_SEARCH_EMPTY_TAG = "Tag is empty, "
             + "all the sessions within input dates will be shown.";
+    public static String DIET_MENU_NAME = "Diet Menu";
+    public static String CLEAR_RECORD = "clear all records";
+    public static String DIET_CLEAR_MSG = "diet sessions have";
+    public static String DIET_NOTHING_TO_CLEAR_MSG = "Sorry, there is no diet session to be cleared!";
 }

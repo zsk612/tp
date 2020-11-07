@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static seedu.duke.Constant.COMMAND_WORD_END;
+import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 
 //@@author CFZeon
 public class DietManager {
@@ -103,7 +104,7 @@ public class DietManager {
         try {
             // if date is same as today, add to todayTotalCalories
             for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++) {
-                DietSession ds = storage.readDietSession(listOfFiles[i].getName());
+                DietSession ds = storage.readDietSession(PATH_TO_DIET_FOLDER, listOfFiles[i].getName());
                 if (ds.getDate().equals(java.time.LocalDate.now())) {
                     todayTotalCalories += ds.getTotalCalories();
                 }

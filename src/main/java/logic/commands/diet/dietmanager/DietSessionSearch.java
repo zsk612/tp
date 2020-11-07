@@ -139,7 +139,7 @@ public class DietSessionSearch extends Command {
                        String listDescriptionFormat, int numberOfResult) throws InvalidDateFormatException {
         for (int i = 0; i < fileArrayList.size(); i++) {
             //instantiates stored diet session to get total calorie count
-            DietSession ds = storage.readDietSession(listOfFiles[i].getName());
+            DietSession ds = storage.readDietSession(PATH_TO_DIET_FOLDER, listOfFiles[i].getName());
             double totalCalories = ds.getTotalCalories();
             //extract tags and dates and assigns to string from filename
             String fileTag = getFileTag(fileArrayList, i);
