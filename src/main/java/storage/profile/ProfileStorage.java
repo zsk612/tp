@@ -28,6 +28,7 @@ import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
 import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
 
 //@@author tienkhoa16
+
 /**
  * A class that saves and loads user profile data on local hard disk.
  */
@@ -86,7 +87,7 @@ public class ProfileStorage {
             JsonReader reader = new JsonReader(new FileReader(file.getPath()));
             Profile profile = gson.fromJson(reader, profileType);
 
-            if (profile == null || !Utils.checkValidProfile(profile)) {
+            if (!Utils.checkValidProfile(profile)) {
                 logger.log(Level.WARNING, "processing invalid profile data");
                 throw new InvalidSaveFormatException(filePath);
             }
