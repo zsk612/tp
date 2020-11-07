@@ -29,8 +29,6 @@ public class Constants {
     public static final String PROFILE_STRING_REPRESENTATION = "\tName: %s" + LS
             + "\tHeight: %d cm" + LS + "\tWeight: %.1f kg" + LS + "\tExpected Weight: %.1f kg"
             + LS + "\tExpected daily calorie intake: %.1f calories" + LS + "\tYour BMI: %s";
-    public static final String EXAMPLE_PROFILE_STRING = String.format(PROFILE_STRING_REPRESENTATION, EXAMPLE_NAME,
-            EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES, EXAMPLE_BMI);
     public static final double WEIGHT_LOWER_BOUND = 2.1;
     public static final double WEIGHT_UPPER_BOUND = 635;
     public static final double CALORIES_UPPER_BOUND = 200000;

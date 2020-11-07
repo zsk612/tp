@@ -34,12 +34,16 @@ import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
 public class ProfileStorage {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private Gson gson;
+    private Path pathToProfileFolder;
+    private Path pathToProfileFile;
 
     /**
      * Constructs Storage object.
      */
-    public ProfileStorage() {
+    public ProfileStorage(Path pathToProfileFolder, Path pathToProfileFile) {
         gson = new GsonBuilder().setPrettyPrinting().create();
+        this.pathToProfileFolder = pathToProfileFolder;
+        this.pathToProfileFile = pathToProfileFile;
     }
 
     /**
@@ -52,18 +56,18 @@ public class ProfileStorage {
     public Profile loadData() throws LoadingException, InvalidSaveFormatException {
         Profile profile = null;
 
-        if (Files.exists(PATH_TO_PROFILE_FOLDER)) {
+        if (Files.exists(pathToProfileFolder)) {
             try {
                 logger.log(Level.INFO, "starting to decode profile data");
-                profile = decodeProfile(PATH_TO_PROFILE_FILE.toString());
+                profile = decodeProfile();
                 assert profile != null : "profile should not be null";
                 logger.log(Level.INFO, "finishing profile data decoding");
             } catch (FileNotFoundException e) {
-                createDataFile(PATH_TO_PROFILE_FILE);
+                createDataFile();
             }
         } else {
-            createDataFolder(PATH_TO_PROFILE_FOLDER);
-            createDataFile(PATH_TO_PROFILE_FILE);
+            createDataFolder();
+            createDataFile();
         }
 
         return profile;
@@ -72,42 +76,40 @@ public class ProfileStorage {
     /**
      * Decodes user profile save data to a profile object.
      *
-     * @param filePath Path to data file.
      * @return Profile object.
      * @throws InvalidSaveFormatException If the saving format is invalid.
      * @throws FileNotFoundException If data file is not found.
      */
-    public Profile decodeProfile(String filePath) throws InvalidSaveFormatException, FileNotFoundException {
+    public Profile decodeProfile() throws InvalidSaveFormatException, FileNotFoundException {
         try {
             logger.log(Level.INFO, "decoding profile data");
             Type profileType = new TypeToken<Profile>() {
             }.getType();
-            File file = new File(filePath);
+            File file = new File(pathToProfileFile.toString());
             JsonReader reader = new JsonReader(new FileReader(file.getPath()));
             Profile profile = gson.fromJson(reader, profileType);
 
-            if (profile == null || !Utils.checkValidProfile(profile)) {
+            if (!Utils.checkValidProfile(profile)) {
                 logger.log(Level.WARNING, "processing invalid profile data");
-                throw new InvalidSaveFormatException(filePath);
+                throw new InvalidSaveFormatException(pathToProfileFile.toString());
             }
 
             return profile;
         } catch (JsonSyntaxException e) {
             logger.log(Level.WARNING, "processing invalid syntax in data file", e);
-            throw new InvalidSaveFormatException(filePath);
+            throw new InvalidSaveFormatException(pathToProfileFile.toString());
         }
     }
 
     /**
      * Creates data file.
      *
-     * @param pathToDataFile Path to data file.
      * @throws LoadingException If there are failed or interrupted I/O operations.
      */
-    private void createDataFile(Path pathToDataFile) throws LoadingException {
+    public void createDataFile() throws LoadingException {
         try {
-            Files.createFile(pathToDataFile);
-            logger.log(Level.INFO, "created data/profile/profile.txt");
+            Files.createFile(pathToProfileFile);
+            logger.log(Level.INFO, "created saves/profile/profile.txt");
         } catch (IOException e) {
             throw new LoadingException(e.getMessage());
         }
@@ -116,13 +118,12 @@ public class ProfileStorage {
     /**
      * Creates data folder.
      *
-     * @param pathToDataFolder Path to data folder.
      * @throws LoadingException If there are failed or interrupted I/O operations.
      */
-    private void createDataFolder(Path pathToDataFolder) throws LoadingException {
+    public void createDataFolder() throws LoadingException {
         try {
-            Files.createDirectories(pathToDataFolder);
-            logger.log(Level.INFO, "created data/profile");
+            Files.createDirectories(pathToProfileFolder);
+            logger.log(Level.INFO, "created saves/profile");
         } catch (IOException e) {
             throw new LoadingException(e.getMessage());
         }
@@ -137,7 +138,7 @@ public class ProfileStorage {
     public void saveData(Profile profile) throws SavingException {
         try {
             logger.log(Level.INFO, "starting to save profile data");
-            FileWriter fw = new FileWriter(PATH_TO_PROFILE_FILE.toString());
+            FileWriter fw = new FileWriter(pathToProfileFile.toString());
 
             if (profile == null) {
                 fw.write(EMPTY_STRING);

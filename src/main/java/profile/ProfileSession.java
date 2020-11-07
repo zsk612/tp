@@ -1,12 +1,12 @@
 package profile;
 
-import logic.commands.Command;
-import logic.commands.CommandLib;
-import logic.commands.CommandResult;
 import exceptions.EndException;
 import exceptions.ExceptionHandler;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
+import logic.commands.Command;
+import logic.commands.CommandLib;
+import logic.commands.CommandResult;
 import logic.parser.CommonParser;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
@@ -16,6 +16,8 @@ import java.util.logging.Logger;
 
 import static profile.Constants.COMMAND_ARGS_INDEX;
 import static profile.Constants.COMMAND_TYPE_INDEX;
+import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
+import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
 
 /**
  * A class that is responsible for interacting with user in Profile Session.
@@ -33,7 +35,7 @@ public class ProfileSession {
     public ProfileSession() {
         logger.log(Level.INFO, "initialising ProfileSession object");
         ui = new CommonUi();
-        storage = new ProfileStorage();
+        storage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
         parser = new CommonParser();
         cl = new CommandLib();
         cl.initProfileSessionCL();
