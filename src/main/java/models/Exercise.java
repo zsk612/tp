@@ -1,35 +1,36 @@
 package models;
 
+//@@author yujinyang1998
 public class Exercise {
 
-    private final String moveName;
-    private final int repetitions;
-    private final double weight;
+    private final String MOVE_NAME;
+    private final int REPETITIONS;
+    private final double WEIGHT;
 
-    public Exercise(String moveName, int repetitions, double weight) {
+    public Exercise(String MOVE_NAME, int REPETITIONS, double WEIGHT) {
 
-        this.moveName = moveName;
-        this.repetitions = repetitions;
-        this.weight = weight;
+        this.MOVE_NAME = MOVE_NAME;
+        this.REPETITIONS = REPETITIONS;
+        this.WEIGHT = WEIGHT;
     }
 
     @Override
     public String toString() {
 
-        return moveName
-                + ", Repetitions:" + repetitions
-                + ", Weight=" + weight;
+        return MOVE_NAME
+                + ", Repetitions:" + REPETITIONS
+                + ", Weight=" + WEIGHT;
     }
 
     public String getDescription() {
-        return moveName;
+        return MOVE_NAME;
     }
 
     public String getRepetitions() {
-        return Integer.toString(repetitions);
+        return Integer.toString(REPETITIONS);
     }
 
     public String getWeight() {
-        return Double.toString(weight);
+        return Double.toString(WEIGHT);
     }
 }

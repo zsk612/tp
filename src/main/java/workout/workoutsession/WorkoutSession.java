@@ -6,6 +6,7 @@ import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
 import logger.SchwarzeneggerLogger;
 import logic.commands.CommandResult;
+import logic.parser.WorkoutSessionParser;
 import storage.workout.WorkoutSessionStorage;
 import ui.CommonUi;
 import ui.workout.workoutsession.WorkoutSessionUi;
@@ -15,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//@@author yujinyang1998
 public class WorkoutSession {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private String filePath = null;
@@ -50,7 +52,7 @@ public class WorkoutSession {
         setEndWorkoutSessionF();
         logger.log(Level.INFO, "starting workout session");
         this.cl = new CommandLib();
-        cl.initWorkoutSessionCL();
+        cl.initWorkoutSessionCl();
 
         try {
             workoutSessionStorage.readFileContents(filePath, exerciseList);

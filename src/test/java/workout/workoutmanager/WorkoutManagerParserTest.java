@@ -13,11 +13,11 @@ import java.util.function.Predicate;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static workout.workoutmanager.WorkoutManagerParser.parseCommandKw;
-import static workout.workoutmanager.WorkoutManagerParser.parseIndex;
-import static workout.workoutmanager.WorkoutManagerParser.parseList;
-import static workout.workoutmanager.WorkoutManagerParser.parseSearchConditions;
-import static workout.workoutmanager.WorkoutManagerParser.parseTags;
+import static logic.parser.WorkoutManagerParser.parseCommandKw;
+import static logic.parser.WorkoutManagerParser.parseIndex;
+import static logic.parser.WorkoutManagerParser.parseList;
+import static logic.parser.WorkoutManagerParser.parseSearchConditions;
+import static logic.parser.WorkoutManagerParser.parseTags;
 
 class WorkoutManagerParserTest {
 

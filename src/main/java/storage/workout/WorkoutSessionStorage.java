@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+//@@author yujinyang1998
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
  */

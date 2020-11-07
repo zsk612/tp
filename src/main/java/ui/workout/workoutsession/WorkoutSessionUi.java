@@ -4,6 +4,7 @@ import models.Exercise;
 import ui.CommonUi;
 
 
+//@@author yujinyang1998
 public class WorkoutSessionUi extends CommonUi {
     public static final String PRINT_ERROR = "File not found, re-creating file.";
     public static final String ADD_FORMAT_ERROR = "Wrong format, please enter in the format:\n\t "

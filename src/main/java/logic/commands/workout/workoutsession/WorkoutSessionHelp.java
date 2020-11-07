@@ -6,7 +6,7 @@ import storage.workout.WorkoutSessionStorage;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import models.ExerciseList;
 
-
+//@@author yujinyang1998
 public class WorkoutSessionHelp extends Command {
     @Override
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,

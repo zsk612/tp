@@ -1,12 +1,9 @@
 package diet.dietsession;
 
-import diet.dietsession.DietSessionParser;
+import logic.parser.DietSessionParser;
 import exceptions.diet.NegativeCaloriesException;
 import exceptions.diet.NoNameException;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

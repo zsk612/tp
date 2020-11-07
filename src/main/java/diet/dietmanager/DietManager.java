@@ -11,6 +11,7 @@ import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
 import logic.commands.CommandResult;
+import logic.parser.DietManagerParser;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
@@ -21,7 +22,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static seedu.duke.Constant.COMMAND_WORD_END;
-import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 
 //@@author CFZeon
 public class DietManager {
@@ -38,7 +38,7 @@ public class DietManager {
     public DietManager() {
         storage = new DietStorage();
         cl = new CommandLib();
-        cl.initDietManagerCL();
+        cl.initDietManagerCl();
         parser = new DietManagerParser();
         dietManagerUi = new DietManagerUi();
     }

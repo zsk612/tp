@@ -6,12 +6,12 @@ import logic.commands.CommandResult;
 import models.Exercise;
 import storage.workout.WorkoutSessionStorage;
 import ui.workout.workoutsession.WorkoutSessionUi;
-import workout.workoutsession.WorkoutSessionParser;
+import logic.parser.WorkoutSessionParser;
 import models.ExerciseList;
 
 import java.io.IOException;
 
-
+//@@author yujinyang1998
 public class WorkoutSessionAdd extends Command {
 
     @Override

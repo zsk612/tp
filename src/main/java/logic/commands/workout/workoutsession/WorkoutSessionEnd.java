@@ -8,6 +8,7 @@ import models.ExerciseList;
 
 import java.io.IOException;
 
+//@@author yujinyang1998
 public class WorkoutSessionEnd extends Command {
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
                                  String filePath, WorkoutSessionStorage workoutSessionStorage,

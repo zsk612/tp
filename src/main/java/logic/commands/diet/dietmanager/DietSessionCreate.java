@@ -1,7 +1,7 @@
 package logic.commands.diet.dietmanager;
 
 
-import diet.dietmanager.DietManagerParser;
+import logic.parser.DietManagerParser;
 import diet.dietsession.DietSession;
 import exceptions.InvalidDateFormatException;
 import exceptions.profile.InvalidCommandFormatException;

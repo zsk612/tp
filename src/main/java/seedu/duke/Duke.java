@@ -36,7 +36,7 @@ public class Duke {
     private Duke() {
         logger = SchwarzeneggerLogger.getInstanceLogger();
         cl = new CommandLib();
-        cl.initMainMenu();
+        cl.initMainMenuCl();
         ui = new CommonUi();
         parser = new CommonParser();
     }
