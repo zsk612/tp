@@ -20,12 +20,8 @@ import java.util.ArrayList;
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
  */
-public class Storage {
-
-    private static final String FILEPATH = "./saves/workout";
+public class WorkoutSessionStorage {
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    private static File file = null;
-
 
     /**
      * Write the content in TaskList to a local file.
@@ -34,6 +30,7 @@ public class Storage {
      * @throws IOException If director or file cannot be created.
      */
     public void writeToStorage(String filePath, ExerciseList exerciseList) throws IOException {
+        assert (filePath != null && exerciseList != null) : "File corrupted";
         File file = new File(filePath);
         FileWriter writer = new FileWriter(file.getPath());
         gson.toJson(exerciseList.exerciseList, writer);
@@ -42,6 +39,7 @@ public class Storage {
     }
 
     public void readFileContents(String filePath, ExerciseList exerciseList) throws FileNotFoundException {
+        assert (filePath != null && exerciseList != null) : "File corrupted";
         File file = new File(filePath);
 
         Type taskListType = new TypeToken<ArrayList<Exercise>>() {

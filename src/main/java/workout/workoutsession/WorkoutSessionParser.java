@@ -7,6 +7,7 @@ import models.Exercise;
 
 import java.util.Arrays;
 
+
 public class WorkoutSessionParser {
 
     public static String[] workoutSessionParser(String input) {
@@ -16,9 +17,7 @@ public class WorkoutSessionParser {
 
     public static Exercise addParser(String[] input) throws NumberFormatException, AddFormatException {
         String[] returnString = new String[4];
-        for (int i = 0; i < returnString.length; i++) {
-            returnString[i] = "";
-        }
+        Arrays.fill(returnString, "");
         int tracker = 0;
         for (String s : input) {
             if (s.compareTo("/n") == 0) {
@@ -34,19 +33,18 @@ public class WorkoutSessionParser {
             }
         }
         int repetitions = Integer.parseInt(returnString[2]);
-        int weight = Integer.parseInt(returnString[3]);
+        double weight = Double.parseDouble(returnString[3]);
         String description = returnString[1].trim();
         if (repetitions < 0 || weight < 0 || description.length() <= 0) {
             throw new AddFormatException();
         }
-        Exercise exercise = new Exercise(description, repetitions, weight);
 
-        return exercise;
+        return new Exercise(description, repetitions, weight);
     }
 
 
     public static int deleteParser(String[] input) throws DeleteFormatException {
-        int returnInt = 0;
+        int returnInt;
         try {
             returnInt = Integer.parseInt(input[1]);
         } catch (NumberFormatException e) {
@@ -56,10 +54,10 @@ public class WorkoutSessionParser {
     }
 
     public static String searchParser(String[] input) {
-        String returnString = new String();
+        StringBuilder returnString = new StringBuilder();
         for (int i = 1; i < input.length; i++) {
-            returnString += " " + input[i];
+            returnString.append(" ").append(input[i]);
         }
-        return returnString.trim();
+        return returnString.toString().trim();
     }
 }

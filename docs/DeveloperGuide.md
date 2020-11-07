@@ -17,7 +17,7 @@ By: `CS2113T-F11-1` Since: `2020`
 3.2. [Ui Component](#ui-component)<br>
 3.3. [Logic Component](#logic-component)<br>
 3.4. [Model Component](#model-component)<br>
-3.5. [Storage Component](#storage-component)<br>
+3.5. [Storage Component](#workoutSessionStorage-component)<br>
 3.6. [Common Classes](#common-classes)<br>
 4. [**Implementation**](#implementation)<br>
 4.1. [Main Menu-related Features](#main-menu-related-features)<br>
@@ -56,10 +56,10 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing workout session](#443-editing-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a workout session](#444-deleting-a-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.5. [Searching based on conditions](#445-searching-based-on-conditions)<br>
-4.5. [Storage](#storage)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.5.1. [Storage for Profile](#storage-for-profile)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Storage for Diet](#storage-for-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.5.3. [Storage for Workout](#storage-for-workout)<br>
+4.5. [Storage](#workoutSessionStorage)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.5.1. [Storage for Profile](#workoutSessionStorage-for-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Storage for Diet](#workoutSessionStorage-for-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.5.3. [Storage for Workout](#workoutSessionStorage-for-workout)<br>
 4.6. [Logging](#logging)<br>
 5. [**Testing**](#testing)<br>
 5.1. [Running Tests](#running-tests)<br>
@@ -169,7 +169,7 @@ The Model component contains `Profile`, `DietManager`,
 
 <a href="#top">&#8593; Return to Top</a>
 
-### 3.5. <a id="storage-component">Storage Component</a>
+### 3.5. <a id="workoutSessionStorage-component">Storage Component</a>
 
 ![Storage Class Diagram](images/Storage.png)
 
@@ -177,15 +177,15 @@ Profiles, Diet sessions and Workout sessions are stored in separate folders.
 
 The Storage package contains subpackages for profile, diet manager and workout manager.
 
-The readDietSession() method in storage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past diet session.
-readPastRecords() and readFileContents() methods in storage.workout package are used for loading saved workout managers and workout sessions respectively. It is called when the user accesses the workout manager.
-loadData() from storage.profile is used to load user profile data and is called when the program starts up. 
+The readDietSession() method in workoutSessionStorage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past diet session.
+readPastRecords() and readFileContents() methods in workoutSessionStorage.workout package are used for loading saved workout managers and workout sessions respectively. It is called when the user accesses the workout manager.
+loadData() from workoutSessionStorage.profile is used to load user profile data and is called when the program starts up. 
 
-The writeToStorageDietSession() method in storage.diet package saves the diet session and is called when the user exits it.
-writePastRecords() and writeToStorage() methods in storage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
+The writeToStorageDietSession() method in workoutSessionStorage.diet package saves the diet session and is called when the user exits it.
+writePastRecords() and writeToStorage() methods in workoutSessionStorage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
 
-The saveData() method in storage.profile is called after the user creates the user profile or edits it.
-readData() is storage.profile is called when duke starts up.
+The saveData() method in workoutSessionStorage.profile is called after the user creates the user profile or edits it.
+readData() is workoutSessionStorage.profile is called when duke starts up.
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -592,7 +592,7 @@ When the user types `edit [INDEX_OF_SESSION]` the following sequence occurs.
     1. A `DietSessionEdit()` command class instantiation is created and the execute() method is called.
     
 3. Executing Command
-    1. This will call `readDietSession()` from `storage.diet.DietStorage` and it reads the file stored at `saves/diet`.
+    1. This will call `readDietSession()` from `workoutSessionStorage.diet.DietStorage` and it reads the file stored at `saves/diet`.
     1. The `start()` method is then called in the diet session, starting a diet session instance.
     
 4. After Execution
@@ -856,7 +856,7 @@ actions are called.
      1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `EditWS`.
 1. Executing Command
     1. `WorkoutManager` calls `EditWS.execute()` with the rest of parsed input.
-    3. `EditWS` calls `PastRecordList.edit()` to locate the file. If the does not exist, the action is aborted. Else, `PastRecordList` updates the meta information of the file and write to local storage. The file path will be returned.
+    3. `EditWS` calls `PastRecordList.edit()` to locate the file. If the does not exist, the action is aborted. Else, `PastRecordList` updates the meta information of the file and write to local workoutSessionStorage. The file path will be returned.
     4. `EditWS` creates a new `WorkoutSession` Object with the file path. `WorkoutSession` is initilised by loading the data in the file.
     5.  `EditWS` calls `workoutSession.workoutSessionStart()` so that user start editing this session.
     6. After user exits this workout, `WorkoutManager` returns a `CommandResult`.
@@ -868,7 +868,7 @@ The following sequence diagram shows how the new command works
 The sequence diagram below summarizes how editting past record works:
 ![Load Data Sequence Diagram](pictures/zesong/EditWS.png)
 **Design considerations**
-Past record storage and model design:  
+Past record workoutSessionStorage and model design:  
 
 - **Alternative 1 (current choice):** store past workout sessions in different files and their meta information in a separate file
 
@@ -901,7 +901,7 @@ and WorkoutStorage class will be accessed and the following sequence of actions 
      or `clearWS`.
 1. Executing Command
     1. `WorkoutManager` calls `DeleteWS.execute()` with the rest of parsed input.
-    3. `DeleteWS` calls `PastRecorList.delete()` to locate the file. If the does not exist, the action is aborted. Else, `PastRecorList` remove the meta information of the file and delete the local storage file.
+    3. `DeleteWS` calls `PastRecorList.delete()` to locate the file. If the does not exist, the action is aborted. Else, `PastRecorList` remove the meta information of the file and delete the local workoutSessionStorage file.
     6. After user exits this workout, `WorkoutManager` returns a `CommandResult`.
 1. Based on `CommandResult`, correct response will be printed to user.
 
@@ -975,20 +975,20 @@ in the meta info file.
 
 <a href="#top">&#8593; Return to Top</a>
 
-### 4.5. <a id="storage">Storage</a>
+### 4.5. <a id="workoutSessionStorage">Storage</a>
 Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called `/saves` which is in the same directory as the project root.
 
-#### 4.5.1. <a id="storage-for-profile">Storage for Profile</a>
+#### 4.5.1. <a id="workoutSessionStorage-for-profile">Storage for Profile</a>
 
 Storage for profile saves user profile created as `profile.json` in the `/saves/profile` directory. Profile data file is created as follows:
 - `profile.json` is updated in the local hard disk after the user adds/ edits a profile by calling `ProfileAdd.execute()`/ `ProfileEdit.execute()`.
 - `profile.json` content will be cleared after the user deletes a profile by calling `ProfileDelete.execute()`.
 
 **Implementation**
-Profile storage handles reading of file data by calling `loadData()` and overwriting of file data by calling `saveData()`.
+Profile workoutSessionStorage handles reading of file data by calling `loadData()` and overwriting of file data by calling `saveData()`.
 
 <a href="#top">&#8593; Return to Top</a>
-#### 4.5.2. <a id="storage-for-diet">Storage for Diet</a>
+#### 4.5.2. <a id="workoutSessionStorage-for-diet">Storage for Diet</a>
 
 Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
 - Each file is created as a json file and named as `[DATE] [TAG].json`.
@@ -999,7 +999,7 @@ Storage for diet saves diet sessions created as individual files sorted based on
 Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
 
 <a href="#top">&#8593; Return to Top</a>
-#### 4.5.3. <a id="storage-for-workout">Storage for Workout</a>
+#### 4.5.3. <a id="workoutSessionStorage-for-workout">Storage for Workout</a>
 
 Storage for workout saves workout sessions created as individual files named based on the time created in `/saves/workout` directory. The metainformation of the files such as createion date and last edit date is saved in  `/saves/workout/history.json`.
 
@@ -1062,7 +1062,7 @@ We have use types of tests:
 e.g. profile.UtilsTest
 
 1. Integration tests that are checking the integration of multiple code units (those code units are assumed to be working).
-e.g. storage.profile.ProfileStorageTest
+e.g. workoutSessionStorage.profile.ProfileStorageTest
 
 1. Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.
 e.g. logic.LogicManagerTest

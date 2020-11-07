@@ -2,7 +2,7 @@ package logic.commands.workout.workoutsession;
 
 import logic.commands.Command;
 import logic.commands.CommandResult;
-import storage.workout.Storage;
+import storage.workout.WorkoutSessionStorage;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import models.Exercise;
 import models.ExerciseList;
@@ -18,11 +18,14 @@ public class WorkoutSessionList extends Command {
 
     @Override
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
-                                 String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+                                 String filePath, WorkoutSessionStorage workoutSessionStorage,
+                                 boolean[] hasEndedWorkoutSessions) {
+        assert (inputs != null && exerciseList != null && filePath != null
+                && workoutSessionStorage != null && hasEndedWorkoutSessions != null) : "File Corrupted";
         String result = "";
         try {
             result = printList(exerciseList.exerciseList);
-            storage.writeToStorage(filePath, exerciseList);
+            workoutSessionStorage.writeToStorage(filePath, exerciseList);
         } catch (IOException e) {
             return new CommandResult(WorkoutSessionUi.PRINT_ERROR);
         }
@@ -50,11 +53,11 @@ public class WorkoutSessionList extends Command {
         String descriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt + 1) + "s";
 
         String returnString = String.format("%-8s", "Index") + String.format(descriptionFormat, "Exercise")
-                + String.format("%-12s", "Repetitions") + String.format("%-10s", "Weight") + LS;
+                + String.format("%-15s", "Repetitions") + String.format("%-10s", "Weight") + LS;
 
         StringBuilder infoBuilder = new StringBuilder(returnString);
 
-        String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-11s %s";
+        String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-14s %s";
         for (int i = 0; i < exercise.size(); i++) {
             String rowContent = String.format(listDescriptionFormat, exercise.get(i).getDescription(),
                     exercise.get(i).getRepetitions(), exercise.get(i).getWeight());
