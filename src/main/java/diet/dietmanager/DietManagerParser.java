@@ -170,8 +170,6 @@ public class DietManagerParser {
             if (!startDate.isEmpty()) {
                 return DateParser.parseDate(startDate);
             }
-        } catch (IndexOutOfBoundsException e) {
-            logger.log(Level.WARNING, "I do not understand your date input in start date");
         } catch (NullPointerException e) {
             logger.log(Level.WARNING, "It looks like there is no date input in start date");
         } catch (InvalidDateFormatException e) {
@@ -199,8 +197,6 @@ public class DietManagerParser {
             if (!endDate.isEmpty()) {
                 return DateParser.parseDate(endDate);
             }
-        } catch (IndexOutOfBoundsException e) {
-            logger.log(Level.WARNING, "I do not understand your date input in end date");
         } catch (NullPointerException e) {
             logger.log(Level.WARNING, "It looks like there is no date input in end date");
         } catch (InvalidDateFormatException e) {
