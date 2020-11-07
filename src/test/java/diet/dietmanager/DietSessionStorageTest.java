@@ -29,17 +29,6 @@ public class DietSessionStorageTest {
     }
 
     /**
-     * Tests readDietSession method of class DietStorage when data from file is read.
-     */
-    @Test
-    void testReadDietSession_exampleDietData_throws() {
-        DietStorage storage = new DietStorage();
-        DietSession loadedInstance = null;
-        loadedInstance = storage.readDietSession(TEST_SAVES_FOLDER_DIET, "2020-11-05 breakfast.json");
-        assertNotNull(loadedInstance);
-    }
-
-    /**
      * Tests the saveDietSession by saving and reading from folder.
      *
      * @throws IOException if file is not read properly
