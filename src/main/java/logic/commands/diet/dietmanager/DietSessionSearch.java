@@ -93,6 +93,7 @@ public class DietSessionSearch extends Command {
         }
     }
 
+    //@@author CFZeon-reused
     /**
      * Prints search results.
      *

@@ -48,6 +48,7 @@ public class DietSessionList extends Command {
         return new CommandResult(message);
     }
 
+    //@@author CFZeon-reused
     private String formatList(File[] listOfFiles, DietStorage storage) {
         ArrayList<File> fileArrayList = new ArrayList<>();
         // converts all files in the array to an arraylist format
