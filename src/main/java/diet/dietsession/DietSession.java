@@ -11,7 +11,7 @@ import logic.parser.DietSessionParser;
 import models.Food;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
-import utils.DateParser;
+import logic.parser.DateParser;
 
 import java.io.IOException;
 import java.time.LocalDate;

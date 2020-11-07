@@ -5,7 +5,7 @@ import exceptions.profile.InvalidCommandFormatException;
 import logic.parser.DietManagerParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import utils.DateParser;
+import logic.parser.DateParser;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

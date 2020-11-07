@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import models.Exercise;
 import models.ExerciseList;
+import ui.CommonUi;
 import ui.workout.workoutsession.WorkoutSessionUi;
 
 import java.io.File;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
  * This class holds the data loaded during runtime and read and writes to the local storage.
  */
 public class WorkoutSessionStorage {
+    private CommonUi ui = new CommonUi();
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     /**
@@ -50,9 +52,9 @@ public class WorkoutSessionStorage {
         try {
             exerciseList.exerciseList.addAll(gson.fromJson(reader, taskListType));
         } catch (NullPointerException e) {
-            System.out.printf("");
+            System.out.print("");
         } catch (JsonSyntaxException e) {
-            WorkoutSessionUi.saveCorruptedError(filePath);
+            ui.showToUser(WorkoutSessionUi.saveCorruptedError(filePath));
         }
     }
 

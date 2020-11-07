@@ -2,7 +2,7 @@ package workout;
 
 import exceptions.InvalidDateFormatException;
 import org.junit.jupiter.api.Test;
-import utils.DateParser;
+import logic.parser.DateParser;
 
 import java.time.LocalDateTime;
 

@@ -39,11 +39,11 @@ public class DietSessionUi extends CommonUi {
     }
 
     public void printOpening() {
-        showUser("Starting Diet Session!");
+        showToUser("Starting Diet Session!");
     }
 
 
     public void printExit() {
-        showUser("Exiting Diet Session!");
+        showToUser("Exiting Diet Session!");
     }
 }

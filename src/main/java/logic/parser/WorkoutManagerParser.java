@@ -4,14 +4,13 @@ import exceptions.InvalidDateFormatException;
 import exceptions.workout.workoutmanager.NotANumberException;
 import logger.SchwarzeneggerLogger;
 import models.PastWorkoutSessionRecord;
-import utils.DateParser;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 
-public class WorkoutManagerParser {
+public class WorkoutManagerParser extends CommonParser {
 
     public static final String TAG_SPECIFIER = "/t";
     public static final String TAG_SPLITTER = ",";
