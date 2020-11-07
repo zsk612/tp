@@ -5,14 +5,22 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static profile.Constants.EMPTY_STRING;
+import static profile.Constants.EXAMPLE_BMI;
 import static profile.Constants.EXAMPLE_CALORIES;
 import static profile.Constants.EXAMPLE_EXPECTED_WEIGHT;
 import static profile.Constants.EXAMPLE_HEIGHT;
 import static profile.Constants.EXAMPLE_NAME;
 import static profile.Constants.EXAMPLE_WEIGHT;
+import static profile.Constants.PROFILE_STRING_REPRESENTATION;
 
 //@@author tienkhoa16
 class ProfileTest {
+    private static final Profile SAMPLE_PROFILE = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
+            EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
+    private static final String EXAMPLE_PROFILE_STRING = String.format(PROFILE_STRING_REPRESENTATION, EXAMPLE_NAME,
+            EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES, EXAMPLE_BMI);
 
     @Test
     void testGetBmiClassification_underweightInput_returnUnderweight() {
@@ -61,46 +69,63 @@ class ProfileTest {
 
     @Test
     void testEquals_inputDifferentNames_returnFalse() {
-        Profile sampleProfile = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
-                EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
         Profile profileToCompare = new Profile("Duke", EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
                 EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
-        assertFalse(sampleProfile.equals(profileToCompare));
+        assertFalse(SAMPLE_PROFILE.equals(profileToCompare));
     }
 
     @Test
     void testEquals_inputDifferentHeights_returnFalse() {
-        Profile sampleProfile = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
-                EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
         Profile profileToCompare = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT + 1, EXAMPLE_WEIGHT,
                 EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
-        assertNotEquals(profileToCompare, sampleProfile);
+        assertNotEquals(profileToCompare, SAMPLE_PROFILE);
     }
 
     @Test
     void testEquals_inputDifferentWeights_returnFalse() {
-        Profile sampleProfile = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
-                EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
         Profile profileToCompare = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT + 1,
                 EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
-        assertNotEquals(profileToCompare, sampleProfile);
+        assertNotEquals(profileToCompare, SAMPLE_PROFILE);
     }
 
     @Test
     void testEquals_inputDifferentExpectedWeights_returnFalse() {
-        Profile sampleProfile = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
-                EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
         Profile profileToCompare = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
                 EXAMPLE_EXPECTED_WEIGHT + 1, EXAMPLE_CALORIES);
-        assertNotEquals(profileToCompare, sampleProfile);
+        assertNotEquals(profileToCompare, SAMPLE_PROFILE);
     }
 
     @Test
     void testEquals_inputDifferentCalories_returnFalse() {
-        Profile sampleProfile = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
-                EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
         Profile profileToCompare = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
                 EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES + 1);
-        assertNotEquals(profileToCompare, sampleProfile);
+        assertNotEquals(profileToCompare, SAMPLE_PROFILE);
+    }
+
+    @Test
+    void testEquals_inputSameProfileObject_returnTrue() {
+        assertEquals(SAMPLE_PROFILE, SAMPLE_PROFILE);
+    }
+
+    @Test
+    void testEquals_inputObjectOfDifferentClass_returnFalse() {
+        assertNotEquals(SAMPLE_PROFILE, new StringBuilder());
+    }
+
+    @Test
+    void testEquals_inputNull_returnFalse() {
+        assertNotEquals(SAMPLE_PROFILE, null);
+    }
+
+    @Test
+    void testToString_validProfile_returnValidProfileString() {
+        assertEquals(EXAMPLE_PROFILE_STRING, SAMPLE_PROFILE.toString());
+    }
+
+    @Test
+    void testToString_invalidProfile_throwsAssertionError() {
+        Profile invalidProfile = new Profile(EMPTY_STRING, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
+                EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
+        assertThrows(AssertionError.class, invalidProfile::toString);
     }
 }
