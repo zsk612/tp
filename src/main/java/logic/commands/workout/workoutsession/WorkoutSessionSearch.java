@@ -3,7 +3,7 @@ package logic.commands.workout.workoutsession;
 import logic.commands.Command;
 import logic.commands.CommandResult;
 import models.Exercise;
-import storage.workout.Storage;
+import storage.workout.WorkoutSessionStorage;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import workout.workoutsession.WorkoutSessionParser;
 import models.ExerciseList;
@@ -21,7 +21,10 @@ public class WorkoutSessionSearch extends Command {
 
     @Override
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
-                                 String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+                                 String filePath, WorkoutSessionStorage workoutSessionStorage,
+                                 boolean[] hasEndedWorkoutSessions) {
+        assert (inputs != null && exerciseList != null && filePath != null
+                && workoutSessionStorage != null && hasEndedWorkoutSessions != null) : "File Corrupted";
         isEmptySearchResult = true;
         String result = "";
         String searchTerm = WorkoutSessionParser.searchParser(inputs).toLowerCase();
@@ -55,11 +58,11 @@ public class WorkoutSessionSearch extends Command {
         String descriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt + 1) + "s";
 
         String returnString = String.format("%-8s", "Index") + String.format(descriptionFormat, "Exercise")
-                + String.format("%-12s", "Repetitions") + String.format("%-10s", "Weight") + LS;
+                + String.format("%-15s", "Repetitions") + String.format("%-10s", "Weight") + LS;
 
         StringBuilder infoBuilder = new StringBuilder(returnString);
 
-        String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-11s %s";
+        String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-14s %s";
         for (int i = 0; i < exercise.size(); i++) {
             if (exercise.get(i).getDescription().toLowerCase().contains(searchTerm)) {
                 String rowContent = String.format(listDescriptionFormat, exercise.get(i).getDescription(),
