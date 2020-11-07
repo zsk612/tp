@@ -84,9 +84,9 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
 ### 1.2. <a id="purpose">Purpose</a>
 This document contains the specified architecture and software design specifications for the application, The Schwarzenegger. 
 ### 1.3. <a id="scope">Scope</a>
-This document describes the software architecture and software design requirements for The Schwarzenegger. This guide is mainly for developers, designers and software engineers that are or going to work on The Schwarzenegger. 
+This document describes the software architecture and software design requirements for The Schwarzenegger. This guide is mainly for developers, designers and software engineers that are or going to work on The Schwarzenegger.
 
-[&#8593; Return to Top](#developer-guide)
+<a href="#top">&#8593; Return to Top</a>
 
 ## 2. <a id="setting-up">Setting Up</a>
 
