@@ -45,7 +45,7 @@ public class FoodItemAdd extends Command {
             logger.log(Level.INFO, "Added food to arraylist");
         } catch (IndexOutOfBoundsException e) {
             result = DietSessionUi.MESSAGE_ADD_WRONG_FORMAT;
-            logger.log(Level.WARNING, "Did not put food name or calories");
+            logger.log(Level.WARNING, "Wrong Add food item format");
         } catch (NumberFormatException e) {
             result = DietSessionUi.MESSAGE_WRONG_CALORIES;
             logger.log(Level.WARNING, "Put calories in a wrong format");
