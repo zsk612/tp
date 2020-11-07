@@ -32,7 +32,7 @@ public class DietSessionEdit extends Command {
         try {
             DietSession ds = null;
             assert listOfFiles != null : "List of files should not be null";
-            ds = storage.readDietSession(listOfFiles[Integer.parseInt(input) - 1].getName());
+            ds = storage.readDietSession(PATH_TO_DIET_FOLDER, listOfFiles[Integer.parseInt(input) - 1].getName());
             ds.start(false, Integer.parseInt(input));
             logger.log(Level.INFO, "Diet session in edit mode");
             result = DIET_NEW_SUCCESS;
