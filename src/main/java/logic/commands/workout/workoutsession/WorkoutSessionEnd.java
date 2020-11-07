@@ -2,7 +2,7 @@ package logic.commands.workout.workoutsession;
 
 import logic.commands.Command;
 import logic.commands.CommandResult;
-import storage.workout.Storage;
+import storage.workout.WorkoutSessionStorage;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import models.ExerciseList;
 
@@ -10,10 +10,13 @@ import java.io.IOException;
 
 public class WorkoutSessionEnd extends Command {
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
-                                 String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+                                 String filePath, WorkoutSessionStorage workoutSessionStorage,
+                                 boolean[] hasEndedWorkoutSessions) {
+        assert (inputs != null && exerciseList != null && filePath != null
+                && workoutSessionStorage != null && hasEndedWorkoutSessions != null) : "File Corrupted";
         setEndWorkoutSessionT(hasEndedWorkoutSessions);
         try {
-            storage.writeToStorage(filePath, exerciseList);
+            workoutSessionStorage.writeToStorage(filePath, exerciseList);
         } catch (IOException e) {
             return new CommandResult(WorkoutSessionUi.PRINT_ERROR);
         }

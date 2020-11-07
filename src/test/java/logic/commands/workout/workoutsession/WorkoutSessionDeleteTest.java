@@ -5,17 +5,18 @@ import logic.commands.CommandResult;
 import models.ExerciseList;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.junit.jupiter.api.Test;
-import storage.workout.WorkoutSessionStorage;
 import storage.workout.WorkOutManagerStorage;
+import storage.workout.WorkoutSessionStorage;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class WorkoutSessionAddTest {
+class WorkoutSessionDeleteTest {
 
     @Test
     void execute_validInput_success() throws SchwIoException {
-        String[] inputs = {"add", "bench", "/n", "3244", "/w", "4324"};
+        String[] addInputs = {"add", "bench", "/n", "3244", "/w", "4324"};
+        String[] deleteInputs = {"delete", "1"};
         ExerciseList exerciseList = new ExerciseList();
         WorkoutSessionStorage workoutSessionStorage = new WorkoutSessionStorage();
         boolean[] hasEndedWorkoutSessions = {false};
@@ -23,17 +24,20 @@ class WorkoutSessionAddTest {
         String filePath = workOutManagerStorage.createfile();
 
         WorkoutSessionAdd workoutSessionAdd = new WorkoutSessionAdd();
-
-        CommandResult actual = workoutSessionAdd.execute(inputs, exerciseList, filePath, workoutSessionStorage,
+        workoutSessionAdd.execute(addInputs, exerciseList, filePath, workoutSessionStorage,
                 hasEndedWorkoutSessions);
-        CommandResult expected = new CommandResult("Yay! You have added bench to your list.\n"
+        WorkoutSessionDelete workoutSessionDelete = new WorkoutSessionDelete();
+        CommandResult actual = workoutSessionDelete.execute(deleteInputs, exerciseList, filePath, workoutSessionStorage,
+                hasEndedWorkoutSessions);
+        CommandResult expected = new CommandResult("You have deleted bench from your list!\n"
                 + "\t [Repetitions: 3244 || Weight: 4324.0]");
         assertTrue(EqualsBuilder.reflectionEquals(expected, actual));
     }
 
     @Test
     void execute_invalidInput_formatError() throws SchwIoException {
-        String[] inputs = {"add", "bench", "3244", "/w", "4324"};
+        String[] addInputs = {"add", "bench", "/n", "3244", "/w", "4324"};
+        String[] deleteInputs = {"delete", "fsdg"};
         ExerciseList exerciseList = new ExerciseList();
         WorkoutSessionStorage workoutSessionStorage = new WorkoutSessionStorage();
         boolean[] hasEndedWorkoutSessions = {false};
@@ -41,17 +45,20 @@ class WorkoutSessionAddTest {
         String filePath = workOutManagerStorage.createfile();
 
         WorkoutSessionAdd workoutSessionAdd = new WorkoutSessionAdd();
-
-        CommandResult actual = workoutSessionAdd.execute(inputs, exerciseList, filePath, workoutSessionStorage,
+        workoutSessionAdd.execute(addInputs, exerciseList, filePath, workoutSessionStorage,
+                hasEndedWorkoutSessions);
+        WorkoutSessionDelete workoutSessionDelete = new WorkoutSessionDelete();
+        CommandResult actual = workoutSessionDelete.execute(deleteInputs, exerciseList, filePath, workoutSessionStorage,
                 hasEndedWorkoutSessions);
         CommandResult expected = new CommandResult("Wrong format, please enter in the format:\n"
-                + "\t add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]");
+                + "\t delete [INDEX]");
         assertTrue(EqualsBuilder.reflectionEquals(expected, actual));
     }
 
     @Test
-    void execute_invalidInput_negativeFormatError() throws SchwIoException {
-        String[] inputs = {"add", "bench", "/n", "-3244", "/w", "4324"};
+    void execute_invalidInput_indexError() throws SchwIoException {
+        String[] addInputs = {"add", "bench", "/n", "3244", "/w", "4324"};
+        String[] deleteInputs = {"delete", "10"};
         ExerciseList exerciseList = new ExerciseList();
         WorkoutSessionStorage workoutSessionStorage = new WorkoutSessionStorage();
         boolean[] hasEndedWorkoutSessions = {false};
@@ -59,20 +66,21 @@ class WorkoutSessionAddTest {
         String filePath = workOutManagerStorage.createfile();
 
         WorkoutSessionAdd workoutSessionAdd = new WorkoutSessionAdd();
-
-        CommandResult actual = workoutSessionAdd.execute(inputs, exerciseList, filePath, workoutSessionStorage,
+        workoutSessionAdd.execute(addInputs, exerciseList, filePath, workoutSessionStorage,
                 hasEndedWorkoutSessions);
-        CommandResult expected = new CommandResult("Wrong format, please enter in the format:\n"
-                + "\t add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]\n"
-                + "\t Please make sure [NUMBER_OF_REPETITIONS] and [WEIGHT] are non negative numbers.");
+        WorkoutSessionDelete workoutSessionDelete = new WorkoutSessionDelete();
+        CommandResult actual = workoutSessionDelete.execute(deleteInputs, exerciseList, filePath, workoutSessionStorage,
+                hasEndedWorkoutSessions);
+        CommandResult expected = new CommandResult("Index does not exist. Please refer to the list.");
         assertTrue(EqualsBuilder.reflectionEquals(expected, actual));
     }
 
     @Test
     void execute_nullParams_assert() {
-        WorkoutSessionAdd workoutSessionAdd = new WorkoutSessionAdd();
+        WorkoutSessionDelete workoutSessionDelete = new WorkoutSessionDelete();
         assertThrows(AssertionError.class, () -> {
-            workoutSessionAdd.execute(null, null, null, null, null);
+            workoutSessionDelete.execute(null, null, null, null, null);
         });
     }
+
 }

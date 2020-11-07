@@ -20,7 +20,7 @@ public class HelpWS extends Command {
     public CommandResult execute(String args) throws SchwarzeneggerException {
         super.execute(args);
         String helpMessage = helpFormatter("New", "new </t [TAG]...>",
-                "Create a new workout session and tags. Multiple tags are separated by ','.")
+                "Create a new workout session and tags. Multiple tags are separated by ','")
                 + helpFormatter("List", "list </s [START_DATE]> </e [END_DATE]>",
                 "Show all past sessions. Can display sessions between a certain period")
                 + helpFormatter("Delete", "delete [INDEX]",
@@ -30,7 +30,7 @@ public class HelpWS extends Command {
                 + helpFormatter("Clear", "clear",
                 "Clear all past results")
                 + helpFormatter("Search", "search </t [TAG]...> </d [DATE]>",
-                "Search records based on tags and dates. Multiple tags are seperated by ','.")
+                "Search records based on tags and dates. Multiple tags are seperated by ','")
                 + helpFormatter("End", "end",
                 "Go back to Main Menu");
         return new CommandResult(helpMessage.trim(), ExecutionResult.OK);

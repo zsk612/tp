@@ -10,6 +10,7 @@ import logger.SchwarzeneggerLogger;
 import models.ExerciseList;
 import storage.diet.DietStorage;
 import storage.profile.ProfileStorage;
+import storage.workout.WorkoutSessionStorage;
 import ui.CommonUi;
 
 import java.util.ArrayList;
@@ -89,12 +90,12 @@ public abstract class Command {
      * @param inputs Array of user's input.
      * @param exerciseList List of exercise.
      * @param filePath Path to data file.
-     * @param storage Workout Session Storage to load and save data.
+     * @param workoutSessionStorage Workout Session Storage to load and save data.
      * @param hasEndedWorkoutSessions Array of booleans indicating if user has ended workout sessions.
      * @throws InvalidCommandWordException If command word is invalid.
      */
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
-                        String filePath, storage.workout.Storage storage,
+                        String filePath, WorkoutSessionStorage workoutSessionStorage,
                         boolean[] hasEndedWorkoutSessions) throws InvalidCommandWordException {
         logger.log(Level.INFO, "Executing " + this);
         return new CommandResult();

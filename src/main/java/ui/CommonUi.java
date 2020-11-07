@@ -17,7 +17,7 @@ public class CommonUi {
             + " |_____/  \\___||_| |_| \\_/\\_/  \\__,_||_|   /___|\\___||_| |_| \\___| \\__, | \\__, | \\___||_|" + LS
             + "                                                                    __/ |  __/ |" + LS
             + "                                                                   |___/  |___/";
-    public static final String HELP_FORMAT = "%-8s %s" + LS + "%-8s %s" + LS;
+    public static final String HELP_FORMAT = "%-8s FORMAT:      %s" + LS + "%-8s DESCRIPTION: %s" + LS;
     public static final String WARNING_FORMAT = "! WARNING: %s!";
     public static final String MESSAGE_CLEAR_FORMAT = "Alright, your %s been cleared!";
     public static final String HORIZONTAL_LINE = LINE_PREFIX

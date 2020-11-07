@@ -6,7 +6,7 @@ import exceptions.ExceptionHandler;
 import exceptions.InvalidCommandWordException;
 import logger.SchwarzeneggerLogger;
 import logic.commands.CommandResult;
-import storage.workout.Storage;
+import storage.workout.WorkoutSessionStorage;
 import ui.CommonUi;
 import ui.workout.workoutsession.WorkoutSessionUi;
 import models.ExerciseList;
@@ -24,13 +24,13 @@ public class WorkoutSession {
     private int index;
 
     private transient CommandLib cl;
-    private final Storage storage;
+    private final WorkoutSessionStorage workoutSessionStorage;
     private CommonUi ui;
 
     public WorkoutSession(String filePath, boolean isNew, int index) {
         this.filePath = filePath;
         this.exerciseList = new ExerciseList();
-        this.storage = new Storage();
+        this.workoutSessionStorage = new WorkoutSessionStorage();
         this.endWorkoutSession = new boolean[1];
         this.ui = new CommonUi();
         this.isNew = isNew;
@@ -53,7 +53,7 @@ public class WorkoutSession {
         cl.initWorkoutSessionCL();
 
         try {
-            storage.readFileContents(filePath, exerciseList);
+            workoutSessionStorage.readFileContents(filePath, exerciseList);
         } catch (FileNotFoundException e) {
             ui.showToUser(WorkoutSessionUi.PRINT_ERROR);
         }
@@ -76,7 +76,8 @@ public class WorkoutSession {
     private void workoutSessionProcessCommand(String input) throws NullPointerException, InvalidCommandWordException {
         String[] commParts = WorkoutSessionParser.workoutSessionParser(input.trim());
         Command command = cl.getCommand(commParts[0]);
-        CommandResult commandResult = command.execute(commParts, exerciseList, filePath, storage, endWorkoutSession);
+        CommandResult commandResult = command.execute(commParts, exerciseList, filePath, workoutSessionStorage,
+                endWorkoutSession);
         if (commandResult.getFeedbackMessage().compareTo("") != 0) {
             ui.showToUser(commandResult.getFeedbackMessage());
         }

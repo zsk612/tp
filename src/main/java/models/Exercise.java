@@ -2,11 +2,11 @@ package models;
 
 public class Exercise {
 
-    private String moveName = null;
-    private int repetitions = 0;
-    private int weight = 0;
+    private final String moveName;
+    private final int repetitions;
+    private final double weight;
 
-    public Exercise(String moveName, int repetitions, int weight) {
+    public Exercise(String moveName, int repetitions, double weight) {
 
         this.moveName = moveName;
         this.repetitions = repetitions;
@@ -30,6 +30,6 @@ public class Exercise {
     }
 
     public String getWeight() {
-        return Integer.toString(weight);
+        return Double.toString(weight);
     }
 }

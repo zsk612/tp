@@ -5,11 +5,12 @@ import ui.CommonUi;
 
 
 public class WorkoutSessionUi extends CommonUi {
-    public static final String PRINT_ERROR = "There is an error, please restart the session";
+    public static final String PRINT_ERROR = "File not found, re-creating file.";
     public static final String ADD_FORMAT_ERROR = "Wrong format, please enter in the format:\n\t "
             + "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]";
     public static final String ADD_FORMAT_NEGATIVE_ERROR = "Wrong format, please enter in the format:\n\t "
-            + "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]";
+            + "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]\n\t "
+            + "Please make sure [NUMBER_OF_REPETITIONS] and [WEIGHT] are non negative numbers.";
     public static final String EMPTY_LIST_ERROR = "List is empty. Please enter something.";
     public static final String DELETE_FORMAT_ERROR = "Wrong format, please enter in the format:\n\t delete [INDEX]";
     public static final String DELETE_INDEX_ERROR = "Index does not exist. Please refer to the list.";
@@ -27,15 +28,15 @@ public class WorkoutSessionUi extends CommonUi {
     public static String printHelp() {
         StringBuilder helpMessage = new StringBuilder();
         helpMessage.append(helpFormatter("Add", "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]",
-                "Add a new move."));
+                "Add a new move"));
         helpMessage.append(helpFormatter("List", "list",
-                "Show all moves in this current session."));
+                "Show all moves in this current session"));
         helpMessage.append(helpFormatter("Delete", "delete [INDEX]",
-                "Delete a move according to the index in the list."));
+                "Delete a move according to the index in the list"));
         helpMessage.append(helpFormatter("Search", "search [NAME_OF_MOVE]",
-                "Show a list of moves that match the entered keyword."));
+                "Show a list of moves that match the entered keyword"));
         helpMessage.append(helpFormatter("End", "end",
-                "Go back to the Workout Menu."));
+                "Go back to the Workout Menu"));
         return (helpMessage.toString().trim());
     }
 
