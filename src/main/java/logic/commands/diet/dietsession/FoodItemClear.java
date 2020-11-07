@@ -34,11 +34,11 @@ public class FoodItemClear extends Command {
         }
         if (ui.checkConfirmation(prompt, "clear all records")) {
             foodList.clear();
-            result = "Alright, your food items have been cleared.";
+            result = DietSessionUi.MESSAGE_CLEAR_SUCCESS;
             logger.log(Level.INFO, "Cleared all food in arraylist");
             return new CommandResult(result, ExecutionResult.OK);
         } else {
-            result = "You have aborted clear operation.";
+            result = DietSessionUi.MESSAGE_CLEAR_ABORTED;
             return new CommandResult(result, ExecutionResult.ABORTED);
         }
     }

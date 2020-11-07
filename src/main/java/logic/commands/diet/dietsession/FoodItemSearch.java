@@ -17,8 +17,6 @@ import static ui.CommonUi.LS;
 //@@author zsk612
 public class FoodItemSearch extends Command {
 
-    public static final String MESSAGE_SEARCH_PROMPT = "Here are the search results: \n\t ";
-    public static final String MESSAGE_NO_FOOD = "Sorry, there is nothing in your food list.";
     DietSessionUi ui = new DietSessionUi();
 
     /**
@@ -35,15 +33,14 @@ public class FoodItemSearch extends Command {
     public CommandResult execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
         String result = "";
         try {
-
             StringBuilder searchResult = new StringBuilder();
-            searchResult.append(MESSAGE_SEARCH_PROMPT);
+            searchResult.append(DietSessionUi.MESSAGE_SEARCH_PROMPT);
             String formattedList = formatList(foodList, input.trim());
             searchResult.append(formattedList);
             result = searchResult.toString().trim();
             logger.log(Level.INFO, "Listed all searched foods in Diet Session");
         } catch (NullPointerException e) {
-            result = MESSAGE_NO_FOOD;
+            result = DietSessionUi.MESSAGE_NO_FOOD;
             logger.log(Level.WARNING, "No item in food list for search");
         }
         return new CommandResult(result, ExecutionResult.OK);
