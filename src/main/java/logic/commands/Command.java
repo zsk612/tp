@@ -1,6 +1,6 @@
 package logic.commands;
 
-import diet.dietsession.Food;
+import models.Food;
 import exceptions.InvalidCommandWordException;
 import exceptions.InvalidDateFormatException;
 import exceptions.SchwarzeneggerException;
