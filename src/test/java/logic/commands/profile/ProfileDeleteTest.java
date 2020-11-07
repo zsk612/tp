@@ -22,6 +22,7 @@ import static ui.profile.ProfileUi.MESSAGE_DELETE_NOTHING;
 import static ui.profile.ProfileUi.MESSAGE_DELETE_PROFILE;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
+//@@author tienkhoa16
 class ProfileDeleteTest {
     private static final Path SAMPLE_DATA_FOLDER = Paths.get("src", "test", "java", "saves", "ProfileCommandsTest");
     private static final Profile SAMPLE_PROFILE = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
