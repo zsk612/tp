@@ -35,7 +35,7 @@ class ProfileStorageTest {
     @Test
     void testDecodeProfile_corruptedDataInput_throwsInvalidSaveFormatException() {
         ProfileStorage storage = new ProfileStorage();
-        String inputFilePath = Paths.get(TEST_SAVES_FOLDER, "formatCorruptedProfileData.json").toString();
+        String inputFilePath = Paths.get(TEST_SAVES_FOLDER, "corruptedProfileData.json").toString();
         assertThrows(InvalidSaveFormatException.class, () -> {
             storage.decodeProfile(inputFilePath);
         });
