@@ -15,6 +15,7 @@ import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,10 +26,10 @@ import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 //@@author CFZeon
 public class DietManager {
 
-    private final CommandLib cl;
-    private final DietManagerParser parser;
-    private final DietManagerUi dietManagerUi;
-    private final DietStorage storage;
+    private CommandLib cl;
+    private DietManagerParser parser;
+    private DietManagerUi dietManagerUi;
+    private DietStorage storage;
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
     /**
@@ -92,27 +93,29 @@ public class DietManager {
     }
 
     /**
-     * Gets total calories of the diet session today.
+     * Gets the total calories of the diet sessions on the specified date.
      *
+     * @param savePath path to storage folder
+     * @param date date to find total calories
      * @return total calories
      */
-    public double getTodayTotalCalories(String savePath) {
-        double todayTotalCalories = 0;
+    public double getDateTotalCalories(String savePath, LocalDate date) {
+        double totalCalories = 0;
         File folder = new File(savePath);
         File[] listOfFiles = folder.listFiles();
         assert folder.exists() : "save folder must exist before getting total calories";
         try {
-            // if date is same as today, add to todayTotalCalories
+            // if date on file is same as input date, add to TotalCalories
             for (int i = 0; i < Objects.requireNonNull(listOfFiles).length; i++) {
-                DietSession ds = storage.readDietSession(PATH_TO_DIET_FOLDER, listOfFiles[i].getName());
-                if (ds.getDate().equals(java.time.LocalDate.now())) {
-                    todayTotalCalories += ds.getTotalCalories();
+                DietSession ds = storage.readDietSession(savePath, listOfFiles[i].getName());
+                if (ds.getDate().equals(date)) {
+                    totalCalories += ds.getTotalCalories();
                 }
             }
             logger.log(Level.INFO, "Calculated total calories so far today");
         } catch (NullPointerException e) {
             logger.log(Level.WARNING, "No instances of diet sessions saved");
         }
-        return todayTotalCalories;
+        return totalCalories;
     }
 }
