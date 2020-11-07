@@ -169,6 +169,7 @@ class CommandLibTest {
         assertTrue(cl.getCommand("end") instanceof ByeWS);
     }
 
+    //@@author yujinyang1998
     @Test
     void getCommandTest_WorkoutSessionUnrecognisedCommand_returnNull() {
         CommandLib cl = new CommandLib();
@@ -217,6 +218,7 @@ class CommandLibTest {
         cl.initWorkoutSessionCl();
         assertTrue(cl.getCommand("help") instanceof WorkoutSessionHelp);
     }
+    //@@author
 
     @Test
     void getCommandTest_profileSessionAddCommand_returnProfileAdd() {

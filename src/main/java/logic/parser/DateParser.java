@@ -1,4 +1,4 @@
-package utils;
+package logic.parser;
 
 import exceptions.InvalidDateFormatException;
 

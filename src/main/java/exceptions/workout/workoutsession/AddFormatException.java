@@ -2,6 +2,7 @@ package exceptions.workout.workoutsession;
 
 import exceptions.SchwarzeneggerException;
 
+//@@author yujinyang1998
 /**
  * Represents exception when add format in WorkoutSession is invalid.
  */
