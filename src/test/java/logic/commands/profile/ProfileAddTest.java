@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.EXAMPLE_CALORIES;
 import static profile.Constants.EXAMPLE_EXPECTED_WEIGHT;
 import static profile.Constants.EXAMPLE_HEIGHT;
@@ -45,9 +46,18 @@ class ProfileAddTest {
     }
 
     @Test
-    void testExecute_inputNullArguments_NullStorage_throwsAssertionError() {
+    void testExecute_inputNullArguments_ValidStorage_throwsAssertionError() {
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         assertThrows(AssertionError.class, () -> {
-            new ProfileAdd().execute(null, (ProfileStorage) null);
+            new ProfileAdd().execute(null, storage);
+        });
+    }
+
+    @Test
+    void testExecute_inputEmptyArguments_NullStorage_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> {
+            new ProfileAdd().execute(EMPTY_STRING, (ProfileStorage) null);
         });
     }
 }

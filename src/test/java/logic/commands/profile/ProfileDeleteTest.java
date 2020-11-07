@@ -28,9 +28,17 @@ class ProfileDeleteTest {
             EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
 
     @Test
-    void testExecute_inputNullArguments_NullStorage_throwsAssertionError() {
+    void testExecute_inputNullArguments_ValidStorage_throwsAssertionError() {
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
         assertThrows(AssertionError.class, () -> {
-            new ProfileAdd().execute(null, (ProfileStorage) null);
+            new ProfileDelete().execute(null, new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile));
+        });
+    }
+
+    @Test
+    void testExecute_inputEmptyArguments_NullStorage_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> {
+            new ProfileDelete().execute(EMPTY_STRING, (ProfileStorage) null);
         });
     }
 
