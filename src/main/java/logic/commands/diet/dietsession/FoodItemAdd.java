@@ -2,11 +2,10 @@ package logic.commands.diet.dietsession;
 
 import logic.commands.Command;
 import diet.dietsession.DietSessionParser;
-import diet.dietsession.Food;
+import models.Food;
 import exceptions.diet.NegativeCaloriesException;
 import exceptions.diet.NoNameException;
 import logic.commands.CommandResult;
-import logic.commands.ExecutionResult;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
 

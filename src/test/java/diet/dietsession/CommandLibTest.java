@@ -6,11 +6,13 @@ import logic.commands.diet.dietsession.FoodItemClear;
 import logic.commands.diet.dietsession.FoodItemDelete;
 import logic.commands.diet.dietsession.FoodItemHelp;
 import logic.commands.diet.dietsession.FoodItemList;
+import logic.commands.diet.dietsession.FoodItemSearch;
 import logic.commands.diet.dietsession.FoodItemWrong;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+//@@author zsk612
 public class CommandLibTest {
 
     @Test
@@ -53,5 +55,12 @@ public class CommandLibTest {
         CommandLib cl = new CommandLib();
         cl.initDietSessionCL();
         assertTrue(cl.getCommand("help") instanceof FoodItemHelp);
+    }
+
+    @Test
+    void get_search_returnSearchCommand() {
+        CommandLib cl = new CommandLib();
+        cl.initDietSessionCL();
+        assertTrue(cl.getCommand("search") instanceof FoodItemSearch);
     }
 }

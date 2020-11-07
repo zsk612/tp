@@ -11,6 +11,7 @@ import java.time.format.DateTimeParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//@@author zsk612
 public class DietSessionParser {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 

@@ -20,7 +20,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static seedu.duke.Constant.COMMAND_WORD_END;
-import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 
 //@@author CFZeon
 public class DietManager {
@@ -83,6 +82,7 @@ public class DietManager {
         try {
             Command command = cl.getCommand(commParts[0]);
             CommandResult commandResult = command.execute(commParts[1].trim(), storage);
+            assert commandResult != null : "save folder must exist before getting total calories";
             dietManagerUi.showToUser(commandResult.getFeedbackMessage());
         } catch (ArrayIndexOutOfBoundsException | InvalidCommandFormatException e) {
             logger.log(Level.WARNING, "Invalid command in diet session");
@@ -95,9 +95,9 @@ public class DietManager {
      *
      * @return total calories
      */
-    public double getTodayTotalCalories() {
+    public double getTodayTotalCalories(String savePath) {
         double todayTotalCalories = 0;
-        File folder = new File(PATH_TO_DIET_FOLDER);
+        File folder = new File(savePath);
         File[] listOfFiles = folder.listFiles();
         assert folder.exists() : "save folder must exist before getting total calories";
         try {

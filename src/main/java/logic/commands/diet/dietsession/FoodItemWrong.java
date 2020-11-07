@@ -1,7 +1,7 @@
 package logic.commands.diet.dietsession;
 
 import logic.commands.Command;
-import diet.dietsession.Food;
+import models.Food;
 import exceptions.InvalidCommandWordException;
 import logic.commands.CommandResult;
 import storage.diet.DietStorage;

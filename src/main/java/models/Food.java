@@ -1,5 +1,6 @@
-package diet.dietsession;
+package models;
 
+//@@author zsk612
 public class Food {
     protected String name;
     protected double calories;

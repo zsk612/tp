@@ -10,6 +10,7 @@ import storage.profile.ProfileStorage;
 
 import static logic.commands.ExecutionResult.FAILED;
 import static seedu.duke.Constant.COMMAND_WORD_VIEW;
+import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.profile.ProfileUi.MESSAGE_ENOUGH_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_MORE_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;
@@ -40,7 +41,7 @@ public class ProfileView extends Command {
             Profile profile = storage.loadData();
             assert profile != null : "profile should not be null after loading";
 
-            double todayCalories = new DietManager().getTodayTotalCalories();
+            double todayCalories = new DietManager().getTodayTotalCalories(PATH_TO_DIET_FOLDER);
             double caloriesToGoal = profile.getCalories() - todayCalories;
 
             String caloriesMessage;
