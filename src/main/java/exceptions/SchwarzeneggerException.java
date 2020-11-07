@@ -1,5 +1,6 @@
 package exceptions;
 
+//@@author tienkhoa16
 /**
  * A base class for the checked exceptions in Schwarzenegger.
  */

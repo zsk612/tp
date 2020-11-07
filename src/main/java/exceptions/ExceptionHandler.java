@@ -5,6 +5,7 @@ import logger.SchwarzeneggerLogger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//@@author tienkhoa16
 /**
  * A class that deals with handling exceptions.
  */

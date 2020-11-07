@@ -3,8 +3,9 @@ package models;
 import static profile.Constants.PROFILE_STRING_REPRESENTATION;
 import static profile.Utils.checkValidProfile;
 
+//@@author tienkhoa16
 /**
- * A class that manages user profile.
+ * A class that contains user profile.
  */
 public class Profile {
 

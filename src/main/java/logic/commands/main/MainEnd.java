@@ -5,6 +5,7 @@ import logic.commands.CommandResult;
 import exceptions.EndException;
 import exceptions.SchwarzeneggerException;
 
+//@@author tienkhoa16
 /**
  * A representation of the command for exiting The Schwarzenegger.
  */

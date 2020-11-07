@@ -2,8 +2,9 @@ package profile;
 
 import static ui.CommonUi.LS;
 
+//@@author tienkhoa16
 /**
- * Constants used in profile package.
+ * Constants used in profile-related code.
  */
 public class Constants {
     public static final int COMMAND_ARGS_INDEX = 1;
