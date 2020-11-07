@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import static ui.CommonUi.LS;
 
+//@@author yujinyang1998
 public class WorkoutSessionList extends Command {
 
     @Override

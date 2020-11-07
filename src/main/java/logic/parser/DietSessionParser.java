@@ -1,4 +1,4 @@
-package diet.dietsession;
+package logic.parser;
 
 import exceptions.diet.NegativeCaloriesException;
 import exceptions.diet.NoNameException;

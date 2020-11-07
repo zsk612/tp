@@ -7,6 +7,7 @@ import logger.SchwarzeneggerLogger;
 import logic.commands.Command;
 import logic.commands.CommandLib;
 import logic.commands.CommandResult;
+import logic.parser.DietSessionParser;
 import models.Food;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
@@ -42,7 +43,7 @@ public class DietSession {
      */
     public DietSession(String typeInput, String dateInput, boolean isNew, int index) throws InvalidDateFormatException {
         this.cl = new CommandLib();
-        cl.initDietSessionCL();
+        cl.initDietSessionCl();
         this.dateInput = dateInput;
         this.date = DateParser.parseDate(dateInput).toLocalDate();
         this.typeInput = typeInput;
@@ -78,7 +79,7 @@ public class DietSession {
 
         logger.log(Level.INFO, "starting diet session");
         this.cl = new CommandLib();
-        cl.initDietSessionCL();
+        cl.initDietSessionCl();
         dietSessionUi.printOpening();
         setEndDietSession(false);
         this.isNew = isNew;

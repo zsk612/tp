@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static logic.commands.ExecutionResult.OK;
 import static ui.workout.workoutmanager.WorkoutManagerUi.NEW_SUCCESS;
 import static ui.workout.workoutmanager.WorkoutManagerUi.START_NEW_SESSION;
-import static workout.workoutmanager.WorkoutManagerParser.parseTags;
+import static logic.parser.WorkoutManagerParser.parseTags;
 
 public class NewWS extends Command {
 

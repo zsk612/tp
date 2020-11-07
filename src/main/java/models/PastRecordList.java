@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 
 import static ui.CommonUi.LS;
 import static ui.CommonUi.searchRecords;
-import static workout.workoutmanager.WorkoutManagerParser.parseList;
-import static workout.workoutmanager.WorkoutManagerParser.parseSearchConditions;
+import static logic.parser.WorkoutManagerParser.parseList;
+import static logic.parser.WorkoutManagerParser.parseSearchConditions;
 
 /**
  * A singleton class representing list of past records.

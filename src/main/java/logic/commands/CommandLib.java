@@ -79,7 +79,7 @@ public class CommandLib {
     /**
      * Initializes the commandLib with main menu's commands.
      */
-    public void initMainMenu() {
+    public void initMainMenuCl() {
         library.put(COMMAND_WORD_WRONG, new MainWrong());
         library.put(COMMAND_WORD_HELP, new MainHelp());
         library.put(COMMAND_WORD_DIET, new ToDiet());
@@ -91,7 +91,7 @@ public class CommandLib {
     /**
      * Initializes the commandLib with profile menu's commands.
      */
-    public void initProfileSessionCL() {
+    public void initProfileSessionCl() {
         library.put(COMMAND_WORD_HELP, new ProfileHelp());
         library.put(COMMAND_WORD_ADD, new ProfileAdd());
         library.put(COMMAND_WORD_DELETE, new ProfileDelete());
@@ -105,7 +105,7 @@ public class CommandLib {
     /**
      * Initializes the commandLib with workout menu's commands.
      */
-    public void initWorkoutManagerCL() {
+    public void initWorkoutManagerCl() {
         library.put(COMMAND_WORD_LIST, new ListWS());
         library.put(COMMAND_WORD_NEW, new NewWS());
         library.put(COMMAND_WORD_DELETE, new DeleteWS());
@@ -117,10 +117,11 @@ public class CommandLib {
         library.put(COMMAND_WORD_SEARCH, new SearchWS());
     }
 
+    //@@author yujinyang1998
     /**
      * Initialize the commandLib with workout session's commands.
      */
-    public void initWorkoutSessionCL() {
+    public void initWorkoutSessionCl() {
         library.put(COMMAND_WORD_ADD, new WorkoutSessionAdd());
         library.put(COMMAND_WORD_DELETE, new WorkoutSessionDelete());
         library.put(COMMAND_WORD_LIST, new WorkoutSessionList());
@@ -129,11 +130,12 @@ public class CommandLib {
         library.put(COMMAND_WORD_SEARCH, new WorkoutSessionSearch());
         library.put(COMMAND_WORD_WRONG, new WorkoutSessionWrong());
     }
+    //@@author
 
     /**
      * Initialize the commandLib with diet manager's commands.
      */
-    public void initDietManagerCL() {
+    public void initDietManagerCl() {
         library.put(COMMAND_WORD_LIST, new DietSessionList());
         library.put(COMMAND_WORD_NEW, new DietSessionCreate());
         library.put(COMMAND_WORD_HELP, new DietSessionHelp());
@@ -147,7 +149,7 @@ public class CommandLib {
     /**
      * Initialize the commandLib with diet session's commands.
      */
-    public void initDietSessionCL() {
+    public void initDietSessionCl() {
         library.put(COMMAND_WORD_ADD, new FoodItemAdd());
         library.put(COMMAND_WORD_DELETE, new FoodItemDelete());
         library.put(COMMAND_WORD_HELP, new FoodItemHelp());

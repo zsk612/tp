@@ -3,7 +3,7 @@ package logic.commands.diet.dietmanager;
 import logic.commands.Command;
 import logic.commands.CommandResult;
 import utils.DateParser;
-import diet.dietmanager.DietManagerParser;
+import logic.parser.DietManagerParser;
 import diet.dietsession.DietSession;
 import exceptions.InvalidDateFormatException;
 import exceptions.diet.InvalidSearchDateException;

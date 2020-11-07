@@ -2,6 +2,7 @@ package diet.dietmanager;
 
 import exceptions.InvalidDateFormatException;
 import exceptions.profile.InvalidCommandFormatException;
+import logic.parser.DietManagerParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import utils.DateParser;

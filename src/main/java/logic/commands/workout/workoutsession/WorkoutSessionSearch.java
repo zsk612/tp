@@ -5,7 +5,7 @@ import logic.commands.CommandResult;
 import models.Exercise;
 import storage.workout.WorkoutSessionStorage;
 import ui.workout.workoutsession.WorkoutSessionUi;
-import workout.workoutsession.WorkoutSessionParser;
+import logic.parser.WorkoutSessionParser;
 import models.ExerciseList;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static ui.CommonUi.LS;
 
-
+//@@author yujinyang1998
 public class WorkoutSessionSearch extends Command {
     private boolean isEmptySearchResult;
 

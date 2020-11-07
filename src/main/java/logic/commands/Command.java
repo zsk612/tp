@@ -84,6 +84,8 @@ public abstract class Command {
         return new CommandResult();
     }
 
+
+    //@@author yujinyang1998
     /**
      * Executes the command with user's input.
      *
@@ -100,4 +102,5 @@ public abstract class Command {
         logger.log(Level.INFO, "Executing " + this);
         return new CommandResult();
     }
+    //@@author
 }

@@ -6,7 +6,7 @@ import logic.commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
 import exceptions.workout.workoutmanager.OutOfArrayException;
 import models.PastRecordList;
-import workout.workoutmanager.WorkoutManagerParser;
+import logic.parser.WorkoutManagerParser;
 
 import static ui.workout.workoutmanager.WorkoutManagerUi.DELETE_SUCCESS;
 

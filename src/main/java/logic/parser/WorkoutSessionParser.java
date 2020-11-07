@@ -1,4 +1,4 @@
-package workout.workoutsession;
+package logic.parser;
 
 import exceptions.workout.workoutsession.AddFormatException;
 import exceptions.workout.workoutsession.DeleteFormatException;
@@ -8,6 +8,7 @@ import models.Exercise;
 import java.util.Arrays;
 
 
+//@@author yujinyang1998
 public class WorkoutSessionParser {
 
     public static String[] workoutSessionParser(String input) {

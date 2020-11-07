@@ -1,7 +1,7 @@
 package logic.commands.diet.dietsession;
 
 import logic.commands.Command;
-import diet.dietsession.DietSessionParser;
+import logic.parser.DietSessionParser;
 import models.Food;
 import exceptions.diet.NegativeCaloriesException;
 import exceptions.diet.NoNameException;

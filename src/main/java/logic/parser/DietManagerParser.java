@@ -1,4 +1,4 @@
-package diet.dietmanager;
+package logic.parser;
 
 import exceptions.InvalidDateFormatException;
 import exceptions.profile.InvalidCommandFormatException;

@@ -1,13 +1,11 @@
 package workout.workoutsession;
 
-import exceptions.SchwarzeneggerException;
 import exceptions.workout.workoutsession.AddFormatException;
 import exceptions.workout.workoutsession.DeleteFormatException;
+import logic.parser.WorkoutSessionParser;
 import models.Exercise;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -38,7 +38,7 @@ public class ProfileSession {
         storage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
         parser = new CommonParser();
         cl = new CommandLib();
-        cl.initProfileSessionCL();
+        cl.initProfileSessionCl();
     }
 
     /**

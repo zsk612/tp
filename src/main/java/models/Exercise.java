@@ -1,10 +1,11 @@
 package models;
 
+//@@author yujinyang1998
 public class Exercise {
 
-    private final String moveName;
-    private final int repetitions;
-    private final double weight;
+    private String moveName;
+    private int repetitions;
+    private double weight;
 
     public Exercise(String moveName, int repetitions, double weight) {
 

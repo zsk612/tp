@@ -6,6 +6,7 @@ import logic.commands.CommandResult;
 import exceptions.EndException;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
+import logic.parser.WorkoutManagerParser;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 
 import java.util.logging.Level;
@@ -20,7 +21,7 @@ public class WorkoutManager {
 
     public WorkoutManager() {
         cl = new CommandLib();
-        cl.initWorkoutManagerCL();
+        cl.initWorkoutManagerCl();
         logger.log(Level.INFO, "Initialised workout manager command library");
         ui = new WorkoutManagerUi();
     }
