@@ -75,4 +75,27 @@ class WorkoutSessionAddTest {
             workoutSessionAdd.execute(null, null, null, null, null);
         });
     }
+
+    @Test
+    void execute_nullParams_assert1() throws SchwIoException {
+        WorkoutSessionAdd workoutSessionAdd = new WorkoutSessionAdd();
+        WorkOutManagerStorage workOutManagerStorage = new WorkOutManagerStorage();
+        String[] inputs = {"add", "bench", "/n", "-3244", "/w", "4324"};
+        String filePath = workOutManagerStorage.createfile();
+        assertThrows(AssertionError.class, () -> {
+            workoutSessionAdd.execute(inputs, null, null, null, null);
+        });
+    }
+
+    @Test
+    void execute_nullParams_assert3() throws SchwIoException {
+        WorkoutSessionAdd workoutSessionAdd = new WorkoutSessionAdd();
+        WorkOutManagerStorage workOutManagerStorage = new WorkOutManagerStorage();
+        String[] inputs = {"add", "bench", "/n", "-3244", "/w", "4324"};
+        ExerciseList exerciseList = new ExerciseList();
+        String filePath = workOutManagerStorage.createfile();
+        assertThrows(AssertionError.class, () -> {
+            workoutSessionAdd.execute(inputs, exerciseList, filePath, null, null);
+        });
+    }
 }
