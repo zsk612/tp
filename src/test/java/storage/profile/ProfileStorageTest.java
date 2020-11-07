@@ -6,6 +6,7 @@ import models.Profile;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,15 +19,14 @@ import static profile.Constants.EXAMPLE_WEIGHT;
 
 //@@author tienkhoa16
 class ProfileStorageTest {
-    private static final String TEST_SAVES_FOLDER = Paths.get("src", "test", "java", "saves", "ProfileStorageTest")
-            .toString();
+    private static final Path TEST_SAVES_FOLDER = Paths.get("src", "test", "java", "saves", "ProfileStorageTest");
 
     @Test
     void testDecodeProfile_exampleProfileData_returnsExampleProfileString() throws SchwarzeneggerException,
             FileNotFoundException {
-        ProfileStorage storage = new ProfileStorage();
-        String inputFilePath = Paths.get(TEST_SAVES_FOLDER, "exampleProfileData.json").toString();
-        Profile testProfile = storage.decodeProfile(inputFilePath);
+        Path inputFilePath = Paths.get(TEST_SAVES_FOLDER.toString(), "exampleProfileData.json");
+        ProfileStorage storage = new ProfileStorage(TEST_SAVES_FOLDER, inputFilePath);
+        Profile testProfile = storage.decodeProfile();
         Profile exampleProfile = new Profile(
                 EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT, EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
         assertEquals(exampleProfile, testProfile);
@@ -34,19 +34,19 @@ class ProfileStorageTest {
 
     @Test
     void testDecodeProfile_corruptedDataInput_throwsInvalidSaveFormatException() {
-        ProfileStorage storage = new ProfileStorage();
-        String inputFilePath = Paths.get(TEST_SAVES_FOLDER, "corruptedProfileData.json").toString();
+        Path inputFilePath = Paths.get(TEST_SAVES_FOLDER.toString(), "corruptedProfileData.json");
+        ProfileStorage storage = new ProfileStorage(TEST_SAVES_FOLDER, inputFilePath);
         assertThrows(InvalidSaveFormatException.class, () -> {
-            storage.decodeProfile(inputFilePath);
+            storage.decodeProfile();
         });
     }
 
     @Test
     void testDecodeProfile_invalidDataInput_throwsInvalidSaveFormatException() {
-        ProfileStorage storage = new ProfileStorage();
-        String inputFilePath = Paths.get(TEST_SAVES_FOLDER, "invalidProfileData.json").toString();
+        Path inputFilePath = Paths.get(TEST_SAVES_FOLDER.toString(), "invalidProfileData.json");
+        ProfileStorage storage = new ProfileStorage(TEST_SAVES_FOLDER, inputFilePath);
         assertThrows(InvalidSaveFormatException.class, () -> {
-            storage.decodeProfile(inputFilePath);
+            storage.decodeProfile();
         });
     }
 }
