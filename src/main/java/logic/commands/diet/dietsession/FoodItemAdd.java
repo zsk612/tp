@@ -34,7 +34,7 @@ public class FoodItemAdd extends Command {
             foodList.add(temp);
             if (calories > CALORIES_UPPER_BOUND) {
                 userOutput.append("Your calories for this food item seems a little high, "
-                        + "so I've set it to 200,000.\n\t ");
+                        + "so I've set it to 200000.0.\n\t ");
             }
             userOutput.append("Yay! You have added " + temp.toString());
             ui.showToUser(userOutput.toString());
