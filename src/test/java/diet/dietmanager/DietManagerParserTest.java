@@ -55,7 +55,8 @@ public class DietManagerParserTest {
     }
 
     @Test
-    void extractNewDate_InvalidDateInput_throwInvalidDateFormatException() {
+    void extractNewDate_InvalidDateInput_throwInvalidDateFormatException() throws InvalidDateFormatException,
+            InvalidCommandFormatException {
         String input = "/d 2020-05-04";
         String expected = "04-05-2020";
         StringBuilder message = new StringBuilder();

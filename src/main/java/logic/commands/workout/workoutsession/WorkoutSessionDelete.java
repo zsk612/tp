@@ -2,6 +2,7 @@ package logic.commands.workout.workoutsession;
 
 import logic.commands.Command;
 import exceptions.SchwarzeneggerException;
+import logic.commands.CommandResult;
 import models.Exercise;
 import storage.workout.Storage;
 import ui.workout.workoutsession.WorkoutSessionUi;
@@ -11,22 +12,24 @@ import models.ExerciseList;
 import java.io.IOException;
 
 public class WorkoutSessionDelete extends Command {
-    public void execute(String[] inputs, ExerciseList exerciseList,
-                        String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+    public CommandResult execute(String[] inputs, ExerciseList exerciseList,
+                                 String filePath, Storage storage, boolean[] hasEndedWorkoutSessions) {
+        String result = "";
         try {
             int removeIndex = WorkoutSessionParser.deleteParser(inputs);
             Exercise deletedExercise = exerciseList.exerciseList.get(removeIndex - 1);
             exerciseList.exerciseList.remove(removeIndex - 1);
             storage.writeToStorage(filePath, exerciseList);
-            WorkoutSessionUi.deleteExerciseSuccess(deletedExercise);
+            result = WorkoutSessionUi.deleteExerciseSuccess(deletedExercise);
         } catch (IOException e) {
-            WorkoutSessionUi.printError();
+            return new CommandResult(WorkoutSessionUi.PRINT_ERROR);
         } catch (ArrayIndexOutOfBoundsException e) {
-            WorkoutSessionUi.deleteFormatError();
+            return new CommandResult(WorkoutSessionUi.DELETE_FORMAT_ERROR);
         } catch (IndexOutOfBoundsException e) {
-            WorkoutSessionUi.deleteIndexError();
+            return new CommandResult(WorkoutSessionUi.DELETE_INDEX_ERROR);
         } catch (SchwarzeneggerException e) {
-            WorkoutSessionUi.deleteFormatError();
+            return new CommandResult(WorkoutSessionUi.DELETE_FORMAT_ERROR);
         }
+        return new CommandResult(result);
     }
 }

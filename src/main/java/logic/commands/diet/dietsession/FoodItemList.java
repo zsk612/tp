@@ -2,7 +2,10 @@ package logic.commands.diet.dietsession;
 
 import logic.commands.Command;
 import diet.dietsession.Food;
+import logic.commands.CommandResult;
+import logic.commands.ExecutionResult;
 import storage.diet.DietStorage;
+import ui.diet.dietsession.DietSessionUi;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,6 +14,7 @@ import java.util.stream.Collectors;
 
 import static ui.CommonUi.LS;
 
+//@@author zsk612
 public class FoodItemList extends Command {
 
     /**
@@ -20,9 +24,12 @@ public class FoodItemList extends Command {
      * @param foodList arraylist that stored all the food items
      * @param storage storage for diet session
      * @param index Integer variable that shows the index of the session
+     * @return An object CommandResult containing the executing status and feedback message to be displayed
+     *         to user.
      */
     @Override
-    public void execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
+    public CommandResult execute(String input, ArrayList<Food> foodList, DietStorage storage, Integer index) {
+        String result = "";
         try {
             double totalCalories = 0;
             StringBuilder listResult = new StringBuilder();
@@ -34,16 +41,17 @@ public class FoodItemList extends Command {
                 String formattedList = formatList(foodList);
                 listResult.append(formattedList);
                 listResult.append(totalMealCalories);
-                ui.showToUser(listResult.toString().trim());
+                result = listResult.toString().trim();
                 logger.log(Level.INFO, "Listed all foods in Diet Session");
             } else {
-                listResult.append("Sorry, there is nothing in your food list.");
-                ui.showToUser(listResult.toString().trim());
+                listResult.append(DietSessionUi.MESSAGE_NO_FOOD);
+                result = listResult.toString().trim();
             }
         } catch (NullPointerException e) {
-            ui.showToUser("Sorry, there is nothing in your food list.");
+            result = DietSessionUi.MESSAGE_NO_FOOD;
             logger.log(Level.WARNING, "No item in food list");
         }
+        return new CommandResult(result, ExecutionResult.OK);
     }
 
     private String formatList(ArrayList<Food> foodList) {

@@ -5,6 +5,8 @@ import exceptions.workout.workoutsession.DeleteFormatException;
 
 import models.Exercise;
 
+import java.util.Arrays;
+
 public class WorkoutSessionParser {
 
     public static String[] workoutSessionParser(String input) {
