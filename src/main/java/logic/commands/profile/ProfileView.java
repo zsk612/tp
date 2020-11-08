@@ -42,7 +42,7 @@ public class ProfileView extends Command {
             Profile profile = storage.loadData();
             assert profile != null : "profile should not be null after loading";
 
-            double todayCalories = new DietManager().getDateTotalCalories(PATH_TO_DIET_FOLDER,
+            double todayCalories = new DietManager().getDateTotalCalories("src/data/",
                     java.time.LocalDate.now());
             double caloriesToGoal = profile.getCalories() - todayCalories;
 

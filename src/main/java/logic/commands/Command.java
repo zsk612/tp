@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 public abstract class Command {
 
     protected static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-    public static CommonUi ui = new CommonUi();
+    public CommonUi ui = new CommonUi();
 
     /**
      * Executes the command with given arguments.
@@ -38,6 +38,7 @@ public abstract class Command {
         return new CommandResult();
     }
 
+    //@@author tienkhoa16
     /**
      * Executes the command with user's input.
      *
@@ -52,6 +53,7 @@ public abstract class Command {
         return new CommandResult();
     }
 
+    //@@author
     /**
      * Executes the command with user's input.
      *
