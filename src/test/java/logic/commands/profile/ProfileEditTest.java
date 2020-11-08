@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static profile.Constants.CALORIES_UPPER_BOUND;
-import static profile.Constants.EMPTY_STRING;
+import static ui.CommonUi.EMPTY_STRING;
 import static profile.Constants.EXAMPLE_CALORIES;
 import static profile.Constants.EXAMPLE_EXPECTED_WEIGHT;
 import static profile.Constants.EXAMPLE_HEIGHT;
@@ -32,7 +32,7 @@ class ProfileEditTest {
 
     @Test
     void testExecute_inputNullArguments_ValidStorage_throwsAssertionError() {
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         assertThrows(AssertionError.class, () -> {
             new ProfileEdit().execute(null, storage);
@@ -49,7 +49,7 @@ class ProfileEditTest {
     @Test
     void testExecute_noExistingProfile_inputValidArguments_ValidStorage_returnFailure() throws SchwarzeneggerException {
         String commandArgs = "/n Arnold";
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(null);
 
@@ -60,7 +60,7 @@ class ProfileEditTest {
     @Test
     void testExecute_hasExistingProfile_inputEmptyArguments_ValidStorage_throwsInvalidCommandFormatException()
             throws SavingException {
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 
@@ -72,7 +72,7 @@ class ProfileEditTest {
     @Test
     void testExecute_hasExistingProfile_inputEditName_ValidStorage_returnSuccess() throws SchwarzeneggerException {
         String commandArgs = "/n Arnold";
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 
@@ -85,7 +85,7 @@ class ProfileEditTest {
     @Test
     void testExecute_hasExistingProfile_inputEditHeight_ValidStorage_returnSuccess() throws SchwarzeneggerException {
         String commandArgs = "/h 200";
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 
@@ -98,7 +98,7 @@ class ProfileEditTest {
     @Test
     void testExecute_hasExistingProfile_inputEditWeight_ValidStorage_returnSuccess() throws SchwarzeneggerException {
         String commandArgs = "/w 200";
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 
@@ -112,7 +112,7 @@ class ProfileEditTest {
     void testExecute_hasExistingProfile_inputEditExpectedWeight_ValidStorage_returnSuccess()
             throws SchwarzeneggerException {
         String commandArgs = "/e 200";
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 
@@ -125,7 +125,7 @@ class ProfileEditTest {
     void testExecute_hasExistingProfile_inputEditCaloriesToUpperBound_ValidStorage_returnSuccess()
             throws SchwarzeneggerException {
         String commandArgs = "/c 200000";
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 
@@ -139,7 +139,7 @@ class ProfileEditTest {
     void testExecute_hasExistingProfile_inputEditCaloriesMoreThanUpperBound_ValidStorage_returnSuccess()
             throws SchwarzeneggerException {
         String commandArgs = "/c 200001";
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 
@@ -153,7 +153,7 @@ class ProfileEditTest {
     void testExecute_hasExistingProfile_inputSameInformation_ValidStorage_returnFailure()
             throws SchwarzeneggerException {
         String commandArgs = "/n Schwarzenegger";
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 

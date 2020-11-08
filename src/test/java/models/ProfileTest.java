@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static profile.Constants.EMPTY_STRING;
+import static ui.CommonUi.EMPTY_STRING;
 import static profile.Constants.EXAMPLE_BMI;
 import static profile.Constants.EXAMPLE_CALORIES;
 import static profile.Constants.EXAMPLE_EXPECTED_WEIGHT;

@@ -1,11 +1,12 @@
 package logic.commands.main;
 
-import logic.commands.Command;
-import logic.commands.CommandResult;
 import exceptions.EndException;
 import exceptions.SchwarzeneggerException;
+import logic.commands.Command;
+import logic.commands.CommandResult;
 
 //@@author tienkhoa16
+
 /**
  * A representation of the command for exiting The Schwarzenegger.
  */
@@ -20,6 +21,7 @@ public class MainEnd extends Command {
      */
     @Override
     public CommandResult execute(String args) throws SchwarzeneggerException {
+        assert args != null : "arguments cannot be null";
         super.execute(args);
 
         if (!args.isEmpty()) {

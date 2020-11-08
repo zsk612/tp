@@ -1,6 +1,6 @@
 package logic.commands;
 
-import static profile.Constants.EMPTY_STRING;
+import static ui.CommonUi.EMPTY_STRING;
 
 /**
  * A class representing result shown to user after executing the requested command.

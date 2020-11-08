@@ -1,12 +1,12 @@
 package logic.commands.workout.workoutmanager;
 
+import exceptions.InsufficientArgumentException;
+import exceptions.SchwarzeneggerException;
+import exceptions.workout.workoutmanager.NotANumberException;
+import exceptions.workout.workoutmanager.OutOfArrayException;
 import logic.commands.Command;
 import logic.commands.CommandResult;
 import logic.commands.ExecutionResult;
-import exceptions.SchwarzeneggerException;
-import exceptions.workout.workoutmanager.InsufficientArgumentException;
-import exceptions.workout.workoutmanager.NotANumberException;
-import exceptions.workout.workoutmanager.OutOfArrayException;
 import models.PastRecordList;
 import workout.workoutsession.WorkoutSession;
 

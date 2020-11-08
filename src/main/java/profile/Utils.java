@@ -3,13 +3,13 @@ package profile;
 import models.Profile;
 
 import static profile.Constants.CALORIES_LOWER_BOUND;
-import static profile.Constants.CALORIES_UPPER_BOUND;
 import static profile.Constants.HEIGHT_LOWER_BOUND;
 import static profile.Constants.HEIGHT_UPPER_BOUND;
 import static profile.Constants.WEIGHT_LOWER_BOUND;
 import static profile.Constants.WEIGHT_UPPER_BOUND;
 
 //@@author tienkhoa16
+
 /**
  * A class containing utility methods used in Profile Session.
  */

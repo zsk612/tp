@@ -14,10 +14,10 @@ import logic.commands.diet.dietsession.FoodItemHelp;
 import logic.commands.diet.dietsession.FoodItemList;
 import logic.commands.diet.dietsession.FoodItemWrong;
 import logic.commands.main.MainHelp;
+import logic.commands.main.MainWrong;
 import logic.commands.main.ToDiet;
 import logic.commands.main.ToProfile;
 import logic.commands.main.ToWorkout;
-import logic.commands.main.MainWrong;
 import logic.commands.profile.ProfileAdd;
 import logic.commands.profile.ProfileDelete;
 import logic.commands.profile.ProfileEdit;
@@ -40,6 +40,7 @@ import logic.commands.workout.workoutsession.WorkoutSessionWrong;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static ui.CommonUi.EMPTY_STRING;
 
 class CommandLibTest {
 
@@ -218,8 +219,8 @@ class CommandLibTest {
         cl.initWorkoutSessionCl();
         assertTrue(cl.getCommand("help") instanceof WorkoutSessionHelp);
     }
-    //@@author
 
+    //@@author tienkhoa16
     @Test
     void getCommandTest_profileSessionAddCommand_returnProfileAdd() {
         CommandLib cl = new CommandLib();
@@ -270,6 +271,20 @@ class CommandLibTest {
     }
 
     @Test
+    void getCommandTest_profileInputNull_returnWrong() {
+        CommandLib cl = new CommandLib();
+        cl.initProfileSessionCl();
+        assertTrue(cl.getCommand(null) instanceof ProfileWrong);
+    }
+
+    @Test
+    void getCommandTest_profileInputEmpty_returnWrong() {
+        CommandLib cl = new CommandLib();
+        cl.initProfileSessionCl();
+        assertTrue(cl.getCommand(EMPTY_STRING) instanceof ProfileWrong);
+    }
+
+    @Test
     void getCommandTest_mainHelpCommand_returnHelp() {
         CommandLib cl = new CommandLib();
         cl.initMainMenuCl();
@@ -302,5 +317,19 @@ class CommandLibTest {
         CommandLib cl = new CommandLib();
         cl.initMainMenuCl();
         assertTrue(cl.getCommand("unregconised") instanceof MainWrong);
+    }
+
+    @Test
+    void getCommandTest_mainInputNull_returnWrong() {
+        CommandLib cl = new CommandLib();
+        cl.initMainMenuCl();
+        assertTrue(cl.getCommand(null) instanceof MainWrong);
+    }
+
+    @Test
+    void getCommandTest_mainInputEmpty_returnWrong() {
+        CommandLib cl = new CommandLib();
+        cl.initMainMenuCl();
+        assertTrue(cl.getCommand(EMPTY_STRING) instanceof MainWrong);
     }
 }

@@ -1,12 +1,15 @@
 package logic.commands.profile;
 
-import logic.commands.Command;
-import logic.commands.CommandResult;
 import diet.dietmanager.DietManager;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidSaveFormatException;
+import logic.commands.Command;
+import logic.commands.CommandResult;
 import models.Profile;
 import storage.profile.ProfileStorage;
+
+import java.time.LocalDate;
+import java.util.Objects;
 
 import static logic.commands.ExecutionResult.FAILED;
 import static seedu.duke.Constant.COMMAND_WORD_VIEW;
@@ -17,10 +20,32 @@ import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;
 import static ui.profile.ProfileUi.MESSAGE_VIEW_PROFILE;
 
 //@@author tienkhoa16
+
 /**
  * A representation of the command for viewing profile.
  */
 public class ProfileView extends Command {
+    private String pathToDietData;
+    private LocalDate date;
+
+    /**
+     * Constructs ProfileView object.
+     *
+     * @param pathToDietData Path to diet folder to get total calories.
+     * @param date Date to get total calories.
+     */
+    public ProfileView(String pathToDietData, LocalDate date) {
+        super();
+        this.pathToDietData = Objects.requireNonNullElse(pathToDietData, PATH_TO_DIET_FOLDER);
+        this.date = Objects.requireNonNullElseGet(date, LocalDate::now);
+    }
+
+    /**
+     * Constructs ProfileView object with default path to data file and current date.
+     */
+    public ProfileView() {
+        this(PATH_TO_DIET_FOLDER, LocalDate.now());
+    }
 
     /**
      * Overrides execute method of class Command to execute the view profile command requested by user's input.
@@ -32,6 +57,9 @@ public class ProfileView extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
+        assert commandArgs != null : "command args cannot be null";
+        assert storage != null : "profile storage cannot be null";
+
         super.execute(commandArgs, storage);
 
         if (!commandArgs.isEmpty()) {
@@ -42,9 +70,8 @@ public class ProfileView extends Command {
             Profile profile = storage.loadData();
             assert profile != null : "profile should not be null after loading";
 
-            double todayCalories = new DietManager().getDateTotalCalories(PATH_TO_DIET_FOLDER,
-                    java.time.LocalDate.now());
-            double caloriesToGoal = profile.getCalories() - todayCalories;
+            double totalCalories = new DietManager().getDateTotalCalories(pathToDietData, date);
+            double caloriesToGoal = profile.getCalories() - totalCalories;
 
             String caloriesMessage;
             if (caloriesToGoal > 0) {

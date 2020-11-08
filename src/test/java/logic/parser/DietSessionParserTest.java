@@ -1,4 +1,4 @@
-package diet.dietsession;
+package logic.parser;
 
 import logic.parser.DietSessionParser;
 import exceptions.diet.NegativeCaloriesException;

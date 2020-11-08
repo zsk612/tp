@@ -1,48 +1,26 @@
-package profile;
+package logic.parser;
 
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidCommandFormatException;
-import logic.parser.ProfileParser;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
+import static logic.parser.ProfileParser.extractCommandTagAndInfo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static logic.parser.ProfileParser.extractCommandTagAndInfo;
 
 //@@author tienkhoa16
 class ProfileParserTest {
 
     @Test
-    void testParseCommand_inputTwoWords_returnNonEmptyStringInSecondElement() {
-        ProfileParser profileParser = new ProfileParser();
-        String rawUserInput = "add /n";
-        String[] expectedSplit = {"add", "/n"};
-
-        assertEquals(Arrays.toString(expectedSplit),
-                Arrays.toString(profileParser.parseCommand(rawUserInput)));
-    }
-
-    @Test
-    void testParseCommand_inputOneWord_returnEmptyStringInSecondElement() {
-        ProfileParser profileParser = new ProfileParser();
-        String rawUserInput = "add";
-        String[] expectedSplit = {"add", ""};
-
-        assertEquals(Arrays.toString(expectedSplit),
-                Arrays.toString(profileParser.parseCommand(rawUserInput)));
-    }
-
-    @Test
-    void testExtractCommandTagAndInfo_missingSplashInput_throwInvalidCommandFormatException() {
+    void testExtractCommandTagAndInfo_missingSlashInput_throwInvalidCommandFormatException() {
         assertThrows(InvalidCommandFormatException.class, () ->
                 extractCommandTagAndInfo("add", "add n Schwarzenegger"));
     }
 
     @Test
-    void testExtractCommandTagAndInfo_excessiveSplashInput_throwInvalidCommandFormatException() {
+    void testExtractCommandTagAndInfo_excessiveSlashInput_throwInvalidCommandFormatException() {
         assertThrows(InvalidCommandFormatException.class, () ->
                 extractCommandTagAndInfo("add", "add //n Schwarzenegger"));
     }
