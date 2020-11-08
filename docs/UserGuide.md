@@ -222,18 +222,18 @@ Example: `help`
 Expected outcome:
 
 ```
-    _________________________________________________________________________________________________
-    Add      add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]
-             Add your new profile
-    View     view
-             View your profile
-    Edit     edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>
-             Edit your existing profile. You may edit from 1 field to all fields
-    Delete   delete
-             Delete your existing profile
-    End      end
-             Go back to Main Menu
-    _________________________________________________________________________________________________
+	 _________________________________________________________________________________________________
+	 Add      FORMAT:      add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]
+	          DESCRIPTION: Add your new profile
+	 View     FORMAT:      view
+	          DESCRIPTION: View your profile
+	 Edit     FORMAT:      edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>
+	          DESCRIPTION: Edit your existing profile. You may edit from 1 field to all fields
+	 Delete   FORMAT:      delete
+	          DESCRIPTION: Delete your existing profile
+	 End      FORMAT:      end
+	          DESCRIPTION: Go back to Main Menu
+	 _________________________________________________________________________________________________
 ```
 
 #### 3.2.2. <a id="profile-add">Adding a Profile: `add`</a>
@@ -388,22 +388,23 @@ Example: `help`
 Expected outcome:
 
 ```
-     _________________________________________________________________________________________________
-     New      new </d [DATE]> </t [TAG]>
-              Create a new diet session
-     List     list
-              Show all past diet sessions
-     Delete   delete [INDEX]
-              Delete the diet session at the input index
-     Edit     edit [INDEX]
-              Edit the diet session at the input index
-     Search   search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>
-              Search the diet session in between starting and end dates with a specific tag
-     Clear    clear
-              Clear all past diet sessions
-     End      end
-              Go back to Main Menu
-     _________________________________________________________________________________________________
+	 _________________________________________________________________________________________________
+	 New      FORMAT:      new </d [DATE]> </t [TAG]>
+	          DESCRIPTION: Create a new diet session
+	 List     FORMAT:      list
+	          DESCRIPTION: Show all past diet sessions
+	 Delete   FORMAT:      delete [INDEX]
+	          DESCRIPTION: Delete the diet session at the input index
+	 Edit     FORMAT:      edit [INDEX]
+	          DESCRIPTION: Edit the diet session at the input index
+	 Search   FORMAT:      search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>
+	          DESCRIPTION: Search the diet session in between starting and end dates with a specific tag
+	 Clear    FORMAT:      clear
+	          DESCRIPTION: Clear all past diet sessions
+	 End      FORMAT:      end
+	          DESCRIPTION: Go back to Main Menu
+	 _________________________________________________________________________________________________
+
 ```
  
 #### 3.3.2. <a id="diet-start">Starting a New Diet Session: `new`</a>
@@ -457,19 +458,20 @@ Example: `help`
 Expected outcome:
 ```
 	 _________________________________________________________________________________________________
-	 Add      add [FOOD_NAME] /c [CALORIES]
-	          Add a new food item
-	 List     list
-	          Show all food items
-	 Delete   delete [INDEX_OF_FOOD]
-	          Delete the food item at the input index
-	 Search   search [FOOD_NAME]
-	          Search the diet session for food with the name specified
-	 Clear    clear
-	          Clear all food items
-	 End      end
-	          Go back to the Diet Menu.
+	 Add      FORMAT:      add [FOOD_NAME] /c [CALORIES]
+	          DESCRIPTION: Add a new food item
+	 List     FORMAT:      list
+	          DESCRIPTION: Show all food items
+	 Delete   FORMAT:      delete [INDEX]
+	          DESCRIPTION: Delete the food item at the input index
+	 Search   FORMAT:      Search [FOOD_NAME]
+	          DESCRIPTION: Search the diet session for food with the name specified
+	 Clear    FORMAT:      clear
+	          DESCRIPTION: Clear all food items
+	 End      FORMAT:      end
+	          DESCRIPTION: Go back to the Diet Menu.
 	 _________________________________________________________________________________________________
+
 ```
 #### 3.3.2.2. <a id="meal-add">Adding Food Items to the Current Diet Session: `add`</a>
 This command adds a food item into the current diet session.
@@ -706,22 +708,22 @@ Example: `help`
 
 Expected outcome:
 ```
-_________________________________________________________________________________________________
-	 New      new </t [TAG]...>
-	          Create a new workout session and tags. Multiple tags are separated by ','.
-	 List     list </s [START_DATE]> </e [END_DATE]>
-	          Show all past sessions. Can display sessions between a certain period
-	 Delete   delete [INDEX]
-	          Delete the record indexed at x
-	 Edit     edit [INDEX]
-	          Edit the record indexed at x
-	 Clear    clear
-	          Clear all past results
-	 Search   search </t [TAG]...> </d [DATE]>
-	          Search records based on tags and dates. Multiple tags are seperated by ','.
-	 End      end
-	          Go back to Main Menu
-_________________________________________________________________________________________________
+	 _________________________________________________________________________________________________
+	 New      FORMAT:      new </t [TAG]...>
+	          DESCRIPTION: Create a new workout session and tags. Multiple tags are separated by ','
+	 List     FORMAT:      list </s [START_DATE]> </e [END_DATE]>
+	          DESCRIPTION: Show all past sessions. Can display sessions between a certain period
+	 Delete   FORMAT:      delete [INDEX]
+	          DESCRIPTION: Delete the record indexed at x
+	 Edit     FORMAT:      edit [INDEX]
+	          DESCRIPTION: Edit the record indexed at x
+	 Clear    FORMAT:      clear
+	          DESCRIPTION: Clear all past results
+	 Search   FORMAT:      search </t [TAG]...> </d [DATE]>
+	          DESCRIPTION: Search records based on tags and dates. Multiple tags are seperated by ','
+	 End      FORMAT:      end
+	          DESCRIPTION: Go back to Main Menu
+	 _________________________________________________________________________________________________
 ```
 
 #### 3.4.2. <a id="workout-start">Starting a New Workout Session: `new`</a>
@@ -760,18 +762,18 @@ Example: `help`
 Expected outcome:
 
 ```
-     _________________________________________________________________________________________________
-     Add      add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]
-              Add a new move.
-     List     list
-              Show all moves in this current session.
-     Delete   delete [INDEX]
-              Delete a move according to the index in the list.
-     Search   search [NAME_OF_MOVE]
-              Show a list of moves that match the entered keyword.
-     End      end
-              Go back to the Workout Menu.
-     _________________________________________________________________________________________________
+	 _________________________________________________________________________________________________
+	 Add      FORMAT:      add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]
+	          DESCRIPTION: Add a new move
+	 List     FORMAT:      list
+	          DESCRIPTION: Show all moves in this current session
+	 Delete   FORMAT:      delete [INDEX]
+	          DESCRIPTION: Delete a move according to the index in the list
+	 Search   FORMAT:      search [NAME_OF_MOVE]
+	          DESCRIPTION: Show a list of moves that match the entered keyword
+	 End      FORMAT:      end
+	          DESCRIPTION: Go back to the Workout Menu
+	 _________________________________________________________________________________________________
 ```
 
 #### 3.4.2.2. <a id="ws-add">Adding a Move to the Current Workout Session: `add`</a>
@@ -786,7 +788,7 @@ Expected outcome:
 ```
      _________________________________________________________________________________________________
      Yay! You have added squat to your list.
-     [Repetitions: 15 || Weight: 40]
+     [Repetitions: 15 || Weight: 40.0]
      _________________________________________________________________________________________________
 ```
 
@@ -800,8 +802,8 @@ Example: `list`
 Expected outcome:
 ```
      _________________________________________________________________________________________________
-     Index   Exercise             Repetitions Weight
-     1       squat                15          40
+     Index   Exercise             Repetitions    Weight
+     1       squat                15             40.0
      _________________________________________________________________________________________________
 ```
 
@@ -817,7 +819,7 @@ Expected outcome:
 ```
      _________________________________________________________________________________________________
      You have deleted squat from your list!
-     [Repetitions: 15 || Weight: 40]
+     [Repetitions: 15 || Weight: 40.0]
      _________________________________________________________________________________________________
 ```
 
@@ -833,10 +835,10 @@ Expected outcome:
 
 ```
      _________________________________________________________________________________________________
-     	 Index   Exercise             Repetitions Weight    
-     	 1       bench                324         342
-     	 2       benchpress           324         342
-     	 3       bench press          324         342
+     	 Index   Exercise             Repetitions    Weight    
+     	 1       bench                324            342.0
+     	 2       benchpress           324            342.0
+     	 3       bench press          324            342.0
      _________________________________________________________________________________________________
 ```
 
