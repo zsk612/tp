@@ -96,7 +96,7 @@ public class Duke {
             Command cm = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
 
             try {
-                CommandResult rs = cm.execute(commParts[COMMAND_ARGS_INDEX]);
+                cm.execute(commParts[COMMAND_ARGS_INDEX]);
             } catch (SchwarzeneggerException e) {
                 if (e instanceof EndException) {
                     break;

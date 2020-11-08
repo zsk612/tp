@@ -704,6 +704,12 @@ You can see a complete list of available commands under Workout Menu and how to 
 
 __Format:__ `help`
 
+1. Type `help` to your console and press <kbd>Enter</kbd> to execute it.
+
+    ![main-help-1](pictures/UG_screenshots/workout-help-step-1.png)
+
+2. You should be able to see a list of available commands like the screenshot below:
+    ![main-help-2](pictures/UG_screenshots/workout-help-step-2.png)
 Example: `help`
 
 Expected outcome:
@@ -926,7 +932,7 @@ You can search records containing (a list of) tags with `/t` followed by the tag
 
 - Date condition
 
-You can search records created on a specific day with `/d` followed by a date. Date should be keyed in  following one of the supported formats. [See here](#notes) for a complete list of format supported. If the format is wrong, sessions created on any day will be accepted.
+You can search records created on a specific day with `/d` followed by a date. Date should be keyed in  following one of the supported formats. [See here](#notes) for a complete list of format supported.
 
 Both date and tag conditions are optional. You may have zero, one or both conditions while searching. If both conditions are given, only sessions that meet both conditions will be selected.
 

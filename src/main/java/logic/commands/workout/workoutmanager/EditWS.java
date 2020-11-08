@@ -11,6 +11,7 @@ import models.PastRecordList;
 import workout.workoutsession.WorkoutSession;
 
 import static ui.workout.workoutmanager.WorkoutManagerUi.EDIT_SUCCESS;
+import static ui.workout.workoutmanager.WorkoutManagerUi.START_NEW_SESSION;
 
 public class EditWS extends Command {
 
@@ -44,6 +45,8 @@ public class EditWS extends Command {
         }
         WorkoutSession ws = new WorkoutSession(filePath, false, index);
         logger.info("editing workout session created");
+
+        ui.showToUser(START_NEW_SESSION);
         ws.workoutSessionStart();
 
         logger.info("edited successfully");

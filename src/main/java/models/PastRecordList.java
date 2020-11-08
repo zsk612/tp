@@ -1,5 +1,6 @@
 package models;
 
+import exceptions.InvalidDateFormatException;
 import exceptions.SchwarzeneggerException;
 import exceptions.workout.workoutmanager.SchwIoException;
 import logger.SchwarzeneggerLogger;
@@ -92,7 +93,7 @@ public class PastRecordList {
      * @param args String of user input.
      * @return String representation of all the records that satisfies the condition.
      */
-    public String search(String args) {
+    public String search(String args) throws InvalidDateFormatException {
         ArrayList<Predicate<PastWorkoutSessionRecord>> conditions = parseSearchConditions(args);
 
         List<PastWorkoutSessionRecord> result = pastFiles.stream()
@@ -107,7 +108,7 @@ public class PastRecordList {
             return info;
         }
 
-        info = searchRecords(result.size(), ((result.size() > 1) ? " records have" : " record has"));
+        info = searchRecords(result.size(), ((result.size() > 1) ? "records have" : "record has"));
 
         info = getListInTable(result, info);
         logger.log(Level.INFO, "Search completed.");
@@ -164,7 +165,7 @@ public class PastRecordList {
      *
      * @param args User's input.
      */
-    public String list(String args) {
+    public String list(String args) throws InvalidDateFormatException {
 
         ArrayList<Predicate<PastWorkoutSessionRecord>> conditions = parseList(args);
 
