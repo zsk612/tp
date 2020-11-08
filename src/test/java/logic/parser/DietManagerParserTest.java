@@ -2,10 +2,8 @@ package logic.parser;
 
 import exceptions.InvalidDateFormatException;
 import exceptions.profile.InvalidCommandFormatException;
-import logic.parser.DietManagerParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import logic.parser.DateParser;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -22,10 +20,10 @@ public class DietManagerParserTest {
 
     @Test
     void parseString_validInput_success() {
-        String input = "First Second";
+        String input = "first second";
         DietManagerParser parser = new DietManagerParser();
-        String[] expected = {"First", "Second"};
-        String[] result = parser.parse(input);
+        String[] expected = {"first", "second"};
+        String[] result = parser.parseCommand(input);
         assertTrue(Arrays.equals(expected, result));
     }
 
@@ -34,7 +32,7 @@ public class DietManagerParserTest {
         String input = "FirstSecond";
         DietManagerParser parser = new DietManagerParser();
         String[] expected = {"First", "Second"};
-        String[] result = parser.parse(input);
+        String[] result = parser.parseCommand(input);
         Assertions.assertFalse(Arrays.equals(expected, result));
     }
 
