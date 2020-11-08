@@ -924,7 +924,7 @@ You can search records containing (a list of) tags with `/t` followed by the tag
 
 - Date condition
 
-You can search records created on a specific day with `/d` followed by a date. Date should be keyed in  following one of the supported formats. [See here](#notes) for a complete list of format supported. If the format is wrong, sessions created on any day will be accepted.
+You can search records created on a specific day with `/d` followed by a date. Date should be keyed in  following one of the supported formats. [See here](#notes) for a complete list of format supported.
 
 Both date and tag conditions are optional. You may have zero, one or both conditions while searching. If both conditions are given, only sessions that meet both conditions will be selected.
 

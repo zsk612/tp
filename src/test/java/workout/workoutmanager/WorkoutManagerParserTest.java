@@ -1,5 +1,6 @@
 package workout.workoutmanager;
 
+import exceptions.InvalidDateFormatException;
 import exceptions.workout.workoutmanager.NotANumberException;
 import models.PastWorkoutSessionRecord;
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,7 @@ import static logic.parser.WorkoutManagerParser.parseIndex;
 import static logic.parser.WorkoutManagerParser.parseList;
 import static logic.parser.WorkoutManagerParser.parseSearchConditions;
 import static logic.parser.WorkoutManagerParser.parseTags;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class WorkoutManagerParserTest {
 
@@ -62,7 +64,12 @@ class WorkoutManagerParserTest {
         String in1 = "/d 20201017";
         List<Boolean> expected1 = Arrays.asList(true);
         ArrayList<Boolean> testResults1 = new ArrayList<>();
-        ArrayList<Predicate<PastWorkoutSessionRecord>> tests = parseSearchConditions(in1);
+        ArrayList<Predicate<PastWorkoutSessionRecord>> tests = null;
+        try {
+            tests = parseSearchConditions(in1);
+        } catch (InvalidDateFormatException e) {
+            fail();
+        }
 
         for (Predicate<PastWorkoutSessionRecord> t : tests) {
             testResults1.add(t.test(record));
@@ -72,7 +79,11 @@ class WorkoutManagerParserTest {
         String in2 = "/d 20201017 /t arms";
         List<Boolean> expected2 = Arrays.asList(false, true);
         ArrayList<Boolean> testResults2 = new ArrayList<>();
-        tests = parseSearchConditions(in2);
+        try {
+            tests = parseSearchConditions(in2);
+        } catch (InvalidDateFormatException e) {
+            fail();
+        }
 
         for (Predicate<PastWorkoutSessionRecord> t : tests) {
             testResults2.add(t.test(record));
@@ -82,7 +93,11 @@ class WorkoutManagerParserTest {
         String in3 = "/d 20201017 /t legs, ch";
         List<Boolean> expected3 = Arrays.asList(true, true);
         ArrayList<Boolean> testResults3 = new ArrayList<>();
-        tests = parseSearchConditions(in3);
+        try {
+            tests = parseSearchConditions(in3);
+        } catch (InvalidDateFormatException e) {
+            fail();
+        }
 
         for (Predicate<PastWorkoutSessionRecord> t : tests) {
             testResults3.add(t.test(record));
@@ -105,7 +120,12 @@ class WorkoutManagerParserTest {
         String in1 = "20201017 /d";
         List<Boolean> expected1 = new ArrayList<>();
         ArrayList<Boolean> testResults1 = new ArrayList<>();
-        ArrayList<Predicate<PastWorkoutSessionRecord>> tests = parseSearchConditions(in1);
+        ArrayList<Predicate<PastWorkoutSessionRecord>> tests = null;
+        try {
+            tests = parseSearchConditions(in1);
+        } catch (InvalidDateFormatException e) {
+            fail();
+        }
 
         for (Predicate<PastWorkoutSessionRecord> t : tests) {
             testResults1.add(t.test(record));
@@ -115,7 +135,11 @@ class WorkoutManagerParserTest {
         String in2 = "20201017 arms";
         List<Boolean> expected2 = new ArrayList<>();
         ArrayList<Boolean> testResults2 = new ArrayList<>();
-        tests = parseSearchConditions(in2);
+        try {
+            tests = parseSearchConditions(in2);
+        } catch (InvalidDateFormatException e) {
+            fail();
+        }
 
         for (Predicate<PastWorkoutSessionRecord> t : tests) {
             testResults2.add(t.test(record));
@@ -170,7 +194,12 @@ class WorkoutManagerParserTest {
         String in1 = "/s 20201017";
         List<Boolean> expected1 = Arrays.asList(true);
         ArrayList<Boolean> testResults1 = new ArrayList<>();
-        ArrayList<Predicate<PastWorkoutSessionRecord>> tests = parseList(in1);
+        ArrayList<Predicate<PastWorkoutSessionRecord>> tests = null;
+        try {
+            tests = parseList(in1);
+        } catch (InvalidDateFormatException e) {
+            fail();
+        }
 
         for (Predicate<PastWorkoutSessionRecord> t : tests) {
             testResults1.add(t.test(record));
@@ -180,7 +209,11 @@ class WorkoutManagerParserTest {
         String in2 = "/e 20201019";
         List<Boolean> expected2 = Arrays.asList(true);
         ArrayList<Boolean> testResults2 = new ArrayList<>();
-        tests = parseList(in2);
+        try {
+            tests = parseList(in2);
+        } catch (InvalidDateFormatException e) {
+            fail();
+        }
 
         for (Predicate<PastWorkoutSessionRecord> t : tests) {
             testResults2.add(t.test(record));
@@ -190,7 +223,11 @@ class WorkoutManagerParserTest {
         String in3 = "/s 20201017 /e 20201019";
         List<Boolean> expected3 = Arrays.asList(true, true);
         ArrayList<Boolean> testResults3 = new ArrayList<>();
-        tests = parseList(in3);
+        try {
+            tests = parseList(in3);
+        } catch (InvalidDateFormatException e) {
+            fail();
+        }
 
         for (Predicate<PastWorkoutSessionRecord> t : tests) {
             testResults3.add(t.test(record));
@@ -199,10 +236,16 @@ class WorkoutManagerParserTest {
     }
 
     @Test
-    void parseList_wrongDateFormat_success() {
+    void parseList_wrongDateFormat_throwInvalidDateFormatException() {
+
+        String in1 = "/s aabb";
+        assertThrows(InvalidDateFormatException.class, () -> parseList(in1));
+    }
+
+    @Test
+    void parseList_wrongDateIdentifier_success() {
         List<String> tg = Arrays.asList("legs", "chest");
         ArrayList<String> tags = new ArrayList<>(tg);
-
         LocalDateTime date = LocalDateTime.of(2020,
                 10,
                 17,
@@ -210,24 +253,21 @@ class WorkoutManagerParserTest {
                 0);
         PastWorkoutSessionRecord record = new PastWorkoutSessionRecord("random",
                 date, date, tags);
-        String in1 = "/s aabb";
-        List<Boolean> expected1 = new ArrayList<>();
-        ArrayList<Boolean> testResults1 = new ArrayList<>();
-        ArrayList<Predicate<PastWorkoutSessionRecord>> tests = parseList(in1);
-
-        for (Predicate<PastWorkoutSessionRecord> t : tests) {
-            testResults1.add(t.test(record));
-        }
-        assertEquals(expected1, testResults1);
-
+        ArrayList<Predicate<PastWorkoutSessionRecord>> tests = null;
         String in2 = "/s 20201017 /e/e";
         List<Boolean> expected2 = Arrays.asList(true);
         ArrayList<Boolean> testResults2 = new ArrayList<>();
-        tests = parseList(in2);
+        try {
+            tests = parseList(in2);
+        } catch (InvalidDateFormatException e) {
+            fail();
+        }
 
         for (Predicate<PastWorkoutSessionRecord> t : tests) {
             testResults2.add(t.test(record));
         }
         assertEquals(expected2, testResults2);
+
     }
+
 }
