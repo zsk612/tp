@@ -14,8 +14,7 @@ import java.io.Reader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
-
+//@@author CFZeon
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
  */

@@ -6,84 +6,85 @@
 The Schwarzenegger is a desktop command line interface-based app for managing all your needs regarding fitness. With the built-in personal assistant, you are able to track your daily workout and diet sessions based on your profile. If you can type fast, The Schwarzenegger can help you maximise your efficiency for maintaining fitness.
 
 ### Summary of Contributions
-
-+ **Role**: Developer
-
-+ **Responsibility**: Deliverables and deadlines
  
 + **Major enhancement**:
    + **Search Diet Sessions**
       + Functionality: This enhancement allows the user to search for specific diet sessions within a date range of a specified tag.
-      + Justification: This feature improves the product significantly because a user first have to take down the ingredients they have, and using the application makes it convenience to look through the list of ingredients in the application.
+      + Justification: This feature improves the product a lot more significantly as a user would want to search things they ate within a date range, or whatever they ate within a specified tag i.e. breakfast. This makes things more convenient for users as they would not need to manually filter through so much information to find what they need.
+      + Highlights: The search function allows for 3 parameters, the start date, the end date and the tag. This makes it very easy to filter for specific information. 
       
-      + Highlights: This enhancement prevents expired food to be added to the application, therefore increasing food safety for user consumption. 
+   + **Edit Diet Session**
+      + Functionality: This enhancement lets users access and edit diet sessions that they have created before by searching through the save folder and loading the specified file.
+      + Justification: The feature allows users to edit a previously created diet session instead of having to delete it and creating another one from scratch.
+      + Highlights: Users can edit the file like they would with a new file, as it is an instantiation of the same DietSession.
       
-   + **Search Ingredient**
-      + Functionality: With this enhancement, it allows user to search for ingredients that user already have or newly bought. 
-      + Justification: This feature allows user to search for something very quickly, instead of looking through a whole list of ingredients. 
-      + Highlights: User can easily find common or similar ingredients that is available through a simple search.
-      
-      + **Search Recipe**
-            + Functionality: With this enhancement, it allows user to search for similar name recipe that user added. 
-            + Justification: This feature allows user to search for similar recipe name so that they can view and compare the ingredients used. 
-            + Highlights: User can easily find similar recipes' name through a simple search. 
+      + **Clear all diet sessions**
+            + Functionality: This enhancement allows users to remove all diet session records from their local storage.
+            + Justification: The feature provides an accessible interface to allow users to delete all of their diet sessions at one go.
+            + Highlights: Clear iterates through every file in the folder then deletes them one by one.
            
-         + **Search Chore**
-            + Functionality: With this enhancement, it allows user to search for chore that user added. 
-            + Justification: This feature allows user to search for chore that requires their attention.
+         + **Consistent file saving**
+            + Functionality: This enhancement saves the diet session after every command that a user inputs into diet session.
+            + Justification: The feature prevents users from accidentally deleting their data during usage.
             + Highlights: User can easily find unfinished chores through a simple search. 
             
       + **Minor enhancement**:
-         + **View Help**
-            + This feature allows user to view all the available commands in Kitchen Helper and also the description of the commands. This feature can be easily be used by typing `help` in the command line.
+         + **Get Total Calories for a specific date**
+            + This feature opens every file within a specified date and sums up the total calories within the files with matching dates. It is used to calculate the required calories left to consume to reach the daily requirement in the view command in profile. 
             
-      + **Code contribution**: [Functional and Test code](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/#search=jinfayap&sort=groupTitle&sortWithin=title&since=2020-03-01&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false)
+      + **Code contribution**: [Functional and Test code](https://nus-cs2113-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-09-27&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=CFZeon&tabRepo=AY2021S1-CS2113T-F11-1%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
       
       + **Other contributions**:
-         + Project management:
-           + Ensure that the team members are always aware of weekly deadlines and deliverables.
            
          + Documentation:
-           + Created use cases and updated them into the Developer Guide. (Pull Request: [#145](https://github.com/AY1920S2-CS2113T-M16-2/tp/pull/145))
-           + Did the layout for User Guide (Pull Request: [#91](https://github.com/AY1920S2-CS2113T-M16-2/tp/pull/91), [#104](https://github.com/AY1920S2-CS2113T-M16-2/tp/pull/104))
+           + Added instructions and format for all diet manager related commands in the User Guide. (Pull Request: [#84](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/84/files), [#140](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/140)
+           + Added and updated instructions and format for all diet manager related commands in the Developer Guide. (Pull Request: [#149](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/149)))
+           + Added and updated user stories in the Developer Guide (Pull Request: [#219](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/219))
           
          + Community:
-           + Review Pull Request from teammates(with non-trival review comments.) (Pull Request: [#131](https://github.com/AY1920S2-CS2113T-M16-2/tp/pull/131).)
-           + Reported bugs for other teams in the class (example: [1](https://github.com/jinfayap/ped/issues/7), [2](https://github.com/jinfayap/ped/issues/8), [3](https://github.com/jinfayap/ped/issues/5))
-           + Perform manual testing, reported bugs and gave suggestions to teammates.
+           + Review Developer Guide from other teams in the class(with non-trival review comments.) (ModTracker: [#62](https://github.com/nus-cs2113-AY2021S1/tp/pull/62).)
+           + Reported bugs for other teams in the class (example: [ped](https://github.com/CFZeon/ped/issues)
+           + Evaluated code, tested and provided feedback to teammates during many online meetups.
              
-      #### Contributions to the User Guide
+      #### Contributions to User Guide
       ```
-      Given below are sections I contributed to the User Guide.   
-      They showcase my ability to write documentation targeting end-users.
+      Below are my contributions to the User Guide.
+      They show my ability to write documentation for end-users.
       ```
-      + [Adding an ingredient](https://ay1920s2-cs2113t-m16-2.github.io/tp/UserGuide#331-adding-an-ingredient-addingredient-jin-fa) 
+      + 
+      + [Starting a New Diet Session](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-help) 
       
-      + [Search for ingredient](https://ay1920s2-cs2113t-m16-2.github.io/tp/UserGuide#334-search-for-ingredient-searchingredient-jin-fa)
+      + [Listing All Past Diet Sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-list)
       
-      + [Search for recipe](https://ay1920s2-cs2113t-m16-2.github.io/tp/UserGuide#344-search-for-recipe-searchrecipe-jin-fa)
+      + [Editing a Past Diet Session](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-edit)
       
-      + [Search for chore](https://ay1920s2-cs2113t-m16-2.github.io/tp/UserGuide#354-search-for-chore-searchchore-jin-fa)
+      + [Deleting a Past Diet Session](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-delete)
       
-      #### Contributions to the Developer Guide
+      + [Clearing All Past Diet Sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#meal-clear)
+      
+      + [Searching for Past Diet Sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-search)
+      
+      + [Returning to Main Menu](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-end)
+      
+      #### Contributions to Developer Guide
       
       ```
-      Given below are sections I contributed to the Developer Guide. 
-      They showcase my ability to write technical documentation and the technical depth of my contributions
-      to the project.
+      Below are my contributions to the Developer Guide.
+      They show my ability to write technical documentation for other developers.
       ```
       
-      + [Addition of ingredient](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#411-addition-of-ingredient)
+      + [List out all commands](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#431-list-out-all-commands)
       
-      + [Search for ingredients based on keyword(s)](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#414-search-for-ingredients-based-on-keywords)
+      + [Start recordings diet data](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#432-start-recording-diet-data)
       
-      + [Search for recipe based on keyword(s)](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#425-search-for-recipe-based-on-keywords)
+      + [List all past diet sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#433-list-all-past-diet-sessions)
       
-      + [Search for chore based on keyword(s)](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#434-search-for-chore-based-on-keywords)
+      + [Edit a past diet session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#434-edit-a-past-diet-session)
       
-      + [Part of Use cases in Appendix C](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#appendix-c-value-proposition---use-cases)
+      + [Delete a past diet session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#435-delete-a-past-diet-session)
       
-      + Instructions for Manual Testing in Appendix F (Example: [1](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#f2-add-an-ingredient)
-      , [2](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#f5-search-for-ingredient)
-      , [3](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#f10-search-for-recipe)
-      , [4](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#f14-search-for-chore))  
+      + [Clear all past diet sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#436-clear-all-past-diet-sessions)
+      
+      + [Exit the diet manager](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#437-exit-the-diet-manager)
+      
+      + [Appendix B: User Stories](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#appendix-b-user-stories)
