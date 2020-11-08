@@ -2,6 +2,7 @@ package logic.commands.workout.workoutsession;
 
 import logic.commands.Command;
 import logic.commands.CommandResult;
+import logic.commands.ExecutionResult;
 import models.Exercise;
 import storage.workout.WorkoutSessionStorage;
 import ui.workout.workoutsession.WorkoutSessionUi;
@@ -16,9 +17,22 @@ import java.util.stream.Collectors;
 import static ui.CommonUi.LS;
 
 //@@author yujinyang1998
+/**
+ * A representation of the command for searching for an exercise.
+ */
 public class WorkoutSessionSearch extends Command {
     private boolean isEmptySearchResult;
 
+    /**
+     * Searches exercise list for matching exercises.
+     *
+     * @param inputs Array of user's input.
+     * @param exerciseList List of exercise.
+     * @param filePath Path to data file.
+     * @param workoutSessionStorage Workout Session Storage to load and save data.
+     * @param hasEndedWorkoutSessions Array of booleans indicating if user has ended workout sessions.
+     * @return Status OK and information to be printed.
+     */
     @Override
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
                                  String filePath, WorkoutSessionStorage workoutSessionStorage,
@@ -44,7 +58,7 @@ public class WorkoutSessionSearch extends Command {
         } catch (NoSuchElementException e) {
             return new CommandResult(WorkoutSessionUi.SEARCH_RESULTS_EMPTY);
         }
-        return new CommandResult(result);
+        return new CommandResult(result, ExecutionResult.OK);
     }
 
     private String formatList(ArrayList<Exercise> exercise, String searchTerm) {

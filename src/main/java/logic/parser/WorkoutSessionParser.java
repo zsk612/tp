@@ -9,14 +9,31 @@ import java.util.Arrays;
 
 
 //@@author yujinyang1998
+
+/**
+ * A class that deals with making sense of user's command inside Workout Session.
+ */
 public class WorkoutSessionParser {
 
+    /**
+     * Splits the user's input by space and return as a string array.
+     *
+     * @param input User's input arguments.
+     * @return String array containing the user's inputs
+     */
     public static String[] workoutSessionParser(String input) {
 
         return input.split(" ");
     }
 
-    public static Exercise addParser(String[] input) throws NumberFormatException, AddFormatException {
+    /**
+     * Sorts the string array into parts for Exercise.
+     *
+     * @param input String array containing the user's inputs.
+     * @return Exercise containing the user's input information.
+     * @throws AddFormatException If input is empty or is negative.
+     */
+    public static Exercise addParser(String[] input) throws AddFormatException {
         String[] returnString = new String[4];
         Arrays.fill(returnString, "");
         int tracker = 0;
@@ -43,7 +60,13 @@ public class WorkoutSessionParser {
         return new Exercise(description, repetitions, weight);
     }
 
-
+    /**
+     * Sorts the string array to return an delete value.
+     *
+     * @param input String array containing the user's inputs.
+     * @return Integer for the index of the exercise to be deleted.
+     * @throws DeleteFormatException If input is not an integer.
+     */
     public static int deleteParser(String[] input) throws DeleteFormatException {
         int returnInt;
         try {
@@ -54,6 +77,12 @@ public class WorkoutSessionParser {
         return returnInt;
     }
 
+    /**
+     * Sorts the string array to return an string that represents the search term.
+     *
+     * @param input String array containing the user's inputs.
+     * @return String that the user whats to search.
+     */
     public static String searchParser(String[] input) {
         StringBuilder returnString = new StringBuilder();
         for (int i = 1; i < input.length; i++) {
