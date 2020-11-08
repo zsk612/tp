@@ -15,8 +15,8 @@ import ui.CommonUi;
 
 import java.util.logging.Logger;
 
-import static profile.Constants.COMMAND_ARGS_INDEX;
-import static profile.Constants.COMMAND_TYPE_INDEX;
+import static logic.parser.CommonParser.COMMAND_ARGS_INDEX;
+import static logic.parser.CommonParser.COMMAND_TYPE_INDEX;
 import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
 import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
 import static ui.CommonUi.LOGO;

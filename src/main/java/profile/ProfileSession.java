@@ -14,8 +14,8 @@ import ui.CommonUi;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static profile.Constants.COMMAND_ARGS_INDEX;
-import static profile.Constants.COMMAND_TYPE_INDEX;
+import static logic.parser.CommonParser.COMMAND_ARGS_INDEX;
+import static logic.parser.CommonParser.COMMAND_TYPE_INDEX;
 import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
 import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
 
@@ -109,7 +109,7 @@ public class ProfileSession {
      * @return Result after processing command.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
-    private CommandResult processCommand(String[] commParts) throws SchwarzeneggerException {
+    public CommandResult processCommand(String[] commParts) throws SchwarzeneggerException {
         Command command = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
         assert command != null : "command object should not be null null";
 

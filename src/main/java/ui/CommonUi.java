@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 import static profile.Constants.GREEDY_WHITE_SPACE;
 
+/**
+ * A base class for interacting with user.
+ */
 public class CommonUi {
+
     public static final String EMPTY_STRING = "";
     public static final String LINE_PREFIX = "\t ";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;

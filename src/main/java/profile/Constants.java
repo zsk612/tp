@@ -7,9 +7,6 @@ import static ui.CommonUi.LS;
  * Constants used in profile-related code.
  */
 public class Constants {
-    public static final int COMMAND_ARGS_INDEX = 1;
-    public static final int COMMAND_SPLIT_LIMIT = 2;
-    public static final int COMMAND_TYPE_INDEX = 0;
 
     public static final String ADD_PROFILE_FORMAT = "add /n [NAME] /h [HEIGHT] "
             + "/w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]";
