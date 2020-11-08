@@ -16,7 +16,9 @@ import java.util.logging.Level;
 
 import static ui.diet.dietmanager.DietManagerUi.DIET_CREATE_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_DATE_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_IO_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
+import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
 public class DietSessionCreate extends Command {
@@ -32,7 +34,7 @@ public class DietSessionCreate extends Command {
      */
     @Override
     public CommandResult execute(String input, DietStorage storage) {
-        String result = "";
+        String result = EMPTY_STRING;
         try {
             StringBuilder message = new StringBuilder();
             HashMap<String, String> parsedParams = parser.extractDietManagerCommandTagAndInfo("new", input);
@@ -48,7 +50,7 @@ public class DietSessionCreate extends Command {
             ds.start(true, -1);
             result = DIET_NEW_SUCCESS;
         } catch (IOException e) {
-            result = DietManagerUi.DIET_IO_WRONG_FORMAT;
+            result = DIET_IO_WRONG_FORMAT;
         } catch (InvalidDateFormatException e) {
             logger.log(Level.WARNING, "Wrong date format");
             result = DIET_DATE_WRONG_FORMAT;

@@ -27,6 +27,7 @@ import static ui.diet.dietmanager.DietManagerUi.DIET_DATE_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NO_SESSIONS_SAVED;
 import static ui.diet.dietmanager.DietManagerUi.DIET_SEARCH_EMPTY_TAG;
 import static ui.diet.dietmanager.DietManagerUi.DIET_SEARCH_RESULTS_MESSAGE;
+import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
 public class DietSessionSearch extends Command {
@@ -43,10 +44,9 @@ public class DietSessionSearch extends Command {
      */
     public CommandResult execute(String input, DietStorage storage) throws InvalidDateFormatException,
             InvalidSearchDateException {
-        String message = "";
+        String message = EMPTY_STRING;
         File folder = new File(PATH_TO_DIET_FOLDER);
         File[] listOfFiles = folder.listFiles();
-        assert folder.exists();
         StringBuilder searchResult = new StringBuilder();
         try {
             HashMap<String, String> parsedParams = parser.extractDietManagerCommandTagAndInfo("search", input);

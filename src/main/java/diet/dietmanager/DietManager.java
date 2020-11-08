@@ -11,6 +11,7 @@ import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
 import logic.commands.CommandResult;
+import logic.parser.CommonParser;
 import logic.parser.DietManagerParser;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
@@ -40,6 +41,7 @@ public class DietManager {
         cl = new CommandLib();
         cl.initDietManagerCl();
         parser = new DietManagerParser();
+        CommonParser commonParser = new CommonParser();
         dietManagerUi = new DietManagerUi();
     }
 
@@ -84,7 +86,7 @@ public class DietManager {
         try {
             Command command = cl.getCommand(commParts[0]);
             CommandResult commandResult = command.execute(commParts[1].trim(), storage);
-            assert commandResult != null : "save folder must exist before getting total calories";
+            assert commandResult != null : "commandResult is not null when command executes properly";
             dietManagerUi.showToUser(commandResult.getFeedbackMessage());
         } catch (ArrayIndexOutOfBoundsException | InvalidCommandFormatException e) {
             logger.log(Level.WARNING, "Invalid command in diet session");
