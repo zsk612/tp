@@ -17,6 +17,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 //@@author yujinyang1998
+/**
+ * A class that is responsible for interacting with user in a Workout Session.
+ */
 public class WorkoutSession {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private String filePath = null;
@@ -29,6 +32,13 @@ public class WorkoutSession {
     private final WorkoutSessionStorage workoutSessionStorage;
     private CommonUi ui;
 
+    /**
+     * Constructs WorkoutSession object.
+     *
+     * @param filePath Path to data file.
+     * @param isNew New or existing file.
+     * @param index Index of this WorkoutSession in the list of WorkoutSession.
+     */
     public WorkoutSession(String filePath, boolean isNew, int index) {
         this.filePath = filePath;
         this.exerciseList = new ExerciseList();

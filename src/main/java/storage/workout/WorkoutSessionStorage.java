@@ -20,17 +20,18 @@ import java.util.ArrayList;
 
 //@@author yujinyang1998
 /**
- * This class holds the data loaded during runtime and read and writes to the local storage.
+ * A class that saves and loads Workout Session data on local hard disk.
  */
 public class WorkoutSessionStorage {
     private CommonUi ui = new CommonUi();
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     /**
-     * Write the content in TaskList to a local file.
-     * If the local file is not found. It creates the relevant file and folder.
+     * Writes to storage file with exercise data.
      *
-     * @throws IOException If director or file cannot be created.
+     * @param filePath Path to data file.
+     * @param exerciseList List of exercise.
+     * @throws IOException If file is missing or corrupted.
      */
     public void writeToStorage(String filePath, ExerciseList exerciseList) throws IOException {
         assert (filePath != null && exerciseList != null) : "File corrupted";
@@ -41,6 +42,13 @@ public class WorkoutSessionStorage {
         writer.close();
     }
 
+    /**
+     * Reads file from drive and loads exercise information.
+     *
+     * @param filePath Path to data file.
+     * @param exerciseList List of exercise.
+     * @throws FileNotFoundException If file is missing or corrupted.
+     */
     public void readFileContents(String filePath, ExerciseList exerciseList) throws FileNotFoundException {
         assert (filePath != null && exerciseList != null) : "File corrupted";
         File file = new File(filePath);
