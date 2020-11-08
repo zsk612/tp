@@ -11,13 +11,12 @@ import logic.parser.CommonParser;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
 
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static logic.parser.CommonParser.COMMAND_ARGS_INDEX;
 import static logic.parser.CommonParser.COMMAND_TYPE_INDEX;
-import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
-import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
 
 //@@author tienkhoa16
 
@@ -33,12 +32,15 @@ public class ProfileSession {
     private CommandLib cl;
 
     /**
-     * Constructs ProfileSession object.
+     * Constructs ProfileSession object with customised path to save data file.
+     *
+     * @param pathToProfileFolder Path to profile data folder.
+     * @param pathToProfileFile Path to profile data file.
      */
-    private ProfileSession() {
+    private ProfileSession(Path pathToProfileFolder, Path pathToProfileFile) {
         logger.log(Level.INFO, "initialising ProfileSession object");
         ui = new CommonUi();
-        storage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
+        storage = new ProfileStorage(pathToProfileFolder, pathToProfileFile);
         parser = new CommonParser();
         cl = new CommandLib();
         cl.initProfileSessionCl();
@@ -47,11 +49,13 @@ public class ProfileSession {
     /**
      * Gets the single instance of ProfileSession class.
      *
+     * @param pathToProfileFolder Path to profile data folder.
+     * @param pathToProfileFile Path to profile data file.
      * @return Single instance of ProfileSession class.
      */
-    public static ProfileSession getInstance() {
+    public static ProfileSession getInstance(Path pathToProfileFolder, Path pathToProfileFile) {
         if (singleInstance == null) {
-            singleInstance = new ProfileSession();
+            singleInstance = new ProfileSession(pathToProfileFolder, pathToProfileFile);
         }
         return singleInstance;
     }
@@ -82,11 +86,8 @@ public class ProfileSession {
             String userCommand = ui.getCommand("Profile Menu");
             assert userCommand != null : "input should not be null before process loop";
 
-            String[] commParts = parser.parseCommand(userCommand);
-            assert commParts != null : "parsed array should not be null before process loop";
-
             try {
-                CommandResult result = processCommand(commParts);
+                CommandResult result = processCommand(userCommand);
                 ui.showToUser(result.getFeedbackMessage());
             } catch (SchwarzeneggerException e) {
                 ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
@@ -104,12 +105,14 @@ public class ProfileSession {
     /**
      * Processes and displays command execution result to user.
      *
-     * @param commParts Size 2 array; first element is the command type and second element is the arguments
-     *         string.
+     * @param userCommand User's trimmed input.
      * @return Result after processing command.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
-    public CommandResult processCommand(String[] commParts) throws SchwarzeneggerException {
+    public CommandResult processCommand(String userCommand) throws SchwarzeneggerException {
+        String[] commParts = parser.parseCommand(userCommand);
+        assert commParts != null : "parsed array should not be null before process loop";
+
         Command command = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
         assert command != null : "command object should not be null null";
 
