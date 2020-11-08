@@ -1,6 +1,4 @@
-package exceptions.workout.workoutmanager;
-
-import exceptions.SchwarzeneggerException;
+package exceptions;
 
 import static ui.workout.workoutmanager.WorkoutManagerUi.MESSAGE_INSUFFICIENT_ARGUMENT;
 
