@@ -23,6 +23,7 @@ import static ui.profile.ProfileUi.MESSAGE_MORE_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;
 import static ui.profile.ProfileUi.MESSAGE_VIEW_PROFILE;
 
+//@@author tienkhoa16
 class ProfileViewTest {
     private static final String SAMPLE_DIET_DATA_FOLDER = Paths.get("src", "test", "java", "saves",
             "ProfileCommandsTest", "diet").toString() + "/";
