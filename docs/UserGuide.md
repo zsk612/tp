@@ -464,7 +464,7 @@ Expected outcome:
 	          DESCRIPTION: Show all food items
 	 Delete   FORMAT:      delete [INDEX]
 	          DESCRIPTION: Delete the food item at the input index
-	 Search   FORMAT:      Search [FOOD_NAME]
+	 Search   FORMAT:      search [FOOD_NAME]
 	          DESCRIPTION: Search the diet session for food with the name specified
 	 Clear    FORMAT:      clear
 	          DESCRIPTION: Clear all food items
