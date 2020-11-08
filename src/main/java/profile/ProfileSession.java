@@ -11,18 +11,20 @@ import logic.parser.CommonParser;
 import storage.profile.ProfileStorage;
 import ui.CommonUi;
 
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static profile.Constants.COMMAND_ARGS_INDEX;
-import static profile.Constants.COMMAND_TYPE_INDEX;
-import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
-import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
+import static logic.parser.CommonParser.COMMAND_ARGS_INDEX;
+import static logic.parser.CommonParser.COMMAND_TYPE_INDEX;
+
+//@@author tienkhoa16
 
 /**
  * A class that is responsible for interacting with user in Profile Session.
  */
 public class ProfileSession {
+    private static ProfileSession singleInstance = null;
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private CommonUi ui;
     private CommonParser parser;
@@ -30,15 +32,32 @@ public class ProfileSession {
     private CommandLib cl;
 
     /**
-     * Constructs ProfileSession object.
+     * Constructs ProfileSession object with customised path to save data file.
+     *
+     * @param pathToProfileFolder Path to profile data folder.
+     * @param pathToProfileFile Path to profile data file.
      */
-    public ProfileSession() {
+    private ProfileSession(Path pathToProfileFolder, Path pathToProfileFile) {
         logger.log(Level.INFO, "initialising ProfileSession object");
         ui = new CommonUi();
-        storage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
+        storage = new ProfileStorage(pathToProfileFolder, pathToProfileFile);
         parser = new CommonParser();
         cl = new CommandLib();
         cl.initProfileSessionCl();
+    }
+
+    /**
+     * Gets the single instance of ProfileSession class.
+     *
+     * @param pathToProfileFolder Path to profile data folder.
+     * @param pathToProfileFile Path to profile data file.
+     * @return Single instance of ProfileSession class.
+     */
+    public static ProfileSession getInstance(Path pathToProfileFolder, Path pathToProfileFile) {
+        if (singleInstance == null) {
+            singleInstance = new ProfileSession(pathToProfileFolder, pathToProfileFile);
+        }
+        return singleInstance;
     }
 
     /**
@@ -67,11 +86,9 @@ public class ProfileSession {
             String userCommand = ui.getCommand("Profile Menu");
             assert userCommand != null : "input should not be null before process loop";
 
-            String[] commParts = parser.parseCommand(userCommand);
-            assert commParts != null : "parsed array should not be null before process loop";
-
             try {
-                processCommand(commParts);
+                CommandResult result = processCommand(userCommand);
+                ui.showToUser(result.getFeedbackMessage());
             } catch (SchwarzeneggerException e) {
                 ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
 
@@ -88,17 +105,20 @@ public class ProfileSession {
     /**
      * Processes and displays command execution result to user.
      *
-     * @param commParts Size 2 array; first element is the command type and second element is the arguments
-     *         string.
+     * @param userCommand User's trimmed input.
+     * @return Result after processing command.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
-    private void processCommand(String[] commParts) throws SchwarzeneggerException {
+    public CommandResult processCommand(String userCommand) throws SchwarzeneggerException {
+        String[] commParts = parser.parseCommand(userCommand);
+        assert commParts != null : "parsed array should not be null before process loop";
+
         Command command = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
         assert command != null : "command object should not be null null";
 
         CommandResult result = command.execute(commParts[COMMAND_ARGS_INDEX], storage);
         assert result != null : "command result object should not be null null";
 
-        ui.showToUser(result.getFeedbackMessage());
+        return result;
     }
 }

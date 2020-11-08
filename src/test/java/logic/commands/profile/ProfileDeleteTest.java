@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static profile.Constants.EMPTY_STRING;
+import static ui.CommonUi.EMPTY_STRING;
 import static profile.Constants.EXAMPLE_CALORIES;
 import static profile.Constants.EXAMPLE_EXPECTED_WEIGHT;
 import static profile.Constants.EXAMPLE_HEIGHT;
@@ -30,7 +30,7 @@ class ProfileDeleteTest {
 
     @Test
     void testExecute_inputNullArguments_ValidStorage_throwsAssertionError() {
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         assertThrows(AssertionError.class, () -> {
             new ProfileDelete().execute(null, new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile));
         });
@@ -45,7 +45,7 @@ class ProfileDeleteTest {
 
     @Test
     void testExecute_hasExistingProfile_inputYes_returnSuccess() throws SchwarzeneggerException {
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 
@@ -58,7 +58,7 @@ class ProfileDeleteTest {
 
     @Test
     void testExecute_hasExistingProfile_inputDifferentFromYes_returnFailure() throws SchwarzeneggerException {
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(SAMPLE_PROFILE);
 
@@ -71,7 +71,7 @@ class ProfileDeleteTest {
 
     @Test
     void testExecute_noExistingProfile_returnFailure() throws SchwarzeneggerException {
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile);
         storage.saveData(null);
 

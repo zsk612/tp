@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static profile.Constants.EMPTY_STRING;
+import static ui.CommonUi.EMPTY_STRING;
 
 //@@author tienkhoa16
 class ProfileEndTest {
@@ -16,7 +16,7 @@ class ProfileEndTest {
 
     @Test
     void testExecute_inputNullArguments_ValidStorage_throwsAssertionError() {
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         assertThrows(AssertionError.class, () -> {
             new ProfileEnd().execute(null, new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile));
         });
@@ -31,7 +31,7 @@ class ProfileEndTest {
 
     @Test
     void testExecute_inputValidArguments_ValidStorage_throwsEndException() {
-        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "dataFile.json");
+        Path dataFile = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
         assertThrows(EndException.class, () -> {
             new ProfileEnd().execute(EMPTY_STRING, new ProfileStorage(SAMPLE_DATA_FOLDER, dataFile));
         });
