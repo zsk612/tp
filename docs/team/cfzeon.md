@@ -26,7 +26,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
          + **Consistent file saving**
             + Functionality: This enhancement saves the diet session after every command that a user inputs into diet session.
             + Justification: The feature prevents users from accidentally deleting their data during usage.
-            + Highlights: User can easily find unfinished chores through a simple search. 
+            + Highlights: Users are protected against accidental file modifications and errors. 
             
       + **Minor enhancement**:
          + **Get Total Calories for a specific date**
