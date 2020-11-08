@@ -1,4 +1,4 @@
-package workout.workoutmanager;
+package logic.parser;
 
 import exceptions.workout.workoutmanager.NotANumberException;
 import models.PastWorkoutSessionRecord;

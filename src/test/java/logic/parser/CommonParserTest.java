@@ -22,6 +22,16 @@ class CommonParserTest {
     }
 
     @Test
+    void testParseCommand_inputThreeWords_returnNonEmptyStringInSecondElement() {
+        CommonParser parser = new CommonParser();
+        String rawUserInput = "add /n test";
+        String[] expectedSplit = {"add", "/n test"};
+
+        assertEquals(Arrays.toString(expectedSplit),
+                Arrays.toString(parser.parseCommand(rawUserInput)));
+    }
+
+    @Test
     void testParseCommand_inputOneWord_returnEmptyStringInSecondElement() {
         CommonParser parser = new CommonParser();
         String rawUserInput = "add";
