@@ -88,6 +88,7 @@ public class CommandLib {
         library.put(COMMAND_WORD_END, new MainEnd());
     }
 
+    //@@author tienkhoa16
     /**
      * Initializes the commandLib with profile menu's commands.
      */
@@ -101,7 +102,7 @@ public class CommandLib {
         library.put(COMMAND_WORD_WRONG, new ProfileWrong());
     }
 
-
+    //@@author
     /**
      * Initializes the commandLib with workout menu's commands.
      */
@@ -119,7 +120,7 @@ public class CommandLib {
 
     //@@author yujinyang1998
     /**
-     * Initialize the commandLib with workout session's commands.
+     * Initializes the commandLib with workout session's commands.
      */
     public void initWorkoutSessionCl() {
         library.put(COMMAND_WORD_ADD, new WorkoutSessionAdd());
@@ -130,10 +131,10 @@ public class CommandLib {
         library.put(COMMAND_WORD_SEARCH, new WorkoutSessionSearch());
         library.put(COMMAND_WORD_WRONG, new WorkoutSessionWrong());
     }
-    //@@author
 
+    //@@author
     /**
-     * Initialize the commandLib with diet manager's commands.
+     * Initializes the commandLib with diet manager's commands.
      */
     public void initDietManagerCl() {
         library.put(COMMAND_WORD_LIST, new DietSessionList());
@@ -147,7 +148,7 @@ public class CommandLib {
     }
 
     /**
-     * Initialize the commandLib with diet session's commands.
+     * Initializes the commandLib with diet session's commands.
      */
     public void initDietSessionCl() {
         library.put(COMMAND_WORD_ADD, new FoodItemAdd());
@@ -166,10 +167,10 @@ public class CommandLib {
      * @return Command object.
      */
     public Command getCommand(String keyword) {
-        if (library.containsKey(keyword.toLowerCase())) {
-            return library.get(keyword.toLowerCase());
-        } else {
+        if (keyword == null || !library.containsKey(keyword.toLowerCase())) {
             return library.get(COMMAND_WORD_WRONG);
+        } else {
+            return library.get(keyword.toLowerCase());
         }
     }
 }
