@@ -1,12 +1,12 @@
 package logic.parser;
 
+import exceptions.InsufficientArgumentException;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidCaloriesException;
 import exceptions.profile.InvalidCommandFormatException;
 import exceptions.profile.InvalidHeightException;
 import exceptions.profile.InvalidNameException;
 import exceptions.profile.InvalidWeightException;
-import exceptions.workout.workoutmanager.InsufficientArgumentException;
 import org.apache.commons.lang3.text.WordUtils;
 import profile.Utils;
 

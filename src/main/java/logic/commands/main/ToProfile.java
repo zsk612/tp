@@ -6,6 +6,9 @@ import logic.commands.CommandResult;
 import logic.commands.ExecutionResult;
 import profile.ProfileSession;
 
+import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
+import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
+
 //@@author tienkhoa16
 
 /**
@@ -29,7 +32,7 @@ public class ToProfile extends Command {
             ui.showWarning("\"profile\" command does not take in parameters");
         }
 
-        ProfileSession profileSession = ProfileSession.getInstance();
+        ProfileSession profileSession = ProfileSession.getInstance(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
         profileSession.run();
         return new CommandResult("", ExecutionResult.OK);
     }
