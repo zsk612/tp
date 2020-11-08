@@ -1,4 +1,4 @@
-package workout.workoutsession;
+package logic.parser;
 
 import exceptions.workout.workoutsession.AddFormatException;
 import exceptions.workout.workoutsession.DeleteFormatException;
