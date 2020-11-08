@@ -2,7 +2,7 @@ package ui;
 
 import java.util.Scanner;
 
-import static profile.Constants.GREEDY_WHITE_SPACE;
+import static logic.parser.CommonParser.GREEDY_WHITE_SPACE;
 
 /**
  * A base class for interacting with user.
@@ -39,16 +39,37 @@ public class CommonUi {
         System.out.println(String.format(MESSAGE_FORMAT_GENERAL, result));
     }
 
+    /**
+     * Formats help messages.
+     *
+     * @param commandName Name of command.
+     * @param commandFormat Format of command.
+     * @param description Description of command.
+     * @return Formatted help string.
+     */
     public static String helpFormatter(String commandName, String commandFormat, String description) {
         return String.format(HELP_FORMAT, commandName, commandFormat, EMPTY_STRING, description);
     }
 
-    public static String clearMsg(String content) {
+    /**
+     * Formats clear messages.
+     *
+     * @param content Content of clear message.
+     * @return Formatted help string.
+     */
+    public static String clearMsgFormatter(String content) {
         return String.format(MESSAGE_CLEAR_FORMAT, content);
     }
 
-    public static String searchRecords(int num, String content) {
-        return String.format("%d %s been found!", num, content) + LS;
+    /**
+     * Formats the header of search records.
+     *
+     * @param num The number of matching records.
+     * @param plurality Either "has" or "have" depending on the number of matching records found.
+     * @return Formatted header for search records.
+     */
+    public static String searchRecords(int num, String plurality) {
+        return String.format("%d %s been found!", num, plurality) + LS;
     }
 
     /**

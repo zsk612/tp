@@ -2,26 +2,14 @@ package logic.parser;
 
 import exceptions.diet.NegativeCaloriesException;
 import exceptions.diet.NoNameException;
-import exceptions.profile.InvalidCaloriesException;
 import logger.SchwarzeneggerLogger;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 //@@author zsk612
-public class DietSessionParser {
+public class DietSessionParser extends CommonParser {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-
-    public String[] parse(String comm) {
-        if (comm.contains(" ")) {
-            return comm.split(" ", 2);
-        } else {
-            return new String[]{comm, "filler"};
-        }
-    }
 
     /**
      * Processes the name of the food item.

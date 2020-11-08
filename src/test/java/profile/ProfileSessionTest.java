@@ -43,6 +43,7 @@ import static ui.profile.ProfileUi.MESSAGE_CREATE_PROFILE_ACK;
 import static ui.profile.ProfileUi.MESSAGE_DELETE_PROFILE;
 import static ui.profile.ProfileUi.MESSAGE_EDIT_PROFILE_ACK;
 import static ui.profile.ProfileUi.MESSAGE_MORE_CALORIES;
+import static ui.profile.ProfileUi.MESSAGE_SET_EXPECTED_WEIGHT;
 import static ui.profile.ProfileUi.MESSAGE_VIEW_PROFILE;
 
 //@@author tienkhoa16
@@ -56,6 +57,8 @@ class ProfileSessionTest {
             EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
     private static ProfileSession profileSession = ProfileSession.getInstance(PATH_TO_PROFILE_FOLDER,
             PATH_TO_PROFILE_FILE);
+
+    private static final double EXAMPLE_NORMAL_EXPECTED_WEIGHT = 76.7;
 
     @BeforeAll
     static void initData() throws IOException, InvalidDateFormatException {
@@ -182,9 +185,11 @@ class ProfileSessionTest {
         profileStorage.saveData(SAMPLE_PROFILE);
 
         String sampleCaloriesMsg = String.format(MESSAGE_MORE_CALORIES, EXAMPLE_CALORIES);
+        String weightTip = String.format(MESSAGE_SET_EXPECTED_WEIGHT,
+                EXAMPLE_NORMAL_EXPECTED_WEIGHT, EXAMPLE_NORMAL_EXPECTED_WEIGHT);
 
         String userInput = "view";
-        assertEquals(String.format(MESSAGE_VIEW_PROFILE, SAMPLE_PROFILE.toString(), sampleCaloriesMsg),
+        assertEquals(String.format(MESSAGE_VIEW_PROFILE, SAMPLE_PROFILE.toString(), sampleCaloriesMsg, weightTip),
                 profileSession.processCommand(userInput).getFeedbackMessage());
     }
 }
