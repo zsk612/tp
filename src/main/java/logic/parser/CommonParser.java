@@ -22,6 +22,7 @@ public class CommonParser {
      */
     public String[] parseCommand(String userInputString) {
         assert userInputString != null : "user input cannot be null";
+        assert !userInputString.isEmpty() : "user input cannot be empty";
 
         String[] split = userInputString.trim().split(GREEDY_WHITE_SPACE, COMMAND_SPLIT_LIMIT);
         String commandType = split[COMMAND_TYPE_INDEX].toLowerCase();

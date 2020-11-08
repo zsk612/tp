@@ -42,12 +42,12 @@ class CommonParserTest {
     }
 
     @Test
-    void testParseCommand_inputEmpty_returnEmptyStringArray() {
+    void testParseCommand_inputEmptyString_throwsAssertionError() {
         CommonParser parser = new CommonParser();
-        String[] expectedSplit = {EMPTY_STRING, EMPTY_STRING};
 
-        assertEquals(Arrays.toString(expectedSplit),
-                Arrays.toString(parser.parseCommand(EMPTY_STRING)));
+        assertThrows(AssertionError.class, () -> {
+            parser.parseCommand(EMPTY_STRING);
+        });
     }
 
     @Test
