@@ -3,6 +3,7 @@ package diet.dietmanager;
 import exceptions.profile.InvalidCommandFormatException;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.time.LocalDate;
 
 import static logic.parser.ProfileParser.extractCommandTagAndInfo;
@@ -38,5 +39,12 @@ public class DietManagerTest {
         Double expected = 0.0;
         Double totalCalories = dietManager.getDateTotalCalories(TEST_SAVES_FOLDER_DIET, java.time.LocalDate.now());
         assertEquals(expected, totalCalories);
+    }
+
+    @Test
+    void start_endInput_returnsNull() {
+        DietManager dietManager = new DietManager();
+        System.setIn(new ByteArrayInputStream("end".getBytes()));
+        dietManager.start();
     }
 }
