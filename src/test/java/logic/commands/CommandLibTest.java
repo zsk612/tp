@@ -40,7 +40,7 @@ import logic.commands.workout.workoutsession.WorkoutSessionWrong;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static profile.Constants.EMPTY_STRING;
+import static ui.CommonUi.EMPTY_STRING;
 
 class CommandLibTest {
 

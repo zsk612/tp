@@ -2,10 +2,10 @@ package ui;
 
 import java.util.Scanner;
 
-import static profile.Constants.EMPTY_STRING;
 import static profile.Constants.GREEDY_WHITE_SPACE;
 
 public class CommonUi {
+    public static final String EMPTY_STRING = "";
     public static final String LINE_PREFIX = "\t ";
     public static final String LS = System.lineSeparator() + LINE_PREFIX;
     public static final String LOGO = "   _____        _" + LS

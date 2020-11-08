@@ -23,9 +23,7 @@ import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static profile.Constants.EMPTY_STRING;
-import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
-import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
+import static ui.CommonUi.EMPTY_STRING;
 
 //@@author tienkhoa16
 /**

@@ -16,7 +16,6 @@ public class Constants {
     public static final String EDIT_PROFILE_FORMAT = "edit </n [NAME]> </h [HEIGHT]> "
             + "</w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>";
 
-    public static final String EMPTY_STRING = "";
     public static final String EXAMPLE_BMI = "32.0 (Obesity Class 1)";
     public static final double EXAMPLE_CALORIES = 2500;
     public static final double EXAMPLE_EXPECTED_WEIGHT = 100;

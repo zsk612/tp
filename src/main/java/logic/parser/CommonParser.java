@@ -3,7 +3,7 @@ package logic.parser;
 import static profile.Constants.COMMAND_ARGS_INDEX;
 import static profile.Constants.COMMAND_SPLIT_LIMIT;
 import static profile.Constants.COMMAND_TYPE_INDEX;
-import static profile.Constants.EMPTY_STRING;
+import static ui.CommonUi.EMPTY_STRING;
 import static profile.Constants.GREEDY_WHITE_SPACE;
 
 //@@author tienkhoa16

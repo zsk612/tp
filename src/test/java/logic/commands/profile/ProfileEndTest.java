@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static profile.Constants.EMPTY_STRING;
+import static ui.CommonUi.EMPTY_STRING;
 
 //@@author tienkhoa16
 class ProfileEndTest {
