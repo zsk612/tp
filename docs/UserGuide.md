@@ -702,6 +702,12 @@ You can see a complete list of available commands under Workout Menu and how to 
 
 __Format:__ `help`
 
+1. Type `help` to your console and press <kbd>Enter</kbd> to execute it.
+
+    ![main-help-1](pictures/UG_screenshots/workout-help-step-1.png)
+
+2. You should be able to see a list of available commands like the screenshot below:
+    ![main-help-2](pictures/UG_screenshots/workout-help-step-2.png)
 Example: `help`
 
 Expected outcome:
