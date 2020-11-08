@@ -4,19 +4,20 @@ import diet.dietsession.DietSession;
 import exceptions.EndException;
 import exceptions.InsufficientArgumentException;
 import exceptions.InvalidCommandWordException;
+import exceptions.InvalidDateFormatException;
 import exceptions.SchwarzeneggerException;
 import exceptions.profile.InvalidCommandFormatException;
 import logic.commands.CommandResult;
 import models.Profile;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import storage.diet.DietStorage;
 import storage.profile.ProfileStorage;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -34,6 +35,8 @@ import static seedu.duke.Constant.COMMAND_WORD_DELETE;
 import static seedu.duke.Constant.COMMAND_WORD_EDIT;
 import static seedu.duke.Constant.COMMAND_WORD_END;
 import static seedu.duke.Constant.COMMAND_WORD_VIEW;
+import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
+import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
 import static ui.CommonUi.EMPTY_STRING;
 import static ui.CommonUi.helpFormatter;
 import static ui.profile.ProfileUi.MESSAGE_CREATE_PROFILE_ACK;
@@ -46,15 +49,25 @@ import static ui.profile.ProfileUi.MESSAGE_VIEW_PROFILE;
 class ProfileSessionTest {
     private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    private static final Path SAMPLE_DATA_FOLDER = Paths.get("src", "test", "java", "saves", "ProfileSessionTest");
-    private static final Path SAMPLE_DATA_FILE = Paths.get(SAMPLE_DATA_FOLDER.toString(), "profileDataFile.json");
-
-    private static final String TEST_SAVES_FOLDER_DIET = "src/test/java/saves/ProfileSessionTest/diet/";
+    private static final String TEST_SAVES_FOLDER_DIET = "saves/diet/";
     private static final String TEST_SAVE_NAME = DTF.format(LocalDate.now()) + " breakfast";
 
     private static final Profile SAMPLE_PROFILE = new Profile(EXAMPLE_NAME, EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
             EXAMPLE_EXPECTED_WEIGHT, EXAMPLE_CALORIES);
-    private static ProfileSession profileSession = ProfileSession.getInstance(SAMPLE_DATA_FOLDER, SAMPLE_DATA_FILE);
+    private static ProfileSession profileSession = ProfileSession.getInstance(PATH_TO_PROFILE_FOLDER,
+            PATH_TO_PROFILE_FILE);
+
+    @BeforeAll
+    static void initData() throws IOException, InvalidDateFormatException {
+        DietStorage dietStorage = new DietStorage();
+        dietStorage.init(TEST_SAVES_FOLDER_DIET, TEST_SAVE_NAME);
+        DietSession savedInstance = new DietSession("breakfast", DTF.format(LocalDate.now()), true, 1);
+        savedInstance.saveToFile(TEST_SAVES_FOLDER_DIET, dietStorage, savedInstance);
+
+        File file = new File(PATH_TO_PROFILE_FILE.toString());
+        file.getParentFile().mkdirs();
+        file.createNewFile();
+    }
 
     @Test
     void testProcessCommand_inputNull_throwsAssertionError() {
@@ -79,16 +92,9 @@ class ProfileSessionTest {
     }
 
     @Test
-    void testProcessCommand_inputAddProfileString_returnSuccess() {
-        assertThrows(AssertionError.class, () -> {
-            profileSession.processCommand(EMPTY_STRING);
-        });
-    }
-
-    @Test
     void testProcessCommand_inputValidAddProfileCommand_returnSuccess() throws SchwarzeneggerException {
         String userInput = "add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500";
-        ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, SAMPLE_DATA_FILE);
+        ProfileStorage storage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
         storage.saveData(null);
 
         String successMsg = String.format(MESSAGE_CREATE_PROFILE_ACK, SAMPLE_PROFILE.toString());
@@ -99,7 +105,7 @@ class ProfileSessionTest {
     void testProcessCommand_inputInvalidAddProfileCommand_throwsInsufficientArgumentException()
             throws SchwarzeneggerException {
         String userInput = "add /n Schwarzenegger";
-        ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, SAMPLE_DATA_FILE);
+        ProfileStorage storage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
         storage.saveData(null);
 
         assertThrows(InsufficientArgumentException.class, () -> {
@@ -110,7 +116,7 @@ class ProfileSessionTest {
     @Test
     void testProcessCommand_inputValidDeleteProfileCommand_returnSuccess() throws SchwarzeneggerException {
         String userInput = "delete";
-        ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, SAMPLE_DATA_FILE);
+        ProfileStorage storage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
         storage.saveData(SAMPLE_PROFILE);
 
         System.setIn(new ByteArrayInputStream("YES".getBytes()));
@@ -123,7 +129,7 @@ class ProfileSessionTest {
     @Test
     void testProcessCommand_inputValidEditProfileCommand_returnSuccess() throws SchwarzeneggerException {
         String userInput = "edit /n Arnold";
-        ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, SAMPLE_DATA_FILE);
+        ProfileStorage storage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
         storage.saveData(SAMPLE_PROFILE);
 
         Profile editedProfile = new Profile("Arnold", EXAMPLE_HEIGHT, EXAMPLE_WEIGHT,
@@ -137,7 +143,7 @@ class ProfileSessionTest {
     void testProcessCommand_inputInvalidEditProfileCommand_throwsInvalidCommandFormatException()
             throws SchwarzeneggerException {
         String userInput = "edit";
-        ProfileStorage storage = new ProfileStorage(SAMPLE_DATA_FOLDER, SAMPLE_DATA_FILE);
+        ProfileStorage storage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
         storage.saveData(SAMPLE_PROFILE);
 
         assertThrows(InvalidCommandFormatException.class, () -> {
@@ -171,15 +177,9 @@ class ProfileSessionTest {
     }
 
     @Test
-    void testProcessCommand_inputValidViewProfileCommand_returnSuccess() throws SchwarzeneggerException,
-            IOException {
-        ProfileStorage profileStorage = new ProfileStorage(SAMPLE_DATA_FOLDER, SAMPLE_DATA_FILE);
+    void testProcessCommand_inputValidViewProfileCommand_returnSuccess() throws SchwarzeneggerException {
+        ProfileStorage profileStorage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
         profileStorage.saveData(SAMPLE_PROFILE);
-
-        DietStorage dietStorage = new DietStorage();
-        dietStorage.init(TEST_SAVES_FOLDER_DIET, TEST_SAVE_NAME);
-        DietSession savedInstance = new DietSession("breakfast", DTF.format(LocalDate.now()), true, 1);
-        savedInstance.saveToFile(TEST_SAVES_FOLDER_DIET, dietStorage, savedInstance);
 
         String sampleCaloriesMsg = String.format(MESSAGE_MORE_CALORIES, EXAMPLE_CALORIES);
 
