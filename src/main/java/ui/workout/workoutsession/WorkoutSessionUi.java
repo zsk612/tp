@@ -5,6 +5,9 @@ import ui.CommonUi;
 
 
 //@@author yujinyang1998
+/**
+ * A class that contains templates of message to show to user.
+ */
 public class WorkoutSessionUi extends CommonUi {
     public static final String PRINT_ERROR = "File not found, re-creating file.";
     public static final String ADD_FORMAT_ERROR = "Wrong format, please enter in the format:\n\t "
@@ -20,12 +23,23 @@ public class WorkoutSessionUi extends CommonUi {
             + "[NAME_OF_MOVE]";
     public static final String SEARCH_RESULTS_EMPTY = "No matching result has been found.";
 
+    /**
+     * Formats a message when the file is corrupted.
+     *
+     * @param filePath Path to data file.
+     * @return Message to show to user.
+     */
     public static String saveCorruptedError(String filePath) {
         return (":( Save format in "
                 + filePath + " is invalid.\n\t "
                 + "File is cleared.");
     }
 
+    /**
+     * Formats a message when the file is corrupted.
+     *
+     * @return Message to show to user.
+     */
     public static String printHelp() {
         StringBuilder helpMessage = new StringBuilder();
         helpMessage.append(helpFormatter("Add", "add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]",
@@ -41,12 +55,24 @@ public class WorkoutSessionUi extends CommonUi {
         return (helpMessage.toString().trim());
     }
 
+    /**
+     * Formats a message when an Exercise is added.
+     *
+     * @param exercise Exercise to be added.
+     * @return Message to show to user.
+     */
     public static String addExerciseSuccess(Exercise exercise) {
         String toPrint = String.format("Yay! You have added %s to your list.\n\t [Repetitions: %s || Weight: %s]",
                 exercise.getDescription(), exercise.getRepetitions(), exercise.getWeight());
         return (toPrint);
     }
 
+    /**
+     * Formats a message when an Exercise is deleted.
+     *
+     * @param exercise Exercise to be deleted.
+     * @return Message to show to user.
+     */
     public static String deleteExerciseSuccess(Exercise exercise) {
         String toPrint = String.format("You have deleted %s from your list!\n\t [Repetitions: %s || Weight: %s]",
                 exercise.getDescription(), exercise.getRepetitions(), exercise.getWeight());

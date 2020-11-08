@@ -1019,7 +1019,7 @@ The `java.util.logging` package in Java is used for logging. The logging mechani
 All controls of the logger for the application can be viewed/ altered in the class construction. The current settings for the logger are as follow:
 
 - All information is logged into a log file, `SchwarzeneggerLogs.log`.
-- Logging is made to be displayed in the `SimpleFormatter` style where the date, class and error description are logged.
+- Logging is made to be displayed in the `SimpleFormatter` style where the date, class and error description are recorded.
 
 Logging Levels:
 - `Level.SEVERE`: a serious failure, which prevents normal execution of the program, for end users and system administrators.
@@ -1125,16 +1125,30 @@ __Target user profile__:
 
 ### Appendix B: User Stories
 
-|Version| As a ... | I want to ... | So that I can ...|
-|--------|----------|---------------|------------------|
-|v1.0|New user|View the available commands easily|I can learn more about the product before I use it.|
-|v1.0|New user|Create a user profile|I add |
-|v1.0|User|Edit user profile|I can change my data if something changes|
-|v1.0|New user|Create a new workout session|I can start a recorded workout session|
-|v1.0|User|Create a new workout session|I can start a recorded workout session|
-|v1.0|User|Add moves into a workout session|I can personalise each workout session|
-|v1.0|User|Delete workout session record|I can correct accidental typos|
-|v2.0|User|
+|Priority|Version| As a ... | I want to ... | So that I can ...|
+|--------|--------|----------|---------------|------------------|
+|```HIGH```|v1.0|New user|Create a user profile|Add new profiles to store my data|
+|```HIGH```|v1.0|User|View my profile in the database|reference my data|
+|```HIGH```|v1.0|User|Save my profile into the database|retrieve it in subsequent launches of the app|
+|```HIGH```|v1.0|User|Load my profile from the database at the start of the app|view my added user profile|
+|```HIGH```|v1.0|User|Delete my profile from the database|Delete an outdated profile from the database|
+|```HIGH```|v1.0|User|Create a new workout session|start a recorded workout session|
+|```HIGH```|v1.0|User|Add moves into a workout session|personalise each workout session|
+|```HIGH```|v1.0|User|Delete workout session record|correct accidental typos|
+|```HIGH```|v1.0|User|End my current workout session|Be sure that my workout has ended|
+|```HIGH```|v1.0|User|Check my current workout session record|do my workout and keep track of everything easily|
+|```HIGH```|v1.0|User|List out all my past diet session records|check what I have eaten in the past|
+|```HIGH```|v1.0|User|Create a diet session with date and tags|identify when I ate which meal|
+|```HIGH```|v1.0|User|add different kinds of food into my diet|keep track fo what I eat|
+|```HIGH```|v1.0|User|Save my diet records|view it next time|
+|```HIGH```|v1.0|User|Close the program|end my session|
+|```MEDIUM```|v1.0|New user|View the available commands easily|learn more about the product before I use it.|
+|```MEDIUM```|v1.0|User|Edit user profile|change my data if something changes|
+|```MEDIUM```|v2.0|User|Clear all my diet sessions|clear memory space on my storage to store new things|
+|```MEDIUM```|v2.0|User|Clear all my workout session records|clear all past redundant data|
+|```LOW```|v2.0|User|Search for past workout sessions|easily filter through the data that I don't need|
+|```LOW```|v2.0|User|Search for my past diet sessions|see whether I have been eating properly lately|
+|```LOW```|v2.1|User|View how much more I need to eat in a day|plan my later meals easier|
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -1145,7 +1159,7 @@ __Target user profile__:
 ### Appendix D: Non-Functional Requirements
 
 1. Should work on any mainstream OS as long as it has Java `11` or above installed.
-2. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+2. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than a program that uses the mouse.
 3. Should not require user to install program file.
 4. Should work for single user.
 5. Should be able to run without internet connection.
