@@ -10,6 +10,7 @@ import static profile.Constants.WEIGHT_LOWER_BOUND;
 import static profile.Constants.WEIGHT_UPPER_BOUND;
 
 //@@author tienkhoa16
+
 /**
  * A class that contains templates of message to show to user.
  */
@@ -29,11 +30,14 @@ public class ProfileUi extends CommonUi {
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Wrong format, please enter in the format:" + LS
             + "%s" + LS + MESSAGE_HELP_FOR_MORE_INFO;
     public static final String MESSAGE_MORE_CALORIES = "take %.1f more calories to achieve your target for today!";
+    public static final String MESSAGE_SET_EXPECTED_WEIGHT = "TIP: Edit your expected weight to %.1f kg to have "
+            + "Normal Weight BMI classification." + LS + "     Just type \"edit /e %.1f\"!";
     public static final String MESSAGE_PROFILE_EXIST = "There's currently a profile in the database. " + LS
             + "Please delete it using \"delete\" command before adding a new one.";
     public static final String MESSAGE_PROFILE_NOT_EXIST = "There's no profile to %s. "
             + "Please add a new one using \"add\" command :D";
-    public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s" + LS + "By the way, %s";
+    public static final String MESSAGE_VIEW_PROFILE = "Here's your profile:" + LS + "%s" + LS + "By the way, %s"
+            + LS + "%s";
     public static final String MESSAGE_WELCOME_EXISTING_USER = "Welcome back to The Schwarzenegger, %s!" + LS
             + "How can I help you today?";
     public static final String MESSAGE_WELCOME_NEW_USER = "Welcome new user to The Schwarzenegger! :D" + LS

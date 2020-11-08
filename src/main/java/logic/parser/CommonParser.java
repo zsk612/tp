@@ -1,6 +1,5 @@
 package logic.parser;
 
-import static profile.Constants.GREEDY_WHITE_SPACE;
 import static ui.CommonUi.EMPTY_STRING;
 
 //@@author tienkhoa16
@@ -13,6 +12,7 @@ public class CommonParser {
     public static final int COMMAND_ARGS_INDEX = 1;
     public static final int COMMAND_SPLIT_LIMIT = 2;
     public static final int COMMAND_TYPE_INDEX = 0;
+    public static final String GREEDY_WHITE_SPACE = "\\s+";
 
     /**
      * Parses and returns the Command associated with the user input.

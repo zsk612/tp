@@ -1,9 +1,12 @@
 package models;
 
+import profile.Constants;
+
 import static profile.Constants.PROFILE_STRING_REPRESENTATION;
 import static profile.Utils.checkValidProfile;
 
 //@@author tienkhoa16
+
 /**
  * A class that contains user profile.
  */
@@ -80,12 +83,23 @@ public class Profile {
     }
 
     /**
-     * Gets user's expected calories intake daily..
+     * Gets user's expected calories intake daily.
      *
-     * @return User's expected calories intake daily..
+     * @return User's expected calories intake daily.
      */
     public double getCalories() {
         return calories;
+    }
+
+    /**
+     * Calculates user's BMI.
+     *
+     * @param height User's height.
+     * @param weight User's weight.
+     * @return User's BMI.
+     */
+    public double calculateBmi(int height, double weight) {
+        return weight / Math.pow((double) height / 100, 2);
     }
 
     /**
@@ -96,17 +110,16 @@ public class Profile {
     public String getBmiClassification() {
         String classification;
 
-        double bmiIndex = weight / Math.pow((double) height / 100, 2);
-
-        if (bmiIndex < 18.5) {
+        double bmiIndex = calculateBmi(height, weight);
+        if (bmiIndex < Constants.UNDER_WEIGHT_THRESHOLD) {
             classification = "Underweight";
-        } else if (bmiIndex <= 24.9) {
+        } else if (bmiIndex <= Constants.NORMAL_WEIGHT_THRESHOLD) {
             classification = "Normal Weight";
-        } else if (bmiIndex <= 29.9) {
+        } else if (bmiIndex <= Constants.OVERWEIGHT_THRESHOLD) {
             classification = "Overweight";
-        } else if (bmiIndex <= 34.9) {
+        } else if (bmiIndex <= Constants.OBESITY_CLASS_ONE_THRESHOLD) {
             classification = "Obesity Class 1";
-        } else if (bmiIndex <= 39.9) {
+        } else if (bmiIndex <= Constants.OBESITY_CLASS_TWO_THRESHOLD) {
             classification = "Obesity Class 2";
         } else {
             classification = "Extreme Obesity Class 3";
