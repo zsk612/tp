@@ -22,7 +22,7 @@ public class ToProfile extends Command {
             ui.showWarning("\"profile\" command does not take in parameters");
         }
 
-        ProfileSession profileSession = new ProfileSession();
+        ProfileSession profileSession = ProfileSession.getInstance();
         profileSession.run();
         return new CommandResult("", ExecutionResult.OK);
     }

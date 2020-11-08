@@ -19,10 +19,13 @@ import static profile.Constants.COMMAND_TYPE_INDEX;
 import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
 import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
 
+//@@author tienkhoa16
+
 /**
  * A class that is responsible for interacting with user in Profile Session.
  */
 public class ProfileSession {
+    private static ProfileSession singleInstance = null;
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private CommonUi ui;
     private CommonParser parser;
@@ -32,13 +35,25 @@ public class ProfileSession {
     /**
      * Constructs ProfileSession object.
      */
-    public ProfileSession() {
+    private ProfileSession() {
         logger.log(Level.INFO, "initialising ProfileSession object");
         ui = new CommonUi();
         storage = new ProfileStorage(PATH_TO_PROFILE_FOLDER, PATH_TO_PROFILE_FILE);
         parser = new CommonParser();
         cl = new CommandLib();
         cl.initProfileSessionCl();
+    }
+
+    /**
+     * Gets the single instance of ProfileSession class.
+     *
+     * @return Single instance of ProfileSession class.
+     */
+    public static ProfileSession getInstance() {
+        if (singleInstance == null) {
+            singleInstance = new ProfileSession();
+        }
+        return singleInstance;
     }
 
     /**
