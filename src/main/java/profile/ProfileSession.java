@@ -86,7 +86,8 @@ public class ProfileSession {
             assert commParts != null : "parsed array should not be null before process loop";
 
             try {
-                processCommand(commParts);
+                CommandResult result = processCommand(commParts);
+                ui.showToUser(result.getFeedbackMessage());
             } catch (SchwarzeneggerException e) {
                 ui.showToUser(ExceptionHandler.handleCheckedExceptions(e));
 
@@ -105,15 +106,16 @@ public class ProfileSession {
      *
      * @param commParts Size 2 array; first element is the command type and second element is the arguments
      *         string.
+     * @return Result after processing command.
      * @throws SchwarzeneggerException If there are caught exceptions.
      */
-    private void processCommand(String[] commParts) throws SchwarzeneggerException {
+    private CommandResult processCommand(String[] commParts) throws SchwarzeneggerException {
         Command command = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
         assert command != null : "command object should not be null null";
 
         CommandResult result = command.execute(commParts[COMMAND_ARGS_INDEX], storage);
         assert result != null : "command result object should not be null null";
 
-        ui.showToUser(result.getFeedbackMessage());
+        return result;
     }
 }

@@ -9,6 +9,7 @@ import models.Profile;
 import storage.profile.ProfileStorage;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import static logic.commands.ExecutionResult.FAILED;
 import static seedu.duke.Constant.COMMAND_WORD_VIEW;
@@ -35,8 +36,8 @@ public class ProfileView extends Command {
      */
     public ProfileView(String pathToDietData, LocalDate date) {
         super();
-        this.pathToDietData = pathToDietData;
-        this.date = date;
+        this.pathToDietData = Objects.requireNonNullElse(pathToDietData, PATH_TO_DIET_FOLDER);
+        this.date = Objects.requireNonNullElseGet(date, LocalDate::now);
     }
 
     /**
@@ -56,6 +57,9 @@ public class ProfileView extends Command {
      */
     @Override
     public CommandResult execute(String commandArgs, ProfileStorage storage) throws SchwarzeneggerException {
+        assert commandArgs != null : "command args cannot be null";
+        assert storage != null : "profile storage cannot be null";
+
         super.execute(commandArgs, storage);
 
         if (!commandArgs.isEmpty()) {
