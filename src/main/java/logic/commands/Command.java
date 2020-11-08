@@ -1,6 +1,5 @@
 package logic.commands;
 
-import models.Food;
 import exceptions.InvalidCommandWordException;
 import exceptions.InvalidDateFormatException;
 import exceptions.SchwarzeneggerException;
@@ -8,6 +7,7 @@ import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
 import models.ExerciseList;
+import models.Food;
 import storage.diet.DietStorage;
 import storage.profile.ProfileStorage;
 import storage.workout.WorkoutSessionStorage;
@@ -21,9 +21,15 @@ import java.util.logging.Logger;
  * A base class for command.
  */
 public abstract class Command {
-
     protected static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-    public CommonUi ui = new CommonUi();
+    public CommonUi ui;
+
+    /**
+     * Constructs Command object.
+     */
+    public Command() {
+        ui = new CommonUi();
+    }
 
     /**
      * Executes the command with given arguments.
@@ -39,6 +45,7 @@ public abstract class Command {
     }
 
     //@@author tienkhoa16
+
     /**
      * Executes the command with user's input.
      *
@@ -54,6 +61,7 @@ public abstract class Command {
     }
 
     //@@author
+
     /**
      * Executes the command with user's input.
      *
@@ -82,12 +90,13 @@ public abstract class Command {
      * @throws InvalidCommandWordException If command word is invalid.
      */
     public CommandResult execute(String input, ArrayList<Food> foodList,
-                        DietStorage storage, Integer index) throws InvalidCommandWordException {
+                                 DietStorage storage, Integer index) throws InvalidCommandWordException {
         return new CommandResult();
     }
 
 
     //@@author yujinyang1998
+
     /**
      * Executes the command with user's input.
      *
@@ -99,8 +108,8 @@ public abstract class Command {
      * @throws InvalidCommandWordException If command word is invalid.
      */
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,
-                        String filePath, WorkoutSessionStorage workoutSessionStorage,
-                        boolean[] hasEndedWorkoutSessions) throws InvalidCommandWordException {
+                                 String filePath, WorkoutSessionStorage workoutSessionStorage,
+                                 boolean[] hasEndedWorkoutSessions) throws InvalidCommandWordException {
         logger.log(Level.INFO, "Executing " + this);
         return new CommandResult();
     }
