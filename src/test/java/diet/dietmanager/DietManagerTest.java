@@ -1,12 +1,10 @@
 package diet.dietmanager;
 
-import exceptions.profile.InvalidCommandFormatException;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.time.LocalDate;
 
-import static logic.parser.ProfileParser.extractCommandTagAndInfo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
