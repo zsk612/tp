@@ -23,7 +23,11 @@ import java.util.stream.Collectors;
 
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.LS;
-import static ui.diet.dietmanager.DietManagerUi.*;
+import static ui.diet.dietmanager.DietManagerUi.DIET_DATE_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_NO_SESSIONS_SAVED;
+import static ui.diet.dietmanager.DietManagerUi.DIET_SEARCH_EMPTY_TAG;
+import static ui.diet.dietmanager.DietManagerUi.DIET_SEARCH_RESULTS_MESSAGE;
+import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
 public class DietSessionSearch extends Command {

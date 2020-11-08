@@ -14,7 +14,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 
-import static ui.diet.dietmanager.DietManagerUi.*;
+import static ui.diet.dietmanager.DietManagerUi.DIET_CREATE_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_DATE_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_IO_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
+import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
 public class DietSessionCreate extends Command {

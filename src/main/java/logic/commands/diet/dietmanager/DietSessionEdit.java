@@ -11,7 +11,11 @@ import java.io.IOException;
 import java.util.logging.Level;
 
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
-import static ui.diet.dietmanager.DietManagerUi.*;
+import static ui.diet.dietmanager.DietManagerUi.DIET_EDIT_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_ARRAY_OUT_OF_BOUND;
+import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_CORRUPTED_MSG;
+import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
+import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
 public class DietSessionEdit extends Command {

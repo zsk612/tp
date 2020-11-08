@@ -13,7 +13,8 @@ import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
 //@@author CFZeon
 public class DietSessionClearTest {
-    private final String EMPTY_STRING = "";
+    private static final String EMPTY_STRING = "";
+
     @Test
     void testExecute_inputEmptyArguments_NullStorage_throwsNoSuchElementException() {
         assertThrows(NoSuchElementException.class, () -> {

@@ -10,7 +10,11 @@ import java.util.logging.Level;
 
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.clearMsg;
-import static ui.diet.dietmanager.DietManagerUi.*;
+import static ui.diet.dietmanager.DietManagerUi.CLEAR_RECORD;
+import static ui.diet.dietmanager.DietManagerUi.DIET_CLEAR_MSG;
+import static ui.diet.dietmanager.DietManagerUi.DIET_MENU_NAME;
+import static ui.diet.dietmanager.DietManagerUi.DIET_NOTHING_TO_CLEAR_MSG;
+import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
 //@@author CFZeon

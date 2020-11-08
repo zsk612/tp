@@ -8,11 +8,14 @@ import storage.diet.DietStorage;
 import java.io.ByteArrayInputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static ui.diet.dietmanager.DietManagerUi.*;
+import static ui.diet.dietmanager.DietManagerUi.DIET_CREATE_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_DATE_WRONG_FORMAT;
+import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 
 //@@author CFZeon
 public class DietSessionCreateTest {
-    private final String EMPTY_STRING = "";
+    private static final String EMPTY_STRING = "";
+
     @Test
     void testExecute_inputEmptyArguments_success() {
         DietStorage storage = new DietStorage();
@@ -56,6 +59,7 @@ public class DietSessionCreateTest {
         CommandResult result = new DietSessionCreate().execute(input, storage);
         assertEquals(DIET_DATE_WRONG_FORMAT, result.getFeedbackMessage());
     }
+
     @Test
     void testExecute_invalidInput_placeholder() {
         DietStorage storage = new DietStorage();
