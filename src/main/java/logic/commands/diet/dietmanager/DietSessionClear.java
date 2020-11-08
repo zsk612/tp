@@ -14,6 +14,7 @@ import static ui.diet.dietmanager.DietManagerUi.CLEAR_RECORD;
 import static ui.diet.dietmanager.DietManagerUi.DIET_CLEAR_MSG;
 import static ui.diet.dietmanager.DietManagerUi.DIET_MENU_NAME;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NOTHING_TO_CLEAR_MSG;
+import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
 //@@author CFZeon
@@ -27,7 +28,7 @@ public class DietSessionClear extends Command {
      */
     @Override
     public CommandResult execute(String input, DietStorage storage) {
-        String resultMessage = "";
+        String resultMessage = EMPTY_STRING;
         try {
             if (ui.checkConfirmation(DIET_MENU_NAME, CLEAR_RECORD)) {
                 File folder = new File(PATH_TO_DIET_FOLDER);

@@ -15,6 +15,7 @@ import static ui.diet.dietmanager.DietManagerUi.DIET_EDIT_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_ARRAY_OUT_OF_BOUND;
 import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_CORRUPTED_MSG;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
+import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
 public class DietSessionEdit extends Command {
@@ -27,7 +28,7 @@ public class DietSessionEdit extends Command {
      */
     @Override
     public CommandResult execute(String input, DietStorage storage) {
-        String result = "";
+        String result = EMPTY_STRING;
         File folder = new File(PATH_TO_DIET_FOLDER);
         File[] listOfFiles = folder.listFiles();
         try {

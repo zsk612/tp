@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.LS;
+import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
 public class DietSessionList extends Command {
@@ -29,7 +30,7 @@ public class DietSessionList extends Command {
      */
     @Override
     public CommandResult execute(String input, DietStorage storage) {
-        String message = "";
+        String message = EMPTY_STRING;
         File folder = new File(PATH_TO_DIET_FOLDER);
         File[] listOfFiles = folder.listFiles();
         StringBuilder listResult = new StringBuilder();
