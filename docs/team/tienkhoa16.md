@@ -26,6 +26,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
     + Implemented `SchwarzeneggerLogger` with singleton patter to log program execution into file. [#60](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/60)
     + Implemented `ExceptionHandler` class to create consistent format to handle exception. [#119](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/119)
     + Added `logic/commands/main` to execute command under Main Menu.
+    + Added `formatList` method in `logic/commands/workout/workoutsession/WorkoutSessionList` to create dynamic column width while listing.
     
 + **Code contribution**: [Functional and Test code](https://nus-cs2113-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=tienkhoa16&sort=groupTitle&sortWithin=title&since=2020-09-27&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship)
 
@@ -40,7 +41,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
     + Add Section 4.5.1. Storage for Profile. [#156](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/156)
     + Add Section 4.6. Logging. [#135](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/135)
     + Add Section 5. Testing and Section 6. Dev Ops. [#199](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/199)
-    + Fix broken links in the Devloper Guide.
+    + Fix broken links in the Developer Guide.
 
 + **Community**:
     + Review Developer Guide from other teams in the class (with non-trivial review comments). [#3](https://github.com/nus-cs2113-AY2021S1/tp/pull/3).)
