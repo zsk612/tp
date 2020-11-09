@@ -71,7 +71,7 @@ By: `CS2113T-F11-1` Since: `2020`
 6.3. [Coverage Report](#coverage-report)<br>
 6.4. [Making a Release](#making-a-release)<br>
 6.5. [Managing Dependencies](#managing-dependencies)<br>
-  * [**Appendices**](#appendices)
+* [**Appendices**](#appendices)
     + [Appendix A: Product Scope](#appendix-a-product-scope)
     + [Appendix B: User Stories](#appendix-b-user-stories)
     + [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)
