@@ -3,8 +3,8 @@
 
 actor user
 activate ProfileSession
-user -> Ui++ : Delete Profile Command
-Ui --> ProfileSession -- : input
+user -> CommonUi++ : Delete Profile Command
+CommonUi --> ProfileSession -- : input
 
 ref over ProfileSession, ProfileParser, CommandLib: parse user input in ProfileSession
 
@@ -13,8 +13,8 @@ Command -> ProfileStorage ++ : loadData()
 ProfileStorage --> Command -- : profile
 
 alt hasExistingProfile
-    Command -> Ui ++ : getConfirmation()
-    Ui --> Command -- : isConfirmed
+    Command -> CommonUi ++ : getConfirmation()
+    CommonUi --> Command -- : isConfirmed
 
     alt isConfirmed
         Command -> ProfileStorage ++ : saveData(null)
@@ -30,6 +30,6 @@ end
 deactivate Command
 destroy Command
 
-ref over user, ProfileSession, Ui: show message to user in ProfileSession
+ref over user, ProfileSession, CommonUi: show message to user in ProfileSession
 
 @enduml

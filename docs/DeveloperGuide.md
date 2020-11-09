@@ -29,20 +29,20 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.3. [Editing a Profile](#editing-a-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deleting a Profile](#deleting-a-profile)<br>
 4.3. [Diet-related Features](#diet-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#list-out-all-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording diet data](#start-recording-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#showing-help-message)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current diet](#adding-food-items-for-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current diet](#listing-data-for-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current diet](#deleting-data-from-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current diet](#clearing-data-from-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of diet data](#stopping-the-recording-of-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past diet sessions](#list-all-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past diet session](#edit-a-past-diet-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past diet session](#delete-a-past-diet-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past diet sessions](#clear-all-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Search for past diet sessions](#search-for-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.8. [Exit the diet manager](#exit-the-diet-manager)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List Out All Commands](#list-out-all-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start Recording Diet Data](#start-recording-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing Help Message](#showing-help-message)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding Food Items for the Current Diet](#adding-food-items-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing Data for the Current Diet](#listing-data-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting Data from the Current Diet](#deleting-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing Data from the Current Diet](#clearing-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the Recording of Diet Data](#stopping-the-recording-of-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List All Past Diet Sessions](#list-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a Past Diet Session](#edit-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a Past Diet Session](#delete-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all Past Diet Sessions](#clear-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Search for Past Diet Sessions](#search-for-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.8. [Exit the Diet Manager](#exit-the-diet-manager)<br>
 4.4. [Workout-related Features](#workout-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creating a New Workout Session](#creating-a-new-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
@@ -102,7 +102,7 @@ This document describes the software architecture and software design requiremen
 
 ## 3. <a id="design">Design</a>
 This section provides a high level overview of our application, The Schwarzenegger.
-### 3.1. <a id="architect">Architecture</a>
+### 3.1. <a id="architecture">Architecture</a>
 
 ![Architecture](pictures/zesong/Architecture.png)
 
@@ -127,15 +127,13 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 
 ### 3.2. <a id="ui-component">Ui Component</a>
 ![Ui Component](pictures/zesong/Ui.png)
+ 
+The `Ui` package is a combination class where the interactions with the user are formatted in a consistent way. 
 
-API: `Ui.java`
- 
-The `Ui` package is a combination class where all interaction will be made through this component. 
- 
 The `Ui` component,
 
-* Takes in user input
-* Prints out response messages
+* Takes in user commands
+* Formats messages and prints out responses
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -147,7 +145,7 @@ The `Ui` component,
 1. This splits the user input into interpretable portions by other functions.
 1. All commands inherits from base class Command with an `execute()` method. They are stored in a hashmap `CommandLib` and retrieved using user's input as key.
 1. Command interacts with parsers, models and storage to carry out the user's command.
-1. The result of the command execution is encapsulated as a CommandResult object which is passed back to Ui to display the message. 
+1. The result of the command execution is encapsulated as a CommandResult object which is passed back to CommonUi to display the message. 
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -205,7 +203,6 @@ All profile/ diet/ workout-related features can be broken down into 4 distinct f
 For diet and workout-related features, there is an additional functionality of searching.
 
 ### 4.1. <a id="main-menu-related-features">Main Menu-related Features</a>
-
 This feature allows user to access the different menu for workout, diet and profile. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
 
 If the command is successful,the user will be put into the respective menu and a starting message on the entered menu will be displayed to the user. 
@@ -219,9 +216,7 @@ When the user attempts to access different menu for workout, diet and profile me
     1. `Duke` calls `CommonParser.parseCommand()` to parse user input into a string array.
 1. `Duke` calls `CommandLib.getCommand` with the string arry containing the inputs.
 1. Depending on the input,`Duke` creates `ProfileSession` or `DietManager` or `WorkoutManager` object.
-1. After entering the `ProfileSession` or `DietManager` or `WorkoutManager` objects, the menus will have their own seperate tasks.
-
-All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
+1. After entering the `ProfileSession` or `DietManager` or `WorkoutManager` objects, the menus will have their own separate tasks.
 
 The sequence diagram below summarizes how Main Menu works:
 
@@ -238,10 +233,10 @@ If the creation is successful, a confirmation message on the newly created profi
 
 **Implementation**
 
-When the user attempts to add a new profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+When the user attempts to add a new profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
-    1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
+    1. `ProfileSession` calls `CommonUi.getCommand()` to receive user input.
     1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileAdd` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileAdd`.
@@ -254,9 +249,9 @@ When the user attempts to add a new profile, the ProfileSession, Ui, ProfilePars
     1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how creating a new profile works:
 
@@ -293,10 +288,10 @@ If the data loading is successful, a message on the added profile will be displa
 
 **Implementation**
 
-When the user attempts to view an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile, DietManager and CommandResult classes will be accessed. The following sequence of steps will then occur:
+When the user attempts to view an added profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile, DietManager and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `view`
-    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
+    1. `ProfileSession` calls `CommonUi.getUserCommand()` to receive user input.
     1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileView` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileView`.
@@ -307,9 +302,9 @@ When the user attempts to view an added profile, the ProfileSession, Ui, Profile
     1. Based on user's calories intake today and string representation of `Profile`, `ProfileView` returns a result to `ProfileSession`.    
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how viewing an added profile works:
 
@@ -341,10 +336,10 @@ If the editing is successful, a confirmation message on the edited profile will 
 
 **Implementation**
 
-When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+When the user attempts to edit a profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `edit /w 60`
-    1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
+    1. `ProfileSession` calls `CommonUi.getCommand()` to receive user input.
     1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileEdit` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileEdit`.
@@ -358,9 +353,9 @@ When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser,
     1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how creating a new profile works:
 
@@ -392,24 +387,24 @@ If the deletion is successful, a confirmation message on the profile deletion wi
 
 **Implementation**
 
-When the user attempts to delete an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
+When the user attempts to delete an added profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `delete`
-    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+    1. `ProfileSession` calls `CommonUi.getUserCommand()` to receive user input.
+    1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileDelete` object.
    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileDelete`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileDelete.execute()` with the rest of parsed input.
     1. `ProfileDelete` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileDelete` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
-    1. `ProfileDelete` calls `Ui.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `4`.
+    1. `ProfileDelete` calls `CommonUi.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `4`.
     1. `ProfileDelete` calls `ProfileStorage.saveData()` to save a `null` object which represents a deleted profile.
     1. `ProfileDelete` returns a result to `ProfileSession`.   
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how deleting an added profile works:
 
@@ -430,6 +425,8 @@ Aspects: Loading of stored data
 
     - Pros: Execution time is fast. 
     - Cons: Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.
+
+<a href="#top">&#8593; Return to Top</a>
 
 ### 4.3. <a id="diet-related-features">Diet-related Features</a>
 #### 4.3.1. <a id="list-out-all-commands">Listing out all commands:</a> `help`
@@ -678,7 +675,7 @@ The sequence diagram below summarizes how listing past Diet sessions work:
     
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.4. <a id = "edit-a-past-diet-sessions">Edit a past diet session:</a> `edit`
+#### 4.3.4. <a id = "edit-a-past-diet-session">Edit a past diet session:</a> `edit`
 
 The feature allows users to edit previously created diet sessions.
 
@@ -927,11 +924,13 @@ All description, warnings and response will be handled by `CommonUi` to ensure c
 The sequence diagram below summarizes how the add command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
-![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)
+Below are the sub-diagrams: <a id="figure-4-4-1-1-1"></a>
+
+![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)<br>
 
 Figure 4.4.1.1.1. Sub-diagram for Parsing Input in WorkoutSession
 
-![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.jpg)
+<a id="figure-4-4-1-1-2">![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.jpg)</a><br>
 
 Figure 4.4.1.1.2. Sub-diagram for Showing Message to User
 
@@ -978,6 +977,8 @@ All description, warnings and response will be handled by `CommonUi` to ensure c
 
 The sequence diagram below summarizes how the delete command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionDelete.png)
+
+You can refer to [Figure 4.4.1.1.1. Sub-diagram for Parsing Input in WorkoutSession](#figure-4-4-1-1-1) and [Figure 4.4.1.1.2. Sub-diagram for Showing Message to User](#figure-4-4-1-1-2) for the corresponding sub-diagrams.
 
 **Design considerations**
 Aspects: Making delete and index to delete as separate or a single input
@@ -1326,7 +1327,7 @@ To run all build-related tasks:
 Otherwise, use the error report provided to resolve the issue before trying again. 
 
 <a href="#top">&#8593; Return to Top</a>
-### 6.2. <a id="continuous-integration>Continuous Integration</a>
+### 6.2. <a id="continuous-integration">Continuous Integration</a>
 We use Github Actions for continuous integration. No setup will be required for users who fork from the main The Schwarzenegger repository.
 
 Whenever you create a pull request to the main repository for The Schwarzenegger:
@@ -1337,7 +1338,7 @@ Whenever you create a pull request to the main repository for The Schwarzenegger
 <a href="#top">&#8593; Return to Top</a>
 
 ### 6.3. <a id="coverage-report">Coverage Report</a>
-We use the IntelliJ IDEA’s coverage analysis tool for coverage reporting. A tutorial on how to install and use this tool can be found [here](#https://www.youtube.com/watch?v=yNYzZvyA2ik).
+We use the IntelliJ IDEA’s coverage analysis tool for coverage reporting. A tutorial on how to install and use this tool can be found [here](https://www.youtube.com/watch?v=yNYzZvyA2ik).
 
 <a href="#top">&#8593; Return to Top</a>
 ### 6.4. <a id="making-a-release">Making a Release</a>

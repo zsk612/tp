@@ -4,8 +4,8 @@
 
 actor user
 activate ProfileSession
-user -> Ui++ : Add Profile Command
-Ui --> ProfileSession -- : input
+user -> CommonUi++ : Add Profile Command
+CommonUi --> ProfileSession -- : input
 
 ref over ProfileSession, ProfileParser, CommandLib: parse user input in ProfileSession
 
@@ -30,6 +30,6 @@ end
 deactivate Command
 destroy Command
 
-ref over user, ProfileSession, Ui: show message to user in ProfileSession
+ref over user, ProfileSession, CommonUi: show message to user in ProfileSession
 
 @enduml
