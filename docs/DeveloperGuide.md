@@ -1116,7 +1116,7 @@ To run all build-related tasks:
 Otherwise, use the error report provided to resolve the issue before trying again. 
 
 <a href="#top">&#8593; Return to Top</a>
-### 6.2. <a id="continuous-integration>Continuous Integration</a>
+### 6.2. <a id="continuous-integration">Continuous Integration</a>
 We use Github Actions for continuous integration. No setup will be required for users who fork from the main The Schwarzenegger repository.
 
 Whenever you create a pull request to the main repository for The Schwarzenegger:
