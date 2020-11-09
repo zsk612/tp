@@ -1,6 +1,5 @@
 @startuml
-!define PLANTUML_HOME %dirpath()/../../umldiagram
-!include PLANTUML_HOME/style.puml
+!include ../../umldiagram/style.puml
 
 actor user
 activate ProfileSession
