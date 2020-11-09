@@ -46,17 +46,13 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
    Given below are sections I contributed to the User Guide.   
    They showcase my ability to write documentation targeting end-users.
    ```
-  + [Adding Food Items to the Current Diet Session: `add`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-add) 
+  + [Adding an Exercise: `add`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-add) 
   
-  + [Listing Food Items from the Current Diet Session: `list`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-list)
+  + [Listing All Exercises in This Session: `list`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-list)
   
-  + [Deleting Food Items from the Current Diet Session: `delete`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-delete)
+  + [Deleting an Exercise: `delete`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-delete)
   
-  + [Clearing All Food Items from the Current Diet Session: `clear`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-clear)
-  
-  + [Searching for Food Items from the Current Diet Session: `search`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-search)
-  
-  + [Ending the Current Diet Session: `end`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-end)
+  + [Searching for Related Exercises: `search`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-search)
       
    
 #### Contributions to the Developer Guide
