@@ -925,11 +925,13 @@ All description, warnings and response will be handled by `CommonUi` to ensure c
 The sequence diagram below summarizes how the add command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
-![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)
+Below are the sub-diagrams: <a id="figure-4-4-1-1-1"></a>
+
+![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)<br>
 
 Figure 4.4.1.1.1. Sub-diagram for Parsing Input in WorkoutSession
 
-![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.jpg)
+<a id="figure-4-4-1-1-2">![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.jpg)</a><br>
 
 Figure 4.4.1.1.2. Sub-diagram for Showing Message to User
 
@@ -976,6 +978,8 @@ All description, warnings and response will be handled by `CommonUi` to ensure c
 
 The sequence diagram below summarizes how the delete command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionDelete.png)
+
+You can refer to [Figure 4.4.1.1.1. Sub-diagram for Parsing Input in WorkoutSession](#figure-4-4-1-1-1) and [Figure 4.4.1.1.2. Sub-diagram for Showing Message to User](#figure-4-4-1-1-2) for the corresponding sub-diagrams.
 
 **Design considerations**
 Aspects: Making delete and index to delete as separate or a single input

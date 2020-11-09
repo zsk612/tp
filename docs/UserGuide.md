@@ -841,7 +841,7 @@ Expected outcome:
 ```
 
 
-#### 3.4.2.6. <a id="ws-end">Ending the Current Workout Session: `end`</a>
+#### 3.4.2.6. <a id="ws-end">Ending the Current Workout Session: `end`</a> 
 Ends the current workout session and saves the relevant data.
 
 __Format:__ `end`  
