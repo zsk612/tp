@@ -61,7 +61,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
       
       + [Deleting a Past Diet Session](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-delete)
       
-      + [Clearing All Past Diet Sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#meal-clear)
+      + [Clearing All Past Diet Sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-clear)
       
       + [Searching for Past Diet Sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-search)
       
