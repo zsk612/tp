@@ -35,11 +35,7 @@ public class DietSessionClear extends Command {
         String resultMessage = EMPTY_STRING;
         try {
             if (ui.checkConfirmation(DIET_MENU_NAME, CLEAR_RECORD)) {
-                File folder = new File(PATH_TO_DIET_FOLDER);
-                File[] listOfFiles = folder.listFiles();
-                for (int index = 0; index < Objects.requireNonNull(listOfFiles).length; index++) {
-                    listOfFiles[index].delete();
-                }
+                deleteAllFiles();
                 resultMessage = clearMsgFormatter(DIET_CLEAR_MSG);
                 logger.log(Level.INFO, "Cleared all diet sessions");
             } else {
@@ -50,5 +46,16 @@ public class DietSessionClear extends Command {
             logger.log(Level.INFO, "No sessions in dietManager for deletion");
         }
         return new CommandResult(resultMessage);
+    }
+
+    /**
+     * Deletes all files in the save folder
+     */
+    private void deleteAllFiles() {
+        File folder = new File(PATH_TO_DIET_FOLDER);
+        File[] listOfFiles = folder.listFiles();
+        for (int index = 0; index < Objects.requireNonNull(listOfFiles).length; index++) {
+            listOfFiles[index].delete();
+        }
     }
 }
