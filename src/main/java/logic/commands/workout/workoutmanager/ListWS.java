@@ -7,6 +7,9 @@ import models.PastRecordList;
 
 import static logic.commands.ExecutionResult.OK;
 
+/**
+ * A representation of the command for list commands in workout manager.
+ */
 public class ListWS extends Command {
 
     /**

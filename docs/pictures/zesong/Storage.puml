@@ -1,45 +1,20 @@
 @startuml
+!include ../../umldiagram/style.puml
 
-class PastRecord {
-String filePath
-CreateOn Date
-LastEdit Date
-}
-
-class WorkoutManagerStorge {
-ArrayList<PastRecord> pastRecord
-readFile()
-writeToFile()
+rectangle "Parser"{
+rectangle "XYZCommandParser"
 }
 
-class WorkoutManager {
-Object[] elementData
-size()
-}
+rectangle "CommandLib"
 
-WorkoutManagerStorge --> PastRecord
+rectangle "Commands"{
+rectangle "Command"
+rectangle "XYZCommand"
+}
+rectangle "CommandResult"
 
-WorkoutCommand --> WorkoutManagerStorge
-WorkoutManager --> WorkoutCommand
-
-class WorkoutSession {
-Object[] elementData
-size()
-}
-class Command {
-Object[] elementData
-size()
-}
-class Storage {
-Object[] elementData
-size()
-}
-class exerciseList {
-Object[] elementData
-size()
-}
-Storage --> exerciseList
-Command --> Storage
-WorkoutSession --> Command
-WorkoutSession-->exerciseList
+XYZCommandParser ..> CommandLib
+CommandLib ..> XYZCommand: executes
+XYZCommand -right-|> Command
+Command .up.> CommandResult: creates
 @enduml

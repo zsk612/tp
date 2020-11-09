@@ -49,9 +49,8 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an Exercise](#deleting-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing All Exercises in This Session](#listing-all-exercises-in-this-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing users to view help commands](#allowing-users-to-view-help-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for related exercises](#searching-for-related-exercises)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the workout session](#ending-the-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Searching for related exercises](#searching-for-related-exercises)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Ending the workout session](#ending-the-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing past workout sessions](#442-listing-past-workout-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing workout session](#443-editing-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a workout session](#444-deleting-a-workout-session)<br>
@@ -138,7 +137,7 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 
 API: `Ui.java`
  
-The `Ui` package is a combination class where all interaction will be made through this component
+The `Ui` package is a combination class where all interaction will be made through this component. 
  
 The `Ui` component,
 
@@ -152,7 +151,10 @@ The `Ui` component,
 ![Logic Component](images/logic_update.png)
 
 1. `The Schwarzenegger` uses `Parser` classes to parse the user command.
-2. This splits the user input into interpretable portions by other functions.
+1. This splits the user input into interpretable portions by other functions.
+1. All commands inherits from base class Command with an `execute()` method. They are stored in a hashmap `CommandLib` and retrieved using user's input as key.
+1. Command interacts with parsers, models and storage to carry out the user's command.
+1. The result of the command execution is encapsulated as a CommandResult object which is passed back to Ui to display the message. 
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -163,29 +165,26 @@ The `Ui` component,
 The Model component contains `Profile`, `DietManager`,
 `PastRecord` and `WorkoutSession` classes.
 * Profile: Stores the user profile data.
-* DietManager: Stores all past diet records.
+* Food: Stores food data that user consumes in a meal.
 * PastRecord: Stores meta information of each WorkoutSession files.
-* WorkoutSession: Stores the exercise data done in each workout session.
+* Exercises: Stores the exercise data done in each workout session.
 
 <a href="#top">&#8593; Return to Top</a>
 
 ### 3.5. <a id="workoutSessionStorage-component">Storage Component</a>
 
-![Storage Class Diagram](images/Storage.png)
-
 Profiles, Diet sessions and Workout sessions are stored in separate folders. 
 
-The Storage package contains subpackages for profile, diet manager and workout manager.
+The Storage package contains subpackages for profile, diet manager and workout manager. All models are serialized and deserialized into JSON format using `Gson` library.
 
-The readDietSession() method in workoutSessionStorage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past diet session.
-readPastRecords() and readFileContents() methods in workoutSessionStorage.workout package are used for loading saved workout managers and workout sessions respectively. It is called when the user accesses the workout manager.
-loadData() from workoutSessionStorage.profile is used to load user profile data and is called when the program starts up. 
+The `readDietSession()` method in workoutSessionStorage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past diet session.
+`readPastRecords()` and `readFileContents()` methods in workoutSessionStorage.workout package are used for loading saved workout managers and workout sessions respectively. It is called when the user accesses the workout manager.
+`loadData()` from workoutSessionStorage.profile is used to load user profile data and is called when the program starts up. 
 
-The writeToStorageDietSession() method in workoutSessionStorage.diet package saves the diet session and is called when the user exits it.
-writePastRecords() and writeToStorage() methods in workoutSessionStorage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
+The `writeToStorageDietSession()` method in workoutSessionStorage.diet package saves the diet session and is called when the user exits it.
+`writePastRecords()` and `writeToStorage()` methods in workoutSessionStorage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
 
-The saveData() method in workoutSessionStorage.profile is called after the user creates the user profile or edits it.
-readData() is workoutSessionStorage.profile is called when duke starts up.
+The `saveData()` method in workoutSessionStorage.profile is called after the user creates the user profile or edits it. `readData()` is workoutSessionStorage.profile is called when duke starts up.
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -754,6 +753,14 @@ The following sequence diagram shows how the add command works
 The sequence diagram below summarizes how creating new workout session works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
+![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)
+
+Figure 4.4.1.1.1. Sub-Diagram for Parsing Input in WorkoutSession
+
+![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.png)
+
+Figure 4.4.1.1.2. Sub-Diagram for Showing Message to User
+
 <a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.2. <a id="deleting-an-exercise">Deleting an Exercise</a>
 
@@ -788,15 +795,11 @@ The sequence diagram below summarizes how creating new workout session works:
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionList.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.4. <a id="allowing-users-to-view-help-commands">Allowing users to view help commands</a>
-
-![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionHelp.png)
-<a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.5. <a id="searching-for-related-exercises">Searching for related exercises</a>
+#### 4.4.1.4. <a id="searching-for-related-exercises">Searching for related exercises</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionSearch.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.6. <a id="ending-the-workout-session">Ending the workout session</a>
+#### 4.4.1.5. <a id="ending-the-workout-session">Ending the workout session</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionEnd.png)
 <a href="#top">&#8593; Return to Top</a>

@@ -5,7 +5,7 @@ import ui.CommonUi;
 //@@author CFZeon
 
 /**
- * Contains method and constant strings for user interfacing.
+ * A class that is responsible for user interface of Diet Manager.
  */
 public class DietManagerUi extends CommonUi {
     public static String DIET_NO_SESSION_SAVED = "Sorry! It seems like you have no diet sessions saved!";

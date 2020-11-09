@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 //@@author zsk612
+/**
+ * A representation of the command for delete commands in diet session.
+ */
 public class FoodItemDelete extends Command {
 
     /**

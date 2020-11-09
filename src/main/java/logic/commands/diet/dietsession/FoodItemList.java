@@ -15,6 +15,9 @@ import java.util.stream.Collectors;
 import static ui.CommonUi.LS;
 
 //@@author zsk612
+/**
+ * A representation of the command for list commands in diet session.
+ */
 public class FoodItemList extends Command {
 
     /**

@@ -15,6 +15,9 @@ import java.util.stream.Collectors;
 import static ui.CommonUi.LS;
 
 //@@author zsk612
+/**
+ * A representation of the command for search commands in diet session.
+ */
 public class FoodItemSearch extends Command {
 
     DietSessionUi ui = new DietSessionUi();

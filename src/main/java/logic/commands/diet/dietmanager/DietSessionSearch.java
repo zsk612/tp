@@ -31,7 +31,7 @@ import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
 /**
- * Contains the method to execute the search command in diet manager.
+ * A representation of the command for search commands in diet manager.
  */
 public class DietSessionSearch extends Command {
     private final DietManagerParser parser = new DietManagerParser();

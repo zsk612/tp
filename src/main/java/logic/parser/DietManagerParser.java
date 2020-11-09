@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Contains logic to evaluate user input strings.
+ * A class that is responsible for parsing user inputs in Diet Manager.
  */
 public class DietManagerParser extends CommonParser {
 

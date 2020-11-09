@@ -7,6 +7,9 @@ import exceptions.SchwarzeneggerException;
 
 import static ui.CommonUi.helpFormatter;
 
+/**
+ * A representation of the command for help commands in workout manager.
+ */
 public class HelpWS extends Command {
 
     /**

@@ -20,9 +20,8 @@ import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
-
 /**
- * Contains the method to execute the create command in diet manager.
+ * A representation of the command for create commands in diet manager.
  */
 public class DietSessionCreate extends Command {
 

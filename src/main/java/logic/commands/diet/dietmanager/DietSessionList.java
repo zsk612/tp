@@ -19,9 +19,8 @@ import static ui.CommonUi.LS;
 import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
-
 /**
- * Contains the method to execute the list command in diet manager.
+ * A representation of the command for list commands in diet manager.
  */
 public class DietSessionList extends Command {
 
