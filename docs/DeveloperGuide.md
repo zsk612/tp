@@ -469,7 +469,7 @@ When the user types `help` the following sequence occurs.
 1. Creating `DietSessionHelp` object.
    1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionHelp`.
 1. Executing command.
-    1. `DietManager` calls `DietSessionHelp.execute()` with the rest of parsed input.
+    1. `DietSession` calls `FoodItemHelp.execute()`.
     1. `DietSessionHelp` appends onto a string builder a list of typed help commands.
     1. `DietSessionHelp` returns a CommandResult object with the help message.
 1. Prompting result to user.
