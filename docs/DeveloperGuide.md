@@ -754,6 +754,14 @@ The following sequence diagram shows how the add command works
 The sequence diagram below summarizes how creating new workout session works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
+![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)
+
+Figure 4.4.1.1.1. Sub-Diagram for Parsing Input in WorkoutSession
+
+![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.png)
+
+Figure 4.4.1.1.2. Sub-Diagram for Showing Message to User
+
 <a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.2. <a id="deleting-an-exercise">Deleting an Exercise</a>
 
