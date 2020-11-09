@@ -605,12 +605,12 @@ The sequence diagram below summarizes how editing Diet session works:
 **Design considerations**
 Saving of the user’s Diet sessions:  
 
-- **Alternative 1 (current choice):** Saving at the end of a diet session
+- **Alternative 1:** Saving at the end of a diet session
 
     - Pros: The cost of saving is low, file writes only happen once per Diet session instance. 
     - Cons: If any crashes occur during a diet session, no input data will be saved.
 
-- **Alternative 2:** Saving during any alterations made to the Diet session
+- **Alternative 2 (current choice):** Saving during any alterations made to the Diet session
 
     - Pros: The files will still be saved even if a crash occurs.
     - Cons: Saving often might be taxing on the user's computer especially on slower models.

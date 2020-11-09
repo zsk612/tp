@@ -84,12 +84,24 @@ public class DietSessionSearch extends Command {
         return new CommandResult(message.trim());
     }
 
+    /**
+     * Checks if the folder is empty.
+     *
+     * @param listOfFiles Array for list of files in folder
+     * @param searchResult String builder for search result
+     */
     private void checkEmptyFolder(File[] listOfFiles, StringBuilder searchResult) {
         if (Objects.requireNonNull(listOfFiles).length == 0) {
             searchResult.append(DIET_NO_SESSIONS_SAVED + "\n\t ");
         }
     }
 
+    /**
+     * Checks if the tag is empty in the diet session.
+     *
+     * @param searchResult String builder for search result
+     * @param tag string to check if tag is empty
+     */
     private void checkEmptyTag(StringBuilder searchResult, String tag) {
         if (tag.isEmpty()) {
             searchResult.append(DIET_SEARCH_EMPTY_TAG + "\n\t ");
@@ -137,6 +149,21 @@ public class DietSessionSearch extends Command {
         searchResult.append(dietSessionSearchSize);
     }
 
+    /**
+     * Adds to the string builder for table printing.
+     *
+     * @param listOfFiles  list of files from local storage
+     * @param searchResult string builder that accumulates warning messages
+     * @param startDate    starting date for search
+     * @param endDate      end date for search
+     * @param tag          tag for search
+     * @param storage      storage for diet sessions
+     * @param fileArrayList for file array converted to arraylist
+     * @param listDescriptionFormat the description of the files in array list
+     * @param numberOfResult integer of results
+     * @return number of results total
+     * @throws InvalidDateFormatException if date is in wrong format
+     */
     private int addRow(File[] listOfFiles, StringBuilder searchResult, LocalDateTime startDate,
                        LocalDateTime endDate, String tag, DietStorage storage, ArrayList<File> fileArrayList,
                        String listDescriptionFormat, int numberOfResult) throws InvalidDateFormatException {
