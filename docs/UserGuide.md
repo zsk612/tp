@@ -381,7 +381,7 @@ __Format:__ `end`
     _________________________________________________________________________________________________
 ```
 
-### 3.3. <a id="diet-menu">Diet Menu</a>
+### 3.3. <a id="diet-menu">Diet Menu</a> [Zeon]
 Diet Menu manages your diet sessions which record food items and calories intake.
 
 Click [here](#main-diet) to learn how to enter Diet Menu.
@@ -431,32 +431,32 @@ __Format:__ `new </d [DATE]> </t [TAG]>`
 Example:
 - `new`<br>
 This command creates a new diet session tagged as unspecified with today's date.<br>
-Expected outcome:
-```
-     _________________________________________________________________________________________________
-     No date input is detected.
-     I've replaced it with today's date.
-     No tag is detected, and the session is tagged as "unspecified".
-     _________________________________________________________________________________________________
-    
-     _________________________________________________________________________________________________
-     Starting Diet Session!
-     _________________________________________________________________________________________________
-```
 
-- `new /d 2020-05-04 /t breakfast`
-This command creates a diet session with date 2020-05-04 and type breakfast.<br>
-Expected outcome:
-```
-     _________________________________________________________________________________________________
-     Starting Diet Session!
-     _________________________________________________________________________________________________
-```
+
+**Example:** Whenever you want to create a new Diet Session, you follow the steps below:
+1. Ensure that you are in the Diet Menu.<br>
+Refer to [Section 3.1.3. Entering Diet Menu](#main-diet) to learn how to enter the Diet Menu.
+
+    ![new-diet-session-1](pictures/UG_screenshots/new-dietsession-step-1.png)
+
+2. Type new /d 2020-11-09 /t lunch into your console and press Enter to execute it.
+   This command starts a Diet Session of date 9th September 2020 with tag lunch.
+
+    ![new-diet-session-2](pictures/UG_screenshots/new-dietsession-step-2.png)
+
+3. If the execution is successful, you should be able to see the confirmation message below.
+
+    ![new-diet-session-3](pictures/UG_screenshots/new-dietsession-step-3.png)
+
+4. You will also be redirected to the Diet Session interface, as seen below.
+
+    ![new-diet-session-4](pictures/UG_screenshots/new-dietsession-step-4.png)
+
 
 > :warning: You may choose not to add the date or tag, but diet sessions with the same date and tag will be overwritten!
   
   
-#### 3.3.2.1. <a id="meal-help">Viewing Help in Diet Session: `help`</a>
+#### 3.3.2.1. <a id="meal-help">Viewing Help in Diet Session: `help`</a> [Shukai]
 You can see a complete list of available commands under Diet Session and how to use them.
 
 __Format:__ `help` 
@@ -592,7 +592,7 @@ Expected outcome:
 	 _________________________________________________________________________________________________
 
 ```
-#### 3.3.3. <a id="diet-list">Listing All Past Diet Sessions: `list`</a>
+#### 3.3.3. <a id="diet-list">Listing All Past Diet Sessions: `list`</a> [Zeon]
 You can obtain a list of information about past diet sessions together with their numbered index and calories.
 
 __Format:__ `list`
@@ -1027,7 +1027,7 @@ Edit|`edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]
 Delete|`delete`
 Return to Main Menu|`end`
 
-**Diet Menu**
+**Diet Menu** [Zeon]
 
 **Action** |  **Format**
 --------|----------------------
