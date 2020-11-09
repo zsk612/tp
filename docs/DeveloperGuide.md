@@ -149,7 +149,7 @@ The `Ui` component,
 
 ### 3.3. <a id="logic-component">Logic Component</a>
 
-![Logic Component](images/logic_update.png)
+![Logic Component](pictures/zesong/Logic.png)
 
 1. `The Schwarzenegger` uses `Parser` classes to parse the user command.
 1. This splits the user input into interpretable portions by other functions.
