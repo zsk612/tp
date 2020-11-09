@@ -377,7 +377,7 @@ When the user attempts to delete an added profile, the ProfileSession, Ui, Profi
 
 1. User executes `delete`
     1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+    1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileDelete` object.
    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileDelete`.
 1. Executing command.
@@ -416,16 +416,19 @@ This command lists out all help commands in a typed list that indicates to the u
 
 **Implementation**  
 When the user types `help` in a Diet Manager instance, the following sequence occurs. 
-1. The user keys in `help`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of `DietSessionHelp` command object from input
-    1. This will create a `DietSessionHelp()` instantiation of which the method `execute()` is called.
-    
-3. Executing Command
-    1. The execute() method will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
+
+1. User executes `help`
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionHelp` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionHelp`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionHelp.execute()` with the rest of parsed input.
+    1. `DietSessionHelp` appends onto a string builder a list of typed help commands.
+    1. `DietSessionHelp` returns a CommandResult object with the help message.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
     
 <a href="#top">&#8593; Return to Top</a>
 
@@ -434,16 +437,20 @@ The feature allows users to start recording diet data.
 
 **Implementation**  
 When the user types `new </d [DATE]> </t [TAG]>` the following sequence occurs. 
-1. The user keys in `new /d 2020-05-04 /t breakfast`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`, which splits the input into the `command` and the `input`.   
-    
-2. Creation of command object from input
-    1. This will create an instantiation DietSessionCreate() command object of which the method execute() is called.
-    
-3. Executing Command
-    1. The newly created object will then create an instantiation of a `DietSession`, and call the `start()` method.
+
+1. User executes `new /d 2020-05-04 /t breakfast`
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionHelp` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionCreate`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionCreate.execute()` with the rest of parsed input.
+    1. `DietSessionCreate` calls the `start()` method within an instantiated DietSession created with the parsed input.
+    1. `DietSession` then proceeds to completion until the user types "end", saving after every command with `DietStorage`.
+    1. `DietSessionHelp` returns a CommandResult object with the help message of the diet manager.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how creating new diet session works:
 
@@ -457,15 +464,17 @@ This command lists out all help commands in a typed list that indicates to the u
 **Implementation**  
 When the user types `help` the following sequence occurs. 
 1. The user keys in `help`.
-    
-    1. A `DietSessionUi` instantiation calls `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of command object from input
-    1. This will create a `FoodItemHelp()` instantiation of which the method `execute()` is called.
-    
-3. Executing Command
-    1. The newly created object will then print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
+    1. `DietSession` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietSession` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionHelp` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionHelp`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionHelp.execute()` with the rest of parsed input.
+    1. `DietSessionHelp` appends onto a string builder a list of typed help commands.
+    1. `DietSessionHelp` returns a CommandResult object with the help message.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
     
 <a href="#top">&#8593; Return to Top</a>
 
@@ -579,15 +588,19 @@ The feature allows users to view all past created diet sessions.
 **Implementation**  
 When the user types `list` in a diet manager instance the following sequence occurs. 
 1. The user keys in `list`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of command object from input
-    1. This will create a FoodItemList() instantiation of which the method execute() is called.
-    
-3. Executing Command
-    1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionList` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionList`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionList.execute()` with the rest of parsed input.
+    1. The execute method opens a directed save folder on the drive then assigns it to a File array.
+    1. `DietSessionList` then calls the `formatList()` method which takes the File Array and converts it into an ArrayList.
+    1. `DietSessionList` then calls the `formatRow()` method from within formatList() which converts the files into a formatted table output.
+    1. `DietSessionList` returns a CommandResult object with the entire table message of the diet sessions.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how listing past Diet sessions work:
 
@@ -602,20 +615,20 @@ The feature allows users to edit previously created diet sessions.
 **Implementation**  
 When the user types `edit [INDEX_OF_SESSION]` the following sequence occurs. 
 1. The user keys in `edit 1`.
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionEdit` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionEdit`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionEdit.execute()` with the rest of parsed input.
+    1. The execute method then calls `readDietSession()` from DietStorage which returns a dietSession instance.
+    1. `DietSessionEdit` then calls the `start()` method within an instantiated DietSession created with the parsed input.
+    1. `DietSession` then proceeds to completion until the user types "end", saving after every command with `DietStorage`.
+    1. `DietSessionHelp` returns a CommandResult object with the help message of the diet manager.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
     
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of `DietSessionEdit` command object from input
-    1. A `DietSessionEdit()` command class instantiation is created and the execute() method is called.
-    
-3. Executing Command
-    1. This will call `readDietSession()` from `workoutSessionStorage.diet.DietStorage` and it reads the file stored at `saves/diet`.
-    1. The `start()` method is then called in the diet session, starting a diet session instance.
-    
-4. After Execution
-    1. The diet session instance is saved during every command in Diet Session by calling `writeToStorageDietSession()` from `DietStorage`
-
 The sequence diagram below summarizes how editing Diet session works:
 
 ![Load Data Sequence Diagram](pictures/Zeon/DietSessionEdit.png)
@@ -642,16 +655,17 @@ The feature allows users to delete previously created diet sessions.
 **Implementation**  
 When the user types `delete [INDEX_OF_SESSION]` from a Diet manager instance the following sequence occurs. 
 1. The user keys in `delete 1`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. The input is then parsed in `processCommand()` which splits the input into a command portion and the input parameters.   
-    
-2. Creation of `DietSessionDelete()` command object from input
-    1. The `CommandLib` is referenced to find information on `DietSessionDelete()`.
-    2. A `DietSessionDelete()` command class instantiation is created and the `execute()` method is called.
-    
-3. Executing Command
-    1. `DietSessionDelete()` will then delete the diet session at index `1` based on the `list` command.
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionDelete` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionDelete`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionDelete.execute()` with the rest of parsed input.
+    1. The execute method then deletes the file at the indicated index `1` if a file was present there.
+    1. `DietSessionDelete` returns a CommandResult object with the delete confirmation message from DietmanagerUi.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how Diet sessions are deleted:
 
@@ -666,16 +680,17 @@ The feature allows users to clear all previously created diet sessions at once.
 **Implementation**  
 When the user types `clear` the following sequence occurs. 
 1. The user keys in `clear`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of `DietSessionClear()` command object from input
-    1. The `CommandLib` is referenced to find information on `DietSessionClear()`.
-    2. A `DietSessionClear()` command class instantiation is created and the `execute()` method is called.
-    
-3. Executing Command
-    1. This will iterate through every file in saves/diet/ and delete it.
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionClear` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionClear`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionDelete.execute()` with the rest of parsed input.
+    1. The execute method then deletes the file at the indicated index `1` if a file was present there.
+    1. `DietSessionDelete` returns a CommandResult object with the delete confirmation message from DietmanagerUi.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how Diet sessions are all cleared:
 
@@ -690,16 +705,19 @@ The feature allows users to search for previously created diet sessions within a
 **Implementation**  
 When the user types `search /s 2020-11-01 /e 2020-11-03 /t breakfast` the following sequence occurs. 
 1. The user keys in `search /s 2020-11-01 /e 2020-11-03 /t breakfast`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of `DietSessionSearch()` command object from input
-    1. The `CommandLib` is referenced to find information on `DietSessionSearch()`.
-    2. A `DietSessionSearch()` command class instantiation is created and the `execute()` method is called.
-    
-3. Executing Command
-    1. This will look for saved Diet Sessions within the date range specified for 1st November 2020 and 3rd November 2020 with the tag "breakfast" and print them all out on a list.
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionSearch` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionSearch`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionSearch.execute()` with the rest of parsed input.
+    1. The execute method then iterates through the entire folder and looks for empty tags and folders with the methods `checkEmptyTag()` and `checkEmptyFolder`.
+    1. `DietSessionSearch` calls the `addToSearchResult()` method which from within calls the `addRow()` method that converts the file output into a table format.
+    1. `DietSessionSearch` returns a `CommandResult` object with the search results.
+    1. If the starting search date is after the ending search date, the method will return with an exception which is then returned with the `CommandResult` message.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how Diet sessions is searched:
 
