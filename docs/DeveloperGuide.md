@@ -30,20 +30,21 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.2. [Viewing a Profile](#viewing-a-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.3. [Editing a Profile](#editing-a-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deleting a Profile](#deleting-a-profile)<br>
-4.3. [Diet-related Features](#43-diet-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#431-list-out-all-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording diet data](#432-start-recording-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#4321-showing-help-message)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current diet](#4322-adding-food-items-for-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current diet](#4323-listing-data-for-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current diet](#4324-deleting-data-from-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current diet](#4325-clearing-data-from-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of diet data](#4326-stopping-the-recording-of-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past diet sessions](#list-all-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past diet session](#edit-a-past-diet-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past diet session](#delete-a-past-diet-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past diet sessions](#clear-all-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Exit the diet manager](#exit-the-diet-manager)<br>
+4.3. [Diet-related Features](#diet-related-features)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#list-out-all-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording diet data](#start-recording-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#showing-help-message)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current diet](#adding-food-items-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current diet](#listing-data-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current diet](#deleting-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current diet](#clearing-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of diet data](#stopping-the-recording-of-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past diet sessions](list-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past diet session](edit-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past diet session](delete-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past diet sessions](clear-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Search for past diet sessions](search-for-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.8. [Exit the diet manager](#exit-the-diet-manager)<br>
 4.4. [Workout-related Features](#workout-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creating a New Workout Session](#creating-a-new-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
@@ -420,8 +421,8 @@ Aspects: Loading of stored data
     - Pros: Execution time is fast. 
     - Cons: Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.
 
-### 4.3. Diet-related Features
-#### 4.3.1. Listing out all commands: `help`
+### 4.3. <a id="diet-related-features">Diet-related Features</a>
+#### 4.3.1. <a id="list-out-all-commands">Listing out all commands:</a> `help`
 This command lists out all help commands in a typed list that indicates to the user all the commands available and how to use them.
 
 **Implementation**  
@@ -438,7 +439,7 @@ When the user types `help` in a Diet Manager instance, the following sequence oc
     1. The execute() method will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.2. Start recording diet data: `new`
+#### 4.3.2. <a id="start-recording-diet-data">Start recording diet data:</a> `new`
 The feature allows users to start recording diet data. 
 
 **Implementation**  
@@ -460,7 +461,7 @@ The sequence diagram below summarizes how creating new diet session works:
 
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.2.1. Showing help message: `help`
+#### 4.3.2.1. <a id="showing-help-message">Showing help message:</a> `help`
 This command lists out all help commands in a typed list that indicates to the user all the commands available and how to use them.
 
 **Implementation**  
@@ -478,7 +479,7 @@ When the user types `help` the following sequence occurs.
     
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.2.2. Adding food items for the current diet: `add`
+#### 4.3.2.2. <a id="adding-food-items-for-the-current-diet">Adding food items for the current diet:</a> `add`
 
 The feature allows users to add food items into the current diet session. 
 
@@ -502,7 +503,7 @@ The sequence diagram below summarizes how adding a new food to the diet session 
 
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.2.3. Listing data for the current diet: `list`
+#### 4.3.2.3. <a id="listing-data-for-the-current-diet">Listing data for the current diet:</a> `list`
 
 This command allows users to view all food items in the current diet session. 
 
@@ -519,8 +520,10 @@ When the user types `list` the following sequence occurs.
 3. Executing Command
     1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
     1. The total calories of the current meal is also printed.
+    
+![Load Data Sequence Diagram](pictures/Shukai/FoodItemList.png)
 
-#### 4.3.2.4. Deleting data from the current diet session: `delete`
+#### 4.3.2.4. <a id="deleting-data-from-the-current-diet">Deleting data from the current diet session:</a> `delete`
 
 The feature allows users to remove food items into the current diet session. 
 
@@ -536,8 +539,10 @@ When the user types `delete [INDEX_OF_FOOD]` the following sequence occurs.
     
 3. Executing Command
     1. The Food ID according to the index based on the ArrayList<Food> is deleted.
+    
+![Load Data Sequence Diagram](pictures/Shukai/FoodItemDelete.png)
 
-#### 4.3.2.5. Clearing all data from the current diet session `clear`
+#### 4.3.2.5. <a id="clearing-data-from-the-current-diet">Clearing all data from the current diet session</a> `clear`
 
 The feature allows users to remove food items into the current diet session. 
 
@@ -553,8 +558,10 @@ When the user types `clear` the following sequence occurs.
     
 3. Executing Command
     1. The ArrayList Clear method is called and removes all Food entries from the ArrayList.
+    
+![Load Data Sequence Diagram](pictures/Shukai/FoodItemClear.png)
 
-#### 4.3.2.6. Stopping the recording of diet session data: `end`
+#### 4.3.2.6. <a id="stopping-the-recording-of-diet-data">Stopping the recording of diet session data:</a> `end`
 
 The feature allows users to end the current diet session and return back to the diet manager.
 
@@ -568,8 +575,7 @@ When the user types `end` the following sequence occurs.
 2. Exiting of inputLoop()
     The inputLoop() exits when userInput.equals("end").
 
-#### 4.3.3. List All Past Diet Sessions: `list`
-
+#### 4.3.3. <a id = "list-all-past-diet-sessions">List all past diet sessions:</a> `list`
 The feature allows users to view all past created diet sessions.
 
 **Implementation**  
@@ -588,7 +594,7 @@ When the user types `list` in a diet manager instance the following sequence occ
 The sequence diagram below summarizes how listing past Diet sessions work:
 
 ![Load Data Sequence Diagram](pictures/Zeon/DietSessionList.png)
-#### 4.3.4. Edit a Past Diet Session: `edit`
+#### 4.3.4. <a id = "list-all-past-diet-sessions">Edit a past diet session:</a> `edit`
 
 The feature allows users to edit previously created diet sessions.
 
@@ -626,7 +632,7 @@ Saving of the user’s Diet sessions:
     - Pros: The files will still be saved even if a crash occurs.
     - Cons: Saving often might be taxing on the user's computer especially on slower models.
 
-#### 4.3.5. Delete a Previously Created Diet Session: `delete`
+#### 4.3.5. <a id = "delete-a-past-diet-session">Delete a previously created diet session:</a> `delete`
 
 The feature allows users to delete previously created diet sessions.
 
@@ -647,7 +653,7 @@ When the user types `delete [INDEX_OF_SESSION]` from a Diet manager instance the
 The sequence diagram below summarizes how Diet sessions are deleted:
 
 ![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionDelete.png)
-#### 4.3.6. Edit a Past Diet Session: `clear`
+#### 4.3.6. <a id = "clear-all-past-diet-sessions">Clear all past diet session:</a> `clear`
 
 The feature allows users to clear all previously created diet sessions at once.
 
@@ -668,7 +674,28 @@ When the user types `clear` the following sequence occurs.
 The sequence diagram below summarizes how Diet sessions are all cleared:
 
 ![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionClear.png)
-#### 4.3.7. Exit the Diet manager: `end`
+#### 4.3.7. <a id = "search-for-past-diet-sessions">Search for past diet session:</a> `search`
+
+The feature allows users to search for previously created diet sessions within a date range or with a specified tag.
+
+**Implementation**  
+When the user types `search /s 2020-11-01 /e 2020-11-03 /t breakfast` the following sequence occurs. 
+1. The user keys in `search /s 2020-11-01 /e 2020-11-03 /t breakfast`.
+    
+    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
+    1. Input will be parsed in `processCommand()`.   
+    
+2. Creation of `DietSessionSearch()` command object from input
+    1. The `CommandLib` is referenced to find information on `DietSessionSearch()`.
+    2. A `DietSessionSearch()` command class instantiation is created and the `execute()` method is called.
+    
+3. Executing Command
+    1. This will look for saved Diet Sessions within the date range specified for 1st November 2020 and 3rd November 2020 with the tag "breakfast" and print them all out on a list.
+
+The sequence diagram below summarizes how Diet sessions is searched:
+
+![Search_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionSearch.png)
+#### 4.3.8. <a id = "exit-the-diet-manager">Exit the Diet manager:</a> `end`
 
 The function returns the user back to the main menu of The Schwarzenegger.
 
@@ -767,11 +794,11 @@ The sequence diagram below summarizes how creating new workout session works:
 
 ![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)
 
-Figure 4.4.1.1.1. Sub-Diagram for Parsing Input in WorkoutSession
+Figure 4.4.1.1.1. Sub-diagram for Parsing Input in WorkoutSession
 
 ![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.png)
 
-Figure 4.4.1.1.2. Sub-Diagram for Showing Message to User
+Figure 4.4.1.1.2. Sub-diagram for Showing Message to User
 
 <a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.2. <a id="deleting-an-exercise">Deleting an Exercise</a>
