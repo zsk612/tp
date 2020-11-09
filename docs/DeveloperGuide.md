@@ -474,6 +474,8 @@ The sequence diagram below summarizes how creating new diet session works:
 
 ![Load Data Sequence Diagram](pictures/Zeon/CreateDietSession.png)
 
+Figure 4.3.2.1. CreateDietSession-diagram for Parsing Input in DietManager
+
 
 [Return to Top](#intro)
 
@@ -520,6 +522,12 @@ When the user types `add [FOOD_NAME] /c [CALORIES]` the following sequence occur
 The sequence diagram below summarizes how adding a new food to the diet session works:
 
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemAdd.png)
+
+Below is the sub-diagram: <a id="figure-4-3-2-2-1"></a>
+
+![Load Data Sequence Diagram](pictures/Shukai/ParseInput.png)<br>
+
+Figure 4.3.2.2.1. Sub-diagram for Parsing Input in DietSession
 
 [Return to Top](#intro)
 
