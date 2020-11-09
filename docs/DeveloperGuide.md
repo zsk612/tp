@@ -252,11 +252,9 @@ The sequence diagram below summarizes how creating a new profile works:
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
 <a id="figure-4-2-1">![Figure 4.2.1](pictures/khoa/ParseInput.png)</a>
-
 **Figure 4.2.1.** _Sub-diagram for Parsing Input in ProfileSession_
 
 <a id="figure-4-2-2">![Figure 4.2.2](pictures/khoa/ShowMessage.png)</a>
-
 **Figure 4.2.2.** _Sub-diagram for Showing Message to User in ProfileSession_
 
 **Design considerations**
