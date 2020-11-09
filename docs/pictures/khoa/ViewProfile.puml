@@ -28,10 +28,5 @@ end
 deactivate Command
 destroy Command
 
-ProfileSession -> CommandResult ++ : getFeedbackMessage(result)
-CommandResult --> ProfileSession -- : message
-ProfileSession -> Ui ++ : showToUser(message)
-destroy CommandResult
-Ui --> user
-deactivate Ui
+ref over user, ProfileSession, Ui: show message to user in Profile Menu
 @enduml
