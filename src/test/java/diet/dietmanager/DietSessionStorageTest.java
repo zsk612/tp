@@ -7,7 +7,8 @@ import storage.diet.DietStorage;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 //@@author CFZeon
 public class DietSessionStorageTest {
