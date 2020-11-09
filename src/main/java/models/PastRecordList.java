@@ -108,7 +108,7 @@ public class PastRecordList {
             return info;
         }
 
-        info = searchRecords(result.size(), ((result.size() > 1) ? " records have" : " record has"));
+        info = searchRecords(result.size(), ((result.size() > 1) ? "records have" : "record has"));
 
         info = getListInTable(result, info);
         logger.log(Level.INFO, "Search completed.");

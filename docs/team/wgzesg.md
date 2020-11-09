@@ -29,7 +29,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
         + This feature will parse the user's input into LocalDate. The parser supports 9 formats which gives user max flexibility when using the application.
         
     + **List Workout Sessions**
-        + This feature allows the use to view records only ranging from a given period. This helps the users to avoid seeing long list of workout sessions from long time ago.
+        + This feature allows the users to view records only ranging from a given period. This helps the users to avoid seeing long list of workout sessions from long time ago.
         
             
 + **Code contribution**: [Functional and Test code](https://nus-cs2113-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=wgzesg&sort=groupTitle&sortWithin=title&since=2020-09-27&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)

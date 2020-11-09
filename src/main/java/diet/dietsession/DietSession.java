@@ -127,7 +127,7 @@ public class DietSession {
      * @throws NullPointerException handles null pointer exception
      */
     private void processCommand(String input) throws NullPointerException, InvalidCommandWordException {
-        String[] commParts = parser.parse(input);
+        String[] commParts = parser.parseCommand(input);
         Command command = cl.getCommand(commParts[0]);
         CommandResult commandResult = command.execute(commParts[1].trim(), foodList, storage, index);
         dietSessionUi.showToUser(commandResult.getFeedbackMessage());

@@ -1,5 +1,6 @@
 package diet.dietmanager;
 
+import exceptions.InvalidCommandWordException;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -40,9 +41,9 @@ public class DietManagerTest {
     }
 
     @Test
-    void start_endInput_returnsNull() {
+    void processCommand_invalidInput_throwsInvalidCommandWordException() {
         DietManager dietManager = new DietManager();
-        System.setIn(new ByteArrayInputStream("end".getBytes()));
-        dietManager.start();
+        assertThrows(InvalidCommandWordException.class, () ->
+                dietManager.processCommand("asdf"));
     }
 }
