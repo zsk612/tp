@@ -48,9 +48,7 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an Exercise](#deleting-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing All Exercises in This Session](#listing-all-exercises-in-this-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing Users to View Help Commands](#allowing-users-to-view-help-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for Related Exercises](#searching-for-related-exercises)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the Workout Session](#ending-the-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Searching for Related Exercises](#searching-for-related-exercises)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing Past Workout Sessions](#listing-past-workout-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing Workout Session](#editing-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a Workout Session](#deleting-a-workout-session)<br>
@@ -415,16 +413,20 @@ This command lists out all help commands in a typed list that indicates to the u
 
 **Implementation**  
 When the user types `help` in a Diet Manager instance, the following sequence occurs. 
-1. The user keys in `help`.
+
+1. User executes `help`
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionHelp` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionHelp`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionHelp.execute()` with the rest of parsed input.
+    1. `DietSessionHelp` appends onto a string builder a list of typed help commands.
+    1. `DietSessionHelp` returns a CommandResult object with the help message.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
     
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of `DietSessionHelp` command object from input
-    1. This will create a `DietSessionHelp()` instantiation of which the method `execute()` is called.
-    
-3. Executing Command
-    1. The execute() method will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
 <a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2. <a id="start-recording-diet-data">Start recording diet data:</a> `new`
@@ -432,16 +434,20 @@ The feature allows users to start recording diet data.
 
 **Implementation**  
 When the user types `new </d [DATE]> </t [TAG]>` the following sequence occurs. 
-1. The user keys in `new /d 2020-05-04 /t breakfast`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`, which splits the input into the `command` and the `input`.   
-    
-2. Creation of command object from input
-    1. This will create an instantiation DietSessionCreate() command object of which the method execute() is called.
-    
-3. Executing Command
-    1. The newly created object will then create an instantiation of a `DietSession`, and call the `start()` method.
+
+1. User executes `new /d 2020-05-04 /t breakfast`
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionHelp` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionCreate`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionCreate.execute()` with the rest of parsed input.
+    1. `DietSessionCreate` calls the `start()` method within an instantiated DietSession created with the parsed input.
+    1. `DietSession` then proceeds to completion until the user types "end", saving after every command with `DietStorage`.
+    1. `DietSessionHelp` returns a CommandResult object with the help message of the diet manager.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how creating new diet session works:
 
@@ -455,15 +461,17 @@ This command lists out all help commands in a typed list that indicates to the u
 **Implementation**  
 When the user types `help` the following sequence occurs. 
 1. The user keys in `help`.
-    
-    1. A `DietSessionUi` instantiation calls `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of command object from input
-    1. This will create a `FoodItemHelp()` instantiation of which the method `execute()` is called.
-    
-3. Executing Command
-    1. The newly created object will then print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
+    1. `DietSession` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietSession` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionHelp` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionHelp`.
+1. Executing command.
+    1. `DietSession` calls `FoodItemHelp.execute()`.
+    1. `DietSessionHelp` appends onto a string builder a list of typed help commands.
+    1. `DietSessionHelp` returns a CommandResult object with the help message.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
     
 <a href="#top">&#8593; Return to Top</a>
 
@@ -510,6 +518,8 @@ When the user types `list` the following sequence occurs.
     1. The total calories of the current meal is also printed.
     
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemList.png)
+    
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2.4. <a id="deleting-data-from-the-current-diet">Deleting data from the current diet session:</a> `delete`
 
@@ -529,6 +539,8 @@ When the user types `delete [INDEX_OF_FOOD]` the following sequence occurs.
     1. The Food ID according to the index based on the ArrayList<Food> is deleted.
     
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemDelete.png)
+    
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2.5. <a id="clearing-data-from-the-current-diet">Clearing all data from the current diet session</a> `clear`
 
@@ -548,6 +560,8 @@ When the user types `clear` the following sequence occurs.
     1. The ArrayList Clear method is called and removes all Food entries from the ArrayList.
     
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemClear.png)
+    
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2.6. <a id="stopping-the-recording-of-diet-data">Stopping the recording of diet session data:</a> `end`
 
@@ -562,6 +576,8 @@ When the user types `end` the following sequence occurs.
     
 2. Exiting of inputLoop()
     The inputLoop() exits when userInput.equals("end").
+    
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.3. <a id = "list-all-past-diet-sessions">List all past diet sessions:</a> `list`
 The feature allows users to view all past created diet sessions.
@@ -569,19 +585,26 @@ The feature allows users to view all past created diet sessions.
 **Implementation**  
 When the user types `list` in a diet manager instance the following sequence occurs. 
 1. The user keys in `list`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of command object from input
-    1. This will create a FoodItemList() instantiation of which the method execute() is called.
-    
-3. Executing Command
-    1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionList` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionList`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionList.execute()` with the rest of parsed input.
+    1. The execute method opens a directed save folder on the drive then assigns it to a File array.
+    1. `DietSessionList` then calls the `formatList()` method which takes the File Array and converts it into an ArrayList.
+    1. `DietSessionList` then calls the `formatRow()` method from within formatList() which converts the files into a formatted table output.
+    1. `DietSessionList` returns a CommandResult object with the entire table message of the diet sessions.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how listing past Diet sessions work:
 
 ![Load Data Sequence Diagram](pictures/Zeon/DietSessionList.png)
+    
+<a href="#top">&#8593; Return to Top</a>
+
 #### 4.3.4. <a id = "list-all-past-diet-sessions">Edit a past diet session:</a> `edit`
 
 The feature allows users to edit previously created diet sessions.
@@ -589,20 +612,20 @@ The feature allows users to edit previously created diet sessions.
 **Implementation**  
 When the user types `edit [INDEX_OF_SESSION]` the following sequence occurs. 
 1. The user keys in `edit 1`.
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionEdit` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionEdit`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionEdit.execute()` with the rest of parsed input.
+    1. The execute method then calls `readDietSession()` from DietStorage which returns a dietSession instance.
+    1. `DietSessionEdit` then calls the `start()` method within an instantiated DietSession created with the parsed input.
+    1. `DietSession` then proceeds to completion until the user types "end", saving after every command with `DietStorage`.
+    1. `DietSessionHelp` returns a CommandResult object with the help message of the diet manager.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
     
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of `DietSessionEdit` command object from input
-    1. A `DietSessionEdit()` command class instantiation is created and the execute() method is called.
-    
-3. Executing Command
-    1. This will call `readDietSession()` from `workoutSessionStorage.diet.DietStorage` and it reads the file stored at `saves/diet`.
-    1. The `start()` method is then called in the diet session, starting a diet session instance.
-    
-4. After Execution
-    1. The diet session instance is then saved by calling `writeToStorageDietSession()` from `DietStorage`
-
 The sequence diagram below summarizes how editing Diet session works:
 
 ![Load Data Sequence Diagram](pictures/Zeon/DietSessionEdit.png)
@@ -619,6 +642,8 @@ Saving of the user’s Diet sessions:
 
     - Pros: The files will still be saved even if a crash occurs.
     - Cons: Saving often might be taxing on the user's computer especially on slower models.
+    
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.5. <a id = "delete-a-past-diet-session">Delete a previously created diet session:</a> `delete`
 
@@ -627,20 +652,24 @@ The feature allows users to delete previously created diet sessions.
 **Implementation**  
 When the user types `delete [INDEX_OF_SESSION]` from a Diet manager instance the following sequence occurs. 
 1. The user keys in `delete 1`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. The input is then parsed in `processCommand()` which splits the input into a command portion and the input parameters.   
-    
-2. Creation of `DietSessionDelete()` command object from input
-    1. The `CommandLib` is referenced to find information on `DietSessionDelete()`.
-    2. A `DietSessionDelete()` command class instantiation is created and the `execute()` method is called.
-    
-3. Executing Command
-    1. `DietSessionDelete()` will then delete the diet session at index `1` based on the `list` command.
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionDelete` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionDelete`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionDelete.execute()` with the rest of parsed input.
+    1. The execute method then deletes the file at the indicated index `1` if a file was present there.
+    1. `DietSessionDelete` returns a CommandResult object with the delete confirmation message from DietmanagerUi.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how Diet sessions are deleted:
 
 ![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionDelete.png)
+    
+<a href="#top">&#8593; Return to Top</a>
+
 #### 4.3.6. <a id = "clear-all-past-diet-sessions">Clear all past diet session:</a> `clear`
 
 The feature allows users to clear all previously created diet sessions at once.
@@ -648,20 +677,24 @@ The feature allows users to clear all previously created diet sessions at once.
 **Implementation**  
 When the user types `clear` the following sequence occurs. 
 1. The user keys in `clear`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of `DietSessionClear()` command object from input
-    1. The `CommandLib` is referenced to find information on `DietSessionClear()`.
-    2. A `DietSessionClear()` command class instantiation is created and the `execute()` method is called.
-    
-3. Executing Command
-    1. This will iterate through every file in saves/diet/ and delete it.
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionClear` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionClear`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionDelete.execute()` with the rest of parsed input.
+    1. The execute method then deletes the file at the indicated index `1` if a file was present there.
+    1. `DietSessionDelete` returns a CommandResult object with the delete confirmation message from DietmanagerUi.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how Diet sessions are all cleared:
 
 ![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionClear.png)
+    
+<a href="#top">&#8593; Return to Top</a>
+
 #### 4.3.7. <a id = "search-for-past-diet-sessions">Search for past diet session:</a> `search`
 
 The feature allows users to search for previously created diet sessions within a date range or with a specified tag.
@@ -669,20 +702,26 @@ The feature allows users to search for previously created diet sessions within a
 **Implementation**  
 When the user types `search /s 2020-11-01 /e 2020-11-03 /t breakfast` the following sequence occurs. 
 1. The user keys in `search /s 2020-11-01 /e 2020-11-03 /t breakfast`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of `DietSessionSearch()` command object from input
-    1. The `CommandLib` is referenced to find information on `DietSessionSearch()`.
-    2. A `DietSessionSearch()` command class instantiation is created and the `execute()` method is called.
-    
-3. Executing Command
-    1. This will look for saved Diet Sessions within the date range specified for 1st November 2020 and 3rd November 2020 with the tag "breakfast" and print them all out on a list.
+    1. `DietManager` calls `dietManagerUi.getCommand()` to receive user input.
+    1. `DietManager` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
+1. Creating `DietSessionSearch` object.
+   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionSearch`.
+1. Executing command.
+    1. `DietManager` calls `DietSessionSearch.execute()` with the rest of parsed input.
+    1. The execute method then iterates through the entire folder and looks for empty tags and folders with the methods `checkEmptyTag()` and `checkEmptyFolder`.
+    1. `DietSessionSearch` calls the `addToSearchResult()` method which from within calls the `addRow()` method that converts the file output into a table format.
+    1. `DietSessionSearch` returns a `CommandResult` object with the search results.
+    1. If the starting search date is after the ending search date, the method will return with an exception which is then returned with the `CommandResult` message.
+1. Prompting result to user.
+    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how Diet sessions is searched:
 
-![Search_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionSearch.png)
+![Search_Diet_Session_Sequence_Diagram](pictures/Zeon/SearchDietSession.png)
+
+<a href="#top">&#8593; Return to Top</a>
+
 #### 4.3.8. <a id = "exit-the-diet-manager">Exit the Diet manager:</a> `end`
 
 The function returns the user back to the main menu of The Schwarzenegger.
@@ -760,24 +799,25 @@ a new exercise will be added to the exerciselist.
 
 **Implementation**
 
-When the user attempts to add a new exercise, the Ui, WorkoutSessionParser 
-and CommandLib class will be accessed and the following sequence of 
-actions are called.
+When the user attempts to add a new exercise, the CommonUi, WorkoutSession, WorkoutSessionParser
+, CommandLib, WorkoutSessionAdd and WorkoutSessionStorage class will be accessed and the following sequence of 
+actions are called to return a CommandResult object containing a message to show to user.
 
 1. User executes `add benchpress /n 6 /w 120`
-     1. `WorkoutSession` calls `Ui.getUserCommand()` to receive user input.
+     1. `WorkoutSession` calls `CommonUi.getUserCommand()` to receive user input.
      2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
 1. Creation of command object.
-     1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `WorkoutSessionAdd`.
+     1. Based on the parsed input, `WorkoutSession` calls `CommandLib` to return the correct Command Object `WorkoutSessionAdd`.
 1. Executing Command
-    1. `WorkoutManager` calls `WorkoutSessionAdd.execute()` with the rest of parsed input.
+    1. `WorkoutSession` calls `WorkoutSessionAdd.execute()` with the rest of parsed input.
     2. `WorkoutSessionAdd` parse the arguments to identify the repetitions and weight for the exercise.
     3. `WorkoutSessionAdd` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
+    4. `WorkoutSessionAdd` returns a `CommandResult` to WorkoutSession`.
+1. Based on `CommandResult`, correct response will be printed to user.
 
-All description, warnings and response will be handled by `ui` to ensure consistence across the app.
-The following sequence diagram shows how the add command works
+All description, warnings and response will be handled by `CommonUi` to ensure consistence across the app.
 
-The sequence diagram below summarizes how creating new workout session works:
+The sequence diagram below summarizes how the add command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
 ![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)
@@ -788,52 +828,152 @@ Figure 4.4.1.1.1. Sub-diagram for Parsing Input in WorkoutSession
 
 Figure 4.4.1.1.2. Sub-diagram for Showing Message to User
 
+**Design considerations**
+Aspects: Making add and its parameters as seperate or a single input
+
+- **Alternative 1 (current choice):** Making add and its parameters as a single input
+
+    - Pros: Would be easier for the user to enter as it takes less time to enter and it is not too difficult of a command.
+    - Cons: It might cause the user to miss the format for inputting add.
+
+- **Alternative 2:** Making add and its parameters as separate inputs
+
+    - Pros: Would make it neater and more clear to the user what to enter as they would only enter one input every time.
+    - Cons: It would take multiple actions to perform a single task, depending on the number of parameters.
+
 <a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.2. <a id="deleting-an-exercise">Deleting an Exercise</a>
 
 Users can delete an exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
-the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
+the reason, e.g. invalid command or IO related errors. The action will be aborted. If the deletion is successful, 
 a new exercise will be added to the exerciselist.
 
 **Implementation**
 
-When the user attempts to delete an exercise, the Ui, WorkoutSessionParser 
-and CommandLib class will be accessed and the following sequence of 
-actions are called to return a command object NewWs.
+When the user attempts to delete an exercise, the CommonUi, WorkoutSession, WorkoutSessionParser
+, CommandLib, WorkoutSessionDelete and WorkoutSessionStorage class will be accessed and the following sequence of 
+actions are called to return a CommandResult object containing a message to show to user.
 
 1. User executes `delete 1`
-     1. `WorkoutSession` calls `Ui.getUserCommand()` to receive user input.
+     1. `WorkoutSession` calls `CommonUi.getUserCommand()` to receive user input.
      2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
 1. Creation of command object.
-     1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `WorkoutSessionDelete`.
+     1. Based on the parsed input, `WorkoutSession` calls `CommandLib` to return the correct Command Object `WorkoutSessionDelete`.
 1. Executing Command
-    1. `WorkoutManager` calls `WorkoutSessionDelete.execute()` with the rest of parsed input.
-    2. `WorkoutSessionDelete` parse the arguments to identify the repetitions and weight for the exercise.
+    1. `WorkoutSession` calls `WorkoutSessionDelete.execute()` with the rest of parsed input.
+    2. `WorkoutSessionDelete` parse the arguments to identify the index of the exercise to be deleted.
+    3. `WorkoutSessionDelete` calls `exerciseList.remove()` to delete the respective exercise.
     3. `WorkoutSessionDelete` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
+    4. `WorkoutSessionDelete` returns a `CommandResult` to WorkoutSession`.
+1. Based on `CommandResult`, correct response will be printed to user.
 
-All description, warnings and response will be handled by `ui` to ensure consistence across the app.
-The following sequence diagram shows how the add command works
+All description, warnings and response will be handled by `CommonUi` to ensure consistence across the app.
 
-The sequence diagram below summarizes how creating new workout session works:
+The sequence diagram below summarizes how the delete command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionDelete.png)
+
+**Design considerations**
+Aspects: Making delete and index to delete as separate or a single input
+
+- **Alternative 1 (current choice):** Making delete and index to delete as a single input
+
+    - Pros: Would be easier for the user to enter as it takes less time to enter and it is not too difficult of a command.
+    - Cons: It might cause the user to miss the format for inputting delete.
+
+- **Alternative 2:** Making delete and index to delete as separate inputs
+
+    - Pros: Would make it neater and more clear to the user what to enter as they would only enter one input every time.
+    - Cons: It would take two actions to perform a single task.
 
 <a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.3. <a id="listing-all-exercises-in-this-session">Listing All Exercises in This Session</a>
 
+Users can list all exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
+the reason, e.g. invalid command or IO related errors. The action will be aborted. If the listing is successful, 
+the user will be able to see the full list of exercises.
+
+**Implementation**
+
+When the user attempts to list all exercises, the CommonUi, WorkoutSession, WorkoutSessionParser
+, CommandLib, WorkoutSessionList and WorkoutSessionStorage class will be accessed and the following sequence of 
+actions are called to return a CommandResult object containing a message to show to user.
+
+1. User executes `list`
+     1. `WorkoutSession` calls `CommonUi.getUserCommand()` to receive user input.
+     2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
+1. Creation of command object.
+     1. Based on the parsed input, `WorkoutSession` calls `CommandLib` to return the correct Command Object `WorkoutSessionList`.
+1. Executing Command
+    1. `WorkoutSession` calls `WorkoutSessionList.execute()` with the rest of parsed input.
+    2. `WorkoutSessionList` calls `WorkoutSessionList.printList()` to check if the list is empty.
+    3. `WorkoutSessionList.printList()` calls `WorkoutSessionList.formatList()` to arrange the list in a readable and dynamic format for the user.
+    3. `WorkoutSessionList.formatList()` returns a String of formatted output to `WorkoutSessionList.printList()` then to `WorkoutSessionList`. 
+    4. `WorkoutSessionList` returns a `CommandResult` to `WorkoutSession`.
+1. Based on `CommandResult`, correct response will be printed to user.
+
+All description, warnings and response will be handled by `CommonUi` to ensure consistence across the app.
+
+The sequence diagram below summarizes how the list command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionList.png)
-<a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.4. <a id="allowing-users-to-view-help-commands">Allowing Users to View Help Commands</a>
 
-![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionHelp.png)
-<a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.5. <a id="searching-for-related-exercises">Searching for Related Exercises</a>
+**Design considerations**
+Aspects: Length of results
 
+- **Alternative 1 (current choice):** Make the length for displaying exercise dynamic
+
+    - Pros: The table would look more appealing as the spacing would be dynamic.
+    - Cons: It is a lot more difficult to code.
+
+- **Alternative 2:** Make the length allocated for exercise really long
+
+    - Pros: The code would be simpler.
+    - Cons: The table would look ugly for the user to look at.
+    
+<a href="#top">&#8593; Return to Top</a>
+#### 4.4.1.4. <a id="searching-for-related-exercises">Searching for Related Exercises</a>
+
+Users can search for an exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
+the reason, e.g. invalid command or IO related errors. The action will be aborted. If the searching is successful, 
+the user will be able to see the list of exercises that match.
+
+**Implementation**
+
+When the user attempts to search for an exercise from all exercises, the CommonUi, WorkoutSession, WorkoutSessionParser
+, CommandLib, WorkoutSessionSearch and WorkoutSessionStorage class will be accessed and the following sequence of 
+actions are called to return a CommandResult object containing a message to show to user.
+
+1. User executes `search bench`
+     1. `WorkoutSession` calls `CommonUi.getUserCommand()` to receive user input.
+     2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
+1. Creation of command object.
+     1. Based on the parsed input, `WorkoutSession` calls `CommandLib` to return the correct Command Object `WorkoutSessionSearch`.
+1. Executing Command
+    1. `WorkoutSession` calls `WorkoutSessionSearch.execute()` with the rest of parsed input.
+    2. `WorkoutSessionSearch` checks if the search term is empty. If it is empty, `WorkoutSessionSearch` returns a failure result to `WorkoutSession`. Otherwise, the process continues with step `3`
+    3. `WorkoutSessionSearch` calls `WorkoutSessionSearch.formatList()` to search the search term with the exerciseList. If it is empty, `WorkoutSessionSearch.formatList()` returns a failure result to `WorkoutSession`. Otherwise, the process continues with step `4`
+    4. `WorkoutSessionSearch` returns a `CommandResult` to `WorkoutSession`.
+1. Based on `CommandResult`, correct response will be printed to user.
+
+All description, warnings and response will be handled by `CommonUi` to ensure consistence across the app.
+
+The sequence diagram below summarizes how the search command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionSearch.png)
-<a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.6. <a id="ending-the-workout-session">Ending the Workout Session</a>
 
-![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionEnd.png)
+**Design considerations**
+Aspects: Length of results
+
+- **Alternative 1 (current choice):** Make the length for displaying exercise dynamic
+
+    - Pros: The table would look more appealing as the spacing would be dynamic.
+    - Cons: It is a lot more difficult to code.
+
+- **Alternative 2:** Make the length allocated for exercise really long
+
+    - Pros: The code would be simpler.
+    - Cons: The table would look ugly for the user to look at.
+
 <a href="#top">&#8593; Return to Top</a>
+
 #### 4.4.2. <a id="listing-past-workout-sessions">Listing Past Workout Sessions</a>
 The feature to list workoutSessions allows the user to view a summary of all the history workout sessions, including their index, creation date and tags.
 
