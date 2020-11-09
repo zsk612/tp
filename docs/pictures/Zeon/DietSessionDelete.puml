@@ -5,7 +5,7 @@
 actor user
 user -> DietManager : "delete [INDEX]"
 activate DietManager
-DietManager -> DietManagerParser : parse()
+DietManager -> DietManagerParser : parse(userInput)
 activate DietManagerParser
 DietManagerParser --> DietManager : commParts[]
 deactivate DietManagerParser

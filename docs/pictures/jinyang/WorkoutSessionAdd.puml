@@ -19,10 +19,10 @@ WorkoutSession -> WorkoutSessionAdd : execute()
 activate WorkoutSessionAdd
 WorkoutSessionAdd-> WorkoutSession : exerciseList.add()
 WorkoutSession --> WorkoutSessionAdd
-WorkoutSessionAdd -> WorkoutSession.Storage : writeToStorage()
-activate WorkoutSession.Storage
-WorkoutSession.Storage --> WorkoutSessionAdd
-deactivate WorkoutSession.Storage
+WorkoutSessionAdd -> WorkoutSessionStorage : writeToStorage()
+activate WorkoutSessionStorage
+WorkoutSessionStorage --> WorkoutSessionAdd
+deactivate WorkoutSessionStorage
 
 WorkoutSessionAdd --> WorkoutSession : result
 deactivate WorkoutSessionAdd

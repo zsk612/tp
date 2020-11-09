@@ -3,7 +3,6 @@ package ui.diet.dietmanager;
 import ui.CommonUi;
 
 //@@author CFZeon
-
 /**
  * A class that is responsible for user interface of Diet Manager.
  */
@@ -22,7 +21,7 @@ public class DietManagerUi extends CommonUi {
             + "new </d [DATE]> </t [TAG]>";
     public static String DIET_DATE_WRONG_FORMAT = "Wrong date format, please enter in the format:\n\t /d yyyy-MM-dd";
     public static String DIET_NO_SESSIONS_SAVED = "It looks like you have no sessions saved!";
-    public static String DIET_SEARCH_RESULTS_MESSAGE = "Here are the search results!";
+    public static String DIET_SEARCH_RESULTS_MESSAGE = "Here are the search result(s)!";
     public static String DIET_SEARCH_EMPTY_TAG = "Tag is empty, "
             + "all the sessions within input dates will be shown.";
     public static String DIET_MENU_NAME = "Diet Menu";

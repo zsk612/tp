@@ -4,7 +4,7 @@
 actor user
 activate DietManager
 user -> DietManager : "new"
-DietManager -> DietManagerParser : parse()
+DietManager -> DietManagerParser : parse(userInput)
 activate DietManagerParser
 DietManagerParser --> DietManager : commParts[]
 deactivate DietManagerParser

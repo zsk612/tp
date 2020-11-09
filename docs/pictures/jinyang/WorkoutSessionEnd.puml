@@ -21,10 +21,10 @@ WorkoutSessionEnd-> WorkoutSessionEnd : setEndWorkoutSessionT()
 activate WorkoutSessionEnd
 WorkoutSessionEnd --> WorkoutSessionEnd
 deactivate WorkoutSessionEnd
-WorkoutSessionEnd -> WorkoutSession.Storage : writeToStorage()
-activate WorkoutSession.Storage
-WorkoutSession.Storage --> WorkoutSessionEnd
-deactivate WorkoutSession.Storage
+WorkoutSessionEnd -> WorkoutSessionStorage : writeToStorage()
+activate WorkoutSessionStorage
+WorkoutSessionStorage --> WorkoutSessionEnd
+deactivate WorkoutSessionStorage
 
 WorkoutSessionEnd --> WorkoutSession : result
 deactivate WorkoutSessionEnd

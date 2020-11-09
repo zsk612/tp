@@ -26,10 +26,10 @@ deactivate WorkoutSessionList
 WorkoutSessionList --> WorkoutSessionList
 deactivate WorkoutSessionList
 
-WorkoutSessionList -> WorkoutSession.Storage : writeToStorage()
-activate WorkoutSession.Storage
-WorkoutSession.Storage --> WorkoutSessionList
-deactivate WorkoutSession.Storage
+WorkoutSessionList -> WorkoutSessionStorage : writeToStorage()
+activate WorkoutSessionStorage
+WorkoutSessionStorage --> WorkoutSessionList
+deactivate WorkoutSessionStorage
 
 WorkoutSessionList --> WorkoutSession : result
 deactivate WorkoutSessionList
