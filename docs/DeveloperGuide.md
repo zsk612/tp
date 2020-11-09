@@ -1338,7 +1338,7 @@ Whenever you create a pull request to the main repository for The Schwarzenegger
 <a href="#top">&#8593; Return to Top</a>
 
 ### 6.3. <a id="coverage-report">Coverage Report</a>
-We use the IntelliJ IDEA’s coverage analysis tool for coverage reporting. A tutorial on how to install and use this tool can be found [here](#https://www.youtube.com/watch?v=yNYzZvyA2ik).
+We use the IntelliJ IDEA’s coverage analysis tool for coverage reporting. A tutorial on how to install and use this tool can be found [here](https://www.youtube.com/watch?v=yNYzZvyA2ik).
 
 <a href="#top">&#8593; Return to Top</a>
 ### 6.4. <a id="making-a-release">Making a Release</a>
