@@ -6,7 +6,7 @@ activate WorkoutManager
 
 WorkoutManager -> CommandLib : get()
 activate CommandLib
-CommandLib -> WorkoutManager : Command
+CommandLib --> WorkoutManager : Command
 deactivate CommandLib
 
 WorkoutManager -> ListCommand : execute()
@@ -14,10 +14,14 @@ activate ListCommand
 
 ListCommand -> PastRecordList : list()
 activate PastRecordList
+PastRecordList -> WorkoutManagerParser: listCommandParse()
+activate WorkoutManagerParser
+WorkoutManagerParser --> PastRecordList: ConditionList
+deactivate WorkoutManagerParser
 PastRecordList --> ListCommand : formated list
 deactivate PastRecordList
 
-ListCommand -> WorkoutManager : CommandResult
+ListCommand --> WorkoutManager : CommandResult
 deactivate ListCommand
 
 WorkoutManager ->  user : output
