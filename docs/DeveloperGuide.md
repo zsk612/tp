@@ -1167,9 +1167,7 @@ in the meta info file.
 
     - Pros: Easy to implement. Low time complexity.
     - Cons: Since the index in result list is not the same as the index in actual record meta, user cannot use the index for further actions.
-
-<a href="#top">&#8593; Return to Top</a>
-
+    
 <a href="#top">&#8593; Return to Top</a>
 ### 4.5. <a id="logging">Logging</a>
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
