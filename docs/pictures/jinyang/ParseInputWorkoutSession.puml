@@ -1,0 +1,16 @@
+@startuml
+!define PLANTUML_HOME %dirpath()/../../umldiagram
+!include PLANTUML_HOME/style.puml
+
+mainframe <b>sd</b> return message to user in WorkoutSession
+actor user
+
+WorkoutSession -> CommandResult ++ : getFeedbackMessage(result)
+CommandResult --> WorkoutSession -- : message
+WorkoutSession -> Ui ++ : showToUser(message)
+destroy CommandResult
+Ui --> user
+deactivate Ui
+
+
+@enduml

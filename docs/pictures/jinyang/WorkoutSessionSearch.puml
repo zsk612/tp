@@ -3,50 +3,49 @@
 !include PLANTUML_HOME/style.puml
 
 actor user
-user -> WorkoutSession : add
+user -> Ui++ : Search
+Ui --> WorkoutSession -- : input
+
 activate WorkoutSession
 
-WorkoutSession -> CommandLib : get()
-activate CommandLib
-CommandLib --> WorkoutSession : Command
-deactivate CommandLib
+ref over WorkoutSession, WorkoutSessionParser, CommandLib: parse user input in WorkoutSession
 
 WorkoutSession -> WorkoutSessionSearch : execute()
 activate WorkoutSessionSearch
 
-opt searchTerm.length() > 0
+alt searchTerm.length() > 0
     WorkoutSessionSearch -> WorkoutSessionSearch : formatList()
     activate WorkoutSessionSearch
-    WorkoutSessionSearch --> WorkoutSessionSearch
+    WorkoutSessionSearch --> WorkoutSessionSearch : formattedString
     deactivate WorkoutSessionSearch
-    opt SearchResult is not Empty
-        participant CommonUi << Class >>
-        WorkoutSessionSearch -> CommonUi : showToUser()
-        activate CommonUi
-        CommonUi --> WorkoutSessionSearch
-        deactivate CommonUi
-    else
+    alt SearchResult is not Empty
+        WorkoutSessionSearch -> CommandResult ++ : searchResult
+        CommandResult --> WorkoutSession -- : result
+
+    else else
         participant WorkoutSessionUi << Class >>
         WorkoutSessionSearch -> WorkoutSessionUi : searchResultsEmpty()
         activate WorkoutSessionUi
-        WorkoutSessionUi --> WorkoutSessionSearch
+        WorkoutSessionUi --> WorkoutSessionSearch : SEARCH_RESULTS_EMPTY
         deactivate WorkoutSessionUi
+        WorkoutSessionSearch -> CommandResult ++ : SEARCH_RESULTS_EMPTY
+        CommandResult --> WorkoutSession -- : result
     end
-else
+else else
     participant WorkoutSessionUi << Class >>
     WorkoutSessionSearch -> WorkoutSessionUi : searchInputError()
     activate WorkoutSessionUi
-    WorkoutSessionUi --> WorkoutSessionSearch
+    WorkoutSessionUi --> WorkoutSessionSearch : SEARCH_INPUT_ERROR
     deactivate WorkoutSessionUi
+    WorkoutSessionSearch -> CommandResult ++ : SEARCH_INPUT_ERROR
+    CommandResult --> WorkoutSession -- : result
 end
 
-WorkoutSessionSearch-> WorkoutSession : exerciseList.add()
-WorkoutSession --> WorkoutSessionSearch
-WorkoutSessionSearch -> WorkoutSession.Storage : writeToStorage()
-activate WorkoutSession.Storage
-WorkoutSession.Storage --> WorkoutSessionSearch
-deactivate WorkoutSession.Storage
 
-WorkoutSessionSearch --> WorkoutSession
 deactivate WorkoutSessionSearch
+
+ref over WorkoutSession, CommandResult, Ui, user: return message to user in WorkoutSession
+
+
+
 @enduml
