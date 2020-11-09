@@ -29,20 +29,20 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.3. [Editing a Profile](#editing-a-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deleting a Profile](#deleting-a-profile)<br>
 4.3. [Diet-related Features](#diet-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#list-out-all-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording diet data](#start-recording-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#showing-help-message)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current diet](#adding-food-items-for-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current diet](#listing-data-for-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current diet](#deleting-data-from-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current diet](#clearing-data-from-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of diet data](#stopping-the-recording-of-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past diet sessions](#list-all-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past diet session](#edit-a-past-diet-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past diet session](#delete-a-past-diet-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past diet sessions](#clear-all-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Search for past diet sessions](#search-for-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.8. [Exit the diet manager](#exit-the-diet-manager)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List Out All Commands](#list-out-all-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start Recording Diet Data](#start-recording-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing Help Message](#showing-help-message)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding Food Items for the Current Diet](#adding-food-items-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing Data for the Current Diet](#listing-data-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting Data from the Current Diet](#deleting-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing Data from the Current Diet](#clearing-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the Recording of Diet Data](#stopping-the-recording-of-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List All Past Diet Sessions](#list-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a Past Diet Session](#edit-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a Past Diet Session](#delete-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all Past Diet Sessions](#clear-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Search for Past Diet Sessions](#search-for-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.8. [Exit the Diet Manager](#exit-the-diet-manager)<br>
 4.4. [Workout-related Features](#workout-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creating a New Workout Session](#creating-a-new-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
@@ -102,7 +102,7 @@ This document describes the software architecture and software design requiremen
 
 ## 3. <a id="design">Design</a>
 This section provides a high level overview of our application, The Schwarzenegger.
-### 3.1. <a id="architect">Architecture</a>
+### 3.1. <a id="architecture">Architecture</a>
 
 ![Architecture](pictures/zesong/Architecture.png)
 
