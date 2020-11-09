@@ -1,21 +1,28 @@
 @startuml
 !define PLANTUML_HOME %dirpath()/../../umldiagram
-!include PLANTUML_HOME/style.puml
+!include ../../umldiagram/style.puml
 
 actor user
-user -> DietManager : input
+user -> DietManager : "delete [INDEX]"
 activate DietManager
-
-DietManager -> CommandLib : get()
+DietManager -> DietManagerParser : parse(userInput)
+activate DietManagerParser
+DietManagerParser --> DietManager : commParts[]
+deactivate DietManagerParser
+DietManager -> CommandLib : getCommand(commParts[0])
 activate CommandLib
-CommandLib --> DietManager : Command
+CommandLib --> DietManager : command
 deactivate CommandLib
 
 DietManager -> DietSessionDelete : execute()
 activate DietSessionDelete
 
-DietSessionDelete --> DietManager
+DietSessionDelete --> DietManager : result
 deactivate DietSessionDelete
+destroy DietSessionDelete
 
-DietManager --> user : output
+DietManager -> DietManagerUi : showToUser(message)
+activate DietManagerUi
+DietManagerUi --> user : output
+deactivate DietManagerUi
 @enduml

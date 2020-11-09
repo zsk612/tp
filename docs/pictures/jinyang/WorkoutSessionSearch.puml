@@ -3,8 +3,8 @@
 !include PLANTUML_HOME/style.puml
 
 actor user
-user -> Ui++ : Search
-Ui --> WorkoutSession -- : input
+user -> CommonUi++ : Search
+CommonUi --> WorkoutSession -- : input
 
 activate WorkoutSession
 
@@ -44,7 +44,7 @@ end
 
 deactivate WorkoutSessionSearch
 
-ref over WorkoutSession, CommandResult, Ui, user: show message to user in WorkoutSession
+ref over WorkoutSession, CommonUi, user: show message to user in WorkoutSession
 
 
 

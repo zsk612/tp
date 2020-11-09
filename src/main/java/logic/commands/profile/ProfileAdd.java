@@ -19,7 +19,7 @@ import static logic.parser.ProfileParser.extractName;
 import static logic.parser.ProfileParser.extractWeight;
 import static logic.parser.ProfileParser.findInvalidTags;
 import static profile.Constants.CALORIES_UPPER_BOUND;
-import static seedu.duke.Constant.COMMAND_WORD_ADD;
+import static seedu.duke.Constants.COMMAND_WORD_ADD;
 import static ui.profile.ProfileUi.MESSAGE_ADJUST_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_CREATE_PROFILE_ACK;
 import static ui.profile.ProfileUi.MESSAGE_PROFILE_EXIST;

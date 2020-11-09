@@ -47,21 +47,22 @@ import logic.commands.workout.workoutsession.WorkoutSessionWrong;
 
 import java.util.Hashtable;
 
-import static seedu.duke.Constant.COMMAND_WORD_ADD;
-import static seedu.duke.Constant.COMMAND_WORD_CLEAR;
-import static seedu.duke.Constant.COMMAND_WORD_DELETE;
-import static seedu.duke.Constant.COMMAND_WORD_DIET;
-import static seedu.duke.Constant.COMMAND_WORD_EDIT;
-import static seedu.duke.Constant.COMMAND_WORD_END;
-import static seedu.duke.Constant.COMMAND_WORD_HELP;
-import static seedu.duke.Constant.COMMAND_WORD_LIST;
-import static seedu.duke.Constant.COMMAND_WORD_NEW;
-import static seedu.duke.Constant.COMMAND_WORD_PROFILE;
-import static seedu.duke.Constant.COMMAND_WORD_SEARCH;
-import static seedu.duke.Constant.COMMAND_WORD_VIEW;
-import static seedu.duke.Constant.COMMAND_WORD_WORKOUT;
-import static seedu.duke.Constant.COMMAND_WORD_WRONG;
+import static seedu.duke.Constants.COMMAND_WORD_ADD;
+import static seedu.duke.Constants.COMMAND_WORD_CLEAR;
+import static seedu.duke.Constants.COMMAND_WORD_DELETE;
+import static seedu.duke.Constants.COMMAND_WORD_DIET;
+import static seedu.duke.Constants.COMMAND_WORD_EDIT;
+import static seedu.duke.Constants.COMMAND_WORD_END;
+import static seedu.duke.Constants.COMMAND_WORD_HELP;
+import static seedu.duke.Constants.COMMAND_WORD_LIST;
+import static seedu.duke.Constants.COMMAND_WORD_NEW;
+import static seedu.duke.Constants.COMMAND_WORD_PROFILE;
+import static seedu.duke.Constants.COMMAND_WORD_SEARCH;
+import static seedu.duke.Constants.COMMAND_WORD_VIEW;
+import static seedu.duke.Constants.COMMAND_WORD_WORKOUT;
+import static seedu.duke.Constants.COMMAND_WORD_WRONG;
 
+//@@author wgzesg
 /**
  * A class for extracting the correct Command object for each command word.
  */
@@ -76,6 +77,7 @@ public class CommandLib {
         library = new Hashtable<>();
     }
 
+    //@@author wgzesg
     /**
      * Initializes the commandLib with main menu's commands.
      */
@@ -147,6 +149,7 @@ public class CommandLib {
         library.put(COMMAND_WORD_WRONG, new DietSessionWrong());
     }
 
+    //@@author wgzesg
     /**
      * Initializes the commandLib with diet session's commands.
      */
@@ -160,6 +163,7 @@ public class CommandLib {
         library.put(COMMAND_WORD_WRONG, new FoodItemWrong());
     }
 
+    //@@author wgzesg
     /**
      * Gets specific Command object based on command keyword.
      *

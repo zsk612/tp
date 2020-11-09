@@ -17,9 +17,9 @@ import java.util.Set;
 
 import static profile.Constants.ADD_PROFILE_FORMAT;
 import static profile.Constants.EDIT_PROFILE_FORMAT;
-import static seedu.duke.Constant.COMMAND_WORD_ADD;
-import static seedu.duke.Constant.COMMAND_WORD_EDIT;
-import static seedu.duke.Constant.COMMAND_WORD_HELP;
+import static seedu.duke.Constants.COMMAND_WORD_ADD;
+import static seedu.duke.Constants.COMMAND_WORD_EDIT;
+import static seedu.duke.Constants.COMMAND_WORD_HELP;
 
 //@@author tienkhoa16
 

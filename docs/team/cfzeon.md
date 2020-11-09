@@ -72,18 +72,18 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
       They show my ability to write technical documentation for other developers.
       ```
       
-      + [List out all commands](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#431-list-out-all-commands)
+      + [List out all commands](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#list-out-all-commands)
       
-      + [Start recordings diet data](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#432-start-recording-diet-data)
+      + [Start recordings diet data](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#start-recording-diet-data)
       
-      + [List all past diet sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#433-list-all-past-diet-sessions)
+      + [List all past diet sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#list-all-past-diet-sessions)
       
-      + [Edit a past diet session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#434-edit-a-past-diet-session)
+      + [Edit a past diet session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#edit-a-past-diet-session)
       
-      + [Delete a past diet session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#435-delete-a-past-diet-session)
+      + [Delete a past diet session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#delete-a-past-diet-session)
       
-      + [Clear all past diet sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#436-clear-all-past-diet-sessions)
+      + [Clear all past diet sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#clear-all-past-diet-sessions)
       
-      + [Exit the diet manager](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#437-exit-the-diet-manager)
+      + [Exit the diet manager](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#exit-the-diet-manager)
       
       + [Appendix B: User Stories](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#appendix-b-user-stories)

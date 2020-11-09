@@ -9,6 +9,7 @@ import models.PastRecordList;
 import static ui.CommonUi.clearMsg;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
+//@@author wgzesg
 /**
  * A representation of the command for clear commands in workout manager.
  */

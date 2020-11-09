@@ -7,7 +7,7 @@ import storage.diet.DietStorage;
 import java.io.File;
 import java.util.logging.Level;
 
-import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
+import static seedu.duke.Constants.PATH_TO_DIET_FOLDER;
 import static ui.diet.dietmanager.DietManagerUi.DIET_DELETE_SUCCESS;
 import static ui.diet.dietmanager.DietManagerUi.DIET_DELETE_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_ARRAY_OUT_OF_BOUND;

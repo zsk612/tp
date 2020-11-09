@@ -3,10 +3,10 @@
 
 actor user
 activate ProfileSession
-user -> Ui++ : Edit Profile Command
-Ui --> ProfileSession -- : input
+user -> CommonUi++ : Edit Profile Command
+CommonUi --> ProfileSession -- : input
 
-ref over ProfileSession, ProfileParser, CommandLib: parse user input in Profile Menu
+ref over ProfileSession, ProfileParser, CommandLib: parse user input in ProfileSession
 
 ProfileSession -> Command ++ : execute()
 Command -> ProfileStorage ++ : loadData()
@@ -34,10 +34,6 @@ else else
 end
 destroy Command
 
-ProfileSession -> CommandResult ++ : getFeedbackMessage(result)
-CommandResult --> ProfileSession -- : message
-ProfileSession -> Ui ++ : showToUser(message)
-destroy CommandResult
-Ui --> user
-deactivate Ui
+ref over user, ProfileSession, CommonUi: show message to user in ProfileSession
+
 @enduml

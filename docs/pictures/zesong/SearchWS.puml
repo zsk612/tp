@@ -3,10 +3,6 @@
 actor user
 activate WorkoutManager
 user -> WorkoutManager
-WorkoutManager -> WorkoutManagerParser : parse()
-activate WorkoutManagerParser
-WorkoutManagerParser --> WorkoutManager : parsed input
-deactivate WorkoutManagerParser
 
 WorkoutManager -> CommandLib : get()
 activate CommandLib

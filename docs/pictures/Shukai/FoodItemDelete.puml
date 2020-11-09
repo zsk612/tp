@@ -1,7 +1,6 @@
 @startuml
 !define PLANTUML_HOME %dirpath()/../../umldiagram
 !include ../../umldiagram/style.puml
-
 actor user
 activate DietSession
 user -> Ui++ : Delete FoodItem Command

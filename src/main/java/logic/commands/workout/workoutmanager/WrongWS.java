@@ -5,6 +5,7 @@ import logic.commands.CommandResult;
 import exceptions.InvalidCommandWordException;
 import exceptions.SchwarzeneggerException;
 
+//@@author wgzesg
 /**
  * A representation of the command for wrong commands in workout manager.
  */
