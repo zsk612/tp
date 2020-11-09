@@ -254,7 +254,7 @@ This command adds a profile with the name Schwarzenegger, height 188 cm, weight 
 
     ![add-profile-step-2](pictures/UG_screenshots/add-profile-step-2.png)
 
-3. If the execution is successful, you should be able to see a confirmation message below:
+3. If the execution is successful, you should be able to see the confirmation message below:
 
     ![add-profile-step-3](pictures/UG_screenshots/add-profile-step-3.png)
 
@@ -776,16 +776,19 @@ Adds a move with number of moves per set and weights of equipment (if the move d
 
 __Format:__ `add [NAME_OF_MOVE] /n [NUMBER_OF_MOVES_PER_SET] /w [WEIGHT]`  
 
-Example: `add squat /n 15 /w 40`
+**Example:** When you want to add an exercise to the current Workout Session, you follow the steps below:
+1. Ensure that you are in a Workout Session.<br>
+Refer to [Section 3.4.2. Starting a New Workout Session](#workout-start) to learn how to start a Workout Session.
+    ![add-exercise-step-1](pictures/jinyang/AddCommandStart.png)
+    
+2. Type `add benchpress /w 45.5 /n 6` into your console and press <kbd>Enter</kbd> to execute it.<br>
+This command adds an exercise with the name benchpress, weight of 45.5 and 6 repetititons.
 
-Expected outcome:
+    ![add-exercise-step-2](pictures/jinyang/AddCommand.png)
 
-```
-     _________________________________________________________________________________________________
-     Yay! You have added squat to your list.
-     [Repetitions: 15 || Weight: 40.0]
-     _________________________________________________________________________________________________
-```
+3. If the execution is successful, you should be able to see the confirmation message below:
+
+    ![add-exercise-step-3](pictures/jinyang/AddCommandMessage.png)
 
 #### 3.4.2.3. <a id="ws-list">Listing All Moves from the Current Workout Session: `list`</a>
 Lists all the added moves for the current workout session, with a numbered sequence according to sequence entered.
