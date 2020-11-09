@@ -1032,7 +1032,7 @@ Search|`search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>`<br><br>E.g. `sea
 Clear|`clear`
 Return to Main Menu|`end`
 
-**Diet Session**
+**Diet Session** [Shukai]
 
 **Action** |  **Format**
 --------|----------------------
@@ -1057,7 +1057,7 @@ Search|`search </t [TAG]...> </d [DATE]>`<br><br>E.g. `search /t leg day, chest 
 Clear|`clear`
 Return to Main Menu|`end`
 
-**Workout Session**
+**Workout Session** [Jinyang]
 
 **Action** | **Format**
 --------|----------------------
