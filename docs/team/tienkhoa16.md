@@ -44,6 +44,6 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
     + Fix broken links in the Developer Guide.
 
 + **Community**:
-    + Review Developer Guide from other teams in the class (with non-trivial review comments). [#3](https://github.com/nus-cs2113-AY2021S1/tp/pull/3).)
-    + Reported bugs for other teams in the class [ped](https://github.com/tienkhoa16/ped/issues)
+    + Review Developer Guide from other teams in the class (with non-trivial review comments). [#3](https://github.com/nus-cs2113-AY2021S1/tp/pull/3)
+    + Reported bugs for other teams in the class [ped](https://github.com/tienkhoa16/ped/issues).
     + Evaluated code, tested and provided feedback to teammates during many online meetups. [#29](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/29), [#90](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/90), [#94](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/90), [#96](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/96), [#120](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/120), [#127](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/127), [#131](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/131), [#134](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/134), [#139](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/139), [#140](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/140), [#144](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/144), [#160](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/160), [#202](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/202)
