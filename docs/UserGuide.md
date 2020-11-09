@@ -57,7 +57,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 
 The Schwarzenegger is a desktop command line interface-based app for managing all your needs regarding fitness. With the built-in personal assistant, you are able to track your daily workout and diet sessions based on your profile. If you can type fast, The Schwarzenegger can help you maximise your efficiency for maintaining fitness.
 
-## 2. <a id="quickstart">Quick Start</a>
+## 2. <a id="quickstart">Quick Start</a> [Khoa]
 
 When you first start using The Schwarzenegger, please ensure that you follow the instructions below:
 
@@ -101,16 +101,16 @@ You can refer to [Section 3. Features](#features) for the detailed instructions 
 This section includes 4 sub-sections which will guide you through the features available in Main Menu, Profile Menu, Workout Menu and Diet Menu of the Schwarzenegger. In explaining the syntax, we will adhere to the following format:
 
 ***
-**Command Format**
+**Command Format** [Khoa]
 
 - Words that are in `[UPPER_CASE]` format are the parameters to be supplied by you.<br>
 **Example**: in `add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]` command, `[NAME]`, `[HEIGHT]`, `[CURRENT_WEIGHT]`, `[EXPECTED_WEIGHT]` and `[DAILY_CALORIE_INTAKE]` are parameters which can be used as `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`.
-- Words that are enclosed with `<` and `>` are optional parameters. However, if all the parameters in a command are optional, you need to supply at least 1 of them.<br>
+- Words that are enclosed with `<` and `>` are optional parameters.<br>
 **Example**: in `edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>` command, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [CURRENT_WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIE_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
 - Optional parameters with `…` after them can be used multiple times including zero times. <br>
 **Example**: for `<TAG>...`, the following format for Search Command in Workout Menu: `search </d [DATE]> </t [TAG]...>` can be used as `search /t le` or `search /t chest, bicep`.
 
-**Notations Used**
+**Notations Used** [Khoa]
 
 Below are the meaning of icons for you to take note of while using a feature. 
 - :bulb: indicates a tip.
@@ -118,7 +118,7 @@ Below are the meaning of icons for you to take note of while using a feature.
 
 ***
 
-### 3.1. <a id="main-menu">Main Menu</a>
+### 3.1. <a id="main-menu">Main Menu</a> [Khoa]
 You can get access to Profile Menu, Diet Menu and Workout Menu from Main Menu.
 The available commands in Main Menu are listed below:
 
@@ -210,7 +210,7 @@ __Format:__ `end`
         ______________________________________________________________________________
     ```
 
-### 3.2. <a id="profile-menu">Profile Menu</a>
+### 3.2. <a id="profile-menu">Profile Menu</a> [Khoa]
 Profile Menu manages your profile including your name, physique data and expected daily calories intake. 
 
 Click [here](#main-profile) to learn how to enter Profile Menu.
@@ -1006,7 +1006,7 @@ Main Menu >>>>>
 
 ## 4. <a id="command-summary">Command Summary</a>
 
-**Main Menu**
+**Main Menu** [Khoa]
 
 **Action** |  **Format**
 --------|----------------------
@@ -1016,7 +1016,7 @@ Diet Menu|`diet`
 Workout Menu|`workout`
 End|`end`
 
-**Profile Menu**
+**Profile Menu** [Khoa]
 
 **Action** |  **Format**
 --------|----------------------
@@ -1096,7 +1096,7 @@ Return to Workout Menu|`end`
     `ddMMyyyy`
     `dd-MM-yyyy`
 
-## 6. <a id="faq">FAQ</a>
+## 6. <a id="faq">FAQ</a> [Khoa]
 Below are the answers to some frequently asked questions about The Schwarzenegger:
 
 **Q**: Can I use The Schwarzenegger on another operating systems apart from Windows?<br>
