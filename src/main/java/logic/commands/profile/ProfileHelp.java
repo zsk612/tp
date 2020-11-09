@@ -8,11 +8,11 @@ import storage.profile.ProfileStorage;
 
 import static profile.Constants.ADD_PROFILE_FORMAT;
 import static profile.Constants.EDIT_PROFILE_FORMAT;
-import static seedu.duke.Constant.COMMAND_WORD_ADD;
-import static seedu.duke.Constant.COMMAND_WORD_DELETE;
-import static seedu.duke.Constant.COMMAND_WORD_EDIT;
-import static seedu.duke.Constant.COMMAND_WORD_END;
-import static seedu.duke.Constant.COMMAND_WORD_VIEW;
+import static seedu.duke.Constants.COMMAND_WORD_ADD;
+import static seedu.duke.Constants.COMMAND_WORD_DELETE;
+import static seedu.duke.Constants.COMMAND_WORD_EDIT;
+import static seedu.duke.Constants.COMMAND_WORD_END;
+import static seedu.duke.Constants.COMMAND_WORD_VIEW;
 import static ui.CommonUi.helpFormatter;
 
 //@@author tienkhoa16

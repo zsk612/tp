@@ -47,20 +47,20 @@ import logic.commands.workout.workoutsession.WorkoutSessionWrong;
 
 import java.util.Hashtable;
 
-import static seedu.duke.Constant.COMMAND_WORD_ADD;
-import static seedu.duke.Constant.COMMAND_WORD_CLEAR;
-import static seedu.duke.Constant.COMMAND_WORD_DELETE;
-import static seedu.duke.Constant.COMMAND_WORD_DIET;
-import static seedu.duke.Constant.COMMAND_WORD_EDIT;
-import static seedu.duke.Constant.COMMAND_WORD_END;
-import static seedu.duke.Constant.COMMAND_WORD_HELP;
-import static seedu.duke.Constant.COMMAND_WORD_LIST;
-import static seedu.duke.Constant.COMMAND_WORD_NEW;
-import static seedu.duke.Constant.COMMAND_WORD_PROFILE;
-import static seedu.duke.Constant.COMMAND_WORD_SEARCH;
-import static seedu.duke.Constant.COMMAND_WORD_VIEW;
-import static seedu.duke.Constant.COMMAND_WORD_WORKOUT;
-import static seedu.duke.Constant.COMMAND_WORD_WRONG;
+import static seedu.duke.Constants.COMMAND_WORD_ADD;
+import static seedu.duke.Constants.COMMAND_WORD_CLEAR;
+import static seedu.duke.Constants.COMMAND_WORD_DELETE;
+import static seedu.duke.Constants.COMMAND_WORD_DIET;
+import static seedu.duke.Constants.COMMAND_WORD_EDIT;
+import static seedu.duke.Constants.COMMAND_WORD_END;
+import static seedu.duke.Constants.COMMAND_WORD_HELP;
+import static seedu.duke.Constants.COMMAND_WORD_LIST;
+import static seedu.duke.Constants.COMMAND_WORD_NEW;
+import static seedu.duke.Constants.COMMAND_WORD_PROFILE;
+import static seedu.duke.Constants.COMMAND_WORD_SEARCH;
+import static seedu.duke.Constants.COMMAND_WORD_VIEW;
+import static seedu.duke.Constants.COMMAND_WORD_WORKOUT;
+import static seedu.duke.Constants.COMMAND_WORD_WRONG;
 
 //@@author wgzesg
 /**

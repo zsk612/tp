@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
+import static seedu.duke.Constants.PATH_TO_DIET_FOLDER;
 
 //@@author zsk612
 /**

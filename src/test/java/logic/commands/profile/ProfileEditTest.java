@@ -19,7 +19,7 @@ import static profile.Constants.EXAMPLE_EXPECTED_WEIGHT;
 import static profile.Constants.EXAMPLE_HEIGHT;
 import static profile.Constants.EXAMPLE_NAME;
 import static profile.Constants.EXAMPLE_WEIGHT;
-import static seedu.duke.Constant.COMMAND_WORD_EDIT;
+import static seedu.duke.Constants.COMMAND_WORD_EDIT;
 import static ui.profile.ProfileUi.MESSAGE_EDIT_NOTHING;
 import static ui.profile.ProfileUi.MESSAGE_EDIT_PROFILE_ACK;
 import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;

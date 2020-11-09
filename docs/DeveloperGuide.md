@@ -130,7 +130,7 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 <a href="#top">&#8593; Return to Top</a>
 
 ### 3.2. <a id="ui-component">Ui Component</a>
-![Ui Component](images/UI_Component.png)
+![Ui Component](pictures/zesong/Ui.png)
 
 API: `Ui.java`
  
@@ -145,7 +145,7 @@ The `Ui` component,
 
 ### 3.3. <a id="logic-component">Logic Component</a>
 
-![Logic Component](images/logic_update.png)
+![Logic Component](pictures/zesong/Logic.png)
 
 1. `The Schwarzenegger` uses `Parser` classes to parse the user command.
 1. This splits the user input into interpretable portions by other functions.
