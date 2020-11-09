@@ -428,7 +428,7 @@ When the user types `help` in a Diet Manager instance, the following sequence oc
 1. Executing command.
     1. `DietManager` calls `DietSessionHelp.execute()` with the rest of parsed input.
     1. `DietSessionHelp` appends onto a string builder a list of typed help commands.
-    1. `DietSessionHelp` returns a CommandResult object with the help message.
+    1. `DietSessionHelp` returns a `CommandResult` object with the help message.
 1. Prompting result to user.
     1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
     1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
@@ -450,7 +450,7 @@ When the user types `new </d [DATE]> </t [TAG]>` the following sequence occurs.
     1. `DietManager` calls `DietSessionCreate.execute()` with the rest of parsed input.
     1. `DietSessionCreate` calls the `start()` method within an instantiated DietSession created with the parsed input.
     1. `DietSession` then proceeds to completion until the user types "end", saving after every command with `DietStorage`.
-    1. `DietSessionHelp` returns a CommandResult object with the help message of the diet manager.
+    1. `DietSessionHelp` returns a `CommandResult` object with the help message of the diet manager.
 1. Prompting result to user.
     1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
     1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
@@ -458,6 +458,7 @@ When the user types `new </d [DATE]> </t [TAG]>` the following sequence occurs.
 The sequence diagram below summarizes how creating new diet session works:
 
 ![Load Data Sequence Diagram](pictures/Zeon/CreateDietSession.png)
+
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -467,16 +468,16 @@ This command lists out all help commands in a typed list that indicates to the u
 **Implementation**  
 When the user types `help` the following sequence occurs. 
 1. The user keys in `help`.
-    1. `DietSession` calls `dietManagerUi.getCommand()` to receive user input.
-    1. `DietSession` calls `DietManagerParser.parseCommand()` to parse user input into a string array.
-1. Creating `DietSessionHelp` object.
-   1. Based on the parsed input, `DietManager` calls `CommandLib` to return the correct Command Object `DietSessionHelp`.
+    1. `DietSession` calls `dietSessionUi.getCommand()` to receive user input.
+    1. `DietSession` calls `DietSessionParser.parseCommand()` to parse user input into a string array.
+1. Creating `FoodItemHelp` object.
+   1. Based on the parsed input, `DietSession` calls `CommandLib` to return the correct Command Object `FoodItemHelp`.
 1. Executing command.
     1. `DietSession` calls `FoodItemHelp.execute()`.
-    1. `DietSessionHelp` appends onto a string builder a list of typed help commands.
-    1. `DietSessionHelp` returns a CommandResult object with the help message.
+    1. `FoodItemHelp` appends onto a string builder a list of typed help commands.
+    1. `FoodItemHelp` returns a `CommandResult` object with the help message.
 1. Prompting result to user.
-    1. `DietManager` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `DietSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
     1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
     
 <a href="#top">&#8593; Return to Top</a>
@@ -488,16 +489,18 @@ The feature allows users to add food items into the current diet session.
 **Implementation**  
 When the user types `add [FOOD_NAME] /c [CALORIES]` the following sequence occurs. 
 1. The user keys in `add bologna /c 123`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of command object from input
-    1. This will create a `FoodItemAdd()` instantiation of which the method `execute()` is called.
-    1. The food component `bologna` and calories component `123` are passed into the constructor of a Food instantiation.
-    
-3. Executing Command
-    1. The newly created food object will then be added to the `ArrayList<Food> foodList` in diet session.
+    1. `DietSession` calls `dietSessionUi.getCommand()` to receive user input.
+    1. `DietSession` calls `DietSessionParser.parseCommand()` to parse user input into a string array.
+1. Creating `FoodItemAdd` object.
+   1. Based on the parsed input, `DietSession` calls `CommandLib` to return the correct Command Object `FoodItemAdd`.
+1. Executing command.
+    1. `DietSession` calls `FoodItemAdd.execute()`.
+    1. A `Food` object is instantiated with the rest of the parameters, `bologna` and `123`.
+    1. The instantiated `Food` object is added to an ArrayList of Food objects in `DietSession`
+    1. `FoodItemHelp` returns a `CommandResult` object with the add food item message.
+1. Prompting result to user.
+    1. `DietSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
 
 The sequence diagram below summarizes how adding a new food to the diet session works:
 
@@ -512,19 +515,35 @@ This command allows users to view all food items in the current diet session.
 **Implementation**  
 When the user types `list` the following sequence occurs. 
 1. The user keys in `list`.
+    1. `DietSession` calls `dietSessionUi.getCommand()` to receive user input.
+    1. `DietSession` calls `DietSessionParser.parseCommand()` to parse user input into a string array.
+1. Creating `FoodItemList` object.
+   1. Based on the parsed input, `DietSession` calls `CommandLib` to return the correct Command Object `FoodItemList`.
+1. Executing command.
+    1. `DietSession` calls `FoodItemList.execute()`.
+    1. The ArrayList of Food objects is iterated through and stored in a String.
+    1. `FoodItemList` returns a `CommandResult` object with the list of food items.
+1. Prompting result to user.
+    1. `DietSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
     
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. The input is then parsed in `processCommand()`.   
-    
-2. Creation of command object from input
-    1. This will create a FoodItemList() instantiation of which the method execute() is called.
-    
-3. Executing Command
-    1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
-    1. The total calories of the current meal is also printed.
     
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemList.png)
     
+**Design considerations**
+
+Aspects: Displaying of listed data
+
+- **Alternative 1 (current choice):** Print out a neatly formatted list of food items.
+
+    - Pros: The information is easy to read due to neat formatting.
+    - Cons: Execution time is slower as it requires more calculations.
+
+- **Alternative 2:** Print out toString() for each Food item.
+
+    - Pros: Execution time is fast. 
+    - Cons: The information is harder to filter through.    
+
 <a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2.4. <a id="deleting-data-from-the-current-diet">Deleting data from the current diet session:</a> `delete`
@@ -534,15 +553,17 @@ The feature allows users to remove food items into the current diet session.
 **Implementation**  
 When the user types `delete [INDEX_OF_FOOD]` the following sequence occurs. 
 1. The user keys in `delete 1`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of command object from input
-    1. This will create a `FoodItemDelete()` instantiation of which the method execute() is called.
-    
-3. Executing Command
-    1. The Food ID according to the index based on the ArrayList<Food> is deleted.
+    1. `DietSession` calls `dietSessionUi.getCommand()` to receive user input.
+    1. `DietSession` calls `DietSessionParser.parseCommand()` to parse user input into a string array.
+1. Creating `FoodItemDelete` object.
+   1. Based on the parsed input, `DietSession` calls `CommandLib` to return the correct Command Object `FoodItemDelete`.
+1. Executing command.
+    1. `DietSession` calls `FoodItemDelete.execute()`.
+    1. The index-1 of the ArrayList for the food is removed.
+    1. `FoodItemDelete` returns a `CommandResult` object with the delete success message.
+1. Prompting result to user.
+    1. `DietSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
     
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemDelete.png)
     
@@ -555,17 +576,34 @@ The feature allows users to remove food items into the current diet session.
 **Implementation**  
 When the user types `clear` the following sequence occurs. 
 1. The user keys in `clear`.
-    
-    1. A `DietSessionUi` component will call `dietSessionUI.getInput()`. 
-    1. Input will be parsed in `processCommand()`.   
-    
-2. Creation of command object from input
-    1. This will create a FoodItemClear() instantiation of which the method execute() is called.
-    
-3. Executing Command
-    1. The ArrayList Clear method is called and removes all Food entries from the ArrayList.
+    1. `DietSession` calls `dietSessionUi.getCommand()` to receive user input.
+    1. `DietSession` calls `DietSessionParser.parseCommand()` to parse user input into a string array.
+1. Creating `FoodItemClear` object.
+   1. Based on the parsed input, `DietSession` calls `CommandLib` to return the correct Command Object `FoodItemClear`.
+1. Executing command.
+    1. `DietSession` calls `FoodItemClear.execute()`.
+    1. A new ArrayList of Food is assigned to the original, leaving it with no data inside.
+    1. `FoodItemClear` returns a `CommandResult` object with the clear success message.
+1. Prompting result to user.
+    1. `DietSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
+    1. `CommandResult` calls `Ui.showToUser()` to show result to the user.
     
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemClear.png)
+
+
+**Design considerations**
+
+Aspects: Ram usage
+
+- **Alternative 1 (current choice):** Assigning a new ArrayList to the current variable.
+
+    - Pros: Fast.
+    - Cons: Garbage collection has to pick up the unassigned ArrayList.
+
+- **Alternative 2:** delete every item in the ArrayList one by one.
+
+    - Pros: Less memory needed as there is nothing new to allocate. 
+    - Cons: A lot slower as it has to iterate through every item.
     
 <a href="#top">&#8593; Return to Top</a>
 
@@ -608,10 +646,21 @@ When the user types `list` in a diet manager instance the following sequence occ
 The sequence diagram below summarizes how listing past Diet sessions work:
 
 ![Load Data Sequence Diagram](pictures/Zeon/DietSessionList.png)
+
+- **Alternative 1 (current choice):** Print out a neatly formatted list of diet sessions.
+
+    - Pros: The information is easy to read due to neat formatting.
+    - Cons: Execution time is slower as it requires a lot more calculations.
+
+- **Alternative 2:** Print out the file name.
+
+    - Pros: Execution time is fast. 
+    - Cons: The information is harder to filter through.    
+
     
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.4. <a id = "list-all-past-diet-sessions">Edit a past diet session:</a> `edit`
+#### 4.3.4. <a id = "edit-a-past-diet-sessions">Edit a past diet session:</a> `edit`
 
 The feature allows users to edit previously created diet sessions.
 
@@ -673,6 +722,17 @@ When the user types `delete [INDEX_OF_SESSION]` from a Diet manager instance the
 The sequence diagram below summarizes how Diet sessions are deleted:
 
 ![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionDelete.png)
+
+- **Alternative 1 (current choice):** Provides an indexed array for the user to choose from to delete.
+
+    - Pros: The user can delete things easier as it only requires typing a number.
+    - Cons: Execution time is slower as it requires more calculations.
+
+- **Alternative 2:** Delete based on a user string input of the file name.
+
+    - Pros: Easier to implement.
+    - Cons: Users are greatly inconvenienced by how much they have to type.    
+
     
 <a href="#top">&#8593; Return to Top</a>
 
@@ -698,6 +758,18 @@ When the user types `clear` the following sequence occurs.
 The sequence diagram below summarizes how Diet sessions are all cleared:
 
 ![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionClear.png)
+
+
+- **Alternative 1 (current choice):** Iterate through an array of files and delete everything.
+
+    - Pros: The file structure is more homogeneous.
+    - Cons: Execution time is slower as it requires iterating through every file in the array.
+
+- **Alternative 2:** delete the folder with the save files in it.
+
+    - Pros: Execution time is faster though still limited by storage speed. 
+    - Cons: File structure of the entire program is not as stable.    
+
     
 <a href="#top">&#8593; Return to Top</a>
 
@@ -725,6 +797,17 @@ When the user types `search /s 2020-11-01 /e 2020-11-03 /t breakfast` the follow
 The sequence diagram below summarizes how Diet sessions is searched:
 
 ![Search_Diet_Session_Sequence_Diagram](pictures/Zeon/SearchDietSession.png)
+
+- **Alternative 1 (current choice):** Search by date and tags.
+
+    - Pros: Users can get a precise range of dates for their diet sessions.
+    - Cons: Execution time is slower as it requires more calculations.
+
+- **Alternative 2:** Search only by tags.
+
+    - Pros: Easier to implement. 
+    - Cons: The information is harder to filter through.    
+
 
 <a href="#top">&#8593; Return to Top</a>
 
