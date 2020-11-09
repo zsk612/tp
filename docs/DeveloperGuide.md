@@ -23,10 +23,6 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;3.5.3. [Storage for Workout](#workoutSessionStorage-for-workout)<br>
 4. [**Implementation**](#implementation)<br>
 4.1. [Main Menu-related Features](#main-menu-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu](#main-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.2. [Redirecting to Profile Menu](#redirection-to-profile-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.3. [Redirecting to Diet Menu](#redirection-to-diet-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.4. [Redirecting to Workout Menu](#redirecting-to-workout-menu)<br>
 4.2. [Profile-related Features](#profile-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.1. [Adding a Profile](#adding-a-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.2. [Viewing a Profile](#viewing-a-profile)<br>
@@ -186,7 +182,7 @@ Profile workoutSessionStorage handles reading of file data by calling `loadData(
 
 Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
 - Each file is created as a json file and named as `[DATE] [TAG].json`.
-- A corresponding file is updated in the local file after the user edits a diet session by calling DietSessionEdit.execute().
+- A corresponding file is updated in the local file after the user enters a command into a diet session by calling DietSessionEdit.execute(), or DietSessionCreate.execute().
 - A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
 
 **Implementation**
@@ -210,21 +206,28 @@ For diet and workout-related features, there is an additional functionality of s
 
 ### 4.1. <a id="main-menu-related-features">Main Menu-related Features</a>
 
-#### 4.1.1. <a id="main-help">Help Command for Main Menu</a>
+This feature allows user to access the different menu for workout, diet and profile. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
 
-The `help` command allows users to view all the available commands in the main page. The command for showing help message is `help`.
+If the command is successful,the user will be put into the respective menu and a starting message on the entered menu will be displayed to the user. 
 
-#### 4.1.2. <a id="redirecting-to-profile-menu">Redirecting to Profile Menu</a>
+**Implementation**
 
-The redirection to profile page allows the user to enter Profile Menu to create, edit, view and delete user profile. The command for this redirection is `profile`.
+When the user attempts to access different menu for workout, diet and profile menu, the Duke, CommonUi, CommonParser and CommandLib classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
-#### 4.1.3. <a id="redirecting-to-diet-menu">Redirecting to Diet Menu</a>
+1. User executes a command
+    1. `Duke` calls `CommonUi.getCommand()` to receive user input.
+    1. `Duke` calls `CommonParser.parseCommand()` to parse user input into a string array.
+1. `Duke` calls `CommandLib.getCommand` with the string arry containing the inputs.
+1. Depending on the input,`Duke` creates `ProfileSession` or `DietManager` or `WorkoutManager` object.
+1. After entering the `ProfileSession` or `DietManager` or `WorkoutManager` objects, the menus will have their own seperate tasks.
 
-The redirection to profile page allows the user to enter Diet Menu to create, edit, list and delete diet sessions. The command for this redirection is `diet`.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
-#### 4.1.4. <a id="redirecting-to-workout-menu">Redirecting to Workout Menu</a>
+The sequence diagram below summarizes how Main Menu works:
 
-The redirection to profile page allows the user to enter Workout Menu to create, edit, list and delete workout sessions. The command for this redirection is `workout`.
+![Load Data Sequence Diagram](pictures/khoa/MainMenu.png)
+
+<a href="#top">&#8593; Return to Top</a>
 
 ### 4.2. <a id="profile-related-features">Profile-related Features</a>
 #### 4.2.1. <a id="adding-a-profile">Adding a Profile</a>
@@ -928,7 +931,7 @@ The sequence diagram below summarizes how the add command works:
 
 Figure 4.4.1.1.1. Sub-diagram for Parsing Input in WorkoutSession
 
-![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.png)
+![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.jpg)
 
 Figure 4.4.1.1.2. Sub-diagram for Showing Message to User
 

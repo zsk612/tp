@@ -8,10 +8,10 @@ actor user
 activate WorkoutSession
 WorkoutSession -> CommandResult ++ : getFeedbackMessage(result)
 CommandResult --> WorkoutSession -- : message
-WorkoutSession -> Ui ++ : showToUser(message)
+WorkoutSession -> CommonUi ++ : showToUser(message)
 destroy CommandResult
-Ui --> user
-deactivate Ui
+CommonUi --> user
+deactivate CommonUi
 
 
 @enduml
