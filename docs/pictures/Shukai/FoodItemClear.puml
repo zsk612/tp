@@ -10,16 +10,27 @@ Ui --> DietSession -- : input
 ref over DietSession, DietSessionParser, CommandLib: parse user input in Diet Session Menu
 
 DietSession -> Command ++ : execute()
+Command -> Ui ++ : checkConfirmation()
+Ui --> Command --
+    alt isConfirmed
+        Command -> DietSession: foodList.clear()
+        DietSession --> Command
+        deactivate Command
+
+        DietSession -> CommandResult ++ : getFeedbackMessage(result)
+        CommandResult --> DietSession -- : message
+        DietSession -> Ui ++ : showToUser(message)
+
+    else else
+        DietSession -> CommandResult ++ : getFeedbackMessage(result)
+        CommandResult --> DietSession -- : message
+        DietSession -> Ui ++ : showToUser(message)
+    end
 Command --> DietSession --
-
-deactivate Command
-destroy Command
-
-DietSession -> CommandResult ++ : getFeedbackMessage(result)
-CommandResult --> DietSession -- : message
-DietSession -> Ui ++ : showToUser(message)
 destroy CommandResult
+destroy Command
 Ui --> user
 deactivate Ui
+
 
 @enduml

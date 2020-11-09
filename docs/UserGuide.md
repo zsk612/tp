@@ -486,7 +486,18 @@ This command adds a food item into the current diet session.
 
 __Format:__ `add [FOOD_NAME] /c [CALORIES]` 
 
-Example: `add chicken nuggets /c 120`
+Example: Whenever you want to add new food items in the diet session, you follow the steps below:
+1. Locate yourself in 
+
+    ![add-new-food-item-1](pictures/UG_screenshots/madd-new-food-item-step-1.png)
+
+2. You should be able to see a list of available commands like the screenshot below:
+
+    ![add-new-food-item-2](pictures/UG_screenshots/add-new-food-item-step-2.png)
+    
+3. You should be able to see a message showing that you have added the food item like the screenshot below:
+
+    ![add-new-food-item-3](pictures/UG_screenshots/add-new-food-item-step-3.png)
 
 Expected outcome:
 ```

@@ -13,12 +13,12 @@ DietSession -> Command ++ : execute()
 Command --> DietSession --
 
 deactivate Command
-destroy Command
 
 DietSession -> CommandResult ++ : getFeedbackMessage(result)
 CommandResult --> DietSession -- : message
 DietSession -> Ui ++ : showToUser(message)
 destroy CommandResult
+destroy Command
 Ui --> user
 deactivate Ui
 

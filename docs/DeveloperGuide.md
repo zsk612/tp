@@ -33,12 +33,12 @@ By: `CS2113T-F11-1` Since: `2020`
 4.3. [Diet-related Features](#43-diet-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#431-list-out-all-commands)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording diet data](#432-start-recording-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#4321-showing-help-message)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current diet](#4322-adding-food-items-for-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current diet](#4323-listing-data-for-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current diet](#4324-deleting-data-from-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current diet](#4325-clearing-data-from-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of diet data](#4326-stopping-the-recording-of-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing Help Message](#4321-showing-help-message)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding Food Items for the Current Diet](#4322-adding-food-items-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing Data for the Current Diet](#4323-listing-data-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting Data from the Current Diet](#4324-deleting-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing Data from the Current Diet](#4325-clearing-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the Recording of Diet Data](#4326-stopping-the-recording-of-diet-data)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past diet sessions](#433-list-all-past-diet-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past diet session](#434-edit-a-past-diet-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past diet session](#435-delete-a-past-diet-session)<br>
@@ -449,7 +449,7 @@ The sequence diagram below summarizes how creating new diet session works:
 
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.2.1. Showing help message: `help`
+#### 4.3.2.1. Showing Help Message: `help`
 This command lists out all help commands in a typed list that indicates to the user all the commands available and how to use them.
 
 **Implementation**  
@@ -467,7 +467,7 @@ When the user types `help` the following sequence occurs.
     
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.2.2. Adding food items for the current diet: `add`
+#### 4.3.2.2. Adding Food Items for the Current Diet: `add`
 
 The feature allows users to add food items into the current diet session. 
 
@@ -491,7 +491,7 @@ The sequence diagram below summarizes how adding a new food to the diet session 
 
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.2.3. Listing data for the current diet: `list`
+#### 4.3.2.3. Listing Data for the Current Diet: `list`
 
 This command allows users to view all food items in the current diet session. 
 
@@ -509,7 +509,7 @@ When the user types `list` the following sequence occurs.
     1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
     1. The total calories of the current meal is also printed.
 
-#### 4.3.2.4. Deleting data from the current diet session: `delete`
+#### 4.3.2.4. Deleting Data from the Current Diet Session: `delete`
 
 The feature allows users to remove food items into the current diet session. 
 
@@ -526,7 +526,7 @@ When the user types `delete [INDEX_OF_FOOD]` the following sequence occurs.
 3. Executing Command
     1. The Food ID according to the index based on the ArrayList<Food> is deleted.
 
-#### 4.3.2.5. Clearing all data from the current diet session `clear`
+#### 4.3.2.5. Clearing All Data from the Current Diet Session `clear`
 
 The feature allows users to remove food items into the current diet session. 
 
@@ -543,7 +543,7 @@ When the user types `clear` the following sequence occurs.
 3. Executing Command
     1. The ArrayList Clear method is called and removes all Food entries from the ArrayList.
 
-#### 4.3.2.6. Stopping the recording of diet session data: `end`
+#### 4.3.2.6. Stopping the Recording of Diet Session Data: `end`
 
 The feature allows users to end the current diet session and return back to the diet manager.
 
