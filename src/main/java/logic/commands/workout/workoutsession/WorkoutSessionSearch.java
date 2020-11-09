@@ -71,10 +71,10 @@ public class WorkoutSessionSearch extends Command {
 
         String descriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt + 1) + "s";
 
-        String returnString = String.format("%-8s", "Index") + String.format(descriptionFormat, "Exercise")
+        String formattedString = String.format("%-8s", "Index") + String.format(descriptionFormat, "Exercise")
                 + String.format("%-15s", "Repetitions") + String.format("%-10s", "Weight") + LS;
 
-        StringBuilder infoBuilder = new StringBuilder(returnString);
+        StringBuilder infoBuilder = new StringBuilder(formattedString);
 
         String listDescriptionFormat = "%-" + String.format("%d", descriptionMaxLenInt) + "s %-14s %s";
         for (int i = 0; i < exercise.size(); i++) {
@@ -86,7 +86,7 @@ public class WorkoutSessionSearch extends Command {
                 isEmptySearchResult = false;
             }
         }
-        returnString = infoBuilder.toString().trim();
-        return returnString;
+        formattedString = infoBuilder.toString().trim();
+        return formattedString;
     }
 }
