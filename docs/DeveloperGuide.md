@@ -426,6 +426,8 @@ Aspects: Loading of stored data
     - Pros: Execution time is fast. 
     - Cons: Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.
 
+<a href="#top">&#8593; Return to Top</a>
+
 ### 4.3. <a id="diet-related-features">Diet-related Features</a>
 #### 4.3.1. <a id="list-out-all-commands">Listing out all commands:</a> `help`
 This command lists out all help commands in a typed list that indicates to the user all the commands available and how to use them.
