@@ -87,8 +87,9 @@ When you first start using The Schwarzenegger, please ensure that you follow the
     ```
    
 1. To use The Schwarzenegger, simply type a valid command into the terminal and press <kbd>Enter</kbd> to run the command.<br>
-    Example: Typing `help` command in Main Menu and pressing <kbd>Enter</kbd> will show you a list of available commands in Main Menu of The Schwarzenegger and their descriptions.
+    **Example**: Typing `help` command in Main Menu and pressing <kbd>Enter</kbd> will show you a list of available commands in Main Menu of The Schwarzenegger and their descriptions.
 1. Some example commands you can try:
+    - `help` : Shows all the available commands under Main Menu.
     - `profile` : Directs you to Profile Menu where you can add and manage your profile.
     - `diet` : Directs you to Diet Menu where you can add and manage your diet records.
     - `workout` : Directs you to Workout Menu where you can add and manage your workout records.
@@ -103,17 +104,18 @@ This section includes 4 sub-sections which will guide you through the features a
 **Command Format**
 
 - Words that are in `[UPPER_CASE]` format are the parameters to be supplied by you.<br>
-Example: in `add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]` command, `[NAME]`, `[HEIGHT]`, `[CURRENT_WEIGHT]`, `[EXPECTED_WEIGHT]` and `[DAILY_CALORIE_INTAKE]` are parameters which can be used as `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`.
+**Example**: in `add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]` command, `[NAME]`, `[HEIGHT]`, `[CURRENT_WEIGHT]`, `[EXPECTED_WEIGHT]` and `[DAILY_CALORIE_INTAKE]` are parameters which can be used as `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`.
 - Words that are enclosed with `<` and `>` are optional parameters. However, if all the parameters in a command are optional, you need to supply at least 1 of them.<br>
-Example: in `edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>` command, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [CURRENT_WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIE_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
+**Example**: in `edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>` command, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [CURRENT_WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIE_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
 - Optional parameters with `…` after them can be used multiple times including zero times. <br>
-Example: for `<TAG>...`, the following format for Search Command in Workout Menu: `search </d [DATE]> </t [TAG]...>` can be used as `search /t le` or `search /t chest, bicep`.
+**Example**: for `<TAG>...`, the following format for Search Command in Workout Menu: `search </d [DATE]> </t [TAG]...>` can be used as `search /t le` or `search /t chest, bicep`.
 
 **Notations Used**
 
 Below are the meaning of icons for you to take note of while using a feature. 
 - :bulb: indicates a tip.
-- :warning: indicates a warning.  
+- :warning: indicates a warning.
+
 ***
 
 ### 3.1. <a id="main-menu">Main Menu</a>
@@ -131,6 +133,7 @@ __Format:__ `help`<br>
     ![main-help-1](pictures/UG_screenshots/main-help-step-1.png)
 
 2. You should be able to see a list of available commands like the screenshot below:
+
     ![main-help-2](pictures/UG_screenshots/main-help-step-2.png)
 
 #### 3.1.2. <a id="main-profile">Entering Profile Menu: `profile`</a>
@@ -197,7 +200,7 @@ You use this command when you want to terminate The Schwarzenegger.
 
 __Format:__ `end`  
 
-Example: 
+**Example**: 
 1. You type `end` to your console and press <kbd>Enter</kbd> to execute it.
 1. If the program exits successfully, you should be able to see the message below:
 
@@ -217,23 +220,23 @@ You can see a complete list of available commands under Profile Menu and how to 
 
 __Format:__ `help`  
 
-Example: `help`
-
-Expected outcome:
+**Example:**
+1. Type `help` to your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
 
 ```
-	 _________________________________________________________________________________________________
-	 Add      FORMAT:      add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]
-	          DESCRIPTION: Add your new profile
-	 View     FORMAT:      view
-	          DESCRIPTION: View your profile
-	 Edit     FORMAT:      edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>
-	          DESCRIPTION: Edit your existing profile. You may edit from 1 field to all fields
-	 Delete   FORMAT:      delete
-	          DESCRIPTION: Delete your existing profile
-	 End      FORMAT:      end
-	          DESCRIPTION: Go back to Main Menu
-	 _________________________________________________________________________________________________
+        _________________________________________________________________________________________________
+        Add      FORMAT:      add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]
+              DESCRIPTION: Add your new profile
+        View     FORMAT:      view
+              DESCRIPTION: View your profile
+        Edit     FORMAT:      edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>
+              DESCRIPTION: Edit your existing profile. You may edit from 1 field to all fields
+        Delete   FORMAT:      delete
+              DESCRIPTION: Delete your existing profile
+        End      FORMAT:      end
+              DESCRIPTION: Go back to Main Menu
+        _________________________________________________________________________________________________
 ```
 
 #### 3.2.2. <a id="profile-add">Adding a Profile: `add`</a>
@@ -241,131 +244,136 @@ You can add your profile for the most customized experience in The Schwarzenegge
 
 __Format:__ `add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]`  
 
-Example: `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
-
+**Example:** When you want to add your profile to the application, you follow the steps below:
+1. Make sure that you are in Profile Menu.<br>
+Refer to [Section 3.1.2. Entering Profile Menu](#main-profile) to learn how to enter Profile Menu.
+    ![add-profile-step-1](pictures/UG_screenshots/add-profile-step-1.png)
+    
+2. Type `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500` to your console and press <kbd>Enter</kbd> to execute it.<br>
 This command adds a profile with the name Schwarzenegger, height 188 cm, weight 113 kg, expected weight 100 kg and expected daily intake of 2500 calories.
 
-Expected outcome:
+    ![add-profile-step-2](pictures/UG_screenshots/add-profile-step-2.png)
 
-```
-    _________________________________________________________________________________________________
-    Got it. Here's a confirmation of your profile:
-        Name: Schwarzenegger
-        Height: 188 cm
-        Weight: 113.0 kg
-        Expected Weight: 100.0 kg
-        Expected daily calories intake: 2500.0 calories
-        Your BMI: 32.0 (Obesity Class 1)
-    _________________________________________________________________________________________________
-```
+3. If the execution is successful, you should be able to see a confirmation message below:
+
+    ![add-profile-step-3](pictures/UG_screenshots/add-profile-step-3.png)
 
 > :warning: The Schwarzenegger currently does not support name containing "/" character.
 
 #### 3.2.3. <a id="profile-view">Viewing a Profile: `view`</a>
-You can view your profile recorded in the program. The Schwarzenegger will also show 2 additional information:
+You can view your profile recorded in the program. The Schwarzenegger will also show the additional information below:
 - Your current BMI classification so that you can have a good suggestion on your current fitness level.
 - Comparison between your calorie intake today with your expected daily calorie intake.
+- Suggestion on adjusting your weight expectation for better fitness where applicable. For example, if your expected weight results in the Underweight BMI classification, The Schwarzenegger will show you a tip on editing your weight expectation.
 
 __Format:__ `view`  
 
-Example: `view`
-
-Expected outcome:
+**Example**:
+1. Type `view` to your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
 
 ```
-    _________________________________________________________________________________________________
-    Here's your profile:
-        Name: Schwarzenegger
-        Height: 188 cm
-        Weight: 113.0 kg
-        Expected Weight: 100.0 kg
-        Expected daily calories intake: 2500.0 calories
-        Your BMI: 32.0 (Obesity Class 1)
-    By the way, take 2500.0 more calories to achieve your target for today!
-    _________________________________________________________________________________________________
+     _________________________________________________________________________________________________
+     Here's your profile:
+            Name: Schwarzenegger
+            Height: 188 cm
+            Weight: 113.0 kg
+            Expected Weight: 100.0 kg
+            Expected daily calorie intake: 2500.0 calories
+            Your current BMI: 32.0 (Obesity Class 1)
+     By the way, take 2500.0 more calories to achieve your target for today!
+     TIP: Edit your expected weight to 76.7 kg to have Normal Weight BMI classification.
+          Just type "edit /e 76.7"!
+     _________________________________________________________________________________________________
 ```
+
+> :bulb: If you do not see the tip, it means that your current height and weight expectation is classified as Normal Weight already.
 
 #### 3.2.4. <a id="profile-edit">Editing a Profile: `edit`</a>
 You can edit the profile after adding to the program.
 
 __Format:__ `edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIES_INTAKE]>`  
 
-Example: <br>
-- `edit /h 180`<br>
-This command edits your current height to 180 centimeters.<br>
-Expected outcome:<br>
-    ```
-        ______________________________________________________________________________
-        Yay! Your profile is edited successfully. Here's your new profile:
-            Name: Schwarzenegger
-            Height: 180 cm
-            Weight: 113.0 kg
-            Expected Weight: 100.0 kg
-            Expected daily calories intake: 2500.0 calories
-            Your BMI: 32.0 (Obesity Class 1)
-        ______________________________________________________________________________`
-    ```
-- `edit /h 180 /w 50`<br>
-This command edits your current height to 180 centimeters and current weight to 50 kilograms.<br>
-Expected outcome:<br>
-    ```
-         ______________________________________________________________________________
-         Yay! Your profile is edited successfully. Here's your new profile:
+**Example**:
+- If you want to edit your height, you follow the steps below:
+    1. Type `edit /h 180` to your console and press <kbd>Enter</kbd> to execute it. <br>
+    This command edits your current height to 180 centimeters.
+    2. If the execution is successful, you should be able to see the confirmation message below:
+    
+        ```
+            ______________________________________________________________________________
+            Yay! Your profile is edited successfully. Here's your new profile:
                 Name: Schwarzenegger
                 Height: 180 cm
-                Weight: 50.0 kg
+                Weight: 113.0 kg
                 Expected Weight: 100.0 kg
                 Expected daily calories intake: 2500.0 calories
-                Your BMI: 15.4 (Underweight)
-         ______________________________________________________________________________
-    ```
-  
-- `edit /h 180 /w 50 /e 55`<br>
-This command edits your current height to 180 centimeters, current weight to 50 kilograms and expected weight to 55 kilograms.<br>
-Expected outcome:<br>
-    ```
-         ______________________________________________________________________________
-         Yay! Your profile is edited successfully. Here's your new profile:
-                Name: Schwarzenegger
-                Height: 180 cm
-                Weight: 50.0 kg
-                Expected Weight: 55.0 kg
-                Expected daily calories intake: 2500.0 calories
-                Your BMI: 15.4 (Underweight)
-         ______________________________________________________________________________
-    ```
+                Your BMI: 32.0 (Obesity Class 1)
+            ______________________________________________________________________________
+        ```
+- If you want to edit your height and weight, you follow the steps below:
+    1. Type `edit /h 180 /w 50` to your console and press <kbd>Enter</kbd> to execute it.<br>
+     This command edits your current height to 180 centimeters and current weight to 50 kilograms.
+    2. If the execution is successful, you should be able to see the confirmation message below:
+
+        ```
+             ______________________________________________________________________________
+             Yay! Your profile is edited successfully. Here's your new profile:
+                    Name: Schwarzenegger
+                    Height: 180 cm
+                    Weight: 50.0 kg
+                    Expected Weight: 100.0 kg
+                    Expected daily calories intake: 2500.0 calories
+                    Your BMI: 15.4 (Underweight)
+             ______________________________________________________________________________
+        ```
+
+- If you want to edit your height, weight and expected weight, you follow the steps below:
+    1. Type `edit /h 180 /w 50 /e 55` to your console and press <kbd>Enter</kbd> to execute it.<br>
+        This command edits your current height to 180 centimeters, current weight to 50 kilograms and expected weight to 55 kilograms.
+    2. If the execution is successful, you should be able to see the confirmation message below:
+    
+        ```
+             ______________________________________________________________________________
+             Yay! Your profile is edited successfully. Here's your new profile:
+                    Name: Schwarzenegger
+                    Height: 180 cm
+                    Weight: 50.0 kg
+                    Expected Weight: 55.0 kg
+                    Expected daily calories intake: 2500.0 calories
+                    Your BMI: 15.4 (Underweight)
+             ______________________________________________________________________________
+        ```
 
 > :bulb: You may edit from 1 field to all fields in your profile.      
 
-
 #### 3.2.5. <a id="profile-delete">Deleting a Profile: `delete`</a>
+You can use this command to delete your profile from our system. 
+
 This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the deletion.
 
 __Format:__ `delete`  
 
-Example: `delete`
-
-Expected outcome:
-```
+**Example**:
+1. Type `delete` to your console and press <kbd>Enter</kbd> to execute it.
+2. Type `YES` to your console and press <kbd>Enter</kbd> to confirm the deletion.
+3. If the execution is successful, you should be able to see the message below:
+```    
     _________________________________________________________________________________________________
-    Are you sure you want to clear your profile? This action is irrevocable.
-    Key in "YES" to confirm.
-    _________________________________________________________________________________________________
-
-Profile Menu >>>>> YES
-    _________________________________________________________________________________________________
-    Alright! I've deleted your profile.
+    Alright, your profile has been cleared!
     _________________________________________________________________________________________________
 ```
     
+> :warning: Your profile data cannot be recovered once cleared!
+
 #### 3.2.6. <a id="profile-end">Returning to Main Menu: `end`</a>
 You use this command to exit Profile Menu and return to the Main Menu.
 
 __Format:__ `end`  
 
-Example: `end`
-
-Expected outcome:
+**Example**:
+1. Type `end` to your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
 
 ```
     _________________________________________________________________________________________________
