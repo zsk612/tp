@@ -18,7 +18,6 @@ By: `CS2113T-F11-1` Since: `2020`
 3.3. [Logic Component](#logic-component)<br>
 3.4. [Model Component](#model-component)<br>
 3.5. [Storage Component](#workoutSessionStorage-component)<br>
-3.6. [Common Classes](#common-classes)<br>
 4. [**Implementation**](#implementation)<br>
 4.1. [Main Menu-related Features](#main-menu-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu](#main-help)<br>
@@ -186,11 +185,6 @@ The `writeToStorageDietSession()` method in workoutSessionStorage.diet package s
 `writePastRecords()` and `writeToStorage()` methods in workoutSessionStorage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
 
 The `saveData()` method in workoutSessionStorage.profile is called after the user creates the user profile or edits it. `readData()` is workoutSessionStorage.profile is called when duke starts up.
-
-<a href="#top">&#8593; Return to Top</a>
-
-### 3.6. <a id="common-classes">Common Classes</a> 
-Classes used by multiple components are in the `seedu.duke` and the `ui` package, specifically Constant.java and CommonUi.java.
 
 <a href="#top">&#8593; Return to Top</a>
 
