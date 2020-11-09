@@ -11,6 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 
 //@@author wgzesg
+/**
+ * Represents the class containing all the date formats.
+ */
 public class DateParser {
     private static final List<DateTimeFormatter> dtFormatters = Arrays.asList(
             DateTimeFormatter.ofPattern("uuuuMMdd HH:mm").withResolverStyle(ResolverStyle.STRICT),

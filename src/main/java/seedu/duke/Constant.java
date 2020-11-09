@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Constants used in the main program.
+ * Represents class that contains all the constants.
  */
 public class Constant {
     public static final String COMMAND_WORD_DIET = "diet";

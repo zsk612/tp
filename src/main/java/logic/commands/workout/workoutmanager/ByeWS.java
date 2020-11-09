@@ -5,6 +5,9 @@ import logic.commands.CommandResult;
 import exceptions.EndException;
 import exceptions.SchwarzeneggerException;
 
+/**
+ * A representation of the command for bye commands in workout manager.
+ */
 //@@author wgzesg
 public class ByeWS extends Command {
 

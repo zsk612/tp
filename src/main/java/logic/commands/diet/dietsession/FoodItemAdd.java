@@ -15,6 +15,9 @@ import java.util.logging.Level;
 import static profile.Constants.CALORIES_UPPER_BOUND;
 
 //@@author zsk612
+/**
+ * A representation of the command for add commands in diet session.
+ */
 public class FoodItemAdd extends Command {
 
     /**

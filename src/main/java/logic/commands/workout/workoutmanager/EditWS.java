@@ -14,6 +14,9 @@ import static ui.workout.workoutmanager.WorkoutManagerUi.EDIT_SUCCESS;
 import static ui.workout.workoutmanager.WorkoutManagerUi.START_NEW_SESSION;
 
 //@@author wgzesg
+/**
+ * A representation of the command for edit commands in workout manager.
+ */
 public class EditWS extends Command {
 
     /**

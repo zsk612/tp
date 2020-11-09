@@ -92,6 +92,7 @@ public class PastRecordList {
      *
      * @param args String of user input.
      * @return String representation of all the records that satisfies the condition.
+     * @throws InvalidDateFormatException handles invalid date input.
      */
     public String search(String args) throws InvalidDateFormatException {
         ArrayList<Predicate<PastWorkoutSessionRecord>> conditions =
@@ -134,6 +135,7 @@ public class PastRecordList {
      * Edits a file and its past record at a given index.
      *
      * @param index Index of the file to be edited.
+     * @return File path string.
      * @throws SchwIoException If error occurred while reading or writing to file.
      */
     public String edit(int index) throws SchwIoException {
@@ -150,7 +152,8 @@ public class PastRecordList {
      * Adds a new file and records.
      *
      * @param tags Tags on the new record.
-     * @throws SchwIoException If error occurred while reading or writing to file.
+     * @return new file path string.
+     * @throws SchwarzeneggerException If error occurred while reading or writing to file.
      */
     public String add(ArrayList<String> tags) throws SchwarzeneggerException {
         String newFilePath = storage.createfile();
@@ -165,6 +168,8 @@ public class PastRecordList {
      * Lists all records.
      *
      * @param args User's input.
+     * @return message for dates.
+     * @throws InvalidDateFormatException handles invalid dates format.
      */
     public String list(String args) throws InvalidDateFormatException {
 

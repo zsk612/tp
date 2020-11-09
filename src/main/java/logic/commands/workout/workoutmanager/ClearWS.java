@@ -6,10 +6,13 @@ import logic.commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
 import models.PastRecordList;
 
-import static ui.CommonUi.clearMsgFormatter;
+import static ui.CommonUi.clearMsg;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
 //@@author wgzesg
+/**
+ * A representation of the command for clear commands in workout manager.
+ */
 public class ClearWS extends Command {
 
     /**
@@ -28,7 +31,7 @@ public class ClearWS extends Command {
         }
         PastRecordList.getInstance().clear();
         logger.info("Cleared successfully");
-        String content = clearMsgFormatter("past workout records have");
+        String content = clearMsg("past workout records have");
         return new CommandResult(content, ExecutionResult.OK);
     }
 }

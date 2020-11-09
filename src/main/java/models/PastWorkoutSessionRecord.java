@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 //@@author wgzesg
+/**
+ * A class that represents past workout session records.
+ */
 public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRecord> {
 
     private final String filePath;
@@ -25,6 +28,14 @@ public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRe
         this.tags = tags;
     }
 
+    /**
+     * Constructor of a new PastWorkoutSessionRecord.
+     *
+     * @param filePath File path of where the records of the session are stored.
+     * @param creationTime Creation time.
+     * @param lastEditTime Last edited time.
+     * @param tags Tags attached to this session.
+     */
     public PastWorkoutSessionRecord(String filePath, LocalDateTime creationTime,
                                     LocalDateTime lastEditTime, ArrayList<String> tags) {
         this.filePath = filePath;

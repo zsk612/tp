@@ -11,6 +11,9 @@ import logic.parser.WorkoutManagerParser;
 import static ui.workout.workoutmanager.WorkoutManagerUi.DELETE_SUCCESS;
 
 //@@author wgzesg
+/**
+ * A representation of the command for delete commands in workout manager.
+ */
 public class DeleteWS extends Command {
 
     /**

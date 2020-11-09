@@ -14,12 +14,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 //@@author wgzesg
+/**
+ * A class that is responsible for interacting with user in Workout Manager.
+ */
 public class WorkoutManager {
 
     private static final Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private final CommandLib cl;
     private final WorkoutManagerUi ui;
 
+    /**
+     * Constructs Workout Manager.
+     */
     public WorkoutManager() {
         cl = new CommandLib();
         cl.initWorkoutManagerCl();
