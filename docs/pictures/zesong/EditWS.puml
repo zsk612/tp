@@ -17,11 +17,16 @@ activate PastRecordList
 PastRecordList --> EditCommand : filePath
 deactivate PastRecordList
 
-EditCommand -> workoutSession : new WorkoutSession(filePath)
+EditCommand --> workoutSession ** : filePath
 activate workoutSession
+workoutSession --> EditCommand: loaded workoutSession
+deactivate workoutSession
 
+EditCommand -> workoutSession : start()
+activate workoutSession
 workoutSession --> EditCommand
 deactivate workoutSession
+
 
 EditCommand --> WorkoutManager : CommandResult
 deactivate EditCommand
