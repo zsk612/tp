@@ -27,7 +27,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
         + This feature allows the users to view records only ranging from a given period. This helps the users to avoid seeing long list of workout sessions from long time ago.
         
             
-+ **Code contribution**: [Functional and Test code](https://nus-cs2113-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=wgzesg&sort=groupTitle&sortWithin=title&since=2020-09-27&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other)
++ **Code contribution**: [Functional and Test code](https://nus-cs2113-ay2021s1.github.io/tp-dashboard/#search=wgzesg&sort=groupTitle&sortWithin=title&since=2020-09-27&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=wgzesg&tabRepo=AY2021S1-CS2113T-F11-1%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other)
       
 + **Other contributions**:
     + Project management:
