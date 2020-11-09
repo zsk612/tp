@@ -250,7 +250,13 @@ The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
-![Load Data Sequence Diagram](pictures/khoa/ParseInput.png)
+![Figure 4.2.1](pictures/khoa/ParseInput.png)
+
+Figure 4.2.1. Sub-diagram for Parsing Input in ProfileSession
+
+![Figure 4.2.2](pictures/khoa/ShowMessage.png)
+
+Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession
 
 **Design considerations**
 
@@ -296,6 +302,8 @@ All descriptions, warnings and responses will be handled by `Ui` to ensure consi
 The sequence diagram below summarizes how viewing an added profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/ViewProfile.png)
+
+You can refer to [Figure 4.2.1. Sub-Diagram for Parsing Input in ProfileSession](#Figure 4.2.1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#Figure 4.2.2) for the corresponding sub-diagrams.
 
 **Design considerations**
 
@@ -346,6 +354,8 @@ The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/EditProfile.png)
 
+You can refer to [Figure 4.2.1. Sub-Diagram for Parsing Input in ProfileSession](#Figure 4.2.1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#Figure 4.2.2) for the corresponding sub-diagrams.
+
 **Design considerations**
 
 Parsing of the user’s input command:
@@ -392,6 +402,8 @@ All descriptions, warnings and responses will be handled by `Ui` to ensure consi
 The sequence diagram below summarizes how deleting an added profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/DeleteProfile.png)
+
+You can refer to [Figure 4.2.1. Sub-Diagram for Parsing Input in ProfileSession](#Figure 4.2.1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#Figure 4.2.2) for the corresponding sub-diagrams.
 
 **Design considerations**
 

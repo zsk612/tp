@@ -2,7 +2,7 @@
 !define PLANTUML_HOME %dirpath()/../../umldiagram
 !include PLANTUML_HOME/style.puml
 
-mainframe <b>sd</b> parse user input in Profile Menu
+mainframe <b>sd</b> parse user input in ProfileSession
 
     ProfileSession -> ProfileParser ++ : parseCommand(input)
     ProfileParser --> ProfileSession -- : parsedInput
