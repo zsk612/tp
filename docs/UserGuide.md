@@ -703,7 +703,7 @@ Expected outcome:
 
 ```
 
-### 3.4. <a id="workout-menu">Workout Menu</a>
+### 3.4. <a id="workout-menu">Workout Menu</a> [Zesong]
 This section shows the command you can use when you are in workout menu.
 
 Click [here](#main-workout) to learn how to enter Workout Menu.
@@ -747,7 +747,7 @@ Workout Menu > New Workout Session >>>>>
 ```
 
 
-#### 3.4.2.1. <a id="ws-help">Viewing Help in Workout Session: `help`</a>
+#### 3.4.2.1. <a id="ws-help">Viewing Help in Workout Session: `help`</a> [Jinyang]
 You can see a complete list of available commands under Workout Session and how to use them.
 
 __Format:__ `help`  
@@ -853,7 +853,7 @@ Expected outcome:
      _________________________________________________________________________________________________
 ```
 
-#### 3.4.3. <a id="workout-list">Listing All Past Workout Sessions: `list`</a>
+#### 3.4.3. <a id="workout-list">Listing All Past Workout Sessions: `list`</a> [Zesong]
 You can see all your past workout sessions. They will be summarised and printed in a table with their index, creation date and tags.
 
 You can specify start date and end date to show sessions created in a selected period using `\s` for start date and `\e` for end date. If start date is not specified, it will take the earliest date a start date. If end date is not specified, it will take today as the end date.
@@ -1030,7 +1030,7 @@ Search|`search [FOOD_NAME]`<br><br>E.g. `search rice`
 Clear|`clear`
 Return to Diet Menu|`end`
 
-**Workout Menu**
+**Workout Menu** [Zesong]
 
 **Action** |  **Format**
 --------|----------------------
@@ -1054,7 +1054,7 @@ Delete|`delete [INDEX]`<br><br>E.g. `delete 1`
 Search|`search [NAME_OF_MOVE]`<br><br>E.g. `search bench`
 Return to Workout Menu|`end`
 
-## 5. <a id="notes">Notes</a>
+## 5. <a id="notes">Notes</a> [Zesong]
 
 [1] Here shows all 12 valid formats.
     
