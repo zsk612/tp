@@ -1,4 +1,6 @@
 @startuml
+!define PLANTUML_HOME %dirpath()/../../umldiagram
+!include ../../umldiagram/style.puml
 actor user
 user -> DietSession : input
 activate DietSession
