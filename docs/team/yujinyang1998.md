@@ -73,8 +73,6 @@ to the project.
 
 + [Listing All Exercises in This Session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#listing-all-exercises-in-this-session)
 
-+ [Allowing users to view help commands](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#allowing-users-to-view-help-commands)
-
 + [Searching for related exercises](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#searching-for-related-exercises)
 
 + [Ending the workout session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#ending-the-workout-session)

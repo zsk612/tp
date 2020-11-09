@@ -30,6 +30,9 @@ import static ui.diet.dietmanager.DietManagerUi.DIET_SEARCH_RESULTS_MESSAGE;
 import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
+/**
+ * A representation of the command for search commands in diet manager.
+ */
 public class DietSessionSearch extends Command {
     private final DietManagerParser parser = new DietManagerParser();
 

@@ -41,36 +41,36 @@ public class CommonUi {
     }
 
     /**
-     * Formats help messages.
+     * Adjusts help message in the correct format.
      *
-     * @param commandName Name of command.
-     * @param commandFormat Format of command.
-     * @param description Description of command.
-     * @return Formatted help string.
+     * @param commandName User command input
+     * @param commandFormat Command formatter
+     * @param description Description of the commands
+     * @return Formatted string of help message
      */
     public static String helpFormatter(String commandName, String commandFormat, String description) {
         return String.format(HELP_FORMAT, commandName, commandFormat, EMPTY_STRING, description);
     }
 
     /**
-     * Formats clear messages.
+     * Adjusts clear message in the correct format.
      *
-     * @param content Content of clear message.
-     * @return Formatted help string.
+     * @param content Clear message
+     * @return Formatted string of clear message
      */
-    public static String clearMsgFormatter(String content) {
+    public static String clearMsg(String content) {
         return String.format(MESSAGE_CLEAR_FORMAT, content);
     }
 
     /**
-     * Formats the header of search records.
+     * Adjusts search result in the correct format.
      *
-     * @param num The number of matching records.
-     * @param plurality Either "has" or "have" depending on the number of matching records found.
-     * @return Formatted header for search records.
+     * @param num Index of results
+     * @param content Content of searched items
+     * @return Formatted string of the search result
      */
-    public static String searchRecords(int num, String plurality) {
-        return String.format("%d %s been found!", num, plurality) + LS;
+    public static String searchRecords(int num, String content) {
+        return String.format("%d %s been found!", num, content) + LS;
     }
 
     /**

@@ -25,6 +25,10 @@ import java.util.logging.Logger;
 import static seedu.duke.Constant.COMMAND_WORD_END;
 
 //@@author CFZeon
+
+/**
+ * A class that is responsible for interacting with user in Diet Manager.
+ */
 public class DietManager {
 
     private CommandLib cl;
@@ -79,6 +83,8 @@ public class DietManager {
      *
      * @param input user input for command.
      * @throws InvalidCommandWordException handles InvalidCommandWordException.
+     * @throws InvalidDateFormatException handles invalid date input
+     * @throws InvalidSearchDateException handles invalid search date
      */
     public void processCommand(String input) throws InvalidCommandWordException, InvalidDateFormatException,
             InvalidSearchDateException {

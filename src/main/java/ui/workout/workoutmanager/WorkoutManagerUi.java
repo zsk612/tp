@@ -4,6 +4,9 @@ import ui.CommonUi;
 
 import static ui.profile.ProfileUi.MESSAGE_HELP_FOR_MORE_INFO;
 
+/**
+ * A class that is responsible for user interface in Workout Manager.
+ */
 public class WorkoutManagerUi extends CommonUi {
 
     public static String CLEAR_ABORTED = "You have aborted the action!";
