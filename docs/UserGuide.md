@@ -105,7 +105,7 @@ This section includes 4 sub-sections which will guide you through the features a
 
 - Words that are in `[UPPER_CASE]` format are the parameters to be supplied by you.<br>
 **Example**: in <br>`add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]` <br>command, `[NAME]`, `[HEIGHT]`, `[CURRENT_WEIGHT]`, `[EXPECTED_WEIGHT]` and `[DAILY_CALORIE_INTAKE]` are parameters which can be used as `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`.
-- Words that are enclosed with `<` and `>` are optional parameters.<br>
+- Words that are enclosed with `<` and `>` are optional parameters. If all of the parameters are optional, you need to supply at least 1 of them. <br>
 **Example**: in <br>`edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>` <br>command, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [CURRENT_WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIE_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
 - Optional parameters with `…` after them can be used multiple times including zero times. <br>
 **Example**: for `<TAG>...`, the following format for Search Command in Workout Menu: `search </d [DATE]> </t [TAG]...>` can be used as `search /t le` or `search /t chest, bicep`.
