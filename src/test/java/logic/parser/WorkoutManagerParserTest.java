@@ -1,4 +1,4 @@
-package workout.workoutmanager;
+package logic.parser;
 
 import exceptions.InvalidDateFormatException;
 import exceptions.workout.workoutmanager.NotANumberException;
@@ -14,19 +14,16 @@ import java.util.function.Predicate;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static logic.parser.WorkoutManagerParser.parseCommandKw;
-import static logic.parser.WorkoutManagerParser.parseIndex;
-import static logic.parser.WorkoutManagerParser.parseList;
-import static logic.parser.WorkoutManagerParser.parseSearchConditions;
-import static logic.parser.WorkoutManagerParser.parseTags;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class WorkoutManagerParserTest {
 
+    private static final WorkoutManagerParser ps = WorkoutManagerParser.getInstance();
+
     @Test
     void parseTags_validInput_success() {
         String args = "/t legs, chest";
-        ArrayList<String> result = parseTags(args);
+        ArrayList<String> result = ps.parseTags(args);
         ArrayList<String> expected = new ArrayList<>();
         expected.add("legs");
         expected.add("chest");
@@ -36,16 +33,16 @@ class WorkoutManagerParserTest {
     @Test
     void parseTags_missingOrWrongIdentifierKey_empty() {
         String in1 = "/tt legs chest";
-        ArrayList<String> out1 = parseTags(in1);
+        ArrayList<String> out1 = ps.parseTags(in1);
         ArrayList<String> expected = new ArrayList<>();
         assertEquals(expected, out1);
 
         String in2 = "legs /t chest";
-        ArrayList<String> out2 = parseTags(in2);
+        ArrayList<String> out2 = ps.parseTags(in2);
         assertEquals(expected, out2);
 
         String in3 = "legs chest";
-        ArrayList<String> out3 = parseTags(in3);
+        ArrayList<String> out3 = ps.parseTags(in3);
         assertEquals(expected, out3);
     }
 
@@ -66,7 +63,7 @@ class WorkoutManagerParserTest {
         ArrayList<Boolean> testResults1 = new ArrayList<>();
         ArrayList<Predicate<PastWorkoutSessionRecord>> tests = null;
         try {
-            tests = parseSearchConditions(in1);
+            tests = ps.parseSearchConditions(in1);
         } catch (InvalidDateFormatException e) {
             fail();
         }
@@ -80,7 +77,7 @@ class WorkoutManagerParserTest {
         List<Boolean> expected2 = Arrays.asList(false, true);
         ArrayList<Boolean> testResults2 = new ArrayList<>();
         try {
-            tests = parseSearchConditions(in2);
+            tests = ps.parseSearchConditions(in2);
         } catch (InvalidDateFormatException e) {
             fail();
         }
@@ -94,7 +91,7 @@ class WorkoutManagerParserTest {
         List<Boolean> expected3 = Arrays.asList(true, true);
         ArrayList<Boolean> testResults3 = new ArrayList<>();
         try {
-            tests = parseSearchConditions(in3);
+            tests = ps.parseSearchConditions(in3);
         } catch (InvalidDateFormatException e) {
             fail();
         }
@@ -122,7 +119,7 @@ class WorkoutManagerParserTest {
         ArrayList<Boolean> testResults1 = new ArrayList<>();
         ArrayList<Predicate<PastWorkoutSessionRecord>> tests = null;
         try {
-            tests = parseSearchConditions(in1);
+            tests = ps.parseSearchConditions(in1);
         } catch (InvalidDateFormatException e) {
             fail();
         }
@@ -136,7 +133,7 @@ class WorkoutManagerParserTest {
         List<Boolean> expected2 = new ArrayList<>();
         ArrayList<Boolean> testResults2 = new ArrayList<>();
         try {
-            tests = parseSearchConditions(in2);
+            tests = ps.parseSearchConditions(in2);
         } catch (InvalidDateFormatException e) {
             fail();
         }
@@ -151,32 +148,32 @@ class WorkoutManagerParserTest {
     void parseCommandKw_correctFormat_success() {
         String in1 = "list aa";
         String[] ex1 = {"list", "aa"};
-        assertArrayEquals(ex1, parseCommandKw(in1));
+        assertArrayEquals(ex1, ps.parseCommandKw(in1));
 
         String in = "list    /d 20201025";
         String[] ex2 = {"list", "   /d 20201025"};
-        assertArrayEquals(ex2, parseCommandKw(in));
+        assertArrayEquals(ex2, ps.parseCommandKw(in));
     }
 
     @Test
     void parseCommandKw_empty_emptyOutput() {
         String in1 = "";
         String[] ex1 = {""};
-        assertArrayEquals(ex1, parseCommandKw(in1));
+        assertArrayEquals(ex1, ps.parseCommandKw(in1));
 
     }
 
     @Test
     void parseIndex_correctInput_success() throws NotANumberException {
-        assertEquals(5, parseIndex("5"));
+        assertEquals(5, ps.parseIndex("5"));
     }
 
     @Test
     void parseIndex_inputNotANumber_throwNotANumberException() {
-        assertThrows(NotANumberException.class, () -> parseIndex("5.0"));
-        assertThrows(NotANumberException.class, () -> parseIndex("abc"));
-        assertThrows(NotANumberException.class, () -> parseIndex(""));
-        assertThrows(NotANumberException.class, () -> parseIndex(null));
+        assertThrows(NotANumberException.class, () -> ps.parseIndex("5.0"));
+        assertThrows(NotANumberException.class, () -> ps.parseIndex("abc"));
+        assertThrows(NotANumberException.class, () -> ps.parseIndex(""));
+        assertThrows(NotANumberException.class, () -> ps.parseIndex(null));
     }
 
     @Test
@@ -196,7 +193,7 @@ class WorkoutManagerParserTest {
         ArrayList<Boolean> testResults1 = new ArrayList<>();
         ArrayList<Predicate<PastWorkoutSessionRecord>> tests = null;
         try {
-            tests = parseList(in1);
+            tests = ps.parseList(in1);
         } catch (InvalidDateFormatException e) {
             fail();
         }
@@ -210,7 +207,7 @@ class WorkoutManagerParserTest {
         List<Boolean> expected2 = Arrays.asList(true);
         ArrayList<Boolean> testResults2 = new ArrayList<>();
         try {
-            tests = parseList(in2);
+            tests = ps.parseList(in2);
         } catch (InvalidDateFormatException e) {
             fail();
         }
@@ -224,7 +221,7 @@ class WorkoutManagerParserTest {
         List<Boolean> expected3 = Arrays.asList(true, true);
         ArrayList<Boolean> testResults3 = new ArrayList<>();
         try {
-            tests = parseList(in3);
+            tests = ps.parseList(in3);
         } catch (InvalidDateFormatException e) {
             fail();
         }
@@ -239,7 +236,7 @@ class WorkoutManagerParserTest {
     void parseList_wrongDateFormat_throwInvalidDateFormatException() {
 
         String in1 = "/s aabb";
-        assertThrows(InvalidDateFormatException.class, () -> parseList(in1));
+        assertThrows(InvalidDateFormatException.class, () -> ps.parseList(in1));
     }
 
     @Test
@@ -258,7 +255,7 @@ class WorkoutManagerParserTest {
         List<Boolean> expected2 = Arrays.asList(true);
         ArrayList<Boolean> testResults2 = new ArrayList<>();
         try {
-            tests = parseList(in2);
+            tests = ps.parseList(in2);
         } catch (InvalidDateFormatException e) {
             fail();
         }

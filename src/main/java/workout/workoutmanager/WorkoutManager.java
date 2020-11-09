@@ -7,6 +7,7 @@ import exceptions.EndException;
 import exceptions.SchwarzeneggerException;
 import logger.SchwarzeneggerLogger;
 import logic.parser.WorkoutManagerParser;
+import models.PastRecordList;
 import ui.workout.workoutmanager.WorkoutManagerUi;
 
 import java.util.logging.Level;
@@ -38,7 +39,7 @@ public class WorkoutManager {
             String command = ui.getCommand("Workout Menu");
             logger.log(Level.INFO, "Received input" + command);
 
-            String[] commParts = WorkoutManagerParser.parseCommandKw(command);
+            String[] commParts = WorkoutManagerParser.getInstance().parseCommandKw(command);
             try {
                 processCommand(commParts);
             } catch (EndException e) {

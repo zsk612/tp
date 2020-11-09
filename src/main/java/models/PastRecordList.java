@@ -4,6 +4,7 @@ import exceptions.InvalidDateFormatException;
 import exceptions.SchwarzeneggerException;
 import exceptions.workout.workoutmanager.SchwIoException;
 import logger.SchwarzeneggerLogger;
+import logic.parser.WorkoutManagerParser;
 import storage.workout.WorkOutManagerStorage;
 
 import java.io.File;
@@ -16,8 +17,6 @@ import java.util.stream.Collectors;
 
 import static ui.CommonUi.LS;
 import static ui.CommonUi.searchRecords;
-import static logic.parser.WorkoutManagerParser.parseList;
-import static logic.parser.WorkoutManagerParser.parseSearchConditions;
 
 //@@author wgzesg
 /**
@@ -95,7 +94,8 @@ public class PastRecordList {
      * @return String representation of all the records that satisfies the condition.
      */
     public String search(String args) throws InvalidDateFormatException {
-        ArrayList<Predicate<PastWorkoutSessionRecord>> conditions = parseSearchConditions(args);
+        ArrayList<Predicate<PastWorkoutSessionRecord>> conditions =
+                WorkoutManagerParser.getInstance().parseSearchConditions(args);
 
         List<PastWorkoutSessionRecord> result = pastFiles.stream()
                 .filter(conditions.stream().reduce(x -> true, Predicate::and))
@@ -168,7 +168,7 @@ public class PastRecordList {
      */
     public String list(String args) throws InvalidDateFormatException {
 
-        ArrayList<Predicate<PastWorkoutSessionRecord>> conditions = parseList(args);
+        ArrayList<Predicate<PastWorkoutSessionRecord>> conditions = WorkoutManagerParser.getInstance().parseList(args);
 
         List<PastWorkoutSessionRecord> result = pastFiles.stream()
                 .filter(conditions.stream().reduce(x -> true, Predicate::and))

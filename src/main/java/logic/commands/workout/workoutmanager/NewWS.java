@@ -3,6 +3,7 @@ package logic.commands.workout.workoutmanager;
 import logic.commands.Command;
 import logic.commands.CommandResult;
 import exceptions.SchwarzeneggerException;
+import logic.parser.WorkoutManagerParser;
 import models.PastRecordList;
 import workout.workoutsession.WorkoutSession;
 
@@ -11,7 +12,6 @@ import java.util.ArrayList;
 import static logic.commands.ExecutionResult.OK;
 import static ui.workout.workoutmanager.WorkoutManagerUi.NEW_SUCCESS;
 import static ui.workout.workoutmanager.WorkoutManagerUi.START_NEW_SESSION;
-import static logic.parser.WorkoutManagerParser.parseTags;
 
 //@@author wgzesg
 public class NewWS extends Command {
@@ -26,7 +26,7 @@ public class NewWS extends Command {
     @Override
     public CommandResult execute(String args) throws SchwarzeneggerException {
         super.execute(args);
-        ArrayList<String> tags = parseTags(args);
+        ArrayList<String> tags = WorkoutManagerParser.getInstance().parseTags(args);
         String filePath = PastRecordList.getInstance().add(tags);
         WorkoutSession ws = new WorkoutSession(filePath, true, -1);
         logger.info("New workout session created");

@@ -23,7 +23,7 @@ public class DeleteWS extends Command {
     @Override
     public CommandResult execute(String args) throws SchwarzeneggerException {
         super.execute(args);
-        int index = WorkoutManagerParser.parseIndex(args);
+        int index = WorkoutManagerParser.getInstance().parseIndex(args);
         try {
             PastRecordList.getInstance().delete(index);
         } catch (IndexOutOfBoundsException e) {

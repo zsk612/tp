@@ -3,6 +3,7 @@ package logic.parser;
 import exceptions.InvalidDateFormatException;
 import exceptions.workout.workoutmanager.NotANumberException;
 import logger.SchwarzeneggerLogger;
+import models.PastRecordList;
 import models.PastWorkoutSessionRecord;
 
 import java.time.LocalDateTime;
@@ -11,20 +12,33 @@ import java.util.function.Predicate;
 import java.util.logging.Level;
 
 //@@author wgzesg
-public class WorkoutManagerParser extends CommonParser {
+public class WorkoutManagerParser {
 
     public static final String TAG_SPECIFIER = "/t";
     public static final String TAG_SPLITTER = ",";
     public static final String DATE_SPECIFIER = "/d";
     public static final String START_DATE_SPECIFIER = "/s";
     public static final String END_DATE_SPECIFIER = "/e";
+    private static WorkoutManagerParser wmp;
+
+    /**
+     * Gets instance of PastRecordList.
+     *
+     * @return Instance of PastRecordList.
+     */
+    public static WorkoutManagerParser getInstance() {
+        if (wmp == null) {
+            wmp = new WorkoutManagerParser();
+        }
+        return wmp;
+    }
 
     /**
      * Parses user inputs into single words.
      * @param comm User's raw input.
      * @return An array of strings.
      */
-    public static String[] parseCommandKw(String comm) {
+    public String[] parseCommandKw(String comm) {
         return comm.split(" ", 2);
     }
 
@@ -33,7 +47,7 @@ public class WorkoutManagerParser extends CommonParser {
      * @param arr User inputs.
      * @return A list of tags.
      */
-    public static ArrayList<String> parseTags(String arr) {
+    public ArrayList<String> parseTags(String arr) {
         ArrayList<String> result = new ArrayList<>();
         String[] content = arr.split(" ", 2);
 
@@ -58,7 +72,7 @@ public class WorkoutManagerParser extends CommonParser {
      * @param arr User input.
      * @return A list of predicate which will be used as search conditions.
      */
-    public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseSearchConditions(String arr)
+    public ArrayList<Predicate<PastWorkoutSessionRecord>> parseSearchConditions(String arr)
             throws InvalidDateFormatException {
         ArrayList<String> tags = new ArrayList<>();
         ArrayList<Predicate<PastWorkoutSessionRecord>> test = new ArrayList<>();
@@ -80,7 +94,7 @@ public class WorkoutManagerParser extends CommonParser {
         try {
             String[] part2 = arr.split(DATE_SPECIFIER);
             String[] datePart = part2[1].split(TAG_SPECIFIER);
-            LocalDateTime finalDate = getDate(datePart[0]);
+            LocalDateTime finalDate = DateParser.parseDate(datePart[0].trim());
             if (finalDate != null) {
                 test.add(x -> x.isCreatedOn(finalDate.toLocalDate()));
             }
@@ -98,7 +112,7 @@ public class WorkoutManagerParser extends CommonParser {
      * @return a integer which is the index given.
      * @throws NotANumberException if args is null, empty or not a number.
      */
-    public static int parseIndex(String args) throws NotANumberException {
+    public int parseIndex(String args) throws NotANumberException {
         int index;
         try {
             index = Integer.parseInt(args);
@@ -114,7 +128,7 @@ public class WorkoutManagerParser extends CommonParser {
      * @param args user input.
      * @return predicates to limit period of record being listed.
      */
-    public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseList(String args)
+    public ArrayList<Predicate<PastWorkoutSessionRecord>> parseList(String args)
             throws InvalidDateFormatException {
         ArrayList<Predicate<PastWorkoutSessionRecord>> test = new ArrayList<>();
 
@@ -122,7 +136,7 @@ public class WorkoutManagerParser extends CommonParser {
         try {
             String[] part2 = args.split(START_DATE_SPECIFIER);
             String[] datePart = part2[1].split(END_DATE_SPECIFIER);
-            LocalDateTime start = getDate(datePart[0]);
+            LocalDateTime start = DateParser.parseDate(datePart[0].trim());
             if (start != null) {
                 test.add(x -> x.isCreatedAfter(start.toLocalDate()));
             }
@@ -134,7 +148,7 @@ public class WorkoutManagerParser extends CommonParser {
         try {
             String[] part2 = args.split(END_DATE_SPECIFIER);
             String[] datePart = part2[1].split(START_DATE_SPECIFIER);
-            LocalDateTime end = getDate(datePart[0]);
+            LocalDateTime end = DateParser.parseDate(datePart[0].trim());
             if (end != null) {
                 test.add(x -> x.isCreatedBefore(end.toLocalDate()));
             }
@@ -143,11 +157,5 @@ public class WorkoutManagerParser extends CommonParser {
         }
 
         return test;
-    }
-
-    private static LocalDateTime getDate(String content) throws InvalidDateFormatException {
-        LocalDateTime start;
-        start = DateParser.parseDate(content.trim());
-        return start;
     }
 }
