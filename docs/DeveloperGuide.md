@@ -186,7 +186,7 @@ Profile workoutSessionStorage handles reading of file data by calling `loadData(
 
 Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
 - Each file is created as a json file and named as `[DATE] [TAG].json`.
-- A corresponding file is updated in the local file after the user edits a diet session by calling DietSessionEdit.execute().
+- A corresponding file is updated in the local file after the user enters a command into a diet session by calling DietSessionEdit.execute(), or DietSessionCreate.execute().
 - A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
 
 **Implementation**
