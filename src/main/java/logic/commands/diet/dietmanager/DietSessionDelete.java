@@ -14,6 +14,9 @@ import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_ARRAY_OUT_OF_BOUND;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NO_SESSIONS_SAVED;
 
 //@@author CFZeon
+/**
+ * A representation of the command for delete commands in diet manager.
+ */
 public class DietSessionDelete extends Command {
 
     /**

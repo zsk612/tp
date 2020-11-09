@@ -6,6 +6,9 @@ import logic.commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
 import models.PastRecordList;
 
+/**
+ * A representation of the command for search commands in workout manager.
+ */
 public class SearchWS extends Command {
 
     /**

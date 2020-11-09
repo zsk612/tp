@@ -13,6 +13,7 @@ public class CommandResult {
      * Constructs CommandResult object.
      *
      * @param feedbackMessage Feedback message after executing command.
+     * @param status Execution result.
      */
     public CommandResult(String feedbackMessage, ExecutionResult status) {
         this.feedbackMessage = feedbackMessage;

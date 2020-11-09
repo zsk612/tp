@@ -13,6 +13,9 @@ import static ui.workout.workoutmanager.WorkoutManagerUi.NEW_SUCCESS;
 import static ui.workout.workoutmanager.WorkoutManagerUi.START_NEW_SESSION;
 import static logic.parser.WorkoutManagerParser.parseTags;
 
+/**
+ * A representation of the command for create commands in workout manager.
+ */
 public class NewWS extends Command {
 
     /**

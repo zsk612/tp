@@ -10,6 +10,9 @@ import java.time.format.ResolverStyle;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Represents the class containing all the date formats
+ */
 public class DateParser {
     private static final List<DateTimeFormatter> dtFormatters = Arrays.asList(
             DateTimeFormatter.ofPattern("uuuuMMdd HH:mm").withResolverStyle(ResolverStyle.STRICT),
@@ -38,6 +41,7 @@ public class DateParser {
      *
      * @param targetString String input to be parsed.
      * @return Parsed result in the form of LocalDateTime or null if no value parsing is found.
+     * @throws InvalidDateFormatException When date input is invalid
      */
     public static LocalDateTime parseDate(String targetString) throws InvalidDateFormatException {
         for (DateTimeFormatter dtf : dtFormatters) {

@@ -85,6 +85,7 @@ public abstract class Command {
      * @param input User's input for command.
      * @param storage Diet Storage to load and save data.
      * @param index Integer variable that shows the index of diet session
+     * @param foodList Arraylist that contains all the food items
      * @return An object CommandResult containing the executing status and feedback message to be displayed
      *         to user.
      * @throws InvalidCommandWordException If command word is invalid.
@@ -105,6 +106,7 @@ public abstract class Command {
      * @param filePath Path to data file.
      * @param workoutSessionStorage Workout Session Storage to load and save data.
      * @param hasEndedWorkoutSessions Array of booleans indicating if user has ended workout sessions.
+     * @return CommandResult that shows the result of this command execution.
      * @throws InvalidCommandWordException If command word is invalid.
      */
     public CommandResult execute(String[] inputs, ExerciseList exerciseList,

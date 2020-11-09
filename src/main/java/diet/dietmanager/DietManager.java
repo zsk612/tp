@@ -25,6 +25,10 @@ import java.util.logging.Logger;
 import static seedu.duke.Constant.COMMAND_WORD_END;
 
 //@@author CFZeon
+
+/**
+ * A class that is responsible for interacting with user in Diet Manager.
+ */
 public class DietManager {
 
     private CommandLib cl;

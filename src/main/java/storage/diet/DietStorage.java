@@ -26,6 +26,8 @@ public class DietStorage {
     /**
      * Initialise the database with locally stored data.
      * If the local file is not found. It creates the relevant file and folder.
+     * @param filePath a string that represents file path.
+     * @param filePathName a string that represents file path name.
      *
      * @throws IOException If director or file cannot be created.
      */
@@ -46,6 +48,9 @@ public class DietStorage {
     /**
      * Writes the content in dietSession to a local file.
      * If the local file is not found. It creates the relevant file and folder.
+     * @param filePath a string that represents file path.
+     * @param filePathName a string that represents file path name.
+     * @param dietSession that represents the class diet session
      *
      * @throws IOException If director or file cannot be created.
      */
@@ -64,7 +69,7 @@ public class DietStorage {
     }
 
     /**
-     * Reads the content of the .json file and instantiates as a DietSession
+     * Reads the content of the .json file and instantiates as a DietSession.
      *
      * @param filePath path from source folder to save folder
      * @param filePathName name of file

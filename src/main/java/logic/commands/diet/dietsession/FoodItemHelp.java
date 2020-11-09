@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 
 //@@author zsk612
+/**
+ * A representation of the command for help commands in diet session.
+ */
 public class FoodItemHelp extends Command {
 
     /**

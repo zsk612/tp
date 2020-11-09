@@ -22,6 +22,9 @@ import java.util.logging.Logger;
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
 
 //@@author zsk612
+/**
+ * A class that is responsible for interacting with user in Diet Session.
+ */
 public class DietSession {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private final ArrayList<Food> foodList;
@@ -40,6 +43,12 @@ public class DietSession {
 
     /**
      * Constructs DietSession and initialize command library for dietSession.
+     *
+     * @param typeInput User input for meal type
+     * @param dateInput User input for meal date
+     * @param isNew Boolean that indicates whether the Diet Session is new or not
+     * @param index Integer for the index of the Diet Session
+     * @throws InvalidDateFormatException
      */
     public DietSession(String typeInput, String dateInput, boolean isNew, int index) throws InvalidDateFormatException {
         this.cl = new CommandLib();
@@ -72,7 +81,8 @@ public class DietSession {
 
     /**
      * Starts dietSession and initializes command library for dietSession.
-     *
+     * @param isNew Boolean that indicates whether the Diet Session is new or not
+     * @param index Integer for the index of the Diet Session
      * @throws IOException handles input/output exception
      */
     public void start(boolean isNew, int index) throws IOException {
@@ -125,6 +135,7 @@ public class DietSession {
      *
      * @param input user input for command
      * @throws NullPointerException handles null pointer exception
+     * @throws InvalidCommandWordException handles invalid commands
      */
     private void processCommand(String input) throws NullPointerException, InvalidCommandWordException {
         String[] commParts = parser.parse(input);
@@ -151,6 +162,7 @@ public class DietSession {
     /**
      * Constructs method to save changes to storage file.
      *
+     * @param filePath string for file path
      * @param storage storage for diet manager
      * @param ds      dietSession that is being changed
      */

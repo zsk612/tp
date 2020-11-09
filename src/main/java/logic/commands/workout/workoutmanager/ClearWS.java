@@ -9,6 +9,9 @@ import models.PastRecordList;
 import static ui.CommonUi.clearMsg;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
+/**
+ * A representation of the command for clear commands in workout manager.
+ */
 public class ClearWS extends Command {
 
     /**

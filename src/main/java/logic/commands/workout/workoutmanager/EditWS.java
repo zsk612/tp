@@ -12,6 +12,9 @@ import workout.workoutsession.WorkoutSession;
 
 import static ui.workout.workoutmanager.WorkoutManagerUi.EDIT_SUCCESS;
 
+/**
+ * A representation of the command for edit commands in workout manager.
+ */
 public class EditWS extends Command {
 
     /**

@@ -39,14 +39,35 @@ public class CommonUi {
         System.out.println(String.format(MESSAGE_FORMAT_GENERAL, result));
     }
 
+    /**
+     * Adjusts help message in the correct format.
+     *
+     * @param commandName User command input
+     * @param commandFormat Command formatter
+     * @param description Description of the commands
+     * @return Formatted string of help message
+     */
     public static String helpFormatter(String commandName, String commandFormat, String description) {
         return String.format(HELP_FORMAT, commandName, commandFormat, EMPTY_STRING, description);
     }
 
+    /**
+     * Adjusts clear message in the correct format.
+     *
+     * @param content Clear message
+     * @return Formatted string of clear message
+     */
     public static String clearMsg(String content) {
         return String.format(MESSAGE_CLEAR_FORMAT, content);
     }
 
+    /**
+     * Adjusts search result in the correct format.
+     *
+     * @param num Index of results
+     * @param content Content of searched items
+     * @return Formatted string of the search result
+     */
     public static String searchRecords(int num, String content) {
         return String.format("%d %s been found!", num, content) + LS;
     }
