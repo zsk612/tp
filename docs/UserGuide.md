@@ -62,7 +62,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
 When you first start using The Schwarzenegger, please ensure that you follow the instructions below:
 
 1. Ensure you have Java `11` or above installed in your Computer.
-1. Download the latest `schwarzenegger.jar` from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
+1. Download the latest `CS2113T-F11-1.TheSchwarzenegger.jar` from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
 1. Copy the file to the folder you want to use as the home folder for The Schwarzenegger.
 1. Open Command Prompt (on Windows)  or Terminal (on MacOS/ Linux) and change to the directory of the folder of the application in step 3.
 1. Key in `java -jar [CS2113T-F11-1][TheSchwarzenegger].jar` and press <kbd>Enter</kbd>. If the setup is correct, you should see something like below:
