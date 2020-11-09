@@ -50,9 +50,7 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an Exercise](#deleting-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing All Exercises in This Session](#listing-all-exercises-in-this-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing Users to View Help Commands](#allowing-users-to-view-help-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for Related Exercises](#searching-for-related-exercises)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the Workout Session](#ending-the-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Searching for Related Exercises](#searching-for-related-exercises)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing Past Workout Sessions](#listing-past-workout-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing Workout Session](#editing-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a Workout Session](#deleting-a-workout-session)<br>
@@ -761,24 +759,25 @@ a new exercise will be added to the exerciselist.
 
 **Implementation**
 
-When the user attempts to add a new exercise, the Ui, WorkoutSessionParser 
-and CommandLib class will be accessed and the following sequence of 
-actions are called.
+When the user attempts to add a new exercise, the CommonUi, WorkoutSession, WorkoutSessionParser
+, CommandLib, WorkoutSessionAdd and WorkoutSessionStorage class will be accessed and the following sequence of 
+actions are called to return a CommandResult object containing a message to show to user.
 
 1. User executes `add benchpress /n 6 /w 120`
-     1. `WorkoutSession` calls `Ui.getUserCommand()` to receive user input.
+     1. `WorkoutSession` calls `CommonUi.getUserCommand()` to receive user input.
      2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
 1. Creation of command object.
-     1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `WorkoutSessionAdd`.
+     1. Based on the parsed input, `WorkoutSession` calls `CommandLib` to return the correct Command Object `WorkoutSessionAdd`.
 1. Executing Command
-    1. `WorkoutManager` calls `WorkoutSessionAdd.execute()` with the rest of parsed input.
+    1. `WorkoutSession` calls `WorkoutSessionAdd.execute()` with the rest of parsed input.
     2. `WorkoutSessionAdd` parse the arguments to identify the repetitions and weight for the exercise.
     3. `WorkoutSessionAdd` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
+    4. `WorkoutSessionAdd` returns a `CommandResult` to WorkoutSession`.
+1. Based on `CommandResult`, correct response will be printed to user.
 
-All description, warnings and response will be handled by `ui` to ensure consistence across the app.
-The following sequence diagram shows how the add command works
+All description, warnings and response will be handled by `CommonUi` to ensure consistence across the app.
 
-The sequence diagram below summarizes how creating new workout session works:
+The sequence diagram below summarizes how the add command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
 ![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)
@@ -793,48 +792,109 @@ Figure 4.4.1.1.2. Sub-diagram for Showing Message to User
 #### 4.4.1.2. <a id="deleting-an-exercise">Deleting an Exercise</a>
 
 Users can delete an exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
-the reason, e.g. invalid command or IO related errors. The action will be aborted. If the addition is successful, 
+the reason, e.g. invalid command or IO related errors. The action will be aborted. If the deletion is successful, 
 a new exercise will be added to the exerciselist.
 
 **Implementation**
 
-When the user attempts to delete an exercise, the Ui, WorkoutSessionParser 
-and CommandLib class will be accessed and the following sequence of 
-actions are called to return a command object NewWs.
+When the user attempts to delete an exercise, the CommonUi, WorkoutSession, WorkoutSessionParser
+, CommandLib, WorkoutSessionDelete and WorkoutSessionStorage class will be accessed and the following sequence of 
+actions are called to return a CommandResult object containing a message to show to user.
 
 1. User executes `delete 1`
-     1. `WorkoutSession` calls `Ui.getUserCommand()` to receive user input.
+     1. `WorkoutSession` calls `CommonUi.getUserCommand()` to receive user input.
      2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
 1. Creation of command object.
-     1. Based on the parsed input, `WorkoutManager` calls `CommandLib` to return the correct Command Object `WorkoutSessionDelete`.
+     1. Based on the parsed input, `WorkoutSession` calls `CommandLib` to return the correct Command Object `WorkoutSessionDelete`.
 1. Executing Command
-    1. `WorkoutManager` calls `WorkoutSessionDelete.execute()` with the rest of parsed input.
-    2. `WorkoutSessionDelete` parse the arguments to identify the repetitions and weight for the exercise.
+    1. `WorkoutSession` calls `WorkoutSessionDelete.execute()` with the rest of parsed input.
+    2. `WorkoutSessionDelete` parse the arguments to identify the index of the exercise to be deleted.
+    3. `WorkoutSessionDelete` calls `exerciseList.remove()` to delete the respective exercise.
     3. `WorkoutSessionDelete` calls `WorkOutSession.Storage.writeToFile()` to store information of all exercises recorded. 
+    4. `WorkoutSessionDelete` returns a `CommandResult` to WorkoutSession`.
+1. Based on `CommandResult`, correct response will be printed to user.
 
-All description, warnings and response will be handled by `ui` to ensure consistence across the app.
-The following sequence diagram shows how the add command works
+All description, warnings and response will be handled by `CommonUi` to ensure consistence across the app.
 
-The sequence diagram below summarizes how creating new workout session works:
+The sequence diagram below summarizes how the delete command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionDelete.png)
 
 <a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.3. <a id="listing-all-exercises-in-this-session">Listing All Exercises in This Session</a>
 
+Users can list all exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
+the reason, e.g. invalid command or IO related errors. The action will be aborted. If the listing is successful, 
+the user will be able to see the full list of exercises.
+
+**Implementation**
+
+When the user attempts to list all exercises, the CommonUi, WorkoutSession, WorkoutSessionParser
+, CommandLib, WorkoutSessionList and WorkoutSessionStorage class will be accessed and the following sequence of 
+actions are called to return a CommandResult object containing a message to show to user.
+
+1. User executes `list`
+     1. `WorkoutSession` calls `CommonUi.getUserCommand()` to receive user input.
+     2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
+1. Creation of command object.
+     1. Based on the parsed input, `WorkoutSession` calls `CommandLib` to return the correct Command Object `WorkoutSessionList`.
+1. Executing Command
+    1. `WorkoutSession` calls `WorkoutSessionList.execute()` with the rest of parsed input.
+    2. `WorkoutSessionList` calls `WorkoutSessionList.printList()` to check if the list is empty.
+    3. `WorkoutSessionList.printList()` calls `WorkoutSessionList.formatList()` to arrange the list in a readable and dynamic format for the user.
+    3. `WorkoutSessionList.formatList()` returns a String of formatted output to `WorkoutSessionList.printList()` then to `WorkoutSessionList`. 
+    4. `WorkoutSessionList` returns a `CommandResult` to `WorkoutSession`.
+1. Based on `CommandResult`, correct response will be printed to user.
+
+All description, warnings and response will be handled by `CommonUi` to ensure consistence across the app.
+
+The sequence diagram below summarizes how the list command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionList.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.4. <a id="allowing-users-to-view-help-commands">Allowing Users to View Help Commands</a>
+#### 4.4.1.4. <a id="searching-for-related-exercises">Searching for Related Exercises</a>
 
-![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionHelp.png)
-<a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.5. <a id="searching-for-related-exercises">Searching for Related Exercises</a>
+Users can search for an exercise from a pre-existing list of exercise. The failure to do so will trigger an exception where the user will be notified of 
+the reason, e.g. invalid command or IO related errors. The action will be aborted. If the searching is successful, 
+the user will be able to see the list of exercises that match.
 
+**Implementation**
+
+When the user attempts to search for an exercise from all exercises, the CommonUi, WorkoutSession, WorkoutSessionParser
+, CommandLib, WorkoutSessionSearch and WorkoutSessionStorage class will be accessed and the following sequence of 
+actions are called to return a CommandResult object containing a message to show to user.
+
+1. User executes `search bench`
+     1. `WorkoutSession` calls `CommonUi.getUserCommand()` to receive user input.
+     2. `WorkoutSession` calls `WorkoutSessionParser.workoutSessionParser` to convert the input to a string array.
+1. Creation of command object.
+     1. Based on the parsed input, `WorkoutSession` calls `CommandLib` to return the correct Command Object `WorkoutSessionSearch`.
+1. Executing Command
+    1. `WorkoutSession` calls `WorkoutSessionSearch.execute()` with the rest of parsed input.
+    2. `WorkoutSessionSearch` checks if the search term is empty. If it is empty, `WorkoutSessionSearch` returns a failure result to `WorkoutSession`. Otherwise, the process continues with step `3`
+    3. `WorkoutSessionSearch` calls `WorkoutSessionSearch.formatList()` to search the search term with the exerciseList. If it is empty, `WorkoutSessionSearch.formatList()` returns a failure result to `WorkoutSession`. Otherwise, the process continues with step `4`
+    4. `WorkoutSessionSearch` returns a `CommandResult` to `WorkoutSession`.
+1. Based on `CommandResult`, correct response will be printed to user.
+
+All description, warnings and response will be handled by `CommonUi` to ensure consistence across the app.
+
+The sequence diagram below summarizes how the search command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionSearch.png)
-<a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.6. <a id="ending-the-workout-session">Ending the Workout Session</a>
 
-![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionEnd.png)
+**Design considerations**
+Aspects: Security of stored data
+
+- **Alternative 1 (current choice):** call public methods of Storage class to 
+print the list
+
+    - Pros: pastRecord are private and it can only be manipulated through designed public methods. Only selected data will be printed and viewed.
+    - Cons: Most methods Storage needs to be a static.
+
+- **Alternative 2:** Storage return a readonly list of pastRecord.
+
+    - Pros: More versatile operations can be done.
+    - Cons: All data of pastRecord will be exposed.
+
 <a href="#top">&#8593; Return to Top</a>
+
 #### 4.4.2. <a id="listing-past-workout-sessions">Listing Past Workout Sessions</a>
 The feature to list workoutSessions allows the user to view a summary of all the history workout sessions, including their index, creation date and tags.
 

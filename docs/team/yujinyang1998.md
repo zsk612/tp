@@ -80,5 +80,4 @@ to the project.
 
 + [Searching for related exercises](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#searching-for-related-exercises)
 
-+ [Ending the workout session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#ending-the-workout-session)
 
