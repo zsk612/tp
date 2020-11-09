@@ -131,7 +131,7 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 <a href="#top">&#8593; Return to Top</a>
 
 ### 3.2. <a id="ui-component">Ui Component</a>
-![Ui Component](images/UI_Component.png)
+![Ui Component](pictures/zesong/Ui.png)
 
 API: `Ui.java`
  

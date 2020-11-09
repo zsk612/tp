@@ -8,7 +8,7 @@ import com.google.gson.stream.JsonReader;
 import exceptions.workout.workoutmanager.SchwIoException;
 import logger.SchwarzeneggerLogger;
 import models.PastWorkoutSessionRecord;
-import seedu.duke.Constant;
+import seedu.duke.Constants;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -54,7 +54,7 @@ public class WorkOutManagerStorage {
         logger.info("Start loading files");
 
         ArrayList<PastWorkoutSessionRecord> pastFiles;
-        File file = new File(Constant.PATH_TO_WORKOUT_SESSION_HISTORY);
+        File file = new File(Constants.PATH_TO_WORKOUT_SESSION_HISTORY);
         Type taskListType = new TypeToken<ArrayList<PastWorkoutSessionRecord>>() {
         }.getType();
         try {
@@ -62,7 +62,7 @@ public class WorkOutManagerStorage {
             pastFiles = gson.fromJson(reader, taskListType);
         } catch (FileNotFoundException e) {
             logger.info("File is not found.");
-            createMetaFile(Constant.PATH_TO_WORKOUT_SESSION_HISTORY);
+            createMetaFile(Constants.PATH_TO_WORKOUT_SESSION_HISTORY);
             pastFiles = new ArrayList<>();
         } catch (JsonSyntaxException e) {
             logger.info("File is corrupted.");
@@ -85,7 +85,7 @@ public class WorkOutManagerStorage {
      */
     public void writePastRecords(List<PastWorkoutSessionRecord> pastFiles) throws SchwIoException {
         logger.info("Saving the changes...");
-        File file = new File(Constant.PATH_TO_WORKOUT_SESSION_HISTORY);
+        File file = new File(Constants.PATH_TO_WORKOUT_SESSION_HISTORY);
         FileWriter writer;
         try {
             writer = new FileWriter(file.getPath());
@@ -118,7 +118,7 @@ public class WorkOutManagerStorage {
      * @throws SchwIoException If error occurs in creating the file.
      */
     public String createfile() throws SchwIoException {
-        String newFilePath = Constant.PATH_TO_WORKOUT_SESSION_FOLDER + recordCount + ".json";
+        String newFilePath = Constants.PATH_TO_WORKOUT_SESSION_FOLDER + recordCount + ".json";
         File file = new File(newFilePath);
         file.getParentFile().mkdirs();
         try {

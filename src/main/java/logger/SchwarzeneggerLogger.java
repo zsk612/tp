@@ -6,7 +6,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-import static seedu.duke.Constant.PATH_TO_LOG_FILE;
+import static seedu.duke.Constants.PATH_TO_LOG_FILE;
 
 //@@author tienkhoa16
 /**

@@ -6,8 +6,8 @@ import logic.commands.CommandResult;
 import logic.commands.ExecutionResult;
 import profile.ProfileSession;
 
-import static seedu.duke.Constant.PATH_TO_PROFILE_FILE;
-import static seedu.duke.Constant.PATH_TO_PROFILE_FOLDER;
+import static seedu.duke.Constants.PATH_TO_PROFILE_FILE;
+import static seedu.duke.Constants.PATH_TO_PROFILE_FOLDER;
 
 //@@author tienkhoa16
 

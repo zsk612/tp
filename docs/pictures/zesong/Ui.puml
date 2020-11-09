@@ -1,19 +1,18 @@
 @startuml
-!include ../../umldiagram/style.puml
+skinparam Shadowing false
+hide circle
 
-rectangle "XYZCommandParser"
-
-
-rectangle "CommandLib"
-
-rectangle "Commands"{
-rectangle "Command"
-rectangle "XYZCommand"
+class CommonUi {
+  void showToUser()
+  void getCommand()
+  boolean checkConfirmation()
+  String helpFormatter(String, String, String)
 }
-rectangle "CommandResult"
 
-XYZCommandParser ..> CommandLib
-CommandLib ..> XYZCommand: executes
-XYZCommand -left-|> Command
-XYZCommand .right.> CommandResult: creates
+CommonUi ^-- ClassWorkoutManagerUi
+CommonUi ^-- ClassDietManagerUi
+CommonUi ^-- ClassWorkoutSessionUi
+CommonUi ^-- ClassDietSessionUi
+CommonUi ^-- ClassProfileUi
+
 @enduml

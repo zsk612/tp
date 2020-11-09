@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 /**
  * Represents class that contains all the constants.
  */
-public class Constant {
+public class Constants {
     public static final String COMMAND_WORD_DIET = "diet";
     public static final String COMMAND_WORD_PROFILE = "profile";
     public static final String COMMAND_WORD_WORKOUT = "workout";

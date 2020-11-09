@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 
-import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
+import static seedu.duke.Constants.PATH_TO_DIET_FOLDER;
 import static ui.diet.dietmanager.DietManagerUi.DIET_EDIT_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_ARRAY_OUT_OF_BOUND;
 import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_CORRUPTED_MSG;
