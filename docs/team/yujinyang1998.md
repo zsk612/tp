@@ -38,7 +38,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
           
          + Community:
            + Review Developer Guide from other teams in the class(with non-trival review comments.) (Pull Request: [#57](https://github.com/nus-cs2113-AY2021S1/tp/pull/57).)
-           + Reported bugs for other teams in the class (example: [ped](https://github.com/yujinyang1998/ped/issues)
+           + Reported bugs for other teams in the class (example: [ped](https://github.com/yujinyang1998/ped/issues) )
            + Perform manual testing, reported bugs and gave suggestions to teammates.
              
 #### Contributions to the User Guide
