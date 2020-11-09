@@ -80,7 +80,7 @@ public class DietManager {
      * @param input user input for command.
      * @throws InvalidCommandWordException handles InvalidCommandWordException.
      */
-    private void processCommand(String input) throws InvalidCommandWordException, InvalidDateFormatException,
+    public void processCommand(String input) throws InvalidCommandWordException, InvalidDateFormatException,
             InvalidSearchDateException {
         String[] commParts = parser.parseCommand(input.trim());
         try {
