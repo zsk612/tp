@@ -2,7 +2,7 @@
 !define PLANTUML_HOME %dirpath()/../../umldiagram
 !include PLANTUML_HOME/style.puml
 
-mainframe <b>sd</b> return message to user in WorkoutSession
+mainframe <b>sd</b> show message to user in WorkoutSession
 actor user
 
 WorkoutSession -> CommandResult ++ : getFeedbackMessage(result)

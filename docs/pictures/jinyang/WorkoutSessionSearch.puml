@@ -44,7 +44,7 @@ end
 
 deactivate WorkoutSessionSearch
 
-ref over WorkoutSession, CommandResult, Ui, user: return message to user in WorkoutSession
+ref over WorkoutSession, CommandResult, Ui, user: show message to user in WorkoutSession
 
 
 
