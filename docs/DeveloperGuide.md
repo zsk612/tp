@@ -675,7 +675,7 @@ The sequence diagram below summarizes how listing past Diet sessions work:
     
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.4. <a id = "edit-a-past-diet-sessions">Edit a past diet session:</a> `edit`
+#### 4.3.4. <a id = "edit-a-past-diet-session">Edit a past diet session:</a> `edit`
 
 The feature allows users to edit previously created diet sessions.
 
