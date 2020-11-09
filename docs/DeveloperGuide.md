@@ -29,20 +29,20 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.3. [Editing a Profile](#editing-a-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.4. [Deleting a Profile](#deleting-a-profile)<br>
 4.3. [Diet-related Features](#diet-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List out all commands](#list-out-all-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start recording diet data](#start-recording-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing help message](#showing-help-message)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding food items for the current diet](#adding-food-items-for-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing data for the current diet](#listing-data-for-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current diet](#deleting-data-from-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current diet](#clearing-data-from-the-current-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of diet data](#stopping-the-recording-of-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past diet sessions](#list-all-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past diet session](#edit-a-past-diet-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past diet session](#delete-a-past-diet-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past diet sessions](#clear-all-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Search for past diet sessions](#search-for-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.8. [Exit the diet manager](#exit-the-diet-manager)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.1. [List Out All Commands](#list-out-all-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.2. [Start Recording Diet Data](#start-recording-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.1. [Showing Help Message](#showing-help-message)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.2. [Adding Food Items for the Current Diet](#adding-food-items-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.3. [Listing Data for the Current Diet](#listing-data-for-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting Data from the Current Diet](#deleting-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing Data from the Current Diet](#clearing-data-from-the-current-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the Recording of Diet Data](#stopping-the-recording-of-diet-data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List All Past Diet Sessions](#list-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a Past Diet Session](#edit-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a Past Diet Session](#delete-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all Past Diet Sessions](#clear-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Search for Past Diet Sessions](#search-for-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.8. [Exit the Diet Manager](#exit-the-diet-manager)<br>
 4.4. [Workout-related Features](#workout-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creating a New Workout Session](#creating-a-new-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
@@ -102,7 +102,7 @@ This document describes the software architecture and software design requiremen
 
 ## 3. <a id="design">Design</a>
 This section provides a high level overview of our application, The Schwarzenegger.
-### 3.1. <a id="architect">Architecture</a>
+### 3.1. <a id="architecture">Architecture</a>
 
 ![Architecture](pictures/zesong/Architecture.png)
 
@@ -127,15 +127,13 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 
 ### 3.2. <a id="ui-component">Ui Component</a>
 ![Ui Component](pictures/zesong/Ui.png)
+ 
+The `Ui` package is a combination class where the interactions with the user are formatted in a consistent way. 
 
-API: `Ui.java`
- 
-The `Ui` package is a combination class where all interaction will be made through this component. 
- 
 The `Ui` component,
 
-* Takes in user input
-* Prints out response messages
+* Takes in user commands
+* Formats messages and prints out responses
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -147,7 +145,7 @@ The `Ui` component,
 1. This splits the user input into interpretable portions by other functions.
 1. All commands inherits from base class Command with an `execute()` method. They are stored in a hashmap `CommandLib` and retrieved using user's input as key.
 1. Command interacts with parsers, models and storage to carry out the user's command.
-1. The result of the command execution is encapsulated as a CommandResult object which is passed back to Ui to display the message. 
+1. The result of the command execution is encapsulated as a CommandResult object which is passed back to CommonUi to display the message. 
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -427,6 +425,8 @@ Aspects: Loading of stored data
 
     - Pros: Execution time is fast. 
     - Cons: Profile data is not updated in real time if user edits it in text file while running The Schwarzenegger.
+
+<a href="#top">&#8593; Return to Top</a>
 
 ### 4.3. <a id="diet-related-features">Diet-related Features</a>
 #### 4.3.1. <a id="list-out-all-commands">Listing out all commands:</a> `help`
@@ -924,11 +924,13 @@ All description, warnings and response will be handled by `CommonUi` to ensure c
 The sequence diagram below summarizes how the add command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionAdd.png)
 
-![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)
+Below are the sub-diagrams: <a id="figure-4-4-1-1-1"></a>
+
+![Load Data Sequence Diagram](pictures/jinyang/ParseInputWorkoutSession.png)<br>
 
 Figure 4.4.1.1.1. Sub-diagram for Parsing Input in WorkoutSession
 
-![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.jpg)
+<a id="figure-4-4-1-1-2">![Load Data Sequence Diagram](pictures/jinyang/ReturnMsgToUser.jpg)</a><br>
 
 Figure 4.4.1.1.2. Sub-diagram for Showing Message to User
 
@@ -975,6 +977,8 @@ All description, warnings and response will be handled by `CommonUi` to ensure c
 
 The sequence diagram below summarizes how the delete command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionDelete.png)
+
+You can refer to [Figure 4.4.1.1.1. Sub-diagram for Parsing Input in WorkoutSession](#figure-4-4-1-1-1) and [Figure 4.4.1.1.2. Sub-diagram for Showing Message to User](#figure-4-4-1-1-2) for the corresponding sub-diagrams.
 
 **Design considerations**
 Aspects: Making delete and index to delete as separate or a single input
@@ -1334,7 +1338,7 @@ Whenever you create a pull request to the main repository for The Schwarzenegger
 <a href="#top">&#8593; Return to Top</a>
 
 ### 6.3. <a id="coverage-report">Coverage Report</a>
-We use the IntelliJ IDEA’s coverage analysis tool for coverage reporting. A tutorial on how to install and use this tool can be found [here](#https://www.youtube.com/watch?v=yNYzZvyA2ik).
+We use the IntelliJ IDEA’s coverage analysis tool for coverage reporting. A tutorial on how to install and use this tool can be found [here](https://www.youtube.com/watch?v=yNYzZvyA2ik).
 
 <a href="#top">&#8593; Return to Top</a>
 ### 6.4. <a id="making-a-release">Making a Release</a>
