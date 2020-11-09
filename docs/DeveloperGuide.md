@@ -426,6 +426,7 @@ When the user types `help` in a Diet Manager instance, the following sequence oc
     
 3. Executing Command
     1. The execute() method will call print out the list of commands onto the console with printHelpFormatter() from static CommonUi.java.
+    
 <a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2. <a id="start-recording-diet-data">Start recording diet data:</a> `new`
@@ -511,6 +512,8 @@ When the user types `list` the following sequence occurs.
     1. The total calories of the current meal is also printed.
     
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemList.png)
+    
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2.4. <a id="deleting-data-from-the-current-diet">Deleting data from the current diet session:</a> `delete`
 
@@ -530,6 +533,8 @@ When the user types `delete [INDEX_OF_FOOD]` the following sequence occurs.
     1. The Food ID according to the index based on the ArrayList<Food> is deleted.
     
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemDelete.png)
+    
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2.5. <a id="clearing-data-from-the-current-diet">Clearing all data from the current diet session</a> `clear`
 
@@ -549,6 +554,8 @@ When the user types `clear` the following sequence occurs.
     1. The ArrayList Clear method is called and removes all Food entries from the ArrayList.
     
 ![Load Data Sequence Diagram](pictures/Shukai/FoodItemClear.png)
+    
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.2.6. <a id="stopping-the-recording-of-diet-data">Stopping the recording of diet session data:</a> `end`
 
@@ -563,6 +570,8 @@ When the user types `end` the following sequence occurs.
     
 2. Exiting of inputLoop()
     The inputLoop() exits when userInput.equals("end").
+    
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.3. <a id = "list-all-past-diet-sessions">List all past diet sessions:</a> `list`
 The feature allows users to view all past created diet sessions.
@@ -583,6 +592,9 @@ When the user types `list` in a diet manager instance the following sequence occ
 The sequence diagram below summarizes how listing past Diet sessions work:
 
 ![Load Data Sequence Diagram](pictures/Zeon/DietSessionList.png)
+    
+<a href="#top">&#8593; Return to Top</a>
+
 #### 4.3.4. <a id = "list-all-past-diet-sessions">Edit a past diet session:</a> `edit`
 
 The feature allows users to edit previously created diet sessions.
@@ -602,7 +614,7 @@ When the user types `edit [INDEX_OF_SESSION]` the following sequence occurs.
     1. The `start()` method is then called in the diet session, starting a diet session instance.
     
 4. After Execution
-    1. The diet session instance is then saved by calling `writeToStorageDietSession()` from `DietStorage`
+    1. The diet session instance is saved during every command in Diet Session by calling `writeToStorageDietSession()` from `DietStorage`
 
 The sequence diagram below summarizes how editing Diet session works:
 
@@ -620,6 +632,8 @@ Saving of the user’s Diet sessions:
 
     - Pros: The files will still be saved even if a crash occurs.
     - Cons: Saving often might be taxing on the user's computer especially on slower models.
+    
+<a href="#top">&#8593; Return to Top</a>
 
 #### 4.3.5. <a id = "delete-a-past-diet-session">Delete a previously created diet session:</a> `delete`
 
@@ -642,6 +656,9 @@ When the user types `delete [INDEX_OF_SESSION]` from a Diet manager instance the
 The sequence diagram below summarizes how Diet sessions are deleted:
 
 ![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionDelete.png)
+    
+<a href="#top">&#8593; Return to Top</a>
+
 #### 4.3.6. <a id = "clear-all-past-diet-sessions">Clear all past diet session:</a> `clear`
 
 The feature allows users to clear all previously created diet sessions at once.
@@ -663,6 +680,9 @@ When the user types `clear` the following sequence occurs.
 The sequence diagram below summarizes how Diet sessions are all cleared:
 
 ![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionClear.png)
+    
+<a href="#top">&#8593; Return to Top</a>
+
 #### 4.3.7. <a id = "search-for-past-diet-sessions">Search for past diet session:</a> `search`
 
 The feature allows users to search for previously created diet sessions within a date range or with a specified tag.
@@ -683,7 +703,10 @@ When the user types `search /s 2020-11-01 /e 2020-11-03 /t breakfast` the follow
 
 The sequence diagram below summarizes how Diet sessions is searched:
 
-![Search_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionSearch.png)
+![Search_Diet_Session_Sequence_Diagram](pictures/Zeon/SearchDietSession.png)
+
+<a href="#top">&#8593; Return to Top</a>
+
 #### 4.3.8. <a id = "exit-the-diet-manager">Exit the Diet manager:</a> `end`
 
 The function returns the user back to the main menu of The Schwarzenegger.
