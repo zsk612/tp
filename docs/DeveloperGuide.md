@@ -50,12 +50,13 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an Exercise](#deleting-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing All Exercises in This Session](#listing-all-exercises-in-this-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Searching for related exercises](#searching-for-related-exercises)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Ending the workout session](#ending-the-workout-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing past workout sessions](#442-listing-past-workout-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing workout session](#443-editing-workout-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a workout session](#444-deleting-a-workout-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.4.5. [Searching based on conditions](#445-searching-based-on-conditions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing Users to View Help Commands](#allowing-users-to-view-help-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for Related Exercises](#searching-for-related-exercises)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the Workout Session](#ending-the-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing Past Workout Sessions](#listing-past-workout-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing Workout Session](#editing-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a Workout Session](#deleting-a-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.4.5. [Searching Based on Conditions](#searching-based-on-conditions)<br>
 4.5. [Storage](#workoutSessionStorage)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.5.1. [Storage for Profile](#workoutSessionStorage-for-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Storage for Diet](#workoutSessionStorage-for-diet)<br>
@@ -508,6 +509,8 @@ When the user types `list` the following sequence occurs.
 3. Executing Command
     1. A for loop iterates through the entire ArrayList<Food> and prints out every item with their calories.
     1. The total calories of the current meal is also printed.
+    
+![Load Data Sequence Diagram](pictures/Shukai/FoodItemList.png)
 
 #### 4.3.2.4. <a id="deleting-data-from-the-current-diet">Deleting data from the current diet session:</a> `delete`
 
@@ -525,6 +528,8 @@ When the user types `delete [INDEX_OF_FOOD]` the following sequence occurs.
     
 3. Executing Command
     1. The Food ID according to the index based on the ArrayList<Food> is deleted.
+    
+![Load Data Sequence Diagram](pictures/Shukai/FoodItemDelete.png)
 
 #### 4.3.2.5. <a id="clearing-data-from-the-current-diet">Clearing all data from the current diet session</a> `clear`
 
@@ -542,6 +547,8 @@ When the user types `clear` the following sequence occurs.
     
 3. Executing Command
     1. The ArrayList Clear method is called and removes all Food entries from the ArrayList.
+    
+![Load Data Sequence Diagram](pictures/Shukai/FoodItemClear.png)
 
 #### 4.3.2.6. <a id="stopping-the-recording-of-diet-data">Stopping the recording of diet session data:</a> `end`
 
@@ -558,7 +565,6 @@ When the user types `end` the following sequence occurs.
     The inputLoop() exits when userInput.equals("end").
 
 #### 4.3.3. <a id = "list-all-past-diet-sessions">List all past diet sessions:</a> `list`
-
 The feature allows users to view all past created diet sessions.
 
 **Implementation**  
@@ -657,7 +663,7 @@ When the user types `clear` the following sequence occurs.
 The sequence diagram below summarizes how Diet sessions are all cleared:
 
 ![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionClear.png)
-#### 4.3.7. <a id = "search-for-past-diet-sessions">Search for past diet session:</a> `clear`
+#### 4.3.7. <a id = "search-for-past-diet-sessions">Search for past diet session:</a> `search`
 
 The feature allows users to search for previously created diet sessions within a date range or with a specified tag.
 
@@ -677,7 +683,7 @@ When the user types `search /s 2020-11-01 /e 2020-11-03 /t breakfast` the follow
 
 The sequence diagram below summarizes how Diet sessions is searched:
 
-![Delete_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionSearch.png)
+![Search_Diet_Session_Sequence_Diagram](pictures/Zeon/DietSessionSearch.png)
 #### 4.3.8. <a id = "exit-the-diet-manager">Exit the Diet manager:</a> `end`
 
 The function returns the user back to the main menu of The Schwarzenegger.
@@ -817,15 +823,19 @@ The sequence diagram below summarizes how creating new workout session works:
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionList.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.4. <a id="searching-for-related-exercises">Searching for related exercises</a>
+#### 4.4.1.4. <a id="allowing-users-to-view-help-commands">Allowing Users to View Help Commands</a>
+
+![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionHelp.png)
+<a href="#top">&#8593; Return to Top</a>
+#### 4.4.1.5. <a id="searching-for-related-exercises">Searching for Related Exercises</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionSearch.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.5. <a id="ending-the-workout-session">Ending the workout session</a>
+#### 4.4.1.6. <a id="ending-the-workout-session">Ending the Workout Session</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionEnd.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.2. Listing past workout sessions
+#### 4.4.2. <a id="listing-past-workout-sessions">Listing Past Workout Sessions</a>
 The feature to list workoutSessions allows the user to view a summary of all the history workout sessions, including their index, creation date and tags.
 
 **Implementation**
@@ -861,7 +871,7 @@ print the list
 
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.4.3. Editing workout session
+#### 4.4.3. <a id="editing-workout-session">Editing Workout Session</a>
 User can anytime go back to edit a workout session created in the past such as
 adding or removing exercies in that session.
 
@@ -906,7 +916,7 @@ Past record workoutSessionStorage and model design:
     - Cons: The application initialization will grow quickly as the application scales.
 
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.4. Deleting a workout session
+#### 4.4.4. <a id="deleting-a-workout-session">Deleting a workout Session </a>
 User can delete a workout session created in the past by giving its index.
 
 Each past workout session is stored in a different file name following its creation time. The meta information of these past records such as file name, creation time are stored in another file which will be loaded as the program initlises. When the user tries to delete a file, the application refers to the meta information of the file to locate the file and delete it. Then the meta information of the record will be deleted.
@@ -948,7 +958,7 @@ The sequence diagram below summarizes how deleting past record works:
     - Cons: Tags and dates does not uniquely identify the record hence may result in accidental wrong deletion.
 
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.5. Searching based on conditions
+#### 4.4.5. <a id="searching-based-on-conditions">Searching Based on Conditions</a>
 The feature `search` allows the user to view a summary of all the history 
 workout sessions which satisfies certain conditions.
 

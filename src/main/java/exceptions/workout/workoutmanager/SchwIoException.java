@@ -2,6 +2,7 @@ package exceptions.workout.workoutmanager;
 
 import exceptions.SchwarzeneggerException;
 
+//@@author wgzesg
 /**
  * Represents exception when IOException is thrown in WorkoutManagerStorage.
  */

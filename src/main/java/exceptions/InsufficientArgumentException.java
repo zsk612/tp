@@ -2,6 +2,7 @@ package exceptions;
 
 import static ui.workout.workoutmanager.WorkoutManagerUi.MESSAGE_INSUFFICIENT_ARGUMENT;
 
+//@@author wgzesg
 /**
  * Represents exception when user inputs insufficient arguments to command.
  */

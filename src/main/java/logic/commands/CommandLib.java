@@ -62,6 +62,7 @@ import static seedu.duke.Constant.COMMAND_WORD_VIEW;
 import static seedu.duke.Constant.COMMAND_WORD_WORKOUT;
 import static seedu.duke.Constant.COMMAND_WORD_WRONG;
 
+//@@author wgzesg
 /**
  * A class for extracting the correct Command object for each command word.
  */
@@ -76,6 +77,7 @@ public class CommandLib {
         library = new Hashtable<>();
     }
 
+    //@@author wgzesg
     /**
      * Initializes the commandLib with main menu's commands.
      */
@@ -147,6 +149,7 @@ public class CommandLib {
         library.put(COMMAND_WORD_WRONG, new DietSessionWrong());
     }
 
+    //@@author wgzesg
     /**
      * Initializes the commandLib with diet session's commands.
      */
@@ -160,6 +163,7 @@ public class CommandLib {
         library.put(COMMAND_WORD_WRONG, new FoodItemWrong());
     }
 
+    //@@author wgzesg
     /**
      * Gets specific Command object based on command keyword.
      *
