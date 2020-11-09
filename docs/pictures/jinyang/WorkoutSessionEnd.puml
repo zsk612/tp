@@ -3,8 +3,8 @@
 !include PLANTUML_HOME/style.puml
 
 actor user
-user -> Ui++ : End
-Ui --> WorkoutSession -- : input
+user -> CommonUi++ : End
+CommonUi --> WorkoutSession -- : input
 
 activate WorkoutSession
 
@@ -29,5 +29,5 @@ deactivate WorkoutSessionStorage
 WorkoutSessionEnd --> WorkoutSession : result
 deactivate WorkoutSessionEnd
 
-ref over WorkoutSession, Ui, user: show message to user in WorkoutSession
+ref over WorkoutSession, CommonUi, user: show message to user in WorkoutSession
 @enduml
