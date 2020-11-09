@@ -35,7 +35,7 @@ application {
 }
 
 shadowJar {
-    archiveBaseName = "[CS2113T-F11-1][The Schwarzenegger]"
+    archiveBaseName = "[CS2113T-F11-1][TheSchwarzenegger]"
     archiveClassifier = null
 }
 

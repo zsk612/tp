@@ -2,15 +2,13 @@
 !define PLANTUML_HOME %dirpath()/../../umldiagram
 !include PLANTUML_HOME/style.puml
 
-mainframe <b>sd</b> show message to user in WorkoutSession
-actor user
+mainframe <b>sd</b> parse user input in WorkoutSession
 
-WorkoutSession -> CommandResult ++ : getFeedbackMessage(result)
-CommandResult --> WorkoutSession -- : message
-WorkoutSession -> Ui ++ : showToUser(message)
-destroy CommandResult
-Ui --> user
-deactivate Ui
+activate WorkoutSession
+WorkoutSession -> WorkoutSessionParser ++ : workoutSessionParser(input)
+WorkoutSessionParser --> WorkoutSession -- : parsedInput
 
+WorkoutSession -> CommandLib ++ : getCommand(parsedInput)
+CommandLib --> WorkoutSession -- : command
 
 @enduml
