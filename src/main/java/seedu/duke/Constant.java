@@ -3,6 +3,9 @@ package seedu.duke;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Constants used in the main program.
+ */
 public class Constant {
     public static final String COMMAND_WORD_DIET = "diet";
     public static final String COMMAND_WORD_PROFILE = "profile";
