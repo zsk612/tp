@@ -20,10 +20,9 @@ By: `CS2113T-F11-1` Since: `2020`
 3.5. [Storage Component](#workoutSessionStorage-component)<br>
 4. [**Implementation**](#implementation)<br>
 4.1. [Main Menu-related Features](#main-menu-related-features)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu](#main-help)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.2. [Redirecting to Profile Menu](#redirection-to-profile-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.3. [Redirecting to Diet Menu](#redirection-to-diet-menu)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.1.4. [Redirecting to Workout Menu](#redirecting-to-workout-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Redirecting to Profile Menu](#redirection-to-profile-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.2. [Redirecting to Diet Menu](#redirection-to-diet-menu)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.1.3. [Redirecting to Workout Menu](#redirecting-to-workout-menu)<br>
 4.2. [Profile-related Features](#profile-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.1. [Adding a Profile](#adding-a-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.2.2. [Viewing a Profile](#viewing-a-profile)<br>
@@ -196,20 +195,15 @@ All profile/ diet/ workout-related features can be broken down into 4 distinct f
 For diet and workout-related features, there is an additional functionality of searching.
 
 ### 4.1. <a id="main-menu-related-features">Main Menu-related Features</a>
-
-#### 4.1.1. <a id="main-help">Help Command for Main Menu</a>
-
-The `help` command allows users to view all the available commands in the main page. The command for showing help message is `help`.
-
-#### 4.1.2. <a id="redirecting-to-profile-menu">Redirecting to Profile Menu</a>
+#### 4.1.1. <a id="redirecting-to-profile-menu">Redirecting to Profile Menu</a>
 
 The redirection to profile page allows the user to enter Profile Menu to create, edit, view and delete user profile. The command for this redirection is `profile`.
 
-#### 4.1.3. <a id="redirecting-to-diet-menu">Redirecting to Diet Menu</a>
+#### 4.1.2. <a id="redirecting-to-diet-menu">Redirecting to Diet Menu</a>
 
 The redirection to profile page allows the user to enter Diet Menu to create, edit, list and delete diet sessions. The command for this redirection is `diet`.
 
-#### 4.1.4. <a id="redirecting-to-workout-menu">Redirecting to Workout Menu</a>
+#### 4.1.3. <a id="redirecting-to-workout-menu">Redirecting to Workout Menu</a>
 
 The redirection to profile page allows the user to enter Workout Menu to create, edit, list and delete workout sessions. The command for this redirection is `workout`.
 
@@ -222,10 +216,10 @@ If the creation is successful, a confirmation message on the newly created profi
 
 **Implementation**
 
-When the user attempts to add a new profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+When the user attempts to add a new profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
-    1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
+    1. `ProfileSession` calls `CommonUi.getCommand()` to receive user input.
     1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileAdd` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileAdd`.
@@ -238,21 +232,33 @@ When the user attempts to add a new profile, the ProfileSession, Ui, ProfilePars
     1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how creating a new profile works:
 
+<div align=”center”>
+
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
+</div>
+
 Below are the sub-diagrams: <a id="figure-4-2-1"></a>
+
+<div align=”center”>
 
 ![Figure 4.2.1](pictures/khoa/ParseInput.png)<br>
 **Figure 4.2.1.** _Sub-diagram for Parsing Input in ProfileSession_
 
+</div>
+
+<div align=”center”>
+
 <a id="figure-4-2-2">![Figure 4.2.2](pictures/khoa/ShowMessage.png)</a><br>
 **Figure 4.2.2.** _Sub-diagram for Showing Message to User in ProfileSession_
+
+</div>
 
 **Design considerations**
 
@@ -277,10 +283,10 @@ If the data loading is successful, a message on the added profile will be displa
 
 **Implementation**
 
-When the user attempts to view an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile, DietManager and CommandResult classes will be accessed. The following sequence of steps will then occur:
+When the user attempts to view an added profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile, DietManager and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `view`
-    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
+    1. `ProfileSession` calls `CommonUi.getUserCommand()` to receive user input.
     1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileView` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileView`.
@@ -291,13 +297,17 @@ When the user attempts to view an added profile, the ProfileSession, Ui, Profile
     1. Based on user's calories intake today and string representation of `Profile`, `ProfileView` returns a result to `ProfileSession`.    
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how viewing an added profile works:
 
+<div align=”center”>
+
 ![Load Data Sequence Diagram](pictures/khoa/ViewProfile.png)
+
+</div>
 
 You can refer to [Figure 4.2.1. Sub-diagram for Parsing Input in ProfileSession](#figure-4-2-1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#figure-4-2-2) for the corresponding sub-diagrams.
 
@@ -325,10 +335,10 @@ If the editing is successful, a confirmation message on the edited profile will 
 
 **Implementation**
 
-When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+When the user attempts to edit a profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `edit /w 60`
-    1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
+    1. `ProfileSession` calls `CommonUi.getCommand()` to receive user input.
     1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileEdit` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileEdit`.
@@ -342,9 +352,9 @@ When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser,
     1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how creating a new profile works:
 
@@ -376,24 +386,24 @@ If the deletion is successful, a confirmation message on the profile deletion wi
 
 **Implementation**
 
-When the user attempts to delete an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
+When the user attempts to delete an added profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `delete`
-    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
+    1. `ProfileSession` calls `CommonUi.getUserCommand()` to receive user input.
     1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileDelete` object.
    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileDelete`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileDelete.execute()` with the rest of parsed input.
     1. `ProfileDelete` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileDelete` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
-    1. `ProfileDelete` calls `Ui.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `4`.
+    1. `ProfileDelete` calls `CommonUi.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `4`.
     1. `ProfileDelete` calls `ProfileStorage.saveData()` to save a `null` object which represents a deleted profile.
     1. `ProfileDelete` returns a result to `ProfileSession`.   
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how deleting an added profile works:
 
