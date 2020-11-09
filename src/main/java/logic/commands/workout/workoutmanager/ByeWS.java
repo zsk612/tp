@@ -5,6 +5,7 @@ import logic.commands.CommandResult;
 import exceptions.EndException;
 import exceptions.SchwarzeneggerException;
 
+//@@author wgzesg
 public class ByeWS extends Command {
 
     /**

@@ -5,6 +5,7 @@ import logic.commands.CommandResult;
 import exceptions.InvalidCommandWordException;
 import exceptions.SchwarzeneggerException;
 
+//@@author wgzesg
 public class WrongWS extends Command {
 
     /**

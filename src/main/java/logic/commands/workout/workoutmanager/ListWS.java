@@ -7,6 +7,7 @@ import models.PastRecordList;
 
 import static logic.commands.ExecutionResult.OK;
 
+//@@author wgzesg
 public class ListWS extends Command {
 
     /**

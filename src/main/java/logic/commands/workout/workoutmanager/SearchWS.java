@@ -6,6 +6,7 @@ import logic.commands.ExecutionResult;
 import exceptions.SchwarzeneggerException;
 import models.PastRecordList;
 
+//@@author wgzesg
 public class SearchWS extends Command {
 
     /**

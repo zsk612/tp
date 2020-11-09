@@ -12,7 +12,7 @@ import ui.workout.workoutmanager.WorkoutManagerUi;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+//@@author wgzesg
 public class WorkoutManager {
 
     private static final Logger logger = SchwarzeneggerLogger.getInstanceLogger();

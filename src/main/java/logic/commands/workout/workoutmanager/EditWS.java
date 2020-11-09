@@ -13,6 +13,7 @@ import workout.workoutsession.WorkoutSession;
 import static ui.workout.workoutmanager.WorkoutManagerUi.EDIT_SUCCESS;
 import static ui.workout.workoutmanager.WorkoutManagerUi.START_NEW_SESSION;
 
+//@@author wgzesg
 public class EditWS extends Command {
 
     /**

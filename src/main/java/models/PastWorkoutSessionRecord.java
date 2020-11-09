@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+//@@author wgzesg
 public class PastWorkoutSessionRecord implements Comparable<PastWorkoutSessionRecord> {
 
     private final String filePath;

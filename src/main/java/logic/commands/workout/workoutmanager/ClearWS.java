@@ -9,6 +9,7 @@ import models.PastRecordList;
 import static ui.CommonUi.clearMsgFormatter;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
+//@@author wgzesg
 public class ClearWS extends Command {
 
     /**

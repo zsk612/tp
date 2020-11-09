@@ -10,6 +10,7 @@ import logic.parser.WorkoutManagerParser;
 
 import static ui.workout.workoutmanager.WorkoutManagerUi.DELETE_SUCCESS;
 
+//@@author wgzesg
 public class DeleteWS extends Command {
 
     /**

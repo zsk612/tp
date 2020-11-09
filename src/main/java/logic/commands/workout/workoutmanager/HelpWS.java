@@ -7,6 +7,7 @@ import exceptions.SchwarzeneggerException;
 
 import static ui.CommonUi.helpFormatter;
 
+//@@author wgzesg
 public class HelpWS extends Command {
 
     /**

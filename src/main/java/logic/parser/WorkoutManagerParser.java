@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 
+//@@author wgzesg
 public class WorkoutManagerParser extends CommonParser {
 
     public static final String TAG_SPECIFIER = "/t";

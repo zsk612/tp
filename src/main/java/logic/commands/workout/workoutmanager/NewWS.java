@@ -13,6 +13,7 @@ import static ui.workout.workoutmanager.WorkoutManagerUi.NEW_SUCCESS;
 import static ui.workout.workoutmanager.WorkoutManagerUi.START_NEW_SESSION;
 import static logic.parser.WorkoutManagerParser.parseTags;
 
+//@@author wgzesg
 public class NewWS extends Command {
 
     /**

@@ -4,6 +4,7 @@ import ui.CommonUi;
 
 import static ui.profile.ProfileUi.MESSAGE_HELP_FOR_MORE_INFO;
 
+//@@author wgzesg
 public class WorkoutManagerUi extends CommonUi {
 
     public static String CLEAR_ABORTED = "You have aborted the action!";

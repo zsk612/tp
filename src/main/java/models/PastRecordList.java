@@ -19,6 +19,7 @@ import static ui.CommonUi.searchRecords;
 import static logic.parser.WorkoutManagerParser.parseList;
 import static logic.parser.WorkoutManagerParser.parseSearchConditions;
 
+//@@author wgzesg
 /**
  * A singleton class representing list of past records.
  */
