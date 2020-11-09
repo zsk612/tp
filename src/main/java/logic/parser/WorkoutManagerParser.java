@@ -3,7 +3,6 @@ package logic.parser;
 import exceptions.InvalidDateFormatException;
 import exceptions.workout.workoutmanager.NotANumberException;
 import logger.SchwarzeneggerLogger;
-import models.PastRecordList;
 import models.PastWorkoutSessionRecord;
 
 import java.time.LocalDateTime;
@@ -12,11 +11,10 @@ import java.util.function.Predicate;
 import java.util.logging.Level;
 
 //@@author wgzesg
-public class WorkoutManagerParser {
 /**
  * A class that is responsible for parsing user inputs in Workout Manager.
  */
-public class WorkoutManagerParser extends CommonParser {
+public class WorkoutManagerParser {
 
     public static final String TAG_SPECIFIER = "/t";
     public static final String TAG_SPLITTER = ",";
