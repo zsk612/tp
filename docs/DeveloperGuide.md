@@ -203,7 +203,6 @@ All profile/ diet/ workout-related features can be broken down into 4 distinct f
 For diet and workout-related features, there is an additional functionality of searching.
 
 ### 4.1. <a id="main-menu-related-features">Main Menu-related Features</a>
-
 This feature allows user to access the different menu for workout, diet and profile. The failure to do so will trigger an exception where the user will be notified of the reason, e.g. invalid command. The action will be aborted, and the program will advise the user to type "help" for command syntax reference. 
 
 If the command is successful,the user will be put into the respective menu and a starting message on the entered menu will be displayed to the user. 
@@ -217,9 +216,7 @@ When the user attempts to access different menu for workout, diet and profile me
     1. `Duke` calls `CommonParser.parseCommand()` to parse user input into a string array.
 1. `Duke` calls `CommandLib.getCommand` with the string arry containing the inputs.
 1. Depending on the input,`Duke` creates `ProfileSession` or `DietManager` or `WorkoutManager` object.
-1. After entering the `ProfileSession` or `DietManager` or `WorkoutManager` objects, the menus will have their own seperate tasks.
-
-All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
+1. After entering the `ProfileSession` or `DietManager` or `WorkoutManager` objects, the menus will have their own separate tasks.
 
 The sequence diagram below summarizes how Main Menu works:
 
@@ -236,10 +233,10 @@ If the creation is successful, a confirmation message on the newly created profi
 
 **Implementation**
 
-When the user attempts to add a new profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+When the user attempts to add a new profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`
-    1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
+    1. `ProfileSession` calls `CommonUi.getCommand()` to receive user input.
     1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileAdd` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileAdd`.
@@ -252,9 +249,9 @@ When the user attempts to add a new profile, the ProfileSession, Ui, ProfilePars
     1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how creating a new profile works:
 
@@ -291,10 +288,10 @@ If the data loading is successful, a message on the added profile will be displa
 
 **Implementation**
 
-When the user attempts to view an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile, DietManager and CommandResult classes will be accessed. The following sequence of steps will then occur:
+When the user attempts to view an added profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile, DietManager and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `view`
-    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
+    1. `ProfileSession` calls `CommonUi.getUserCommand()` to receive user input.
     1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileView` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileView`.
@@ -305,9 +302,9 @@ When the user attempts to view an added profile, the ProfileSession, Ui, Profile
     1. Based on user's calories intake today and string representation of `Profile`, `ProfileView` returns a result to `ProfileSession`.    
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getCommandResult()` to get the `CommandResult` object.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how viewing an added profile works:
 
@@ -339,10 +336,10 @@ If the editing is successful, a confirmation message on the edited profile will 
 
 **Implementation**
 
-When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+When the user attempts to edit a profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
 1. User executes `edit /w 60`
-    1. `ProfileSession` calls `Ui.getCommand()` to receive user input.
+    1. `ProfileSession` calls `CommonUi.getCommand()` to receive user input.
     1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileEdit` object.
     1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileEdit`.
@@ -356,9 +353,9 @@ When the user attempts to edit a profile, the ProfileSession, Ui, ProfileParser,
     1. `ProfileAdd` returns a successful result to `ProfileSession`.
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how creating a new profile works:
 
@@ -390,24 +387,24 @@ If the deletion is successful, a confirmation message on the profile deletion wi
 
 **Implementation**
 
-When the user attempts to delete an added profile, the ProfileSession, Ui, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
+When the user attempts to delete an added profile, the ProfileSession, CommonUi, ProfileParser, Command, CommandLib, ProfileStorage, Profile and CommandResult classes will be accessed. The following sequence of steps will then occur:
 
 1. User executes `delete`
-    1. `ProfileSession` calls `Ui.getUserCommand()` to receive user input.
-    1. `ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
+    1. `ProfileSession` calls `CommonUi.getUserCommand()` to receive user input.
+    1. ProfileSession` calls `ProfileParser.parseCommand()` to parse user input into a string array.
 1. Creating `ProfileDelete` object.
    1. Based on the parsed input, `ProfileSession` calls `CommandLib` to return the correct Command Object `ProfileDelete`.
 1. Executing command.
     1. `ProfileSession` calls `ProfileDelete.execute()` with the rest of parsed input.
     1. `ProfileDelete` calls `ProfileStorage.loadData()` to load existing profile in the system. If there is no existing profile, `ProfileDelete` returns a failure result to `ProfileSession`. Otherwise, the process continues with step `3`.
-    1. `ProfileDelete` calls `Ui.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `4`.
+    1. `ProfileDelete` calls `CommonUi.CheckConfirmation()` to get user's confirmation on the deletion since this action is irrevocable. If user  fails to confirm, `ProfileDelete` returns an abort result to `ProfileSession`. Otherwise, the process continues with step `4`.
     1. `ProfileDelete` calls `ProfileStorage.saveData()` to save a `null` object which represents a deleted profile.
     1. `ProfileDelete` returns a result to `ProfileSession`.   
 1. Prompting result to user.
     1. `ProfileSession` calls `CommandResult.getFeedbackMessage()` to get the execution feedback message.
-    1. `ProfileSession` calls `Ui.showToUser()` to show result to the user.
+    1. `ProfileSession` calls `CommonUi.showToUser()` to show result to the user.
 
-All descriptions, warnings and responses will be handled by `Ui` to ensure consistence across the app.
+All descriptions, warnings and responses will be handled by `CommonUi` to ensure consistence across the app.
 
 The sequence diagram below summarizes how deleting an added profile works:
 
@@ -1328,7 +1325,7 @@ To run all build-related tasks:
 Otherwise, use the error report provided to resolve the issue before trying again. 
 
 <a href="#top">&#8593; Return to Top</a>
-### 6.2. <a id="continuous-integration>Continuous Integration</a>
+### 6.2. <a id="continuous-integration">Continuous Integration</a>
 We use Github Actions for continuous integration. No setup will be required for users who fork from the main The Schwarzenegger repository.
 
 Whenever you create a pull request to the main repository for The Schwarzenegger:

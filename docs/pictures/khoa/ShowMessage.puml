@@ -7,9 +7,9 @@ mainframe <b>sd</b> parse user input in ProfileSession
     activate ProfileSession
     ProfileSession -> CommandResult ++ : getFeedbackMessage(result)
     CommandResult --> ProfileSession -- : message
-    ProfileSession -> Ui ++ : showToUser(message)
+    ProfileSession -> CommonUi ++ : showToUser(message)
     destroy CommandResult
-    Ui --> user
-    deactivate Ui
+    CommonUi --> user
+    deactivate CommonUi
 
 @enduml
