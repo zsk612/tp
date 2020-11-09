@@ -238,27 +238,15 @@ All descriptions, warnings and responses will be handled by `CommonUi` to ensure
 
 The sequence diagram below summarizes how creating a new profile works:
 
-<div align=”center”>
-
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
-
-</div>
 
 Below are the sub-diagrams: <a id="figure-4-2-1"></a>
 
-<div align=”center”>
-
-![Figure 4.2.1](pictures/khoa/ParseInput.png)<br>
 **Figure 4.2.1.** _Sub-diagram for Parsing Input in ProfileSession_
 
-</div>
-
-<div align=”center”>
 
 <a id="figure-4-2-2">![Figure 4.2.2](pictures/khoa/ShowMessage.png)</a><br>
 **Figure 4.2.2.** _Sub-diagram for Showing Message to User in ProfileSession_
-
-</div>
 
 **Design considerations**
 
@@ -303,11 +291,7 @@ All descriptions, warnings and responses will be handled by `CommonUi` to ensure
 
 The sequence diagram below summarizes how viewing an added profile works:
 
-<div align=”center”>
-
 ![Load Data Sequence Diagram](pictures/khoa/ViewProfile.png)
-
-</div>
 
 You can refer to [Figure 4.2.1. Sub-diagram for Parsing Input in ProfileSession](#figure-4-2-1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#figure-4-2-2) for the corresponding sub-diagrams.
 
