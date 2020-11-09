@@ -51,7 +51,9 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
       Below are my contributions to the User Guide.
       They show my ability to write documentation for end-users.
       ```
-      + [Starting a New Diet Session](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-help) 
+      + [Viewing Help](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-help)
+      
+      + [Starting a New Diet Session](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-start) 
       
       + [Listing All Past Diet Sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#diet-list)
       
@@ -72,18 +74,20 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
       They show my ability to write technical documentation for other developers.
       ```
       
-      + [List out all commands](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#list-out-all-commands)
+      + [List Out All Commands](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#list-out-all-commands)
       
-      + [Start recordings diet data](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#start-recording-diet-data)
+      + [Start Recordings Diet Data](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#start-recording-diet-data)
       
-      + [List all past diet sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#list-all-past-diet-sessions)
+      + [List All Past Diet Sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#list-all-past-diet-sessions)
       
-      + [Edit a past diet session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#edit-a-past-diet-session)
+      + [Edit a Past Diet Session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#edit-a-past-diet-session)
       
-      + [Delete a past diet session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#delete-a-past-diet-session)
+      + [Delete a Past Diet Session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#delete-a-past-diet-session)
       
-      + [Clear all past diet sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#clear-all-past-diet-sessions)
+      + [Clear All Past Diet Sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#clear-all-past-diet-sessions)
       
-      + [Exit the diet manager](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#exit-the-diet-manager)
+      + [Search for Past Diet Sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#search-for-past-diet-sessions)
+      
+      + [Exit the Diet Manager](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#exit-the-diet-manager)
       
       + [Appendix B: User Stories](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#appendix-b-user-stories)
