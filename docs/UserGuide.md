@@ -127,8 +127,8 @@ You can see a complete list of available commands under Main Menu and how to use
 
 __Format:__ `help`<br>
 
-**Example:** Whenever you want to see get assistant in the Main Menu, you follow the steps below:
-1. Type `help` to your console and press <kbd>Enter</kbd> to execute it.
+**Example:** Whenever you want to see get assistance in the Main Menu, you follow the steps below:
+1. Type `help` into your console and press <kbd>Enter</kbd> to execute it.
 
     ![main-help-1](pictures/UG_screenshots/main-help-step-1.png)
 
@@ -142,7 +142,7 @@ The program will direct you to the Profile Menu.
 __Format:__ `profile`
   
 **Example**: 
-1. You type `profile` to your console and press <kbd>Enter</kbd> to execute it.
+1. Type `profile` into your console and press <kbd>Enter</kbd> to execute it.
 1. If the redirection is successful, you should be able to see the message below:
 
     ```
@@ -161,7 +161,7 @@ The program will direct you to the Diet Menu.
 __Format:__ `diet`  
 
 **Example**: 
-1. You type `diet` to your console and press <kbd>Enter</kbd> to execute it.
+1. Type `diet` into your console and press <kbd>Enter</kbd> to execute it.
 
 2. If the redirection is successful, you should be able to see the message below:
 
@@ -181,7 +181,7 @@ The program will direct you to the Workout Menu.
 __Format:__ `workout`
 
 **Example**: 
-1. You type `workout` to your console and press <kbd>Enter</kbd> to execute it.
+1. Type `workout` into your console and press <kbd>Enter</kbd> to execute it.
 1. If the redirection is successful, you should be able to see the message below:
 
     ```
@@ -201,7 +201,7 @@ You use this command when you want to terminate The Schwarzenegger.
 __Format:__ `end`  
 
 **Example**: 
-1. You type `end` to your console and press <kbd>Enter</kbd> to execute it.
+1. Type `end` into your console and press <kbd>Enter</kbd> to execute it.
 1. If the program exits successfully, you should be able to see the message below:
 
     ```
@@ -221,7 +221,7 @@ You can see a complete list of available commands under Profile Menu and how to 
 __Format:__ `help`  
 
 **Example:**
-1. Type `help` to your console and press <kbd>Enter</kbd> to execute it.
+1. Type `help` into your console and press <kbd>Enter</kbd> to execute it.
 2. If the execution is successful, you should be able to see the message below:
 
 ```
@@ -245,11 +245,11 @@ You can add your profile for the most customized experience in The Schwarzenegge
 __Format:__ `add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]`  
 
 **Example:** When you want to add your profile to the application, you follow the steps below:
-1. Make sure that you are in Profile Menu.<br>
+1. Ensure that you are in Profile Menu.<br>
 Refer to [Section 3.1.2. Entering Profile Menu](#main-profile) to learn how to enter Profile Menu.
     ![add-profile-step-1](pictures/UG_screenshots/add-profile-step-1.png)
     
-2. Type `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500` to your console and press <kbd>Enter</kbd> to execute it.<br>
+2. Type `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500` into your console and press <kbd>Enter</kbd> to execute it.<br>
 This command adds a profile with the name Schwarzenegger, height 188 cm, weight 113 kg, expected weight 100 kg and expected daily intake of 2500 calories.
 
     ![add-profile-step-2](pictures/UG_screenshots/add-profile-step-2.png)
@@ -258,7 +258,7 @@ This command adds a profile with the name Schwarzenegger, height 188 cm, weight 
 
     ![add-profile-step-3](pictures/UG_screenshots/add-profile-step-3.png)
 
-> :warning: The Schwarzenegger currently does not support name containing "/" character.
+> :warning: The Schwarzenegger currently does not support names containing "/" character.
 
 #### 3.2.3. <a id="profile-view">Viewing a Profile: `view`</a>
 You can view your profile recorded in the program. The Schwarzenegger will also show the additional information below:
@@ -269,7 +269,7 @@ You can view your profile recorded in the program. The Schwarzenegger will also 
 __Format:__ `view`  
 
 **Example**:
-1. Type `view` to your console and press <kbd>Enter</kbd> to execute it.
+1. Type `view` into your console and press <kbd>Enter</kbd> to execute it.
 2. If the execution is successful, you should be able to see the message below:
 
 ```
@@ -296,7 +296,7 @@ __Format:__ `edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]>
 
 **Example**:
 - If you want to edit your height, you follow the steps below:
-    1. Type `edit /h 180` to your console and press <kbd>Enter</kbd> to execute it. <br>
+    1. Type `edit /h 180` into your console and press <kbd>Enter</kbd> to execute it. <br>
     This command edits your current height to 180 centimeters.
     2. If the execution is successful, you should be able to see the confirmation message below:
     
@@ -312,7 +312,7 @@ __Format:__ `edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]>
             ______________________________________________________________________________
         ```
 - If you want to edit your height and weight, you follow the steps below:
-    1. Type `edit /h 180 /w 50` to your console and press <kbd>Enter</kbd> to execute it.<br>
+    1. Type `edit /h 180 /w 50` into your console and press <kbd>Enter</kbd> to execute it.<br>
      This command edits your current height to 180 centimeters and current weight to 50 kilograms.
     2. If the execution is successful, you should be able to see the confirmation message below:
 
@@ -329,7 +329,7 @@ __Format:__ `edit </n [NAME]> </h [HEIGHT]> </w [WEIGHT]> </e [EXPECTED_WEIGHT]>
         ```
 
 - If you want to edit your height, weight and expected weight, you follow the steps below:
-    1. Type `edit /h 180 /w 50 /e 55` to your console and press <kbd>Enter</kbd> to execute it.<br>
+    1. Type `edit /h 180 /w 50 /e 55` into your console and press <kbd>Enter</kbd> to execute it.<br>
         This command edits your current height to 180 centimeters, current weight to 50 kilograms and expected weight to 55 kilograms.
     2. If the execution is successful, you should be able to see the confirmation message below:
     
@@ -355,8 +355,8 @@ This command is dangerous as you will not be able to recover the data. After typ
 __Format:__ `delete`  
 
 **Example**:
-1. Type `delete` to your console and press <kbd>Enter</kbd> to execute it.
-2. Type `YES` to your console and press <kbd>Enter</kbd> to confirm the deletion.
+1. Type `delete` into your console and press <kbd>Enter</kbd> to execute it.
+2. Type `YES` into your console and press <kbd>Enter</kbd> to confirm the deletion.
 3. If the execution is successful, you should be able to see the message below:
 ```    
     _________________________________________________________________________________________________
@@ -372,7 +372,7 @@ You use this command to exit Profile Menu and return to the Main Menu.
 __Format:__ `end`  
 
 **Example**:
-1. Type `end` to your console and press <kbd>Enter</kbd> to execute it.
+1. Type `end` into your console and press <kbd>Enter</kbd> to execute it.
 2. If the execution is successful, you should be able to see the message below:
 
 ```
@@ -712,7 +712,7 @@ You can see a complete list of available commands under Workout Menu and how to 
 
 __Format:__ `help`
 
-1. Type `help` to your console and press <kbd>Enter</kbd> to execute it.
+1. Type `help` into your console and press <kbd>Enter</kbd> to execute it.
 
     ![main-help-1](pictures/UG_screenshots/workout-help-step-1.png)
 
