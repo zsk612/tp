@@ -19,7 +19,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
   + **Implemented the enhancement to parse the users' commands**
       + Functionality: This enhancement supports the parsing of users' commands for the program to execute. 
       + Justification: This enhancement is essential as it identifies the operations to perform and extracts the relevant data from the users' commands.
-      + Highlights: The user does not need to input the options in order in their commands. This improves the user experience. 
+      + Highlights: The user does not need to input the options in order in their commands. This offers more flexibility to the user and thus enhances the user experience. To support this flexibility, more efforts were required in the string processing to extract the options in the command.
       
 + **Minor Enhancement**:
     + Implemented `CommandResult` class to handle user's command execution result.

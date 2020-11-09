@@ -18,7 +18,6 @@ By: `CS2113T-F11-1` Since: `2020`
 3.3. [Logic Component](#logic-component)<br>
 3.4. [Model Component](#model-component)<br>
 3.5. [Storage Component](#workoutSessionStorage-component)<br>
-3.6. [Common Classes](#common-classes)<br>
 4. [**Implementation**](#implementation)<br>
 4.1. [Main Menu-related Features](#main-menu-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu](#main-help)<br>
@@ -71,13 +70,12 @@ By: `CS2113T-F11-1` Since: `2020`
 6.3. [Coverage Report](#coverage-report)<br>
 6.4. [Making a Release](#making-a-release)<br>
 6.5. [Managing Dependencies](#managing-dependencies)<br>
-  * [**Appendices**](#appendices)
+* [**Appendices**](#appendices)
     + [Appendix A: Product Scope](#appendix-a-product-scope)
     + [Appendix B: User Stories](#appendix-b-user-stories)
-    + [Appendix C: Value proposition - Use cases](#appendix-c-value-proposition---use-cases)
-    + [Appendix D: Non-Functional Requirements](#appendix-d-non-functional-requirements)
-    + [Appendix E: Glossary](#appendix-e-glossary)
-    + [Appendix F: Supported Formats of Date Input](#appendix-f-supported-formats-of-date-input)
+    + [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)
+    + [Appendix D: Glossary](#appendix-d-glossary)
+    + [Appendix E: Supported Formats of Date Input](#appendix-e-supported-formats-of-date-input)
 
 ## 1. <a id="intro">Introduction</a>
 ### 1.1.  <a id="background">Background</a>
@@ -190,11 +188,6 @@ The `saveData()` method in workoutSessionStorage.profile is called after the use
 
 <a href="#top">&#8593; Return to Top</a>
 
-### 3.6. <a id="common-classes">Common Classes</a> 
-Classes used by multiple components are in the `seedu.duke` and the `ui` package, specifically Constant.java and CommonUi.java.
-
-<a href="#top">&#8593; Return to Top</a>
-
 ## 4. <a id="implementation">Implementation</a>
 This section describes some details on how the features are being implemented. All profile/ diet/ workout-related features.
 
@@ -253,7 +246,13 @@ The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
-![Load Data Sequence Diagram](pictures/khoa/ParseInput.png)
+Below are the sub-diagrams: <a id="figure-4-2-1"></a>
+
+![Figure 4.2.1](pictures/khoa/ParseInput.png)<br>
+**Figure 4.2.1.** _Sub-diagram for Parsing Input in ProfileSession_
+
+<a id="figure-4-2-2">![Figure 4.2.2](pictures/khoa/ShowMessage.png)</a><br>
+**Figure 4.2.2.** _Sub-diagram for Showing Message to User in ProfileSession_
 
 **Design considerations**
 
@@ -299,6 +298,8 @@ All descriptions, warnings and responses will be handled by `Ui` to ensure consi
 The sequence diagram below summarizes how viewing an added profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/ViewProfile.png)
+
+You can refer to [Figure 4.2.1. Sub-diagram for Parsing Input in ProfileSession](#figure-4-2-1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#figure-4-2-2) for the corresponding sub-diagrams.
 
 **Design considerations**
 
@@ -349,6 +350,8 @@ The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/EditProfile.png)
 
+You can refer to [Figure 4.2.1. Sub-diagram for Parsing Input in ProfileSession](#figure-4-2-1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#figure-4-2-2) for the corresponding sub-diagrams.
+
 **Design considerations**
 
 Parsing of the user’s input command:
@@ -395,6 +398,8 @@ All descriptions, warnings and responses will be handled by `Ui` to ensure consi
 The sequence diagram below summarizes how deleting an added profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/DeleteProfile.png)
+
+You can refer to [Figure 4.2.1. Sub-diagram for Parsing Input in ProfileSession](#figure-4-2-1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#figure-4-2-2) for the corresponding sub-diagrams.
 
 **Design considerations**
 
@@ -1008,7 +1013,7 @@ or 1 or 2 criteria during search.
 
 
 The user can attach variable number of tags after `/t` and one date after `/d`. The date must be specified in certain formats for it to be recognisable. Else, it will be treated as there is no date criteria given.
-[See here](#appendix-g-supported-formats-of-date-input) for all supported formats.
+[See here](#appendix-e-supported-formats-of-date-input) for all supported formats.
 
 The tag criterion selects sessions which contains all the tags that the user specified in the search. The date criterion selects the sessions which is created on that date. Only sessions that satisfies all conditions will be selected and displayed.
 
@@ -1026,8 +1031,8 @@ When the user attempts to list workoutSessions, the WorkoutManger, DeleteWS, Wor
 1. Executing Command
     1. `WorkoutManager` calls `SearchWS.execute()` to execute the command
     3. `SearchWS` calls `PastRecorList.search()`
-    1. `PastRecorList` will call `WorkoutManagerParser.parse` to parse the arguments into an array of predicates
-    1. `PastRecorList` filters the pastRecord arraylist and return a string representation of the filtered records to `WorkoutManager`
+    1. `PastRecordList` will call `WorkoutManagerParser.parse` to parse the arguments into an array of predicates
+    1. `PastRecordList` filters the pastRecord arraylist and return a string representation of the filtered records to `WorkoutManager`
     6. `WorkoutManager` returns a `CommandResult`.
 1. Based on `CommandResult`, correct response will be printed to user.
 
@@ -1138,10 +1143,10 @@ We have use types of tests:
 e.g. profile.UtilsTest
 
 1. Integration tests that are checking the integration of multiple code units (those code units are assumed to be working).
-e.g. workoutSessionStorage.profile.ProfileStorageTest
+e.g. logic.commands.workout.workoutsession.WorkoutSessionAddTest
 
-1. Hybrids of unit and integration tests. These test are checking multiple code units as well as how the are connected together.
-e.g. logic.LogicManagerTest
+1. Hybrids of unit and integration tests. These test are checking multiple code units as well as how they are connected together.
+e.g. profile.ProfileSessionTest
 
 <a href="#top">&#8593; Return to Top</a>
 ## 6. <a id="dev-ops">Dev Ops</a>
@@ -1194,8 +1199,13 @@ Currently, the [Gson library](#https://github.com/google/gson) is being used for
 __Target user profile__:
 
 * Can type fast.    
-* Comfortable with using command line interface.  
+* Is comfortable with using command line interface.  
 * Gyms regularly
+* Keeps track of their diet.
+
+__Value Proposition__: 
+* Manages workout and diet faster with greater efficiency than a typical GUI based fitness manager application.
+* Gives users health advice based on their calorie intake of the day and weight expectation.
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -1228,11 +1238,7 @@ __Target user profile__:
 
 <a href="#top">&#8593; Return to Top</a>
 
-### Appendix C: Value proposition
-
-<a href="#top">&#8593; Return to Top</a>
-
-### Appendix D: Non-Functional Requirements
+### Appendix C: Non-Functional Requirements
 Below are the non-functional requirements of The Schwarzenegger:
 1. Should work on any mainstream OS as long as it has Java `11` or above installed.
 2. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than a program that uses the mouse.
@@ -1242,13 +1248,13 @@ Below are the non-functional requirements of The Schwarzenegger:
 
 <a href="#top">&#8593; Return to Top</a>
 
-### Appendix E: Glossary
+### Appendix D: Glossary
 
 * *Mainstream OS* - Windows, Linux, Unix, MacOS  
  
 <a href="#top">&#8593; Return to Top</a>
 
-### Appendix F: Supported Formats of Date Input
+### Appendix E: Supported Formats of Date Input
 Here shows all 12 valid formats.
     
     `yyyyMMdd HH:mm`

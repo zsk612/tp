@@ -7,7 +7,7 @@ activate ProfileSession
 user -> Ui++ : Add Profile Command
 Ui --> ProfileSession -- : input
 
-ref over ProfileSession, ProfileParser, CommandLib: parse user input in Profile Menu
+ref over ProfileSession, ProfileParser, CommandLib: parse user input in ProfileSession
 
 ProfileSession -> Command ++ : execute()
 Command -> ProfileStorage ++ : loadData()
@@ -30,11 +30,6 @@ end
 deactivate Command
 destroy Command
 
-ProfileSession -> CommandResult ++ : getFeedbackMessage(result)
-CommandResult --> ProfileSession -- : message
-ProfileSession -> Ui ++ : showToUser(message)
-destroy CommandResult
-Ui --> user
-deactivate Ui
+ref over user, ProfileSession, Ui: show message to user in ProfileSession
 
 @enduml
