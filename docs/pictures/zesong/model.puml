@@ -1,26 +1,25 @@
 @startuml
-rectangle "User" {
+
+rectangle  "PastRecordList" {
+}
+rectangle  "Past workout records" {
+rectangle "pastRecord"
 }
 
-rectangle  "body" {
-rectangle "Ui"
-rectangle "CommandLibrary"
-rectangle "Model"
-rectangle "DietManager"
-rectangle "ProfileManager"
-rectangle "WorkoutManager"
+rectangle  "Food" {
+rectangle "food"
 }
 
-Ui --> CommandLibrary
-CommandLibrary -down-> ProfileManager
-CommandLibrary -down-> DietManager
-CommandLibrary -down-> WorkoutManager
+rectangle  "Exercises" {
+rectangle "exercise"
+}
 
-rectangle "Storage" {
+rectangle  "ExerciseList" {
 }
-rectangle "Duke" {
+
+rectangle  "Profile" {
+rectangle "profile"
 }
-User -down-> Ui
-Duke -> Storage
-Duke -down->  body
+PastRecordList *--> pastRecord: contains
+ExerciseList *--> exercise: contains
 @enduml
