@@ -49,9 +49,9 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an Exercise](#deleting-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing All Exercises in This Session](#listing-all-exercises-in-this-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing users to view help commands](#4414-Allowing-users-to-view-help-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for related exercises](#4415-Searching-for-related-exercises)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the workout session](#4416-Ending-the-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing users to view help commands](#allowing-users-to-view-help-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for related exercises](#searching-for-related-exercises)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the workout session](#ending-the-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing past workout sessions](#442-listing-past-workout-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing workout session](#443-editing-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a workout session](#444-deleting-a-workout-session)<br>
@@ -788,15 +788,15 @@ The sequence diagram below summarizes how creating new workout session works:
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionList.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.4. Allowing users to view help commands
+#### 4.4.1.4. <a id="allowing-users-to-view-help-commands">Allowing users to view help commands</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionHelp.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.5. Searching for related exercises
+#### 4.4.1.5. <a id="searching-for-related-exercises">Searching for related exercises</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionSearch.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.6. Ending the workout session
+#### 4.4.1.6. <a id="ending-the-workout-session">Ending the workout session</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionEnd.png)
 <a href="#top">&#8593; Return to Top</a>

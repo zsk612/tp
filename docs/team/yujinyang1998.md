@@ -9,81 +9,78 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
 
 + **Role**: Developer
 
-+ **Responsibility**: Deliverables and deadlines
++ **Responsibility**: Workout Session
  
 + **Major enhancement**:
    + **Search Workout Sessions**
-      + Functionality: This enhancement allows the user to search for specific diet sessions within a date range of a specified tag.
-      + Justification: This feature improves the product significantly because a user first have to take down the ingredients they have, and using the application makes it convenience to look through the list of ingredients in the application.
+      + Functionality: This enhancement allows the user to search for specific exercises within the current list of exercises.
+      + Justification: This feature improves the product significantly because this allows the user to see at a glance what they want to focus on.
       
-      + Highlights: This enhancement prevents expired food to be added to the application, therefore increasing food safety for user consumption. 
+      + Highlights: This enhancement shows the user a targeted list with an easy to read formatting, allowing for quick reading at a glance. 
       
-   + **Search Ingredient**
-      + Functionality: With this enhancement, it allows user to search for ingredients that user already have or newly bought. 
-      + Justification: This feature allows user to search for something very quickly, instead of looking through a whole list of ingredients. 
-      + Highlights: User can easily find common or similar ingredients that is available through a simple search.
+   + **Dynamic list formatting**
+      + Functionality: With this enhancement, it changes the format of the list based on the max length of the name of exercise added. 
+      + Justification: This feature allows the list shown to the user to look nice and proper even when the name of the exercise is very long. 
+      + Highlights: This was used in displaying the list for both list and search functions.
       
-      + **Search Recipe**
-            + Functionality: With this enhancement, it allows user to search for similar name recipe that user added. 
-            + Justification: This feature allows user to search for similar recipe name so that they can view and compare the ingredients used. 
-            + Highlights: User can easily find similar recipes' name through a simple search. 
-           
-         + **Search Chore**
-            + Functionality: With this enhancement, it allows user to search for chore that user added. 
-            + Justification: This feature allows user to search for chore that requires their attention.
-            + Highlights: User can easily find unfinished chores through a simple search. 
+   + **Handling of different orders of parameters**
+      + Functionality: With this enhancement, it allows user to use any sequence of entering parameters when adding an exercise. 
+      + Justification: This feature allows user to enter an exercise with more options of input. 
             
       + **Minor enhancement**:
-         + **View Help**
-            + This feature allows user to view all the available commands in Kitchen Helper and also the description of the commands. This feature can be easily be used by typing `help` in the command line.
+         + **List Exercises**
+            + This feature allows user to view all the exercise in the current workout session in a nicely formatted list. This feature can be easily be used by typing `list` in the command line.
             
-      + **Code contribution**: [Functional and Test code](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/#search=jinfayap&sort=groupTitle&sortWithin=title&since=2020-03-01&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false)
+      + **Code contribution**: [Functional and Test code](https://nus-cs2113-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=yujinyang1998&sort=groupTitle&sortWithin=title&since=2020-09-27&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship)
       
       + **Other contributions**:
-         + Project management:
-           + Ensure that the team members are always aware of weekly deadlines and deliverables.
+         + Coherent output format:
+           + Ensure that the team members had standardised formatting when showing messages to the user.
            
          + Documentation:
-           + Created use cases and updated them into the Developer Guide. (Pull Request: [#145](https://github.com/AY1920S2-CS2113T-M16-2/tp/pull/145))
-           + Did the layout for User Guide (Pull Request: [#91](https://github.com/AY1920S2-CS2113T-M16-2/tp/pull/91), [#104](https://github.com/AY1920S2-CS2113T-M16-2/tp/pull/104))
+           + Added Workout Session and logic components into the Developer Guide. (Pull Request: [#105](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/105))
+           + Added Workout Session components for User Guide (Pull Request: [#84](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/84), [#221](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/221)) 
           
          + Community:
-           + Review Pull Request from teammates(with non-trival review comments.) (Pull Request: [#131](https://github.com/AY1920S2-CS2113T-M16-2/tp/pull/131).)
-           + Reported bugs for other teams in the class (example: [1](https://github.com/jinfayap/ped/issues/7), [2](https://github.com/jinfayap/ped/issues/8), [3](https://github.com/jinfayap/ped/issues/5))
+           + Review Developer Guide from other teams in the class(with non-trival review comments.) (Pull Request: [#57](https://github.com/nus-cs2113-AY2021S1/tp/pull/57).)
+           + Reported bugs for other teams in the class (example: [ped](https://github.com/yujinyang1998/ped/issues)
            + Perform manual testing, reported bugs and gave suggestions to teammates.
              
-      #### Contributions to the User Guide
-      ```
-      Given below are sections I contributed to the User Guide.   
-      They showcase my ability to write documentation targeting end-users.
-      ```
-      + [Adding an ingredient](https://ay1920s2-cs2113t-m16-2.github.io/tp/UserGuide#331-adding-an-ingredient-addingredient-jin-fa) 
+#### Contributions to the User Guide
+   ```
+   Given below are sections I contributed to the User Guide.   
+   They showcase my ability to write documentation targeting end-users.
+   ```
+  + [Adding Food Items to the Current Diet Session: `add`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-add) 
+  
+  + [Listing Food Items from the Current Diet Session: `list`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-list)
+  
+  + [Deleting Food Items from the Current Diet Session: `delete`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-delete)
+  
+  + [Clearing All Food Items from the Current Diet Session: `clear`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-clear)
+  
+  + [Searching for Food Items from the Current Diet Session: `search`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-search)
+  
+  + [Ending the Current Diet Session: `end`](https://ay2021s1-cs2113t-f11-1.github.io/tp/UserGuide.html#ws-end)
       
-      + [Search for ingredient](https://ay1920s2-cs2113t-m16-2.github.io/tp/UserGuide#334-search-for-ingredient-searchingredient-jin-fa)
-      
-      + [Search for recipe](https://ay1920s2-cs2113t-m16-2.github.io/tp/UserGuide#344-search-for-recipe-searchrecipe-jin-fa)
-      
-      + [Search for chore](https://ay1920s2-cs2113t-m16-2.github.io/tp/UserGuide#354-search-for-chore-searchchore-jin-fa)
-      
-      #### Contributions to the Developer Guide
-      
-      ```
-      Given below are sections I contributed to the Developer Guide. 
-      They showcase my ability to write technical documentation and the technical depth of my contributions
-      to the project.
-      ```
-      
-      + [Addition of ingredient](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#411-addition-of-ingredient)
-      
-      + [Search for ingredients based on keyword(s)](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#414-search-for-ingredients-based-on-keywords)
-      
-      + [Search for recipe based on keyword(s)](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#425-search-for-recipe-based-on-keywords)
-      
-      + [Search for chore based on keyword(s)](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#434-search-for-chore-based-on-keywords)
-      
-      + [Part of Use cases in Appendix C](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#appendix-c-value-proposition---use-cases)
-      
-      + Instructions for Manual Testing in Appendix F (Example: [1](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#f2-add-an-ingredient)
-      , [2](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#f5-search-for-ingredient)
-      , [3](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#f10-search-for-recipe)
-      , [4](https://ay1920s2-cs2113t-m16-2.github.io/tp/DeveloperGuide#f14-search-for-chore))  
+   
+#### Contributions to the Developer Guide
+
+```
+Given below are sections I contributed to the Developer Guide. 
+They showcase my ability to write technical documentation and the technical depth of my contributions
+to the project.
+```
+
++ [Adding an Exercise](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#adding-an-exercise)
+
++ [Deleting an Exercise](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#deleting-an-exercise)
+
++ [Listing All Exercises in This Session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#listing-all-exercises-in-this-session)
+
++ [Allowing users to view help commands](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#allowing-users-to-view-help-commands)
+
++ [Searching for related exercises](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#searching-for-related-exercises)
+
++ [Ending the workout session](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#ending-the-workout-session)
+
