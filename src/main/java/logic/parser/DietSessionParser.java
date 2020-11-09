@@ -11,17 +11,8 @@ import java.util.logging.Logger;
 /**
  * A class that is responsible for parsing user inputs in Diet Session.
  */
-public class DietSessionParser {
+public class DietSessionParser extends CommonParser {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
-
-    
-    public String[] parse(String comm) {
-        if (comm.contains(" ")) {
-            return comm.split(" ", 2);
-        } else {
-            return new String[]{comm, "filler"};
-        }
-    }
 
     /**
      * Processes the name of the food item.

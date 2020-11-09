@@ -37,6 +37,9 @@ public class ProfileStorage {
 
     /**
      * Constructs Storage object.
+     *
+     * @param pathToProfileFolder Path to profile data folder.
+     * @param pathToProfileFile Path to profile data file.
      */
     public ProfileStorage(Path pathToProfileFolder, Path pathToProfileFile) {
         gson = new GsonBuilder().setPrettyPrinting().create();

@@ -12,11 +12,16 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import static logic.commands.ExecutionResult.FAILED;
+import static profile.Constants.NORMAL_WEIGHT_AVERAGE;
+import static profile.Constants.NORMAL_WEIGHT_THRESHOLD;
+import static profile.Constants.UNDER_WEIGHT_THRESHOLD;
 import static seedu.duke.Constant.COMMAND_WORD_VIEW;
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
+import static ui.CommonUi.EMPTY_STRING;
 import static ui.profile.ProfileUi.MESSAGE_ENOUGH_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_MORE_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_PROFILE_NOT_EXIST;
+import static ui.profile.ProfileUi.MESSAGE_SET_EXPECTED_WEIGHT;
 import static ui.profile.ProfileUi.MESSAGE_VIEW_PROFILE;
 
 //@@author tienkhoa16
@@ -70,19 +75,46 @@ public class ProfileView extends Command {
             Profile profile = storage.loadData();
             assert profile != null : "profile should not be null after loading";
 
-            double totalCalories = new DietManager().getDateTotalCalories(pathToDietData, date);
-            double caloriesToGoal = profile.getCalories() - totalCalories;
-
-            String caloriesMessage;
-            if (caloriesToGoal > 0) {
-                caloriesMessage = String.format(MESSAGE_MORE_CALORIES, caloriesToGoal);
-            } else {
-                caloriesMessage = MESSAGE_ENOUGH_CALORIES;
-            }
-
-            return new CommandResult(String.format(MESSAGE_VIEW_PROFILE, profile.toString(), caloriesMessage));
+            return new CommandResult(String.format(MESSAGE_VIEW_PROFILE, profile.toString(),
+                    getCalorieProgressMsg(profile), getExpectedWeightTip(profile)).trim());
         } catch (InvalidSaveFormatException e) {
             return new CommandResult(String.format(MESSAGE_PROFILE_NOT_EXIST, COMMAND_WORD_VIEW), FAILED);
         }
+    }
+
+    /**
+     * Gets message for user's today calorie intake progress.
+     *
+     * @param profile User's profile.
+     * @return Message for user's today calorie intake progress.
+     */
+    private String getCalorieProgressMsg(Profile profile) {
+        double totalCalories = new DietManager().getDateTotalCalories(pathToDietData, date);
+        double caloriesToGoal = profile.getCalories() - totalCalories;
+
+        String caloriesMessage;
+        if (caloriesToGoal > 0) {
+            caloriesMessage = String.format(MESSAGE_MORE_CALORIES, caloriesToGoal);
+        } else {
+            caloriesMessage = MESSAGE_ENOUGH_CALORIES;
+        }
+        return caloriesMessage;
+    }
+
+    /**
+     * Gets tip for setting expected weight to achieve Normal Weight classification.
+     *
+     * @param profile User's profile.
+     * @return Tip for setting expected weight to achieve Normal Weight classification.
+     */
+    private String getExpectedWeightTip(Profile profile) {
+        double bmiIndex = profile.calculateBmi(profile.getHeight(), profile.getExpectedWeight());
+
+        if (bmiIndex < UNDER_WEIGHT_THRESHOLD || bmiIndex > NORMAL_WEIGHT_THRESHOLD) {
+            double normalWeight = Math.pow((double) profile.getHeight() / 100, 2) * NORMAL_WEIGHT_AVERAGE;
+            return String.format(MESSAGE_SET_EXPECTED_WEIGHT, normalWeight, normalWeight);
+        }
+
+        return EMPTY_STRING;
     }
 }

@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
-import static ui.CommonUi.clearMsg;
+import static ui.CommonUi.clearMsgFormatter;
 import static ui.diet.dietmanager.DietManagerUi.CLEAR_RECORD;
 import static ui.diet.dietmanager.DietManagerUi.DIET_CLEAR_MSG;
 import static ui.diet.dietmanager.DietManagerUi.DIET_MENU_NAME;
@@ -39,7 +39,7 @@ public class DietSessionClear extends Command {
                 for (int index = 0; index < Objects.requireNonNull(listOfFiles).length; index++) {
                     listOfFiles[index].delete();
                 }
-                resultMessage = clearMsg(DIET_CLEAR_MSG);
+                resultMessage = clearMsgFormatter(DIET_CLEAR_MSG);
                 logger.log(Level.INFO, "Cleared all diet sessions");
             } else {
                 resultMessage = CLEAR_ABORTED;

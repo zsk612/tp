@@ -57,7 +57,8 @@ public class WorkoutManagerParser extends CommonParser {
      * @param arr User input.
      * @return A list of predicate which will be used as search conditions.
      */
-    public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseSearchConditions(String arr) {
+    public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseSearchConditions(String arr)
+            throws InvalidDateFormatException {
         ArrayList<String> tags = new ArrayList<>();
         ArrayList<Predicate<PastWorkoutSessionRecord>> test = new ArrayList<>();
 
@@ -112,7 +113,8 @@ public class WorkoutManagerParser extends CommonParser {
      * @param args user input.
      * @return predicates to limit period of record being listed.
      */
-    public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseList(String args) {
+    public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseList(String args)
+            throws InvalidDateFormatException {
         ArrayList<Predicate<PastWorkoutSessionRecord>> test = new ArrayList<>();
 
         // parse start date
@@ -142,13 +144,9 @@ public class WorkoutManagerParser extends CommonParser {
         return test;
     }
 
-    private static LocalDateTime getDate(String content) {
+    private static LocalDateTime getDate(String content) throws InvalidDateFormatException {
         LocalDateTime start;
-        try {
-            start = DateParser.parseDate(content.trim());
-        } catch (InvalidDateFormatException e) {
-            start = null;
-        }
+        start = DateParser.parseDate(content.trim());
         return start;
     }
 }

@@ -7,7 +7,6 @@ import exceptions.profile.InvalidSaveFormatException;
 import logger.SchwarzeneggerLogger;
 import logic.commands.Command;
 import logic.commands.CommandLib;
-import logic.commands.CommandResult;
 import logic.parser.CommonParser;
 import models.Profile;
 import storage.profile.ProfileStorage;
@@ -33,6 +32,9 @@ public class Duke {
     private CommonUi ui;
     private CommonParser parser;
 
+    /**
+     * Constructs Duke object.
+     */
     private Duke() {
         logger = SchwarzeneggerLogger.getInstanceLogger();
         cl = new CommandLib();
@@ -96,7 +98,7 @@ public class Duke {
             Command cm = cl.getCommand(commParts[COMMAND_TYPE_INDEX]);
 
             try {
-                CommandResult rs = cm.execute(commParts[COMMAND_ARGS_INDEX]);
+                cm.execute(commParts[COMMAND_ARGS_INDEX]);
             } catch (SchwarzeneggerException e) {
                 if (e instanceof EndException) {
                     break;

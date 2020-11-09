@@ -49,9 +49,9 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.1. [Adding an Exercise](#adding-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.2. [Deleting an Exercise](#deleting-an-exercise)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.3. [Listing All Exercises in This Session](#listing-all-exercises-in-this-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing users to view help commands](#4414-Allowing-users-to-view-help-commands)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for related exercises](#4415-Searching-for-related-exercises)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the workout session](#4416-Ending-the-workout-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.4. [Allowing users to view help commands](#allowing-users-to-view-help-commands)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.5. [Searching for related exercises](#searching-for-related-exercises)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4.1.6. [Ending the workout session](#ending-the-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.2. [Listing past workout sessions](#442-listing-past-workout-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing workout session](#443-editing-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a workout session](#444-deleting-a-workout-session)<br>
@@ -788,15 +788,15 @@ The sequence diagram below summarizes how creating new workout session works:
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionList.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.4. Allowing users to view help commands
+#### 4.4.1.4. <a id="allowing-users-to-view-help-commands">Allowing users to view help commands</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionHelp.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.5. Searching for related exercises
+#### 4.4.1.5. <a id="searching-for-related-exercises">Searching for related exercises</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionSearch.png)
 <a href="#top">&#8593; Return to Top</a>
-#### 4.4.1.6. Ending the workout session
+#### 4.4.1.6. <a id="ending-the-workout-session">Ending the workout session</a>
 
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionEnd.png)
 <a href="#top">&#8593; Return to Top</a>
@@ -1127,37 +1127,37 @@ __Target user profile__:
 
 |Priority|Version| As a ... | I want to ... | So that I can ...|
 |--------|--------|----------|---------------|------------------|
-|```HIGH```|v1.0|New user|Create a user profile|Add new profiles to store my data|
-|```HIGH```|v1.0|User|View my profile in the database|reference my data|
-|```HIGH```|v1.0|User|Save my profile into the database|retrieve it in subsequent launches of the app|
+|```HIGH```|v1.0|New user|View the available commands easily|Learn more about the product before I use it|
+|```HIGH```|v1.0|New user|Create a user profile|Add a new profile to store my data|
+|```HIGH```|v1.0|User|View my profile in the database|Reference my added data and know my fitness classification|
+|```HIGH```|v1.0|User|Save my profile into the database|Retrieve it in subsequent launches of the app|
 |```HIGH```|v1.0|User|Load my profile from the database at the start of the app|view my added user profile|
-|```HIGH```|v1.0|User|Delete my profile from the database|Delete an outdated profile from the database|
-|```HIGH```|v1.0|User|Create a new workout session|start a recorded workout session|
-|```HIGH```|v1.0|User|Add moves into a workout session|personalise each workout session|
-|```HIGH```|v1.0|User|Delete workout session record|correct accidental typos|
+|```HIGH```|v1.0|User|Delete my profile from the database|Correct accidental typos|
+|```HIGH```|v1.0|User|Create a new workout session|Start a recorded workout session|
+|```HIGH```|v1.0|User|Add moves into a workout session|Personalise and record moves in each workout session|
+|```HIGH```|v1.0|User|Delete workout session record|Correct accidental typos|
 |```HIGH```|v1.0|User|End my current workout session|Be sure that my workout has ended|
-|```HIGH```|v1.0|User|Check my current workout session record|do my workout and keep track of everything easily|
-|```HIGH```|v1.0|User|List out all my past diet session records|check what I have eaten in the past|
-|```HIGH```|v1.0|User|Create a diet session with date and tags|identify when I ate which meal|
-|```HIGH```|v1.0|User|add different kinds of food into my diet|keep track fo what I eat|
-|```HIGH```|v1.0|User|Save my diet records|view it next time|
-|```HIGH```|v1.0|User|Close the program|end my session|
-|```MEDIUM```|v1.0|New user|View the available commands easily|learn more about the product before I use it.|
-|```MEDIUM```|v1.0|User|Edit user profile|change my data if something changes|
-|```MEDIUM```|v2.0|User|Clear all my diet sessions|clear memory space on my storage to store new things|
-|```MEDIUM```|v2.0|User|Clear all my workout session records|clear all past redundant data|
-|```LOW```|v2.0|User|Search for past workout sessions|easily filter through the data that I don't need|
-|```LOW```|v2.0|User|Search for my past diet sessions|see whether I have been eating properly lately|
+|```HIGH```|v1.0|User|Check my current workout session record|Do my workout and keep track of everything easily|
+|```HIGH```|v1.0|User|List out all my past diet session records|Check what I have eaten in the past|
+|```HIGH```|v1.0|User|Create a diet session with date and tags|Identify when I ate which meal|
+|```HIGH```|v1.0|User|Add different kinds of food into my diet|Keep track fo what I eat|
+|```HIGH```|v1.0|User|Save my diet records|View it next time|
+|```MEDIUM```|v1.0|User|Edit user profile|Change my data if something changes|
+|```MEDIUM```|v2.0|User|Clear all my diet sessions|Clear memory space on my storage to store new things|
+|```MEDIUM```|v2.0|User|Clear all my workout session records|Clear all past redundant data|
+|```LOW```|v2.0|User|Search for past workout sessions|Easily filter through the data that I don't need|
+|```LOW```|v2.0|User|Search for my past diet sessions|See whether I have been eating properly lately|
 |```LOW```|v2.1|User|View how much more I need to eat in a day|plan my later meals easier|
+|```LOW```|v2.1|User|Get recommendation on my weight expectation|Adjust accordingly to achieve the Normal Weight BMI classification|
 
 <a href="#top">&#8593; Return to Top</a>
 
-### Appendix C: Value proposition - Use cases
+### Appendix C: Value proposition
 
 <a href="#top">&#8593; Return to Top</a>
 
 ### Appendix D: Non-Functional Requirements
-
+Below are the non-functional requirements of The Schwarzenegger:
 1. Should work on any mainstream OS as long as it has Java `11` or above installed.
 2. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than a program that uses the mouse.
 3. Should not require user to install program file.

@@ -8,14 +8,14 @@ import storage.diet.DietStorage;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 //@@author CFZeon
 public class DietSessionStorageTest {
 
     private static final String TEST_SAVES_FOLDER_DIET = "src/test/java/diet/dietmanager/saves/";
+    private static final String TEST_SAVES_FOLDER_CORRUPTED_DIET = "src/test/java/diet/dietmanager/corruptedsaves/";
     private static final String TEST_SAVE_NAME = "2020-05-04 breakfast";
-    private static final String TEST_CORRUPTED_FILE = "2020-05-05 breakfast";
 
     /**
      * Tests readDietSession method of class DietStorage when data from file is read.
@@ -26,6 +26,17 @@ public class DietSessionStorageTest {
         DietSession loadedInstance = null;
         loadedInstance = storage.readDietSession(TEST_SAVES_FOLDER_DIET, "2020-11-05 breakfast.json");
         assertNotNull(loadedInstance);
+    }
+
+    /**
+     * Tests readDietSession method of class DietStorage when corrupted data from file is read.
+     */
+    @Test
+    void testReadDietSession_corruptedDietData_returnsNull() {
+        DietStorage storage = new DietStorage();
+        DietSession loadedInstance = null;
+        loadedInstance = storage.readDietSession(TEST_SAVES_FOLDER_CORRUPTED_DIET, "2020-11-09 unspecified.json");
+        assertNull(loadedInstance);
     }
 
     /**

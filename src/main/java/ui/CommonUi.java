@@ -2,8 +2,9 @@ package ui;
 
 import java.util.Scanner;
 
-import static profile.Constants.GREEDY_WHITE_SPACE;
+import static logic.parser.CommonParser.GREEDY_WHITE_SPACE;
 
+//@@author tienkhoa16
 /**
  * A base class for interacting with user.
  */

@@ -2,8 +2,11 @@ package storage.diet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.stream.MalformedJsonException;
 import diet.dietsession.DietSession;
 import logger.SchwarzeneggerLogger;
+import ui.diet.dietsession.DietSessionUi;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,6 +17,9 @@ import java.io.Reader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_CORRUPTED;
+import static ui.diet.dietmanager.DietManagerUi.DIET_FILE_NOT_FOUND;
+
 //@@author CFZeon
 /**
  * This class holds the data loaded during runtime and read and writes to the local storage.
@@ -22,6 +28,7 @@ public class DietStorage {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
     private static Gson gson;
     private static File file = null;
+    private static DietSessionUi ui = new DietSessionUi();
 
     /**
      * Initialise the database with locally stored data.
@@ -86,9 +93,12 @@ public class DietStorage {
             dietSession = gson.fromJson(reader, DietSession.class);
             reader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("There seems to be no file");
+            ui.showToUser(DIET_FILE_NOT_FOUND);
+            logger.log(Level.WARNING, "Diet Session file not found");
+        } catch (MalformedJsonException | JsonSyntaxException e) {
+            ui.showToUser(DIET_FILE_CORRUPTED);
+            logger.log(Level.WARNING, "Corrupted diet session");
         } catch (IOException e) {
-            e.printStackTrace();
             logger.log(Level.WARNING, "Could not read diet session");
         }
         return dietSession;

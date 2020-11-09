@@ -41,7 +41,7 @@ public class DateParser {
      *
      * @param targetString String input to be parsed.
      * @return Parsed result in the form of LocalDateTime or null if no value parsing is found.
-     * @throws InvalidDateFormatException When date input is invalid
+     * @throws InvalidDateFormatException If date format is invalid.
      */
     public static LocalDateTime parseDate(String targetString) throws InvalidDateFormatException {
         for (DateTimeFormatter dtf : dtFormatters) {
