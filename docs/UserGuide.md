@@ -567,7 +567,7 @@ Expected outcome:
 > :warning: Your food items cannot be recovered once cleared!
 
 
-#### 3.3.2.6. <a id="meal-clear">Searching for Food Items from the Current Diet Session: `search`</a>
+#### 3.3.2.6. <a id="meal-search">Searching for Food Items from the Current Diet Session: `search`</a>
 You can search for all food items that contain the word entered, in the current diet session.
 
 
