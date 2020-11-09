@@ -86,7 +86,6 @@ public abstract class Command {
      * @param foodList List containing food in diet session.
      * @param storage Diet Storage to load and save data.
      * @param index Integer variable that shows the index of diet session
-     * @param foodList Arraylist that contains all the food items
      * @return An object CommandResult containing the executing status and feedback message to be displayed
      *         to user.
      * @throws InvalidCommandWordException If command word is invalid.

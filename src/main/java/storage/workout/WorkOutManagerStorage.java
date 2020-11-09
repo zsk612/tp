@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * A class that is responsible for storing Workout Manager data.
+ */
 public class WorkOutManagerStorage {
 
     /**

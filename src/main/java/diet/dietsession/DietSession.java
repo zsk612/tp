@@ -48,7 +48,7 @@ public class DietSession {
      * @param dateInput User input for meal date
      * @param isNew Boolean that indicates whether the Diet Session is new or not
      * @param index Integer for the index of the Diet Session
-     * @throws InvalidDateFormatException
+     * @throws InvalidDateFormatException handles invalid date input
      */
     public DietSession(String typeInput, String dateInput, boolean isNew, int index) throws InvalidDateFormatException {
         this.cl = new CommandLib();

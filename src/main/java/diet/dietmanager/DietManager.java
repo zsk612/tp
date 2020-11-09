@@ -83,6 +83,8 @@ public class DietManager {
      *
      * @param input user input for command.
      * @throws InvalidCommandWordException handles InvalidCommandWordException.
+     * @throws InvalidDateFormatException handles invalid date input
+     * @throws InvalidSearchDateException handles invalid search date
      */
     public void processCommand(String input) throws InvalidCommandWordException, InvalidDateFormatException,
             InvalidSearchDateException {

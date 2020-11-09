@@ -3,7 +3,6 @@ package logic.commands.diet.dietsession;
 import logic.commands.Command;
 import models.Food;
 import logic.commands.CommandResult;
-import logic.commands.ExecutionResult;
 import storage.diet.DietStorage;
 import ui.diet.dietsession.DietSessionUi;
 
