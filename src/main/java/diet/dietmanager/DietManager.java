@@ -11,7 +11,6 @@ import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
 import logic.commands.CommandResult;
-import logic.parser.CommonParser;
 import logic.parser.DietManagerParser;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
@@ -25,7 +24,6 @@ import java.util.logging.Logger;
 import static seedu.duke.Constant.COMMAND_WORD_END;
 
 //@@author CFZeon
-
 /**
  * A class that is responsible for interacting with user in Diet Manager.
  */
@@ -45,7 +43,6 @@ public class DietManager {
         cl = new CommandLib();
         cl.initDietManagerCl();
         parser = new DietManagerParser();
-        CommonParser commonParser = new CommonParser();
         dietManagerUi = new DietManagerUi();
     }
 

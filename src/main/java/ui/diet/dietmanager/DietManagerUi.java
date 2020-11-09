@@ -3,6 +3,7 @@ package ui.diet.dietmanager;
 import ui.CommonUi;
 
 //@@author CFZeon
+
 /**
  * A class that is responsible for user interface of Diet Manager.
  */
