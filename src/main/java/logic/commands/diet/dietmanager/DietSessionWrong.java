@@ -6,6 +6,9 @@ import logic.commands.CommandResult;
 import storage.diet.DietStorage;
 
 //@@author CFZeon
+/**
+ * Contains the method to execute the wrong command in diet manager.
+ */
 public class DietSessionWrong extends Command {
 
     /**

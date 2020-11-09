@@ -18,6 +18,10 @@ import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
 //@@author CFZeon
+
+/**
+ * Contains the method to execute the clear command in diet manager.
+ */
 public class DietSessionClear extends Command {
     /**
      * Overrides execute for clear command to clear all diet sessions.

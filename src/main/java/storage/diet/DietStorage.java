@@ -71,7 +71,7 @@ public class DietStorage {
     }
 
     /**
-     * Reads the content of the .json file and instantiates as a DietSession
+     * Reads the content of the .json file and instantiates as a DietSession.
      *
      * @param filePath path from source folder to save folder
      * @param filePathName name of file

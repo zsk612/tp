@@ -8,7 +8,6 @@ import exceptions.profile.InvalidCommandFormatException;
 import logic.commands.Command;
 import logic.commands.CommandResult;
 import storage.diet.DietStorage;
-import ui.diet.dietmanager.DietManagerUi;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,6 +20,10 @@ import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
+
+/**
+ * Contains the method to execute the create command in diet manager.
+ */
 public class DietSessionCreate extends Command {
 
     private final DietManagerParser parser = new DietManagerParser();

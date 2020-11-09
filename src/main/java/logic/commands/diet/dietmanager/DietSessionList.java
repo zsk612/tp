@@ -19,6 +19,10 @@ import static ui.CommonUi.LS;
 import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
+
+/**
+ * Contains the method to execute the list command in diet manager.
+ */
 public class DietSessionList extends Command {
 
     /**
@@ -50,6 +54,14 @@ public class DietSessionList extends Command {
     }
 
     //@@author CFZeon-reused
+
+    /**
+     * Formats the list of files into a table input.
+     *
+     * @param listOfFiles list of files in the folder
+     * @param storage storage instance to load files from folder
+     * @return string with formatted table of files
+     */
     private String formatList(File[] listOfFiles, DietStorage storage) {
         ArrayList<File> fileArrayList = new ArrayList<>();
         // converts all files in the array to an arraylist format
@@ -80,6 +92,15 @@ public class DietSessionList extends Command {
         return returnString;
     }
 
+    /**
+     * Formats the row of text for each file.
+     *
+     * @param fileArrayList list of files in the folder converted to arraylist
+     * @param listDescriptionFormat description of the file
+     * @param i iterator integer for the file
+     * @param totalCalories double for calories in that loaded diet session
+     * @return formatted string of a row
+     */
     private String formatRow(ArrayList<File> fileArrayList, String listDescriptionFormat, int i, double totalCalories) {
         String rowContent = String.format(listDescriptionFormat,
                 fileArrayList.get(i).getName().replaceFirst("[.][^.]+$", "").split(" ", 2)[1],

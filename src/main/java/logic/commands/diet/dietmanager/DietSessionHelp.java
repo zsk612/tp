@@ -9,6 +9,10 @@ import java.util.logging.Level;
 import static ui.CommonUi.helpFormatter;
 
 //@@author CFZeon
+
+/**
+ * Contains the method to execute the help command in diet manager.
+ */
 public class DietSessionHelp extends Command {
     /**
      * Overrides execute for help command to display help information.

@@ -11,7 +11,6 @@ import exceptions.diet.InvalidSearchDateException;
 import exceptions.profile.InvalidCommandFormatException;
 import logger.SchwarzeneggerLogger;
 import logic.commands.CommandResult;
-import logic.parser.CommonParser;
 import logic.parser.DietManagerParser;
 import storage.diet.DietStorage;
 import ui.diet.dietmanager.DietManagerUi;
@@ -25,6 +24,9 @@ import java.util.logging.Logger;
 import static seedu.duke.Constant.COMMAND_WORD_END;
 
 //@@author CFZeon
+/**
+ * Represents a diet manager instance with all diet menu related functions.
+ */
 public class DietManager {
 
     private CommandLib cl;
@@ -41,7 +43,6 @@ public class DietManager {
         cl = new CommandLib();
         cl.initDietManagerCl();
         parser = new DietManagerParser();
-        CommonParser commonParser = new CommonParser();
         dietManagerUi = new DietManagerUi();
     }
 
@@ -79,6 +80,8 @@ public class DietManager {
      *
      * @param input user input for command.
      * @throws InvalidCommandWordException handles InvalidCommandWordException.
+     * @throws InvalidDateFormatException handles InvalidDateFormatException.
+     * @throws InvalidSearchDateException handles InvalidSearchDateException.
      */
     public void processCommand(String input) throws InvalidCommandWordException, InvalidDateFormatException,
             InvalidSearchDateException {
