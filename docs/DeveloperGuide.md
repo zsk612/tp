@@ -18,6 +18,9 @@ By: `CS2113T-F11-1` Since: `2020`
 3.3. [Logic Component](#logic-component)<br>
 3.4. [Model Component](#model-component)<br>
 3.5. [Storage Component](#workoutSessionStorage-component)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.5.1. [Storage for Profile](#workoutSessionStorage-for-profile)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.5.2. [Storage for Diet](#workoutSessionStorage-for-diet)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.5.3. [Storage for Workout](#workoutSessionStorage-for-workout)<br>
 4. [**Implementation**](#implementation)<br>
 4.1. [Main Menu-related Features](#main-menu-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.1.1. [Help Command for Main Menu](#main-help)<br>
@@ -54,11 +57,7 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.3. [Editing Workout Session](#editing-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.4. [Deleting a Workout Session](#deleting-a-workout-session)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.5. [Searching Based on Conditions](#searching-based-on-conditions)<br>
-4.5. [Storage](#workoutSessionStorage)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.5.1. [Storage for Profile](#workoutSessionStorage-for-profile)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.5.2. [Storage for Diet](#workoutSessionStorage-for-diet)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.5.3. [Storage for Workout](#workoutSessionStorage-for-workout)<br>
-4.6. [Logging](#logging)<br>
+4.5. [Logging](#logging)<br>
 5. [**Testing**](#testing)<br>
 5.1. [Running Tests](#running-tests)<br>
 5.2. [Types of Tests](#types-of-tests)<br>
@@ -171,18 +170,34 @@ The Model component contains `Profile`, `DietManager`,
 
 ### 3.5. <a id="workoutSessionStorage-component">Storage Component</a>
 
-Profiles, Diet sessions and Workout sessions are stored in separate folders. 
+Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called `/saves` which is in the same directory as the project root.
 
-The Storage package contains subpackages for profile, diet manager and workout manager. All models are serialized and deserialized into JSON format using `Gson` library.
+#### 3.5.1. <a id="workoutSessionStorage-for-profile">Storage for Profile</a>
 
-The `readDietSession()` method in workoutSessionStorage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past diet session.
-`readPastRecords()` and `readFileContents()` methods in workoutSessionStorage.workout package are used for loading saved workout managers and workout sessions respectively. It is called when the user accesses the workout manager.
-`loadData()` from workoutSessionStorage.profile is used to load user profile data and is called when the program starts up. 
+Storage for profile saves user profile created as `profile.json` in the `/saves/profile` directory. Profile data file is created as follows:
+- `profile.json` is updated in the local hard disk after the user adds/ edits a profile by calling `ProfileAdd.execute()`/ `ProfileEdit.execute()`.
+- `profile.json` content will be cleared after the user deletes a profile by calling `ProfileDelete.execute()`.
 
-The `writeToStorageDietSession()` method in workoutSessionStorage.diet package saves the diet session and is called when the user exits it.
-`writePastRecords()` and `writeToStorage()` methods in workoutSessionStorage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
+**Implementation**
+Profile workoutSessionStorage handles reading of file data by calling `loadData()` and overwriting of file data by calling `saveData()`.
 
-The `saveData()` method in workoutSessionStorage.profile is called after the user creates the user profile or edits it. `readData()` is workoutSessionStorage.profile is called when duke starts up.
+<a href="#top">&#8593; Return to Top</a>
+#### 3.5.2. <a id="workoutSessionStorage-for-diet">Storage for Diet</a>
+
+Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
+- Each file is created as a json file and named as `[DATE] [TAG].json`.
+- A corresponding file is updated in the local file after the user edits a diet session by calling DietSessionEdit.execute().
+- A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
+
+**Implementation**
+Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
+
+<a href="#top">&#8593; Return to Top</a>
+#### 3.5.3. <a id="workoutSessionStorage-for-workout">Storage for Workout</a>
+
+Storage for workout saves workout sessions created as individual files named based on the time created in `/saves/workout` directory. The metainformation of the files such as createion date and last edit date is saved in  `/saves/workout/history.json`.
+
+Only history.json file is load when initilizing the application. The rest of Session files are load on request, e.g. `edit`. When a new workout session is created, a new file will be stored and its meta information will be appended to `history.json`. When a workout session is deleted, the file will be removed and its record will be removed from `history.json`.
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -1152,46 +1167,9 @@ in the meta info file.
 
     - Pros: Easy to implement. Low time complexity.
     - Cons: Since the index in result list is not the same as the index in actual record meta, user cannot use the index for further actions.
-
+    
 <a href="#top">&#8593; Return to Top</a>
-
-### 4.5. <a id="workoutSessionStorage">Storage</a>
-Storage in the application refers to storing files of user profile and workout, diet sessions into respective local subdirectories sorted based on time in a local directory called `/saves` which is in the same directory as the project root.
-
-#### 4.5.1. <a id="workoutSessionStorage-for-profile">Storage for Profile</a>
-
-Storage for profile saves user profile created as `profile.json` in the `/saves/profile` directory. Profile data file is created as follows:
-- `profile.json` is updated in the local hard disk after the user adds/ edits a profile by calling `ProfileAdd.execute()`/ `ProfileEdit.execute()`.
-- `profile.json` content will be cleared after the user deletes a profile by calling `ProfileDelete.execute()`.
-
-**Implementation**
-Profile workoutSessionStorage handles reading of file data by calling `loadData()` and overwriting of file data by calling `saveData()`.
-
-<a href="#top">&#8593; Return to Top</a>
-#### 4.5.2. <a id="workoutSessionStorage-for-diet">Storage for Diet</a>
-
-Storage for diet saves diet sessions created as individual files sorted based on the time created in the `/saves/diet` directory. Each diet session file is created as follows:
-- Each file is created as a json file and named as `[DATE] [TAG].json`.
-- A corresponding file is updated in the local file after the user edits a diet session by calling DietSessionEdit.execute().
-- A corresponding file is deleted in the local file when the user deletes a diet session by calling DietSessionDelete.execute() or clears all diet sessions by calling DietSessionClear.execute().
-
-**Implementation**
-Storage handles reading of file data by calling readDietSession() and overwriting of file data by calling writeToStorageDietSession().
-
-<a href="#top">&#8593; Return to Top</a>
-#### 4.5.3. <a id="workoutSessionStorage-for-workout">Storage for Workout</a>
-
-Storage for workout saves workout sessions created as individual files named based on the time created in `/saves/workout` directory. The metainformation of the files such as createion date and last edit date is saved in  `/saves/workout/history.json`.
-
-Only history.json file is load when initilizing the application. The rest of Session files are load on request, e.g. `edit`. When a new workout session is created, a new file will be stored and its meta information will be appended to `history.json`. When a workout session is deleted, the file will be removed and its record will be removed from `history.json`.
-
-
-**Implementation**
-
-Meta information file can be overwritten with `writePastRecords()` and be read with `readPastRecords()`.
-
-<a href="#top">&#8593; Return to Top</a>
-### 4.6. <a id="logging">Logging</a>
+### 4.5. <a id="logging">Logging</a>
 Logging in the application refers to storing exceptions, warnings and messages that occur during the execution of Kitchen Helper. It was included to help developers to identify bugs and to simplify their debugging process. 
 
 The `java.util.logging` package in Java is used for logging. The logging mechanism can be managed from the `SchwarzeneggerLogger` class through the `logger` attribute. 
