@@ -4,6 +4,7 @@
 
 mainframe <b>sd</b> parse user input in ProfileSession
 
+    activate ProfileSession
     ProfileSession -> ProfileParser ++ : parseCommand(input)
     ProfileParser --> ProfileSession -- : parsedInput
 
