@@ -1127,37 +1127,37 @@ __Target user profile__:
 
 |Priority|Version| As a ... | I want to ... | So that I can ...|
 |--------|--------|----------|---------------|------------------|
-|```HIGH```|v1.0|New user|Create a user profile|Add new profiles to store my data|
-|```HIGH```|v1.0|User|View my profile in the database|reference my data|
-|```HIGH```|v1.0|User|Save my profile into the database|retrieve it in subsequent launches of the app|
+|```HIGH```|v1.0|New user|View the available commands easily|Learn more about the product before I use it|
+|```HIGH```|v1.0|New user|Create a user profile|Add a new profile to store my data|
+|```HIGH```|v1.0|User|View my profile in the database|Reference my added data and know my fitness classification|
+|```HIGH```|v1.0|User|Save my profile into the database|Retrieve it in subsequent launches of the app|
 |```HIGH```|v1.0|User|Load my profile from the database at the start of the app|view my added user profile|
-|```HIGH```|v1.0|User|Delete my profile from the database|Delete an outdated profile from the database|
-|```HIGH```|v1.0|User|Create a new workout session|start a recorded workout session|
-|```HIGH```|v1.0|User|Add moves into a workout session|personalise each workout session|
-|```HIGH```|v1.0|User|Delete workout session record|correct accidental typos|
+|```HIGH```|v1.0|User|Delete my profile from the database|Correct accidental typos|
+|```HIGH```|v1.0|User|Create a new workout session|Start a recorded workout session|
+|```HIGH```|v1.0|User|Add moves into a workout session|Personalise and record moves in each workout session|
+|```HIGH```|v1.0|User|Delete workout session record|Correct accidental typos|
 |```HIGH```|v1.0|User|End my current workout session|Be sure that my workout has ended|
-|```HIGH```|v1.0|User|Check my current workout session record|do my workout and keep track of everything easily|
-|```HIGH```|v1.0|User|List out all my past diet session records|check what I have eaten in the past|
-|```HIGH```|v1.0|User|Create a diet session with date and tags|identify when I ate which meal|
-|```HIGH```|v1.0|User|add different kinds of food into my diet|keep track fo what I eat|
-|```HIGH```|v1.0|User|Save my diet records|view it next time|
-|```HIGH```|v1.0|User|Close the program|end my session|
-|```MEDIUM```|v1.0|New user|View the available commands easily|learn more about the product before I use it.|
-|```MEDIUM```|v1.0|User|Edit user profile|change my data if something changes|
-|```MEDIUM```|v2.0|User|Clear all my diet sessions|clear memory space on my storage to store new things|
-|```MEDIUM```|v2.0|User|Clear all my workout session records|clear all past redundant data|
-|```LOW```|v2.0|User|Search for past workout sessions|easily filter through the data that I don't need|
-|```LOW```|v2.0|User|Search for my past diet sessions|see whether I have been eating properly lately|
+|```HIGH```|v1.0|User|Check my current workout session record|Do my workout and keep track of everything easily|
+|```HIGH```|v1.0|User|List out all my past diet session records|Check what I have eaten in the past|
+|```HIGH```|v1.0|User|Create a diet session with date and tags|Identify when I ate which meal|
+|```HIGH```|v1.0|User|Add different kinds of food into my diet|Keep track fo what I eat|
+|```HIGH```|v1.0|User|Save my diet records|View it next time|
+|```MEDIUM```|v1.0|User|Edit user profile|Change my data if something changes|
+|```MEDIUM```|v2.0|User|Clear all my diet sessions|Clear memory space on my storage to store new things|
+|```MEDIUM```|v2.0|User|Clear all my workout session records|Clear all past redundant data|
+|```LOW```|v2.0|User|Search for past workout sessions|Easily filter through the data that I don't need|
+|```LOW```|v2.0|User|Search for my past diet sessions|See whether I have been eating properly lately|
 |```LOW```|v2.1|User|View how much more I need to eat in a day|plan my later meals easier|
+|```LOW```|v2.1|User|Get recommendation on my weight expectation|Adjust accordingly to achieve the Normal Weight BMI classification|
 
 <a href="#top">&#8593; Return to Top</a>
 
-### Appendix C: Value proposition - Use cases
+### Appendix C: Value proposition
 
 <a href="#top">&#8593; Return to Top</a>
 
 ### Appendix D: Non-Functional Requirements
-
+Below are the non-functional requirements of The Schwarzenegger:
 1. Should work on any mainstream OS as long as it has Java `11` or above installed.
 2. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than a program that uses the mouse.
 3. Should not require user to install program file.
