@@ -84,6 +84,6 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
       
       + [Clear all past diet sessions](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#clear-all-past-diet-sessions)
       
-      + [Exit the diet manager](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#437-exit-the-diet-manager)
+      + [Exit the diet manager](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#exit-the-diet-manager)
       
       + [Appendix B: User Stories](https://ay2021s1-cs2113t-f11-1.github.io/tp/DeveloperGuide.html#appendix-b-user-stories)
