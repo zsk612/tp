@@ -127,15 +127,13 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 
 ### 3.2. <a id="ui-component">Ui Component</a>
 ![Ui Component](pictures/zesong/Ui.png)
+ 
+The `Ui` package is a combination class where the interactions with the user are formatted in a consistent way. 
 
-API: `Ui.java`
- 
-The `Ui` package is a combination class where all interaction will be made through this component. 
- 
 The `Ui` component,
 
-* Takes in user input
-* Prints out response messages
+* Takes in user commands
+* Formats messages and prints out responses
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -147,7 +145,7 @@ The `Ui` component,
 1. This splits the user input into interpretable portions by other functions.
 1. All commands inherits from base class Command with an `execute()` method. They are stored in a hashmap `CommandLib` and retrieved using user's input as key.
 1. Command interacts with parsers, models and storage to carry out the user's command.
-1. The result of the command execution is encapsulated as a CommandResult object which is passed back to Ui to display the message. 
+1. The result of the command execution is encapsulated as a CommandResult object which is passed back to CommonUi to display the message. 
 
 <a href="#top">&#8593; Return to Top</a>
 
