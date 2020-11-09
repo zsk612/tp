@@ -3,6 +3,9 @@ package ui.diet.dietmanager;
 import ui.CommonUi;
 
 //@@author CFZeon
+/**
+ * A class that is responsible for user interface of Diet Manager.
+ */
 public class DietManagerUi extends CommonUi {
     public static String DIET_NO_SESSION_SAVED = "Sorry! It seems like you have no diet sessions saved!";
     public static String DIET_IO_WRONG_FORMAT = "It seems like we ran into some problems saving your session...";

@@ -3,13 +3,13 @@ package logic.commands.diet.dietmanager;
 import logic.commands.Command;
 import logic.commands.CommandResult;
 import storage.diet.DietStorage;
+import ui.CommonUi;
 
 import java.io.File;
 import java.util.Objects;
 import java.util.logging.Level;
 
 import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
-import static ui.CommonUi.clearMsgFormatter;
 import static ui.diet.dietmanager.DietManagerUi.CLEAR_RECORD;
 import static ui.diet.dietmanager.DietManagerUi.DIET_CLEAR_MSG;
 import static ui.diet.dietmanager.DietManagerUi.DIET_MENU_NAME;
@@ -18,6 +18,9 @@ import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 import static ui.workout.workoutmanager.WorkoutManagerUi.CLEAR_ABORTED;
 
 //@@author CFZeon
+/**
+ * A representation of the command for clear commands in diet manager.
+ */
 public class DietSessionClear extends Command {
     /**
      * Overrides execute for clear command to clear all diet sessions.
@@ -36,7 +39,7 @@ public class DietSessionClear extends Command {
                 for (int index = 0; index < Objects.requireNonNull(listOfFiles).length; index++) {
                     listOfFiles[index].delete();
                 }
-                resultMessage = clearMsgFormatter(DIET_CLEAR_MSG);
+                resultMessage = CommonUi.clearMsg(DIET_CLEAR_MSG);
                 logger.log(Level.INFO, "Cleared all diet sessions");
             } else {
                 resultMessage = CLEAR_ABORTED;

@@ -18,6 +18,9 @@ import static ui.diet.dietmanager.DietManagerUi.DIET_NEW_SUCCESS;
 import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 
 //@@author CFZeon
+/**
+ * A representation of the command for diet commands in diet manager.
+ */
 public class DietSessionEdit extends Command {
     /**
      * Overrides execute for edit command to edit diet sessions.

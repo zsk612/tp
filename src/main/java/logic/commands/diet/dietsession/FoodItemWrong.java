@@ -9,6 +9,10 @@ import storage.diet.DietStorage;
 import java.util.ArrayList;
 
 //@@author zsk612
+
+/**
+ * A representation of the command for wrong commands in diet session.
+ */
 public class FoodItemWrong extends Command {
 
     /**

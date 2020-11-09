@@ -1,4 +1,6 @@
 @startuml
+!include ../../umldiagram/style.puml
+
 rectangle "User" {
 }
 

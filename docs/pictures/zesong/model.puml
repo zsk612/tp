@@ -1,5 +1,5 @@
 @startuml
-
+!include ../../umldiagram/style.puml
 rectangle  "PastRecordList" {
 }
 rectangle  "Past workout records" {

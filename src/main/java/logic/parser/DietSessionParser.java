@@ -8,6 +8,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 //@@author zsk612
+/**
+ * A class that is responsible for parsing user inputs in Diet Session.
+ */
 public class DietSessionParser extends CommonParser {
     private static Logger logger = SchwarzeneggerLogger.getInstanceLogger();
 
@@ -17,6 +20,7 @@ public class DietSessionParser extends CommonParser {
      * @param food string for food content
      * @return food name
      * @throws IndexOutOfBoundsException handles exception for not inputting food name or calories
+     * @throws NoNameException handles empty food name
      */
     public String processFoodName(String food) throws IndexOutOfBoundsException, NoNameException {
         String[] temp = food.trim().split("/c", 2);
@@ -32,6 +36,7 @@ public class DietSessionParser extends CommonParser {
      * @param food string for food content
      * @return food calories
      * @throws NumberFormatException handles exception for wrong calories input
+     * @throws NegativeCaloriesException handles negative calories input
      */
     public double processFoodCalories(String food) throws NumberFormatException, NegativeCaloriesException {
         String[] temp = food.trim().split("/c", 2);
