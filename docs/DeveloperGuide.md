@@ -37,11 +37,11 @@ By: `CS2113T-F11-1` Since: `2020`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.4. [Deleting data from the current diet](#deleting-data-from-the-current-diet)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.5. [Clearing data from the current diet](#clearing-data-from-the-current-diet)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3.2.6. [Stopping the recording of diet data](#stopping-the-recording-of-diet-data)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past diet sessions](list-all-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past diet session](edit-a-past-diet-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past diet session](delete-a-past-diet-session)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past diet sessions](clear-all-past-diet-sessions)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Search for past diet sessions](search-for-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.3. [List all past diet sessions](#list-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.4. [Edit a past diet session](#edit-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.5. [Delete a past diet session](#delete-a-past-diet-session)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.6. [Clear all past diet sessions](#clear-all-past-diet-sessions)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;4.3.7. [Search for past diet sessions](#search-for-past-diet-sessions)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.3.8. [Exit the diet manager](#exit-the-diet-manager)<br>
 4.4. [Workout-related Features](#workout-related-features)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;4.4.1. [Creating a New Workout Session](#creating-a-new-workout-session)<br>
@@ -791,7 +791,7 @@ The sequence diagram below summarizes how Diet sessions are all cleared:
     
 <a href="#top">&#8593; Return to Top</a>
 
-#### 4.3.7. <a id = "search-for-past-diet-sessions">Search for past diet session:</a> `search`
+#### 4.3.7. <a id = "search-for-past-diet-sessions">Search for Past Diet Sessions:</a> `search`
 
 The feature allows users to search for previously created diet sessions within a date range or with a specified tag.
 
