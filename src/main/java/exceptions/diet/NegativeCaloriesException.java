@@ -5,6 +5,9 @@ import exceptions.SchwarzeneggerException;
 
 import static ui.diet.dietsession.DietSessionUi.MESSAGE_NEGATIVE_CALORIES;
 
+/**
+ * Represents exception when calories is negative.
+ */
 public class NegativeCaloriesException extends SchwarzeneggerException {
 
     /**

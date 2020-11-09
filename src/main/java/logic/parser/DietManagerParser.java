@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * A class that is responsible for parsing user inputs in Diet Manager.
+ */
 public class DietManagerParser extends CommonParser {
 
     public Logger logger = SchwarzeneggerLogger.getInstanceLogger();

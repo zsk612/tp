@@ -3,6 +3,9 @@ package ui.diet.dietsession;
 import ui.CommonUi;
 
 //@@author zsk612
+/**
+ * A class that contains templates of message to show to user.
+ */
 public class DietSessionUi extends CommonUi {
 
     public static final String DIET_INPUT_PROMPT_EDIT = "Diet Menu > Diet Session ";
@@ -22,6 +25,11 @@ public class DietSessionUi extends CommonUi {
     public static final String MESSAGE_SEARCH_PROMPT = "Here are the search results: \n\t ";
     public static final String MESSAGE_WRONG_CALORIES = "Please input a number for calories.";
 
+    /**
+     * Prints help message.
+     *
+     * @param helpMessage appends all the help messages
+     */
     public static void printHelp(StringBuilder helpMessage) {
 
         helpMessage.append(helpFormatter("Add", "add [FOOD_NAME] /c [CALORIES]",
@@ -38,12 +46,10 @@ public class DietSessionUi extends CommonUi {
                 "Go back to the Diet Menu."));
     }
 
+    /**
+     * Prints opening messages for diet sessions.
+     */
     public void printOpening() {
         showToUser("Starting Diet Session!");
-    }
-
-
-    public void printExit() {
-        showToUser("Exiting Diet Session!");
     }
 }

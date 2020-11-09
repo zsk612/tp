@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 
+/**
+ * A class that is responsible for parsing user inputs in Workout Manager.
+ */
 public class WorkoutManagerParser extends CommonParser {
 
     public static final String TAG_SPECIFIER = "/t";
@@ -56,6 +59,7 @@ public class WorkoutManagerParser extends CommonParser {
      * Parses user input into a list of predicates which will be used as search conditions.
      * @param arr User input.
      * @return A list of predicate which will be used as search conditions.
+     * @throws InvalidDateFormatException handles invalid date input.
      */
     public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseSearchConditions(String arr)
             throws InvalidDateFormatException {
@@ -112,6 +116,7 @@ public class WorkoutManagerParser extends CommonParser {
      *
      * @param args user input.
      * @return predicates to limit period of record being listed.
+     * @throws InvalidDateFormatException handles invalid date input.
      */
     public static ArrayList<Predicate<PastWorkoutSessionRecord>> parseList(String args)
             throws InvalidDateFormatException {
