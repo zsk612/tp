@@ -25,9 +25,9 @@
 !define USER_COLOR #000000
 
 skinparam Class {
-    FontColor #FFFFFF
+    FontColor #000000
     BorderThickness 1
-    BorderColor #FFFFFF
+    BorderColor #000000
     StereotypeFontColor #FFFFFF
     FontName Arial
 }
