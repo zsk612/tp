@@ -238,7 +238,7 @@ All descriptions, warnings and responses will be handled by `CommonUi` to ensure
 
 The sequence diagram below summarizes how creating a new profile works:
 
-<p align="center"><img src="pictures/khoa/AddProfile.png"></p>
+<p align="center"><img src="./pictures/khoa/AddProfile.png"></p>
 
 Below are the sub-diagrams: <a id="figure-4-2-1"></a>
 
