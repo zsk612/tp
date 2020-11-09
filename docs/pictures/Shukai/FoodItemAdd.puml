@@ -1,20 +1,31 @@
 @startuml
-@startuml
+!define PLANTUML_HOME %dirpath()/../../umldiagram
+!include ../../umldiagram/style.puml
+
 actor user
-user -> DietSession : input
 activate DietSession
+user -> Ui++ : Add FoodItem Command
+Ui --> DietSession -- : input
 
-DietSession -> CommandLib : get()
-activate CommandLib
-CommandLib --> DietSession : FoodItemAdd
-deactivate CommandLib
+ref over DietSession, DietSessionParser, CommandLib: parse user input in Diet Session Menu
 
-DietSession -> FoodItemAdd : execute()
-activate FoodItemAdd
+DietSession -> Command ++ : execute(foodList)
+Command -> Food **
+activate Food
+Food --> Command -- : new Food Item
+Command -> DietSession: foodList.add(new Food Item)
+DietSession --> Command
+deactivate Food
+Command --> DietSession --
 
-FoodItemAdd --> DietSession
-deactivate FoodItemAdd
+deactivate Command
 
-DietSession --> user : output
-@enduml
+DietSession -> CommandResult ++ : getFeedbackMessage(result)
+CommandResult --> DietSession -- : message
+DietSession -> Ui ++ : showToUser(message)
+destroy CommandResult
+Ui --> user
+destroy Command
+deactivate Ui
+
 @enduml
