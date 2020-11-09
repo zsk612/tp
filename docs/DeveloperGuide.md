@@ -251,11 +251,11 @@ The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/AddProfile.png)
 
-![Figure 4.2.1](pictures/khoa/ParseInput.png)
+![Figure-4.2.1](pictures/khoa/ParseInput.png)
 
 Figure 4.2.1. Sub-diagram for Parsing Input in ProfileSession
 
-![Figure 4.2.2](pictures/khoa/ShowMessage.png)
+![Figure-4.2.2](pictures/khoa/ShowMessage.png)
 
 Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession
 
@@ -304,7 +304,7 @@ The sequence diagram below summarizes how viewing an added profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/ViewProfile.png)
 
-You can refer to [Figure 4.2.1. Sub-Diagram for Parsing Input in ProfileSession](#Figure 4.2.1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#Figure 4.2.2) for the corresponding sub-diagrams.
+You can refer to [Figure 4.2.1. Sub-Diagram for Parsing Input in ProfileSession](#Figure-4.2.1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#Figure-4.2.2) for the corresponding sub-diagrams.
 
 **Design considerations**
 
@@ -355,7 +355,7 @@ The sequence diagram below summarizes how creating a new profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/EditProfile.png)
 
-You can refer to [Figure 4.2.1. Sub-Diagram for Parsing Input in ProfileSession](#Figure 4.2.1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#Figure 4.2.2) for the corresponding sub-diagrams.
+You can refer to [Figure 4.2.1. Sub-Diagram for Parsing Input in ProfileSession](#Figure-4.2.1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#Figure-4.2.2) for the corresponding sub-diagrams.
 
 **Design considerations**
 
@@ -404,7 +404,7 @@ The sequence diagram below summarizes how deleting an added profile works:
 
 ![Load Data Sequence Diagram](pictures/khoa/DeleteProfile.png)
 
-You can refer to [Figure 4.2.1. Sub-Diagram for Parsing Input in ProfileSession](#Figure 4.2.1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#Figure 4.2.2) for the corresponding sub-diagrams.
+You can refer to [Figure 4.2.1. Sub-Diagram for Parsing Input in ProfileSession](#Figure-4.2.1) and [Figure 4.2.2. Sub-diagram for Showing Message to User in ProfileSession](#Figure-4.2.2) for the corresponding sub-diagrams.
 
 **Design considerations**
 
