@@ -10,7 +10,7 @@ By: `Team F11-1` Since: `Sept 2020` License: `MIT`
 &nbsp;&nbsp;&nbsp;&nbsp;3.1.2. [Entering Profile Menu: `profile`](#main-profile)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.1.3. [Entering Diet Menu: `diet`](#main-diet)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.1.4. [Entering Workout Menu: `workout`](#main-workout)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3.1.5.  [Ending The Schwarzenegger: `end`](#main-end)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1.5.  [Ending the Schwarzenegger: `end`](#main-end)<br>
 3.2. [Profile Menu](#profile-menu)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.1. [Viewing Help: `help`](#profile-help)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;3.2.2. [Adding a Profile: `add`](#profile-add)<br>
@@ -486,7 +486,18 @@ This command adds a food item into the current diet session.
 
 __Format:__ `add [FOOD_NAME] /c [CALORIES]` 
 
-Example: `add chicken nuggets /c 120`
+Example: Whenever you want to add new food items in the diet session, you follow the steps below:
+1. Locate yourself in the diet session menu as shown in the screenshot below:
+
+    ![add-new-food-item-1](pictures/UG_screenshots/madd-new-food-item-step-1.png)
+
+2. You can add food items by following the format `add [FOOD_NAME] \c [CALORIES]` after the prompt as shown in the screenshot:
+
+    ![add-new-food-item-2](pictures/UG_screenshots/add-new-food-item-step-2.png)
+    
+3. You should be able to see a message showing that you have added the food item like the screenshot below:
+
+    ![add-new-food-item-3](pictures/UG_screenshots/add-new-food-item-step-3.png)
 
 Expected outcome:
 ```
