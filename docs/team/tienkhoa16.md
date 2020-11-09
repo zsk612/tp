@@ -17,9 +17,9 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
        + Highlights: The development of this feature requires careful thoughts of the user story to provide the comprehensive information that meets the users' needs.
        
   + **Implemented the enhancement to parse the users' commands**
-      + Functionality: This enhancement supports the parsing of users' commands for the program to execute. 
-      + Justification: This enhancement is essential as it identifies the operations to perform and extracts the relevant data from the users' commands.
-      + Highlights: The user does not need to input the options in order in their commands. This offers more flexibility to the user and thus enhances the user experience. To support this flexibility, more efforts were required in the string processing to extract the options in the command.
+      + Functionality: This enhancement supports the parsing of users' commands for the program to execute. The arguments in the command can be specified in any order.
+      + Justification: This enhancement is essential as it identifies the operations to perform and extracts the relevant data from the users' commands. The parser can inteprete the arguments in any order, which gives the users more flexibility and thus enhances the user experience.
+      + Highlights: To parse the arguments arranged in an unknown order requires more efforts than to parse the arguments arranged in a fixed, pre-defined order. Efforts were spent on the string processing to identify the start and end indices and the type of the arguments. In addition, the implementation of this parser allows future extensions to support more types of arguments with minimum changes in the code.
       
 + **Minor Enhancement**:
     + Implemented `CommandResult` class to handle user's command execution result.
@@ -34,7 +34,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
     + Add instructions for Main Menu and Profile Menu commands. (This section was in several pull requests).
     + Update command formats in the User Guide. [#126](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/126)
     + Update screenshots for commands under Main Menu. [#200](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/200)
-    + Add tips and notes for understanding our command format. (#198)(https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/198)
+    + Add tips and notes for understanding our command format. [#198](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/198)
 
 + **Contributions to the Developer Guide:**
     + Add Section 4.2. Profile-related Features. [#99](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/99)
