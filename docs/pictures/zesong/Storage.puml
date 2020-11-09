@@ -1,45 +1,20 @@
 @startuml
 
-class PastRecord {
-String filePath
-CreateOn Date
-LastEdit Date
+rectangle "Parser"{
+rectangle "XYZCommandParser"
 }
 
-class WorkoutManagerStorge {
-ArrayList<PastRecord> pastRecord
-readFile()
-writeToFile()
-}
+rectangle "CommandLib"
 
-class WorkoutManager {
-Object[] elementData
-size()
+rectangle "Commands"{
+rectangle "Command"
+rectangle "XYZCommand"
 }
+rectangle "CommandResult"
 
-WorkoutManagerStorge --> PastRecord
+XYZCommandParser ..> CommandLib
+CommandLib ..> XYZCommand: executes
+XYZCommand -right-|> Command
+Command .up.> CommandResult: creates
 
-WorkoutCommand --> WorkoutManagerStorge
-WorkoutManager --> WorkoutCommand
-
-class WorkoutSession {
-Object[] elementData
-size()
-}
-class Command {
-Object[] elementData
-size()
-}
-class Storage {
-Object[] elementData
-size()
-}
-class exerciseList {
-Object[] elementData
-size()
-}
-Storage --> exerciseList
-Command --> Storage
-WorkoutSession --> Command
-WorkoutSession-->exerciseList
 @enduml

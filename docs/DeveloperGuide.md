@@ -137,7 +137,7 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 
 API: `Ui.java`
  
-The `Ui` package is a combination class where all interaction will be made through this component
+The `Ui` package is a combination class where all interaction will be made through this component. 
  
 The `Ui` component,
 
@@ -151,7 +151,10 @@ The `Ui` component,
 ![Logic Component](images/logic_update.png)
 
 1. `The Schwarzenegger` uses `Parser` classes to parse the user command.
-2. This splits the user input into interpretable portions by other functions.
+1. This splits the user input into interpretable portions by other functions.
+1. All commands inherits from base class Command with an `execute()` method. They are stored in a hashmap `CommandLib` and retrieved using user's input as key.
+1. Command interacts with parsers, models and storage to carry out the user's command.
+1. The result of the command execution is encapsulated as a CommandResult object which is passed back to Ui to display the message. 
 
 <a href="#top">&#8593; Return to Top</a>
 
@@ -162,29 +165,26 @@ The `Ui` component,
 The Model component contains `Profile`, `DietManager`,
 `PastRecord` and `WorkoutSession` classes.
 * Profile: Stores the user profile data.
-* DietManager: Stores all past diet records.
+* Food: Stores food data that user consumes in a meal.
 * PastRecord: Stores meta information of each WorkoutSession files.
-* WorkoutSession: Stores the exercise data done in each workout session.
+* Exercises: Stores the exercise data done in each workout session.
 
 <a href="#top">&#8593; Return to Top</a>
 
 ### 3.5. <a id="workoutSessionStorage-component">Storage Component</a>
 
-![Storage Class Diagram](images/Storage.png)
-
 Profiles, Diet sessions and Workout sessions are stored in separate folders. 
 
-The Storage package contains subpackages for profile, diet manager and workout manager.
+The Storage package contains subpackages for profile, diet manager and workout manager. All models are serialized and deserialized into JSON format using `Gson` library.
 
-The readDietSession() method in workoutSessionStorage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past diet session.
-readPastRecords() and readFileContents() methods in workoutSessionStorage.workout package are used for loading saved workout managers and workout sessions respectively. It is called when the user accesses the workout manager.
-loadData() from workoutSessionStorage.profile is used to load user profile data and is called when the program starts up. 
+The `readDietSession()` method in workoutSessionStorage.diet package is used for loading saved diet sessions, which are loaded when the user wants to edit a past diet session.
+`readPastRecords()` and `readFileContents()` methods in workoutSessionStorage.workout package are used for loading saved workout managers and workout sessions respectively. It is called when the user accesses the workout manager.
+`loadData()` from workoutSessionStorage.profile is used to load user profile data and is called when the program starts up. 
 
-The writeToStorageDietSession() method in workoutSessionStorage.diet package saves the diet session and is called when the user exits it.
-writePastRecords() and writeToStorage() methods in workoutSessionStorage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
+The `writeToStorageDietSession()` method in workoutSessionStorage.diet package saves the diet session and is called when the user exits it.
+`writePastRecords()` and `writeToStorage()` methods in workoutSessionStorage.workout package are used to save the workout managers and workout sessions respectively. It is called when the user exists the workout manager.
 
-The saveData() method in workoutSessionStorage.profile is called after the user creates the user profile or edits it.
-readData() is workoutSessionStorage.profile is called when duke starts up.
+The `saveData()` method in workoutSessionStorage.profile is called after the user creates the user profile or edits it. `readData()` is workoutSessionStorage.profile is called when duke starts up.
 
 <a href="#top">&#8593; Return to Top</a>
 

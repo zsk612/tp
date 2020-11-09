@@ -104,9 +104,9 @@ This section includes 4 sub-sections which will guide you through the features a
 **Command Format** [Khoa]
 
 - Words that are in `[UPPER_CASE]` format are the parameters to be supplied by you.<br>
-**Example**: in `add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]` command, `[NAME]`, `[HEIGHT]`, `[CURRENT_WEIGHT]`, `[EXPECTED_WEIGHT]` and `[DAILY_CALORIE_INTAKE]` are parameters which can be used as `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`.
+**Example**: in <br>`add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]` <br>command, `[NAME]`, `[HEIGHT]`, `[CURRENT_WEIGHT]`, `[EXPECTED_WEIGHT]` and `[DAILY_CALORIE_INTAKE]` are parameters which can be used as `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`.
 - Words that are enclosed with `<` and `>` are optional parameters.<br>
-**Example**: in `edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>` command, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [CURRENT_WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIE_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
+**Example**: in <br>`edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>` <br>command, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [CURRENT_WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIE_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
 - Optional parameters with `…` after them can be used multiple times including zero times. <br>
 **Example**: for `<TAG>...`, the following format for Search Command in Workout Menu: `search </d [DATE]> </t [TAG]...>` can be used as `search /t le` or `search /t chest, bicep`.
 
@@ -718,33 +718,14 @@ __Format:__ `help`
 
 2. You should be able to see a list of available commands like the screenshot below:
     ![main-help-2](pictures/UG_screenshots/workout-help-step-2.png)
-Example: `help`
 
-Expected outcome:
-```
-	 _________________________________________________________________________________________________
-	 New      FORMAT:      new </t [TAG]...>
-	          DESCRIPTION: Create a new workout session and tags. Multiple tags are separated by ','
-	 List     FORMAT:      list </s [START_DATE]> </e [END_DATE]>
-	          DESCRIPTION: Show all past sessions. Can display sessions between a certain period
-	 Delete   FORMAT:      delete [INDEX]
-	          DESCRIPTION: Delete the record indexed at x
-	 Edit     FORMAT:      edit [INDEX]
-	          DESCRIPTION: Edit the record indexed at x
-	 Clear    FORMAT:      clear
-	          DESCRIPTION: Clear all past results
-	 Search   FORMAT:      search </t [TAG]...> </d [DATE]>
-	          DESCRIPTION: Search records based on tags and dates. Multiple tags are seperated by ','
-	 End      FORMAT:      end
-	          DESCRIPTION: Go back to Main Menu
-	 _________________________________________________________________________________________________
-```
 
 #### 3.4.2. <a id="workout-start">Starting a New Workout Session: `new`</a>
-Creates a new workout session and go into the session. 
-You can add tags with “/t”. Tags are optional and more than one tag can be attached to a session.
-
-If more than one tag is added, each one should be separated by `,`. After `new`, user will be directed into workout session to manage the given session. You may verify that by looking at the cursor changes from 
+You can a new workout session and go into the session. You can add tags with “/t”. 
+> :bulb: Tags are optional and more than one tag can be attached to a session.
+   If you want to add more than one tags, you should separate them by `,`.
+ 
+After <kbd>Enter</kbd>, you will be directed into workout session to manage the given session. You may verify that as seen from how the cursor changes from
 
 `Workout Menu >>>>> `
 
@@ -918,7 +899,7 @@ You can delete a past workout session in the record list.
 
 __Format:__ `delete [INDEX]` 
 
-The index can be found by listing the results
+The index can be found by listing the results.
 
 Example：
 `delete 1`
@@ -929,22 +910,23 @@ Expected outcome:
     You have deleted that record!
     ______________________________________________________________________________
 ```
+> :warning: Your workout session record cannot be recovered once deleted!
+
 #### 3.4.6. <a id="workout-search">Searching a List of Workout Sessions: `search`</a>
-You can search for a list of workout sessions that match certain conditions. For example, you can search for sessions created on a specific day or sessions that contain certain tags.
+You can search for a list of workout sessions that match certain conditions. For example, you can search for sessions created on a specific day or sessions that contain certain tags. All sessions that satisify the condition will be summaried into a table and printed out.
 
 __Format:__ `search </d [DATE]> </t [TAG]...>`
 
 - Tag condition
 
-You can search records containing (a list of) tags with `/t` followed by the tags. Multiple tags should be separated by `,`. If you give multiple tags, only sessions that contains all the tags will be selected. You can search with part of the tag as well. For example searching with tag `leg` will match any tags that contains `leg`, e.g. `legs`.
+You can search records containing (a list of) tags with `/t` followed by the tags. Multiple tags should be separated by `,`. If you give multiple tags, only sessions that contains all the tags will be selected. You can search with part of the tag as well. For example searching with<br> `search /t leg` <br>will match any tags that contains `leg`, e.g. `legs`.
 
 - Date condition
 
-You can search records created on a specific day with `/d` followed by a date. Date should be keyed in  following one of the supported formats. [See here](#notes) for a complete list of format supported.
+You can search records created on a specific day with `/d` followed by a date. You should key in your date following one of the supported formats. [See here](#notes) for a complete list of format supported.
 
 Both date and tag conditions are optional. You may have zero, one or both conditions while searching. If both conditions are given, only sessions that meet both conditions will be selected.
 
-You can see all the sessions that meet the conditions. They will be summarised and printed in a table with their index, creation date and tags.
 
 Example: `search /t le`
 
@@ -962,11 +944,6 @@ You can erase all workout sessions.
 
 __Format:__ `clear`
 
-This command is dangerous as you will not be able to 
-recover the data.
-After typing this command, you will be asked to reconfirm it by typing in
-`YES`. Any other input will abort the clearing. 
-
 Example `clear`
 
 Expected outcome:
@@ -983,6 +960,7 @@ Workout Menu >>>>> YES
 
 Workout Menu >>>>> 
 ```
+> :warning: This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing. 
 
 #### 3.4.8. <a id="workout-end">Returning to Main Menu: `end`</a>
 
