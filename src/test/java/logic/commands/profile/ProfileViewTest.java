@@ -15,7 +15,7 @@ import static profile.Constants.EXAMPLE_CALORIES;
 import static profile.Constants.EXAMPLE_HEIGHT;
 import static profile.Constants.EXAMPLE_NAME;
 import static profile.Constants.EXAMPLE_WEIGHT;
-import static seedu.duke.Constant.COMMAND_WORD_VIEW;
+import static seedu.duke.Constants.COMMAND_WORD_VIEW;
 import static ui.CommonUi.EMPTY_STRING;
 import static ui.profile.ProfileUi.MESSAGE_ENOUGH_CALORIES;
 import static ui.profile.ProfileUi.MESSAGE_MORE_CALORIES;

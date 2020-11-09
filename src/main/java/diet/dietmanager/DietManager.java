@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static seedu.duke.Constant.COMMAND_WORD_END;
+import static seedu.duke.Constants.COMMAND_WORD_END;
 
 //@@author CFZeon
 /**

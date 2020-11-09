@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
-import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
+import static seedu.duke.Constants.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.LS;
 import static ui.diet.dietmanager.DietManagerUi.EMPTY_STRING;
 

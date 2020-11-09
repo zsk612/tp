@@ -15,6 +15,6 @@ rectangle "CommandResult"
 
 XYZCommandParser ..> CommandLib
 CommandLib ..> XYZCommand: executes
-XYZCommand -right-|> Command
-Command .up.> CommandResult: creates
+XYZCommand -left-|> Command
+XYZCommand .right.> CommandResult: creates
 @enduml

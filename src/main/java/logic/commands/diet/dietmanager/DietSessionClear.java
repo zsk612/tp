@@ -9,7 +9,7 @@ import java.io.File;
 import java.util.Objects;
 import java.util.logging.Level;
 
-import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
+import static seedu.duke.Constants.PATH_TO_DIET_FOLDER;
 import static ui.diet.dietmanager.DietManagerUi.CLEAR_RECORD;
 import static ui.diet.dietmanager.DietManagerUi.DIET_CLEAR_MSG;
 import static ui.diet.dietmanager.DietManagerUi.DIET_MENU_NAME;

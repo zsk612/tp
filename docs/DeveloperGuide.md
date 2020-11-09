@@ -131,7 +131,7 @@ In addition to that, the architecture of The Schwarzenegger is broken down into 
 <a href="#top">&#8593; Return to Top</a>
 
 ### 3.2. <a id="ui-component">Ui Component</a>
-![Ui Component](images/UI_Component.png)
+![Ui Component](pictures/zesong/Ui.png)
 
 API: `Ui.java`
  
@@ -146,7 +146,7 @@ The `Ui` component,
 
 ### 3.3. <a id="logic-component">Logic Component</a>
 
-![Logic Component](images/logic_update.png)
+![Logic Component](pictures/zesong/Logic.png)
 
 1. `The Schwarzenegger` uses `Parser` classes to parse the user command.
 1. This splits the user input into interpretable portions by other functions.
@@ -917,6 +917,19 @@ Figure 4.4.1.1.1. Sub-diagram for Parsing Input in WorkoutSession
 
 Figure 4.4.1.1.2. Sub-diagram for Showing Message to User
 
+**Design considerations**
+Aspects: Making add and its parameters as seperate or a single input
+
+- **Alternative 1 (current choice):** Making add and its parameters as a single input
+
+    - Pros: Would be easier for the user to enter as it takes less time to enter and it is not too difficult of a command.
+    - Cons: It might cause the user to miss the format for inputting add.
+
+- **Alternative 2:** Making add and its parameters as separate inputs
+
+    - Pros: Would make it neater and more clear to the user what to enter as they would only enter one input every time.
+    - Cons: It would take multiple actions to perform a single task, depending on the number of parameters.
+
 <a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.2. <a id="deleting-an-exercise">Deleting an Exercise</a>
 
@@ -948,6 +961,19 @@ All description, warnings and response will be handled by `CommonUi` to ensure c
 The sequence diagram below summarizes how the delete command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionDelete.png)
 
+**Design considerations**
+Aspects: Making delete and index to delete as separate or a single input
+
+- **Alternative 1 (current choice):** Making delete and index to delete as a single input
+
+    - Pros: Would be easier for the user to enter as it takes less time to enter and it is not too difficult of a command.
+    - Cons: It might cause the user to miss the format for inputting delete.
+
+- **Alternative 2:** Making delete and index to delete as separate inputs
+
+    - Pros: Would make it neater and more clear to the user what to enter as they would only enter one input every time.
+    - Cons: It would take two actions to perform a single task.
+
 <a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.3. <a id="listing-all-exercises-in-this-session">Listing All Exercises in This Session</a>
 
@@ -978,6 +1004,20 @@ All description, warnings and response will be handled by `CommonUi` to ensure c
 
 The sequence diagram below summarizes how the list command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionList.png)
+
+**Design considerations**
+Aspects: Length of results
+
+- **Alternative 1 (current choice):** Make the length for displaying exercise dynamic
+
+    - Pros: The table would look more appealing as the spacing would be dynamic.
+    - Cons: It is a lot more difficult to code.
+
+- **Alternative 2:** Make the length allocated for exercise really long
+
+    - Pros: The code would be simpler.
+    - Cons: The table would look ugly for the user to look at.
+    
 <a href="#top">&#8593; Return to Top</a>
 #### 4.4.1.4. <a id="searching-for-related-exercises">Searching for Related Exercises</a>
 
@@ -1009,18 +1049,17 @@ The sequence diagram below summarizes how the search command works:
 ![Load Data Sequence Diagram](pictures/jinyang/WorkoutSessionSearch.png)
 
 **Design considerations**
-Aspects: Security of stored data
+Aspects: Length of results
 
-- **Alternative 1 (current choice):** call public methods of Storage class to 
-print the list
+- **Alternative 1 (current choice):** Make the length for displaying exercise dynamic
 
-    - Pros: pastRecord are private and it can only be manipulated through designed public methods. Only selected data will be printed and viewed.
-    - Cons: Most methods Storage needs to be a static.
+    - Pros: The table would look more appealing as the spacing would be dynamic.
+    - Cons: It is a lot more difficult to code.
 
-- **Alternative 2:** Storage return a readonly list of pastRecord.
+- **Alternative 2:** Make the length allocated for exercise really long
 
-    - Pros: More versatile operations can be done.
-    - Cons: All data of pastRecord will be exposed.
+    - Pros: The code would be simpler.
+    - Cons: The table would look ugly for the user to look at.
 
 <a href="#top">&#8593; Return to Top</a>
 

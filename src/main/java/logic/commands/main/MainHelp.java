@@ -6,10 +6,10 @@ import logic.commands.CommandResult;
 import logic.commands.ExecutionResult;
 import org.apache.commons.lang3.StringUtils;
 
-import static seedu.duke.Constant.COMMAND_WORD_DIET;
-import static seedu.duke.Constant.COMMAND_WORD_END;
-import static seedu.duke.Constant.COMMAND_WORD_PROFILE;
-import static seedu.duke.Constant.COMMAND_WORD_WORKOUT;
+import static seedu.duke.Constants.COMMAND_WORD_DIET;
+import static seedu.duke.Constants.COMMAND_WORD_END;
+import static seedu.duke.Constants.COMMAND_WORD_PROFILE;
+import static seedu.duke.Constants.COMMAND_WORD_WORKOUT;
 import static ui.CommonUi.helpFormatter;
 
 //@@author tienkhoa16

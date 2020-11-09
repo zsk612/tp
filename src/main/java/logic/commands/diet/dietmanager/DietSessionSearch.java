@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
-import static seedu.duke.Constant.PATH_TO_DIET_FOLDER;
+import static seedu.duke.Constants.PATH_TO_DIET_FOLDER;
 import static ui.CommonUi.LS;
 import static ui.diet.dietmanager.DietManagerUi.DIET_DATE_WRONG_FORMAT;
 import static ui.diet.dietmanager.DietManagerUi.DIET_NO_SESSIONS_SAVED;
