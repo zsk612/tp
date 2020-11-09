@@ -1,4 +1,6 @@
 @startuml
+!define PLANTUML_HOME %dirpath()/../../umldiagram
+!include ../../umldiagram/style.puml
 actor user
 user -> DietManager : input
 activate DietManager
@@ -8,14 +10,14 @@ activate CommandLib
 CommandLib --> DietManager : Command
 deactivate CommandLib
 
-DietManager -> DietSessionEdit : execute()
+DietManager -> DietSessionEdit ** : execute()
 activate DietSessionEdit
 
 DietSessionEdit -> DietStorage : readDietSession()
 activate DietStorage
 DietStorage --> DietSessionEdit : DietSession
 
-DietSessionEdit -> DietSession : start()
+DietSessionEdit -> DietSession ** : start()
 activate DietSession
 DietSession --> DietSessionEdit
 deactivate DietSession
