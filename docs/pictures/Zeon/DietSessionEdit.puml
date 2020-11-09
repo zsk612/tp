@@ -4,28 +4,33 @@
 actor user
 user -> DietManager : input
 activate DietManager
-
-DietManager -> CommandLib : get()
+DietManager -> DietManagerParser : parse()
+activate DietManagerParser
+DietManagerParser --> DietManager : commParts[]
+deactivate DietManagerParser
+DietManager -> CommandLib : getCommand(commParts[0])
 activate CommandLib
-CommandLib --> DietManager : Command
+CommandLib --> DietManager : command
 deactivate CommandLib
 
-DietManager -> DietSessionEdit ** : execute()
+DietManager -> DietSessionEdit : execute()
 activate DietSessionEdit
 
 DietSessionEdit -> DietStorage : readDietSession()
 activate DietStorage
-DietStorage --> DietSessionEdit : DietSession
+DietStorage --> DietSessionEdit : dietSession
+deactivate DietStorage
 
-DietSessionEdit -> DietSession ** : start()
+DietSessionEdit -> DietSession : start()
 activate DietSession
 DietSession --> DietSessionEdit
 deactivate DietSession
-DietSessionEdit -> DietStorage : writeToStorageDietSession()
-DietStorage --> DietSessionEdit
-deactivate DietStorage
-DietSessionEdit --> DietManager
+DietSessionEdit --> DietManager : result
+destroy DietSession
 deactivate DietSessionEdit
-
-DietManager --> user : output
+destroy DietSessionEdit
+DietManager -> DietManagerUi : showToUser(message)
+activate DietManagerUi
+DietManagerUi --> user : output
+deactivate DietManagerUi
 @enduml
