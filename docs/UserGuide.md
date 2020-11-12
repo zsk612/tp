@@ -479,6 +479,7 @@ __Format:__ `help`
          _________________________________________________________________________________________________
     
     ```
+
 #### 3.3.2.2. <a id="meal-add">Adding Food Items to the Current Diet Session: `add`</a>
 This command adds a food item into the current diet session.
 
@@ -535,6 +536,8 @@ __Format:__ `delete [INDEX]`
          _________________________________________________________________________________________________
     
     ``` 
+> :tip: The index can be found by listing all results or searching the target record.
+
 #### 3.3.2.5. <a id="meal-clear">Clearing All Food Items from the Current Diet Session: `clear`</a>
 You can clear all the food items in the current diet session list.
 
@@ -601,6 +604,7 @@ __Format:__ `end`
          _________________________________________________________________________________________________
     
     ```
+   
 #### 3.3.3. <a id="diet-list">Listing All Past Diet Sessions: `list`</a> [Zeon]
 You can obtain a list of information about past diet sessions together with their numbered index and calories.
 
@@ -635,9 +639,9 @@ __Format:__ `edit [INDEX]`
     
     Diet Menu > Diet Session 2 >>>>> 
     ```
-
 > :bulb: Editing a diet session works exactly like how it does when you create a new diet session.
 
+> :tip: The index can be found by listing all results or searching the target record.
 
 #### 3.3.5. <a id="diet-delete">Deleting a Past Diet Session: `delete`</a>
 You can delete a previously created diet session based on a numbered index that can be found in the `list` command.
@@ -656,6 +660,7 @@ __Format:__ `delete [INDEX]`
 
 > :warning: Deleted diet sessions cannot be recovered!
 
+> :tip: The index can be found by listing all results or searching the target record.
 
  
 #### 3.3.6. <a id="diet-clear">Clearing All Past Diet Sessions: `clear`</a>
@@ -835,7 +840,7 @@ Deletes a move according to move index in the current workout session list.
 
 __Format:__ `delete [INDEX]`  
 
-**Example:** `
+**Example:**
 1. Type `delete` followed by the index number of the workout session you want to delete e.g. `delete 1` into your console and press <kbd>Enter</kbd> to execute it.
 2. If the execution is successful, you should be able to see the message below:
 
@@ -845,7 +850,7 @@ __Format:__ `delete [INDEX]`
          [Repetitions: 15 || Weight: 40.0]
          _________________________________________________________________________________________________
     ```
-
+> :tip: The index can be found by listing all results or searching the target record.
 
 #### 3.4.2.5. <a id="ws-search">Searching for a Keyword in the Current Workout Session: `search`</a>
 Searches the current workout session for the keyword and shows the relevant data found in a neat list.
@@ -919,8 +924,6 @@ to
 
 ```Workout Menu > Workout Session X >>>>>``` .
 
-The index can be found by listing all results or searching the target record.
-
 **Example:** 
 
 1. Type `edit` followed by the index number of the workout session you want to edit e.g. `edit 1` into your console, and press <kbd>Enter</kbd> to execute it.
@@ -928,13 +931,12 @@ The index can be found by listing all results or searching the target record.
 ```
 Workout Menu > Workout Session 1 >>>>> 
 ```
+> :tip: The index can be found by listing all results or searching the target record.
 
 #### 3.4.5. <a id="workout-delete">Deleting a Workout Session: `delete`</a>
 You can delete a past workout session in the record list.
 
 __Format:__ `delete [INDEX]` 
-
-The index can be found by listing the results.
 
 **Example**
 1. Type `delete` followed by the index number of the workout session you want to delete e.g. `delete 1` into your console and press <kbd>Enter</kbd> to execute it.
@@ -945,6 +947,8 @@ The index can be found by listing the results.
         ______________________________________________________________________________
     ```
 > :warning: Your workout session record cannot be recovered once deleted!
+
+> :tip: The index can be found by listing all results or searching the target record.
 
 #### 3.4.6. <a id="workout-search">Searching a List of Workout Sessions: `search`</a>
 You can search for a list of workout sessions that match certain conditions. For example, you can search for sessions created on a specific day or sessions that contain certain tags. All sessions that satisify the condition will be summaried into a table and printed out.
@@ -1002,7 +1006,7 @@ __Format:__ `clear`
 
 #### 3.4.8. <a id="workout-end">Returning to Main Menu: `end`</a>
 
-You can return to the main menu.
+You can return to the Main Menu.
 
 __Format:__ 
 
