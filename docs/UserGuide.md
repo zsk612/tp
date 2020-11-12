@@ -536,6 +536,7 @@ __Format:__ `delete [INDEX]`
          _________________________________________________________________________________________________
     
     ``` 
+   
 > :bulb: The index can be found by listing all results or searching the target record.
 
 #### 3.3.2.5. <a id="meal-clear">Clearing All Food Items from the Current Diet Session: `clear`</a>
@@ -639,6 +640,7 @@ __Format:__ `edit [INDEX]`
     
     Diet Menu > Diet Session 2 >>>>> 
     ```
+   
 > :bulb: Editing a diet session works exactly like how it does when you create a new diet session.
 
 > :bulb: The index can be found by listing all results or searching the target record.
@@ -850,6 +852,7 @@ __Format:__ `delete [INDEX]`
          [Repetitions: 15 || Weight: 40.0]
          _________________________________________________________________________________________________
     ```
+   
 > :bulb: The index can be found by listing all results or searching the target record.
 
 #### 3.4.2.5. <a id="ws-search">Searching for a Keyword in the Current Workout Session: `search`</a>
@@ -928,9 +931,10 @@ to
 
 1. Type `edit` followed by the index number of the workout session you want to edit e.g. `edit 1` into your console, and press <kbd>Enter</kbd> to execute it.
 2. If the execution is successful, you should be able to see the message for starting the workout session you want to edit below:
-```
-Workout Menu > Workout Session 1 >>>>> 
-```
+    ```
+    Workout Menu > Workout Session 1 >>>>> 
+    ```
+   
 > :bulb: The index can be found by listing all results or searching the target record.
 
 #### 3.4.5. <a id="workout-delete">Deleting a Workout Session: `delete`</a>
@@ -946,6 +950,7 @@ __Format:__ `delete [INDEX]`
         You have deleted that record!
         ______________________________________________________________________________
     ```
+   
 > :warning: Your workout session record cannot be recovered once deleted!
 
 > :bulb: The index can be found by listing all results or searching the target record.
@@ -1002,6 +1007,7 @@ __Format:__ `clear`
     
     Workout Menu >>>>> 
     ```
+   
 > :warning: This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing. 
 
 #### 3.4.8. <a id="workout-end">Returning to Main Menu: `end`</a>
