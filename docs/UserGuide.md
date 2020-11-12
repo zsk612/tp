@@ -226,20 +226,20 @@ __Format:__ `help`
 1. Type `help` into your console and press <kbd>Enter</kbd> to execute it.
 2. If the execution is successful, you should be able to see the message below:
 
-```
-        _________________________________________________________________________________________________
-        Add      FORMAT:      add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]
-              DESCRIPTION: Add your new profile
-        View     FORMAT:      view
-              DESCRIPTION: View your profile
-        Edit     FORMAT:      edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>
-              DESCRIPTION: Edit your existing profile. You may edit from 1 field to all fields
-        Delete   FORMAT:      delete
-              DESCRIPTION: Delete your existing profile
-        End      FORMAT:      end
-              DESCRIPTION: Go back to Main Menu
-        _________________________________________________________________________________________________
-```
+    ```
+            _________________________________________________________________________________________________
+            Add      FORMAT:      add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]
+                  DESCRIPTION: Add your new profile
+            View     FORMAT:      view
+                  DESCRIPTION: View your profile
+            Edit     FORMAT:      edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>
+                  DESCRIPTION: Edit your existing profile. You may edit from 1 field to all fields
+            Delete   FORMAT:      delete
+                  DESCRIPTION: Delete your existing profile
+            End      FORMAT:      end
+                  DESCRIPTION: Go back to Main Menu
+            _________________________________________________________________________________________________
+    ```
 
 #### 3.2.2. <a id="profile-add">Adding a Profile: `add`</a>
 You can add your profile for the most customized experience in The Schwarzenegger. Your height should in centimeters, your current weight and expected weight should be in kilograms, and your expected daily calorie intake should be in calories.
@@ -274,20 +274,20 @@ __Format:__ `view`
 1. Type `view` into your console and press <kbd>Enter</kbd> to execute it.
 2. If the execution is successful, you should be able to see the message below:
 
-```
-     _________________________________________________________________________________________________
-     Here's your profile:
-            Name: Schwarzenegger
-            Height: 188 cm
-            Weight: 113.0 kg
-            Expected Weight: 100.0 kg
-            Expected daily calorie intake: 2500.0 calories
-            Your current BMI: 32.0 (Obesity Class 1)
-     By the way, take 2500.0 more calories to achieve your target for today!
-     TIP: Edit your expected weight to 76.7 kg to have Normal Weight BMI classification.
-          Just type "edit /e 76.7"!
-     _________________________________________________________________________________________________
-```
+    ```
+         _________________________________________________________________________________________________
+         Here's your profile:
+                Name: Schwarzenegger
+                Height: 188 cm
+                Weight: 113.0 kg
+                Expected Weight: 100.0 kg
+                Expected daily calorie intake: 2500.0 calories
+                Your current BMI: 32.0 (Obesity Class 1)
+         By the way, take 2500.0 more calories to achieve your target for today!
+         TIP: Edit your expected weight to 76.7 kg to have Normal Weight BMI classification.
+              Just type "edit /e 76.7"!
+         _________________________________________________________________________________________________
+    ```
 
 > :bulb: If you do not see the tip, it means that your current height and weight expectation is classified as Normal Weight already.
 
@@ -360,11 +360,11 @@ __Format:__ `delete`
 1. Type `delete` into your console and press <kbd>Enter</kbd> to execute it.
 2. Type `YES` into your console and press <kbd>Enter</kbd> to confirm the deletion.
 3. If the execution is successful, you should be able to see the message below:
-```    
-    _________________________________________________________________________________________________
-    Alright, your profile has been cleared!
-    _________________________________________________________________________________________________
-```
+    ```    
+        _________________________________________________________________________________________________
+        Alright, your profile has been cleared!
+        _________________________________________________________________________________________________
+    ```
     
 > :warning: Your profile data cannot be recovered once cleared!
 
@@ -377,11 +377,11 @@ __Format:__ `end`
 1. Type `end` into your console and press <kbd>Enter</kbd> to execute it.
 2. If the execution is successful, you should be able to see the message below:
 
-```
-    _________________________________________________________________________________________________
-    Returning to Main Menu...
-    _________________________________________________________________________________________________
-```
+    ```
+        _________________________________________________________________________________________________
+        Returning to Main Menu...
+        _________________________________________________________________________________________________
+    ```
 
 ### 3.3. <a id="diet-menu">Diet Menu</a> [Zeon]
 Diet Menu manages your diet sessions which record food items and calories intake.
@@ -393,29 +393,29 @@ You can see a complete list of available commands under Diet Menu and how to use
 
 __Format:__ `help`
 
-**Example:** `help`
+**Example:** 
+1. Type `help` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
 
-Expected outcome:
-
-```
-	 _________________________________________________________________________________________________
-	 New      FORMAT:      new </d [DATE]> </t [TAG]>
-	          DESCRIPTION: Create a new diet session
-	 List     FORMAT:      list
-	          DESCRIPTION: Show all past diet sessions
-	 Delete   FORMAT:      delete [INDEX]
-	          DESCRIPTION: Delete the diet session at the input index
-	 Edit     FORMAT:      edit [INDEX]
-	          DESCRIPTION: Edit the diet session at the input index
-	 Search   FORMAT:      search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>
-	          DESCRIPTION: Search the diet session in between starting and end dates with a specific tag
-	 Clear    FORMAT:      clear
-	          DESCRIPTION: Clear all past diet sessions
-	 End      FORMAT:      end
-	          DESCRIPTION: Go back to Main Menu
-	 _________________________________________________________________________________________________
-
-```
+    ```
+         _________________________________________________________________________________________________
+         New      FORMAT:      new </d [DATE]> </t [TAG]>
+                  DESCRIPTION: Create a new diet session
+         List     FORMAT:      list
+                  DESCRIPTION: Show all past diet sessions
+         Delete   FORMAT:      delete [INDEX]
+                  DESCRIPTION: Delete the diet session at the input index
+         Edit     FORMAT:      edit [INDEX]
+                  DESCRIPTION: Edit the diet session at the input index
+         Search   FORMAT:      search </s [STARTING_DATE]> </e [END_DATE]> </t [TAG]>
+                  DESCRIPTION: Search the diet session in between starting and end dates with a specific tag
+         Clear    FORMAT:      clear
+                  DESCRIPTION: Clear all past diet sessions
+         End      FORMAT:      end
+                  DESCRIPTION: Go back to Main Menu
+         _________________________________________________________________________________________________
+    
+    ```
  
 #### 3.3.2. <a id="diet-start">Starting a New Diet Session: `new`</a>
 You can create a new diet session with this command. The date and tag can be added on creation with "/d" for date and "/t" for meal type. 
@@ -429,11 +429,6 @@ to
 ```Diet Menu > New Diet Session >>>>> ```. 
 
 __Format:__ `new </d [DATE]> </t [TAG]>`
- 
-**Example:**
-- `new`<br>
-This command creates a new diet session tagged as unspecified with today's date.<br>
-
 
 **Example:** Whenever you want to create a new Diet Session, you follow the steps below:
 1. Ensure that you are in the Diet Menu.<br>
@@ -463,26 +458,27 @@ You can see a complete list of available commands under Diet Session and how to 
 
 __Format:__ `help` 
 
-**Example:** `help`
+**Example:** 
 
-Expected outcome:
-```
-	 _________________________________________________________________________________________________
-	 Add      FORMAT:      add [FOOD_NAME] /c [CALORIES]
-	          DESCRIPTION: Add a new food item
-	 List     FORMAT:      list
-	          DESCRIPTION: Show all food items
-	 Delete   FORMAT:      delete [INDEX]
-	          DESCRIPTION: Delete the food item at the input index
-	 Search   FORMAT:      search [FOOD_NAME]
-	          DESCRIPTION: Search the diet session for food with the name specified
-	 Clear    FORMAT:      clear
-	          DESCRIPTION: Clear all food items
-	 End      FORMAT:      end
-	          DESCRIPTION: Go back to the Diet Menu.
-	 _________________________________________________________________________________________________
-
-```
+1. Type `help` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
+    ```
+         _________________________________________________________________________________________________
+         Add      FORMAT:      add [FOOD_NAME] /c [CALORIES]
+                  DESCRIPTION: Add a new food item
+         List     FORMAT:      list
+                  DESCRIPTION: Show all food items
+         Delete   FORMAT:      delete [INDEX]
+                  DESCRIPTION: Delete the food item at the input index
+         Search   FORMAT:      search [FOOD_NAME]
+                  DESCRIPTION: Search the diet session for food with the name specified
+         Clear    FORMAT:      clear
+                  DESCRIPTION: Clear all food items
+         End      FORMAT:      end
+                  DESCRIPTION: Go back to the Diet Menu.
+         _________________________________________________________________________________________________
+    
+    ```
 #### 3.3.2.2. <a id="meal-add">Adding Food Items to the Current Diet Session: `add`</a>
 This command adds a food item into the current diet session.
 
@@ -501,13 +497,6 @@ __Format:__ `add [FOOD_NAME] /c [CALORIES]`
 
     ![add-new-food-item-3](pictures/UG_screenshots/add-new-food-item-step-3.JPG)
 
-Expected outcome:
-```
-	 _________________________________________________________________________________________________
-	 Yay! You have added chicken nuggets with calories: 120.0
-	 _________________________________________________________________________________________________
-```
-
 > :bulb: Your calories per food item is capped at 200,000
 
 
@@ -516,34 +505,36 @@ Lists all the added food items for the current diet session, with a numbered seq
 
 __Format:__ `list` 
 
-**Example:** `list`
+**Example:** 
 
-Expected outcome:
-```
-	 _________________________________________________________________________________________________
-	 Index   Food            Calories 
-	 1       chicken nuggets 120.0     
-	 2       fries           240.0
-
-	 Your total calories for this meal is 360.0.
-	 _________________________________________________________________________________________________
-```
+1. Type `list` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the list of food items below:
+    ```
+         _________________________________________________________________________________________________
+         Index   Food            Calories 
+         1       chicken nuggets 120.0     
+         2       fries           240.0
+    
+         Your total calories for this meal is 360.0.
+         _________________________________________________________________________________________________
+    ```
 
 #### 3.3.2.4. <a id="meal-delete">Deleting Food Items from the Current Diet Session: `delete`</a>
 You can remove food items from your list according to the index in the current meal session list.
 
 __Format:__ `delete [INDEX]`
 
-**Example:** `delete 1`
+**Example:** 
 
-Expected outcome:
-
-```
-	 _________________________________________________________________________________________________
-	 You have deleted chicken nuggets with calories: 120.0 from your list!
-	 _________________________________________________________________________________________________
-
-``` 
+1. Type `delete` followed by an index number of the food to be deleted e.g. `delete 1` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
+    
+    ```
+         _________________________________________________________________________________________________
+         You have deleted chicken nuggets with calories: 120.0 from your list!
+         _________________________________________________________________________________________________
+    
+    ``` 
 #### 3.3.2.5. <a id="meal-clear">Clearing All Food Items from the Current Diet Session: `clear`</a>
 You can clear all the food items in the current diet session list.
 
@@ -551,20 +542,23 @@ This command is dangerous as you will not be able to recover the data. After typ
 
 __Format:__ `clear` 
 
-**Example:** `clear`
+**Example:** 
 
-Expected outcome:
-```
-     _________________________________________________________________________________________________
-     Are you sure you want to clear all records? This action is irrevocable.
-     Key in "YES" to confirm.
-     _________________________________________________________________________________________________
- 
- Diet Menu > New Diet Session >>>>> YES
-     _________________________________________________________________________________________________
-     Oops you have cleared all the food items.
-     _________________________________________________________________________________________________
-```
+1. Type `clear` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the warning message below:
+    ```
+         _________________________________________________________________________________________________
+         Are you sure you want to clear all records? This action is irrevocable.
+         Key in "YES" to confirm.
+         _________________________________________________________________________________________________
+    ```
+3. Only if you type `YES` will all the food items be cleared, and you should see the message below: 
+    ```
+     Diet Menu > New Diet Session >>>>> YES
+         _________________________________________________________________________________________________
+         Oops you have cleared all the food items.
+         _________________________________________________________________________________________________
+    ```
 
 > :warning: Your food items cannot be recovered once cleared!
 
@@ -575,68 +569,72 @@ You can search for all food items that contain the word entered, in the current 
 
 __Format:__ `search [FOOD_NAME]` 
 
-**Example:** `search rice`
+**Example:** 
 
-Expected outcome:
-```
-Diet Menu > Diet Session 1 >>>>> search rice
-	 _________________________________________________________________________________________________
-	 Here are the search results: 
-	 Index   Food         Calories 
-	 1       chicken rice 332.0     
-	 2       fried rice   452.0     
-	 
-	 You have 2 record(s)
-	 _________________________________________________________________________________________________
-
-```
+1. Type `search` followed by the food item name you want to search e.g. `search rice` into your console, and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the list of search results below:
+    ```
+    Diet Menu > Diet Session 1 >>>>> search rice
+         _________________________________________________________________________________________________
+         Here are the search results: 
+         Index   Food         Calories 
+         1       chicken rice 332.0     
+         2       fried rice   452.0     
+         
+         You have 2 record(s)
+         _________________________________________________________________________________________________
+    
+    ```
 
 #### 3.3.2.7. <a id="meal-end">Ending the Current Diet Session: `end`</a>
 You can return to the diet menu by ending your current diet session.
 
 __Format:__ `end` 
 
-**Example:** `end`
+**Example:** 
 
-Expected outcome:
-```
-	 _________________________________________________________________________________________________
-	 Exiting Diet Session!
-	 _________________________________________________________________________________________________
-
-```
+1. Type `end` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
+    ```
+         _________________________________________________________________________________________________
+         Exiting Diet Session!
+         _________________________________________________________________________________________________
+    
+    ```
 #### 3.3.3. <a id="diet-list">Listing All Past Diet Sessions: `list`</a> [Zeon]
 You can obtain a list of information about past diet sessions together with their numbered index and calories.
 
 __Format:__ `list`
 
-**Example:** `list`
+**Example:** 
 
-Expected outcome:
-```
-    _________________________________________________________________________________________________
-    You have 2 records
-    Index   Tags        Date        Calories
-    1       dinner      2020-10-29  110.0
-    2       lunch       2020-10-29  120.0
-    _________________________________________________________________________________________________
-```
+1. Type `list` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the list of diet sessions below:
+    ```
+        _________________________________________________________________________________________________
+        You have 2 records
+        Index   Tags        Date        Calories
+        1       dinner      2020-10-29  110.0
+        2       lunch       2020-10-29  120.0
+        _________________________________________________________________________________________________
+    ```
 
 #### 3.3.4. <a id="diet-edit">Editing a Past Diet Session: `edit`</a>
 You can edit a previous diet session based on a numbered index that can be found in the `list` command.
 
 __Format:__ `edit [INDEX]`
 
-**Example:** `edit 2` 
+**Example:**  
 
-Expected outcome:
-```
-	 _________________________________________________________________________________________________
-	 Starting Diet Session!
-	 _________________________________________________________________________________________________
-
-Diet Menu > Diet Session 2 >>>>> 
-```
+1. Type `edit` followed by the index number of the diet session you want to edit e.g. `edit 2` into your console, and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message for starting the diet session you want to edit below:
+    ```
+         _________________________________________________________________________________________________
+         Starting Diet Session!
+         _________________________________________________________________________________________________
+    
+    Diet Menu > Diet Session 2 >>>>> 
+    ```
 
 > :bulb: Editing a diet session works exactly like how it does when you create a new diet session.
 
@@ -646,9 +644,10 @@ You can delete a previously created diet session based on a numbered index that 
 
 __Format:__ `delete [INDEX]`
 
-**Example:** `delete 2`
+**Example:** 
 
-Expected outcome:
+1. Type `delete` followed by the index number of the diet session you want to delete e.g. `delete 2` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
 ```
      _________________________________________________________________________________________________
      You have deleted that diet session!
@@ -666,18 +665,21 @@ __Format:__ `clear`
 
 **Example:** `clear`
 
-Expected outcome:
-```
-	 _________________________________________________________________________________________________
-	 Are you sure you want to clear all records? This action is irrevocable.
-	 Key in "YES" to confirm.
-	 _________________________________________________________________________________________________
-
-Diet Menu >>>>> YES
-	 _________________________________________________________________________________________________
-	 You have cleared all diet sessions!
-	 _________________________________________________________________________________________________
-```
+1. Type `clear` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the warning message below:
+    ```
+         _________________________________________________________________________________________________
+         Are you sure you want to clear all records? This action is irrevocable.
+         Key in "YES" to confirm.
+         _________________________________________________________________________________________________
+    ```
+3. Only if you type `YES` will all the diet session be cleared, and you will see the message below:
+    ```
+    Diet Menu >>>>> YES
+         _________________________________________________________________________________________________
+         You have cleared all diet sessions!
+         _________________________________________________________________________________________________
+    ```
 
 > :warning: This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing.
 
@@ -687,34 +689,40 @@ Searches for specified range of diet sessions with identifiers such as start dat
 
 __Format:__ `search </s [START DATE]> </e [END DATE]> </t [TAG]>`
 
-**Example:** `search /s 2020-05-06 /e 2020-05-10 /t breakfast`
+**Example:** 
 
-Expected outcome:
-```
-	 _________________________________________________________________________________________________
-	 Here are the search results!
-	 Index   Date             Tag         Calories  
-	 1       2020-05-08       breakfast   112.0
-     2       2020-05-09       breakfast   250.0
-	 
-	 You have 2 record(s)
-	 _________________________________________________________________________________________________
-```
+1. Type `search` followed by one or more of the following parameters into your console and press <kbd>Enter</kbd> to execute it. e.g. `search /s 2020-05-06 /e 2020-05-10 /t breakfast`
+    - `/s` and the start date you want to search for 
+    - `/e` and the end date you want to search for 
+    - `/t` and the search tag you want to search for 
+
+2. If the execution is successful, you should be able to see the list of diet sessions below:
+    ```
+         _________________________________________________________________________________________________
+         Here are the search results!
+         Index   Date             Tag         Calories  
+         1       2020-05-08       breakfast   112.0
+         2       2020-05-09       breakfast   250.0
+         
+         You have 2 record(s)
+         _________________________________________________________________________________________________
+    ```
 
 #### 3.3.8. <a id="diet-end">Returning to Main Menu: `end`</a>
 You can use this command to exit Diet Menu and return to the Main Menu.
 
 __Format:__ `end`
 
-**Example:** `end`
+**Example:** 
 
-Expected outcome:
-```
-	 _________________________________________________________________________________________________
-	 Returning to Main Menu...
-	 _________________________________________________________________________________________________
-
-```
+1. Type `end` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
+    ```
+         _________________________________________________________________________________________________
+         Returning to Main Menu...
+         _________________________________________________________________________________________________
+    
+    ```
 
 ### 3.4. <a id="workout-menu">Workout Menu</a> [Zesong]
 This section shows the command you can use when you are in workout menu.
@@ -725,6 +733,7 @@ You can see a complete list of available commands under Workout Menu and how to 
 
 __Format:__ `help`
 
+**Example:** 
 1. Type `help` into your console and press <kbd>Enter</kbd> to execute it.
 
     ![main-help-1](pictures/UG_screenshots/workout-help-step-1.png)
@@ -748,16 +757,17 @@ to
 
 __Format:__ `new </t [TAG]...>`  
 
-**Example:** `new /t legs day, tricep`
+**Example:** 
 
-Expected outcome:
-```
-	 ______________________________________________________________________________
-	 You have started a new workout session!
-	 ______________________________________________________________________________
-
-Workout Menu > New Workout Session >>>>> 
-```
+1. Type `new` followed by `\t` and the tags which are separated by commas if there are multiple tags e.g. `new /t legs day, tricep` into your console and press <kbd>Enter</kbd> to execute it. Notice that tags are optional.
+2. If the execution is successful, you should be able to see the list of workout sessions below:
+    ```
+         ______________________________________________________________________________
+         You have started a new workout session!
+         ______________________________________________________________________________
+    
+    Workout Menu > New Workout Session >>>>> 
+    ```
 
 
 #### 3.4.2.1. <a id="ws-help">Viewing Help in Workout Session: `help`</a> [Jinyang]
@@ -765,24 +775,25 @@ You can see a complete list of available commands under Workout Session and how 
 
 __Format:__ `help`  
 
-**Example:** `help`
+**Example:**
 
-Expected outcome:
-
-```
-	 _________________________________________________________________________________________________
-	 Add      FORMAT:      add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]
-	          DESCRIPTION: Add a new move
-	 List     FORMAT:      list
-	          DESCRIPTION: Show all moves in this current session
-	 Delete   FORMAT:      delete [INDEX]
-	          DESCRIPTION: Delete a move according to the index in the list
-	 Search   FORMAT:      search [NAME_OF_MOVE]
-	          DESCRIPTION: Show a list of moves that match the entered keyword
-	 End      FORMAT:      end
-	          DESCRIPTION: Go back to the Workout Menu
-	 _________________________________________________________________________________________________
-```
+1. Type `help` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
+    
+    ```
+         _________________________________________________________________________________________________
+         Add      FORMAT:      add [NAME_OF_MOVE] /n [NUMBER_OF_REPETITIONS] /w [WEIGHT]
+                  DESCRIPTION: Add a new move
+         List     FORMAT:      list
+                  DESCRIPTION: Show all moves in this current session
+         Delete   FORMAT:      delete [INDEX]
+                  DESCRIPTION: Delete a move according to the index in the list
+         Search   FORMAT:      search [NAME_OF_MOVE]
+                  DESCRIPTION: Show a list of moves that match the entered keyword
+         End      FORMAT:      end
+                  DESCRIPTION: Go back to the Workout Menu
+         _________________________________________________________________________________________________
+    ```
 
 #### 3.4.2.2. <a id="ws-add">Adding a Move to the Current Workout Session: `add`</a>
 Adds a move with number of moves per set and weights of equipment (if the move does not require weights, input 0 for weight).
@@ -808,31 +819,32 @@ Lists all the added moves for the current workout session, with a numbered seque
 
 __Format:__ `list`  
 
-**Example:** `list`
+**Example:** 
 
-Expected outcome:
-```
-     _________________________________________________________________________________________________
-     Index   Exercise             Repetitions    Weight
-     1       squat                15             40.0
-     _________________________________________________________________________________________________
-```
+1. Type `list` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the list of exercises below:
+    ```
+         _________________________________________________________________________________________________
+         Index   Exercise             Repetitions    Weight
+         1       squat                15             40.0
+         _________________________________________________________________________________________________
+    ```
 
 #### 3.4.2.4. <a id="ws-delete">Deleting a Move From the Current Workout Session: `delete`</a>
 Deletes a move according to move index in the current workout session list.
 
 __Format:__ `delete [INDEX]`  
 
-**Example:** `delete 1`
+**Example:** `
+1. Type `delete` followed by the index number of the workout session you want to delete e.g. `delete 1` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
 
-Expected outcome:
-
-```
-     _________________________________________________________________________________________________
-     You have deleted squat from your list!
-     [Repetitions: 15 || Weight: 40.0]
-     _________________________________________________________________________________________________
-```
+    ```
+         _________________________________________________________________________________________________
+         You have deleted squat from your list!
+         [Repetitions: 15 || Weight: 40.0]
+         _________________________________________________________________________________________________
+    ```
 
 
 #### 3.4.2.5. <a id="ws-search">Searching for a Keyword in the Current Workout Session: `search`</a>
@@ -840,18 +852,19 @@ Searches the current workout session for the keyword and shows the relevant data
 
 __Format:__ `search [NAME_OF_MOVE]`  
 
-**Example:** `search bench`
+**Example:** 
 
-Expected outcome:
+1. Type `search` followed by the exercise name you want to search e.g. `search bench` into your console, and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the list of search result below:
 
-```
-     _________________________________________________________________________________________________
-     	 Index   Exercise             Repetitions    Weight    
-     	 1       bench                324            342.0
-     	 2       benchpress           324            342.0
-     	 3       bench press          324            342.0
-     _________________________________________________________________________________________________
-```
+    ```
+         _________________________________________________________________________________________________
+             Index   Exercise             Repetitions    Weight    
+             1       bench                324            342.0
+             2       benchpress           324            342.0
+             3       bench press          324            342.0
+         _________________________________________________________________________________________________
+    ```
 
 
 #### 3.4.2.6. <a id="ws-end">Ending the Current Workout Session: `end`</a> 
@@ -859,34 +872,39 @@ Ends the current workout session and saves the relevant data.
 
 __Format:__ `end`  
 
-**Example:** `end`
+**Example:** 
 
-Expected outcome:
+1. Type `end` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
 
-```
-     _________________________________________________________________________________________________
-     Congratulations! You have finished today's workout!
-     _________________________________________________________________________________________________
-```
+    ```
+         _________________________________________________________________________________________________
+         Congratulations! You have finished today's workout!
+         _________________________________________________________________________________________________
+    ```
 
 #### 3.4.3. <a id="workout-list">Listing All Past Workout Sessions: `list`</a> [Zesong]
 You can see all your past workout sessions. They will be summarised and printed in a table with their index, creation date and tags.
 
 You can specify start date and end date to show sessions created in a selected period using `\s` for start date and `\e` for end date. If start date is not specified, it will take the earliest date a start date. If end date is not specified, it will take today as the end date.
 
-__Format:__ `list </s [START_DATE]> </e [END_DATE]>`  
+__Format:__   
 
-Example `list /e 20201026`
+**Example**
 
-Expected outcome:
-```
-	 ______________________________________________________________________________
-	 You have 2 records in the given period:
-	 Index   Creation date   Tags    
-	 1       2020-10-26      [legs day, tricep]
-	 2       2020-10-26      [chest]
-	 ______________________________________________________________________________
-```
+1. Type `list` followed by one or more of the following parameters into your console and press <kbd>Enter</kbd> to execute it. e.g. `list </s [START_DATE]> </e [END_DATE]>`
+    - `/s` and the start date you want to search for 
+    - `/e` and the end date you want to search for 
+
+2. If the execution is successful, you should be able to see the list of workout sessions below:
+    ```
+         ______________________________________________________________________________
+         You have 2 records in the given period:
+         Index   Creation date   Tags    
+         1       2020-10-26      [legs day, tricep]
+         2       2020-10-26      [chest]
+         ______________________________________________________________________________
+    ```
 
 #### 3.4.4. <a id="workout-edit">Editing a Workout Session: `edit`</a>
 You can edit a past workout session in the record list.
@@ -903,9 +921,10 @@ to
 
 The index can be found by listing all results or searching the target record.
 
-**Example:** `edit 1`
+**Example:** 
 
-Expected outcome:
+1. Type `edit` followed by the index number of the workout session you want to edit e.g. `edit 1` into your console, and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message for starting the workout session you want to edit below:
 ```
 Workout Menu > Workout Session 1 >>>>> 
 ```
@@ -917,15 +936,14 @@ __Format:__ `delete [INDEX]`
 
 The index can be found by listing the results.
 
-Example：
-`delete 1`
-
-Expected outcome:
-```
-    ______________________________________________________________________________
-    You have deleted that record!
-    ______________________________________________________________________________
-```
+**Example**
+1. Type `delete` followed by the index number of the workout session you want to delete e.g. `delete 1` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
+    ```
+        ______________________________________________________________________________
+        You have deleted that record!
+        ______________________________________________________________________________
+    ```
 > :warning: Your workout session record cannot be recovered once deleted!
 
 #### 3.4.6. <a id="workout-search">Searching a List of Workout Sessions: `search`</a>
@@ -944,59 +962,64 @@ You can search records created on a specific day with `/d` followed by a date. Y
 Both date and tag conditions are optional. You may have zero, one or both conditions while searching. If both conditions are given, only sessions that meet both conditions will be selected.
 
 
-**Example:** `search /t le`
+**Example:**
 
-Expected outcome:
-```
-	 ______________________________________________________________________________
-	 1  records are found:
-	 Index   Creation date   Tags    
-	 2       2020-10-26      [legs day, tricep]
-	 ______________________________________________________________________________
-```
+1. Type `search` followed by `/t` and the tag name of the workout session you want to search e.g. `search /t leg` into your console, and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message for starting the workout session you want to search below:
+    ```
+         ______________________________________________________________________________
+         1  record has been found:
+         Index   Creation date   Tags    
+         2       2020-10-26      [legs day, tricep]
+         ______________________________________________________________________________
+    ```
 
 #### 3.4.7. <a id="workout-clear">Clearing All Workout Sessions: `clear`</a>
 You can erase all workout sessions.
 
 __Format:__ `clear`
 
-Example `clear`
+**Example**
 
-Expected outcome:
-```
-	 ______________________________________________________________________________
-	 Are you sure you want to clear all records? This action is irrevocable.
-	 Key in "YES" to confirm.
-	 ______________________________________________________________________________
-
-Workout Menu >>>>> YES
-	 ______________________________________________________________________________
-	 You have cleared all records!
-	 ______________________________________________________________________________
-
-Workout Menu >>>>> 
-```
+1. Type `clear` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the warning message below:
+    ```
+         ______________________________________________________________________________
+         Are you sure you want to clear all records? This action is irrevocable.
+         Key in "YES" to confirm.
+         ______________________________________________________________________________
+    ```
+3. Only if you type `YES` will all the workout session be cleared, and you will see the message below:
+    ```
+    Workout Menu >>>>> YES
+         ______________________________________________________________________________
+         You have cleared all records!
+         ______________________________________________________________________________
+    
+    Workout Menu >>>>> 
+    ```
 > :warning: This command is dangerous as you will not be able to recover the data. After typing this command, you will be asked to reconfirm it by typing in `YES`. Any other input will abort the clearing. 
 
 #### 3.4.8. <a id="workout-end">Returning to Main Menu: `end`</a>
 
 You can return to the main menu.
 
-__Format:__ `end`
+__Format:__ 
 
 After typing in this, you will see your prompt in your terminal
 changes from `Workout Menu>>>` to `Main Menu>>>`. 
  
-Example `end`
-
-Expected output
-```
-	 ______________________________________________________________________________
-	 Returning to Main menu...
-	 ______________________________________________________________________________
-
-Main Menu >>>>> 
-```
+**Example** 
+1. Type `end` into your console and press <kbd>Enter</kbd> to execute it.
+2. If the execution is successful, you should be able to see the message below:
+    
+    ```
+         ______________________________________________________________________________
+         Returning to Main menu...
+         ______________________________________________________________________________
+    
+    Main Menu >>>>> 
+    ```
 
 ## 4. <a id="command-summary">Command Summary</a>
 
