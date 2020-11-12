@@ -35,11 +35,11 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
            
     + Documentation:
          + Added instructions and format for all workout manager related commands in the User Guide. (Pull Request: [#81](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/81), [#83](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/83))
-         + Added and updated instructions and format for all workout manager related commands in the Developer Guide. (Pull Request: [#132](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/132)))
-         + Added and updated diagrams in the Developer Guide (Pull Request: [#106](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/106)))
+         + Added and updated instructions and format for all workout manager related commands in the Developer Guide. (Pull Request: [#132](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/132))
+         + Added and updated diagrams in the Developer Guide (Pull Request: [#106](https://github.com/AY2021S1-CS2113T-F11-1/tp/pull/106))
          
     + Community:
-        + Reported bugs for other teams in the class (Pull Request: [#36](https://github.com/nus-cs2113-AY2021S1/tp/pulls?q=is%3Aopen+is%3Apr+CS2113-T13-3+)
+        + Reported bugs for other teams in the class (Pull Request: [#36](https://github.com/nus-cs2113-AY2021S1/tp/pulls?q=is%3Aopen+is%3Apr+CS2113-T13-3+) )
         + Perform manual testing, reported bugs and gave suggestions to teammates.
              
 #### Contributions to the User Guide

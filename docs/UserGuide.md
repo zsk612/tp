@@ -62,7 +62,7 @@ The Schwarzenegger is a desktop command line interface-based app for managing al
 When you first start using The Schwarzenegger, please ensure that you follow the instructions below:
 
 1. Ensure you have Java `11` or above installed in your Computer.
-1. Download the latest `schwarzenegger.jar` from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
+1. Download the latest `CS2113T-F11-1.TheSchwarzenegger.jar` from [here](https://github.com/AY2021S1-CS2113T-F11-1/tp/releases).
 1. Copy the file to the folder you want to use as the home folder for The Schwarzenegger.
 1. Open Command Prompt (on Windows)  or Terminal (on MacOS/ Linux) and change to the directory of the folder of the application in step 3.
 1. Key in `java -jar [CS2113T-F11-1][TheSchwarzenegger].jar` and press <kbd>Enter</kbd>. If the setup is correct, you should see something like below:
@@ -105,10 +105,12 @@ This section includes 4 sub-sections which will guide you through the features a
 
 - Words that are in `[UPPER_CASE]` format are the parameters to be supplied by you.<br>
 **Example**: in <br>`add /n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]` <br>command, `[NAME]`, `[HEIGHT]`, `[CURRENT_WEIGHT]`, `[EXPECTED_WEIGHT]` and `[DAILY_CALORIE_INTAKE]` are parameters which can be used as `add /n Schwarzenegger /h 188 /w 113 /e 100 /c 2500`.
-- Words that are enclosed with `<` and `>` are optional parameters.<br>
+- Words that are enclosed with `<` and `>` are optional parameters. If all of the parameters are optional, you need to supply at least 1 of them. <br>
 **Example**: in <br>`edit </n [NAME]> </h [HEIGHT]> </w [CURRENT_WEIGHT]> </e [EXPECTED_WEIGHT]> </c [DAILY_CALORIE_INTAKE]>` <br>command, `</n [NAME]>`, `</h [HEIGHT]>`, `</w [CURRENT_WEIGHT]>`, `</e [EXPECTED_WEIGHT]>` and `</c [DAILY_CALORIE_INTAKE]>` are optional parameters which can be used as `edit /h 180`, `edit /h 180 /w 50` or `edit /h 180 /w 50 /e 55`. Since all of them are optional parameters, you need to supply at least 1 of them.
 - Optional parameters with `…` after them can be used multiple times including zero times. <br>
 **Example**: for `<TAG>...`, the following format for Search Command in Workout Menu: `search </d [DATE]> </t [TAG]...>` can be used as `search /t le` or `search /t chest, bicep`.
+- Parameters can be in any order. <br> 
+**Example**: if the command specifies `/n [NAME] /h [HEIGHT] /w [CURRENT_WEIGHT] /e [EXPECTED_WEIGHT] /c [DAILY_CALORIE_INTAKE]`, `/h [HEIGHT] /w [CURRENT_WEIGHT] /n [NAME] /c [DAILY_CALORIE_INTAKE] /e [EXPECTED_WEIGHT]` is also acceptable.
 
 **Notations Used** [Khoa]
 
@@ -391,7 +393,7 @@ You can see a complete list of available commands under Diet Menu and how to use
 
 __Format:__ `help`
 
-Example: `help`
+**Example:** `help`
 
 Expected outcome:
 
@@ -428,7 +430,7 @@ to
 
 __Format:__ `new </d [DATE]> </t [TAG]>`
  
-Example:
+**Example:**
 - `new`<br>
 This command creates a new diet session tagged as unspecified with today's date.<br>
 
@@ -461,7 +463,7 @@ You can see a complete list of available commands under Diet Session and how to 
 
 __Format:__ `help` 
 
-Example: `help`
+**Example:** `help`
 
 Expected outcome:
 ```
@@ -486,7 +488,7 @@ This command adds a food item into the current diet session.
 
 __Format:__ `add [FOOD_NAME] /c [CALORIES]` 
 
-Example: Whenever you want to add new food items in the diet session, you follow the steps below:
+**Example:** Whenever you want to add new food items in the diet session, you follow the steps below:
 1. Locate yourself in the diet session menu as shown in the screenshot below:
 
     ![add-new-food-item-1](pictures/UG_screenshots/add-new-food-item-step-1.JPG)
@@ -514,7 +516,7 @@ Lists all the added food items for the current diet session, with a numbered seq
 
 __Format:__ `list` 
 
-Example: `list`
+**Example:** `list`
 
 Expected outcome:
 ```
@@ -532,7 +534,7 @@ You can remove food items from your list according to the index in the current m
 
 __Format:__ `delete [INDEX]`
 
-Example: `delete 1`
+**Example:** `delete 1`
 
 Expected outcome:
 
@@ -549,7 +551,7 @@ This command is dangerous as you will not be able to recover the data. After typ
 
 __Format:__ `clear` 
 
-Example: `clear`
+**Example:** `clear`
 
 Expected outcome:
 ```
@@ -573,7 +575,7 @@ You can search for all food items that contain the word entered, in the current 
 
 __Format:__ `search [FOOD_NAME]` 
 
-Example: `search rice`
+**Example:** `search rice`
 
 Expected outcome:
 ```
@@ -594,7 +596,7 @@ You can return to the diet menu by ending your current diet session.
 
 __Format:__ `end` 
 
-Example: `end`
+**Example:** `end`
 
 Expected outcome:
 ```
@@ -608,7 +610,7 @@ You can obtain a list of information about past diet sessions together with thei
 
 __Format:__ `list`
 
-Example: `list`
+**Example:** `list`
 
 Expected outcome:
 ```
@@ -625,7 +627,7 @@ You can edit a previous diet session based on a numbered index that can be found
 
 __Format:__ `edit [INDEX]`
 
-Example: `edit 2` 
+**Example:** `edit 2` 
 
 Expected outcome:
 ```
@@ -644,7 +646,7 @@ You can delete a previously created diet session based on a numbered index that 
 
 __Format:__ `delete [INDEX]`
 
-Example: `delete 2`
+**Example:** `delete 2`
 
 Expected outcome:
 ```
@@ -662,7 +664,7 @@ You can clear all previously saved diet sessions.
 
 __Format:__ `clear`
 
-Example: `clear`
+**Example:** `clear`
 
 Expected outcome:
 ```
@@ -685,7 +687,7 @@ Searches for specified range of diet sessions with identifiers such as start dat
 
 __Format:__ `search </s [START DATE]> </e [END DATE]> </t [TAG]>`
 
-Example: `search /s 2020-05-06 /e 2020-05-10 /t breakfast`
+**Example:** `search /s 2020-05-06 /e 2020-05-10 /t breakfast`
 
 Expected outcome:
 ```
@@ -704,7 +706,7 @@ You can use this command to exit Diet Menu and return to the Main Menu.
 
 __Format:__ `end`
 
-Example: `end`
+**Example:** `end`
 
 Expected outcome:
 ```
@@ -746,7 +748,7 @@ to
 
 __Format:__ `new </t [TAG]...>`  
 
-Example: `new /t legs day, tricep`
+**Example:** `new /t legs day, tricep`
 
 Expected outcome:
 ```
@@ -763,7 +765,7 @@ You can see a complete list of available commands under Workout Session and how 
 
 __Format:__ `help`  
 
-Example: `help`
+**Example:** `help`
 
 Expected outcome:
 
@@ -806,7 +808,7 @@ Lists all the added moves for the current workout session, with a numbered seque
 
 __Format:__ `list`  
 
-Example: `list`
+**Example:** `list`
 
 Expected outcome:
 ```
@@ -821,7 +823,7 @@ Deletes a move according to move index in the current workout session list.
 
 __Format:__ `delete [INDEX]`  
 
-Example: `delete 1`
+**Example:** `delete 1`
 
 Expected outcome:
 
@@ -838,7 +840,7 @@ Searches the current workout session for the keyword and shows the relevant data
 
 __Format:__ `search [NAME_OF_MOVE]`  
 
-Example: `search bench`
+**Example:** `search bench`
 
 Expected outcome:
 
@@ -857,7 +859,7 @@ Ends the current workout session and saves the relevant data.
 
 __Format:__ `end`  
 
-Example: `end`
+**Example:** `end`
 
 Expected outcome:
 
@@ -901,7 +903,7 @@ to
 
 The index can be found by listing all results or searching the target record.
 
-Example: `edit 1`
+**Example:** `edit 1`
 
 Expected outcome:
 ```
@@ -942,7 +944,7 @@ You can search records created on a specific day with `/d` followed by a date. Y
 Both date and tag conditions are optional. You may have zero, one or both conditions while searching. If both conditions are given, only sessions that meet both conditions will be selected.
 
 
-Example: `search /t le`
+**Example:** `search /t le`
 
 Expected outcome:
 ```
